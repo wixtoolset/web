@@ -116,6 +116,16 @@
     </ItemGroup>
   </Target>
 
+  <Target Name="IncorporateIssueTracker">
+    <ItemGroup>
+      <IssueTrackerFiles Include="issues\**">
+        <RelativeOutputFolder>issues\%(RecursiveDir)%(Filename)%(Extension)</RelativeOutputFolder>
+      </IssueTrackerFiles>
+
+      <PublishSource Include="@(IssueTrackerFiles)" />
+    </ItemGroup>
+  </Target>
+
   <Target Name="CopyToPublishFolder"
           Condition=" '@(PublishSource)'!='' ">
     <Copy SourceFiles='@(PublishSource)'
@@ -130,7 +140,7 @@
   </Target>
 
   <Target Name="Build"
-          DependsOnTargets="BuildRoot;BuildV3Manual;BuildApi;CopyToPublishFolder;BuildSitemap">
+          DependsOnTargets="BuildRoot;BuildV3Manual;BuildApi;IncorporateIssueTracker;CopyToPublishFolder;BuildSitemap">
   </Target>
 
   <Target Name="Clean">

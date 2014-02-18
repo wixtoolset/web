@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<nlog xmlns="http://www.nlog-project.org/schemas/NLog.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <targets>
+    <target name="notfound" xsi:type="AsyncWrapper" overflowAction="Block">
+      <target xsi:type="File"
+              fileName="${basedir}/App_Data/logs/404s/notfound-${shortdate}.log"
+              layout="${longdate} ${message}" />
+    </target>
+    <target xsi:type="File"
+            name="error"
+            fileName="${basedir}/App_Data/logs/error-${shortdate}.log"
+            layout="exception:${newline}  at:   ${longdate}${newline}${message} ${onexception:inner=${newline}${exception:format=tostring}}${newline}" />
+  </targets>
+
+  <rules>
+    <logger name="notfound" minlevel="Debug" writeTo="notfound" />
+    <logger name="error" minlevel="Debug" writeTo="error" />
+  </rules>
+</nlog>

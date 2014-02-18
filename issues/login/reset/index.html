@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>WiX Toolset - Password Reset</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+  <link href="/issues/assets/css/tinybugs.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <div class="row">
+  <div id='formwrapper' class="span6">
+  <form id='resetForm' method='post'>
+    <fieldset>
+    <legend>Password Reset</legend>
+    <div class="alert alert-error hide">
+      <button type="button" class="close">&times;</button>
+      <strong>Error!</strong> your verification ticket expired.
+    </div>
+
+    <label for='password'>Password</label>
+    <input id='password' name='password' type='password' maxlength='50' required />
+    <label for='verifypassword'>Confirm Password</label>
+    <input id='verifypassword' name='verifypassword' type='password' maxlength='50' />
+
+    <div class="form-actions">
+      <input type='submit' name='submit' class="btn btn-primary" data-verifying-text="Verifying account..." data-verified-text="Verified account" value='Verify and Change Password' />
+    </div>
+    </fieldset>
+  </form>
+</div>
+  <div class="span6">
+    <div class="alert alert-success hide">
+      <button type="button" class="close">&times;</button>
+      <strong>Success!</strong> your password has been reset. You are now ready to <a href="/issues/">take care of some issues</a>.
+    </div>
+</div>
+
+</div>
+</div>
+<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.2.min.js"></script>
+<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="/issues/assets/js/tinybugs.js"></script>
+<script>
+$(document).ready(function () {
+  $('#resetForm').validate({
+    validClass: 'success',
+    rules: {
+      password: {
+        minlength: 5
+      },
+      verifypassword: {
+        equalTo: "#password"
+      }
+    },
+    messages: {
+      password: "Your password must be at least 5 characters long",
+      verifypassword: {
+        equalTo: "Confirmation password must match"
+      }
+    },
+    submitHandler: function (form) {
+      var submit = $(form).find(':submit').button('verifying');
+      var success = $('.alert-success').slideUp('fast');
+      var error = $(form).find('.alert-error').slideUp('fast');
+      var query = qs();
+
+      $.post('/issues/api/verify/t' + query.t, $(form).serialize())
+          .done(function () {
+            $('#formwrapper').slideUp('fast');
+            success.slideDown();
+          }).fail(function (jqXHR, textStatus, errorThrown) {
+            submit.button('reset');
+            error.slideDown();
+          });
+    }
+  });
+});
+</script>
+</body>
+</html>

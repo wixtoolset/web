@@ -11,3 +11,7 @@ v3manual/src/layouts/
 .docpad.db
 *.suo
 *.user
+
+# Issues bring their binaries with them but not the App_Data
+issues/App_Data/
+!issues/bin/

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WiX Toolset - Administration</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+  <link href="/issues/assets/css/tinybugs.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="span12">
+       <h1>WiX Toolset Administration</h1>
+    </div>
+  </div>
+  <div class="row">
+  <div class="span6">
+  <form id='configForm' method='post'>
+    <fieldset>
+      <legend>Application</legend>
+
+      <div class="row">
+      <div id="configValidationError" class="span5 alert alert-error hide">
+        <button type="button" class="close">&times;</button>
+        <strong>Error!</strong> Please fix the following:
+        <ul></ul>
+      </div>
+      </div>
+
+      <div class="row">
+      <div id="configPostError" class="span5 alert alert-error hide">
+        <button type="button" class="close">&times;</button>
+        <strong>Error!</strong> Something went awry while submitting your changes. Please, try again.
+      </div>
+      </div>
+
+      <label for='name'>Name</label>
+      <input id='name' name='name' type='text' class="span6" title="Please provide a short descriptive title for this application." required value="WiX Toolset" />
+
+      <label for='subname'>Sub-name</label>
+      <input id='subname' name='subname' type='text' class="span6" title="Optional short witty quip about your issues." required value="bugs and feature requests" />
+
+      <label for='areas'>Areas</label>
+      <input id='areas' name='areas' type='text' class="span6" placeholder="Comma separated list of areas for issues." title="Comma separated list of areas." required value="compiler, linker, msbuild, extensions, installer, burn, wixtoolset.org, sdk, votive, " />
+
+      <label for='releases'>Releases</label>
+      <input id='releases' name='releases' type='text' class="span6" placeholder="Comma separated list of releases for issues." title="Comma separated list of releases." required value="v3.8, v3.x, v4.0, v4.x, " />
+
+      <label for='breadcrumbs'>External Breadcrumbs</label>
+      <input id='breadcrumbs' name='breadcrumbs' type='text' class="span6" placeholder="Semicolon separated list of comma separated 'title,url'." title="Semicolon separated list of comma separated 'title,url'." value="Home, /;" />
+
+      <label for='mailserver'>Mail Server</label>
+      <input id='mailserver' name='mailserver' type='text' class="span6" value="localhost" />
+
+      <label for='mailport'>Mail Port</label>
+      <input id='mailport' name='mailport' type='text' class="span2" value="25" />
+
+      <label for='mailssl' class="checkbox span2">
+        <input id='mailssl' name='mailssl' type='checkbox'  /> Require SSL
+      </label>
+
+      <label for='mailusername'>Mail Username</label>
+      <input id='mailusername' name='mailusername' type='text' class="span6" value="bugs@wixtoolset.org" />
+
+      <label for='mailpassword'>Mail Password</label>
+      <input id='mailpassword' name='mailpassword' type='text' class="span6" value="" />
+
+      <label for='mailfrom'>Mail From</label>
+      <input id='mailfrom' name='mail.from' type='text' class="span6" value="bugs@wixtoolset.org" />
+
+      <div class="form-actions">
+        <button id='updateConfig' type="submit" class="btn btn-primary" data-loading-text="Saving...">Update configuration</button>
+        <button id='regenPages' type="button" class="btn btn-danger" data-loading-text="Generating...">Regenerate pages</button>
+      </div>
+    </fieldset>
+  </form>
+  </div>
+
+  <div class="span6">
+  <form id='userForm' method='post'>
+    <fieldset>
+      <legend>Users</legend>
+
+      <div class="row">
+      <div id="userValidationError" class="span5 alert alert-error hide">
+        <button type="button" class="close">&times;</button>
+        <strong>Error!</strong> Please fix the following:
+        <ul></ul>
+      </div>
+      </div>
+
+      <div class="row">
+      <div id="userPostError" class="span5 alert alert-error hide">
+        <button type="button" class="close">&times;</button>
+        <strong>Error!</strong> Something went awry while submitting your changes. Please, try again.
+      </div>
+      </div>
+
+      <label for='configusername'>Username</label>
+      <input id='configusername' name='username' type='text' class="typeahead span3"
+              data-url='/issues/api/user/' autocomplete="off" />
+
+      <label for='role' class="">Role</label>
+      <select id='role' name='role' class="span3" required>
+        <option value='User'>User</option>
+        <option value='Contributor'>Contributor</option>
+        <option value='Admin'>Administrator</option>
+      </select>
+
+      <div class="form-actions">
+        <button id='updateUser' type="submit" class="btn btn-primary" data-loading-text="Saving...">Update user</button>
+      </div>
+    </fieldset>
+  </form>
+  </div>
+  </div>
+  <div id="loginModal" class="login modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <form id='loginForm' method='post' action="/issues/api/session/">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3 id="loginHeader">Login</h3>
+  </div>
+  <div id="loginerror" class="alert alert-error hide">
+    <button type="button" class="close">&times;</button>
+    <strong>Error!</strong> Invalid username or password. Please, try again.
+  </div>
+  <div class="modal-body">
+      <label for='username'>Username</label>
+      <input id='username' name='username' type='text' placeholder="username" required='required' />
+      <label for='password'>Password</label>
+      <input id='password' name='password' type='password' required='required' />
+      <p>New here? Cool, <a href="/issues/login/create/">create an account</a>.</p>
+  </div>
+  <div class="modal-footer">
+      <button id='attemptlogin' type="submit" class="btn btn-primary" data-loading-text="Logging in...">Submit</button>
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+  </div>
+  </form>
+</div>
+</div>
+<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.2.min.js"></script>
+<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="/issues/assets/mdd/markdowndeeplib.min.js"></script>
+<script src="/issues/assets/js/tinybugs.js"></script>
+<script>
+$(document).ready(function () {
+  $('#configForm').validate({
+      validClass: 'success',
+      errorContainer: "#configValidationError",
+      errorLabelContainer: "#configValidationError ul",
+      wrapper: "li",
+      invalidHandler: function (event, validator) {
+          var errors = validator.numberOfInvalids();
+          if (errors) {
+              $(this).slideDown();
+          }
+          else {
+              $(this).find('.alert').slideUp('fast');
+          }
+      },
+      submitHandler: function (form) {
+        var submit = $(form).find(':submit').button('loading');
+        var alert = $('#configPostError').slideUp('fast');
+
+        $.post('/issues/api/config/', $(form).serialize())
+            .done(function (data) {
+              dirty = false;
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+              if (errorThrown === 'Unauthorized' || errorThrown == 'Bad Gateway') {
+                $('#loginModal').modal();
+              }
+              else {
+                alert.slideDown();
+              }
+            }).always(function () {
+              submit.button('reset');
+            });
+      }
+  });
+
+  $('#regenPages').on('click', function (e) {
+    $.post('/issues/api/regenerate')
+      .done(function (data) {
+        //success.slideDown();
+      }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (errorThrown === 'Unauthorized' || errorThrown == 'Bad Gateway') {
+          $('#loginModal').modal();
+        }
+        else {
+          alert.slideDown();
+        }
+      }).always(function () {
+        submit.button('reset');
+      });
+  });
+
+  $('#userForm').validate({
+    validClass: 'success',
+    errorContainer: "#userValidationError",
+    errorLabelContainer: "#userValidationError ul",
+    wrapper: "li",
+    invalidHandler: function (event, validator) {
+      var errors = validator.numberOfInvalids();
+      if (errors) {
+        $(this).slideDown();
+      }
+      else {
+        $(this).find('.alert').slideUp('fast');
+      }
+    },
+    submitHandler: function (form) {
+      var submit = $(form).find(':submit').button('loading');
+      var alert = $('#userPostError').slideUp('fast');
+      var username = $(form).find('input[name="username"]').val();
+
+      $.post('/issues/api/user/' + username, $(form).serialize())
+          .done(function (data) {
+            dirty = false;
+          }).fail(function (jqXHR, textStatus, errorThrown) {
+            if (errorThrown === 'Unauthorized' || errorThrown == 'Bad Gateway') {
+              $('#loginModal').modal();
+            }
+            else {
+              alert.slideDown();
+            }
+          }).always(function () {
+            submit.button('reset');
+          });
+    }
+  });
+
+  enableDirtyCheck("There are edits to the configuration.");
+});
+</script>
+</body>
+</html>

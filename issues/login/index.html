@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>WiX Toolset - Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+  <link href="/issues/assets/css/tinybugs.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <div class="row">
+  <div class="span5">
+  <form id='loginForm' method='post'>
+    <fieldset>
+    <legend>Login</legend>
+    <div class="alert alert-error hide">
+      <button type="button" class="close">&times;</button>
+      <strong>Error!</strong> Invalid username/email or password. Please, try again.
+    </div>
+
+    <label for='username'>Username or email</label>
+    <input id='username' name='username' type='text' required />
+    <label for='password'>Password</label>
+    <input id='password' name='password' type='password' />
+
+    <div class="form-actions">
+      <input type='submit' name='submit' class="btn btn-primary" data-loading-text="Logging in..." value='Login' />
+      <a href="/issues/" class="btn">Cancel</a>
+    </div>
+    </fieldset>
+  </form>
+</div>
+<div class="span6">
+  <h3>Alternatively...</h3>
+  <p>If you do not have an account or cannot remember your password:</p>
+  <p class="center"><a href="/issues/login/create/" class="btn">Create an account</a></p>
+  <p class="center">-- OR --</p>
+  <form id='resetForm' method='post' class="form-inline">
+     <div class="alert alert-error hide">
+      <button type="button" class="close">&times;</button>
+      <strong>Error!</strong> Could not send the password reset instructions.
+    </div>
+   <div class="input-prepend">
+      <span class="add-on"><i class="icon-envelope"></i></span>
+      <input id='email' name='email' type='text' required />
+    </div>
+      <input type='submit' name='submit' class="btn" data-loading-text="Resetting..." value='Reset password' />
+  </form>
+  <div class="alert alert-info hide">
+    <button type="button" class="close">&times;</button>
+    <strong>Sent!</strong> An email has been sent with instructions how to reset your password. Feel free to <a href="/issues/">browse some of our issues</a> while you wait.
+  </div>
+</div>
+</div>
+</div>
+<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.2.min.js"></script>
+<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="/issues/assets/js/tinybugs.js"></script>
+<script>
+$(document).ready(function () {
+  $('#loginForm').submit(function (e) {
+    e.preventDefault();
+
+    var submit = $(this).find(':submit').button('loading');
+    var alert = $(this).find('.alert').slideUp('fast');
+    var query = qs();
+
+    $.post('/issues/api/session/', $(this).serialize())
+        .done(function () {
+          window.location.href = query.returnurl || '/issues/';
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+          alert.slideDown();
+        }).always(function () {
+          submit.button('reset');
+        });
+  });
+  $('#resetForm').validate({
+    validClass: 'success',
+    submitHandler: function (form) {
+      var submit = $(form).find(':submit').button('verifying');
+      var success = $('.alert-info').slideUp('fast');
+      var error = $(form).find('.alert-error').slideUp('fast');
+      var query = qs();
+
+      $.post('/issues/api/resend/password/', $(form).serialize())
+          .done(function () {
+            $(form).slideUp('fast');
+            success.slideDown();
+          }).fail(function (jqXHR, textStatus, errorThrown) {
+            submit.button('reset');
+            error.slideDown();
+          });
+    }
+  });
+});
+</script>
+</body>
+</html>
