@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  <copyright file="Nuget.targets" company="Outercurve Foundation">
+    Copyright (c) 2004, Outercurve Foundation.
+    This software is released under Microsoft Reciprocal License (MS-RL).
+    The license and further copyright text can be found in the file
+    LICENSE.TXT at the root directory of the distribution.
+  </copyright>
+-->
+<Project InitialTargets="PackageRestore" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <ProjectFolder Condition=" '$(ProjectFolder)'=='' " >$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\))</ProjectFolder>
+    <NugetExe>$(MSBuildThisFileDirectory)nuget\NuGet.exe</NugetExe>
+    <NugetPackageFolder>$(ProjectFolder)packages\</NugetPackageFolder>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <ExtensionPackPath>$(NugetPackageFolder)MSBuild.Extension.Pack.1.2.0\lib\net40\</ExtensionPackPath>
+    <MSBuildCommunityTasksPath>$(NugetPackageFolder)MSBuildTasks.1.4.0.61\tools\</MSBuildCommunityTasksPath>
+  </PropertyGroup>
+
+  <!--
+  ================================================================================================
+  PackageRestore
+
+    Restores the required packages to build using nuget.exe.
+  ================================================================================================
+  -->
+  <Target Name="PackageRestore"
+          DependsOnTargets="NpmPackageRestore;NugetPackageRestore" />
+
+  <!-- Nuget Package Restore -->
+  <ItemGroup>
+    <RestoreNugetPackage Include="MSBuild.Extension.Pack">
+      <Version>1.2.0</Version>
+    </RestoreNugetPackage>
+    <RestoreNugetPackage Include="MSBuildTasks">
+      <Version>1.4.0.61</Version>
+    </RestoreNugetPackage>
+    <RestoreNugetPackage Include="Newtonsoft.Json">
+      <Version>5.0.6</Version>
+    </RestoreNugetPackage>
+    <RestoreNugetPackage Include="NLog">
+      <Version>2.0.1.2</Version>
+    </RestoreNugetPackage>
+  </ItemGroup>
+  <Target Name="NugetPackageRestore">
+    <CreateItem Include="@(RestoreNugetPackage)" Condition=" !Exists('$(NugetPackageFolder)%(Identity).%(Version)') " PreserveExistingMetadata="true">
+      <Output TaskParameter="Include" ItemName="MissingNugetPackage"/>
+    </CreateItem>
+
+    <Exec Command="&quot;$(NugetExe)&quot; install" Condition=" '@(MissingNugetPackage)'!='' "
+          WorkingDirectory="$(MSBuildThisFileDirectory)" />
+  </Target>
+
+  <!-- Npm Package Restore -->
+  <ItemGroup>
+    <RestoreNpmPackage Include="docpad" />
+    <RestoreNpmPackage Include="docpad-plugin-cleanurls" />
+    <RestoreNpmPackage Include="docpad-plugin-jade" />
+    <RestoreNpmPackage Include="docpad-plugin-marked" />
+    <RestoreNpmPackage Include="docpad-plugin-sitemap" />
+    <RestoreNpmPackage Include="docpad-plugin-stylus" />
+  </ItemGroup>
+  <Target Name="NpmPackageRestore"
+          Condition=" @(RestoreNpmPackage)!='' "
+          Inputs="$(NpmPackageFolder)%(RestoreNpmPackage.Identity)"
+          Outputs="$(NpmPackageFolder)%(Identity)">
+    <Exec Command="npm install"
+          WorkingDirectory="$(ProjectFolder)" />
+  </Target>
+
+  <!-- Sentinel value that indicates Nuget.targets has been initialized. -->
+  <PropertyGroup>
+    <WixBuildNugetPropertiesDefined>true</WixBuildNugetPropertiesDefined>
+  </PropertyGroup>
+</Project>

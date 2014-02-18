@@ -1,0 +1,99 @@
+---
+title: WixStandardBootstrapperApplication Element (Bal Extension)
+layout: documentation_xsd_extension
+---
+<dl>
+  <dt>Description</dt>
+  <dd>                 Configures WixStandardBootstrapperApplication for a Bundle.             </dd>
+  <dt>Windows Installer references</dt>
+  <dd>None</dd>
+  <dt>Parents</dt>
+  <dd>
+    <a href="../wix/bootstrapperapplicationref.html">BootstrapperApplicationRef</a>
+  </dd>
+  <dt>Inner Text</dt>
+  <dd>None</dd>
+  <dt>Children</dt>
+  <dd>None</dd>
+  <dt>Attributes</dt>
+  <dd>
+    <table cellspacing="0" cellpadding="0" class="schema">
+      <tr>
+        <th width="15%">Name</th>
+        <th width="15%">Type</th>
+        <th width="65%">Description</th>
+        <th width="15%">Required</th>
+      </tr>
+      <tr>
+        <td>LaunchTarget</td>
+        <td>String</td>
+        <td>If set, the success page will show a Launch button the user can use to launch the application being installed. The string value can be formatted using Burn variables enclosed in brackets, to refer to installation directories and so forth.</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>LicenseFile</td>
+        <td>String</td>
+        <td>Source file of the RTF license file. Cannot be used simultaneously with LicenseUrl.</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>LicenseUrl</td>
+        <td>String</td>
+        <td>URL target of the license link. Cannot be used simultaneously with LicenseFile. This attribute can be empty to hide the license link completely.</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>LocalizationFile</td>
+        <td>String</td>
+        <td>Source file of the theme localization .wxl file.</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>LogoFile</td>
+        <td>String</td>
+        <td>Source file of the logo graphic.</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>LogoSideFile</td>
+        <td>String</td>
+        <td>Source file of the side logo graphic.</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>ShowVersion</td>
+        <td><a href="../bal/simple_type_yesnotype.html">YesNoType</a></td>
+        <td>If set to "yes", the application version will be displayed on the UI.</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>SuppressDowngradeFailure</td>
+        <td><a href="../bal/simple_type_yesnotype.html">YesNoType</a></td>
+        <td>If set to "yes", attempting to installer a downgraded version of a bundle will be treated as a successful do-nothing operation.                     The default behavior (or when explicitly set to "no") is to treat downgrade attempts as failures. </td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>SuppressOptionsUI</td>
+        <td><a href="../bal/simple_type_yesnotype.html">YesNoType</a></td>
+        <td>If set to "yes", the Options button will not be shown and the user will not be able to choose an installation directory.</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>SuppressRepair</td>
+        <td><a href="../bal/simple_type_yesnotype.html">YesNoType</a></td>
+        <td>If set to "yes", the Repair button will not be shown in the maintenance-mode UI.</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>ThemeFile</td>
+        <td>String</td>
+        <td>Source file of the theme XML.</td>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+  </dd>
+  <dt>See Also</dt>
+  <dd>
+    <a href="../bal/index.html">Bal Schema</a>
+  </dd>
+</dl>

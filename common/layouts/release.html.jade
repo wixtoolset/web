@@ -1,0 +1,43 @@
+doctype
+html(lang='en')
+  head
+    include header.jade
+
+  body
+    include topbar.jade
+
+    .container
+      .content
+        include page-header-breadcrumb.jade
+
+        .row
+          .span9.offset3
+            h2 WiX #{document.title} Release
+            p To install the WiX Toolset please launch the installer below.
+
+            infoFile = getReleaseInfo().toJSON()
+            info = JSON.parse(infoFile.content)
+
+            //- display promoted files first.
+            each file in info.files
+              if file.promoted
+                .row
+                  .span8.offset1
+                    h3= file.name
+                    p= file.title
+                    p: a.btn.primary.large(href='/downloads/#{info.id}/#{file.name}') Launch &raquo;
+
+        .row.second
+          .span9.offset3
+            h3 Additional Files
+            p The following files are provided for special use cases. Please, only download these files if you require them.
+            ul
+              //- display protected files second.
+              each file in info.files
+                if file.protected
+                  li
+                    h4= file.name
+                    p= file.title
+                    p: a.btn(href='/downloads/#{info.id}/#{file.name}') Download
+
+      include footer.jade

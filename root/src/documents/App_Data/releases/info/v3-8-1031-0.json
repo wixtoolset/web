@@ -1,0 +1,12 @@
+{
+ "id":  "v3.8.1031.0",
+ "downloadable":  true,
+ "date":  "2013-10-31",
+ "roots": [ "~"],
+ "files":
+ [
+  { "name" : "wix38.exe", "contentType" : "application/octet-stream", "title" : "WiX v3.8 Toolset install.", "promoted" : true },
+  { "name" : "wix38-binaries.zip", "contentType" : "application/zip", "title" : "WiX v3.8 binaries for situations where install cannot be used.", "protected" : true },
+  { "name" : "wix38-debug.zip", "contentType" : "application/zip", "title" : "WiX v3.8 source and symbols for debugging purposes.", "protected" : true }
+ ]
+}

@@ -1,0 +1,13 @@
+bin/
+obj/
+node_modules/
+out/
+packages/
+build/
+release/src/layouts/
+root/src/layouts/
+v3manual/src/layouts/
+
+.docpad.db
+*.suo
+*.user

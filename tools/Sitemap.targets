@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  <copyright file="Sitemap.targets" company="Outercurve Foundation">
+    Copyright (c) 2004, Outercurve Foundation.
+    This software is released under Microsoft Reciprocal License (MS-RL).
+    The license and further copyright text can be found in the file
+    LICENSE.TXT at the root directory of the distribution.
+  </copyright>
+-->
+<Project  xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <ProjectFolder Condition=" '$(ProjectFolder)'=='' " >$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\))</ProjectFolder>
+    <RootFolder>$(ProjectFolder)build\publish\</RootFolder>
+    <SitemapXmlFile>$(RootFolder)sitemap.xml</SitemapXmlFile>
+    <RootUrl>http://wixtoolset.org/</RootUrl>
+    <Frequency>weekly</Frequency>
+  </PropertyGroup>
+
+  <!--
+  ================================================================================================
+  BuildSitemap
+
+    Writes the sitemap.xml.
+  ================================================================================================
+  -->
+  <Target Name="BuildSitemap"
+          DependsOnTargets="GatherHtmlFiles;WriteSitemapXml" />
+
+  <Target Name="WriteSitemapXml"
+          Inputs="@(_GatheredHtmlFiles)"
+          Outputs="$(SitemapXmlFile)">
+    <ItemGroup>
+      <Line Include='&lt;?xml version="1.0" encoding="UTF-8"?&gt;' />
+      <Line Include='&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;' />
+      <Line Include="&lt;url&gt;&lt;loc&gt;$(RootUrl)&lt;/loc&gt;&lt;changefreq&gt;$(Frequency)&lt;/changefreq&gt;&lt;/url&gt;" />      
+      <Line Include="&lt;url&gt;&lt;loc&gt;$(RootUrl)%(Url.Identity)&lt;/loc&gt;&lt;changefreq&gt;$(Frequency)&lt;/changefreq&gt;&lt;/url&gt;" />      
+      <Line Include='&lt;/urlset&gt;' />
+    </ItemGroup>
+    <WriteLinesToFile File="$(SitemapXmlFile)"
+                      Lines="@(Line)"
+                      Overwrite="true"
+                      Encoding="utf-8" />
+  </Target>
+
+  <Target Name="GatherHtmlFiles">
+    <ItemGroup>
+      <_GatheredHtmlFiles Include="$(RootFolder)**\*.html" Exclude="$(RootFolder)notfound\**" />
+      <HtmlFile Include="@(_GatheredHtmlFiles->'%(RecursiveDir)')" Condition=" '%(Filename)'=='index' " />
+      <HtmlFile Include="@(_GatheredHtmlFiles->'%(RecursiveDir)%(Filename)%(Extension)')" Condition=" '%(Filename)'!='index' " />
+
+      <Url Include="$([System.String]::Copy('%(HtmlFile.Identity)').Replace('\', '/'))" />
+    </ItemGroup>
+
+     <!-- <Message Importance='high' Text="Url = %(Url.Identity)" /> -->
+  </Target>
+</Project>

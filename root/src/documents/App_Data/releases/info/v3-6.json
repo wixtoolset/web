@@ -1,0 +1,37 @@
+{
+  "id": "v3.6",
+  "date": "2012-09-03T00:00:00",
+  "downloadable": false,
+  "files": [
+    {
+      "name": "stable",
+      "redirect": "http://wix.codeplex.com/releases/view/93929",
+      "promoted": false,
+      "protected": false
+    },
+    {
+      "name": "rc",
+      "redirect": "http://wix.codeplex.com/releases/view/88566",
+      "promoted": false,
+      "protected": false
+    },
+    {
+      "name": "rc0",
+      "redirect": "http://wix.codeplex.com/releases/view/85409",
+      "promoted": false,
+      "protected": false
+    },
+    {
+      "name": "beta",
+      "redirect": "http://wix.codeplex.com/releases/view/75656",
+      "promoted": false,
+      "protected": false
+    },
+    {
+      "name": "ProjectAggregator2.msi",
+      "redirect": "http://wixtoolset.org/content/data/ProjectAggregator2.msi",
+      "promoted": false,
+      "protected": false
+    }
+  ]
+}

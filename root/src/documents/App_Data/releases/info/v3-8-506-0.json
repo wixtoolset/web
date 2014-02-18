@@ -1,0 +1,110 @@
+{
+  "id": "v3.8.506.0",
+  "date": "2013-05-06T00:00:00",
+  "downloadable": true,
+  "files": [
+    {
+      "name": "wix38.exe",
+      "contentType": "application/octet-stream",
+      "promoted": true,
+      "protected": false,
+      "title": "WiX v3.8 Toolset install."
+    },
+    {
+      "name": "data/core.msi",
+      "contentType": "application/octet-stream",
+      "promoted": false,
+      "protected": false
+    },
+    {
+      "name": "data/msdk.msi",
+      "contentType": "application/octet-stream",
+      "promoted": false,
+      "protected": false
+    },
+    {
+      "name": "data/nsdk2008.msi",
+      "contentType": "application/octet-stream",
+      "promoted": false,
+      "protected": false
+    },
+    {
+      "name": "data/nsdk2010.msi",
+      "contentType": "application/octet-stream",
+      "promoted": false,
+      "protected": false
+    },
+    {
+      "name": "data/nsdk2012.msi",
+      "contentType": "application/octet-stream",
+      "promoted": false,
+      "protected": false
+    },
+    {
+      "name": "data/votive.msi",
+      "contentType": "application/octet-stream",
+      "promoted": false,
+      "protected": false
+    },
+    {
+      "name": "data/core.cab",
+      "contentType": "application/vnd.ms-cab-compressed",
+      "promoted": false,
+      "protected": false
+    },
+    {
+      "name": "data/msdk.cab",
+      "contentType": "application/vnd.ms-cab-compressed",
+      "promoted": false,
+      "protected": false
+    },
+    {
+      "name": "data/nsdk2008.cab",
+      "contentType": "application/vnd.ms-cab-compressed",
+      "promoted": false,
+      "protected": false
+    },
+    {
+      "name": "data/nsdk2010.cab",
+      "contentType": "application/vnd.ms-cab-compressed",
+      "promoted": false,
+      "protected": false
+    },
+    {
+      "name": "data/nsdk2012.cab",
+      "contentType": "application/vnd.ms-cab-compressed",
+      "promoted": false,
+      "protected": false
+    },
+    {
+      "name": "data/votive.cab",
+      "contentType": "application/vnd.ms-cab-compressed",
+      "promoted": false,
+      "protected": false
+    },
+    {
+      "name": "wix38-binaries.zip",
+      "contentType": "application/zip",
+      "promoted": false,
+      "protected": true,
+      "title": "WiX v3.8 binaries for situations where install cannot be used."
+    },
+    {
+      "name": "wix38-pdbs.zip",
+      "contentType": "application/zip",
+      "promoted": false,
+      "protected": true,
+      "title": "WiX v3.8 debugging symbols."
+    },
+    {
+      "name": "wix38-sources.zip",
+      "contentType": "application/zip",
+      "promoted": false,
+      "protected": true,
+      "title": "WiX v3.8 source code for debugging purposes. Note: this source code will not build."
+    }
+  ],
+  "roots": [
+    "~"
+  ]
+}

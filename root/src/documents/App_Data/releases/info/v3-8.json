@@ -1,0 +1,19 @@
+{
+  "id": "v3.8",
+  "date": "2013-01-07T00:00:00",
+  "downloadable": false,
+  "files": [
+    {
+      "name": "stable",
+      "redirect": "https://wix.codeplex.com/releases/view/115492",
+      "promoted": false,
+      "protected": false
+    },
+    {
+      "name": "ProjectAggregator2.msi",
+      "redirect": "http://wixtoolset.org/content/data/ProjectAggregator2.msi",
+      "promoted": false,
+      "protected": false
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+ "id":  "v3.9.02.0",
+ "downloadable":  true,
+ "date":  "2013-12-02",
+ "roots": [ "~"],
+ "files":
+ [
+  { "name" : "wix39.exe", "contentType" : "application/octet-stream", "title" : "WiX v3.9 Toolset install.", "promoted" : true },
+  { "name" : "wix39-binaries.zip", "contentType" : "application/zip", "title" : "WiX v3.9 binaries for situations where install cannot be used.", "protected" : true },
+  { "name" : "wix39-debug.zip", "contentType" : "application/zip", "title" : "WiX v3.9 source and symbols for debugging purposes.", "protected" : true }
+ ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "v2.0",
+  "date": "2007-10-05T00:00:00",
+  "downloadable": false,
+  "files": [
+    {
+      "name": "stable",
+      "redirect": "http://wix.codeplex.com/releases/view/44405",
+      "promoted": false,
+      "protected": false
+    }
+  ]
+}
