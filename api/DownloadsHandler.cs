@@ -13,7 +13,6 @@
         private static Logger logger = LogManager.GetLogger("dl");
         private static WebUserService UserService = new WebUserService();
 
-
         public bool IsReusable
         {
             get { return true; }
@@ -26,7 +25,7 @@
             string[] parsed = context.Request.Path.Split(new char[] { '/' }, 3, StringSplitOptions.RemoveEmptyEntries);
             if (3 != parsed.Length)
             {
-                context.Response.Redirect("/releases");
+                Go(context, "/releases", false);
                 return;
             }
 
@@ -39,18 +38,23 @@
             }
             catch
             {
-                context.Response.Redirect("/releases");
+                Go(context, "/releases", false);
                 return;
             }
 
-            Release release;
-            ReleaseFile releaseFile;
+            // See if there is a version redirect file for the requested release.
+            string redirect = null;
             try
             {
                 string jsonPath = String.Format(Configuration.ReleasesDataFileFormat, version.PrefixedDashed);
+                jsonPath = context.Server.MapPath(jsonPath);
 
-                release = Release.Load(context.Server.MapPath(jsonPath));
-                releaseFile = release.Files.Where(f => f.Name.Equals(file, StringComparison.OrdinalIgnoreCase)).Single();
+                if (File.Exists(jsonPath))
+                {
+                    Release release = Release.Load(jsonPath);
+                    ReleaseFile releaseFile = release.Files.Where(f => f.Name.Equals(file, StringComparison.OrdinalIgnoreCase)).Single();
+                    redirect = releaseFile.Redirect;
+                }
             }
             catch
             {
@@ -58,25 +62,27 @@
                 return;
             }
 
-            if (!String.IsNullOrEmpty(releaseFile.Redirect))
+            // If redirect was not found, assume we're looking for a file on the download server.
+            if (String.IsNullOrEmpty(redirect))
             {
-                context.Response.Redirect(releaseFile.Redirect);
+                Visit.CreateFromHttpContext(context).Log(logger);
+                redirect = String.Format(Configuration.DownloadServerFormat, version.Prefixed, file);
+            }
+
+            Go(context, redirect, false);
+        }
+
+        public static void Go(HttpContext context, string to, bool permanent)
+        {
+            if (permanent)
+            {
+                context.Response.RedirectPermanent(to, false);
             }
             else
             {
-                string path = Path.Combine(context.Server.MapPath(Configuration.ReleasesRootFolder), version.Nonprefixed, file.Replace("/", "\\"));
-                if (File.Exists(path))
-                {
-                    Visit.CreateFromHttpContext(context).Log(logger);
-
-                    context.Response.ContentType = releaseFile.ContentType;
-                    context.Response.TransmitFile(path);
-                }
-                else
-                {
-                    context.Response.StatusCode = (int)System.Net.HttpStatusCode.NotFound;
-                }
+                context.Response.Redirect(to, false);
             }
+            context.ApplicationInstance.CompleteRequest();
         }
     }
 }
