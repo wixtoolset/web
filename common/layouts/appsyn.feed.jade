@@ -32,7 +32,7 @@ feed(xmlns='http://www.w3.org/2005/Atom', xmlns:as='http://appsyndication.org/20
         email wix-users@lists.sourceforge.net
       link(rel='alternate', href='#{site.url}#{release.url}')
       link(rel='enclosure', href='#{site.url}/downloads/#{info.id}/#{info.files[0].name}', length=info.files[0].size || 0, type=info.files[0].contentType)
-      content(type='html')= '&lt;p&gt;Change list:&lt;/p&gt;' + release.contentRenderedWithoutLayouts
+      content(type='html')= '<p>Change list:</p>' + release.contentRenderedWithoutLayouts
       if info.files[0].id
         as:application(type=info.files[0].contentType) info.files[0].id
       as:version= release.title
