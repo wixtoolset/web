@@ -29,7 +29,7 @@
     },
     {
       "name": "ProjectAggregator2.msi",
-      "redirect": "http://wixtoolset.org/content/data/ProjectAggregator2.msi",
+      "redirect": "http://static.wixtoolset.org/releases/ProjectAggregator2/ProjectAggregator2.msi",
       "promoted": false,
       "protected": false
     }
