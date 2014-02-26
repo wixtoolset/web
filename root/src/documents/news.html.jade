@@ -21,4 +21,4 @@ each item in getCollection('news').toJSON()
   .news-item
     h3= item.title
     p= prettyFormatDate(item.date)
-    p!= item.content
+    p!= item.contentRendered

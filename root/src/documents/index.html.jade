@@ -43,7 +43,7 @@ layout: master
         .news-item
           h3= item.title
           p= prettyFormatDate(item.date)
-          p!= item.content
+          p!= item.contentRendered
       p: a.btn(href="/news") All news &raquo;
 
     .span4
