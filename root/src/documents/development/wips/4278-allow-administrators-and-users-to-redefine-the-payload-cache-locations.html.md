@@ -7,51 +7,39 @@ title: Allow administrators and users to redefine the payload cache locations
 
 ## User stories
 
-* As an administrator or normal user I can change the default location or payload caches.
-* As an administrator or normal user I can move the payload cache location safely and securely.
+* As an administrator or normal user I can change the location of the package.
 
 ## Proposal
 
-Burn should define a set of KNOWNFOLDERIDs for per-user and per-machine payload cache locations. This allows administrators and power users to set the default location for the payload caches, which can be very large. This would apply to all bundles.
-
-We should also provide guidance or even a utility for administrators and power users to move an existing cache complete with the proper ACLs to maintain the security model as originally designed for Burn's payload cache.
+Because the package cache can be very large, Burn should get the location of the package cache from registry policy. Administrators and normal users can then use a different location than the default currently on the system drive.
 
 ## Considerations
 
-KNOWNFOLDERIDs and associated APIs are not supported by Windows XP. They were added in Windows Vista. Documentation does not suggest a way to crete new CSIDLs for legacy support - only how to get and set pre-defined system folders - so Windows XP is out of support and the fallback behavior for Burn would apply.
+Registry policy keys are a common way to define define and overwrite settings for applications. They are supported on all versions of Windows and are easy to define across an enterprise.
 
-### Known folders not yet defined
+There were other considerations including `KNOWNFOLDERIDs`; however, `KNOWNFOLDERIDs` are not supported on Windows XP - they were introduced in Vista, and their predecessor is not extensible - are require administrative privileges to define. That would prevent per-user bundles from defining `KNOWNFOLDERIDs` if undefined.
 
-If the known folder IDs are not yet defined in either the user or elevated context, each respective context will create the known folder mapping to the default location as currently defined in Burn (AppData or ProgramData).
+### Registry policy not defined
 
-On Windows Vista and newer, call `CoCreateInstance` with `CLSID_KnownFolderManager` to get an instance of [IKFM][] and call `RegisterFolder` to create new mappings.
+When the registry policy is not defined, Burn will use the default package cache location of "%ProgramData%\Package Cache".
 
-### Known folders not yet created
+### Registry policy set to default
 
-If the known folder IDs are defined but the folders are not yet created, Burn should create these as it currently does but verify that ACL inheritance would define the proper security. This is to support when the defined folder locations are not under AppData or ProgramData but some custom directory.
+When the registry policy is set to the default value, Burn will still use the default pakage cache location of "%ProgramData%\Package Cache".
 
-The code might also just not inherit and instead create the necessary ACL, but administrators may choose to further lock down permissions to ProgramData so inheritting - when secure to do so - is probably best.
+### Registry policy set to custom
 
-### Older versions of Burn
+When the value of the registry policy is set and is not the default value, Burn will use the specified location first to find packages. If packages are not found in the specified location, Burn will check for the packages in the default location of "%ProgramData%\Package Cache".
 
-Older versions of Burn will continue to check "%ProgramData%\Package Cache", so to support newer versions of Burn that support this particular feature and share cached payloads between old and new Burn versions we will default the KNOWNFOLDERID to a separate path, ex: "%ProgramData%\Package Files". Newer versions of Burn that support this feature would first query for and check the folder defined by the KNOWNFOLDERID, followed by the current "Package Cache" folder.
+### Older bundles do not support the registry policy
 
-While an older bundle may cache a package twice in this manner, it seems logical that newer bundles would install newer packages more often than older bundles. Newer versions of Burn would at least consider both locations to reduce duplication of payloads.
+Because older bundles do not understand or support this new registry policy, the current default location of "%ProgramData%\Package Cache". This will also support newer bundles that share packages with older bundles, since installing the older bundles first will put the packages in the current default location.
 
-### Known folder location is moved
+In the case where a newer bundle installs shared packages, newer bundles would attempt to recache those packages in the current default. While not ideal, most likely newer bundles would be installed after older bundles regardless of the product. Further in the future, still fewer older bundles would likely be installed so this problem eventually subsides.
 
-Guidance should be provided to administrators that known folder locations have certain DACLs to be security. Administrators can choose to use whatever deployment tools they wish to define or redirect KNOWNFOLDERIDs we define.
+### Registry policy changed multiple times
 
-We should also write a utility that calls `Redirect` on [IKFM][] with the following attribute to move the payload cache with a progress UI:
-
-    KF_REDIRECT_COPY_SOURCE_DACL
-    KF_REDIRECT_OWNER_USER
-    KF_REDIRECT_SET_OWNER_EXPLICIT
-    KF_REDIRECT_WITH_UI
-    KF_REDIRECT_COPY_CONTENTS
-    KF_REDIRECT_DEL_SOurCE_CONTENTS
-
-The Burn engine itself could even provide a command line parameter to operate in this mode - which makes the feature more accessible - but really feels like we're overloading the engine. (For comparison, _msiexec.exe_ supported -regserver and -unregserver prior to Windows Vista.)
+Burn will not track multiple changes to the registry policy. If the registry policy value is changed a second time to a custom value, any packages in the cache from the first change to a custom value would be ignored and non-discoverable. Administrators should not change this value multiple times if bundles have been installed when a custom location has already been set.
 
 ### Cache location is inaccessible
 
@@ -59,12 +47,32 @@ Prior to this feature, if AppData or ProgramData were unavailable Windows itself
 
 However, now that we allow redirection to - for example - a separate drive which may not be attached when necessary, Burn must gracefully handle this situation. I propose that we use the same fallback logic to AppData or ProgramData and if the cache is missing we download it again. If no payload URLs are provided, the situation is no worse than before and the bundle would fail like it would without this feature implemented.
 
-To support when the drive is reattached, the payload cache in the old/fallback location would be an extra copy. So when a bundle is uninstalled, it should check for the payload cache in both the redirected location and the fallback location and remove both when appropriate to do so. Comparing the two locations wouldn't be necessary since, if these calls were made subsequently, the check for the cache in the fallback location would fail since the cache was already removed by the first check to the known folder location.
+To support when the drive is reattached, the payload cache in the old/fallback location would be an extra copy. So when a bundle is uninstalled, it should check for the payload cache in both the custom location and the fallback location and remove both when appropriate to do so. Comparing the two locations wouldn't be necessary since, if these calls were made subsequently, the check for the cache in the fallback location would fail since the cache was already removed by the first check to the known folder location.
+
+## Design
+
+The following registry keys are defined for Burn policy settings.
+
+The cache location is defined in registry value "CacheLocation" as a `REG_SZ` type that should not use environment variables. Burn will not expand these to avoid potential security issues.
+
+The registry key is defined as the same location for 32- and 64-bit locations since the Software\Policies key is [shared][WOW64].
+
+### Per-machine policy
+
+For secure, per-machine settings including the package cache location, the following registry key is defined.
+
+    HKLM\Software\Policies\Wix
+
+### Per-user policy
+
+The per-user registry policy for settings is defined as follows.
+
+    HKCU\Software\Policies\Wix
 
 ## See Also
 
 * [Feature][]
-* [IKFM][]
+* [Registry keys affected by WOW64][WOW64]
 
 [Feature]: http://wixtoolset.org/issues/4278/ "WIXFEAT:4278"
-[IKFM]: http://msdn.microsoft.com/en-us/library/windows/desktop/bb761744.aspx "IKnownFolderManager"
+[WOW64]: http://msdn.microsoft.com/en-us/library/windows/desktop/aa384253(v=vs.85).aspx "Registry keys under WOW64"
