@@ -21,12 +21,12 @@ To get started as a developer we recommend walking through the following steps. 
 
 2. Sign the [WiX toolset Assignment Agreement](/development/assignment-agreement/).
 
-3. Enlist in the [Git repository on CodePlex](http://wix.codeplex.com/SourceControl/latest).
+3. Enlist in the Git repository on GitHub for [WiX v3.x](http://github.com/wixtoolset/wix3) or [WiX v4.x](http://github.com/wixtoolset/wix4).
 
 Once those are complete, you're ready to participate in the WiX toolset development lifecycle.
 
 1. Discuss your idea for contribution on the [wix-devs mailing list](/documentation/mailinglist).
 
-2. If it aligns with the project's goals, write the code and submit a [pull request](https://wix.codeplex.com/sourcecontrol/network).
+2. If it aligns with the project's goals, write the code and submit a [pull request](https://help.github.com/articles/using-pull-requests).
 
 3. If the code meets all the requirements we'll accept it and merge it into the project.
