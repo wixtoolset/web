@@ -25,7 +25,7 @@ When the registry policy is not defined, Burn will use the default package cache
 
 ### Registry policy set to default
 
-When the registry policy is set to the default value, Burn will still use the default pakage cache location of "%ProgramData%\Package Cache".
+When the registry policy is set to the default value, Burn will still use the default package cache location of "%ProgramData%\Package Cache".
 
 ### Registry policy set to custom
 
@@ -61,13 +61,13 @@ The registry key is defined as the same location for 32- and 64-bit locations si
 
 For secure, per-machine settings including the package cache location, the following registry key is defined.
 
-    HKLM\Software\Policies\Wix
+    HKLM\Software\Policies\Wix\Burn
 
 ### Per-user policy
 
 The per-user registry policy for settings is defined as follows.
 
-    HKCU\Software\Policies\Wix
+    HKCU\Software\Policies\Wix\Burn
 
 ## See Also
 
