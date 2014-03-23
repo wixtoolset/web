@@ -5,39 +5,47 @@
     using System.Diagnostics;
     using System.IO;
     using System.Linq;
-    using System.Web;
     using System.Web.Configuration;
     using Newtonsoft.Json;
+    using TinyWebStack;
 
-    public class RedirectHandler : IHttpHandler
+    [Route("bugs")]
+    [Route("documentation/tutorial")]
+    [Route("documentation/book")]
+    [Route("documentation/stackoverflow")]
+    [Route("img/{*RedirectPath}")]
+    [Route("redirect/{*RedirectPath}")]
+    public class RedirectHandler : IGet
     {
         private static List<Redirect> Redirects;
 
-        public bool IsReusable
+        public string RedirectPath { private get; set; }
+
+        public Status Get()
         {
-            get { return true; }
+            List<Redirect> redirects = RedirectHandler.ReadRedirects();
+
+            var req = Container.Current.Resolve<IRequest>().Url.AbsolutePath.TrimEnd('/').ToLowerInvariant();
+
+            var redirect = redirects.Where(r => req.EndsWith(r.From)).FirstOrDefault() ?? Redirect.Default;
+
+            var permanent = !String.IsNullOrEmpty(this.RedirectPath) && !String.IsNullOrEmpty(redirect.From);
+
+            return permanent ? Status.MovedPermanentlyTo(redirect.To) : Status.FoundAt(redirect.To);
         }
 
-        public void ProcessRequest(HttpContext context)
-        {
-            List<Redirect> redirects = RedirectHandler.ReadRedirects(context);
-            string req = context.Request.Url.AbsolutePath.TrimEnd('/').ToLowerInvariant();
-
-            Redirect redirect = redirects.Where(r => req.EndsWith(r.From)).FirstOrDefault() ?? Redirect.Default;
-            Go(context, redirect.To, req.StartsWith("/redirect/") && !String.IsNullOrEmpty(redirect.From));
-        }
-
-        public static List<Redirect> ReadRedirects(HttpContext context)
+        public static List<Redirect> ReadRedirects()
         {
             if (RedirectHandler.Redirects == null)
             {
-                string path = WebConfigurationManager.AppSettings["redirects"] ?? "~/App_Data/redirects.json";
-                path = context.Server.MapPath(path);
+                var path = WebConfigurationManager.AppSettings["redirects"] ?? "~/App_Data/redirects.json";
 
-                List<Redirect> newRedirects = new List<Redirect>();
+                path = Container.Current.Resolve<IServerUtility>().MapPath(path);
 
-                using (TextReader file = File.OpenText(path))
-                using (JsonTextReader reader = new JsonTextReader(file))
+                var redirects = new List<Redirect>();
+
+                using (var file = File.OpenText(path))
+                using (var reader = new JsonTextReader(file))
                 {
                     string from = null;
                     while (reader.Read())
@@ -48,28 +56,15 @@
                         }
                         else if (reader.TokenType == JsonToken.String)
                         {
-                            newRedirects.Add(new Redirect() { From = from, To = ((string)reader.Value).ToLowerInvariant() });
+                            redirects.Add(new Redirect() { From = from, To = ((string)reader.Value).ToLowerInvariant() });
                         }
                     }
                 }
 
-                RedirectHandler.Redirects = newRedirects;
+                RedirectHandler.Redirects = redirects;
             }
 
             return RedirectHandler.Redirects;
-        }
-
-        public static void Go(HttpContext context, string to, bool permanent)
-        {
-            if (permanent)
-            {
-                context.Response.RedirectPermanent(to, false);
-            }
-            else
-            {
-                context.Response.Redirect(to, false);
-            }
-            context.ApplicationInstance.CompleteRequest();
         }
 
         [DebuggerDisplay("From = {From}, To = {To}")]
@@ -78,6 +73,7 @@
             public static Redirect Default = new Redirect() { To = WebConfigurationManager.AppSettings["redirects.notfound"] ?? "/" };
 
             public string From { get; set; }
+
             public string To { get; set; }
         }
     }

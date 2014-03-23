@@ -1,27 +1,23 @@
 ﻿namespace WixToolset.Web.Api
 {
-    using System.Web;
     using NLog;
+    using TinyWebStack;
     using WixToolset.Web.Api.Models;
     using WixToolset.Web.Api.Utilities;
 
-    public class TelemetryHandler : IHttpHandler
+    [Route("telemetry/{*anything}")]
+    public class TelemetryHandler : IGet
     {
         private static Logger Log = LogManager.GetLogger("telemetry");
         private static WebUserService UserService = new WebUserService();
 
-        public bool IsReusable
+        public Status Get()
         {
-            get { return true; }
-        }
+            UserService.CreateAnonymousUser();
 
-        public void ProcessRequest(HttpContext context)
-        {
-            context.User = UserService.CreateAnonymousUser(context);
+            Visit.CreateFromHttpContext().Log(Log);
 
-            Visit.CreateFromHttpContext(context).Log(Log);
-
-            context.Response.StatusCode = (int)System.Net.HttpStatusCode.OK;
+            return Status.OK;
         }
     }
 }

@@ -3,43 +3,39 @@
     using System;
     using System.IO;
     using System.Linq;
-    using System.Web;
     using NLog;
+    using TinyWebStack;
     using WixToolset.Web.Api.Models;
     using WixToolset.Web.Api.Utilities;
 
-    public class DownloadsHandler : IHttpHandler
+    [Route("downloads/{*DownloadPath}")]
+    public class DownloadsHandler : IGet
     {
         private static Logger logger = LogManager.GetLogger("dl");
         private static WebUserService UserService = new WebUserService();
 
-        public bool IsReusable
-        {
-            get { return true; }
-        }
+        public string DownloadPath { private get; set; }
 
-        public void ProcessRequest(HttpContext context)
+        public Status Get()
         {
-            context.User = UserService.CreateAnonymousUser(context);
+            UserService.CreateAnonymousUser();
 
-            string[] parsed = context.Request.Path.Split(new char[] { '/' }, 3, StringSplitOptions.RemoveEmptyEntries);
-            if (3 != parsed.Length)
+            string[] parsed = this.DownloadPath.Split(new char[] { '/' }, 3, StringSplitOptions.RemoveEmptyEntries);
+            if (2 != parsed.Length)
             {
-                Go(context, "/releases", false);
-                return;
+                return Status.FoundAt("~/releases/");
             }
 
             VersionString version;
             string file;
             try
             {
-                version = new VersionString(parsed[1]);
-                file = parsed[2].Replace("..", String.Empty);
+                version = new VersionString(parsed[0]);
+                file = parsed[1].Replace("..", String.Empty);
             }
             catch
             {
-                Go(context, "/releases", false);
-                return;
+                return Status.FoundAt("~/releases/");
             }
 
             // See if there is a version redirect file for the requested release.
@@ -47,7 +43,7 @@
             try
             {
                 string jsonPath = String.Format(Configuration.ReleasesDataFileFormat, version.PrefixedDashed);
-                jsonPath = context.Server.MapPath(jsonPath);
+                jsonPath = Container.Current.Resolve<IServerUtility>().MapPath(jsonPath);
 
                 if (File.Exists(jsonPath))
                 {
@@ -58,31 +54,18 @@
             }
             catch
             {
-                context.Response.StatusCode = (int)System.Net.HttpStatusCode.NotFound;
-                return;
+                return Status.NotFound;
             }
 
             // If redirect was not found, assume we're looking for a file on the download server.
             if (String.IsNullOrEmpty(redirect))
             {
-                Visit.CreateFromHttpContext(context).Log(logger);
+                Visit.CreateFromHttpContext().Log(logger);
+
                 redirect = String.Format(Configuration.DownloadServerFormat, version.Prefixed, file);
             }
 
-            Go(context, redirect, false);
-        }
-
-        public static void Go(HttpContext context, string to, bool permanent)
-        {
-            if (permanent)
-            {
-                context.Response.RedirectPermanent(to, false);
-            }
-            else
-            {
-                context.Response.Redirect(to, false);
-            }
-            context.ApplicationInstance.CompleteRequest();
+            return Status.FoundAt(redirect);
         }
     }
 }
