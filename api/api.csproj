@@ -103,6 +103,9 @@
     <Reference Include="TinyWebStack">
       <HintPath>..\packages\TinyWebStack.0.1.0.0\lib\net40\TinyWebStack.dll</HintPath>
     </Reference>
+    <Reference Include="Munq.IocContainer">
+      <HintPath>..\packages\Munq.IocContainer.3.1.6\lib\Munq.IocContainer.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
