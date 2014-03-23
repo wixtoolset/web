@@ -21,11 +21,15 @@
 
         public string RedirectPath { private get; set; }
 
+        public IRequest Request { private get; set; }
+
+        public IServerUtility ServerUtility { private get; set; }
+
         public Status Get()
         {
             List<Redirect> redirects = RedirectHandler.ReadRedirects();
 
-            var req = Container.Current.Resolve<IRequest>().Url.AbsolutePath.TrimEnd('/').ToLowerInvariant();
+            var req = this.Request.Url.AbsolutePath.TrimEnd('/').ToLowerInvariant();
 
             var redirect = redirects.Where(r => req.EndsWith(r.From)).FirstOrDefault() ?? Redirect.Default;
 
@@ -34,7 +38,7 @@
             return permanent ? Status.MovedPermanentlyTo(redirect.To) : Status.FoundAt(redirect.To);
         }
 
-        public static List<Redirect> ReadRedirects()
+        private static List<Redirect> ReadRedirects()
         {
             if (RedirectHandler.Redirects == null)
             {
@@ -68,7 +72,7 @@
         }
 
         [DebuggerDisplay("From = {From}, To = {To}")]
-        public class Redirect
+        private class Redirect
         {
             public static Redirect Default = new Redirect() { To = WebConfigurationManager.AppSettings["redirects.notfound"] ?? "/" };
 

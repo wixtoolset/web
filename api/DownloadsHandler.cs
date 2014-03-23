@@ -16,6 +16,8 @@
 
         public string DownloadPath { private get; set; }
 
+        public IServerUtility ServerUtility { private get; set; }
+
         public Status Get()
         {
             UserService.CreateAnonymousUser();
@@ -43,7 +45,7 @@
             try
             {
                 string jsonPath = String.Format(Configuration.ReleasesDataFileFormat, version.PrefixedDashed);
-                jsonPath = Container.Current.Resolve<IServerUtility>().MapPath(jsonPath);
+                jsonPath = this.ServerUtility.MapPath(jsonPath);
 
                 if (File.Exists(jsonPath))
                 {

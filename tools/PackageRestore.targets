@@ -47,7 +47,7 @@
       <Version>2.0.1.2</Version>
     </RestoreNugetPackage>
     <RestoreNugetPackage Include="TinyWebStack">
-      <Version>0.1.0.0</Version>
+      <Version>0.1.1.0</Version>
     </RestoreNugetPackage>
   </ItemGroup>
   <Target Name="NugetPackageRestore">

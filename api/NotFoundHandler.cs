@@ -15,10 +15,10 @@
 
         public FileTransmission Output { get; private set; }
 
+        public IRequest Request { private get; set; }
+
         public Status Get()
         {
-            var request = Container.Current.Resolve<IRequest>();
-
             // Usually the error information is passed via the query string so
             // try to process that raw value.
             //
@@ -33,10 +33,10 @@
             //
             if (errorAndUrl == null || errorAndUrl.Length != 2)
             {
-                errorAndUrl = new[] { "404", request.Referrer == null ? "Unknown" : request.Referrer.AbsoluteUri };
+                errorAndUrl = new[] { "404", this.Request.Referrer == null ? "Unknown" : this.Request.Referrer.AbsoluteUri };
             }
 
-            Log.Info("url: {0}  referrer: {1}", request.Url.AbsoluteUri, errorAndUrl[1]);
+            Log.Info("url: {0}  referrer: {1}", this.Request.Url.AbsoluteUri, errorAndUrl[1]);
 
             this.Output = new FileTransmission("text/html", "/notfound/index.html");
 
