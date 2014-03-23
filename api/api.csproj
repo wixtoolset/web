@@ -37,14 +37,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="DownloadsHandler.cs" />
+    <Compile Include="Handlers\DownloadsHandler.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="NotFoundHandler.cs" />
-    <Compile Include="RedirectHandler.cs" />
-    <Compile Include="SearchRedirectHandler.cs" />
-    <Compile Include="TelemetryHandler.cs" />
+    <Compile Include="Handlers\NotFoundHandler.cs" />
+    <Compile Include="Handlers\RedirectHandler.cs" />
+    <Compile Include="Handlers\SearchRedirectHandler.cs" />
+    <Compile Include="Handlers\TelemetryHandler.cs" />
     <Compile Include="Models\Configuration.cs" />
     <Compile Include="Models\Release.cs" />
     <Compile Include="Models\ReleaseFile.cs" />

@@ -1,4 +1,4 @@
-﻿namespace WixToolset.Web.Api
+﻿namespace WixToolset.Web.Api.Handlers
 {
     using System;
     using NLog;
