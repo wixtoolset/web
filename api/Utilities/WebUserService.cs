@@ -79,10 +79,11 @@
         /// <param name="principal"><c>IPrincipal</c> for user.</param>
         /// <param name="context"><c>HttpContextBase</c> to populate the user information.</param>
         /// <returns>User object.</returns>
-        public User CreateAnonymousUser(HttpContext context)
+        public User CreateAnonymousUser()
         {
             GenericPrincipal principal = new GenericPrincipal(new GenericIdentity("anonymous", "none"), new string[] { "Anonymous" });
-            return this.CreateFromPrincipal(principal, context);
+            HttpContext.Current.User = this.CreateFromPrincipal(principal, HttpContext.Current);
+            return HttpContext.Current.User as User;
         }
 
         /// <summary>

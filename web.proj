@@ -109,7 +109,8 @@
       <PublishSource Include="api\bin\$(Configuration)\*.pdb">
         <RelativeOutputFolder>bin\</RelativeOutputFolder>
       </PublishSource>
-      <PublishSource Include="api\bin\$(Configuration)\web.config" />
+      <PublishSource Include="api\web.config" />
+      <PublishSource Include="api\Global.asax" />
       <PublishSource Include="api\bin\$(Configuration)\App_Data\redirects.json">
         <RelativeOutputFolder>App_Data\</RelativeOutputFolder>
       </PublishSource>

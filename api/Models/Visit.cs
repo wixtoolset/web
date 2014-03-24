@@ -40,8 +40,10 @@
 
         public int UserVisits { get; set; }
 
-        public static Visit CreateFromHttpContext(HttpContext httpContext)
+        public static Visit CreateFromHttpContext()
         {
+            HttpContext httpContext = HttpContext.Current;
+
             Visit visit = new Visit();
             if (httpContext.Request != null)
             {
