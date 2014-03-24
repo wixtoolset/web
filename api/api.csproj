@@ -37,6 +37,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ContentHandlers\TextReplacementContentHandler.cs" />
+    <Compile Include="ContentHandlers\TextReplacementWriter.cs" />
+    <Compile Include="Handlers\AssignmentSendHandler.cs" />
+    <Compile Include="Handlers\AssignmentSignHandler.cs" />
+    <Compile Include="Handlers\AssignmentLoginHandler.cs" />
     <Compile Include="Handlers\DownloadsHandler.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -48,10 +53,20 @@
     <Compile Include="Models\Configuration.cs" />
     <Compile Include="Models\Release.cs" />
     <Compile Include="Models\ReleaseFile.cs" />
+    <Compile Include="Models\ReplaceTextInFile.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\VersionString.cs" />
     <Compile Include="Models\Visit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\MailService.cs" />
+    <Compile Include="Utilities\Oauth\GithubAuthorizationInitialized.cs" />
+    <Compile Include="Utilities\Oauth\GithubService.cs" />
+    <Compile Include="Utilities\JsonWebRequest.cs" />
+    <Compile Include="Utilities\Oauth\GithubAccessToken.cs" />
+    <Compile Include="Utilities\Oauth\GithubServiceConfiguration.cs" />
+    <Compile Include="Utilities\Oauth\GithubUser.cs" />
+    <Compile Include="Utilities\Oauth\IGithubService.cs" />
+    <Compile Include="Utilities\Oauth\IGithubServiceConfiguration.cs" />
     <Compile Include="Utilities\WebUserService.cs" />
   </ItemGroup>
   <ItemGroup>
