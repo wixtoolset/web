@@ -1,6 +1,6 @@
 ---
 under: Development
-title: Sign Assignment Agreement
+title: Request Assignment Agreement
 subtitle: for the WiX toolset
 keywords: wix toolset,wix,assignment agreement
 layout: secondary
@@ -12,7 +12,7 @@ sidebarItems:
     text: Example Assignment Agreement
 ---
 
-## Sign WiX Toolset Assignment Agreement
+## Request WiX Toolset Assignment Agreement
 
 Here's the information from your GitHub account that will be used for your assignment agreement:
 
@@ -23,4 +23,4 @@ Here's the information from your GitHub account that will be used for your assig
 
 Please make sure the information is accurate and complete, as the assignment agreement is a legal document. That means your name should be your legal name, not a pseudonym, and that if your contribution is subject to an employment agreement, your company name is accurate. The e-mail address is used to electronically sign the assignment agreement, so it too has to be accurate.
 
-If the information's right, [send it to Outercurve Foundation to start the process of signing an assignment agreement](/development/assignment-agreement/send/).
+If the information's right, [send it to Outercurve Foundation to start the process of signing an assignment agreement](/development/assignment-agreement/send/). Otherwise, [update your profile information on GitHub)](https://github.com/settings/profile).

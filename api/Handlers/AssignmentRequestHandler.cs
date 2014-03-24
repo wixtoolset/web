@@ -6,8 +6,8 @@
     using WixToolset.Web.Api.Models;
     using WixToolset.Web.Api.Utilities.Oauth;
 
-    [Route("development/assignment-agreement/verify")]
-    public class AssignmentSignHandler
+    [Route("development/assignment-agreement/request")]
+    public class AssignmentRequestHandler
     {
         public ReplaceTextInFile Output { get; private set; }
 
@@ -25,7 +25,7 @@
                 return Status.Unauthorized;
             }
 
-            this.Output = new ReplaceTextInFile("~/development/assignment-agreement/sign_data/index.html");
+            this.Output = new ReplaceTextInFile("~/development/assignment-agreement/request_data/index.html");
             this.Output.Replacements.Add("{{company}}", String.IsNullOrEmpty(user.Company) ? "(Unemployed)" : user.Company);
             this.Output.Replacements.Add("{{login}}", user.Login ?? String.Empty);
             this.Output.Replacements.Add("{{name}}", user.Name ?? String.Empty);

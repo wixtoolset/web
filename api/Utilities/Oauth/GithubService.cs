@@ -4,7 +4,6 @@
     using System.Configuration;
     using System.Linq;
     using System.Text;
-    using System.Web;
 
     public class GithubService : IGithubService
     {
@@ -18,7 +17,7 @@
         public GithubAuthorizationInitialized InitiateGitHubAuthorization(string authorizationUrl, string returnUrl, params string[] scopes)
         {
             var uri = new StringBuilder("https://github.com/login/oauth/authorize");
-            var state = String.Concat(Guid.NewGuid().ToString("N"), HttpUtility.UrlEncode(returnUrl));
+            var state = String.Concat(Guid.NewGuid().ToString("N"), returnUrl);
 
             uri.AppendFormat("?client_id={0}&state={1}", Configuration.ClientId, state);
 
@@ -51,7 +50,7 @@
                 var tokenRequest = new JsonWebRequest("https://github.com/login/oauth/access_token") { PostData = post };
                 var response = tokenRequest.Request<TokenResponse>();
 
-                token = new GithubAccessToken() { ReturnUrl = state.Length > 36 ? state.Substring(36) : null, Scope = response.scope, Type = response.token_type, Value = response.access_token };
+                token = new GithubAccessToken() { ReturnUrl = state.Length > 32 ? state.Substring(32) : null, Scope = response.scope, Type = response.token_type, Value = response.access_token };
             }
             catch (Exception e)
             {

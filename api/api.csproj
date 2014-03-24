@@ -40,7 +40,7 @@
     <Compile Include="ContentHandlers\TextReplacementContentHandler.cs" />
     <Compile Include="ContentHandlers\TextReplacementWriter.cs" />
     <Compile Include="Handlers\AssignmentSendHandler.cs" />
-    <Compile Include="Handlers\AssignmentSignHandler.cs" />
+    <Compile Include="Handlers\AssignmentRequestHandler.cs" />
     <Compile Include="Handlers\AssignmentLoginHandler.cs" />
     <Compile Include="Handlers\DownloadsHandler.cs" />
     <Compile Include="Global.asax.cs">
