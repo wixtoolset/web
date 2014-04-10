@@ -61,12 +61,12 @@ the same identifier lets us use the issue tracker to schedule (and possibly re-s
 request with all the other bugs going into a release. It is up to you to ensure that you've entered 
 the correct number as the WIP identifier.
 
-With WIP identifier in hand you can now get started on the WIP. First, enlist in the `wixweb` branch
-of the WiX toolset's Git repository. A template WIP file exists in the `root\src\documents\development\wips\`
-folder called `0000-template-wix-improvement-proposal.html.md`. Copy that file, replacing the four
-zeros with the WIP identifier. The remainder of the file name should be the title of the WIP
-all lowercase with dashes separating the words. Finally, the file must end with `.html.md` to be
-processed correctly.
+With WIP identifier in hand you can now get started on the WIP. First, fork the WiX toolset's  
+[`site` Git repository](https://github.com/wixtoolset/site) and clone the `master` branch of your fork. 
+A template WIP file exists in the `root\src\documents\development\wips\` folder named 
+`0000-template-wix-improvement-proposal.html.md`. Copy that file, replacing the four zeros with the WIP 
+identifier. The remainder of the file name should be the title of the WIP all lowercase with dashes 
+separating the words. Finally, the file must end with `.html.md` to be processed correctly.
 
 ### WIP Metadata
 
