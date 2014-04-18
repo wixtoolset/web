@@ -43,9 +43,6 @@
     <Compile Include="Handlers\AssignmentRequestHandler.cs" />
     <Compile Include="Handlers\AssignmentLoginHandler.cs" />
     <Compile Include="Handlers\DownloadsHandler.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
     <Compile Include="Handlers\NotFoundHandler.cs" />
     <Compile Include="Handlers\RedirectHandler.cs" />
     <Compile Include="Handlers\SearchRedirectHandler.cs" />
@@ -68,9 +65,9 @@
     <Compile Include="Utilities\Oauth\IGithubService.cs" />
     <Compile Include="Utilities\Oauth\IGithubServiceConfiguration.cs" />
     <Compile Include="Utilities\WebUserService.cs" />
+    <Compile Include="WebApplication.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Global.asax" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -110,13 +107,13 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NLog">
       <HintPath>..\packages\NLog.2.0.1.2\lib\net40\NLog.dll</HintPath>
     </Reference>
     <Reference Include="TinyWebStack">
-      <HintPath>..\packages\TinyWebStack.0.1.1.0\lib\net40\TinyWebStack.dll</HintPath>
+      <HintPath>..\packages\TinyWebStack.0.1.2.0\lib\net40\TinyWebStack.dll</HintPath>
     </Reference>
     <Reference Include="Munq.IocContainer">
       <HintPath>..\packages\Munq.IocContainer.3.1.6\lib\Munq.IocContainer.dll</HintPath>
