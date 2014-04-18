@@ -43,9 +43,6 @@
     <Compile Include="Handlers\AssignmentRequestHandler.cs" />
     <Compile Include="Handlers\AssignmentLoginHandler.cs" />
     <Compile Include="Handlers\DownloadsHandler.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
     <Compile Include="Handlers\NotFoundHandler.cs" />
     <Compile Include="Handlers\RedirectHandler.cs" />
     <Compile Include="Handlers\SearchRedirectHandler.cs" />
@@ -68,9 +65,9 @@
     <Compile Include="Utilities\Oauth\IGithubService.cs" />
     <Compile Include="Utilities\Oauth\IGithubServiceConfiguration.cs" />
     <Compile Include="Utilities\WebUserService.cs" />
+    <Compile Include="WebApplication.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Global.asax" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
