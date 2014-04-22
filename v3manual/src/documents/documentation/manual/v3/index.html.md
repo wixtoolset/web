@@ -271,6 +271,7 @@ layout: documentation
       * [AdminExecuteSequence Element](xsd/wix/adminexecutesequence.html)
       * [AdminUISequence Element](xsd/wix/adminuisequence.html)
       * [AdvertiseExecuteSequence Element](xsd/wix/advertiseexecutesequence.html)
+      * [All Element](xsd/wix/all.html)
       * [AllocateRegistrySpace Element](xsd/wix/allocateregistryspace.html)
       * [AppData Element](xsd/wix/appdata.html)
       * [AppId Element](xsd/wix/appid.html)
