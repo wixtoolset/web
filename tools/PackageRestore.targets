@@ -15,7 +15,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <ExtensionPackPath>$(NugetPackageFolder)MSBuild.Extension.Pack.1.2.0\lib\net40\</ExtensionPackPath>
+    <AzureStorageBuildTasksPath>$(NugetPackageFolder)FireGiant.BuildTasks.AzureStorage.1.1.0.0\tools\</AzureStorageBuildTasksPath>
     <MSBuildCommunityTasksPath>$(NugetPackageFolder)MSBuildTasks.1.4.0.61\tools\</MSBuildCommunityTasksPath>
   </PropertyGroup>
 
@@ -31,8 +31,8 @@
 
   <!-- Nuget Package Restore -->
   <ItemGroup>
-    <RestoreNugetPackage Include="MSBuild.Extension.Pack">
-      <Version>1.2.0</Version>
+    <RestoreNugetPackage Include="FireGiant.BuildTasks.AzureStorage">
+      <Version>1.1.0.0</Version>
     </RestoreNugetPackage>
     <RestoreNugetPackage Include="MSBuildTasks">
       <Version>1.4.0.61</Version>
@@ -55,7 +55,7 @@
       <Output TaskParameter="Include" ItemName="MissingNugetPackage"/>
     </CreateItem>
 
-    <Exec Command="&quot;$(NugetExe)&quot; install" Condition=" '@(MissingNugetPackage)'!='' "
+    <Exec Command="&quot;$(NugetExe)&quot; install %(Identity) -Version %(Version)" Condition=" '@(MissingNugetPackage)'!='' "
           WorkingDirectory="$(MSBuildThisFileDirectory)" />
   </Target>
 

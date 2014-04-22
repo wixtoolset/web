@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <Project InitialTargets="PackageRestore" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
 
-  <UsingTask AssemblyFile="$(ExtensionPackPath)MSBuild.ExtensionPack.dll" TaskName="Ftp" />
+  <UsingTask AssemblyFile="$(AzureStorageBuildTasksPath)FireGiant.BuildTasks.AzureStorage.dll" TaskName="DownloadBlobs" />
   <UsingTask AssemblyFile="$(MSBuildCommunityTasksPath)MSBuild.Community.Tasks.dll" TaskName="FtpUpload" />
   <UsingTask AssemblyFile="$(MSBuildCommunityTasksPath)MSBuild.Community.Tasks.dll" TaskName="Unzip" />
 
@@ -33,12 +33,6 @@
     <DownloadFolder>$(BuildFolder)dl\</DownloadFolder>
     <PublishFolder>$(BuildFolder)publish\</PublishFolder>
   </PropertyGroup>
-
-  <!-- TODO: remove this when the Ftp MSBuild Task starts working -->
-  <PropertyGroup>
-    <WgetExe>$(ProjectFolder)tools\wget\wget.exe</WgetExe>
-  </PropertyGroup>
-
 
   <ItemGroup>
     <CommonFiles Include="$(CommonFolder)**" />
@@ -161,22 +155,20 @@
   ================================================================================================
   -->
   <Target Name="Pull"
-          DependsOnTargets="CheckPassword;DownloadStagedFiles;GatherDownloadedStagedFiles;UnzipManuals;CopyReleaseMetadata" />
+          DependsOnTargets="DownloadStagedFiles;GatherDownloadedStagedFiles;UnzipManuals;CopyReleaseMetadata" />
 
   <Target Name="DownloadStagedFiles"
-          DependsOnTargets="CheckPassword">
+          DependsOnTargets="CheckCredentials">
 
-    <!-- This MSBuild task does not work correctly
-    <Ftp TaskAction="DownloadFiles"
-         Host="ftp.wixtoolset.org"
-         Username="$(Username)"
-         UserPassword="$(Password)"
-         RemoteDirectoryName="App_Data\staged"
-         WorkingDirectory="$(DownloadFolder)" />
-    -->
+    <DownloadBlobs StorageAccount="$(StorageAccount)"
+                 StorageAuthentication="$(StorageAuthentication)"
+                 StorageEmulator="$(StorageUseEmulator)"
+                 Container="staged"
+                 Blobs="@(DownloadBlob)"
+                 Folder="$(DownloadFolder)">
+      <Output TaskParameter="Downloaded" ItemName="DownloadedBlob" />
+    </DownloadBlobs>
 
-    <Exec Command="&quot;$(WgetExe)&quot; ftp://ftp.wixtoolset.org/App_Data/staged/* --ftp-user=$(Username) --ftp-password=$(Password) -nH -nd -N -P $(DownloadFolder) -q"
-          WorkingDirectory="$(ProjectFolder)" />
   </Target>
 
   <Target Name="GatherDownloadedStagedFiles">
@@ -248,6 +240,11 @@
   <Target Name="CheckPassword">
     <Error Text="Must specify username property on the command-line using the -p:Username= property." Condition=" '$(username)'=='' " />
     <Error Text="Must specify password property on the command-line using the -p:Password= property." Condition=" '$(password)'=='' " />
+  </Target>
+
+  <Target Name="CheckCredentials">
+    <Error Text="Must specify Azure storage account property on the command-line using the -p:StorageAccount= property." Condition=" '$(StorageAccount)'=='' " />
+    <Error Text="Must specify Azure storage authentication property on the command-line using the -p:StorageAuthentication= property." Condition=" '$(StorageAuthentication)'=='' " />
   </Target>
 
   <Import Project="tools\PackageRestore.targets" />

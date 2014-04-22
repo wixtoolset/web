@@ -60,7 +60,7 @@ echo Handling Basic Web Site deployment.
 
 :: 1. MSBuild
 
-call "%MSBUILD_PATH%" -t:Rebuild "%DEPLOYMENT_SOURCE%\web.proj" /p:OutputFolder="%DEPLOYMENT_TEMP%"
+call "%MSBUILD_PATH%" -t:Rebuild "%DEPLOYMENT_SOURCE%\web.proj" /p:OutputFolder="%DEPLOYMENT_TEMP%" /p:StorageAccount="%StorageAccount%" /p:StorageAuthentication="%StorageAuthentication%"
 IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 2. KuduSync
