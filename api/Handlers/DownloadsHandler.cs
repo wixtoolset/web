@@ -22,7 +22,7 @@
         {
             UserService.CreateAnonymousUser();
 
-            string[] parsed = this.DownloadPath.Split(new char[] { '/' }, 3, StringSplitOptions.RemoveEmptyEntries);
+            string[] parsed = this.DownloadPath.Split(new char[] { '/' }, 2, StringSplitOptions.RemoveEmptyEntries);
             if (2 != parsed.Length)
             {
                 return Status.FoundAt("~/releases/");
@@ -64,7 +64,8 @@
             {
                 Visit.CreateFromHttpContext().Log(logger);
 
-                redirect = String.Format(Configuration.DownloadServerFormat, version.Prefixed, file);
+                // New static.wixtoolset.org is case sensitive and all files there are lower case.
+                redirect = String.Format(Configuration.DownloadServerFormat, version.Prefixed, file).ToLowerInvariant();
             }
 
             return Status.FoundAt(redirect);
