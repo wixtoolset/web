@@ -74,10 +74,6 @@
     <Content Include="App_Data\redirects.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="..\tools\packages.config">
-      <Link>packages.config</Link>
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Web.Debug.config">

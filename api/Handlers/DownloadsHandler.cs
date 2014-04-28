@@ -18,7 +18,21 @@
 
         public IServerUtility ServerUtility { private get; set; }
 
+        public Status Head()
+        {
+            var status = this.RedirectToDownload();
+
+            return status;
+        }
+
         public Status Get()
+        {
+            var status = this.RedirectToDownload();
+
+            return status;
+        }
+
+        private Status RedirectToDownload()
         {
             UserService.CreateAnonymousUser();
 
