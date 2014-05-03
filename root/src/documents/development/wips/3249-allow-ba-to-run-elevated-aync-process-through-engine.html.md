@@ -3,7 +3,7 @@ wip: 3249
 type: Feature
 author: r.sean.hall at gmail dot com
 title: Allow BA to Run Elevated Async Process Through the Engine
-draft: true
+draft: false
 ---
 
 ## User stories
@@ -40,7 +40,7 @@ In order to get an .exe approved to be run elevated, add a new element `Approved
 
     <xs:element name="ApprovedExeForElevation">
       <xs:annotation>
-        <xs:documentation>Provides information about an .exe so that the BA can request the engine to run it elevated from anywhere on the machine.</xs:documentation>
+        <xs:documentation>Provides information about an .exe so that the BA can request the engine to run it elevated from anywhere.</xs:documentation>
         <xs:appinfo>
           <xse:parent namespace="http://schemas.microsoft.com/wix/2006/wi" ref="Bundle" />
         </xs:appinfo>
@@ -65,6 +65,13 @@ In order to get an .exe approved to be run elevated, add a new element `Approved
 	    </xs:attribute>
       </xs:complexType>
     </xs:element>
+
+
+## WixStandardBA
+
+Add `LaunchTargetElevatedId` attribute to `bal:WixStandardBootstrapperApplication` element, which takes the `Id` of an `ApprovedExeForElevation` element. This will make WixStandardBA use the new `RunExeElevatedFromPath` method instead of `ShelExecute`.
+
+Add `LaunchArguments` and `LaunchHidden` attributes to `bal:WixStandardBootstrapperApplication` to give a documented way to use the magic variables `LaunchArguments` and `LaunchHidden`. Specifying the `LaunchTargetElevatedId` attribute and the `LaunchHidden` attribute won't be allowed since `RunExeElevatedFromPath` doesn't give the ability to specify that.
 
 
 ## Considerations
