@@ -10,17 +10,18 @@ draft: false
 
 * As a setup developer I can create an elevated process asynchronously from a per-machine bundle without inflicting multiple UAC prompts on the user.
 
+## Security Context
+
+There are currently two ways that the BA can execute arbitrary processes with elevation with only one UAC prompt.
+
+One way is to hack the .exe manifest to require administrator.  Running the BA elevated is asking for trouble. There's nothing we can do to prevent this, beyond making the engine refuse to run in this scenario.
+
+The second way is to put an EXE package in the chain that simply runs the executable specified in its command-line arguments.  We can't prevent this either without crippling EXE packages.  When you include an EXE package in the chain that will run anything you tell it, that means that compromising the BA gives an attacker the ability to run elevated code, which means game over.
+
 
 ## Proposal
 
-Add the following methods to `IBootstrapperEngine`:
-
-    // Run payload from cache.
-    STDMETHOD(RunExeElevated)(
-        __in_z LPCWSTR wzPayloadId,
-        __in_z_opt LPCWSTR wzArguments,
-        __out DWORD dwProcessId
-        ) = 0;
+Add the following method to `IBootstrapperEngine`:
 
     // Run approved .exe from custom path.
     STDMETHOD(RunExeElevatedFromPath)(
@@ -30,11 +31,9 @@ Add the following methods to `IBootstrapperEngine`:
         __out DWORD dwProcessId
         ) = 0;
 
-For `RunExeElevated`, the payload must have been cached already. [WIXFEAT 4329](http://wixtoolset.org/issues/4329/) adds the ability to always cache a package.
+The engine will verify that the file specified by `wzExecutablePath` matches the information in the engine manifest (like it normally verifies a file when putting it in the cache).  In order to perform this verification, the path must be in a secure folder.  For now, the Package Cache folder and the Program Files folder (x86 and x64) are the only folders considered secure.  If the file is not inside one of these folders, then the engine will return Access Denied.  Normally the file would be an .exe that the bundle installed.
 
-For `RunExeElevatedFromPath`, the engine will verify that the file specified by `wzExecutablePath` matches the information in the engine manifest (like it normally verifies a file when putting it in the cache).  Normally this would be an .exe that the bundle installed.
-
-For both of them, the engine will call `CreateProcess`.
+After verification, the engine will call `CreateProcess`.
 
 In order to get an .exe approved to be run elevated, add a new element `ApprovedExeForElevation`.  This element is a child of `Bundle`, and can occur 0-unbounded times.
 
@@ -75,6 +74,10 @@ Add `LaunchArguments` and `LaunchHidden` attributes to `bal:WixStandardBootstrap
 
 
 ## Considerations
+
+The original proposal added a second method to allow the BA to run an EXE package from the chain.  This was removed because packages are supposed to be included in the chain to participate in the installation, not launch executables after the installation completed.
+
+The ApprovedExeForElevation element could have another attribute, maybe `TargetPath`, that could point to the .exe with Variables.  This could let the BA pass in NULL for the path.  It could even be a required attribute, and then the `wzExecutablePath` parameter would be removed from `RunExeElevatedFromPath` (thus probably renaming it to RunApprovedExeElevated), requiring the path to be specified at compile time.  There's no security gained from doing this, however.
 
 1. Should more features of CreateProcess be exposed?
 1. Should there be a RemotePayload equivalent for ApprovedExeForElevation?
