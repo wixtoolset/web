@@ -123,7 +123,7 @@ layout: documentation_xsd_main
       <tr>
         <td>Win64</td>
         <td><a href="../wix/simple_type_yesnotype.html">YesNoType</a></td>
-        <td>                         Set this attribute to 'yes' to mark this as a 64-bit component. This attribute facilitates                         the installation of packages that include both 32-bit and 64-bit components.  If this bit                         is not set, the component is registered as a 32-bit component.  If this is a 64-bit                         component replacing a 32-bit component, set this bit and assign a new GUID in the Guid attribute.                     </td>
+        <td>                         Set this attribute to 'yes' to mark this as a 64-bit component. This attribute facilitates                         the installation of packages that include both 32-bit and 64-bit components.  If this is a 64-bit                         component replacing a 32-bit component, set this attribute to 'yes' and assign a new GUID in the Guid attribute.           The default value is based on the platform set by the -arch switch to candle.exe           or the InstallerPlatform property in a .wixproj MSBuild project:            For x86 and ARM, the default value is 'no'.            For x64 and IA64, the default value is 'yes'.           </td>
         <td>&nbsp;</td>
       </tr>
       <tr>

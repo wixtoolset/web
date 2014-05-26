@@ -57,7 +57,7 @@ layout: documentation_xsd_main
       <tr>
         <td>Win64</td>
         <td><a href="../wix/simple_type_yesnotype.html">YesNoType</a></td>
-        <td>Instructs the search to look in the 64-bit registry when the value is 'yes'. When the value is 'no', the search looks in the 32-bit registry. The default value depends on the value of the Package/@Platform attribute: if the @Platform attribute value is 'x86', the default @Win64 attribute value is 'no'; otherwise, the default value is 'yes'.</td>
+        <td>Instructs the search to look in the 64-bit registry when the value is 'yes'. When the value is 'no', the search looks in the 32-bit registry.           The default value is based on the platform set by the -arch switch to candle.exe           or the InstallerPlatform property in a .wixproj MSBuild project:            For x86 and ARM, the default value is 'no'.            For x64 and IA64, the default value is 'yes'.           </td>
         <td>&nbsp;</td>
       </tr>
     </table>
