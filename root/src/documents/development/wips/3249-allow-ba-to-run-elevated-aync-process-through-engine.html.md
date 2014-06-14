@@ -85,6 +85,15 @@ In order to get an .exe approved to be run elevated, add a new element `Approved
             </xs:documentation>
           </xs:annotation>
         </xs:attribute>
+        <xs:attribute name="Win64" type="YesNoTypeUnion">
+          <xs:annotation>
+            <xs:documentation>
+              Instructs the search to look in the 64-bit registry when the value is 'yes'.
+              When the value is 'no', the search looks in the 32-bit registry.
+              The default value is 'no'.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
       </xs:complexType>
     </xs:element>
 
