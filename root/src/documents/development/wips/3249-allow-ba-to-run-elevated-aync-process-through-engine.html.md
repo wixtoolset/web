@@ -23,23 +23,42 @@ The second way is to put an EXE package in the chain that simply runs the execut
 
 Add the following method to `IBootstrapperEngine`:
 
-    // Run approved .exe from custom path.
-    STDMETHOD(RunExeElevatedFromPath)(
+    STDMETHOD(LaunchApprovedExe)(
+        __in_opt HWND hwndParent,
         __in_z LPCWSTR wzApprovedExeForElevationId,
-        __in_z LPCWSTR wzExecutablePath,
         __in_z_opt LPCWSTR wzArguments,
-        __out DWORD dwProcessId
+        __in DWORD dwWaitForInputIdleTimeout
         ) = 0;
 
-The engine will verify that the file specified by `wzExecutablePath` matches the information in the engine manifest (like it normally verifies a file when putting it in the cache).  In order to perform this verification, the path must be in a secure folder.  For now, the Package Cache folder and the Program Files folder (x86 and x64) are the only folders considered secure.  If the file is not inside one of these folders, then the engine will return Access Denied.  Normally the file would be an .exe that the bundle installed.
+The engine will find the executable by checking the registry location specified at compile time for the given Id.
+In order to perform this verification, the path must be in a secure folder.
+For now, the Package Cache folder and the Program Files folder (x86 and x64) are the only folders considered secure.
+If the file is not inside one of these folders, then the engine will return Access Denied.
+Normally the file would be an .exe that the bundle installed.
 
-After verification, the engine will call `CreateProcess`.
+After verification, the engine will call `CreateProcess`, attempting to set the working directory to the .exe's directory.
+If dwWaitForInputIdleTimeout is not zero, the engine will call WaitForInputIdle with the given timeout.
+Finally, it will return the process id from the new `IBootstrapperApplication` method:
+
+    // OnLaunchApprovedExeBegin - called before trying to launch the preapproved executable.
+    // 
+    STDMETHOD_(int, OnLaunchApprovedExeBegin)() = 0;
+        
+    // OnLaunchApprovedExeComplete - called after trying to launch the preapproved executable.
+    //
+    // Parameters: 
+    //  dwProcessId is only valid if the operation succeeded. 
+    // 
+    STDMETHOD_(void, OnLaunchApprovedExeComplete)( 
+        __in HRESULT hrStatus, 
+        __in DWORD dwProcessId 
+        ) = 0;
 
 In order to get an .exe approved to be run elevated, add a new element `ApprovedExeForElevation`.  This element is a child of `Bundle`, and can occur 0-unbounded times.
 
     <xs:element name="ApprovedExeForElevation">
       <xs:annotation>
-        <xs:documentation>Provides information about an .exe so that the BA can request the engine to run it elevated from anywhere.</xs:documentation>
+        <xs:documentation>Provides a registry key path and value name that will point to an .exe so that the BA can request the engine to run it elevated.</xs:documentation>
         <xs:appinfo>
           <xse:parent namespace="http://schemas.microsoft.com/wix/2006/wi" ref="Bundle" />
         </xs:appinfo>
@@ -50,38 +69,43 @@ In order to get an .exe approved to be run elevated, add a new element `Approved
             <xs:documentation>The identifier of the ApprovedExeForElevation element.</xs:documentation>
           </xs:annotation>
         </xs:attribute>
-        <xs:attribute name="SourceFile" type="xs:string">
+        <xs:attribute name="Key" type="xs:string">
           <xs:annotation>
-            <xs:documentation>The .exe file</xs:documentation>
+            <xs:documentation>
+              The key path.
+              For security purposes, the root key will be HKLM and Variables are not supported.
+            </xs:documentation>
           </xs:annotation>
         </xs:attribute>
-	    <xs:attribute name="SuppressSignatureVerification" type="YesNoTypeUnion">
-	      <xs:annotation>
-	        <xs:documentation>
-	          By default, a Bundle will use the .exe's Authenticode signature to verify the contents. If the package does not have an Authenticode signature then the Bundle will use a hash of the .exe instead. Set this attribute to "yes" to suppress the default behavior and force the Bundle to always use the hash of the .exe even when the package is signed.
-	        </xs:documentation>
-	      </xs:annotation>
-	    </xs:attribute>
+        <xs:attribute name="Value" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>
+              The value name.
+              For security purposes, Variables are not supported.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
       </xs:complexType>
     </xs:element>
 
 
 ## WixStandardBA
 
-Add `LaunchTargetElevatedId` attribute to `bal:WixStandardBootstrapperApplication` element, which takes the `Id` of an `ApprovedExeForElevation` element. This will make WixStandardBA use the new `RunExeElevatedFromPath` method instead of `ShelExecute`.
+Add `LaunchTargetElevatedId` attribute to `bal:WixStandardBootstrapperApplication` element, which takes the `Id` of an `ApprovedExeForElevation` element.
+This will make WixStandardBA use the new `LaunchApprovedExe` method instead of `ShelExecute`.
+If `LaunchApprovedExe` fails, it will fallback to the previous behavior (calling `ShelExecute` on the executable specified in the `LaunchTarget` attribute).
 
-Add `LaunchArguments` and `LaunchHidden` attributes to `bal:WixStandardBootstrapperApplication` to give a documented way to use the magic variables `LaunchArguments` and `LaunchHidden`. Specifying the `LaunchTargetElevatedId` attribute and the `LaunchHidden` attribute won't be allowed since `RunExeElevatedFromPath` doesn't give the ability to specify that.
+Add `LaunchArguments` and `LaunchHidden` attributes to `bal:WixStandardBootstrapperApplication` to give a documented way to use the magic variables `LaunchArguments` and `LaunchHidden`.
 
 
 ## Considerations
 
 The original proposal added a second method to allow the BA to run an EXE package from the chain.  This was removed because packages are supposed to be included in the chain to participate in the installation, not launch executables after the installation completed.
 
-The ApprovedExeForElevation element could have another attribute, maybe `TargetPath`, that could point to the .exe with Variables.  This could let the BA pass in NULL for the path.  It could even be a required attribute, and then the `wzExecutablePath` parameter would be removed from `RunExeElevatedFromPath` (thus probably renaming it to RunApprovedExeElevated), requiring the path to be specified at compile time.  There's no security gained from doing this, however.
-
-1. Should more features of CreateProcess be exposed?
-1. Should there be a RemotePayload equivalent for ApprovedExeForElevation?
-1. It would be nice if you could specify a FileId for an MsiPackage instead of pointing it to the original file.
+The second version of the proposal made the setup developer provide the EXE at compile time so it could be hashed.
+The engine allowed the BA to specify the executable path in `LaunchApprovedExe`.
+Then the engine confirmed that the executable was in a secure folder as well as matching the hash.
+This was changed to getting the executable path from HKLM to support the scenario where the target executable is patched outside of the bundle.
 
 
 ## See Also
