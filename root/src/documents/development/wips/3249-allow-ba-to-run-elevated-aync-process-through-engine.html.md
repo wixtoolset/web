@@ -30,11 +30,12 @@ Add the following method to `IBootstrapperEngine`:
         __in DWORD dwWaitForInputIdleTimeout
         ) = 0;
 
-The engine will find the executable by checking the registry location specified at compile time for the given Id.
-In order to perform this verification, the path must be in a secure folder.
-For now, the Package Cache folder and the Program Files folder (x86 and x64) are the only folders considered secure.
+The engine will use the given Id to lookup the registry location specified at compile time, and then get the executable path from there.
+To ensure that an unprivileged user can't modify the target executable, the path must be in a secure folder.
+For now, the Package Cache folder and the Program Files folder(s) (x86 and x64) are the only folders considered secure.
 If the file is not inside one of these folders, then the engine will return Access Denied.
 Normally the file would be an .exe that the bundle installed.
+The engine will perform Variable substitution on wzArguments.
 
 After verification, the engine will call `CreateProcess`, attempting to set the working directory to the .exe's directory.
 If dwWaitForInputIdleTimeout is not zero, the engine will call WaitForInputIdle with the given timeout.
@@ -64,12 +65,12 @@ In order to get an .exe approved to be run elevated, add a new element `Approved
         </xs:appinfo>
       </xs:annotation>
       <xs:complexType>
-        <xs:attribute name="Id" type="xs:string">
+        <xs:attribute name="Id" type="xs:string" use="required">
           <xs:annotation>
             <xs:documentation>The identifier of the ApprovedExeForElevation element.</xs:documentation>
           </xs:annotation>
         </xs:attribute>
-        <xs:attribute name="Key" type="xs:string">
+        <xs:attribute name="Key" type="xs:string" use="required">
           <xs:annotation>
             <xs:documentation>
               The key path.
@@ -102,7 +103,7 @@ In order to get an .exe approved to be run elevated, add a new element `Approved
 
 Add `LaunchTargetElevatedId` attribute to `bal:WixStandardBootstrapperApplication` element, which takes the `Id` of an `ApprovedExeForElevation` element.
 This will make WixStandardBA use the new `LaunchApprovedExe` method instead of `ShelExecute`.
-If `LaunchApprovedExe` fails, it will fallback to the previous behavior (calling `ShelExecute` on the executable specified in the `LaunchTarget` attribute).
+If `LaunchApprovedExe` fails because of Access Denied, it will fallback to the previous behavior (calling `ShelExecute` on the executable specified in the `LaunchTarget` attribute).
 
 Add `LaunchArguments` and `LaunchHidden` attributes to `bal:WixStandardBootstrapperApplication` to give a documented way to use the magic variables `LaunchArguments` and `LaunchHidden`.
 
