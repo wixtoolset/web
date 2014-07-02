@@ -276,6 +276,7 @@ layout: documentation
       * [AllocateRegistrySpace Element](xsd/wix/allocateregistryspace.html)
       * [AppData Element](xsd/wix/appdata.html)
       * [AppId Element](xsd/wix/appid.html)
+      * [ApprovedExeForElevation Element](xsd/wix/approvedexeforelevation.html)
       * [AppSearch Element](xsd/wix/appsearch.html)
       * [AssemblyName Element](xsd/wix/assemblyname.html)
       * [Billboard Element](xsd/wix/billboard.html)

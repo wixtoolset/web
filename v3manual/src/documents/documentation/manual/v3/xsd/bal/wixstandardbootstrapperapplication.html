@@ -25,9 +25,27 @@ layout: documentation_xsd_extension
         <th width="15%">Required</th>
       </tr>
       <tr>
+        <td>LaunchArguments</td>
+        <td>String</td>
+        <td>                         If set, WixStdBA will supply these arguments when launching the application specified by the LaunchTarget attribute.                         The string value can be formatted using Burn variables enclosed in brackets,                         to refer to installation directories and so forth.                     </td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>LaunchHidden</td>
+        <td><a href="../bal/simple_type_yesnotype.html">YesNoType</a></td>
+        <td>                         If set to "yes", WixStdBA will launch the application specified by the LaunchTarget attribute with the SW_HIDE flag.                         This attribute is ignored when the LaunchTargetElevatedId attribute is specified.                     </td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
         <td>LaunchTarget</td>
         <td>String</td>
-        <td>If set, the success page will show a Launch button the user can use to launch the application being installed. The string value can be formatted using Burn variables enclosed in brackets, to refer to installation directories and so forth.</td>
+        <td>                         If set, the success page will show a Launch button the user can use to launch the application being installed.                         The string value can be formatted using Burn variables enclosed in brackets,                          to refer to installation directories and so forth.                     </td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>LaunchTargetElevatedId</td>
+        <td>String</td>
+        <td>                         Id of the target ApprovedExeForElevation element.                         If set with LaunchTarget, WixStdBA will launch the application through the Engine's LaunchApprovedExe method instead of through ShellExecute.                     </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
