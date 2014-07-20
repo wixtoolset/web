@@ -14,6 +14,8 @@ feed(xmlns='http://www.w3.org/2005/Atom', xmlns:as='http://appsyndication.org/20
   subtitle(type='text') The WiX Toolset is a set of tools to create Windows installation packages from XML source code. The toolset supports a command line environment that developers may integrate into their build processes to build MSI and MSM setup packages.
   if first.info.files[0].upgradeCode
     as:application(type=first.info.files[0].contentType)= first.info.files[0].upgradeCode
+  else
+    as:application(type='application/octet-stream') 65E893AD-EDD5-4E7D-80CA-F0F50F383532
   updated= first.release.date.toISOString()
   id #{site.url}/releases/feed/#{document.version}
   link(rel='self', type='application/atom+xml', href='#{site.url}/releases/feed/#{document.version}')
