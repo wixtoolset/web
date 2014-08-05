@@ -4,7 +4,7 @@ layout: documentation_xsd_main
 ---
 <dl>
   <dt>Description</dt>
-  <dd>                 Adds and removes services for parent Component.             </dd>
+  <dd>                 Adds services for parent Component.  Use the ServiceControl element to remove services.             </dd>
   <dt>Windows Installer references</dt>
   <dd>
     <a href="http://msdn.microsoft.com/library/aa371637.aspx" target="_blank">ServiceInstall Table</a>
@@ -16,7 +16,7 @@ layout: documentation_xsd_main
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wix/permissionex.html">PermissionEx</a> (min: 0, max: unbounded): Configures the ACLs for this service.</li><li><a href="../wix/serviceconfig.html">ServiceConfig</a> (min: 0, max: unbounded)</li><li><a href="../wix/serviceconfigfailureactions.html">ServiceConfigFailureActions</a> (min: 0, max: unbounded)</li><li><a href="../wix/servicedependency.html">ServiceDependency</a> (min: 0, max: unbounded): ordered list of dependencies when installing services</li><li><span class="extension">Any Element (namespace='##other' processContents='Lax')                              Extensibility point in the WiX XML Schema.  Schema extensions can register additional                             elements at this point in the schema.                         </span><ul><li><a href="../util/serviceconfig.html" class="extension">ServiceConfig</a></li></ul></li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wix/permissionex.html">PermissionEx</a> (min: 0, max: unbounded): Configures the ACLs for this service.</li><li><a href="../wix/serviceconfig.html">ServiceConfig</a> (min: 0, max: unbounded)</li><li><a href="../wix/serviceconfigfailureactions.html">ServiceConfigFailureActions</a> (min: 0, max: unbounded)</li><li><a href="../wix/servicedependency.html">ServiceDependency</a> (min: 0, max: unbounded): Ordered list of dependencies when installing services.</li><li><span class="extension">Any Element (namespace='##other' processContents='Lax')                              Extensibility point in the WiX XML Schema.  Schema extensions can register additional                             elements at this point in the schema.                         </span><ul><li><a href="../util/serviceconfig.html" class="extension">ServiceConfig</a></li></ul></li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -101,7 +101,7 @@ layout: documentation_xsd_main
       <tr>
         <td>Type</td>
         <td>Enumeration</td>
-        <td>The Windows Installer does not currently support kernelDriver or systemDriver  This attribute's value must be one of the following:<dl><dt class="enumerationValue"><dfn>ownProcess</dfn></dt><dd>                                     A Win32 service that runs its own process.                                 </dd><dt class="enumerationValue"><dfn>shareProcess</dfn></dt><dd>                                     A Win32 service that shares a process.                                 </dd><dt class="enumerationValue"><dfn>kernelDriver</dfn></dt><dd>                                     A kernel driver service. This value is not currently supported by the Windows Installer.                                 </dd><dt class="enumerationValue"><dfn>systemDriver</dfn></dt><dd>                                     A file system driver service. This value is not currently supported by the Windows Installer.                                 </dd></dl></td>
+        <td>The Windows Installer does not currently support kernelDriver or systemDriver.  This attribute's value must be one of the following:<dl><dt class="enumerationValue"><dfn>ownProcess</dfn></dt><dd>                                     A Win32 service that runs its own process.                                 </dd><dt class="enumerationValue"><dfn>shareProcess</dfn></dt><dd>                                     A Win32 service that shares a process.                                 </dd><dt class="enumerationValue"><dfn>kernelDriver</dfn></dt><dd>                                     A kernel driver service. This value is not currently supported by the Windows Installer.                                 </dd><dt class="enumerationValue"><dfn>systemDriver</dfn></dt><dd>                                     A file system driver service. This value is not currently supported by the Windows Installer.                                 </dd></dl></td>
         <td>Yes</td>
       </tr>
       <tr>
