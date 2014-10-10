@@ -12,9 +12,9 @@ title: Improve Security for Hidden Burn Variables
 
 ## Proposal
 
-Make the burn engine call [SecureZeroMemory](http://msdn.microsoft.com/en-us/library/aa366877(VS.85).aspx) as necessary.
+Make the burn engine call [SecureZeroMemory](http://msdn.microsoft.com/library/aa366877.aspx) as necessary.
 
-Make the burn engine encrypt the values in the BURN_VARIANT struct.
+Make the burn engine encrypt the values in the BURN_VARIANT struct if the variable is hidden.
 
 In the managed engine, create a new SecureStringVariables property so that the managed BA can pass the contents of a SecureString to the engine without ever putting it into a System.String.
 
