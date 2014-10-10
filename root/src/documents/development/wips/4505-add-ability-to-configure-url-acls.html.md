@@ -8,105 +8,166 @@ draft: false
 
 ## User stories
 
-* As a Setup Developer I can configure URL ACLs such that I don't have to use run netsh.exe in my own custom actions.
+* As a Setup Developer I can configure URL reservations such that I don't have to use run netsh.exe in my own custom actions.
 
 
 ## Proposal
 
-Create new WixHttpExtension with UrlAcl elements.  These provide wrappers around `netsh.exe http add/delete urlacl`
+Create new WixHttpExtension with UrlReservation elements.  These provide wrappers around `netsh.exe http add/delete urlacl`
 and their API equivalents `HTTPSetServiceConfiguration` and `HTTPDeleteServiceConfiguration`.
 
     <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-              xmlns:xse="http://schemas.microsoft.com/wix/2005/XmlSchemaExtension"
+              xmlns:xse="http://wixtoolset.org/schemas/XmlSchemaExtension"
              xmlns:html="http://www.w3.org/1999/xhtml"
-        targetNamespace="http://schemas.microsoft.com/wix/HttpExtension"
-                  xmlns="http://schemas.microsoft.com/wix/HttpExtension">
+        targetNamespace="http://wixtoolset.org/schemas/v4/wxs/http"
+                  xmlns="http://wixtoolset.org/schemas/v4/wxs/http">
+      <xs:annotation>
+        <xs:documentation>
+          The source code schema for the Windows Installer XML Toolset Http Extension.
+        </xs:documentation>
+      </xs:annotation>
+
+      <xs:import namespace="http://wixtoolset.org/schemas/v4/wxs" />
+
+      <xs:element name="UrlReservation">
         <xs:annotation>
-            <xs:documentation>
-                The source code schema for the Windows Installer XML Toolset Http Extension.
-            </xs:documentation>
+          <xs:documentation>
+            Makes a reservation record for the HTTP Server API configuration store on Windows XP SP2,
+            Windows Server 2003, and later.  For more information about the HTTP Server API, see
+            <html:a href="http://msdn.microsoft.com/library/windows/desktop/aa364510.aspx">
+              HTTP Server API
+            </html:a>.
+          </xs:documentation>
+          <xs:appinfo>
+            <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Component" />
+            <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="ServiceInstall" />
+          </xs:appinfo>
         </xs:annotation>
 
-        <xs:import namespace="http://schemas.microsoft.com/wix/2006/wi" />
-
-        <xs:element name="UrlAcl">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
-                <xs:documentation>
-                    Makes a reservation record for the HTTP Server API configuration store on Windows XP SP2, 
-                    Windows Server 2003, and later.  For more information about the HTTP Server API, see
-                    <html:a href="http://msdn.microsoft.com/library/windows/desktop/aa364510.aspx">
-                    HTTP Server API</html:a>.
-                </xs:documentation>
-                <xs:appinfo>
-                    <xse:parent namespace="http://schemas.microsoft.com/wix/2006/wi" ref="Component" />
-                    <xse:parent namespace="http://schemas.microsoft.com/wix/2006/wi" ref="ServiceInstall" />
-                    <xse:parent namespace="http://schemas.microsoft.com/wix/UtilExtension" ref="Group" />
-                    <xse:parent namespace="http://schemas.microsoft.com/wix/UtilExtension" ref="User" />
-                </xs:appinfo>
+              <xs:documentation>
+                The access control entries for the access control list.
+              </xs:documentation>
             </xs:annotation>
+            <xs:element ref="UrlAce" />
+          </xs:choice>
 
-            <xs:complexType>
-                <xs:choice minOccurs="0" maxOccurs="unbounded">
-                    <xs:annotation>
-                        <xs:documentation>
-                            The access control entries for the access control list.
-                        </xs:documentation>
-                    </xs:annotation>
-                    <xs:element ref="UrlAce" />
-                </xs:choice>
-
-                <xs:attribute name="Url" type="xs:string" use="required">
-                    <xs:annotation>
-                        <xs:documentation>
-                            The <html:a href="http://msdn.microsoft.com/library/windows/desktop/aa364698.aspx">UrlPrefix</html:a>
-                            string that defines the portion of the URL namespace to which this reservation pertains.
-                        </xs:documentation>
-                    </xs:annotation>
-                </xs:attribute>
-            </xs:complexType>
-        </xs:element>
-
-        <xs:element name="UrlAce">
+          <xs:attribute name="HandleExisting">
             <xs:annotation>
-                <xs:documentation>
-                    The security principal and which rights to assign to them for the URL reservation.
-                </xs:documentation>
+              <xs:documentation>
+                Specifies the behavior when trying to install a URL reservation and it already exists.
+              </xs:documentation>
             </xs:annotation>
-            <xs:complexType>
-                <xs:attribute name="SecurityPrincipal" type="xs:string" use="required">
-                    <xs:annotation>
-                        <xs:documentation>
-                            The security principal for this ACE.  When the UrlAcl is under a ServiceInstall element, this defaults to
-                            "NT SERVICE\ServiceInstallName".  When under a util:Group or util:User, this defaults to "Domain\Name".
-                            This may be either a SID or an account name in a format that 
-                            <html:a href="http://msdn.microsoft.com/library/windows/desktop/aa379159.aspx">LookupAccountName</html:a>
-                            supports.  When using a SID, an asterisk must be prepended.  For example, "*S-1-5-18".
-                        </xs:documentation>
-                    </xs:annotation>
-                </xs:attribute>
-
-                <xs:attribute name="Rights">
+            <xs:simpleType>
+              <xs:restriction base="xs:NMTOKEN">
+                <xs:enumeration value="replace">
                   <xs:annotation>
                     <xs:documentation>
-                      Rights for this ACE. Default is "both".
+                      Replaces the existing URL reservation (the default).
                     </xs:documentation>
                   </xs:annotation>
-                  <xs:simpleType>
-                    <xs:restriction base="xs:NMTOKEN">
-                      <xs:enumeration value="register" />
-                      <xs:enumeration value="delegate" />
-                      <xs:enumeration value="both" />
-                    </xs:restriction>
-                  </xs:simpleType>
-                </xs:attribute>
-            </xs:complexType>
-        </xs:element>
+                </xs:enumeration>
+                <xs:enumeration value="ignore">
+                  <xs:annotation>
+                    <xs:documentation>
+                      Keeps the existing URL reservation.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:enumeration>
+                <xs:enumeration value="fail">
+                  <xs:annotation>
+                    <xs:documentation>
+                      The installation fails.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:enumeration>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+
+          <xs:attribute name="Id" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+                Unique ID of this URL reservation.
+                If this attribute is not specified, an identifier will be generated automatically.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <xs:attribute name="Sddl" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+                Security descriptor to apply to the URL reservation.
+                Can't be specified when using children UrlAce elements.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <xs:attribute name="Url" type="xs:string" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                The <html:a href="http://msdn.microsoft.com/library/windows/desktop/aa364698.aspx">UrlPrefix</html:a>
+                string that defines the portion of the URL namespace to which this reservation pertains.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="UrlAce">
+        <xs:annotation>
+          <xs:documentation>
+            The security principal and which rights to assign to them for the URL reservation.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:attribute name="Id" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+                Unique ID of this URL ACE.
+                If this attribute is not specified, an identifier will be generated automatically.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <xs:attribute name="SecurityPrincipal" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+                The security principal for this ACE.  When the UrlReservation is under a ServiceInstall element, this defaults to
+                "NT SERVICE\ServiceInstallName".  This may be either a SID or an account name in a format that
+                <html:a href="http://msdn.microsoft.com/library/windows/desktop/aa379159.aspx">LookupAccountName</html:a>
+                supports.  When using a SID, an asterisk must be prepended.  For example, "*S-1-5-18".
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <xs:attribute name="Rights">
+            <xs:annotation>
+              <xs:documentation>
+                Rights for this ACE. Default is "all".
+              </xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:NMTOKEN">
+                <xs:enumeration value="register" />
+                <xs:enumeration value="delegate" />
+                <xs:enumeration value="all" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
     </xs:schema>
 
 
 ## Considerations
 
-I'm not sure if this warrants a new extension, maybe it could be added to the Util extension.
+This could have been added to the Util extension, but was put into the new Http extension instead.
+
+The original proposal included support for the util:Group and util:User elements,
+but they had to be dropped because the custom action looks up the SID before the group or user is created.
 
 
 ## See Also
