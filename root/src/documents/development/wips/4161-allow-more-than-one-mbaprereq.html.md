@@ -64,14 +64,15 @@ For backwards compatibility, the `WixMbaPrereqPackageId` binder variable (and it
 
 ## Proposal - 4.x
 
-Remove all of the authoring in the WixBalExtension that deals with the WixMbaPrereqInformation table.
-
-Rename the `PrereqSupportPackage` attribute to `PrereqPackage`, since all prereq packages will be equal.  Rename the `MbaPrereqisiteSupportPackage` table to `MbaPrerequistePackage`.
+ * Remove the `WixMbaPrereqPackageId`, `WixMbaPrereqLicenseUrl`, and `WixMbaPrereqLicenseRtf` binder variables.
+ * Remove the `LicenseFile`, `LicenseUrl`, and `NetFxPackageId` attributes from the `WixManagedBootstrapperApplicationHost` element.
+ * Rename the `PrereqSupportPackage` attribute to `PrereqPackage`, since all prereq packages will be equal.
+ * Create `PrereqLicenseUrl` and `PrereqLicenseRtf` attributes that go on XxxPackage elements (just like the `PrereqPackage` element). At most one can be specified.
+ * Delete the `MbaPrerequisiteSupportPackage` table.  This will require removing the assumption that there is always exactly one row in the `WixMbaPrereqInformation` table.
+ * Figure out how to ensure there is at least one prereq package, at most one prereq package has a License attribute, and the type of the license attribute matches the type of WixManagedBootstrapperApplicationHost that was chosen.
 
 
 ## Considerations
-
-The 4.x details on licensing still need to be designed.
 
 
 ## See Also
