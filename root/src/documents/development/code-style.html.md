@@ -214,4 +214,4 @@ This document defines the WiX code style that is adapted from original source co
 
 21. Use the COM `IUnknown` pattern for lifetime management of objects. `AddRef()` and `Release()` are not perfect but they are better than any other memory tracking operations we've found have in native code.
 
-22. WiX code style for management code follow [StyleCop](http://stylecop.codeplex.com/) definitions. Most of the above native code has actually morphed gently to match StyleCop suggested design (i.e. no tabs, four spaces).
+22. WiX code style for managed code follows [StyleCop](http://stylecop.codeplex.com/) definitions. Most of the above native code has actually morphed gently to match StyleCop suggested design (i.e. no tabs, four spaces).
