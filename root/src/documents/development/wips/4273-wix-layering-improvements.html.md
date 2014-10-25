@@ -17,15 +17,15 @@ Currently the `wix.dll` houses all the WiX toolset's data access objects, extens
 
 The single `wix.dll` also makes it easier for WiX developers to inadvertently create dependencies between objects that should remain isolated for extensibility purposes.
 
-This proposal suggest breaking the single `wix.dll` into three assemblies and layering the programmatic surface area of the WiX toolset as follows:
+This proposal suggests breaking the single `wix.dll` into three assemblies and layering the programmatic surface area of the WiX toolset as follows:
 
-1. data - WixToolset.Data.dll
-2. extensibility - WixToolset.Extensibility.dll
-3. processes - wix.dll
+* processes - wix.dll
+* extensibility - WixToolset.Extensibility.dll
+* data - WixToolset.Data.dll
 
-Objects in higher layers may access objects in lower layers but not vice versa. Thus the `WixToolset.Data.dll` must standalone but `WixToolset.Extensibility.dll` references the data assembly. This will help WiX developers from inadvertently creating improper dependencies up the layers.
+Objects in higher layers may access objects in lower layers but not vice versa. Thus the `WixToolset.Data.dll` must stand alone but `WixToolset.Extensibility.dll` references the data assembly. This will help WiX developers from inadvertently creating improper dependencies up the layers.
 
-Tools, such as candle and light, sit above the processes layer and can access all three assemblies. WiX extension assemblies sit above the extensibility layer and can access objects in WixToolset.Data.dll and WixToolset.Extensibility.dll.
+Tools, such as candle and light, sit above the processes layer and can access objects in all three assemblies. WiX extension assemblies sit above the extensibility layer and can access objects in WixToolset.Data.dll and WixToolset.Extensibility.dll but not wix.dll.
 
 ## Considerations
 
