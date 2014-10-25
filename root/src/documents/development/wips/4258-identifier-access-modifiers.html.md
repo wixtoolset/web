@@ -81,6 +81,8 @@ The Component/@Ids are protected and thus not accessible. The File/@Ids are gene
 
 ## Considerations
 
+Could use some character to separate the access modifier from the identifier such as `:` instead of the whitespace. However, the whitespace is easy to type, does not clutter the identifier and is similar to other languages.
+
 There is still the chance for collisions, even when the identifier is generated. Typically, this points to duplicate data and a bad situation. But it will be confusing that things with private identifiers collided. One option is to include more information from the private data into the hash of the identifier. The name of the .wxs file could be included but that won't prevent level "private". To do that, the Fragment location or something would have to be included, which would increase the chances of the identifier changing (thus breaking patching and, IIRC, minor upgrades).
 
 
