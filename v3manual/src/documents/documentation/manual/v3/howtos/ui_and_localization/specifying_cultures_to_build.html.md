@@ -51,7 +51,7 @@ field enter the semicolon list of cultures or culture groups you would like buil
 a .wxl file is not provided for a target culture. For example, to build an en-US
 installer and an ru-RU installer when only an ru-RU .wxl file is provided, specify
 en-US;ru-RU. Wix localization variables for the ru-RU installer will first come
-from the provided .wxl file, then referenced WiX exstensions (IE: WixUIExtension).
+from the provided .wxl file, then referenced WiX extensions (IE: WixUIExtension).
 Wix localization variables for the en-US installer will only come from referenced
 extensions.
 
