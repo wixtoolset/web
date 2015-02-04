@@ -1,0 +1,32 @@
+{
+ "id":  "v4.0.2603.0",
+ "downloadable":  true,
+ "date":  "2015-02-03",
+ "roots": [ "~"],
+ "files":
+ [
+  { "name" : "wix40.exe", "contentType" : "application/octet-stream", "size" : 757498, "title" : "WiX v4.0 Toolset install.", "promoted" : true },
+  { "name" : "data/browse.msi", "contentType" : "application/octet-stream", "size" : 339968 },
+  { "name" : "data/core.msi", "contentType" : "application/octet-stream", "size" : 61440 },
+  { "name" : "data/msdk.msi", "contentType" : "application/octet-stream", "size" : 57344 },
+  { "name" : "data/nsdk2010.msi", "contentType" : "application/octet-stream", "size" : 45056 },
+  { "name" : "data/nsdk2012.msi", "contentType" : "application/octet-stream", "size" : 45056 },
+  { "name" : "data/nsdk2013.msi", "contentType" : "application/octet-stream", "size" : 45056 },
+  { "name" : "data/nsdk2015.msi", "contentType" : "application/octet-stream", "size" : 45056 },
+  { "name" : "data/votive.msi", "contentType" : "application/octet-stream", "size" : 286720 },
+  { "name" : "data/wix64.msi", "contentType" : "application/octet-stream", "size" : 32768 },
+  { "name" : "data/browse.cab", "contentType" : "application/vnd.ms-cab-compressed", "size" : 913277 },
+  { "name" : "data/core1.cab", "contentType" : "application/vnd.ms-cab-compressed", "size" : 7870933 },
+  { "name" : "data/msdk1.cab", "contentType" : "application/vnd.ms-cab-compressed", "size" : 2206541 },
+  { "name" : "data/n20101.cab", "contentType" : "application/vnd.ms-cab-compressed", "size" : 2426821 },
+  { "name" : "data/n20121.cab", "contentType" : "application/vnd.ms-cab-compressed", "size" : 2902495 },
+  { "name" : "data/n20131.cab", "contentType" : "application/vnd.ms-cab-compressed", "size" : 2897669 },
+  { "name" : "data/n20151.cab", "contentType" : "application/vnd.ms-cab-compressed", "size" : 3259189 },
+  { "name" : "data/votiv1.cab", "contentType" : "application/vnd.ms-cab-compressed", "size" : 917755 },
+  { "name" : "data/wix641.cab", "contentType" : "application/vnd.ms-cab-compressed", "size" : 589 },
+  { "name" : "wix40-binaries.zip", "contentType" : "application/zip", "size" : 30415310, "title" : "WiX v4.0 binaries for situations where install cannot be used.", "protected" : true },
+  { "name" : "wix40-debug.zip", "contentType" : "application/zip", "size" : 53597678, "title" : "WiX v4.0 source and symbols for debugging purposes.", "protected" : true },
+  { "name" : "WixSettingsBrowser40.exe", "contentType" : "application/octet-stream", "size" : 1724287, "title" : "WiX v4.0 Toolset settings engine plus browser.", "protected" : true },
+  { "name" : "wix40-udms.zip", "contentType" : "application/zip", "size" : 58523, "title" : "WiX v4.0 settings definitions.", "protected" : true }
+ ]
+}
