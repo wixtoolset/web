@@ -17,41 +17,55 @@ draft: false
 
     <xs:element name="CloseWindowAction">
         <xs:annotation>
-            <xs:documentation>When the button is pressed, the WM_CLOSE message is sent to the window.</xs:documentation>
+            <xs:documentation>
+                When the button is pressed, the WM_CLOSE message is sent to the window.
+            </xs:documentation>
         </xs:annotation>
+        <xs:complexType>
+            <xs:attribute name="Condition" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                        The condition that determines if the parent control will execute this action.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
     </xs:element>
 
 2) Create a new `ChangePageAction` element.
 
     <xs:element name="ChangePageAction">
         <xs:annotation>
-            <xs:documentation>When the button is pressed, the specified page is shown.</xs:documentation>
-        </xs:annotation>
-        <xs:complexType>
-            <xs:attribute name="Page" type="xs:string">
-                <xs:annotation>
-                    <xs:documentation>The Name of the Page to show.</xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
-        </xs:complexType>
-    </xs:element>
-
-3) Create a new `PreviousPageAction` element.
-
-    <xs:element name="PreviousPageAction">
-        <xs:annotation>
-            <xs:documentation>When the button is pressed, the previous page is shown.</xs:documentation>
+            <xs:documentation>
+                When the button is pressed, the specified page is shown.
+            </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:attribute name="Cancel" type="YesNoType">
                 <xs:annotation>
-                    <xs:documentation>When set to 'yes', none of the variable changes made on the current page are saved.</xs:documentation>
+                    <xs:documentation>
+                        When set to 'yes', none of the variable changes made on the current page are saved.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="Condition" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                        The condition that determines if the parent control will execute this action.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="Page" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation>
+                        The Name of the Page to show.
+                    </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
         </xs:complexType>
     </xs:element>
 
-4) Create a new `BrowseDirectoryAction` element to designate that clicking the button calls SHBrowseForFolder and then saves the selection to a specific editbox.
+3) Create a new `BrowseDirectoryAction` element to designate that clicking the button calls `SHBrowseForFolder` and then saves the selection to a variable.
 
     <xs:element name="BrowseDirectoryAction">
         <xs:annotation>
@@ -60,9 +74,18 @@ draft: false
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
-            <xs:attribute name="Editbox" type="xs:string">
+            <xs:attribute name="Condition" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation>The Name of the Editbox to update when the user selects a directory from the dialog.</xs:documentation>
+                    <xs:documentation>
+                        The condition that determines if the parent control will execute this action.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="VariableName" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation>
+                        The name of the variable to update when the user selects a directory from the dialog.
+                    </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
         </xs:complexType>
@@ -107,7 +130,8 @@ to
 
     <Button Name="OptionsCancelButton" X="-11" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0">
         <Text>#(loc.OptionsCancelButton)</Text>
-        <PreviousPageAction Cancel="yes" />
+        <ChangePageAction Page="Modify" Condition="WixBundleInstalled" Cancel="yes" />
+        <ChangePageAction Page="Install" Cancel="yes" />
     </Button>
 
 4) `The WIXSTDBA_CONTROL_FOLDER_EDITBOX` and `WIXSTDBA_CONTROL_BROWSE_BUTTON` related code will be removed from WixStdBA.  In the theme file, it will change from
@@ -122,8 +146,13 @@ to
     <Editbox Name="InstallFolder" X="11" Y="143" Width="-91" Height="21" TabStop="yes" FontId="3" FileSystemAutoComplete="yes" />
     <Button Name="BrowseButton" X="-11" Y="142" Width="75" Height="23" TabStop="yes" FontId="3">
         <Text>#(loc.OptionsBrowseButton)</Text>
-        <BrowseDirectoryAction Editbox="InstallFolder" />
+        <BrowseDirectoryAction VariableName="InstallFolder" />
     </Button>
+
+
+## Considerations
+
+The original proposal had a `PreviousPageAction`.  With the `Condition` attribute added to the actions, that functionality can be done with the `ChangePageAction`.  
 
 
 ## See Also
