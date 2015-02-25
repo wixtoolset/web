@@ -152,7 +152,36 @@ to
 
 ## Considerations
 
-The original proposal had a `PreviousPageAction`.  With the `Condition` attribute added to the actions, that functionality can be done with the `ChangePageAction`.  
+The original proposal had a `PreviousPageAction`.
+With the `Condition` attribute added to the actions, that functionality can be done with the `ChangePageAction`.
+Also, implementing `PreviousPageAction` would be tricky.
+Let's look at dialog sequences where every page has a `< Back` button and a `Next >` button, where the `< Back` button would always performs the `PreviousPageAction` and the `Next >` button always performs the `ChangePageAction`.
+
+The first sequence starts with a Welcome page (`W`) that leads to an Install page (`I`).
+`I` has an Options button that leads to the Options page (`O`).
+Both buttons on `O` go to `I`.
+So the desired sequence is: (`>` is for `Next`/`ChangePageAction` and `<` is for `Back`/`PreviousPageAction`)
+
+    W > I > O < I < W
+
+Consider the naive implementation where every time thmutil performs a `ChangePageAction`, it keeps track of the old page.
+This would actually result in the sequence `W`>`I`>`O`<`I`<`O`, not what we wanted (here the `< Back` button on `I` could be changed to an unconditional `ChangePageAction`, but we could easily insert pages into the sequence that makes that impossible).
+
+Now consider the implementation where thmutil keeps a stack of pages, where the `ChangePageAction` pushes pages onto the stack and `PreviousPageAction` pops them off.
+This stack implementation provides our desired sequence.
+
+The second sequence builds on the first sequence by making the `Next >` button going to a second Options page (`S`).
+The `Next >` button on `S` leads to `I`.
+So the desired sequence is:
+
+    W > I > O > S > I < ???
+
+It's not clear what the desired sequence should be.
+On one hand, the last page the user saw was `S`.
+On the other hand, the sequence `I`>`O`>`S`>`I` was a closed loop so maybe we want the user to go through `O` again to get to `S`.
+Furthermore, pressing `< Back` on `I` leads to `W` in most scenarios; some users are confused when pressing the same button in different contexts performs different actions (with no visual difference between the contexts).
+
+The actual sequence for both the naive and stack implementation would be `W`>`I`>`O`>`S`>`I`<`S`, but it's pretty much guaranteed that someone would file a bug saying that the sequence should be `W`>`I`>`O`>`S`>`I`<`W`.
 
 
 ## See Also
