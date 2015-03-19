@@ -1,0 +1,12 @@
+{
+ "id":  "v3.10.0.1519",
+ "downloadable":  true,
+ "date":  "2015-03-19",
+ "roots": [ "~"],
+ "files":
+ [
+  { "name" : "wix310.exe", "contentType" : "application/octet-stream", "size" : 24828384, "title" : "WiX v3.10 Toolset install.", "promoted" : true },
+  { "name" : "wix310-binaries.zip", "contentType" : "application/zip", "size" : 29178315, "title" : "WiX v3.10 binaries for situations where install cannot be used.", "protected" : true },
+  { "name" : "wix310-debug.zip", "contentType" : "application/zip", "size" : 45383456, "title" : "WiX v3.10 source and symbols for debugging purposes.", "protected" : true }
+ ]
+}
