@@ -1,5 +1,5 @@
 ---
-wip: XXXX
+wip: 4719
 type: Feature
 author: Bob Arnson (bob@firegiant.com)
 title: Add conditional command-line arguments to bundle packages
@@ -34,4 +34,4 @@ draft: false
   
 ## See Also
 
-[Issue XXXX]()
+[Issue 4719](http://wixtoolset.org/issues/4719/)
