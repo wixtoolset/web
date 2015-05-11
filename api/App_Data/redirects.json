@@ -1,7 +1,7 @@
 {
   "/bugs" : "/issues/",
   "/releases" : "/releases/",
-  "/documentation/tutorial" : "http://wix.tramontana.co.hu/",
+  "/documentation/tutorial" : "https://www.firegiant.com/wix/tutorial/",
   "/documentation/book" : "http://www.packtpub.com/windows-installer-xml-3-6-developers-guide/book",
   "/documentation/stackoverflow" : "http://stackoverflow.com/questions/tagged/wix?sort=newest",
   "mailinglist.html" : "/documentation/mailinglist/",
