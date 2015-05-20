@@ -299,6 +299,7 @@ layout: documentation
       * [Class Element](xsd/wix/class.html)
       * [Column Element](xsd/wix/column.html)
       * [ComboBox Element](xsd/wix/combobox.html)
+      * [CommandLine Element](xsd/wix/commandline.html)
       * [ComplianceCheck Element](xsd/wix/compliancecheck.html)
       * [ComplianceDrive Element](xsd/wix/compliancedrive.html)
       * [Component Element](xsd/wix/component.html)

@@ -13,7 +13,7 @@ layout: documentation_xsd_main
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wix/exitcode.html">ExitCode</a> (min: 0, max: unbounded)</li><li><a href="../wix/payload.html">Payload</a> (min: 0, max: unbounded)</li><li><a href="../wix/payloadgroupref.html">PayloadGroupRef</a> (min: 0, max: unbounded)</li><li><a href="../wix/remotepayload.html">RemotePayload</a> (min: 0, max: unbounded)</li><li><span class="extension">Any Element (namespace='##other' processContents='Lax')                  Extensibility point in the WiX XML Schema.  Schema extensions can register additional                 elements at this point in the schema.  The extension's                 <code xmlns:html="http://www.w3.org/1999/xhtml"><nobr>CompilerExtension.ParseElement()</nobr></code>                 method will be called with the package identifier as the first value in                 <code xmlns:html="http://www.w3.org/1999/xhtml">contextValues</code>.             </span><ul><li><a href="../wix/exitcode.html">ExitCode</a></li><li><a href="../wix/payload.html">Payload</a></li><li><a href="../dependency/provides.html" class="extension">Provides</a></li><li><a href="../wix/remotepayload.html">RemotePayload</a></li></ul></li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wix/commandline.html">CommandLine</a> (min: 0, max: unbounded)</li><li><a href="../wix/exitcode.html">ExitCode</a> (min: 0, max: unbounded)</li><li><a href="../wix/payload.html">Payload</a> (min: 0, max: unbounded)</li><li><a href="../wix/payloadgroupref.html">PayloadGroupRef</a> (min: 0, max: unbounded)</li><li><a href="../wix/remotepayload.html">RemotePayload</a> (min: 0, max: unbounded)</li><li><span class="extension">Any Element (namespace='##other' processContents='Lax')                  Extensibility point in the WiX XML Schema.  Schema extensions can register additional                 elements at this point in the schema.  The extension's                 <code xmlns:html="http://www.w3.org/1999/xhtml"><nobr>CompilerExtension.ParseElement()</nobr></code>                 method will be called with the package identifier as the first value in                 <code xmlns:html="http://www.w3.org/1999/xhtml">contextValues</code>.             </span><ul><li><a href="../wix/exitcode.html">ExitCode</a></li><li><a href="../wix/payload.html">Payload</a></li><li><a href="../dependency/provides.html" class="extension">Provides</a></li><li><a href="../wix/remotepayload.html">RemotePayload</a></li></ul></li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -128,7 +128,7 @@ layout: documentation_xsd_main
       <tr>
         <td>RepairCommand</td>
         <td>String</td>
-        <td>             The command-line arguments to specify to indicate a repair. If the executable package can be repaired but             does not require any special command-line arguments to do so then set the attribute's value to blank.           </td>
+        <td>             The command-line arguments to specify to indicate a repair. If the executable package can be repaired but             does not require any special command-line arguments to do so then set the attribute's value to blank. To             indicate that the package does not support repair, omit this attribute.           </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
