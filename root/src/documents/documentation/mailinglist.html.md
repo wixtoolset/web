@@ -17,18 +17,18 @@ To subscribe click one of the "Join" links below and send the email or go to pre
 
 <h3 id="wix-users">WiX-users list</h3>
 
-Mailing list for questions/discussion about the Windows Installer XML toolset. This is the most active list and a great place to ask your questions
+Mailing list for questions/discussion about the WiX toolset. This is the most active list and a great place to ask your questions
 or lurk if you just want to learn.
 
-View the [wix-users archive on SourceForge](http://sourceforge.net/mailarchive/forum.php?forum_name=wix-users)
+View the [wix-users archive on WiX Toolset Lists](http://lists.wixtoolset.org/private.cgi/wix-users-wixtoolset.org/)
 
-[Join](mailto:wix-users-request@lists.sourceforge.net?subject=subscribe) | [Preferences](http://lists.sourceforge.net/mailman/listinfo/wix-users)
+[Join](mailto:wix-users-request@lists.wixtoolset.org?subject=subscribe) | [Unsubscribe](mailto:wix-users-unsubscribe@lists.wixtoolset.org?subject=unsubscribe) | [Preferences](http://lists.wixtoolset.org/listinfo.cgi/wix-users-wixtoolset.org)
 
 
 <h3 id="wix-devs">WiX-devs list</h3>
 
-Windows Installer XML toolset developer mailing list.
+WiX toolset developer mailing list.
 
-View the [wix-devs archive on SourceForge](http://sourceforge.net/mailarchive/forum.php?forum_name=wix-devs)
+View the [wix-devs archive on the WiX Toolset Lists](http://lists.wixtoolset.org/private.cgi/wix-devs-wixtoolset.org/)
 
-[Join](mailto:wix-devs-request@lists.sourceforge.net?subject=subscribe) | [Preferences](http://lists.sourceforge.net/mailman/listinfo/wix-devs)
+[Join](mailto:wix-devs-subscribe@lists.wixtoolset.org?subject=subscribe) | [Unsubscribe](mailto:wix-devs-unsubscribe@lists.wixtoolset.org?subject=unsubscribe) | [Preferences](http://lists.wixtoolset.org/listinfo.cgi/wix-devs-wixtoolset.org)

@@ -27,8 +27,8 @@ The official WiX toolset reference manual.
 
 ### [Mailing List](/documentation/mailinglist/)
 
-Mailing list for questions/discussion about the Windows Installer XML toolset. This is the most active list and a great place to ask your questions or lurk if you just want to learn.
+Mailing list for questions/discussion about the WiX toolset. This is the most active list and a great place to ask your questions or lurk if you just want to learn.
 
-View the [wix-users archive on SourceForge](http://sourceforge.net/mailarchive/forum.php?forum_name=wix-users) or [join](mailto:wix-users-request@lists.sourceforge.net?subject=subscribe).
+View the [wix-users archive on WiX Mailing Lists](http://lists.wixtoolset.org/private.cgi/wix-users-wixtoolset.org/) or [join](mailto:wix-users-subscribe@lists.wixtoolset.org?subject=subscribe).
 
 [v3]: /documentation/manual/v3/
