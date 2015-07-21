@@ -13,7 +13,7 @@ sidebarItems:
 
 ## About the WiX toolset
 
-WiX--the Windows Installer XML toolset--lets developers create installers for Windows Installer,
+The WiX toolset lets developers create installers for Windows Installer,
 the Windows installation engine.
 
 * The core of WiX is a set of build tools that build Windows Installer packages

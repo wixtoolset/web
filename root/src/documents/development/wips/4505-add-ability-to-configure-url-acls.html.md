@@ -23,7 +23,7 @@ and their API equivalents `HTTPSetServiceConfiguration` and `HTTPDeleteServiceCo
                   xmlns="http://wixtoolset.org/schemas/v4/wxs/http">
       <xs:annotation>
         <xs:documentation>
-          The source code schema for the Windows Installer XML Toolset Http Extension.
+          The source code schema for the WiX Toolset Http Extension.
         </xs:documentation>
       </xs:annotation>
 
