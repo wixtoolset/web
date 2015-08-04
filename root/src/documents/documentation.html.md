@@ -29,6 +29,6 @@ The official WiX toolset reference manual.
 
 Mailing list for questions/discussion about the WiX toolset. This is the most active list and a great place to ask your questions or lurk if you just want to learn.
 
-View the [wix-users archive on WiX Mailing Lists](http://lists.wixtoolset.org/private.cgi/wix-users-wixtoolset.org/) or [join](mailto:wix-users-subscribe@lists.wixtoolset.org?subject=subscribe).
+[Join](mailto:wix-users-subscribe@lists.wixtoolset.org?subject=subscribe) now.
 
 [v3]: /documentation/manual/v3/
