@@ -8,7 +8,7 @@ sidebarTitle: Additional information
 sidebarItems:
   - uri: http://www.outercurve.org/Resources/DevelopmentPractices#agreements
     text: Outercurve on Assignment Agreements
-  - uri: http://www.outercurve.org/Portals/0/docs/Outercurve%20Foundation%20Assignment%20Agreement%20%28editable%29.pdf
+  - uri: http://www.outercurve.org/assets/files/OutercurveFoundationAssignmentAgreement-editable.pdf
     text: Example Assignment Agreement
 ---
 
