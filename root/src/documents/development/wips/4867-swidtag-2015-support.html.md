@@ -18,7 +18,7 @@ There are three major changes in the latest relese of the specification:
 
 1. Streamlined XML Format. Previously, the specification avoided the use XML attributes in the SWID tag XML. The new specification utilitizes attributes to reduce the number of defined elements.
 
-2. Simplified Regids. Previously, the definition of Regids required the year and month the a domain name was registered (e.g. "regid.1995-08.com.example"). The new Regid
+2. Simplified Regids. Previously, the definition of Regids required the year and month the a domain name was registered (e.g. "regid.1995-08.com.example"). The new Regid format uses a simplified URI where "http://" and "www." are removed when possible.
 
 3. New Install Location. Previousy, SWID tags were installed in a folder under `CommonAppDataFolder` (for per-machine packages) or `LocalAppDataFolder` (for per-user packages). Now SWID tags are to be installed in a `swidtag` folder under the install location of the installation package.
 
@@ -45,7 +45,7 @@ To have a SWID Tag included in their product in WiX v3.10+, developers will need
 
 * It would be ideal if the SWID Tag extension could use `ARPINSTALLLOCATION` to avoid requiring the `InstallDirectory` attribute. Unfortunately, `ARPINSTALLLOCATION` is designed to be set via a custom action and ICEs prevent it from appearing the in the Directory table. That prevents its use as a parent for the "swidtag" Directory. In future versions of the WiX toolset, we could reevaluate the utility of the ICE and define `ARPINSTALLLOCATION` as a Directory.
 
-* Burn does not currently provide a mechanism like `ARPINSTALLLOCATION`. Definining such a mechanism could allow the WixTagExtension
+* Burn does not currently provide a mechanism like `ARPINSTALLLOCATION`. Definining such a mechanism could allow the WixTagExtension to automatically calculate the installation location for the SWID tag.
 
 ## See Also
 
