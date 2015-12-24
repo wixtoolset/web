@@ -110,16 +110,6 @@
     </ItemGroup>
   </Target>
 
-  <Target Name="IncorporateIssueTracker">
-    <ItemGroup>
-      <IssueTrackerFiles Include="issues\**">
-        <RelativeOutputFolder>issues\%(RecursiveDir)%(Filename)%(Extension)</RelativeOutputFolder>
-      </IssueTrackerFiles>
-
-      <PublishSource Include="@(IssueTrackerFiles)" />
-    </ItemGroup>
-  </Target>
-
   <Target Name="CopyToPublishFolder"
           Condition=" '@(PublishSource)'!='' ">
     <Copy SourceFiles='@(PublishSource)'
@@ -134,7 +124,7 @@
   </Target>
 
   <Target Name="Build"
-          DependsOnTargets="BuildRoot;BuildV3Manual;BuildApi;IncorporateIssueTracker;CopyToPublishFolder;BuildSitemap">
+          DependsOnTargets="BuildRoot;BuildV3Manual;BuildApi;CopyToPublishFolder;BuildSitemap">
   </Target>
 
   <Target Name="Clean">
@@ -204,43 +194,6 @@
         SkipUnchangedFiles='true' />
   </Target>
 
-
-  <!--
-  ================================================================================================
-  Push
-
-    Builds and uploads website.
-  ================================================================================================
-  -->
-  <Target Name="Push"
-          DependsOnTargets="CheckPassword;Build;Publish">
-  </Target>
-
-  <Target Name="Publish"
-          DependsOnTargets="CheckPassword;GetPublishFiles">
-    <Error Text="There are no files to publish. Consider doing a build first or just do -t:Push." Condition=" '@(PublishFiles)'=='' " />
-
-    <FtpUpload RemoteUri="ftp://ftp.wixtoolset.org/"
-           Username="$(Username)"
-           Password="$(Password)"
-           LocalFiles="@(PublishFiles)"
-           RemoteFiles="@(PublishFiles->'%(Uri)')" />
-  </Target>
-
-  <Target Name="GetPublishFiles">
-    <ItemGroup>
-      <_ThrowAwayCollection Include="$(PublishFolder)**"/>
-      <PublishFiles Include="@(_ThrowAwayCollection)">
-        <Uri>$([System.String]::Copy('%(_ThrowAwayCollection.RecursiveDir)').Replace('\','/'))%(Filename)%(Extension)</Uri>
-      </PublishFiles>
-    </ItemGroup>
-  </Target>
-
-
-  <Target Name="CheckPassword">
-    <Error Text="Must specify username property on the command-line using the -p:Username= property." Condition=" '$(username)'=='' " />
-    <Error Text="Must specify password property on the command-line using the -p:Password= property." Condition=" '$(password)'=='' " />
-  </Target>
 
   <Target Name="CheckCredentials">
     <Error Text="Must specify Azure storage account property on the command-line using the -p:StorageAccount= property." Condition=" '$(StorageAccount)'=='' " />
