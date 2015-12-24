@@ -1,0 +1,40 @@
+@functions
+{
+    string navlix(string title, string uri = null, string activeUri = null)
+    {
+        var under = Dynamic.Defined(Model.Document.Under) ? "/" + Model.Document.Under + "/" : Model.Document.RelativeUrl;
+
+        uri = String.IsNullOrEmpty(uri) ? "/" + title.ToLowerInvariant() + "/" : uri;
+        activeUri = String.IsNullOrEmpty(activeUri) ? "/" + under + "/" : activeUri;
+
+        var active = (uri.ToUpperInvariant() == activeUri.ToUpperInvariant()) ? " class='active'" : String.Empty;
+        return String.Format("<li{0}><a href='{1}'>{2}</a></li>", active, uri, title);
+    }
+}
+<div class="topbar">
+  <div class="fill">
+    <div class="container">
+      <a class="brand" href='/'><img src='//static.wixtoolset.org/assets/img/logo.png' alt='logo' width='16' height='16'> WiX Toolset</a>
+      <ul class="nav">
+        @navli("About")
+        @navli("News")
+        @navli("Bugs", "/issues/")
+        @navli("Documentation")
+        @navli("Releases")
+        @navli("Development")
+      </ul>
+      <form id="sform" class="pull-right" action='/search' method='get' type='search'>
+        <input id="q" name='q' placeholder='search this site' size='15' type='text' value=''>
+      </form>
+    </div>
+  </div>
+</div>
+@helper navli(string title, string uri = null, string activeUri = null)
+{
+    var under = Dynamic.Defined(Model.Document.Under) ? "/" + Model.Document.Under + "/" : Model.Document.RelativeUrl;
+
+    uri = String.IsNullOrEmpty(uri) ? "/" + title.ToLowerInvariant() + "/" : uri;
+    activeUri = String.IsNullOrEmpty(activeUri) ? "/" + under + "/" : activeUri;
+
+    var active = (uri.ToUpperInvariant() == activeUri.ToUpperInvariant()) ? "active" : null;
+<li class="@active"><a href="@uri">@title</a></li>}

@@ -1,0 +1,17 @@
+{
+"url" : "/",
+"rooturl" : "http://wixtoolset.org/",
+
+"author" : {
+  "id" : "wix",
+  "name" : "WiX Toolset",
+  "email" : "wix@wixtoolset.org",
+  "url" : "http://wixtoolset.org/"
+},
+
+"defaultLayoutForExtension" : {
+  "html" : "master"
+  },
+
+"title" : "WiX Toolset"
+}

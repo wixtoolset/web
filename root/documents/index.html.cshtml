@@ -1,0 +1,65 @@
+---
+title: WiX Toolset
+layout: master
+---
+
+<div class="hero-unit">
+  <div class="hero-unit-logo">
+    <img alt="logo" src="//static.wixtoolset.org/assets/img/logo_framed.png">
+  </div>
+  <div>
+    <h1>WiX Toolset</h1>
+    <p>The most powerful set of tools available to create your Windows installation experience. Free and Open Source since 2004!</p>
+    <p><a class="btn primary large" href="/releases/v3.10/stable">WiX v3.10.1 released! Download &raquo;</a></p>
+  </div>
+</div>
+<div class="row">
+  <div class="span4">
+    <h2>About</h2>
+    <p>The WiX toolset builds Windows installation packages from XML source code. The toolset integrates seamlessly into build processes.</p>
+    <p><a class="btn" href="/about/">Learn more</a></p>
+  </div>
+  <div class="span4">
+    <h2>Bugs</h2>
+    <p>If you find a bug, let us know so we can fix it.
+    <p><a class="btn error" href="/bugs/">File a bug &rarr;</a></p>
+  </div>
+  <div class="span4">
+    <h2>Documentation</h2>
+    <p>There are lots of ways to learn about the WiX toolset. You can:</p>
+    <ul>
+      <li><a href="/documentation/mailinglist/">Ask a question &rarr;</a></li>
+      <li><a href="/documentation/manual/">Read the manual &rarr;</a></li>
+      <li><a href="/documentation/tutorial/">Browse the tutorial &rarr;</a></li>
+      <li><a href="/documentation/book/">Buy the book &rarr;</a></li>
+    </ul>
+  </div>
+  <div class="span4">
+    <h2>Download</h2>
+    <p>You can download the WiX toolset for free.</p>
+    <p><a class="btn primary" href="/releases/">See the latest releases</a></p>
+  <div>
+</div>
+<div class="row second">
+    <div class="span12">
+      <h2>Recent news</h2>
+@*
+      each item in getCollection('news').toJSON().slice(0,3)
+        .news-item
+          h3= item.title
+          p= prettyFormatDate(item.date)
+          p!= item.contentRendered
+*@
+      <p><a class="btn" href="/news/">All news &raquo;</a>
+    </div>
+    <div class="span4">
+        <h3>Other sources of news</h3>
+        <p>The following blogs may have additional news about the progress of the WiX toolset:</p>
+        <ul>
+          <li><a href='http://robmensching.com/blog/'>Rob Mensching</a></li>
+          <li><a href='http://www.joyofsetup.com/'>Bob Arnson</a></li>
+          <li><a href='http://blogs.msdn.com/heaths/'>Heath Stewart</a></li>
+          <li><a href='https://www.firegiant.com/blog/'>FireGiant</a></li>
+        </ul>
+    </div>
+</div>

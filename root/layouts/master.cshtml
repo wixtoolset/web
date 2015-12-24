@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  @Include("header.cshtml")
+  </head>
+  <body>
+  @Include("topbar.cshtml")
+
+  <div class="container">
+    <div class="content">
+    @Raw(Model.Document.Content)
+    </div>
+  </div>
+
+  @Include("footer.cshtml")
+  </body>
+</html>
