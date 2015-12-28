@@ -1,15 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
   <head>
   @Include("header.cshtml")
   </head>
   <body>
   @Include("topbar.cshtml")
 
-  <div class="container">
-    <div class="content">
-    @Raw(Model.Document.Content)
+  <!-- START #fh5co-hero -->
+  <aside id="fh5co-hero" style="background-image: url(/display/images/hero4.jpg);">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="fh5co-hero-wrap">
+                <div class="fh5co-hero-intro">
+                        <h2>The most powerful set of tools available to create your Windows installation experience.</h2>
+                        <h1>WiX Toolset</h1>
+                </div>
+            </div>
+        </div>
+      </div>
     </div>
+  </aside>
+
+  <div id="fh5co-main">
+    @Raw(Model.Document.Content)
   </div>
 
   @Include("footer.cshtml")

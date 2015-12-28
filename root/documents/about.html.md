@@ -4,11 +4,10 @@ subtitle: the WiX toolset
 keywords: wix toolset,wix
 layout: secondary
 sidebarTitle: Additional information
-sidebarItems:
-  - uri: /about/governance/
-    text: Governance Document
-  - uri: /about/license/
-    text: WiX Toolset's License
+sidebarItems: [
+  { uri: "/about/governance/", text: "Governance Document" },
+  { uri: "/about/license/",  text: "WiX Toolset's License" },
+]
 ---
 
 ## About the WiX toolset

@@ -1,9 +1,10 @@
 ---
 title: WiX Toolset
 layout: master
+news?: query data descending date take 3 where sourceRelativePath startswith "data\news"
 ---
 
-<div class="hero-unit">
+@*<div class="hero-unit">
   <div class="hero-unit-logo">
     <img alt="logo" src="//static.wixtoolset.org/assets/img/logo_framed.png">
   </div>
@@ -12,7 +13,60 @@ layout: master
     <p>The most powerful set of tools available to create your Windows installation experience. Free and Open Source since 2004!</p>
     <p><a class="btn primary large" href="/releases/v3.10/stable">WiX v3.10.1 released! Download &raquo;</a></p>
   </div>
+</div> *@
+
+<section id="fh5co-feature">
+<div class="container">
+    <!-- FEATURE -->
+    <div class="row fh5co-feature-2">
+
+        <!--<h2 class="fh5co-uppercase-heading-sm text-center">Theme Features</h2>
+        <div class="fh5co-spacer fh5co-spacer-md"></div>-->
+
+
+        <a href="/about/">
+        <div class="col-md-3 col-sm-6 fh5co-feature-item">
+            <span class="fh5co-feature-icon fh5co-circle"><i class="ti-gift"></i></span>
+            <h3 class="text-center fh5co-feature-title h4 text-uppercase">About</h3>
+            <p class="text-center fh5co-feature-description">The WiX toolset integrates seamlessly into build processes to builds Windows installation packages .</p>
+            <!--<p class="text-center"><a href="/about/" class="btn btn-primary btn-sm">Learn more</a></p>-->
+        </div>
+        </a>
+        <div class="col-md-3 col-sm-6 fh5co-feature-item">
+            <span class="fh5co-feature-icon fh5co-circle"><i class="ti-mobile"></i></span>
+            <h3 class="text-center fh5co-feature-title h4 text-uppercase">Bugs</h3>
+            <p class="text-center fh5co-feature-description">If you find a bug, let us know so we can fix it.</p>
+            <p class="text-center"><a href="/bugs/" class="btn btn-primary btn-sm">File a bug &rarr;</a></p>
+        </div>
+
+        <div class="clearfix visible-sm-block"></div>
+
+        <div class="col-md-3 col-sm-6 fh5co-feature-item">
+            <span class="fh5co-feature-icon fh5co-circle"><i class="ti-pie-chart"></i></span>
+            <h3 class="text-center fh5co-feature-title h4 text-uppercase">Documentation</h3>
+            <p class="text-center fh5co-feature-description">There are lots of ways to learn about the WiX toolset. You can:</p>
+@*            <ul>
+            <li><a href="/documentation/mailinglist/">Ask a question &rarr;</a></li>
+            <li><a href="/documentation/manual/">Read the manual &rarr;</a></li>
+            <li><a href="/documentation/tutorial/">Browse the tutorial &rarr;</a></li>
+            <li><a href="/documentation/book/">Buy the book &rarr;</a></li>
+            </ul>*@
+            @* <p class="text-center"><a href="#" class="btn btn-primary btn-sm">Read more</a></p> *@
+        </div>
+        <div class="col-md-3 col-sm-6 fh5co-feature-item">
+            <span class="fh5co-feature-icon fh5co-circle"><i class="ti-wallet"></i></span>
+            <h3 class="text-center fh5co-feature-title h4 text-uppercase">Download</h3>
+            <p class="text-center fh5co-feature-description">You can download the WiX toolset for free.</p>
+            <p class="text-center"><a href="/releases/" class="btn btn-primary btn-sm">Latest releases</a></p>
+        </div>
+
+        <!-- <div class="fh5co-spacer fh5co-spacer-md"></div> -->
+
+    </div>
 </div>
+</section>
+
+
 <div class="row">
   <div class="span4">
     <h2>About</h2>
@@ -43,6 +97,14 @@ layout: master
 <div class="row second">
     <div class="span12">
       <h2>Recent news</h2>
+      @foreach (var item in Model.Document.News) {
+      <div class="news-item">
+        <h3>@Raw(item.Title)</h3>
+        <p>@item.Date</p>
+        <p>@Raw(item.Content)</p>
+      </div>
+      }
+
 @*
       each item in getCollection('news').toJSON().slice(0,3)
         .news-item
