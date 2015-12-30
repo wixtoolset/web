@@ -1,0 +1,33 @@
+---
+title: News
+subtitle: for the WiX toolset
+layout: master_noimage
+news?: query data descending date where sourceRelativePath startswith "data\news"
+sidebarTitle: Other sources of news
+sidebarSubtitle: The following blogs may have additional news about the progress of the WiX toolset:
+sidebarItems: [
+  { uri: "http://robmensching.com/blog/",
+    text: "Rob Mensching" },
+  { uri: "http://www.joyofsetup.com/",
+    text: "Bob Arnson" },
+  { uri: "http://blogs.msdn.com/heaths/",
+    text: "Heath Stewart" },
+  { uri: "https://www.firegiant.com/blog/",
+    text: "FireGiant's Setup Matters" }
+]
+---
+
+<div class="row fh5co-feature-1">
+  <div class="col-md-12 fh5co-feature-blurb">
+    <ul>
+    @foreach (var item in Model.Document.News) {
+    <li>
+    <div class="f5hco-feature-blurb-text">
+        <h3 class="fh5co-feature-blurb-title h4">@Raw(item.Title)</h3>
+        <p class="fh5co-feature-blurb-description">@Raw(item.Content)</p>
+    </div>
+    </li>
+    }
+    </ul>
+  </div>
+</div>
