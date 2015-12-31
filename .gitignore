@@ -9,6 +9,7 @@ root/src/layouts/
 v3manual/src/layouts/
 
 .docpad.db
+site.lastrun
 *.suo
 *.user
 
