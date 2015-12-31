@@ -37,10 +37,10 @@
             <h3>@Model.Document.SidebarTitle</h3>
             <p>@Model.Document.SidebarSubtitle</p>
             <ul>
-              <li><a href='http://robmensching.com/blog/'>Rob Mensching</a></li>
-              <li><a href='http://www.joyofsetup.com/'>Bob Arnson</a></li>
-              <li><a href='http://blogs.msdn.com/heaths/'>Heath Stewart</a></li>
-              <li><a href='https://www.firegiant.com/blog/'>FireGiant</a></li>
+            @foreach (var item in @Model.Document.SidebarItems)
+            {
+              <li><a href="@item.Uri">@item.Text</a></li>
+            }
             </ul>
           </aside>
         </div>
