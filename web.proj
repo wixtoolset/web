@@ -104,7 +104,7 @@
         <RelativeOutputFolder>bin\</RelativeOutputFolder>
       </PublishSource>
       <PublishSource Include="api\web.config" />
-      <PublishSource Include="api\bin\$(Configuration)\App_Data\redirects.json">
+      <PublishSource Include="api\bin\$(Configuration)\App_Data\*.json">
         <RelativeOutputFolder>App_Data\</RelativeOutputFolder>
       </PublishSource>
     </ItemGroup>

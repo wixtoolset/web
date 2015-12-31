@@ -27,7 +27,7 @@
 
         public Status Get()
         {
-            List<Redirect> redirects = RedirectHandler.ReadRedirects();
+            List<Redirect> redirects = this.ReadRedirects();
 
             var req = this.Request.Url.AbsolutePath.TrimEnd('/').ToLowerInvariant();
 
@@ -38,13 +38,13 @@
             return permanent ? Status.MovedPermanentlyTo(redirect.To) : Status.FoundAt(redirect.To);
         }
 
-        private static List<Redirect> ReadRedirects()
+        private List<Redirect> ReadRedirects()
         {
             if (RedirectHandler.Redirects == null)
             {
                 var path = WebConfigurationManager.AppSettings["redirects"] ?? "~/App_Data/redirects.json";
 
-                path = Container.Current.Resolve<IServerUtility>().MapPath(path);
+                path = this.ServerUtility.MapPath(path);
 
                 var redirects = new List<Redirect>();
 

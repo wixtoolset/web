@@ -1,9 +1,13 @@
 ﻿namespace WixToolset.Web.Api.Handlers
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using System.Web.Configuration;
     using NLog;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
     using TinyWebStack;
     using WixToolset.Web.Api.Models;
     using WixToolset.Web.Api.Utilities;
@@ -13,6 +17,8 @@
     {
         private static Logger logger = LogManager.GetLogger("dl");
         private static WebUserService UserService = new WebUserService();
+
+        private static Dictionary<string, string> ReleaseRedirects;
 
         public string DownloadPath { private get; set; }
 
@@ -58,15 +64,7 @@
             string redirect = null;
             try
             {
-                string jsonPath = String.Format(Configuration.ReleasesDataFileFormat, version.PrefixedDashed);
-                jsonPath = this.ServerUtility.MapPath(jsonPath);
-
-                if (File.Exists(jsonPath))
-                {
-                    Release release = Release.Load(jsonPath);
-                    ReleaseFile releaseFile = release.Files.Where(f => f.Name.Equals(file, StringComparison.OrdinalIgnoreCase)).Single();
-                    redirect = releaseFile.Redirect;
-                }
+                redirect = this.RedirectedRelease(version.Prefixed, file);
             }
             catch
             {
@@ -83,6 +81,30 @@
             }
 
             return Status.FoundAt(redirect);
+        }
+
+        private string RedirectedRelease(string version, string file)
+        {
+            var key = String.Concat(version, "/", file).ToLowerInvariant();
+
+            if (DownloadsHandler.ReleaseRedirects == null)
+            {
+                var path = WebConfigurationManager.AppSettings["releases"] ?? "~/App_Data/releases.json";
+
+                path = this.ServerUtility.MapPath(path);
+
+                using (var reader = File.OpenText(path))
+                using (var json = new JsonTextReader(reader))
+                {
+                    var serializer = new JsonSerializer();
+                    serializer.Converters.Add(new IsoDateTimeConverter());
+
+                    DownloadsHandler.ReleaseRedirects = serializer.Deserialize<Dictionary<string, string>>(json);
+                }
+            }
+
+            string redirect = null;
+            return DownloadsHandler.ReleaseRedirects.TryGetValue(key, out redirect) ? redirect : null;
         }
     }
 }
