@@ -2,33 +2,32 @@
 <Project InitialTargets="PackageRestore" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
 
   <UsingTask AssemblyFile="$(AzureStorageBuildTasksPath)FireGiant.BuildTasks.AzureStorage.dll" TaskName="DownloadBlobs" />
-  <UsingTask AssemblyFile="$(MSBuildCommunityTasksPath)MSBuild.Community.Tasks.dll" TaskName="FtpUpload" />
   <UsingTask AssemblyFile="$(MSBuildCommunityTasksPath)MSBuild.Community.Tasks.dll" TaskName="Unzip" />
 
   <PropertyGroup>
     <ProjectFolder>$(MSBuildThisFileDirectory)</ProjectFolder>
     <Configuration>Release</Configuration>
 
-    <NpmPackageFolder>$(ProjectFolder)node_modules\</NpmPackageFolder>
+    <TinySiteExe>$(ProjectFolder)tools\tinysite\tinysite.exe</TinySiteExe>
     <NugetPackageFolder>$(ProjectFolder)packages\</NugetPackageFolder>
 
     <CommonFolder>$(ProjectFolder)common\</CommonFolder>
 
+    <BuildFolder>$(OutputFolder)</BuildFolder>
+    <BuildFolder Condition="'$(BuildFolder)' == '' ">$(ProjectFolder)build\</BuildFolder>
+    <BuildFolder Condition="'$(BuildFolder)' != '' and !HasTrailingSlash('$(BuildFolder)')">$(BuildFolder)\</BuildFolder>
+
     <WebRootFolder>$(ProjectFolder)root\</WebRootFolder>
-    <WebRootSourceFolder>$(WebRootFolder)src\</WebRootSourceFolder>
-    <WebRootOutputFolder>$(WebRootFolder)out\</WebRootOutputFolder>
+    <WebRootSourceFolder>$(WebRootFolder)</WebRootSourceFolder>
+    <WebRootOutputFolder>$(BuildFolder)obj\root\</WebRootOutputFolder>
 
     <WebV3ManualFolder>$(ProjectFolder)v3manual\</WebV3ManualFolder>
-    <WebV3ManualSourceFolder>$(WebV3ManualFolder)src\</WebV3ManualSourceFolder>
-    <WebV3ManualOutputFolder>$(WebV3ManualFolder)out\</WebV3ManualOutputFolder>
+    <WebV3ManualSourceFolder>$(WebV3ManualFolder)</WebV3ManualSourceFolder>
+    <WebV3ManualOutputFolder>$(BuildFolder)obj\v3manual\</WebV3ManualOutputFolder>
 
     <WebV4ManualFolder>$(ProjectFolder)v4manual\</WebV4ManualFolder>
-    <WebV4ManualSourceFolder>$(WebV4ManualFolder)src\</WebV4ManualSourceFolder>
-    <WebV4ManualOutputFolder>$(WebV4ManualFolder)out\</WebV4ManualOutputFolder>
-
-    <BuildFolder>$(OutputFolder)</BuildFolder>
-    <BuildFolder Condition="'$(BuildFolder)' == '' ">$(ProjectRoot)build\</BuildFolder>
-    <BuildFolder Condition="'$(BuildFolder)' != '' and !HasTrailingSlash('$(BuildFolder)')">$(BuildFolder)\</BuildFolder>
+    <WebV4ManualSourceFolder>$(WebV4ManualFolder)</WebV4ManualSourceFolder>
+    <WebV4ManualOutputFolder>$(BuildFolder)obj\v4manual\</WebV4ManualOutputFolder>
 
     <DownloadFolder>$(BuildFolder)dl\</DownloadFolder>
     <PublishFolder>$(BuildFolder)publish\</PublishFolder>
@@ -40,8 +39,7 @@
 
   <Target Name="GetRootInputsOutputs">
     <ItemGroup>
-      <RootInput Include="@(CommonFiles)" />
-      <RootInput Include="$(WebRootFolder)docpad.coffee" />
+      <!--<RootInput Include="@(CommonFiles)" />-->
       <RootInput Include="$(WebRootSourceFolder)**" />
       <RootOutput Include="$(WebRootOutputFolder)**" />
       <RootOutput Include="$(WebRootOutputFolder)" Condition=" '@(RootOutput)'=='' " />
@@ -52,17 +50,15 @@
           Inputs="@(RootInput)"
           Outputs="@(RootOutput)"
           DependsOnTargets="GetRootInputsOutputs">
-    <Copy SourceFiles="@(CommonFiles)"
+    <!--<Copy SourceFiles="@(CommonFiles)"
           DestinationFiles="@(CommonFiles->'$(WebRootSourceFolder)%(RecursiveDir)%(Filename)%(Extension)')"
-          SkipUnchangedFiles="true" UseHardlinksIfPossible="true" />
+          SkipUnchangedFiles="true" UseHardlinksIfPossible="true" />-->
 
-    <Exec Command="node $(ProjectFolder)node_modules\docpad\bin\docpad generate --env static"
+    <Exec Command='"$(TinySiteExe)" render -out "$(WebRootOutputFolder)."'
           WorkingDirectory="$(WebRootFolder)" />
 
     <ItemGroup>
-      <!-- We're using cleanurls on this project so only grab the index.html files but skip the individual news items -->
-      <PublishSource Include="$(WebRootOutputFolder)**\index.html" Exclude="$(WebRootOutputFolder)news\*\index.html" />
-      <PublishSource Include="$(WebRootOutputFolder)**" Exclude="$(WebRootOutputFolder)**\*.html" />
+      <PublishSource Include="$(WebRootOutputFolder)**" />
     </ItemGroup>
   </Target>
 
@@ -84,11 +80,10 @@
           DestinationFiles="@(CommonFiles->'$(WebV3ManualSourceFolder)%(RecursiveDir)%(Filename)%(Extension)')"
           SkipUnchangedFiles="true" UseHardlinksIfPossible="true" />
 
-    <Exec Command="node $(ProjectFolder)node_modules\docpad\bin\docpad generate --env static"
+    <Exec Command='"$(TinySiteExe)" render -out "$(WebV3ManualOutputFolder)."'
           WorkingDirectory="$(WebV3ManualFolder)" />
 
     <ItemGroup>
-      <!-- The manual is not designed to use cleanurls so grab everything -->
       <PublishSource Include="$(WebV3ManualOutputFolder)**" />
     </ItemGroup>
   </Target>
@@ -170,11 +165,8 @@
         <OutputFolder>$(WebV4ManualSourceFolder)\documents\documentation\manual\v4</OutputFolder>
       </ManualZip>
 
-      <ReleaseMetadataFile Include="$(DownloadFolder)**\*.json">
-        <OutputFolder>$(WebRootSourceFolder)\documents\App_Data\releases\info\</OutputFolder>
-      </ReleaseMetadataFile>
       <ReleaseMetadataFile Include="$(DownloadFolder)**\*.md">
-        <OutputFolder>$(WebRootSourceFolder)\documents\releases\</OutputFolder>
+        <OutputFolder>$(WebRootSourceFolder)\data\releases\</OutputFolder>
       </ReleaseMetadataFile>
     </ItemGroup>
   </Target>

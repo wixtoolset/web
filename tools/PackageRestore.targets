@@ -27,7 +27,7 @@
   ================================================================================================
   -->
   <Target Name="PackageRestore"
-          DependsOnTargets="NpmPackageRestore;NugetPackageRestore" />
+          DependsOnTargets="NugetPackageRestore" />
 
   <!-- Nuget Package Restore -->
   <ItemGroup>
@@ -57,23 +57,6 @@
 
     <Exec Command="&quot;$(NugetExe)&quot; install %(Identity) -Version %(Version)" Condition=" '@(MissingNugetPackage)'!='' "
           WorkingDirectory="$(MSBuildThisFileDirectory)" />
-  </Target>
-
-  <!-- Npm Package Restore -->
-  <ItemGroup>
-    <RestoreNpmPackage Include="docpad" />
-    <RestoreNpmPackage Include="docpad-plugin-cleanurls" />
-    <RestoreNpmPackage Include="docpad-plugin-jade" />
-    <RestoreNpmPackage Include="docpad-plugin-marked" />
-    <RestoreNpmPackage Include="docpad-plugin-sitemap" />
-    <RestoreNpmPackage Include="docpad-plugin-stylus" />
-  </ItemGroup>
-  <Target Name="NpmPackageRestore"
-          Condition=" @(RestoreNpmPackage)!='' "
-          Inputs="$(NpmPackageFolder)%(RestoreNpmPackage.Identity)"
-          Outputs="$(NpmPackageFolder)%(Identity)">
-    <Exec Command="npm install"
-          WorkingDirectory="$(ProjectFolder)" />
   </Target>
 
   <!-- Sentinel value that indicates Nuget.targets has been initialized. -->
