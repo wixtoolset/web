@@ -1,0 +1,6 @@
+---
+title: WiX Toolset v4.0
+version: v4.0
+releases?: query documents where sourceRelativePath startswith "documents\releases\v4-0" descending builddate
+layout: appsyn
+---
