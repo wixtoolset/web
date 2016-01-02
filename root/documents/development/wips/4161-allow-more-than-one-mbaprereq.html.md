@@ -1,7 +1,7 @@
 ---
 wip: 4161
 type: Feature
-author: r.sean.hall at gmail dot com
+by: r.sean.hall at gmail dot com
 title: Allow More Than One MBA Prerequisite
 draft: false
 ---

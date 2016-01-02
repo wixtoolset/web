@@ -1,7 +1,7 @@
 ---
 wip: 4278
 type: Feature
-author: Heath Stewart (heaths at microsoft.com)
+by: Heath Stewart (heaths at microsoft.com)
 title: Allow administrators and users to redefine the payload cache locations
 ---
 

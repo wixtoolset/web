@@ -1,7 +1,7 @@
 ---
 wip: 4773
 type: Feature
-author: Sean Hall (r sean hall at gmail.com)
+by: Sean Hall (r sean hall at gmail.com)
 title: Modify Burn API
 draft: false
 ---
@@ -10,7 +10,7 @@ draft: false
 
 * As a WiX Developer I can add methods (or add parameters to methods) to the Burn API such that WiX Users can continue to compile their custom Bootstrapper Application after upgrading the WiX Toolset without making any changes (adding methods and adding parameters are never breaking changes).
 
-* As a WiX User I can use my compiled custom Bootstrapper Application with any later version of the WiX Toolset with the same major version (the Burn API will maintain binary compatibility).  
+* As a WiX User I can use my compiled custom Bootstrapper Application with any later version of the WiX Toolset with the same major version (the Burn API will maintain binary compatibility).
 
 
 ## Background

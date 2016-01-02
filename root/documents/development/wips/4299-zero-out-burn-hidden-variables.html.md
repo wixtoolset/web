@@ -1,7 +1,7 @@
 ---
 wip: 4299
 type: Feature
-author: Sean Hall (r.sean.hall at gmail.com)
+by: Sean Hall (r.sean.hall at gmail.com)
 title: Improve Security for Hidden Burn Variables
 ---
 

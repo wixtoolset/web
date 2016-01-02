@@ -1,7 +1,7 @@
 ---
 wip: # from issue tracker goes here
 type: Process | Feature (pick one)
-author: Your Name (email at address.com)
+by: Your Name (email at address.com)
 title: Template WiX Improvement Proposal
 draft: true
 ---

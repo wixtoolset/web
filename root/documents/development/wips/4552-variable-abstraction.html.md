@@ -1,7 +1,7 @@
 ---
 wip: 4552
 type: Feature
-author: Sean Hall (rseanhall at gmail.com)
+by: Sean Hall (rseanhall at gmail.com)
 title: Variable Abstraction
 draft: false
 ---

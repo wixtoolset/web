@@ -1,7 +1,7 @@
 ---
 wip: 4505
 type: Feature
-author: r.sean.hall at gmail dot com
+by: r.sean.hall at gmail dot com
 title: Add ability to configure URL ACLs
 draft: false
 ---

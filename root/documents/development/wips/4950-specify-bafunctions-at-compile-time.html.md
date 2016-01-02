@@ -1,7 +1,7 @@
 ---
 wip: 4950
 type: Feature
-author: Sean Hall (r sean hall at gmail.com)
+by: Sean Hall (r sean hall at gmail.com)
 title: Specify BAFunctions At Compile Time
 draft: false
 ---

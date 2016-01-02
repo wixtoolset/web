@@ -1,7 +1,7 @@
 ---
 wip: 4707
 type: Feature
-author: Michael G. Carlson (mike at firegiant.com)
+by: Michael G. Carlson (mike at firegiant.com)
 title: Replace Win64 Attribute with Always32Bit Attribute
 draft: false
 ---

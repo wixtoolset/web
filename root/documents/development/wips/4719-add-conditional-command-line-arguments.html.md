@@ -1,7 +1,7 @@
 ---
 wip: 4719
 type: Feature
-author: Bob Arnson (bob@firegiant.com)
+by: Bob Arnson (bob@firegiant.com)
 title: Add conditional command-line arguments to bundle packages
 draft: false
 ---
@@ -34,7 +34,7 @@ draft: false
   1. ~~Add the CommandLine element to all package types.~~
     * ~~Do we care someone could pass arguments that aren't NAME=VALUE? Should we check and block?~~
   1. @rseanhall discovered the manifest MsiProperty/@RollbackValue attribute that isn't exposed in the WiX schema. Should we expose that via this change?
-  
+
 ## See Also
 
 [Issue 4719](http://wixtoolset.org/issues/4719/)

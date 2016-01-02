@@ -1,7 +1,7 @@
 ---
 wip: 4337
 type: Feature
-author: Eric Schultz (eschultz at outercurve.org)
+by: Eric Schultz (eschultz at outercurve.org)
 title: Support VSTO projects in the Votive Add Reference dialog
 draft: true
 ---

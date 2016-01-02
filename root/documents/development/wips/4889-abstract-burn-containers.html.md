@@ -1,7 +1,7 @@
 ---
 wip: 4889
 type: Feature
-author: Bob Arnson (bob@joyofsetup.com)
+by: Bob Arnson (bob@joyofsetup.com)
 title: Abstract Burn containers
 ---
 

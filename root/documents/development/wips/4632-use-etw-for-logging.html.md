@@ -1,7 +1,7 @@
 ---
 wip: 4632
 type: Feature
-author: Heath Stewart (heaths@microsoft.com)
+by: Heath Stewart (heaths@microsoft.com)
 title: Use ETW for Logging
 ---
 

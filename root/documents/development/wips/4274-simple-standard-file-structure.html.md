@@ -1,7 +1,7 @@
 ---
 wip: 4274
 type: Feature
-author: Rob Mensching (rob at firegiant.com)
+by: Rob Mensching (rob at firegiant.com)
 title: Simple Standard File Structure
 ---
 

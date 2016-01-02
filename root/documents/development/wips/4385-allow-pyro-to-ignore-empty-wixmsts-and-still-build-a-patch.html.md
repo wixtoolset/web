@@ -1,7 +1,7 @@
 ---
 wip: 4385
 type: Feature
-author: Sam Slutzky (samuels at microsoft.com)
+by: Sam Slutzky (samuels at microsoft.com)
 title: Allow Pyro to Ignore Empty Wixmsts and Still Build a Patch
 draft: true
 ---

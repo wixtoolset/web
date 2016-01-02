@@ -1,7 +1,7 @@
 ---
 wip: 3249
 type: Feature
-author: r.sean.hall at gmail dot com
+by: r.sean.hall at gmail dot com
 title: Allow BA to Run Elevated Async Process Through the Engine
 draft: false
 ---
@@ -42,17 +42,17 @@ If dwWaitForInputIdleTimeout is not zero, the engine will call WaitForInputIdle 
 Finally, it will return the process id from the new `IBootstrapperApplication` method:
 
     // OnLaunchApprovedExeBegin - called before trying to launch the preapproved executable.
-    // 
+    //
     STDMETHOD_(int, OnLaunchApprovedExeBegin)() = 0;
-        
+
     // OnLaunchApprovedExeComplete - called after trying to launch the preapproved executable.
     //
-    // Parameters: 
-    //  dwProcessId is only valid if the operation succeeded. 
-    // 
-    STDMETHOD_(void, OnLaunchApprovedExeComplete)( 
-        __in HRESULT hrStatus, 
-        __in DWORD dwProcessId 
+    // Parameters:
+    //  dwProcessId is only valid if the operation succeeded.
+    //
+    STDMETHOD_(void, OnLaunchApprovedExeComplete)(
+        __in HRESULT hrStatus,
+        __in DWORD dwProcessId
         ) = 0;
 
 In order to get an .exe approved to be run elevated, add a new element `ApprovedExeForElevation`.  This element is a child of `Bundle`, and can occur 0-unbounded times.

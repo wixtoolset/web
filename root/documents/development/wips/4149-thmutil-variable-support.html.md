@@ -1,7 +1,7 @@
 ---
 wip: 4149
 type: Feature
-author: Sean Hall (rseanhall at gmail.com)
+by: Sean Hall (rseanhall at gmail.com)
 title: thmutil variable support
 draft: false
 ---

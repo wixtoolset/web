@@ -1,7 +1,7 @@
 ---
 wip: 4867
 type: Feature
-author: Rob Mensching (rob at firegaint.com)
+by: Rob Mensching (rob at firegaint.com)
 title: SWID Tag 2015 Support
 ---
 

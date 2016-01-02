@@ -1,7 +1,7 @@
 ---
 wip: 4951
 type: Feature
-author: Sean Hall (r sean hall at gmail.com)
+by: Sean Hall (r sean hall at gmail.com)
 title: Make BAFunctions Interface Binary and Forward All BA Messages
 draft: false
 ---

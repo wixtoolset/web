@@ -1,7 +1,7 @@
 ---
 wip: 4658
 type: Feature
-author: Sean Hall (rseanhall at gmail.com)
+by: Sean Hall (rseanhall at gmail.com)
 title: Builtin thmutil Button Functionality
 draft: false
 ---
