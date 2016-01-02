@@ -11,15 +11,11 @@
   "url" : "http://wixtoolset.org/"
 },
 
-"defaultLayoutForExtension" : {
-  "html" : "master"
-  },
-
 "ignorefiles" : ["*.tmp", "*.*~"],
 
 "dirtyurls" : [ "documents/documentation/v3manual/**/*.md" ],
 
-"additionalMetadata" : {
+"additionalmetadata" : {
   "documents/releases/*.md" : { "layout" : "release" }
   }
 }

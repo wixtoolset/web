@@ -1,35 +1,44 @@
-layout: master
+layout: heronone
 
-.container
-    .content
-    include page-header-breadcrumb.jade
+<section>
+  <div class="container">
+    <div class="row fh5co-feature-2">
+      <div class="col-md-9 col-md-offset3" id="fh5co-content">
+        <h2>WiX @Model.Document.Title Release</h2>
+        <p>To install the WiX Toolset please launch the installer below.</p>
 
-    .row
-        .span9.offset3
-        h2 WiX #{document.title} Release
-        p To install the WiX Toolset please launch the installer below.
+        @foreach (var file in Model.Document.Files)
+        {
+          if (Dynamic.Defined(file.Promoted) && file.Promoted)
+          {
+          <div class="row">
+            <div class="col-md-8 col-md-offset1">
+              <h3>@Raw(file.Name)</h3>
+              <p>@Raw(file.Title)</p>
+              <p><a class="btn btn-primary btn-lg" href="/downloads/@Model.Document.Title/@file.Name">Launch &raquo;</a></p>
+             </div>
+           </div>
+           }
+        }
+    </div>
 
-        infoFile = getReleaseInfo().toJSON()
-        info = JSON.parse(infoFile.content)
-
-        //- display promoted files first.
-        each file in info.files
-            if file.promoted
-            .row
-                .span8.offset1
-                h3= file.name
-                p= file.title
-                p: a.btn.primary.large(href='/downloads/#{info.id}/#{file.name}') Launch &raquo;
-
-    .row.second
-        .span9.offset3
-        h3 Additional Files
-        p The following files are provided for special use cases. Please, only download these files if you require them.
-        ul
-            //- display protected files second.
-            each file in info.files
-            if file.protected
-                li
-                h4= file.name
-                p= file.title
-                p: a.btn(href='/downloads/#{info.id}/#{file.name}') Download
+    <div class="row fh5co-feature-2">
+      <div class="col-md-9 col-md-offset3" id="fh5co-content">
+        <h3>Additional Files</h3>
+        <p>The following files are provided for special use cases. Please, only download these files if you require them.</p>
+        <ul>
+        @foreach (var file in Model.Document.Files)
+        {
+          if (Dynamic.Defined(file.Protected) && file.Protected)
+          {
+          <li>
+            <h4>@file.Name</h4>
+            <p>@Raw(file.Title)</p>
+            <p><a class="btn btn-outline" href="/downloads/@Model.Document.Title/@file.Name">Download</a></p>
+          </li>
+          }
+        }
+        </ul>
+    </div>
+</section>
+</div>
