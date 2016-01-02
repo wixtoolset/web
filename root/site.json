@@ -1,4 +1,6 @@
 {
+"title" : "WiX Toolset",
+
 "url" : "/",
 "rooturl" : "http://wixtoolset.org/",
 
@@ -13,5 +15,11 @@
   "html" : "master"
   },
 
-"title" : "WiX Toolset"
+"ignorefiles" : ["*.tmp", "*.*~"],
+
+"dirtyurls" : [ "documents/documentation/v3manual/**/*.md" ],
+
+"additionalMetadata" : {
+  "documents/releases/*.md" : { "layout" : "release" }
+  }
 }
