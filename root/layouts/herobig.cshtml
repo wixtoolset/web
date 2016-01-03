@@ -1,16 +1,19 @@
 layout: master
 
   <!-- START #fh5co-hero -->
-  <aside id="fh5co-hero" style="background-image: url(/display/images/hero4.jpg);">
+  <aside id="fh5co-hero" style="background-image: url(@Model.Document.Image)">
     <div class="container">
       <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="fh5co-hero-wrap">
-                <div class="fh5co-hero-intro">
-                        <h2>The most powerful set of tools available to create your Windows installation experience.</h2>
-                        <h1>WiX Toolset</h1>
-                </div>
+        <div class="col-md-10 col-md-offset-1">
+          <div class="fh5co-hero-wrap">
+            <div class="fh5co-hero-intro">
+              <div>
+                <img src="/content/logo-black-hollow-md.png"/>
+                <h1>@Raw(Model.Document.Title)</h1>
+                <h2>@Raw(Model.Document.Subtitle)</h2>
+              </div>
             </div>
+          </div>
         </div>
       </div>
     </div>
