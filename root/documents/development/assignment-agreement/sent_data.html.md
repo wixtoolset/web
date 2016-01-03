@@ -3,13 +3,14 @@ under: Development
 title: Assignment Agreement Sent
 subtitle: for the WiX toolset
 keywords: wix toolset,wix,assignment agreement
-layout: secondary
+layout: heronone
 sidebarTitle: Additional information
-sidebarItems:
-  - uri: http://www.outercurve.org/Resources/DevelopmentPractices#agreements
-    text: Outercurve on Assignment Agreements
-  - uri: http://www.outercurve.org/Portals/0/docs/Outercurve%20Foundation%20Assignment%20Agreement%20%28editable%29.pdf
-    text: Example Assignment Agreement
+sidebarItems: [
+  { uri: "http://www.outercurve.org/Resources/DevelopmentPractices#agreements",
+    text: "Outercurve on Assignment Agreements" },
+  { uri: "http://www.outercurve.org/Portals/0/docs/Outercurve%20Foundation%20Assignment%20Agreement%20%28editable%29.pdf",
+    text: "Example Assignment Agreement" }
+]
 ---
 
 ## WiX Toolset Assignment Agreement Sent

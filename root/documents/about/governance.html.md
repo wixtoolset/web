@@ -3,7 +3,7 @@ title: Governance
 subtitle: document for the WiX toolset
 keywords: wix toolset,wix,governance
 under: About
-layout: secondary
+layout: heronone
 ---
 
 ## WiX Toolset Governance

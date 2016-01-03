@@ -15,6 +15,7 @@
 
 "additionalmetadata" : {
   "documents/releases/*.md" : { "layout" : "release" },
-  "documents/documentation/manual/v3/**" : { "disableCleanUrls" : true }
+  "documents/documentation/manual/v3/**" : { "disableCleanUrls" : true },
+  "documents/development/wips/*.md" : { "layout" : "heronone" }
   }
 }
