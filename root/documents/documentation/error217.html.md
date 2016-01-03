@@ -2,15 +2,15 @@
 under: Documentation
 title: Error 217
 subtitle: for the WiX toolset
-keywords: wix toolset,wix
-layout: secondary
+layout: heronone
 sidebarTitle: Additional information
 sidebarSubtitle: The following external resources are useful but not managed by the WiX community:
-sidebarItems:
-  - uri: http://blogs.msdn.com/b/heaths/archive/2007/05/31/windows-installer-errors-2738-and-2739-with-script-custom-actions.aspx
-    text: Heath Stewart's Explanation
-  - uri: http://blogs.msdn.com/b/astebner/archive/2007/06/07/3151752.aspx
-    text: Aaron Stebner's Explanation
+sidebarItems: [
+  { uri: "http://blogs.msdn.com/b/heaths/archive/2007/05/31/windows-installer-errors-2738-and-2739-with-script-custom-actions.aspx",
+    text: "Heath Stewart's Explanation" },
+  { uri: "http://blogs.msdn.com/b/astebner/archive/2007/06/07/3151752.aspx",
+    text: "Aaron Stebner's Explanation" }
+]
 ---
 
 ## Error 217

@@ -2,20 +2,19 @@
 under: Documentation
 title: Mailing lists
 subtitle: for the WiX toolset
-keywords: wix toolset,wix,mailing list
 layout: heronone
 sidebarTitle: Additional information
 sidebarItems: [
   { uri: "/documentation/",
-    text: "Documentation home page" },
+    text: "Documentation home page" }
 ]
 ---
 
 ## Mailing lists
 
-The mailing lists are a great place to ask questions, make suggestions, or discuss the WiX 
-toolset with other users and the WiX developers. To help prevent spam on the WiX mailing 
-lists, you must now subscribe to the lists before you can send e-mail to them. To subscribe 
+The mailing lists are a great place to ask questions, make suggestions, or discuss the WiX
+toolset with other users and the WiX developers. To help prevent spam on the WiX mailing
+lists, you must now subscribe to the lists before you can send e-mail to them. To subscribe
 click one of the *Join* links below and send the email or go to *Preferences* web page.
 
 <h3 id="wix-users">WiX-users list</h3>

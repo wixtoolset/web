@@ -2,7 +2,7 @@
 title: About
 subtitle: the WiX toolset
 keywords: wix toolset,wix
-layout: secondary
+layout: heronone
 sidebarTitle: Additional information
 sidebarItems: [
   { uri: "/about/governance/", text: "Governance Document" },

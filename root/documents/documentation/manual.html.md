@@ -2,19 +2,19 @@
 under: Documentation
 title: Manuals
 subtitle: for the WiX toolset
-keywords: wix toolset,wix
-layout: secondary
+layout: heronone
 sidebarTitle: External resources
 sidebarSubtitle: The following external resources are useful but not managed by the WiX community:
-sidebarItems:
-  - uri: /documentation/tutorial
-    text: WiX v3.x Tutorial
-  - uri: /documentation/book
-    text:  WiX Toolset Book
-  - uri: /documentation/stackoverflow
-    text: Stackoverflow tagged 'wix'
-  - uri: https://support.firegiant.com/forums
-    text: FireGiant WiX Knowledge Base
+sidebarItems: [
+  { uri: "/documentation/tutorial",
+    text: "WiX v3.x Tutorial" },
+  { uri: "/documentation/book",
+    text:  "WiX Toolset Book" },
+  { uri: "/documentation/stackoverflow",
+    text: "Stackoverflow tagged 'wix'" },
+  { uri: "https://support.firegiant.com/forums",
+    text: "FireGiant WiX Knowledge Base" }
+ ]
 ---
 
 ## Documentation
