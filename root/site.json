@@ -13,9 +13,8 @@
 
 "ignorefiles" : ["*.tmp", "*.*~"],
 
-"dirtyurls" : [ "documents/documentation/v3manual/**/*.md" ],
-
 "additionalmetadata" : {
-  "documents/releases/*.md" : { "layout" : "release" }
+  "documents/releases/*.md" : { "layout" : "release" },
+  "documents/documentation/manual/v3/**" : { "disableCleanUrls" : true }
   }
 }
