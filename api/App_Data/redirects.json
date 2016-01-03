@@ -24,7 +24,7 @@
   "manual-wix2/robmen_20041122.htm" : "http://robmensching.com/blog/",
   "manual-wix2/robmen_20041130.htm" : "http://robmensching.com/blog/",
   "manual-wix2/blogs.htm" : "/news/",
-  "projectaggregator2.msi" : "/content/data/ProjectAggregator2.msi",
+  "projectaggregator2.msi" : "http://static.wixtoolset.org/releases/ProjectAggregator2/ProjectAggregator2.msi",
 
   "votive.html" : "/documentation/manual/v3/votive/",
   "manual-wix2/wix_index.htm" : "/documentation/manual/v3/",
