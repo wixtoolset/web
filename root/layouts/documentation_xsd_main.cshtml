@@ -1,23 +1,19 @@
 layout: master
-bodyclass: inner-page
+bodyclass: nohero-page
 
-<!-- START #fh5co-hero -->
-<aside id="fh5co-hero">
-    <div class="container">
-    </div>
+<aside id="fh5co-hero" style="background-image: url(@(Dynamic.Defined(Model.Document.Image) ? Model.Document.Image : "/content/red_smoke_3.jpg")">
 </aside>
 
 <div id="fh5co-main">
 <section>
-    <div class="container">
-    <!-- FEATURE -->
+  <div class="container">
     <div class="row fh5co-feature-2">
-        <div class="@(Dynamic.Defined(Model.Document.SidebarTitle) ? "col-md-8" : "col-md-12")" id="fh5co-content">
+      <div class="@(Dynamic.Defined(Model.Document.SidebarTitle) ? "col-md-8" : "col-md-12")" id="fh5co-content">
         @Raw(Model.Document.Content)
-        </div>
-        @if (Dynamic.Defined(Model.Document.SidebarTitle))
-        {
-        <aside class="col-md-3 col-md-offset1" id="fh5co-sidebar">
+      </div>
+      @if (Dynamic.Defined(Model.Document.SidebarTitle))
+      {
+      <aside class="col-md-3 col-md-offset1" id="fh5co-sidebar">
         <h3>@Model.Document.SidebarTitle</h3>
         <p>@Model.Document.SidebarSubtitle</p>
         <ul>
@@ -26,9 +22,9 @@ bodyclass: inner-page
             <li><a href="@item.Uri">@item.Text</a></li>
         }
         </ul>
-        </aside>
-        }
+      </aside>
+      }
     </div>
-    </div>
+  </div>
 </section>
 </div>
