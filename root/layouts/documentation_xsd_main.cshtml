@@ -9,6 +9,7 @@ bodyclass: nohero-page
   <div class="container">
     <div class="row fh5co-feature-2">
       <div class="@(Dynamic.Defined(Model.Document.SidebarTitle) ? "col-md-8" : "col-md-12")" id="fh5co-content">
+        <h1>@Raw(Model.Document.Title)</h1>
         @Raw(Model.Document.Content)
       </div>
       @if (Dynamic.Defined(Model.Document.SidebarTitle))
