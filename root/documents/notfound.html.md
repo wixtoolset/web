@@ -1,7 +1,7 @@
 ---
+layout: herosmall
 title: Not Found
-keywords: wix toolset,wix
-layout: secondary
+image: /content/red_smoke_3.jpg
 ---
 
 ## Page Not Found

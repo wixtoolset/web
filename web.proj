@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<Project InitialTargets="PackageRestore" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+<Project InitialTargets="PackageRestore" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
 
   <UsingTask AssemblyFile="$(AzureStorageBuildTasksPath)FireGiant.BuildTasks.AzureStorage.dll" TaskName="DownloadBlobs" />
   <UsingTask AssemblyFile="$(MSBuildCommunityTasksPath)MSBuild.Community.Tasks.dll" TaskName="Unzip" />
@@ -11,35 +11,19 @@
     <TinySiteExe>$(ProjectFolder)tools\tinysite\tinysite.exe</TinySiteExe>
     <NugetPackageFolder>$(ProjectFolder)packages\</NugetPackageFolder>
 
-    <CommonFolder>$(ProjectFolder)common\</CommonFolder>
-
     <BuildFolder>$(OutputFolder)</BuildFolder>
     <BuildFolder Condition="'$(BuildFolder)' == '' ">$(ProjectFolder)build\</BuildFolder>
     <BuildFolder Condition="'$(BuildFolder)' != '' and !HasTrailingSlash('$(BuildFolder)')">$(BuildFolder)\</BuildFolder>
 
-    <WebRootFolder>$(ProjectFolder)root\</WebRootFolder>
-    <WebRootSourceFolder>$(WebRootFolder)</WebRootSourceFolder>
+    <WebRootSourceFolder>$(ProjectFolder)root\</WebRootSourceFolder>
     <WebRootOutputFolder>$(BuildFolder)obj\root\</WebRootOutputFolder>
-
-    <WebV3ManualFolder>$(ProjectFolder)v3manual\</WebV3ManualFolder>
-    <WebV3ManualSourceFolder>$(WebV3ManualFolder)</WebV3ManualSourceFolder>
-    <WebV3ManualOutputFolder>$(BuildFolder)obj\v3manual\</WebV3ManualOutputFolder>
-
-    <WebV4ManualFolder>$(ProjectFolder)v4manual\</WebV4ManualFolder>
-    <WebV4ManualSourceFolder>$(WebV4ManualFolder)</WebV4ManualSourceFolder>
-    <WebV4ManualOutputFolder>$(BuildFolder)obj\v4manual\</WebV4ManualOutputFolder>
 
     <DownloadFolder>$(BuildFolder)dl\</DownloadFolder>
     <PublishFolder>$(BuildFolder)publish\</PublishFolder>
   </PropertyGroup>
 
-  <ItemGroup>
-    <CommonFiles Include="$(CommonFolder)**" />
-  </ItemGroup>
-
   <Target Name="GetRootInputsOutputs">
     <ItemGroup>
-      <!--<RootInput Include="@(CommonFiles)" />-->
       <RootInput Include="$(WebRootSourceFolder)**" />
       <RootOutput Include="$(WebRootOutputFolder)**" />
       <RootOutput Include="$(WebRootOutputFolder)" Condition=" '@(RootOutput)'=='' " />
@@ -50,41 +34,11 @@
           Inputs="@(RootInput)"
           Outputs="@(RootOutput)"
           DependsOnTargets="GetRootInputsOutputs">
-    <!--<Copy SourceFiles="@(CommonFiles)"
-          DestinationFiles="@(CommonFiles->'$(WebRootSourceFolder)%(RecursiveDir)%(Filename)%(Extension)')"
-          SkipUnchangedFiles="true" UseHardlinksIfPossible="true" />-->
-
     <Exec Command='"$(TinySiteExe)" render -out "$(WebRootOutputFolder)."'
-          WorkingDirectory="$(WebRootFolder)" />
+          WorkingDirectory="$(WebRootSourceFolder)" />
 
     <ItemGroup>
       <PublishSource Include="$(WebRootOutputFolder)**" />
-    </ItemGroup>
-  </Target>
-
-  <Target Name="GetV3ManualInputsOutputs">
-    <ItemGroup>
-      <V3ManualInput Include="@(CommonFiles)" />
-      <V3ManualInput Include="$(WebV3ManualFolder)docpad.coffee" />
-      <V3ManualInput Include="$(WebV3ManualSourceFolder)**" />
-      <V3ManualOutput Include="$(WebV3ManualOutputFolder)**" />
-      <V3ManualOutput Include="$(WebV3ManualOutputFolder)" Condition=" '@(V3ManualOutput)'=='' " />
-    </ItemGroup>
-  </Target>
-
-  <Target Name="BuildV3Manual"
-          Inputs="@(V3ManualInput)"
-          Outputs="@(V3ManualOutput)"
-          DependsOnTargets="GetV3ManualInputsOutputs">
-    <Copy SourceFiles="@(CommonFiles)"
-          DestinationFiles="@(CommonFiles->'$(WebV3ManualSourceFolder)%(RecursiveDir)%(Filename)%(Extension)')"
-          SkipUnchangedFiles="true" UseHardlinksIfPossible="true" />
-
-    <Exec Command='"$(TinySiteExe)" render -out "$(WebV3ManualOutputFolder)."'
-          WorkingDirectory="$(WebV3ManualFolder)" />
-
-    <ItemGroup>
-      <PublishSource Include="$(WebV3ManualOutputFolder)**" />
     </ItemGroup>
   </Target>
 
@@ -119,13 +73,11 @@
   </Target>
 
   <Target Name="Build"
-          DependsOnTargets="BuildRoot;BuildV3Manual;BuildApi;CopyToPublishFolder;BuildSitemap">
+          DependsOnTargets="BuildRoot;BuildApi;CopyToPublishFolder;BuildSitemap">
   </Target>
 
   <Target Name="Clean">
-    <RemoveDir Directories="$(BuildFolder);$(WebRootOutputFolder);$(WebReleaseOutputFolder);$(WebV3ManualOutputFolder)" />
-    <Delete Files="@(CommonFiles->'$(WebRootSourceFolder)%(RecursiveDir)%(Filename)%(Extension)')" />
-    <Delete Files="@(CommonFiles->'$(WebV3ManualSourceFolder)%(RecursiveDir)%(Filename)%(Extension)')" />
+    <RemoveDir Directories="$(BuildFolder)" />
   </Target>
 
   <Target Name="Rebuild"
@@ -159,10 +111,10 @@
   <Target Name="GatherDownloadedStagedFiles">
     <ItemGroup>
       <ManualZip Include="$(DownloadFolder)**\v3manual.zip">
-        <OutputFolder>$(WebV3ManualSourceFolder)\documents\documentation\manual\v3</OutputFolder>
+        <OutputFolder>$(WebRootSourceFolder)documents\documentation\manual\v3</OutputFolder>
       </ManualZip>
       <ManualZip Include="$(DownloadFolder)**\v4manual.zip">
-        <OutputFolder>$(WebV4ManualSourceFolder)\documents\documentation\manual\v4</OutputFolder>
+        <OutputFolder>$(WebRootSourceFolder)documents\documentation\manual\v4</OutputFolder>
       </ManualZip>
 
       <ReleaseMetadataFile Include="$(DownloadFolder)**\*.md">

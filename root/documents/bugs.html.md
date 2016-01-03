@@ -1,13 +1,13 @@
 ---
 title: Bugs
 subtitle: for the WiX toolset
-keywords: wix toolset,wix
-layout: heronone
+layout: herosmall
+image: /content/red_smoke_1.jpg
 ---
 
 ## Wix Toolset Bugs
 
-Bugs and feature requests for the WiX Toolset are [tracked on GitHub](https://github.com/wixtoolset/issues/issues). 
+Bugs and feature requests for the WiX Toolset are [tracked on GitHub](https://github.com/wixtoolset/issues/issues).
 
 If you think you've encountered a bug in the WiX Toolset or want to request a new feature, first search [the GitHub issue tracker](https://github.com/wixtoolset/issues/issues) to see if someone else has already reported it.
 
