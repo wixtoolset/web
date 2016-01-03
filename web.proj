@@ -166,7 +166,7 @@
       </ManualZip>
 
       <ReleaseMetadataFile Include="$(DownloadFolder)**\*.md">
-        <OutputFolder>$(WebRootSourceFolder)\data\releases\</OutputFolder>
+        <OutputFolder>$(WebRootSourceFolder)\documents\releases\</OutputFolder>
       </ReleaseMetadataFile>
     </ItemGroup>
   </Target>
