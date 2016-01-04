@@ -24,7 +24,7 @@ sidebarItems: [
     @foreach (var item in Model.Document.News) {
     <li>
     <div class="f5hco-feature-blurb-text">
-        <h3 class="fh5co-feature-blurb-title h4">@Raw(item.Title)</h3>
+        <h3 class="fh5co-feature-blurb-title h4">@Raw(item.Title) <small><i class="ti-announcement"></i> @item.Date.ToString("yyyy/MM/dd")</small></h3>
         <p class="fh5co-feature-blurb-description">@Raw(item.Content)</p>
     </div>
     </li>
