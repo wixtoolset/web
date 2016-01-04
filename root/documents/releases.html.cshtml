@@ -1,0 +1,35 @@
+---
+layout: herosmall
+title: Releases
+subtitle: weekly
+image: /content/red_smoke_4.jpg
+releases?: query documents where sourceRelativeFolder eq "documents\releases" descending date take 5
+sidebarTitle: Published releases
+sidebarItems: [
+  { uri: "/releases/v3.10/stable",
+    text: "WiX v3.10.1 (Stable)" },
+  { uri: "/releases/v3.9/stable",
+    text: "WiX v3.9 R2 (Stable)" },
+  { uri: "/releases/v3.8/stable",
+    text: "WiX v3.8 (Stable)" },
+  { uri: "/releases/v3.7/stable",
+    text: "WiX v3.7 (Stable)" },
+  { uri: "/releases/v3.6/stable",
+    text: "WiX v3.6 (Stable)" },
+  { uri: "/releases/v3.5/stable",
+    text: "WiX v3.5 (Stable)" },
+  { uri: "/releases/v3.0/stable",
+    text: "WiX v3.0 (Stable)" },
+  { uri: "/releases/v2.0/stable",
+    text: "WiX v2.0 (Stable)" }
+  ]
+---
+
+<h2>Weekly Releases</h2>
+<p>The following weekly releases are available. These development releases may be unstable and are therefore not recommended for production use. They are purged irregularly. Please upgrade often (we recommend at least monthly).</p>
+<ul>
+@foreach (var release in @Model.Document.Releases)
+{
+ <li><a href="@release.RelativeUrl">@Raw(release.Title)</a> on @release.Date.ToString("dddd, MMMM dd yyyy")</li>
+}
+</ul>

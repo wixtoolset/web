@@ -1,0 +1,24 @@
+{
+  "v3.10/stable" : "https://wix.codeplex.com/releases/view/618180",
+  "v3.10/ProjectAggregator2.msi" : "http://static.wixtoolset.org/releases/ProjectAggregator2/ProjectAggregator2.msi",
+
+  "v3.9/stable" : "https://wix.codeplex.com/releases/view/610859",
+  "v3.9/ProjectAggregator2.msi" : "http://static.wixtoolset.org/releases/ProjectAggregator2/ProjectAggregator2.msi",
+
+  "v3.8/stable" : "https://wix.codeplex.com/releases/view/115492",
+  "v3.8/ProjectAggregator2.msi" : "http://static.wixtoolset.org/releases/ProjectAggregator2/ProjectAggregator2.msi",
+
+  "v3.7/rc" : "http://wix.codeplex.com/releases/view/98028",
+  "v3.7/stable" : "https://wix.codeplex.com/releases/view/115492",
+  "v3.7/ProjectAggregator2.msi" : "http://static.wixtoolset.org/releases/ProjectAggregator2/ProjectAggregator2.msi",
+
+  "v3.6/beta" : "http://wix.codeplex.com/releases/view/75656",
+  "v3.6/rc" : "http://wix.codeplex.com/releases/view/88566",
+  "v3.6/rc0" : "http://wix.codeplex.com/releases/view/85409",
+  "v3.6/stable" : "https://wix.codeplex.com/releases/view/93929",
+  "v3.6/ProjectAggregator2.msi" : "http://static.wixtoolset.org/releases/ProjectAggregator2/ProjectAggregator2.msi",
+
+  "v3.5/stable" : "https://wix.codeplex.com/releases/view/60102",
+  "v3.0/stable" : "https://wix.codeplex.com/releases/view/44406",
+  "v2.0/stable" : "https://wix.codeplex.com/releases/view/44405"
+}
