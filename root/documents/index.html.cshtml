@@ -25,42 +25,36 @@ news?: query data descending date take 3 where sourceRelativePath startswith "da
 <section id="fh5co-feature">
 <div class="container">
     <div class="row fh5co-feature-2">
-        <a href="/bugs/">
         <div class="col-md-4 col-sm-4 fh5co-feature-item">
-            <span class="fh5co-feature-icon fh5co-circle"><i class="ti-support"></i></span>
-            <h3 class="text-center fh5co-feature-title h4 text-uppercase">Bugs</h3>
-            <p class="text-center fh5co-feature-description">If you find a bug, let us know so we can fix it.</p>
-            <p class="text-center"><a href="/bugs/" class="btn btn-primary btn-sm">File a bug &raquo;</a></p>
-        </div>
-        </a>
-
-        <a href="/documentation/">
-        <div class="col-md-4 col-sm-4 fh5co-feature-item">
-            <span class="fh5co-feature-icon fh5co-circle"><i class="ti-book"></i></span>
+            <a href="/documentation/"><span class="fh5co-feature-icon fh5co-circle"><i class="ti-book"></i></span></a>
             <h3 class="text-center fh5co-feature-title h4 text-uppercase">Documentation</h3>
             <p class="text-center fh5co-feature-description">There are lots of ways to learn about the WiX toolset.</p>
             <p class="text-center"><a href="/documentation/" class="btn btn-primary btn-sm">Read more</a></p>
         </div>
-        </a>
 
-        <a href="/releases/">
         <div class="col-md-4 col-sm-4 fh5co-feature-item">
-            <span class="fh5co-feature-icon fh5co-circle"><i class="ti-cloud-down"></i></span>
+            <a href="/releases/"><span class="fh5co-feature-icon fh5co-circle"><i class="ti-cloud-down"></i></span></a>
             <h3 class="text-center fh5co-feature-title h4 text-uppercase">Download</h3>
             <p class="text-center fh5co-feature-description">You can download the WiX toolset for free.</p>
             <p class="text-center"><a href="/releases/" class="btn btn-primary btn-sm">Latest releases</a></p>
         </div>
-        </a>
+
+        <div class="col-md-4 col-sm-4 fh5co-feature-item">
+          <a href="/bugs/"><span class="fh5co-feature-icon fh5co-circle"><i class="ti-support"></i></span></a>
+          <h3 class="text-center fh5co-feature-title h4 text-uppercase">Bugs</h3>
+          <p class="text-center fh5co-feature-description">If you find a bug, let us know so we can fix it.</p>
+          <p class="text-center"><a href="/bugs/" class="btn btn-primary btn-sm">File a bug</a></p>
+        </div>
     </div>
 </div>
 </section>
 <div class="fh5co-spacer fh5co-spacer-lg"></div>
 <section>
-  <div class="container">
-    <div class="row fh5co-feature-2">
+<div class="container">
+  <div class="row fh5co-feature-2">
     <div class="col-md-8" id="fh5co-content">
     <div class="row fh5co-feature-1">
-    <div class="col-md-6">
+      <div class="col-md-6">
         <h2>About the WiX toolset</h2>
 
         <p>
@@ -88,23 +82,22 @@ news?: query data descending date take 3 where sourceRelativePath startswith "da
         code that works with Windows Installer, including custom actions in both C# and
         C++.</p></li>
         </ul>
-    </div>
-
-    <div class="col-md-6 fh5co-feature-blurb">
-      <h2>Recent news</h2>
-      <ul>
-      @foreach (var item in Model.Document.News) {
-      <li>
-      <!--<span class="fh5co-feature-blurb-icon"><i class="ti-ruler-pencil"></i></span>-->
-      <div class="f5hco-feature-blurb-text">
-        <h3 class="fh5co-feature-blurb-title h4">@Raw(item.Title)</h3>
-        <p class="fh5co-feature-blurb-description">@Raw(item.Content)</p>
       </div>
-      </li>
-      }
-      </ul>
-      <p><a class="btn btn-primary" href="/news/">All news &raquo;</a>
-    </div>
+
+      <div class="col-md-6 fh5co-feature-blurb">
+        <h2>Recent news</h2>
+        <ul>
+        @foreach (var item in Model.Document.News) {
+        <li>
+        <div class="f5hco-feature-blurb-text">
+            <h3 class="fh5co-feature-blurb-title h4">@Raw(item.Title)</h3>
+            <p class="fh5co-feature-blurb-description">@Raw(item.Content)</p>
+        </div>
+        </li>
+        }
+        </ul>
+        <p><a class="btn btn-primary" href="/news/">More News &raquo;</a>
+      </div>
     </div>
     </div>
     <div class="col-md-3 col-md-offset1" id="fh5co-sidebar">
@@ -117,7 +110,6 @@ news?: query data descending date take 3 where sourceRelativePath startswith "da
           <li><a href='https://www.firegiant.com/blog/'>FireGiant's Setup Matters</a></li>
         </ul>
     </div>
-
-    </div>
   </div>
+</div>
 </section>
