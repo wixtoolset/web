@@ -1,6 +1,13 @@
 layout: master
 bodyclass: nohero-page
 
+@{
+  var offset = Dynamic.Defined(Model.Document.ContentOffset) ? int.Parse(Model.Document.ContentOffset) : 0;
+  var columns = Dynamic.Defined(Model.Document.SidebarTitle) ? 8 : 12;
+
+  var contentClass = offset > 0 ? String.Format("col-md-{0} col-md-offset-{1}", columns - offset, offset) : String.Format("col-md-{0}", columns);
+}
+
 <aside id="fh5co-hero" style="background-image: url(@(Dynamic.Defined(Model.Document.Image) ? Model.Document.Image : "/content/red_smoke_1.jpg")">
 </aside>
 
@@ -8,7 +15,7 @@ bodyclass: nohero-page
 <section>
   <div class="container">
     <div class="row fh5co-feature-2">
-      <div class="@(Dynamic.Defined(Model.Document.SidebarTitle) ? "col-md-8" : "col-md-12")" id="fh5co-content">
+      <div class="@contentClass" id="fh5co-content">
         @Raw(Model.Document.Content)
       </div>
       @if (Dynamic.Defined(Model.Document.SidebarTitle))
