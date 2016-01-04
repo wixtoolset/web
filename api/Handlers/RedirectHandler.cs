@@ -9,9 +9,9 @@
     using Newtonsoft.Json;
     using TinyWebStack;
 
-    [Route("bugs")]
     [Route("documentation/tutorial")]
     [Route("documentation/book")]
+    [Route("documentation/book2")]
     [Route("documentation/stackoverflow")]
     [Route("img/{*RedirectPath}")]
     [Route("redirect/{*RedirectPath}")]
