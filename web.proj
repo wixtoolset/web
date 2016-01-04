@@ -15,11 +15,11 @@
     <BuildFolder Condition="'$(BuildFolder)' == '' ">$(ProjectFolder)build\</BuildFolder>
     <BuildFolder Condition="'$(BuildFolder)' != '' and !HasTrailingSlash('$(BuildFolder)')">$(BuildFolder)\</BuildFolder>
 
-    <WebRootSourceFolder>$(ProjectFolder)root\</WebRootSourceFolder>
-    <WebRootOutputFolder>$(BuildFolder)obj\root\</WebRootOutputFolder>
-
     <DownloadFolder>$(BuildFolder)dl\</DownloadFolder>
     <PublishFolder>$(BuildFolder)publish\</PublishFolder>
+
+    <WebRootSourceFolder>$(ProjectFolder)root\</WebRootSourceFolder>
+    <WebRootOutputFolder>$(PublishFolder)</WebRootOutputFolder>
   </PropertyGroup>
 
   <Target Name="GetRootInputsOutputs">

@@ -60,12 +60,12 @@ echo Handling Basic Web Site deployment.
 
 :: 1. MSBuild
 
-call "%MSBUILD_PATH%" -t:Rebuild "%DEPLOYMENT_SOURCE%\web.proj" /p:OutputFolder="%DEPLOYMENT_TEMP%" /p:StorageAccount="%StorageAccount%" /p:StorageAuthentication="%StorageAuthentication%"
+call "%MSBUILD_PATH%" -t:Rebuild "%DEPLOYMENT_SOURCE%\web.proj" /p:OutputFolder="%DEPLOYMENT_TEMP%\build" /p:StorageAccount="%StorageAccount%" /p:StorageAuthentication="%StorageAuthentication%"
 IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 2. KuduSync
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
-  call %KUDU_SYNC_CMD% -v 50 -f "%DEPLOYMENT_TEMP%\publish" -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd"
+  call %KUDU_SYNC_CMD% -v 50 -f "%DEPLOYMENT_TEMP%\build\publish" -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd"
   IF !ERRORLEVEL! NEQ 0 goto error
 )
 
