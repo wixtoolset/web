@@ -3,7 +3,7 @@ layout: herosmall
 title: Releases
 subtitle: weekly
 image: /content/red_smoke_4.jpg
-releases?: query documents where sourceRelativeFolder eq "documents\releases" descending builddate take 5
+releases?: query documents where sourceRelativeFolder eq "documents\releases" descending date take 5
 sidebarTitle: Published releases
 sidebarItems: [
   { uri: "/releases/v3.10/stable",
@@ -30,6 +30,6 @@ sidebarItems: [
 <ul>
 @foreach (var release in @Model.Document.Releases)
 {
- <li><a href="@release.RelativeUrl">@Raw(release.Title)</a> on @release.BuildDate.ToString("dddd, MMMM dd yyyy")</li>
+ <li><a href="@release.RelativeUrl">@Raw(release.Title)</a> on @release.Date.ToString("dddd, MMMM dd yyyy")</li>
 }
 </ul>
