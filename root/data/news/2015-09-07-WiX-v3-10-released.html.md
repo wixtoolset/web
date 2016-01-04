@@ -1,7 +1,4 @@
----
-title: WiX v3.10 released.
-date: 2015-09-07
----
+title: WiX v3.10 released
 
 The production/stable release of WiX v3.10 has been released.
 You can download it from <a href="http://wixtoolset.org/releases/v3.10/stable">here</a>.
