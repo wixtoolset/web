@@ -1590,3 +1590,46 @@ a > img.fh5co-align-center {
   margin-left: auto;
   margin-right: auto;
 }
+
+/* Documentation */
+dt {
+  margin-bottom: 2px;
+}
+dd {
+  margin-bottom: 20px;
+}
+.schema {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+}
+.schema > thead > tr > th,
+.schema > thead > tr > td,
+.schema > tbody > tr > th,
+.schema > tbody > tr > td,
+.schema > tfoot > tr > th,
+.schema > tfoot > tr > td {
+  padding: 8px;
+  line-height: 1.42857;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+}
+.schema > caption + thead > tr:first-child > th,
+.schema > caption + thead > tr:first-child > td,
+.schema > colgroup + thead > tr:first-child > th,
+.schema > colgroup + thead > tr:first-child > td,
+.schema > thead:first-child > tr:first-child > th,
+.schema > thead:first-child > tr:first-child > td {
+  border-top: 0;
+}
+.schema > thead > tr > th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #ddd;
+}
+.schema > tbody + tbody {
+  border-top: 2px solid #ddd;
+}
+.schema > tbody > tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
