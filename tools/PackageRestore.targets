@@ -10,6 +10,7 @@
 <Project InitialTargets="PackageRestore" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <ProjectFolder Condition=" '$(ProjectFolder)'=='' " >$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\))</ProjectFolder>
+
     <NugetExe>$(MSBuildThisFileDirectory)nuget\NuGet.exe</NugetExe>
     <NugetPackageFolder>$(ProjectFolder)packages\</NugetPackageFolder>
   </PropertyGroup>
@@ -27,7 +28,7 @@
   ================================================================================================
   -->
   <Target Name="PackageRestore"
-          DependsOnTargets="NugetPackageRestore" />
+          DependsOnTargets="NugetPackageRestore;SolutionPackageRestore" />
 
   <!-- Nuget Package Restore -->
   <ItemGroup>
@@ -37,18 +38,6 @@
     <RestoreNugetPackage Include="MSBuildTasks">
       <Version>1.4.0.61</Version>
     </RestoreNugetPackage>
-    <RestoreNugetPackage Include="Munq.IocContainer">
-      <Version>3.1.6</Version>
-    </RestoreNugetPackage>
-    <RestoreNugetPackage Include="Newtonsoft.Json">
-      <Version>6.0.2</Version>
-    </RestoreNugetPackage>
-    <RestoreNugetPackage Include="NLog">
-      <Version>2.0.1.2</Version>
-    </RestoreNugetPackage>
-    <RestoreNugetPackage Include="TinyWebStack">
-      <Version>0.1.2.0</Version>
-    </RestoreNugetPackage>
   </ItemGroup>
   <Target Name="NugetPackageRestore">
     <CreateItem Include="@(RestoreNugetPackage)" Condition=" !Exists('$(NugetPackageFolder)%(Identity).%(Version)') " PreserveExistingMetadata="true">
@@ -57,6 +46,11 @@
 
     <Exec Command="&quot;$(NugetExe)&quot; install %(Identity) -Version %(Version)" Condition=" '@(MissingNugetPackage)'!='' "
           WorkingDirectory="$(MSBuildThisFileDirectory)" />
+  </Target>
+
+  <Target Name="SolutionPackageRestore">
+    <Exec Command="&quot;$(NugetExe)&quot; restore "
+          WorkingDirectory="$(ProjectFolder)api" />
   </Target>
 
   <!-- Sentinel value that indicates Nuget.targets has been initialized. -->
