@@ -14,17 +14,19 @@ title: Prevent DLL Hijacking Burn with Clean Room
 
 To fully protect Burn from [DLL hijacking][hijack], several defenses must be implemented.
 
-1. Randomized working folder - today the working folder is a fixed folder based on the Bundle Id. A randomized working folder is not vulnerable to static attacks against well known bundles.
+1. Randomized working folder - today the working folder is a fixed folder based on the Bundle Id. A randomized working folder is not vulnerable to static attacks against well-known bundles.
 
-1. Delay load dependencies - all DLLs that are not loaded by Windows and not on the [KnownDlls list][knowndlls] must be marked for delay load in Burn to avoid DLL hijacking via the Import Address Table. For example, `cabinet.dll`, `msi.dll`, and `wininet.dll` all must be delay loaded.
+2. Delay load dependencies - all DLLs that are not loaded by Windows and not on the [KnownDlls list][knowndlls] must be marked for delay load in Burn to avoid DLL hijacking via the Import Address Table. For example, `cabinet.dll`, `msi.dll`, and `wininet.dll` all must be delay loaded.
 
-2. [::SetDefaultDllDirectories()][setdefaultdll] - this function can remove the application folder and current working directory from the default DLL search order. This function is available on Windows 8+ and available by [patch][KB2533623] for Vista and Windows 7.
+3. [::SetDefaultDllDirectories()][setdefaultdll] - this function can remove the application folder and current working directory from the default DLL search order. This function is available on Windows 8+ and available by [patch][KB2533623] for Vista and Windows 7.
 
-3. Explicitly load system DLLs - since `::SetDefaultDllDirectories()` is not available for Windows XP, Burn will explicitly load a fixed set of DLLs from the system folder. Explicit loading is error prone because changes to the system can change DLL dependencies and render the fixed order in Burn irrelevant. For this reason, explicit loading is only be used for Windows XP because it is a "dead platform" (no updates from Microsoft) and thus unchanging and, honestly, because there is no other alternative.
+4. Explicitly load system DLLs - since `::SetDefaultDllDirectories()` is not available for Windows XP, Burn will explicitly load a fixed set of DLLs from the system folder. Explicit loading is error prone because updates to Windows can change DLL dependencies and render the explicit load order in Burn irrelevant. For this reason, explicit loading will only be used for Windows XP because a) it is a "dead platform" (no updates from Microsoft) thus unchanging and b) there is no other alternative.
 
-   When explicitly loading system DLLs, [::SetDllDirectory()][setdlldirectory] will be also be used to remove the current working directory from the search path since where supported.
+   When explicitly loading system DLLs, [::SetDllDirectory()][setdlldirectory] will be also be used to remove the current working directory from the search path.
 
-4. Clean room the Burn engine - when launched Burn copies its engine (the stub and UX container) to an empty working folder--called the "clean room"--and launches the engine again from there. The "clean room engine" ensures it is not possible to hijack the unknown set of DLLs a BA may load.
+5. Clean room the Burn engine - when executed from outside the package cache, Burn will copy its engine (the stub and UX container) to an empty working folder--called the "clean room"--and launch the engine again from there. Running the engine in the clean room ensures it is not possible to hijack the unknown set of DLLs a BA may load.
+
+6. Prevent naming bundle "setup.exe" - all executables named "setup.exe" are shimmed by Windows application compatibility to load additional DLLs, such as `version.dll`. The DLLs added by the app-compat shim can be hijacked. The only solution is to not name bundles "setup.exe".
 
 
 ## Considerations
