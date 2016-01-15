@@ -14,7 +14,7 @@
 "ignorefiles" : ["*.tmp", "*.*~"],
 
 "additionalmetadata" : {
-  "documents/development/wips/*.md" : { "layout" : "heronone" },
+  "documents/development/wips/*.md" : { "layout" : "wip" },
   "documents/documentation/manual/v3/**" : { "disableCleanUrls" : true },
   "documents/releases/*.md" : { "layout" : "release", "disableInsertDateIntoPath" : true }
   }
