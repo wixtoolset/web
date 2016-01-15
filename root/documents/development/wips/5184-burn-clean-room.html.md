@@ -16,11 +16,11 @@ To fully protect Burn from [DLL hijacking][hijack], several defenses must be imp
 
 1. Randomized working folder - today the working folder is a fixed folder based on the Bundle Id. A randomized working folder is not vulnerable to static attacks against well known bundles.
 
-1. Delay load dependencies - all DLLs that are not loaded by Windows and not on the [KnownDlls list] must be marked for delay load in Burn to avoid DLL hijacking via the Import Address Table. For example, `cabinet.dll`, `msi.dll`, and `wininet.dll` all must be delay loaded.
+1. Delay load dependencies - all DLLs that are not loaded by Windows and not on the [KnownDlls list][knowndlls] must be marked for delay load in Burn to avoid DLL hijacking via the Import Address Table. For example, `cabinet.dll`, `msi.dll`, and `wininet.dll` all must be delay loaded.
 
 2. [::SetDefaultDllDirectories()][setdefaultdll] - this function can remove the application folder and current working directory from the default DLL search order. This function is available on Windows 8+ and available by [patch][KB2533623] for Vista and Windows 7.
 
-3. Explicitly load system DLLs - since `::SetDefaultDllDirectories()` is not available for Windows XP, Burn will explicitly load a fixed set of DLLs from the system folder. Explicitly loading is error prone because changes to the system can change DLL dependencies and render the fixed order in Burn irrelevant. For this reason, explicitly loading is only be used for Windows XP because it is a "dead platform" (no updates from Microsoft) and thus unchanging and, honestly, because there is no other alternative.
+3. Explicitly load system DLLs - since `::SetDefaultDllDirectories()` is not available for Windows XP, Burn will explicitly load a fixed set of DLLs from the system folder. Explicit loading is error prone because changes to the system can change DLL dependencies and render the fixed order in Burn irrelevant. For this reason, explicit loading is only be used for Windows XP because it is a "dead platform" (no updates from Microsoft) and thus unchanging and, honestly, because there is no other alternative.
 
   When explicitly loading system DLLs, [::SetDllDirectory()][setdlldirectory] will be also be used to remove the current working directory from the search path since where supported.
 
@@ -31,9 +31,9 @@ To fully protect Burn from [DLL hijacking][hijack], several defenses must be imp
 
 1. Unmaintained Vista and Windows 7 machines are vulnerable. The required patch was released mid-2011, so any machine without the patch is likely vulnerable to other issues as well.
 
-2. BAs using `::GetModuleFileName(NULL, ...)` will get a path in the clean room, not the true source folder. To mitigate this, a `WixBundleSourceProcessPath` variable can be set by Burn when running in the clean room.
+2. BAs using `::GetModuleFileName(NULL, ...)` will get a path in the clean room, not the untrusted source process path. To mitigate this, a `WixBundleSourceProcessPath` variable can be set by Burn when running in the clean room.
 
-3. Random note: when available `::SetDefaultDllDirectories()` should be all that is necessary to protect Burn. Unfortunately, the CLR ignores `::SetDefaultDllDirectories()` when loading its system DLLs so managed BAs would always be vulnerable without the clean room. For that reason, the clean room must always used.
+3. Random note: when available `::SetDefaultDllDirectories()` should be all that is necessary to protect Burn. Unfortunately, the CLR ignores `::SetDefaultDllDirectories()` when loading its system DLLs so managed BAs would always be vulnerable without the clean room. For that reason, the clean room must always be used.
 
 
 ## See Also
