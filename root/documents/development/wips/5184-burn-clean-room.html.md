@@ -22,7 +22,7 @@ To fully protect Burn from [DLL hijacking][hijack], several defenses must be imp
 
 3. Explicitly load system DLLs - since `::SetDefaultDllDirectories()` is not available for Windows XP, Burn will explicitly load a fixed set of DLLs from the system folder. Explicit loading is error prone because changes to the system can change DLL dependencies and render the fixed order in Burn irrelevant. For this reason, explicit loading is only be used for Windows XP because it is a "dead platform" (no updates from Microsoft) and thus unchanging and, honestly, because there is no other alternative.
 
-  When explicitly loading system DLLs, [::SetDllDirectory()][setdlldirectory] will be also be used to remove the current working directory from the search path since where supported.
+   When explicitly loading system DLLs, [::SetDllDirectory()][setdlldirectory] will be also be used to remove the current working directory from the search path since where supported.
 
 4. Clean room the Burn engine - when launched Burn copies its engine (the stub and UX container) to an empty working folder--called the "clean room"--and launches the engine again from there. The "clean room engine" ensures it is not possible to hijack the unknown set of DLLs a BA may load.
 
