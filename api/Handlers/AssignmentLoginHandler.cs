@@ -14,8 +14,6 @@
 
         public string ReturnUrl { get; set; }
 
-        public GithubUser Output { get; private set; }
-
         [Cookie("ghu", Expires = 600)]
         public string UserIdCookie { get; set; }
 
@@ -66,9 +64,9 @@
             {
                 try
                 {
-                    this.Output = this.Github.GetUser(token.Value);
+                    var user = this.Github.GetUser(token.Value);
 
-                    this.ApplicationState.Set(this.UserIdCookie + ".user", this.Output, DateTime.Now.AddMinutes(30));
+                    this.ApplicationState.Set(this.UserIdCookie + ".user", user, DateTime.Now.AddMinutes(30));
 
                     // If a return url was provided, go there otherwise go home.
                     to = String.IsNullOrEmpty(token.ReturnUrl) ? "~/development/assignment-agreement/request/" : token.ReturnUrl;
