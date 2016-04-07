@@ -10,6 +10,8 @@ layout: heronone
 
 This project is led and managed by a benevolent dictator. The benevolent dictator is responsible for the general strategic direction in addition to the day-to-day maintenance of the project. The community guides the decisions of the benevolent dictator through active engagement and contribution.
 
+This project has also adopted the code of conduct defined by the [Contributor Covenant](http://contributor-covenant.org/) to clarify expected behavior in our community. For more information see the [.NET Foundation Code of Conduct](http://www.dotnetfoundation.org/code-of-conduct).
+
 ### Roles and Responsibilities
 
 #### Benevolent dictator (project leads)
@@ -18,7 +20,7 @@ In the WiX Toolset the role of Benevolent Dictator (project leads) is shared bet
 
 In many ways, the role of the benevolent dictator is less about dictatorship and more about diplomacy. The key is to ensure that, as the project expands, the right people are given influence over it and the community rallies behind the vision of the project leads.
 
-Additionally, [Outercurve Foundation](http://www.outercurve.org/) staff considers the project leads as the primary point of contact or first point of contact for the project for purposes of business operations including domain registrations, and technical services (e.g. code-signing).
+Additionally, [.NET Foundation](http://dotnetfoundation.org/) staff considers the project leads as the primary point of contact or first point of contact for the project for purposes of business operations including domain registrations, and technical services (e.g. code-signing).
 
 #### Committers
 
