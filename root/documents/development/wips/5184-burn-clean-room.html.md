@@ -20,6 +20,8 @@ To fully protect Burn from [DLL hijacking][hijack], several defenses must be imp
 
 3. [::SetDefaultDllDirectories()][setdefaultdll] - this function can remove the application folder and current working directory from the default DLL search order. This function is available on Windows 8+ and available by [patch][KB2533623] for Vista and Windows 7.
 
+   Note: Due to a bug in GDI+, `::SetDefaultDllDirectories()` will not be called when the bundle loads a BA. In other words, `::SetDefaultDllDirectories()` will not be called when running from the clean room (see below) nor from package cache. Or said another way, `::SetDefaultDllDirectories()` will only be called when the process is running from an untrusted folder. See the Considerations below for more details.
+
 4. Explicitly load system DLLs - since `::SetDefaultDllDirectories()` is not available for Windows XP, Burn will explicitly load a fixed set of DLLs from the system folder. Explicit loading is error prone because updates to Windows can change DLL dependencies and render the explicit load order in Burn irrelevant. For this reason, explicit loading will only be used for Windows XP because a) it is a "dead platform" (no updates from Microsoft) thus unchanging and b) there is no other alternative.
 
    When explicitly loading system DLLs, [::SetDllDirectory()][setdlldirectory] will be also be used to remove the current working directory from the search path.
@@ -35,7 +37,11 @@ To fully protect Burn from [DLL hijacking][hijack], several defenses must be imp
 
 2. BAs using `::GetModuleFileName(NULL, ...)` will get a path in the clean room, not the untrusted source process path. To mitigate this, a `WixBundleSourceProcessPath` variable can be set by Burn when running in the clean room.
 
-3. Random note: when available `::SetDefaultDllDirectories()` should be all that is necessary to protect Burn. Unfortunately, the CLR ignores `::SetDefaultDllDirectories()` when loading its system DLLs so managed BAs would always be vulnerable without the clean room. For that reason, the clean room must always be used.
+3. If not for the following Microsoft bugs, it would only be necessary to call `::SetDefaultDllDirectories()` and the complex mitigation steps 4 and 5 would be unnecessary. Unfortunately, Microsoft expressed little interest in fixing the following security vulnerabilities so we implemented the work arounds:
+
+   * The CLR somehow ignores `::SetDefaultDllDirectories()` when loading its system DLLs. As a result, managed BAs are always be vulnerable. The clean room protects against this vulnerability in the CLR.
+
+   * GDI+ fails in some cases when `::SetDefaultDllDirectories()` is used. As a result, a process that uses GDI+ must remain vulnerable to DLL hijacking. For example, BAs that use WinForms always hit the GDI+ bug. Again the clean room protects against the GDI+ vulnerability. However because the clean room process and package cache processes load the BA they *cannot* be protected by `::SetDefaultDllDirectories()`. Fortunately, clean room and package cache packages cannot be DLL hijacked.
 
 
 ## See Also
