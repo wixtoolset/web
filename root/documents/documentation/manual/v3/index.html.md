@@ -551,8 +551,6 @@ layout: documentation
       * [UI Element (Wixloc Extension)](xsd/wixloc/ui.html)
       * [WixLocalization Element (Wixloc Extension)](xsd/wixloc/wixlocalization.html)
 * [Developing for WiX](wixdev/index.html)
-   * [How to be a Windows Installer XML developer](wixdev/wixdev_getting_started.html)
-   * [Building WiX](wixdev/building_wix.html)
    * [Developing for Votive](wixdev/votive_development.html)
    * [Adding to the WiX Documentation](wixdev/help_development.html)
    * [Developing WiX Extensions](wixdev/extensions/index.html)
