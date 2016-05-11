@@ -34,7 +34,7 @@ Committers have no authority over the overall direction of the project. However,
 
 Contributors are community members who submit pull requests for the project. These pull requests may be a one-time occurrence or occur over time. The expectation is that that contributors will submit pull requests that are small at first. Ideally larger or more complex contributions are sent once the contributor has built confidence in the quality of their pull requests with the community.
 
-Before a contributor's first pull request is put into the repository they must sign an [assignment agreement](/development/assignment-agreement/). The pull request can be submitted and discussed but it cannot be committed to the repository without the appropriate paperwork in place.
+Before a contributor's first pull request is put into the repository they must sign a [Contribution License Agreement](/development/assignment-agreement/). The pull request can be submitted and discussed but it cannot be committed to the repository without the appropriate paperwork in place.
 
 **How to become a Contributor:** Participate in the project as a [developer](/development/).
 

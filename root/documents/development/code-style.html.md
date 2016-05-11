@@ -9,7 +9,7 @@ sidebarItems: [
   { uri: "/about/governance/",
     text: "Governance Document" },
   { uri: "/development/assignment-agreement/",
-    text: "Assignment Agreement" }
+    text: "Contribution License Agreement" }
 ]
 ---
 
