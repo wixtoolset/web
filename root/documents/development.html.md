@@ -23,7 +23,7 @@ So you want to hack on the WiX Toolset? Excellent. Here's what you need to do...
 To get started as a developer we recommend walking through the following steps. You can do them in any order or even in parallel but all of them need to be completed before your first submission can be committed.
 
 1. Join the [wix-devs mailing list](/documentation/mailinglist).
-2. Sign the [WiX toolset Assignment Agreement](/development/assignment-agreement/).
+2. Sign the [WiX toolset Contribution License Agreement](/development/assignment-agreement/).
 3. Create a fork of the Git repository on GitHub for [WiX v3.x](http://github.com/wixtoolset/wix3) or [WiX v4.x](http://github.com/wixtoolset/wix4) and clone it to your development machine.
 
 ### Coding
