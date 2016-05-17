@@ -465,7 +465,7 @@ WixUtilExtension will automatically schedule the custom actions as needed after 
 </td>
 
 <td>
-<p>Localized qualified name of the Local System account (WinLocalSystemSid).</p>
+<p>Localized qualified name of the Local System account.</p>
 </td>
 </tr>
 
@@ -475,7 +475,7 @@ WixUtilExtension will automatically schedule the custom actions as needed after 
 </td>
 
 <td>
-<p>Localized qualified name of the Local Service account (WinLocalServiceSid).</p>
+<p>Localized qualified name of the Local Service account.</p>
 </td>
 </tr>
 
@@ -485,7 +485,7 @@ WixUtilExtension will automatically schedule the custom actions as needed after 
 </td>
 
 <td>
-<p>Localized qualified name of the Network Service account (WinNetworkServiceSid).</p>
+<p>Localized qualified name of the Network Service account.</p>
 </td>
 </tr>
 
@@ -495,7 +495,7 @@ WixUtilExtension will automatically schedule the custom actions as needed after 
 </td>
 
 <td>
-<p>Localized qualified name of the Administrators group (WinBuiltinAdministratorsSid).</p>
+<p>Localized qualified name of the Administrators group.</p>
 </td>
 </tr>
 
@@ -505,7 +505,7 @@ WixUtilExtension will automatically schedule the custom actions as needed after 
 </td>
 
 <td>
-<p>Localized qualified name of the Users group (WinBuiltinUsersSid).</p>
+<p>Localized qualified name of the Users group.</p>
 </td>
 </tr>
 
@@ -515,17 +515,7 @@ WixUtilExtension will automatically schedule the custom actions as needed after 
 </td>
 
 <td>
-<p>Localized qualified name of the Users group (WinBuiltinGuestsSid).</p>
-</td>
-</tr>
-
-<tr>
-<td valign="top">
-<p>WIX_ACCOUNT_PERFLOGUSERS, WIX_ACCOUNT_PERFLOGUSERS_NODOMAIN</p>
-</td>
-
-<td>
-<p>Localized qualified name of the Performance Log Users group (WinBuiltinPerfLoggingUsersSid).</p>
+<p>Localized qualified name of the Users group.</p>
 </td>
 </tr>
 </table>

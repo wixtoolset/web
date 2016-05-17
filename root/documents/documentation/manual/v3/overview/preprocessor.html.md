@@ -61,19 +61,13 @@ Any environment variable can be referenced with the syntax $(env.VarName). For e
 
 WiX has some built-in variables. They are referenced with the syntax $(sys.VARNAME) and are always in upper case.
 
-<dl>
-  <dt>CURRENTDIR<dt>
-  <dd>The current directory where the build process is running.</dd>
+* CURRENTDIR - the current directory where the build process is running
 
-  <dt>SOURCEFILEPATH</dt>
-  <dd>The full path to the file being processed.</dd>
+* SOURCEFILEPATH &ndash; the full path to the file being processed
 
-  <dt>SOURCEFILEDIR</dt>
-  <dd>The directory containing the file being processed.</dd>
+* SOURCEFILEDIR &ndash; the directory containing the file being processed
 
-  <dt>BUILDARCH</dt> 
-  <dd>The platform (Intel, x64, Intel64, ARM) this package is compiled for (set by the -arch switch to Candle.exe or the InstallerPlatform MSBuild property).</dd>
-</dl>
+* PLATFORM &ndash; the platform (Intel, x64, Intel64) this package is compiled for (set by the Package element&apos;s Platform attribute)
 
 NOTE: All built-in directory variables are &ldquo;\&rdquo; terminated.
 

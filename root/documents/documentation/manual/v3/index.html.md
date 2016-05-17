@@ -218,7 +218,6 @@ layout: documentation
       * [Button Element (Thmutil Extension)](xsd/thmutil/button.html)
       * [Checkbox Element (Thmutil Extension)](xsd/thmutil/checkbox.html)
       * [Column Element (Thmutil Extension)](xsd/thmutil/column.html)
-      * [Combobox Element (Thmutil Extension)](xsd/thmutil/combobox.html)
       * [Editbox Element (Thmutil Extension)](xsd/thmutil/editbox.html)
       * [Font Element (Thmutil Extension)](xsd/thmutil/font.html)
       * [Hyperlink Element (Thmutil Extension)](xsd/thmutil/hyperlink.html)
