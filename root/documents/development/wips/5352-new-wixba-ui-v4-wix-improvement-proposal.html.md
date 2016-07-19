@@ -3,7 +3,7 @@ wip: #5352
 type: Feature
 by: Phillip Hogland (phogland at rimage.com)
 title: Template WiX Improvement Proposal
-draft: true
+draft: false
 ---
 
 ## User stories
@@ -38,28 +38,28 @@ I do not have much familiarity with AppX setups.  The original wix-devs thread s
 
  <https://www.microsoft.com/en-us/store/apps/app-installer/9nblggh4nns1>
 
- The following topics cover issues that need more clarification in my mind. 
+ The following topics cover issues that need more clarification in my mind.
+
+Note in WixToolset Online Meeting #109 AppX setup was demonstrated.
 
 ### The Window's Chrome
 The example AppX screen shot only has a 'windows close' control (x) in the upper left corner, however it has been suggested that allowing the user to minimize the setup application is useful to support.  My research indicates that when Window/@Style is set to 'ThreeDBorderWindow' there is no option to not show the icon in the upper left corner.  The documentation indicates that this icon is also used in the ALT-TAB list of applications.  The example AppX screen shot does not indicate that an icon was used.  Therefore we need to define an .ico file for use in this Window, or allow the OS to pick a default icon from the bundle.exe, or from Window's default application icon.  If it is desirable to emulate the AppX screen shot I suspect we could define an .ico file using the same color as the background.  I have not researched this to know what is needed to hide the icon, but I suspect specifying a .ico file which matches the background might work.  
 
+In WixToolset Online Meeting #109 the direction was to research the default WPF behavior on Windows 10, suppress the icon in the left corner of the chrome if possible, and allow user re-size the window.  The current implementation re-sizes to the content of the layout, but does not allow re-sizing.  I plan to address other concerns and submit Pull requests that do not support re-sizing initially, then work on the re-sizing and needed scroll/wrapping behavior later.
+
 ### Branding
-For a logo, logo-black-hollow.png and logo-white-hollow.png, from the web site, were used, but the resulting image seems a little small. So the following ScaleTransform is applied:
+For a logo, logo-black-hollow.png and logo-white-hollow.png, from the web site, were used, but the resulting image seems a little small. 
 
-    <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
+Note in WixToolset Online Meeting #109 I will research a preferred size for the logo and provide that back to wix-devs.
 
-Whether the ScaleTransform is applied or not some edges of the logo are aliased (ragged).  I am wondering if there is a better way to present the logo?
+Which Font Family is preferred for Branding?  The AppX screen shot seems to use a different font so I tried Cambria for the org title.    
 
-Would re-sizing it in another tool be advisable?
-
-Which Font Family is preferred for Branding?  The AppX screen shot seems to use a different font so I tried Cambria for the org title.      
+Note in WixToolset Online Meeting #109 we did not cover which FontFamily to use.  Still interested in feedback.  
 
 ### SKU
 The AppX screen shot has at the top left a question, such as:
 
 "Install Contoso App?"
-
-I am not clear what would be displayed in other configurations, such as when Update, Repair, and Uninstall are all valid possible actions.  So I am looking for clarification as to whether this line should be implemented and when.
 
 The AppX screen shot has a 'Publisher:' and a 'Version:' (both of which have been implemented in the mock up), followed by a 'Capabilities:' with three bullets and a link labeled 'More'.  I am not clear on what we to present for 'Capabilities:'.  'News' is the closest similarity in the current WixBA.  'License:' and 'News:' links has been implemented, and the value of the Publisher: is also a link to the home page at:
 
@@ -67,8 +67,12 @@ The AppX screen shot has a 'Publisher:' and a 'Version:' (both of which have bee
 
 While the goal is to make these view similar to the AppX screen shot, I wonder if Publisher: isn't redundant and the homepage link and the News: link more suited for display below the publisher's name in the Branding area.  I would think that a link to the Release/download page and a 'support' (link pointing at the wix forums page (or specifically to  wix-users) might be more useful in the SKU area.  Or all links in the SKU area to keep the Branding area clean.  I had also considered creating two invisible layout columns, spacing to two links horizontally using more of the center of the dialog, but still in the SKU area.  Any thoughts on these issues?
 
+The online meeting #109 consensus was to have a static title and not try present a 'question' in the title.  I also received guidance for the layout of Publisher etc, using labels where I only had links.  When an update is available, provide details in the SKU area.  Research how to link to the release notes page and if needed update WixDistribution.  I plan to implement (some of) these changes prior to submitting a PR for folks to experiment with.
+
 ### Action Controls
-The AppX screen shot only shows one Action Control being displayed, however there are configurations where more than one selection is appropriate.  I assume therefore that the controls should be arranged from right to left, with the rightmost being the preferred selection.  
+The AppX screen shot only shows one Action Control being displayed, however there are configurations where more than one selection is appropriate.  I assume therefore that the controls should be arranged from right to left, with the rightmost being the preferred selection.
+
+In the online meeting #109 the "rightmost being the preferred" was questioned so I will try to find the Microsoft guidelines and check or correct my understanding of them.  
 
 The following is a list (from top to bottom) of the Action controls which would be placed from Right to Left:
 
@@ -80,8 +84,12 @@ The following is a list (from top to bottom) of the Action controls which would 
 * **Exit** - The AppX uses "Close", and the Close button is not displayed in the Install configuration scenario of the screen shot.  Is this button needed, given that there is a Close control in windows chrome?  Currently in the mock up only the chrome control is displayed. 
 * **Cancel**
 
+In the online meeting #109 consensus was that a Close button is needed (not named Exit, and in addition to the one in the window chrome, even though AppX seems to use the Windows chrome).
+
 ### Status Information
 I don't know what the AppX similarity is so the mock up uses horizontal progress bars and an area for the action text similar in function to the current WixBA.  Currently text indicating the action, 'Checking for updates' is also placed in this area with an indeterminate progress bar (barbershop style).  I researched putting short status text to the immediate left of the Action Controls, in a status bar model, but did not try an implementation yet.
+
+In the online meeting #109 the install progress is immediately above the action buttons.  Consensus to remove the Action Text area, but to have a shorter message which displays the name of the package being installed immediately above the install progress.  I had not worked on styling the progress bar yet (importing code from another project just to get something working) but we want to try and get close to Windows 10 default behavior.  The Update Progress 'marquee' should be replaced with whatever the Windows 10 default behavior is, yet to be researched.
 
 ## See Also
 Screen shots of the mock up running on Windows 10 Aero, have been placed at:
