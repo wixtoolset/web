@@ -2,7 +2,7 @@
 wip: #5352
 type: Feature
 by: Phillip Hogland (phogland at rimage.com)
-title: Template WiX Improvement Proposal
+title: New WixBA UI, v4
 draft: false
 ---
 
@@ -85,6 +85,8 @@ The following is a list (from top to bottom) of the Action controls which would 
 * **Cancel**
 
 In the online meeting #109 consensus was that a Close button is needed (not named Exit, and in addition to the one in the window chrome, even though AppX seems to use the Windows chrome).
+
+My research of UI Design Guidelines has failed to clarify location of the 'preferred' Button Control, except to point out how the styling that was implemented to get the blue with white lettering, to conform to the AppX screen shots, also conflict with the UI Design Guidelines.  So for the moment I plan to remove that custom styling, and try to conform as much as possible to Windows 10 behavior, leaving the question of matching AppX look, for additional discussion.  As for the placement question, the guidelines indicate that final actions should be in the lower right and that initiating actions should be to the left, and preferably to the top left.  For initial PR I plan to order the initiating Action Controls along the bottom with the preferred action to the left.  One I get this to a functional level I will do a PR to allow folks to try it out and provide additional feedback.  Of course feedback is appreciated at any point.
 
 ### Status Information
 I don't know what the AppX similarity is so the mock up uses horizontal progress bars and an area for the action text similar in function to the current WixBA.  Currently text indicating the action, 'Checking for updates' is also placed in this area with an indeterminate progress bar (barbershop style).  I researched putting short status text to the immediate left of the Action Controls, in a status bar model, but did not try an implementation yet.
