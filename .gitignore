@@ -12,6 +12,7 @@ v3manual/src/layouts/
 site.lastrun
 *.suo
 *.user
+*.browse.VC.db
 
 # Issues bring their binaries with them but not the App_Data
 issues/App_Data/
