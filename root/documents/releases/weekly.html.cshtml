@@ -2,7 +2,7 @@
 layout: herosmall
 title: Weekly Releases
 image: /content/red_smoke_4.jpg
-releases?: query documents where sourceRelativeFolder eq "documents\releases" descending date take 5
+releases?: query documents where sourceRelativePath startswith "documents\releases\v" descending date take 5
 
 ---
 
