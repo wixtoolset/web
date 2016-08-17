@@ -34,27 +34,32 @@ There are no plans to apply this proposal to the WiX Toolset v3.x Setup, at this
 
 ## Considerations
 ### General
-I do not have much familiarity with AppX setups.  The original wix-devs thread suggested looking at screen shots at:
+The original wix-devs thread suggested looking at screen shots at:
 
  <https://www.microsoft.com/en-us/store/apps/app-installer/9nblggh4nns1>
 
- The following topics cover issues that need more clarification in my mind.
+ The following topics summarize concerns discussed in Wix online meeting #109, or in feedback to the PRs:
 
-Note in WixToolset Online Meeting #109 AppX setup was demonstrated.
+
+
+- https://www.youtube.com/watch?v=_irv0_U-w0g
+- 
+.
+
+In the WixToolset Online Meeting #109 an AppX setup was demonstrated and the following concerns were discussed:
+https://www.youtube.com/watch?v=_irv0_U-w0g
 
 ### The Window's Chrome
 The example AppX screen shot only has a 'windows close' control (x) in the upper left corner, however it has been suggested that allowing the user to minimize the setup application is useful to support.  My research indicates that when Window/@Style is set to 'ThreeDBorderWindow' there is no option to not show the icon in the upper left corner.  The documentation indicates that this icon is also used in the ALT-TAB list of applications.  The example AppX screen shot does not indicate that an icon was used.  Therefore we need to define an .ico file for use in this Window, or allow the OS to pick a default icon from the bundle.exe, or from Window's default application icon.  If it is desirable to emulate the AppX screen shot I suspect we could define an .ico file using the same color as the background.  I have not researched this to know what is needed to hide the icon, but I suspect specifying a .ico file which matches the background might work.  
 
-In WixToolset Online Meeting #109 the direction was to research the default WPF behavior on Windows 10, suppress the icon in the left corner of the chrome if possible, and allow user re-size the window.  The current implementation re-sizes to the content of the layout, but does not allow re-sizing.  I plan to address other concerns and submit Pull requests that do not support re-sizing initially, then work on the re-sizing and needed scroll/wrapping behavior later.
+In WixToolset Online Meeting #109 the direction was to research the default WPF behavior on Windows 10, suppress the icon in the left corner of the chrome if possible, and allow user re-size the window.  As a result of PR feedback the default icon was left in the windows chrome.  
 
 ### Branding
 For a logo, logo-black-hollow.png and logo-white-hollow.png, from the web site, were used, but the resulting image seems a little small. 
 
-Note in WixToolset Online Meeting #109 I will research a preferred size for the logo and provide that back to wix-devs.
-
 Which Font Family is preferred for Branding?  The AppX screen shot seems to use a different font so I tried Cambria for the org title.    
 
-Note in WixToolset Online Meeting #109 we did not cover which FontFamily to use.  Still interested in feedback.  
+Based on feedback to the PR, the FontFamily setting uses the system default for the title and all labels.  
 
 ### SKU
 The AppX screen shot has at the top left a question, such as:
@@ -86,7 +91,7 @@ The following is a list (from top to bottom) of the Action controls which would 
 
 In the online meeting #109 consensus was that a Close button is needed (not named Exit, and in addition to the one in the window chrome, even though AppX seems to use the Windows chrome).
 
-My research of UI Design Guidelines has failed to clarify location of the 'preferred' Button Control, except to point out how the styling that was implemented to get the blue with white lettering, to conform to the AppX screen shots, also conflict with the UI Design Guidelines.  So for the moment I plan to remove that custom styling, and try to conform as much as possible to Windows 10 behavior, leaving the question of matching AppX look, for additional discussion.  As for the placement question, the guidelines indicate that final actions should be in the lower right and that initiating actions should be to the left, and preferably to the top left.  For initial PR I plan to order the initiating Action Controls along the bottom with the preferred action to the left.  One I get this to a functional level I will do a PR to allow folks to try it out and provide additional feedback.  Of course feedback is appreciated at any point.
+My research of UI Design Guidelines has failed to clarify location of the 'preferred' Button Control, except to point out how the styling that was implemented to get the blue with white lettering, to conform to the AppX screen shots, also conflict with the UI Design Guidelines.  So for the moment I plan to remove that custom styling, and try to conform as much as possible to Windows 10 behavior, leaving the question of matching AppX look, for additional discussion.  As for the placement question, the guidelines indicate that final actions should be in the lower right and that initiating actions should be to the left, and preferably to the top left.  For initial PR I plan to order the initiating Action Controls along the bottom with the preferred action to the left.
 
 ### Status Information
 I don't know what the AppX similarity is so the mock up uses horizontal progress bars and an area for the action text similar in function to the current WixBA.  Currently text indicating the action, 'Checking for updates' is also placed in this area with an indeterminate progress bar (barbershop style).  I researched putting short status text to the immediate left of the Action Controls, in a status bar model, but did not try an implementation yet.
@@ -94,10 +99,4 @@ I don't know what the AppX similarity is so the mock up uses horizontal progress
 In the online meeting #109 the install progress is immediately above the action buttons.  Consensus to remove the Action Text area, but to have a shorter message which displays the name of the package being installed immediately above the install progress.  I had not worked on styling the progress bar yet (importing code from another project just to get something working) but we want to try and get close to Windows 10 default behavior.  The Update Progress 'marquee' should be replaced with whatever the Windows 10 default behavior is, yet to be researched.
 
 ## See Also
-Screen shots of the mock up running on Windows 10 Aero, have been placed at:
-
-<https://github.com/phillHgl/wix4.MyResources/tree/develop/ScreenShots/5352-new-wixba-ui-v4/Aero>
-
-Somce screen shots for a dark high contrast configuration have been placed at (with more work needed):
-
-<https://github.com/phillHgl/wix4.MyResources/tree/develop/ScreenShots/5352-new-wixba-ui-v4/Dark>
+Links to screen shots have been removed, since code has now been merged into the wix4 repository.
