@@ -228,13 +228,32 @@ package reference attributes. These would map to rows like in the following exam
 </vs:VsixPackage>
 ```
 
+### Nested MSI sessions
+
+When an MSI invokes _VSIXInstaller.exe_ targeting VS2017, if any workloads or components are installed that also install MSIs, the session will fail.
+Microsoft is considering a change to _VSIXInstaller.exe_ to accept a command line parameter when run from within an MSI when _VSIXInstaller.exe_
+was found by the CAs documented herein, and when passed will determine if any MSIs will be installed / repaired and exit immediately with an error
+code we would map back to to a custom message like the following example.
+
+ID                  | Message                                                              | Description
+--                  | -------                                                              | -----------
+msierrNestedInstall | Cannot install "[2]" because it will trigger an unsupported install. | [2] is the path to the VSIX package.
+
+An installer could also use the value of field 2 to `ShellExecute` it or allow the user to do it. _VSIXInstaller.exe_ will prompt into which
+versions, editions, and instances of all installed Visual Studio products to install.
+
+Additionally, if bundle authoring were expanded to allow custom package authoring elements, we could create compiler support for a `VsixPackage`
+element that compiles to an `ExePackage` but would drop an EXE (perhaps embedded in `WixVSExtension.dll` if a single-file extension is required)
+that calls the query APIs to find _VSIXInstaller.exe_ and forwards the command line. This would be a simple shortcut for package developers
+and would move invocation of the _VSIXInstaller.exe_ out of MSIs without additional support required in Burn.
+
 ### MSI messages
 
 To support external UI handlers for single MSI installs, the custom actions could send messages for all instances - mapping to the `VSIX_INSTANCE_IDS`
 property - and/or each individual instance using package rows' `ActionProperty` properties. The InstanceId, DisplayName, Nickname (optional property),
 and InstallationPath properties would be packaged into message data to be displayed by the external  UI handler.
 
-The DisplayName would be selected by passing the `ProductLanguage` MSI property to `ISetupConfiuration::GetDisplayName` as the `lcid` parameter.
+The DisplayName would be selected by passing the `ProductLanguage` MSI property to `ISetupConfiguration::GetDisplayName` as the `lcid` parameter.
 If the language is not supported, the English (US) (1033) DisplayName is returned.
 
 ### BA functions
