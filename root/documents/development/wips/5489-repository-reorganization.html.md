@@ -112,9 +112,8 @@ The `Core` is where the bulk of WiX Toolset development takes
 place. This repository includes all command-line tools, MSBuild integration
 (including DTF's custom action integration) and, of course, wix.dll.
 
-This respository also builds the installation packages and
-bundle for the WiX Toolset. The WiX Toolset bundle is the output
-from this respository.
+This respository is responsible for building and publishing the bundle
+and NuGet package for the WiX Toolset.
 
 
 ### Votive
@@ -172,7 +171,7 @@ layers. Our dependency graph has **never** looked [this bad][corefxgraph].
 
 ## See Also
 
-* [WIXFEAT:5489 - Repository Reorganization][5489]
+* [WIP:5489 - Repository Reorganization][5489]
 
 [5489]: https://github.com/wixtoolset/issues/issues/5489
 [corefx]: https://github.com/dotnet/corefx/issues/15135
