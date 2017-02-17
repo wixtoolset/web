@@ -13,13 +13,13 @@ As a setup developer I can look for and read elements and attributes from XML fi
 ## Proposal
 
 Add custom action that reads elements from XML file and stores result in specified property.
-The development of this story will consists from two parrts:
+The development of this story will consist from two parts:
 1.Modifying WIX/Util schema to add subelement to Property
 	<Property Name=SOME_PROPERTY...>
 		<XMLSearch Id=Id1 File=<formatted path to file> Element=<XPath> Attribute=<name of attribute> />
 	</Property>
-	Compilation of this part will create the table with 5 columns (Id, File, Element, Attribute, Property) where first four are primary key that allowing to read several attributes from one element)
-2. Adding to Util extension Custom Action that reads from above XML file and puts value to specified property.
+	Compilation of this part will create the table with 5 columns (Id, File, Element, Attribute, Property) where first four are primary key that allowing to read several attributes from one element.
+2. Adding Custom Action to Util extension that reads from XML file and puts value to specified property.
 	a. Action is immediate and placed just after AppSearch standard action in both sequencies
 	b. If the file, element or attribute do not exist - write to log.
 	c. If Attribute is omitted or is empty string - read inner text of element.
