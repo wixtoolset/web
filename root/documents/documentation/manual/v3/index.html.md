@@ -45,6 +45,7 @@ layout: documentation
       * [HeatDirectory Task](msbuild/task_reference/heatdirectory.html)
       * [HeatFile Task](msbuild/task_reference/heatfile.html)
       * [HeatProject Task](msbuild/task_reference/heatproject.html)
+      * [Insignia Task](msbuild/task_reference/insignia.html)
       * [Light Task](msbuild/task_reference/light.html)
       * [Lit Task](msbuild/task_reference/lit.html)
 * [WixUI Dialog Library](wixui/index.html)
