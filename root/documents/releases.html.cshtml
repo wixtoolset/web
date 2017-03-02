@@ -2,8 +2,8 @@
 layout: herosmall
 title: Downloads
 image: /content/red_smoke_2.jpg
-bodyTitle: Published Builds
-bodyHeading: Get the latest stable versions of the WiX Toolset.
+bodyTitle:
+bodyHeading:
 Items: [
   { uri: "/releases/v3.10/stable",
     text: "WiX v3.10.3 (Stable)" },
@@ -22,33 +22,46 @@ Items: [
   { uri: "/releases/v2.0/stable",
     text: "WiX v2.0 (Stable)" }
   ]
-  
+
 ---
 
 <div class="row fh5co-feature-1">
-    <div class="col-md-6">
-        <div>
-            <h2>@Model.Document.BodyTitle</h2>
-            <p>@Model.Document.BodyHeading</p>
+  <div class="col-md-5">
+    <div>
+      <h2>Recommended Build</h2>
+      <p>
+        <strong>WiX Toolset build tools</strong> includes everything you need to create installations, as well as Visual Studio 2010-2015 integration.
+      </p>
+      <p><a class="btn btn-primary" href="/releases/v3.10/stable/">Download WiX v3.10.3</a></p>
+      <p>
+        <sup><i class="ti-announcement"></i> <strong>New!</strong></sup> <strong>WiX Toolset Visual Studio 2017 Extension</strong> this preview provides integration for the WiX Toolset into Visual Studio 2017. You will still need to install the WiX Toolset build tools.
+      </p>
+      <p>Get VS2017 from the <a href="https://marketplace.visualstudio.com/vsgallery/2eb3402e-ea6d-4dcd-8340-c88435e54ea9">Visual Studio Marketplace</a>.</p>
+    </div>
+  </div>
 
-            <ul>
-                @foreach (var item in @Model.Document.Items)
-                {
-                    <li><a href="@item.Uri">@item.Text</a></li>
-                }
-            </ul>
-        </div>
+  <div class="col-md-4">
+    <div>
+      <h2>Weekly Builds</h2>
+      <p>
+        These have the latest bug-fixes, but may introduce new bugs that you didn't expect. In general, these are <strong>not</strong> considered to be production-ready.
+      </p>
+      <p>
+        If you are still interested, you can find them <a href="/releases/weekly">here</a>.
+      </p>
     </div>
-    <div class="col-md-5">
-        <div>
-            <h2>Weekly Builds</h2>
-            <p>
-                These have the latest bug-fixes, but may introduce new bugs that you didn't expect. In general, these 
-                are <strong>not</strong> considered to be production-ready.
-                <br />
-                <br /> 
-                If you are still interested, you can find them <a href="/releases/weekly">here</a>. 
-            </p>
-        </div>
+  </div>
+
+  <div class="col-md-3">
+    <div>
+    <h2>Archived Builds</h2>
+      <p>These are the archived stable versions of the WiX Toolset.</p>
+      <ul>
+      @foreach (var item in @Model.Document.Items)
+      {
+        <li><a href="@item.Uri">@item.Text</a></li>
+      }
+      </ul>
     </div>
+  </div>
 </div>
