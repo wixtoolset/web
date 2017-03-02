@@ -1,5 +1,6 @@
 {
   "/releases" : "/releases/",
+
   "/documentation/tutorial" : "https://www.firegiant.com/wix/tutorial/",
   "/documentation/book" : "http://www.packtpub.com/windows-installer-xml-3-6-developers-guide/book",
   "/documentation/book2" : "https://www.packtpub.com/web-development/wix-cookbook",
@@ -1324,5 +1325,7 @@
   "manual-wix3/wix_xsd_writeinivalues.htm" : "/documentation/manual/v3/xsd/wix/writeinivalues.html",
   "manual-wix3/wix_xsd_writeregistryvalues.htm" : "/documentation/manual/v3/xsd/wix/writeregistryvalues.html",
   "manual-wix3/write_a_registry_entry.htm" : "/documentation/manual/v3/howtos/files_and_registry/write_a_registry_entry.html",
+
+  "/redirect/recommended-release" : "/downloads/v3.10/stable/",
   "/redirect" : "/"
 }
