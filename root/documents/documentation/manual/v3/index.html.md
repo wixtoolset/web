@@ -131,6 +131,7 @@ layout: documentation
       * [Condition Element (Bal Extension)](xsd/bal/condition.html)
       * [Overridable Attribute (Bal Extension)](xsd/bal/overridable.html)
       * [PrereqSupportPackage Attribute (Bal Extension)](xsd/bal/prereqsupportpackage.html)
+      * [UseUILanguages Attribute (Bal Extension)](xsd/bal/useuilanguages.html)
       * [WixManagedBootstrapperApplicationHost Element (Bal Extension)](xsd/bal/wixmanagedbootstrapperapplicationhost.html)
       * [WixStandardBootstrapperApplication Element (Bal Extension)](xsd/bal/wixstandardbootstrapperapplication.html)
    * [Complus Schema](xsd/complus/index.html)
