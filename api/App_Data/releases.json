@@ -1,5 +1,6 @@
 {
   "v3.11/rc" : "http://wixtoolset.org/releases/v3-11-0-1507/",
+  "v3.11/rc2" : "http://wixtoolset.org/releases/v3-11-0-1528/",
   "v3.11/ProjectAggregator2.msi" : "http://static.wixtoolset.org/releases/ProjectAggregator2/ProjectAggregator2.msi",
 
   "v3.10/stable" : "https://wix.codeplex.com/releases/view/624906",
