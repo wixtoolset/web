@@ -1,0 +1,61 @@
+- # Development branches build.
+  version: 0.0.0.{branch}-{build}
+  configuration: Debug
+
+  environment:
+    DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+    NUGET_XMLDOC_MODE: skip
+
+  init:
+    - git config --global core.autocrlf true
+
+  build_script:
+    - appveyor.cmd
+
+  skip_tags: true
+
+
+- # Master build and deploy.
+  branches:
+    only:
+      - master
+
+  version: 0.0.0.{build}
+  configuration: Release
+
+  environment:
+    DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+    NUGET_XMLDOC_MODE: skip
+    GITHUB_ACCESS_TOKEN:
+      secure: BuuXJ8z8dMoeeMPy4l7QbbNPFn1/CW9PRGZxMhH3IAFdtTftFKZHA7eqpBqiE2T3
+
+  init:
+    - git config --global core.autocrlf true
+
+  build_script:
+    - appveyor.cmd
+
+  artifacts:
+    - path: build\deploy\
+      name: deploy-artifacts
+
+  deploy:
+    - provider: WebDeploy
+      server: https://wixtoolset-staging.scm.azurewebsites.net:443/msdeploy.axd?site=wixtoolset-staging
+      website: wixtoolset__staging
+      username: $wixtoolset__staging
+      password:
+        secure: rSNrD+nlS813sckRsk5os/7NiYbvGl9faU3n1KjeCWr8iiO2lHTZTDj/NH9h3zfbagqXPAcu/f5hVjZuBqc95g==
+      remove_files: true
+      app_offline: true
+      artifact: deploy-artifacts
+
+  on_success:
+    - git config --global credential.helper store
+    - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:GITHUB_ACCESS_TOKEN):x-oauth-basic@github.com`n"
+    - git config --global user.email "wix@wixtoolset.org"
+    - git config --global user.name "WiX-BoT"
+    - git tag -a v%GitBuildVersion% -m "Build v%GitBuildVersion%"
+    - git push --tags origin HEAD:master
+
+  skip_tags: true
