@@ -1,18 +1,11 @@
+.vs/
 bin/
 obj/
-node_modules/
-out/
 packages/
 build/
-release/src/layouts/
-root/src/layouts/
-v3manual/src/layouts/
 
-.docpad.db
 site.lastrun
+src/Web/wwwroot/
+
 *.suo
 *.user
-
-# Issues bring their binaries with them but not the App_Data
-issues/App_Data/
-!issues/bin/
