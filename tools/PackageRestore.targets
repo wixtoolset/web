@@ -27,8 +27,7 @@
     Restores the required packages to build using nuget.exe.
   ================================================================================================
   -->
-  <Target Name="PackageRestore"
-          DependsOnTargets="NugetPackageRestore;SolutionPackageRestore" />
+  <Target Name="PackageRestore" DependsOnTargets="NugetPackageRestore" />
 
   <!-- Nuget Package Restore -->
   <ItemGroup>
@@ -46,11 +45,6 @@
 
     <Exec Command="&quot;$(NugetExe)&quot; install %(Identity) -Version %(Version)" Condition=" '@(MissingNugetPackage)'!='' "
           WorkingDirectory="$(MSBuildThisFileDirectory)" />
-  </Target>
-
-  <Target Name="SolutionPackageRestore">
-    <Exec Command="&quot;$(NugetExe)&quot; restore "
-          WorkingDirectory="$(ProjectFolder)api" />
   </Target>
 
   <!-- Sentinel value that indicates Nuget.targets has been initialized. -->

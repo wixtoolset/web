@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Project InitialTargets="PackageRestore" DefaultTargets="Pull" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
+
+  <UsingTask AssemblyFile="$(AzureStorageBuildTasksPath)FireGiant.BuildTasks.AzureStorage.dll" TaskName="DownloadBlobs" />
+  <UsingTask AssemblyFile="$(MSBuildCommunityTasksPath)MSBuild.Community.Tasks.dll" TaskName="Unzip" />
+
+  <PropertyGroup>
+    <ProjectFolder>$(MSBuildThisFileDirectory)..\</ProjectFolder>
+    <Configuration>Release</Configuration>
+
+    <NugetPackageFolder>$(ProjectFolder)packages\</NugetPackageFolder>
+
+    <BuildFolder>$(OutputFolder)</BuildFolder>
+    <BuildFolder Condition="'$(BuildFolder)' == '' ">$(ProjectFolder)build\</BuildFolder>
+    <BuildFolder Condition="'$(BuildFolder)' != '' and !HasTrailingSlash('$(BuildFolder)')">$(BuildFolder)\</BuildFolder>
+
+    <DownloadFolder>$(BuildFolder)dl\</DownloadFolder>
+
+    <WebRootSourceFolder>$(ProjectFolder)src\Web\Static\</WebRootSourceFolder>
+  </PropertyGroup>
+
+  <!--
+  ================================================================================================
+  Pull
+
+    Downloads stage content from website.
+  ================================================================================================
+  -->
+  <Target Name="Pull"
+          DependsOnTargets="DownloadStagedFiles;GatherDownloadedStagedFiles;UnzipManuals;CopyReleaseMetadata" />
+
+  <Target Name="DownloadStagedFiles"
+          DependsOnTargets="CheckCredentials">
+
+    <DownloadBlobs StorageAccount="$(StorageAccount)"
+                 StorageAuthentication="$(StorageAuthentication)"
+                 StorageEmulator="$(StorageUseEmulator)"
+                 Container="staged"
+                 Blobs="@(DownloadBlob)"
+                 Folder="$(DownloadFolder)">
+      <Output TaskParameter="Downloaded" ItemName="DownloadedBlob" />
+    </DownloadBlobs>
+  </Target>
+
+  <Target Name="GatherDownloadedStagedFiles">
+    <ItemGroup>
+      <ManualZip Include="$(DownloadFolder)**\v3manual.zip">
+        <OutputFolder>$(WebRootSourceFolder)documents\documentation\manual\v3</OutputFolder>
+      </ManualZip>
+      <ManualZip Include="$(DownloadFolder)**\v4manual.zip">
+        <OutputFolder>$(WebRootSourceFolder)documents\documentation\manual\v4</OutputFolder>
+      </ManualZip>
+
+      <ReleaseMetadataFile Include="$(DownloadFolder)**\*.md">
+        <OutputFolder>$(WebRootSourceFolder)\documents\releases\</OutputFolder>
+      </ReleaseMetadataFile>
+    </ItemGroup>
+  </Target>
+
+  <Target Name="UnzipManuals"
+          Condition=" '@(ManualZip)'!='' ">
+    <RemoveDir Directories="%(ManualZip.OutputFolder)" />
+
+    <Unzip ZipFileName="@(ManualZip)"
+           TargetDirectory="%(OutputFolder)"
+           Quiet="true" />
+  </Target>
+
+  <Target Name="CopyReleaseMetadata">
+    <Copy SourceFiles='@(ReleaseMetadataFile)'
+        DestinationFiles="@(ReleaseMetadataFile->'%(OutputFolder)%(RecursiveDir)%(Filename)%(Extension)' )"
+        SkipUnchangedFiles='true' />
+  </Target>
+
+
+  <Target Name="CheckCredentials">
+    <Error Text="Must specify Azure storage account property on the command-line using the -p:StorageAccount= property." Condition=" '$(StorageAccount)'=='' " />
+    <Error Text="Must specify Azure storage authentication property on the command-line using the -p:StorageAuthentication= property." Condition=" '$(StorageAuthentication)'=='' " />
+  </Target>
+
+  <Import Project="PackageRestore.targets" />
+</Project>
