@@ -18,8 +18,8 @@ namespace WixToolset.Web
 
         private IStorageService StorageService { get; }
 
-        [Route("releases/{version}/{file}")]
-        [Route("downloads/{version}/{file}")]
+        [Route("releases/{version}/{*file}")]
+        [Route("downloads/{version}/{*file}")]
         public async Task<IActionResult> RedirectToDownload(string version, string file)
         {
             if (!VersionString.TryParse(version, out var versionString) || String.IsNullOrEmpty(file))
