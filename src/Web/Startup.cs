@@ -3,6 +3,8 @@
 namespace WixToolset.Web
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using Microsoft.AspNetCore.Authentication.Cookies;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -90,10 +92,12 @@ namespace WixToolset.Web
         {
             var options = new RewriteOptions();
 
-            foreach (var redir in this.Configuration.GetSection("Redirects").GetChildren())
+            foreach (var redir in this.Configuration.GetSection("Redirects").Get<IConfigurationSection[]>())
             {
-                var source = redir.Key;
-                var target = redir.Value;
+                var y = redir.GetChildren().First();
+
+                var source = y.Key;
+                var target = y.Value;
 
                 source = source.StartsWith("^") ? source : source.StartsWith("*") ? source.TrimStart('*') : "^" + source;
                 source = source.EndsWith("$") ? source : source.EndsWith("*") ? source.TrimEnd('*') : source + @"/?$";
