@@ -1,0 +1,394 @@
+<?xml version="1.0" ?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:as="http://appsyndication.org/2006/appsyn">
+  <title type="text">WiX Toolset v3.10</title>
+  <subtitle type="text">The WiX Toolset is a set of tools to create Windows installation packages from XML source code. The toolset supports a command line environment that developers may integrate into their build processes to build MSI and MSM setup packages.</subtitle>
+  <as:application type="application/octet-stream">65E893AD-EDD5-4E7D-80CA-F0F50F383532</as:application>
+  <updated>2017-05-18T05:27:03Z</updated>
+  <id>http://wixtoolset.org/releases/feeds/wix3-10.feed</id>
+  <link rel="self" type="application/atom+xml" href="http://wixtoolset.org/releases/feeds/wix3-10.feed" />
+  <generator version="0.1">wixweb build</generator>
+
+<entry>
+      <title>WiX toolset v3.10.3.3007</title>
+      <id>http://wixtoolset.org/releases/v3-10-3-3007/</id>
+      <author>
+        <name>wixtoolset</name>
+        <uri>http://twitter.com/wixtoolset</uri>
+        <email>wix-users@lists.wixtoolset.org</email>
+      </author>
+      <link rel="alternate" href="http://wixtoolset.org/releases/v3-10-3-3007/" />
+      <link rel="enclosure" href="http://wixtoolset.org/downloads/v3.10.3.3007/wix310.exe" length="25090928" type="application/octet-stream" />
+      <content type="html">&lt;p&gt;Change list:&lt;/p&gt; &lt;ul&gt;
+&lt;li&gt;SeanHall: WIXBUG:5308 - Make embedded bundles launch a clean room process so the BA runs in a consistent environment.&lt;/li&gt;
+&lt;/ul&gt;</content>
+      <as:version>v3.10.3.3007</as:version>
+      <updated>2016-06-07T12:00:00Z</updated>
+</entry>
+<entry>
+      <title>WiX toolset v3.10.3.2924</title>
+      <id>http://wixtoolset.org/releases/v3-10-3-2924/</id>
+      <author>
+        <name>wixtoolset</name>
+        <uri>http://twitter.com/wixtoolset</uri>
+        <email>wix-users@lists.wixtoolset.org</email>
+      </author>
+      <link rel="alternate" href="http://wixtoolset.org/releases/v3-10-3-2924/" />
+      <link rel="enclosure" href="http://wixtoolset.org/downloads/v3.10.3.2924/wix310.exe" length="25047632" type="application/octet-stream" />
+      <content type="html">&lt;p&gt;Change list:&lt;/p&gt; &lt;ul&gt;
+&lt;li&gt;SeanHall: WIXBUG:5301 - Fix bug where file handles weren&#39;t being passed to the clean room process.&lt;/li&gt;
+&lt;li&gt;SeanHall: WIXBUG:5302 - Fix bug where the command line for burn exe packages had the executable path in the middle.&lt;/li&gt;
+&lt;/ul&gt;</content>
+      <as:version>v3.10.3.2924</as:version>
+      <updated>2016-05-24T12:00:00Z</updated>
+</entry>
+<entry>
+      <title>WiX toolset v3.10.3.2917</title>
+      <id>http://wixtoolset.org/releases/v3-10-3-2917/</id>
+      <author>
+        <name>wixtoolset</name>
+        <uri>http://twitter.com/wixtoolset</uri>
+        <email>wix-users@lists.wixtoolset.org</email>
+      </author>
+      <link rel="alternate" href="http://wixtoolset.org/releases/v3-10-3-2917/" />
+      <link rel="enclosure" href="http://wixtoolset.org/downloads/v3.10.3.2917/wix310.exe" length="24906392" type="application/octet-stream" />
+      <content type="html">&lt;p&gt;Change list:&lt;/p&gt; &lt;ul&gt;
+&lt;li&gt;FRichter: WIXBUG:5277 - burn engine: Always use the bundle source path for all purposes. The original source path is needed in all cases: for copying the bundle to the layout directory as well as for checking whether we&#39;re layouting to the bundle location.&lt;/li&gt;
+&lt;li&gt;RobMen: WIXBUG:5282 - reduce clean room security to successfully load BA&#39;s dependent on GDI+ (including WinForms).&lt;/li&gt;
+&lt;li&gt;@barnson: Fix bad merge of v3.11 references into v3.10.3.&lt;/li&gt;
+&lt;/ul&gt;</content>
+      <as:version>v3.10.3.2917</as:version>
+      <updated>2016-05-17T12:00:00Z</updated>
+</entry>
+<entry>
+      <title>WiX toolset v3.10.3.2904</title>
+      <id>http://wixtoolset.org/releases/v3-10-3-2904/</id>
+      <author>
+        <name>wixtoolset</name>
+        <uri>http://twitter.com/wixtoolset</uri>
+        <email>wix-users@lists.wixtoolset.org</email>
+      </author>
+      <link rel="alternate" href="http://wixtoolset.org/releases/v3-10-3-2904/" />
+      <link rel="enclosure" href="http://wixtoolset.org/downloads/v3.10.3.2904/wix310.exe" length="25076032" type="application/octet-stream" />
+      <content type="html">&lt;p&gt;Change list:&lt;/p&gt; &lt;ul&gt;
+&lt;li&gt;SeanHall: WIXBUG:5238 - Get the engine&#39;s file handle as soon as possible.  Also, when launching Burn processes, pass a file handle of the exe to the process on the command line.&lt;/li&gt;
+&lt;li&gt;SeanHall: WIXBUG:5234 - Make Burn grab a file handle to the original bundle so it can still access compressed payloads even if the original bundle was deleted after initialization (e.g. when a bundle uses Burn&#39;s built-in update mechanism). Also, when launching the clean room Burn process, pass a file handle of the original exe to the process on the command line. Use this file handle when using the attached container.&lt;/li&gt;
+&lt;li&gt;jchoover: WIXBUG:5193 - Fix /layout default directory with clean room:
+&lt;ul&gt;
+&lt;li&gt;Attempt to use WixBundleSourceProcessPath / WixBundleSourceProcessFolder before defaulting to PathForCurrentProcess&lt;/li&gt;
+&lt;li&gt;Prevent trying to layout the origional bundle exe on top of the existing exe, if the path provided to layout is the same as the bundles working directory.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content>
+      <as:version>v3.10.3.2904</as:version>
+      <updated>2016-05-04T12:00:00Z</updated>
+</entry>
+<entry>
+      <title>WiX toolset v3.10.2.2516</title>
+      <id>http://wixtoolset.org/releases/v3-10-2-2516/</id>
+      <author>
+        <name>wixtoolset</name>
+        <uri>http://twitter.com/wixtoolset</uri>
+        <email>wix-users@lists.wixtoolset.org</email>
+      </author>
+      <link rel="alternate" href="http://wixtoolset.org/releases/v3-10-2-2516/" />
+      <link rel="enclosure" href="http://wixtoolset.org/downloads/v3.10.2.2516/wix310.exe" length="24864216" type="application/octet-stream" />
+      <content type="html">&lt;p&gt;Change list:&lt;/p&gt; &lt;ul&gt;
+&lt;li&gt;RobMen: Fix WiX v3.10.2 build version.&lt;/li&gt;
+&lt;/ul&gt;</content>
+      <as:version>v3.10.2.2516</as:version>
+      <updated>2016-01-16T12:00:00Z</updated>
+</entry>
+<entry>
+      <title>WiX toolset v3.10.2.115</title>
+      <id>http://wixtoolset.org/releases/v3-10-2-115/</id>
+      <author>
+        <name>wixtoolset</name>
+        <uri>http://twitter.com/wixtoolset</uri>
+        <email>wix-users@lists.wixtoolset.org</email>
+      </author>
+      <link rel="alternate" href="http://wixtoolset.org/releases/v3-10-2-115/" />
+      <link rel="enclosure" href="http://wixtoolset.org/downloads/v3.10.2.115/wix310.exe" length="24919136" type="application/octet-stream" />
+      <content type="html">&lt;p&gt;Change list:&lt;/p&gt; &lt;ul&gt;
+&lt;li&gt;RobMen: WIXBUG:5184 - Create Burn &amp;quot;clean room&amp;quot; to prevent DLL hijacking.&lt;/li&gt;
+&lt;/ul&gt;</content>
+      <as:version>v3.10.2.115</as:version>
+      <updated>2016-01-15T12:00:00Z</updated>
+</entry>
+<entry>
+      <title>WiX toolset v3.10.1.2213</title>
+      <id>http://wixtoolset.org/releases/v3-10-1-2213/</id>
+      <author>
+        <name>wixtoolset</name>
+        <uri>http://twitter.com/wixtoolset</uri>
+        <email>wix-users@lists.wixtoolset.org</email>
+      </author>
+      <link rel="alternate" href="http://wixtoolset.org/releases/v3-10-1-2213/" />
+      <link rel="enclosure" href="http://wixtoolset.org/downloads/v3.10.1.2213/wix310.exe" length="24865792" type="application/octet-stream" />
+      <content type="html">&lt;p&gt;Change list:&lt;/p&gt; &lt;ul&gt;
+&lt;li&gt;PavelAnfimov: WIXBUG:4772 - Add support for Windows XP for ShelExecUnelevated.&lt;/li&gt;
+&lt;/ul&gt;</content>
+      <as:version>v3.10.1.2213</as:version>
+      <updated>2015-10-13T11:03:00Z</updated>
+</entry>
+<entry>
+      <title>WiX toolset v3.10.1.2207</title>
+      <id>http://wixtoolset.org/releases/v3-10-1-2207/</id>
+      <author>
+        <name>wixtoolset</name>
+        <uri>http://twitter.com/wixtoolset</uri>
+        <email>wix-users@lists.wixtoolset.org</email>
+      </author>
+      <link rel="alternate" href="http://wixtoolset.org/releases/v3-10-1-2207/" />
+      <link rel="enclosure" href="http://wixtoolset.org/downloads/v3.10.1.2207/wix310.exe" length="24865792" type="application/octet-stream" />
+      <content type="html">&lt;p&gt;Change list:&lt;/p&gt; &lt;ul&gt;
+&lt;li&gt;jchoover: WIXBUG:4899 - Modified WixStdBA handling of XmlGetAttribute to handle S_FALSE.&lt;/li&gt;
+&lt;li&gt;BobArnson: Work around Dev14 change that breaks XP compatibility even when used with v140_xp toolset. See &lt;a href=&quot;https://connect.microsoft.com/VisualStudio/feedback/details/1789709/visual-c-2015-runtime-broken-on-windows-server-2003-c-11-magic-statics&quot;&gt;Connect item on this very issue&lt;/a&gt;. Fixes WIXBUG:4902 and WIXBUG:4908.&lt;/li&gt;
+&lt;/ul&gt;</content>
+      <as:version>v3.10.1.2207</as:version>
+      <updated>2015-10-07T06:00:00Z</updated>
+</entry>
+<entry>
+      <title>WiX toolset v3.10.0.2103</title>
+      <id>http://wixtoolset.org/releases/v3-10-0-2103/</id>
+      <author>
+        <name>wixtoolset</name>
+        <uri>http://twitter.com/wixtoolset</uri>
+        <email>wix-users@lists.wixtoolset.org</email>
+      </author>
+      <link rel="alternate" href="http://wixtoolset.org/releases/v3-10-0-2103/" />
+      <link rel="enclosure" href="http://wixtoolset.org/downloads/v3.10.0.2103/wix310.exe" length="24921432" type="application/octet-stream" />
+      <content type="html">&lt;p&gt;Change list:&lt;/p&gt; &lt;ul&gt;
+&lt;li&gt;RobMen: WIXBUG:4882 - handle all kinds of bad version strings in WixTagExtension.&lt;/li&gt;
+&lt;/ul&gt;</content>
+      <as:version>v3.10.0.2103</as:version>
+      <updated>2015-09-03T03:58:00Z</updated>
+</entry>
+<entry>
+      <title>WiX toolset v3.10.0.2101</title>
+      <id>http://wixtoolset.org/releases/v3-10-0-2101/</id>
+      <author>
+        <name>wixtoolset</name>
+        <uri>http://twitter.com/wixtoolset</uri>
+        <email>wix-users@lists.wixtoolset.org</email>
+      </author>
+      <link rel="alternate" href="http://wixtoolset.org/releases/v3-10-0-2101/" />
+      <link rel="enclosure" href="http://wixtoolset.org/downloads/v3.10.0.2101/wix310.exe" length="24921432" type="application/octet-stream" />
+      <content type="html">&lt;p&gt;Change list:&lt;/p&gt; &lt;ul&gt;
+&lt;li&gt;RobMen: WIXBUG:4879 - support x64 folders and bind variables in SWID Tags.&lt;/li&gt;
+&lt;/ul&gt;</content>
+      <as:version>v3.10.0.2101</as:version>
+      <updated>2015-09-01T11:15:00Z</updated>
+</entry>
+<entry>
+      <title>WiX toolset v3.10.0.2026</title>
+      <id>http://wixtoolset.org/releases/v3-10-0-2026/</id>
+      <author>
+        <name>wixtoolset</name>
+        <uri>http://twitter.com/wixtoolset</uri>
+        <email>wix-users@lists.wixtoolset.org</email>
+      </author>
+      <link rel="alternate" href="http://wixtoolset.org/releases/v3-10-0-2026/" />
+      <link rel="enclosure" href="http://wixtoolset.org/downloads/v3.10.0.2026/wix310.exe" length="24921432" type="application/octet-stream" />
+      <content type="html">&lt;p&gt;Change list:&lt;/p&gt; &lt;ul&gt;
+&lt;li&gt;RobMen: WIXFEAT:4867 - Support ISO/IEC 19770-2:2105 (aka SWID Tags-2).&lt;/li&gt;
+&lt;li&gt;RobMen: WIXBUG:4817 - fix error message in OneTimeWixBuildInitialization.proj&lt;/li&gt;
+&lt;li&gt;BobArnson: WIXBUG:4180 - Add wixtoolset.org EULA service links.&lt;/li&gt;
+&lt;li&gt;BobArnson: WIXBUG:4804 - Add DAPI to get the right calling convention.&lt;/li&gt;
+&lt;li&gt;MikeGC: WIXBUG:4852 - Keep QuietExec function definition the same as in prior versions to avoid breaking anyone. The new function (with more parameters) is now named QuietExecEx.&lt;/li&gt;
+&lt;/ul&gt;</content>
+      <as:version>v3.10.0.2026</as:version>
+      <updated>2015-08-26T03:52:00Z</updated>
+</entry>
+<entry>
+      <title>WiX toolset v3.10.0.1823</title>
+      <id>http://wixtoolset.org/releases/v3-10-0-1823/</id>
+      <author>
+        <name>wixtoolset</name>
+        <uri>http://twitter.com/wixtoolset</uri>
+        <email>wix-users@lists.wixtoolset.org</email>
+      </author>
+      <link rel="alternate" href="http://wixtoolset.org/releases/v3-10-0-1823/" />
+      <link rel="enclosure" href="http://wixtoolset.org/downloads/v3.10.0.1823/wix310.exe" length="24921432" type="application/octet-stream" />
+      <content type="html">&lt;p&gt;Change list:&lt;/p&gt; &lt;ul&gt;
+&lt;li&gt;@barnson: WIXFEAT:4789 - Phase I of .NET Framework 4.6 support (RC, full redist).&lt;/li&gt;
+&lt;li&gt;Lakmus85: WIXBUG:4614 - Validation added for the case when the project property is not empty (as stated in the comments to this method).&lt;/li&gt;
+&lt;li&gt;RobMen: WIXBUG:4778 - initialize logging before anything else.&lt;/li&gt;
+&lt;li&gt;JacobHoover: WIXBUG:4512 - fix WiX BA, prevent multiple install clicks&lt;/li&gt;
+&lt;li&gt;BobArnson: WIXFEAT:4781 - Do a best-effort duplication of strings instead of failing if there&#39;s a missing string.&lt;/li&gt;
+&lt;li&gt;BobArnson: WIXBUG:4786 - Replace default WixUI license with lorem ipsum text.&lt;/li&gt;
+&lt;li&gt;BobArnson: WIXBUG:4760 - Re-guid WixFolderNodeNonMemberProperties&lt;/li&gt;
+&lt;li&gt;HeathS: Refactor cache-only support in Burn
+&lt;ul&gt;
+&lt;li&gt;Remove /cache command line support from engine&lt;/li&gt;
+&lt;li&gt;Allow BA to request cache-only support&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;ErnestT: WIXBUG:4432 - Add burn support for only caching packages&lt;/li&gt;
+&lt;li&gt;HeathS: WIXBUG:4775 - Always set WixBundleOriginalSourceFolder if not already set&lt;/li&gt;
+&lt;li&gt;BMurri: WIXBUG:4532 - Make it an error for InstallPrivileges and InstallScope to specify contradictory values.&lt;/li&gt;
+&lt;/ul&gt;</content>
+      <as:version>v3.10.0.1823</as:version>
+      <updated>2015-06-23T11:59:00Z</updated>
+</entry>
+<entry>
+      <title>WiX toolset v3.10.0.1726</title>
+      <id>http://wixtoolset.org/releases/v3-10-0-1726/</id>
+      <author>
+        <name>wixtoolset</name>
+        <uri>http://twitter.com/wixtoolset</uri>
+        <email>wix-users@lists.wixtoolset.org</email>
+      </author>
+      <link rel="alternate" href="http://wixtoolset.org/releases/v3-10-0-1726/" />
+      <link rel="enclosure" href="http://wixtoolset.org/downloads/v3.10.0.1726/wix310.exe" length="24837568" type="application/octet-stream" />
+      <content type="html">&lt;p&gt;Change list:&lt;/p&gt; &lt;ul&gt;
+&lt;li&gt;HeathS: WIXBUG:3060 - Do not redownload package payloads when /layout is restarted.&lt;/li&gt;
+&lt;li&gt;SeanHall: WIXFEAT:4763 - Add literal flag to Burn variables to indicate that their values shouldn&#39;t be formatted.&lt;/li&gt;
+&lt;li&gt;BobArnson: WIXFEAT:4772 - Replace hyperlink ShelExec with ShelExecUnelevated.&lt;/li&gt;
+&lt;li&gt;BobArnson: WIXBUG:4716 - If a .wxl file is missing strings added in v3.10, duplicate the generic string from v3.9. Add support for doing so to locutil.&lt;/li&gt;
+&lt;/ul&gt;</content>
+      <as:version>v3.10.0.1726</as:version>
+      <updated>2015-05-26T07:55:00Z</updated>
+</entry>
+<entry>
+      <title>WiX toolset v3.10.0.1719</title>
+      <id>http://wixtoolset.org/releases/v3-10-0-1719/</id>
+      <author>
+        <name>wixtoolset</name>
+        <uri>http://twitter.com/wixtoolset</uri>
+        <email>wix-users@lists.wixtoolset.org</email>
+      </author>
+      <link rel="alternate" href="http://wixtoolset.org/releases/v3-10-0-1719/" />
+      <link rel="enclosure" href="http://wixtoolset.org/downloads/v3.10.0.1719/wix310.exe" length="24983680" type="application/octet-stream" />
+      <content type="html">&lt;p&gt;Change list:&lt;/p&gt; &lt;ul&gt;
+&lt;li&gt;SeanHall: WIXBUG:4761 - Use the package&#39;s exit code to tell if the prereq was installed.&lt;/li&gt;
+&lt;li&gt;BobArnson: WIXBUG:4734 - Rewrote type-51 CAs using SetProperty.&lt;/li&gt;
+&lt;li&gt;BobArnson: WIXFEAT:4720 - Added bind-time variables for .NET Framework package groups detect condition, install condition, and package directories.&lt;/li&gt;
+&lt;li&gt;HeathS: Add VSIX property for VS2015 and fix searches for previous versions.&lt;/li&gt;
+&lt;li&gt;BobArnson: Add libs_minimal.proj with just the libraries needed for tools/ tree build. This prevents the build from backing up behind a full libs/ tree build, which gets more painful the more versions of Visual Studio that are installed.&lt;/li&gt;
+&lt;li&gt;BobArnson: WIXBUG:4750 - Add a note about binary (in)compatibility.&lt;/li&gt;
+&lt;li&gt;RobMen: WIXBUG:4732 - fix documentation links to MsiServiceConfig and MsiServiceConfigFailureActions.&lt;/li&gt;
+&lt;li&gt;BobArnson: WIXFEAT:4719 - Implement ExePackage/CommandLine:
+&lt;ul&gt;
+&lt;li&gt;Add WixBundleExecutePackageAction variable: Set to the BOOTSTRAPPER_ACTION_STATE of the package as it&#39;s about to executed.&lt;/li&gt;
+&lt;li&gt;Add ExePackage/CommandLine to compiler and binder.&lt;/li&gt;
+&lt;li&gt;Update Burn to parse CommandLine table in manifest and apply it during ExePackage execution.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;BobArnson: WIXBUG:4725 - Scrub the WixStdBA license doc and add a blurb about a missing WixStdbaLicenseUrl variable.&lt;/li&gt;
+&lt;li&gt;BobArnson: WIXBUG:4721 - Tweak RepairCommand doc.&lt;/li&gt;
+&lt;li&gt;SeanHall: WIXFEAT:4619 - Include WixUI dialogs and wxl files in core MSI.&lt;/li&gt;
+&lt;li&gt;SeanHall: WIXFEAT:4618 - Include WixStdBA and mbapreq themes and wxl files in core MSI.&lt;/li&gt;
+&lt;li&gt;JacobHoover: WIXBUG:4482 - Temp file for update feed isn&#39;t deleted when download fails&lt;/li&gt;
+&lt;li&gt;SeanHall: WIXBUG:4731 - Obscure hidden variable values in the logged command line.&lt;/li&gt;
+&lt;li&gt;SeanHall: WIXBUG:4630 - Serialize all variables to the elevated Burn process.&lt;/li&gt;
+&lt;li&gt;SeanHall: WIXFEAT:3933 - Make WixBundleManufacturer variable writable.&lt;/li&gt;
+&lt;li&gt;BobArnson: WIXBUG:4700 - Added blurb about SequenceType.first.&lt;/li&gt;
+&lt;li&gt;BobArnson: Project reference tweaks:
+&lt;ul&gt;
+&lt;li&gt;Removed unnecessary reference to setupicons from x64msi.&lt;/li&gt;
+&lt;li&gt;Move BuildInParallel=false from global to just project that needs it&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content>
+      <as:version>v3.10.0.1719</as:version>
+      <updated>2015-05-20T04:32:00Z</updated>
+</entry>
+<entry>
+      <title>WiX toolset v3.10.0.1519</title>
+      <id>http://wixtoolset.org/releases/v3-10-0-1519/</id>
+      <author>
+        <name>wixtoolset</name>
+        <uri>http://twitter.com/wixtoolset</uri>
+        <email>wix-users@lists.wixtoolset.org</email>
+      </author>
+      <link rel="alternate" href="http://wixtoolset.org/releases/v3-10-0-1519/" />
+      <link rel="enclosure" href="http://wixtoolset.org/downloads/v3.10.0.1519/wix310.exe" length="24828384" type="application/octet-stream" />
+      <content type="html">&lt;p&gt;Change list:&lt;/p&gt; &lt;ul&gt;
+&lt;li&gt;BobArnson: WIXBUG:4520 - Added blurb about using a PayloadGroup to get offline capability for .NET redist.&lt;/li&gt;
+&lt;li&gt;BobArnson: WIXBUG:4545 - Resized button for de-DE.&lt;/li&gt;
+&lt;li&gt;BobArnson: Add WixStdBALanguageId language and documentation.&lt;/li&gt;
+&lt;li&gt;BobArnson: Add project output message in minimal MSBuild logging verbosity.&lt;/li&gt;
+&lt;li&gt;BobArnson: WIXBUG:4654 - Add VS14 properties and custom actions. And, as it&#39;s a long topic, added anchors and links.&lt;/li&gt;
+&lt;li&gt;BobArnson: WIXBUG:4617 - Added 4.5.2 package group information to doc. Also mentioned that some properties are new to WiX v3.10.&lt;/li&gt;
+&lt;li&gt;BobArnson: WixBroadcastSettingChange and WixBroadcastEnvironmentChange custom actions to WixUtilExtension.&lt;/li&gt;
+&lt;li&gt;SeanHall: WIXBUG:4393 - Fix BOOTSTRAPPER_REQUEST_STATE_CACHE.&lt;/li&gt;
+&lt;li&gt;thfabba: WIXBUG:4681 - Corrected return type on the lone WOW64 redirection function that returns a BOOLEAN instead of BOOL.&lt;/li&gt;
+&lt;li&gt;SeanHall: WIXBUG:4689 - Fix hidden numeric and version variables.&lt;/li&gt;
+&lt;/ul&gt;</content>
+      <as:version>v3.10.0.1519</as:version>
+      <updated>2015-03-19T11:45:00Z</updated>
+</entry>
+<entry>
+      <title>WiX toolset v3.10.0.1502</title>
+      <id>http://wixtoolset.org/releases/v3-10-0-1502/</id>
+      <author>
+        <name>wixtoolset</name>
+        <uri>http://twitter.com/wixtoolset</uri>
+        <email>wix-users@lists.wixtoolset.org</email>
+      </author>
+      <link rel="alternate" href="http://wixtoolset.org/releases/v3-10-0-1502/" />
+      <link rel="enclosure" href="http://wixtoolset.org/downloads/v3.10.0.1502/wix310.exe" length="24815744" type="application/octet-stream" />
+      <content type="html">&lt;p&gt;Change list:&lt;/p&gt; &lt;ul&gt;
+&lt;li&gt;BobArnson: WIXBUG:3872 - Added note that CLR v2.0 is required in WiX v3.10 and that CLR v4.0 will be the minimum required in WiX v3.11.&lt;/li&gt;
+&lt;li&gt;SeanHall: WIXBUG:4685 - Fix bug in mbahost where it didn&#39;t bind as the LegacyV2Runtime when necessary.&lt;/li&gt;
+&lt;li&gt;SeanHall: WIXBUG:4669 - Fix bug in mbahost where it assumed that the CLRCreateInstance function was implemented when it exists.&lt;/li&gt;
+&lt;li&gt;SeanHall: WIXBUG:4646 - Allow sharing the whole drive with util:FileShare.&lt;/li&gt;
+&lt;li&gt;SeanHall: WIXBUG:4647 - Format ConfirmCancelMessage in WixStdBA.&lt;/li&gt;
+&lt;li&gt;SeanHall: WIXFEAT:4496 - Make WixStdBA load the text for named editboxes.&lt;/li&gt;
+&lt;li&gt;SeanHall: WIXBUG:4480 - Remove non-standard and unnecessary regex contructs from wix.xsd.&lt;/li&gt;
+&lt;/ul&gt;</content>
+      <as:version>v3.10.0.1502</as:version>
+      <updated>2015-03-02T11:45:00Z</updated>
+</entry>
+<entry>
+      <title>WiX toolset v3.10.0.1403</title>
+      <id>http://wixtoolset.org/releases/v3-10-0-1403/</id>
+      <author>
+        <name>wixtoolset</name>
+        <uri>http://twitter.com/wixtoolset</uri>
+        <email>wix-users@lists.wixtoolset.org</email>
+      </author>
+      <link rel="alternate" href="http://wixtoolset.org/releases/v3-10-0-1403/" />
+      <link rel="enclosure" href="http://wixtoolset.org/downloads/v3.10.0.1403/wix310.exe" length="24812808" type="application/octet-stream" />
+      <content type="html">&lt;p&gt;Change list:&lt;/p&gt; &lt;ul&gt;
+&lt;li&gt;BobArnson: WIXBUG:4662 - Add WIX_IS_NETFRAMEWORK_4XX_OR_LATER_INSTALLED SetProperty custom actions to WixNetfxExtension.&lt;/li&gt;
+&lt;li&gt;BobArnson: WIXBUG:4611 - Eliminate mysteriously doubled .pkgdef content.&lt;/li&gt;
+&lt;li&gt;BobArnson: WIXBUG:4610 - Write RegisterPerfmonManifest CustomActionData correctly.&lt;/li&gt;
+&lt;li&gt;BobArnson: WIXBUG:4589 - Catch exceptions from Version when passing in arbitrary strings. For bundles, try to recover a three-part version number.&lt;/li&gt;
+&lt;li&gt;STunney: WIXBUG:4187 - Melt doesn&#39;t export Binary or Icon tables&lt;/li&gt;
+&lt;li&gt;BobArnson: WIXBUG:4553 - Fix Lux generator to exclude any files with non-fragment sections. Fix Lux custom actions to have proper config.&lt;/li&gt;
+&lt;li&gt;PhillHogland: WIXBUG:4592 - Register named process, in another user&#39;s context with Restart Manager.  If Access Denied, continue install rather than fail.&lt;/li&gt;
+&lt;li&gt;BobArnson: &lt;strong&gt;BREAKING CHANGE&lt;/strong&gt; Changed bundle version to Major.Minor.0.BuildNumber. This allows us to publish updates as Major.Minor.(GreaterThanZero).BuildNumber. MSI product version numbers remain Major.Minor.BuildNumber so major upgrades continue to work. This bundle will not upgrade from build v3.10.1124.0. If you&#39;ve installed v3.10.1124.0, you must uninstall before installing a later bundle.&lt;/li&gt;
+&lt;li&gt;BMurri: WIXBUG:3750 - Add LaunchWorkingFolder to wixstdba to facilitate processes that require a different working folder.&lt;/li&gt;
+&lt;li&gt;SeanHall: WIXBUG:4609 - Fix incorrect use of BVariantCopy by creating the new method BVariantSetValue.&lt;/li&gt;
+&lt;li&gt;SeanHall: WIXBUG:4608 - Fix bug in mbapreq where it wouldn&#39;t reload the bootstrapper if there was a mix of installed and uninstalled prerequisites.&lt;/li&gt;
+&lt;/ul&gt;</content>
+      <as:version>v3.10.0.1403</as:version>
+      <updated>2015-02-04T01:20:00Z</updated>
+</entry>
+<entry>
+      <title>WiX toolset v3.10.0.1124</title>
+      <id>http://wixtoolset.org/releases/v3-10-1124-0/</id>
+      <author>
+        <name>wixtoolset</name>
+        <uri>http://twitter.com/wixtoolset</uri>
+        <email>wix-users@lists.wixtoolset.org</email>
+      </author>
+      <link rel="alternate" href="http://wixtoolset.org/releases/v3-10-1124-0/" />
+      <link rel="enclosure" href="http://wixtoolset.org/downloads/v3.10.0.1124/wix310.exe" length="24871360" type="application/octet-stream" />
+      <content type="html">&lt;p&gt;Change list:&lt;/p&gt; &lt;ul&gt;
+&lt;li&gt;SeanHall: WIXBUG:4598 - Fix thmutil documentation.  Also backport some thmutil features/fixes from wix4.&lt;/li&gt;
+&lt;li&gt;BobArnson: WIXBUG:4580 - Check bit mask appropriately for Burn system variables.&lt;/li&gt;
+&lt;li&gt;SamuelS: WIXFEAT:4543 - Allow Pyro to exclude empty patch transforms.&lt;/li&gt;
+&lt;li&gt;HeathS: WIXBUG:4542 - Pad package sequence number log file names for proper sorting&lt;/li&gt;
+&lt;li&gt;HeathS: Add logging for hash verification and registration issues.&lt;/li&gt;
+&lt;li&gt;HeathS: Redefine Exit* macros as variadic macros&lt;/li&gt;
+&lt;li&gt;SeanHall: WIXFEAT:4505 - WixHttpExtension for URL reservations.&lt;/li&gt;
+&lt;li&gt;BobArnson: WIXBUG:4569 - Add SWAPRUN for CD(!) and NET back to the Burn stub.&lt;/li&gt;
+&lt;li&gt;BobArnson: Add support for registering Votive into Visual Studio 2015 Preview.&lt;/li&gt;
+&lt;li&gt;BobArnson: WiX v3.10&lt;/li&gt;
+&lt;/ul&gt;</content>
+      <as:version>v3.10.0.1124</as:version>
+      <updated>2014-11-25T06:20:00Z</updated>
+</entry>
+</feed>
