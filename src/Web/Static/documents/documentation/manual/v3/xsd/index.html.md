@@ -6,6 +6,11 @@ layout: documentation
 
 This section contains schema reference information for WiX and extensions.
 
+In order to use a schema, the DLL file where the schema is defined has to be imported into the installer project, and the schema namespace
+has to be imported as an `xmlns` attribute at the root of the file where it is used. The respective DLL is in the `bin` folder under the WiX
+installation folder. See the specifics for each schema in each schema description.
+
+The exception is the Wix schema, which is automatically referenced and imported, and doesn't need to be manually imported.
 
 * [Wix schema](wix/index.html)
 * [Wixloc schema](wixloc/index.html)

@@ -2,10 +2,15 @@
 title: Util Schema
 layout: documentation_xsd_extension
 ---
-<p>             The source code schema for the Windows Installer XML Toolset Utility Extension.         </p>
+<p>The elements defined in the Utility Extension.</p>
+<p>In order to use this schema, you should:
+    <ol>
+        <li>Add Reference in the WiX project to &lt;WiX_install_folder&gt;\bin\WixUtilExtension.dll</li>
+        <li>Add <code>xmlns:util="http://schemas.microsoft.com/wix/UtilExtension"</code></li>
+        <li>Add the <code>util:</code> prefix to each element name as you use it, e.g. <code>util:CloseApplication</code>.</li>
+    </ol>
+</p>
 <dl>
-  <dt>Target Namespace</dt>
-  <dd>http://schemas.microsoft.com/wix/UtilExtension</dd>
   <dt>Child Elements</dt>
   <dd>
     <ul>
