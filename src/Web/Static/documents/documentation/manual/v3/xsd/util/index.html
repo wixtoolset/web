@@ -3,13 +3,13 @@ title: Util Schema
 layout: documentation_xsd_extension
 ---
 <p>The elements defined in the Utility Extension.</p>
-<p>In order to use this schema, you should:
+<p>
     <ol>
-        <li>Add Reference in the WiX project to &lt;WiX_install_folder&gt;\bin\WixUtilExtension.dll. If you are using
-        <a href="../../overview/light.html">light.exe</a> directly, use the <code>-ext</code> parameter.</li>
-        <li>Add <code>xmlns:util="http://schemas.microsoft.com/wix/UtilExtension"</code> attribute to the root element of the XML file.</li>
-        <li>Add the <code>util:</code> prefix to each element name as you use it, e.g. <code>util:CloseApplication</code>.</li>
+        <li>Schema is defined in &lt;WiX_install_folder&gt;\bin\WixUtilExtension.dll.</li>
+        <li>Schema namespace is <code>http://schemas.microsoft.com/wix/UtilExtension</code>.</li>
+        <li>Schema prefix is<code>util</code>.</li>
     </ol>
+    See <a href="../../howtos/general/extension_usage_introduction.html">How To: Use WiX Extensions</a> for more details.
 </p>
 <dl>
   <dt>Child Elements</dt>
