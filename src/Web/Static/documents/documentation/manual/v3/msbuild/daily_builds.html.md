@@ -18,10 +18,10 @@ To avoid having to install WiX on build machines you can check all the tools nec
 
 ## Step 2: Modify Your .wixproj File
 
-After checking the WiX tools into source code control the .wixproj file must be modified to point to the location of the checked in tools. Open the .wixproj file in any text editor, such as Visual Studio, and add the following to the file anywhere between the &lt;Project&gt; element before the &lt;Import&gt; element:
+After checking the WiX tools into source code control the .wixproj file must be modified to point to the location of the checked in tools. Open the `.wixproj` file in any text editor, such as Visual Studio, and add the following to the file anywhere between the `<Project>` element before the `<Import>` element:
 
 <pre><font size="2" color="#0000FF">&lt;<font size="2" color="#A31515">PropertyGroup</font>&gt;
-      &lt;</font><font size="2" color="#A31515">WixToolPath</font><font size="2" color="#0000FF">&gt;</font><font size="2">$(SourceCodeControlRoot)\wix\[[Version]]</font><font size="2" color="#0000FF">\&lt;/</font><font size="2" color="#A31515">WixToolPath</font><font size="2" color="#0000FF">&gt;
+      &lt;</font><font size="2" color="#A31515">WixToolPath</font><font size="2" color="#0000FF">&gt;</font><font size="2">$(SourceCodeControlRoot)\wix\[[Version]]\</font><font size="2" color="#0000FF">\&lt;/</font><font size="2" color="#A31515">WixToolPath</font><font size="2" color="#0000FF">&gt;
       &lt;</font><font size="2" color="#A31515">WixTargetsPath</font><font size="2" color="#0000FF">&gt;</font><font size="2">$(WixToolPath)Wix.targets</font><font size="2" color="#0000FF">&lt;/</font><font size="2" color="#A31515">WixTargetsPath</font><font size="2" color="#0000FF">&gt;
       &lt;</font><font size="2" color="#A31515">WixTasksPath</font><font size="2" color="#0000FF">&gt;</font><font size="2">$(WixToolPath)wixtasks.dll</font><font size="2" color="#0000FF">&lt;/</font><font size="2" color="#A31515">WixTasksPath</font><font size="2" color="#0000FF">&gt;
 &lt;</font><font size="2" color="#A31515">/PropertyGroup</font><font size="2" color="#0000FF">&gt;</font></pre>
@@ -30,4 +30,18 @@ The WixToolPath must be set to point to the location of the WiX tools directory 
 
 You can also use a relative path to the directory (such as <strong>..\\..\\tools\\</strong>), but note that the WixTargetsPath property value must be relative to the .wixproj project file that uses it. The WixTasksPath property is used inside wix.targets to load WixTasks.dll; its value, if a relative path, must be relative to the wix.targets file. Those two files usually live together, so the value would be WixTasks.dll with no extra path information.
 
-**Note that WixToolPath must end in a backslash.**
+**Note that `WixToolPath` must end in a backslash.**
+
+### Custom Actions Projects
+
+For a custom action project, additional properties should be specified.  Open the `.csproj` in any text editor, such as Visual Studio, and add the following to the file anywhere between the `<Project>` element before the `<Import>` element:
+
+<pre><font size="2" color="#0000FF">&lt;<font size="2" color="#A31515">PropertyGroup</font>&gt;
+      &lt;</font><font size="2" color="#A31515">WixSdkPath</font><font size="2" color="#0000FF">&gt;</font><font size="2">$(SourceCodeControlRoot)\wix\[[Version]]\sdk\</font><font size="2" color="#0000FF">\&lt;/</font><font size="2" color="#A31515">WixSdkPath</font><font size="2" color="#0000FF">&gt;
+      &lt;</font><font size="2" color="#A31515">WixCATargetsPath</font><font size="2" color="#0000FF">&gt;</font><font size="2">$(WixSdkPath)wix.ca.targets</font><font size="2" color="#0000FF">&lt;/</font><font size="2" color="#A31515">WixCATargetsPath</font><font size="2" color="#0000FF">&gt;
+      &lt;</font><font size="2" color="#A31515">WixToolPath</font><font size="2" color="#0000FF">&gt;</font><font size="2">$(SourceCodeControlRoot)\wix\[[Version]]\</font><font size="2" color="#0000FF">\&lt;/</font><font size="2" color="#A31515">WixToolPath</font><font size="2" color="#0000FF">&gt;
+      &lt;</font><font size="2" color="#A31515">WixTargetsPath</font><font size="2" color="#0000FF">&gt;</font><font size="2">$(WixToolPath)Wix.targets</font><font size="2" color="#0000FF">&lt;/</font><font size="2" color="#A31515">WixTargetsPath</font><font size="2" color="#0000FF">&gt;
+      &lt;</font><font size="2" color="#A31515">WixTasksPath</font><font size="2" color="#0000FF">&gt;</font><font size="2">$(WixToolPath)wixtasks.dll</font><font size="2" color="#0000FF">&lt;/</font><font size="2" color="#A31515">WixTasksPath</font><font size="2" color="#0000FF">&gt;
+&lt;</font><font size="2" color="#A31515">/PropertyGroup</font><font size="2" color="#0000FF">&gt;</font></pre>
+
+Also, be certain to reference the local copy of the `Microsoft.Deployment.WindowsInstaller.dll` as opposed to the version installed in the GAC.
