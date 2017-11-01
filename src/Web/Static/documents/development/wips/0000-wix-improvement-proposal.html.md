@@ -63,7 +63,7 @@ the correct number as the WIP identifier.
 
 With WIP identifier in hand you can now get started on the WIP. First, fork the WiX toolset's
 [`web` Git repository](https://github.com/wixtoolset/web) and clone the `master` branch of your fork.
-A template WIP file exists in the `root\src\documents\development\wips\` folder named
+A template WIP file exists in the `root\src\Web\Static\documents\development\wips` folder named
 `0000-template-wix-improvement-proposal.html.md`. Copy that file, replacing the four zeros with the WIP
 identifier. The remainder of the file name should be the title of the WIP all lowercase with dashes
 separating the words. Finally, the file must end with `.html.md` to be processed correctly.
