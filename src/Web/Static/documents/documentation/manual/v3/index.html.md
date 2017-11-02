@@ -108,6 +108,7 @@ layout: documentation
       * [How To: Look Inside Your MSI With Orca](howtos/general/look_inside_msi.html)
       * [How To: Optimize build speed](howtos/general/optimizing_builds.html)
       * [How To: Specify source files](howtos/general/specifying_source_files.html)
+      * [How To: Install a windows service](howtos/general/install_windows_service.html)
 * [Standard Custom Actions](customactions/index.html)
    * [Using Standard Custom Actions](customactions/using_standard_customactions.html)
    * [OSInfo custom actions](customactions/osinfo.html)

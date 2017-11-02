@@ -15,4 +15,15 @@ the service executable file as the parent.
 In the \<ServiceInstall> you define various attributes of the service, as explained in the element's documentation.
 
 **Tip:** to specify a system account, such as LocalService or NetworkService, use the prefix "NT AUTHORITY", e.g. use the value `NT AUTHORITY\LocalService`
-to make the service run under this account.
+as the `Account` attribute value, to make the service run under this account.
+
+## Step 2: Configure service failure actions
+Using the [\<ServiceConfig>](./../../xsd/util/serviceconfig.html) element in the `util` schema, you can configure how the service behaves if it
+fails. To use it, first, [include](extension_usage_introduction.html#using-wix-extensions-in-visual-studio) the [util](./../../xsd/util/index.html)
+schema in your XML file, and prefix the element name with the `util` prefix:
+
+    <ServiceInstall>
+        <util:ServiceConfig FirstFailureActionType="restart"
+                            SecondFailureActionType="restart"
+                            ThirdFailureActionType="restart" /> 
+    </ServiceInstall>
