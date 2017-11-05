@@ -17,7 +17,7 @@ In the \<ServiceInstall> you define various attributes of the service, as explai
 **Tip:** to specify a system account, such as LocalService or NetworkService, use the prefix "NT AUTHORITY", e.g. use the value `NT AUTHORITY\LocalService`
 as the `Account` attribute value, to make the service run under this account.
 
-## Step 2: Configure service failure actions
+## Step 2: Configure service failure actions (Optional)
 Using the [\<ServiceConfig>](./../../xsd/util/serviceconfig.html) element in the `util` schema, you can configure how the service behaves if it
 fails. To use it, first, [include](extension_usage_introduction.html#using-wix-extensions-in-visual-studio) the [util](./../../xsd/util/index.html)
 schema in your XML file, and prefix the element name with the `util` prefix:
@@ -26,4 +26,18 @@ schema in your XML file, and prefix the element name with the `util` prefix:
         <util:ServiceConfig FirstFailureActionType="restart"
                             SecondFailureActionType="restart"
                             ThirdFailureActionType="restart" /> 
+    </ServiceInstall>
+
+## Step 3: Configure additional options (Optional)
+Using the [\<ServiceConfig>](./../../xsd/wix/serviceconfig.html) element in the `wix` schema, You can configure additional settings, such as
+DelayedAutoStart, or whether to configure the service when installing, reinstalling or uninstalling the installer. Wix is the default schema
+name in Wix Toolkit, and need not be included explicitly to be used. Its parent element is \<Component> or \<ServiceInstall>, so it can be
+added along side the above \<util:ServiceConfig>:
+
+    <ServiceInstall>
+        <util:ServiceConfig FirstFailureActionType="restart"
+                            SecondFailureActionType="restart"
+                            ThirdFailureActionType="restart" />
+        <ServiceConfig DelayedAutoStart="yes"
+                       OnInstall="yes" /> 
     </ServiceInstall>
