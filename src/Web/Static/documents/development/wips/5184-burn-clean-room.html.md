@@ -28,6 +28,8 @@ To fully protect Burn from [DLL hijacking][hijack], several defenses must be imp
 
 5. Clean room the Burn engine - when executed from outside the package cache, Burn will copy its engine (the stub and UX container) to an empty working folder--called the "clean room"--and launch the engine again from there. Running the engine in the clean room ensures it is not possible to hijack the unknown set of DLLs a BA may load.
 
+   Note: In WiX v3.11.0 and earlier, the "clean room" can still be DLL hijacked if malicious software is executing on the user's machine watching for a Burn bundle to launch elevated. Burn does not normally launch elevated so this attack requires the user to either manually launch the bundle elevated (i.e. Right click -> "Run as administrator") or some elevated software running as the user to launch the bundle elevated. This is not normal execution for Burn but releases after WiX v3.11.0 resolved this potential attack vector anyway.
+
 6. Prevent naming bundle "setup.exe" - all executables named "setup.exe" are shimmed by Windows application compatibility to load additional DLLs, such as `version.dll`. The DLLs added by the app-compat shim can be hijacked. The only solution is to not name bundles "setup.exe".
 
 
