@@ -9,6 +9,22 @@
   <generator version="0.1">wixweb build</generator>
 
 <entry>
+      <title>WiX toolset v3.10.4.4718</title>
+      <id>http://wixtoolset.org/releases/v3-10-4-4718/</id>
+      <author>
+        <name>wixtoolset</name>
+        <uri>http://twitter.com/wixtoolset</uri>
+        <email>wix-users@lists.wixtoolset.org</email>
+      </author>
+      <link rel="alternate" href="http://wixtoolset.org/releases/v3-10-4-4718/" />
+      <link rel="enclosure" href="http://wixtoolset.org/downloads/v3.10.4.4718/wix310.exe" length="27742392" type="application/octet-stream" />
+      <content type="html">&lt;p&gt;Change list:&lt;/p&gt; &lt;ul&gt;
+&lt;li&gt;RobMen: WIXBUG:5724 - DLL Hijack Clean Room Bundle.&lt;/li&gt;
+&lt;/ul&gt;</content>
+      <as:version>v3.10.4.4718</as:version>
+      <updated>2017-12-31T12:00:00Z</updated>
+</entry>
+<entry>
       <title>WiX toolset v3.10.3.3007</title>
       <id>http://wixtoolset.org/releases/v3-10-3-3007/</id>
       <author>
