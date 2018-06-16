@@ -12,4 +12,3 @@ This section includes guides to general topics such as debugging and logging ins
 * [How To: Look inside your MSI with Orca](look_inside_msi.html)
 * [How To: Optimize build speed](optimizing_builds.html)
 * [How To: Specify source files](specifying_source_files.html)
-
