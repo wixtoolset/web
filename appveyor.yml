@@ -29,6 +29,8 @@ deploy:
     remove_files: true
     app_offline: true
     artifact: deploy-artifacts
+    on:
+      branch: master
 
 on_success:
   - ps: tools\appveyor_tag.ps1 -GithubAccessToken $env:GITHUB_ACCESS_TOKEN -Version $env:GitBuildVersion
