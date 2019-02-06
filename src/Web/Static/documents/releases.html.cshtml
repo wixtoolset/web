@@ -6,23 +6,9 @@ bodyTitle:
 bodyHeading:
 Items: [
   { uri: "/releases/v3.11.1/stable",
-    text: "WiX v3.11.1 (Stable)" },
+    text: "WiX v3.11.1" },
   { uri: "/releases/v3.10/stable",
-    text: "WiX v3.10.3 (Stable)" },
-  { uri: "/releases/v3.9/stable",
-    text: "WiX v3.9 R2 (Stable)" },
-  { uri: "/releases/v3.8/stable",
-    text: "WiX v3.8 (Stable)" },
-  { uri: "/releases/v3.7/stable",
-    text: "WiX v3.7 (Stable)" },
-  { uri: "/releases/v3.6/stable",
-    text: "WiX v3.6 (Stable)" },
-  { uri: "/releases/v3.5/stable",
-    text: "WiX v3.5 (Stable)" },
-  { uri: "/releases/v3.0/stable",
-    text: "WiX v3.0 (Stable)" },
-  { uri: "/releases/v2.0/stable",
-    text: "WiX v2.0 (Stable)" }
+    text: "WiX v3.10.4" }
   ]
 ---
 
@@ -56,20 +42,20 @@ Items: [
 
   <div class="col-md-4">
     <div>
-      <h2>Weekly Builds</h2>
+      <h2>Development Builds</h2>
       <p>
-        These have the latest bug-fixes, but may introduce new bugs that you didn't expect. In general, these are <strong>not</strong> considered to be production-ready.
+        These have the latest changes, but may introduce unexpected bugs. These are <strong>not</strong> considered to be production-ready.
       </p>
       <p>
-        If you are still interested, you can find them <a href="/releases/weekly">here</a>.
+        If you are still interested, you can find them <a href="/releases/development/">here</a>.
       </p>
     </div>
   </div>
 
   <div class="col-md-3">
     <div>
-    <h2>Archived Builds</h2>
-      <p>These are the archived stable versions of the WiX Toolset.</p>
+    <h2>Production Builds</h2>
+      <p>These are the stable versions of the WiX Toolset.</p>
       <ul>
       @foreach (var item in @Model.Document.Items)
       {
