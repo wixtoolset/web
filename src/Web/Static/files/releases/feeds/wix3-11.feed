@@ -3,11 +3,27 @@
   <title type="text">WiX Toolset v3.11</title>
   <subtitle type="text">The WiX Toolset is a set of tools to create Windows installation packages from XML source code. The toolset supports a command line environment that developers may integrate into their build processes to build MSI and MSM setup packages.</subtitle>
   <as:application type="application/octet-stream">65E893AD-EDD5-4E7D-80CA-F0F50F383532</as:application>
-  <updated>2017-05-18T05:27:03Z</updated>
+  <updated>2019-09-16T08:00:00Z</updated>
   <id>http://wixtoolset.org/releases/feeds/wix3-11.feed</id>
   <link rel="self" type="application/atom+xml" href="http://wixtoolset.org/releases/feeds/wix3-11.feed" />
   <generator version="0.1">wixweb build</generator>
 
+<entry>
+      <title>WiX toolset v3.11.2.4516</title>
+      <id>http://wixtoolset.org/releases/v3-11-2-4516/</id>
+      <author>
+        <name>wixtoolset</name>
+        <uri>http://twitter.com/wixtoolset</uri>
+        <email>wix-users@lists.wixtoolset.org</email>
+      </author>
+      <link rel="alternate" href="http://wixtoolset.org/releases/v3-11-2-4516/" />
+      <link rel="enclosure" href="http://wixtoolset.org/downloads/v3.11.2.4516/wix311.exe" length="27742392" type="application/octet-stream" />
+      <content type="html">&lt;p&gt;Change list:&lt;/p&gt; &lt;ul&gt;
+&lt;li&gt;RobMen: WIXBUG:6075 - Fix "Zip Slip" vulnerability in DTF.&lt;/li&gt;
+&lt;/ul&gt;</content>
+      <as:version>v3.11.2.4516</as:version>
+      <updated>2019-09-16T08:00:00Z</updated>
+</entry>
 <entry>
       <title>WiX toolset v3.11.1.2318</title>
       <id>http://wixtoolset.org/releases/v3-11-1-2318/</id>
