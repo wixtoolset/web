@@ -2,29 +2,31 @@
 wip: 6108
 type: Feature
 by: Sean Hall (r sean hall at gmail.com)
-title: .NET Core SCD-style BA
+title: .NET Core BA
 draft: false
 ---
 
 ## User stories
 
-* As a Setup developer I can write my Bootstrapper Application in .NET Core and then publish it SCD-style such that I can write my BA in managed code without relying on anything being installed on the runtime machine.
+* As a Setup developer I can write my Bootstrapper Application in .NET Core and then publish it SCD-style (Self Contained Deployment) such that I can write my BA in managed code without relying on anything being installed on the runtime machine.
+
+* As a Setup developer I can write my Bootstrapper Application in .NET Core and then publish it FDD-style (Framework Dependent Deployment) such that I can write my BA in managed code on .NET Core and not bloat the bundle with the runtime.
 
 
 ## Proposal
 
-Create a new BA in `BalExtension` named `DotNetCoreBootstrapperApplicationHost`. In this first iteration, the BA must provide the .NET Core runtime so that the .NET Core host doesn't have to have any logic in figuring out the correct runtime to use.
+Create a new BA in `BalExtension` named `DotNetCoreBootstrapperApplicationHost`.
+
+Create new element `bal:WixDotNetCoreBootstrapperApplicationHost` based on `WixManagedBootstrapperApplicationHost`.
+
+Add attribute `bal:SelfContainedDeployment` of `YesNoType` to the `WixDotNetCoreBootstrapperApplicationHost` element so the BA knows how to load the .NET Core Runtime. This is required because there is not a single API that can load the runtime from an SCD-style and an FDD-style deployment. If `no` and the runtime fails to load, it will show the `mbapreq`. If `yes` and the runtime fails to load (because it has native dependencies and relies on running on relatively up to date OS's), it will show an error message similarly to `ManagedBootstrapperApplicationHost` running on .NET 4.5.2 on Win7 RTM.
+
+Add attribute `bal:BAFactoryAssembly` of `YesNoType` to the `Payload` element so the BA knows which assembly has the `BootstrapperApplicationFactoryAttribute`.
 
 
 ## Considerations
 
-1) The test BA is currently 59MB and 228 files. Some people may want the functionality of `mbahost` where it can load a runtime installed on the machine and fallback to `mbapreq` BA, which allows them to avoid bundling the .NET Core runtime. This may prove to be tricky since the entry point is the WiX provided WixToolset.Mba.Host.dll, which currently is a .NET Framework 2.0 dll.
-
-2) The .NET Core runtime has native dependencies and relies on running on relatively up to date OS's. The bundle will silently fail if it can't load the runtime.
-
-3) `dnchost` relies on the same configuration file as `mbahost` to find the BA assembly, even though .NET Core doesn't have native support for app.config files. Perhaps that should be moved into the WiX authoring and put into the `BoostrapperApplicationData` xml file.
-
-4) .NET Core provides multiple ways to host the runtime. Because this first iteration requires the runtime to be provided with the BA and thus the location of `CoreCLR.dll` is known, `dnchost` uses the `ICLRRuntimeHost4` method to make sure that that runtime is used. Unfortunately, all hosting methods require copying a header file from the .NET Core repo into our repo.
+1) .NET Core provides multiple ways to host the runtime. The method for FDD-style deployments is `nethost` which is a Nuget package and will likely need to be updated regularly. Unfortunately, all hosting methods require copying a header file from the .NET Core repo into our repo.
 
 
 ## See Also
