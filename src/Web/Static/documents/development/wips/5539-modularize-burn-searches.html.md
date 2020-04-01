@@ -15,77 +15,79 @@ draft: false
 
 1) Create a new concept in Burn for an extension.
 
-    enum BURN_EXTENSION_MESSAGE
+    enum BUNDLE_EXTENSION_MESSAGE
     {
-        BURN_EXTENSION_MESSAGE_SEARCH,
+        BUNDLE_EXTENSION_MESSAGE_SEARCH,
     };
 
-    enum BURN_EXTENSION_SEARCH_ARGS
+    struct BUNDLE_EXTENSION_SEARCH_ARGS
     {
         DWORD cbSize;
+        LPCWSTR wzId;
         LPCWSTR wzVariable;
-        LPCWSTR wzXml;
     };
 
-    enum BURN_EXTENSION_SEARCH_RESULTS
+    struct BUNDLE_EXTENSION_SEARCH_RESULTS
     {
         DWORD cbSize;
     };
 
-    extern "C" typedef HRESULT(WINAPI *PFN_BURN_EXTENSION_PROC)(
-        __in BURN_EXTENSION_MESSAGE message,
+    extern "C" typedef HRESULT(WINAPI *PFN_BUNDLE_EXTENSION_PROC)(
+        __in BUNDLE_EXTENSION_MESSAGE message,
         __in const LPVOID pvArgs,
         __inout LPVOID pvResults,
         __in_opt LPVOID pvContext
         );
 
-    struct BURN_EXTENSION_CREATE_ARGS
+    struct BUNDLE_EXTENSION_CREATE_ARGS
     {
         DWORD cbSize;
         DWORD64 qwEngineAPIVersion;
-        PFN_BURN_EXTENSION_ENGINE_PROC pfnBurnExtensionEngineProc;
-        LPVOID pvBurnExtensionEngineProcContext;
+        PFN_BUNDLE_EXTENSION_ENGINE_PROC pfnBundleExtensionEngineProc;
+        LPVOID pvBundleExtensionEngineProcContext;
+        LPCWSTR wzBootstrapperWorkingFolder;
+        LPCWSTR wzBundleExtensionDataPath;
     };
 
-    struct BURN_EXTENSION_CREATE_RESULTS
+    struct BUNDLE_EXTENSION_CREATE_RESULTS
     {
         DWORD cbSize;
-        PFN_BURN_EXTENSION_PROC pfnBurnExtensionProc;
-        LPVOID pvBurnExtensionProcContext;
+        PFN_BUNDLE_EXTENSION_PROC pfnBundleExtensionProc;
+        LPVOID pvBundleExtensionProcContext;
     };
 
-    extern "C" typedef HRESULT(WINAPI *PFN_BURN_EXTENSION_CREATE)(
-        __in const BURN_EXTENSION_CREATE_ARGS* pArgs,
-        __inout BURN_EXTENSION_CREATE_RESULTS* pResults
+    extern "C" typedef HRESULT(WINAPI *PFN_BUNDLE_EXTENSION_CREATE)(
+        __in const BUNDLE_EXTENSION_CREATE_ARGS* pArgs,
+        __inout BUNDLE_EXTENSION_CREATE_RESULTS* pResults
         );
 
-    extern "C" typedef void (WINAPI *PFN_BURN_EXTENSION_DESTROY)();
+    extern "C" typedef void (WINAPI *PFN_BUNDLE_EXTENSION_DESTROY)();
 
-    extern "C" typedef HRESULT(WINAPI *PFN_BURN_EXTENSION_ENGINE_PROC)(
-        __in BURN_EXTENSION_ENGINE_MESSAGE message,
+    extern "C" typedef HRESULT(WINAPI *PFN_BUNDLE_EXTENSION_ENGINE_PROC)(
+        __in BUNDLE_EXTENSION_ENGINE_MESSAGE message,
         __in const LPVOID pvArgs,
         __inout LPVOID pvResults,
         __in_opt LPVOID pvContext
         );
 
-    enum BURN_EXTENSION_ENGINE_MESSAGE
+    enum BUNDLE_EXTENSION_ENGINE_MESSAGE
     {
-        BURN_EXTENSION_ENGINE_MESSAGE_GETVARIABLENUMERIC,
-        BURN_EXTENSION_ENGINE_MESSAGE_GETVARIABLESTRING,
-        BURN_EXTENSION_ENGINE_MESSAGE_GETVARIABLEVERSION,
-        BURN_EXTENSION_ENGINE_MESSAGE_FORMATSTRING,
-        BURN_EXTENSION_ENGINE_MESSAGE_ESCAPESTRING,
-        BURN_EXTENSION_ENGINE_MESSAGE_EVALUATECONDITION,
-        BURN_EXTENSION_ENGINE_MESSAGE_LOG,
-        BURN_EXTENSION_ENGINE_MESSAGE_SETVARIABLENUMERIC,
-        BURN_EXTENSION_ENGINE_MESSAGE_SETVARIABLELITERALSTRING,
-        BURN_EXTENSION_ENGINE_MESSAGE_SETVARIABLESTRING,
-        BURN_EXTENSION_ENGINE_MESSAGE_SETVARIABLEVERSION,
+        BUNDLE_EXTENSION_ENGINE_MESSAGE_ESCAPESTRING,
+        BUNDLE_EXTENSION_ENGINE_MESSAGE_EVALUATECONDITION,
+        BUNDLE_EXTENSION_ENGINE_MESSAGE_FORMATSTRING,
+        BUNDLE_EXTENSION_ENGINE_MESSAGE_GETVARIABLENUMERIC,
+        BUNDLE_EXTENSION_ENGINE_MESSAGE_GETVARIABLESTRING,
+        BUNDLE_EXTENSION_ENGINE_MESSAGE_GETVARIABLEVERSION,
+        BUNDLE_EXTENSION_ENGINE_MESSAGE_LOG,
+        BUNDLE_EXTENSION_ENGINE_MESSAGE_SETVARIABLELITERALSTRING,
+        BUNDLE_EXTENSION_ENGINE_MESSAGE_SETVARIABLENUMERIC,
+        BUNDLE_EXTENSION_ENGINE_MESSAGE_SETVARIABLESTRING,
+        BUNDLE_EXTENSION_ENGINE_MESSAGE_SETVARIABLEVERSION,
     };
 
-2) Create a new `BurnExtension` element for the Burn manifest xml.
+2) Create a new `BundleExtension` element for the Burn manifest xml.
 
-    <xs:element name="BurnExtension">
+    <xs:element name="BundleExtension">
         <xs:complexType>
             <xs:attribute name="Id" type="xs:string" />
             <xs:attribute name="EntryPayloadId" type="xs:string" />
@@ -98,11 +100,6 @@ draft: false
 3) Create a new `ExtensionSearch` element for the Burn manifest xml.
 
     <xs:element name="ExtensionSearch">
-        <xs:annotation>
-            <xs:documentation>
-                The inner XML will contain the information needed for that specific search.
-            </xs:documentation>
-        </xs:annotation>
         <xs:complexType>
             <xs:attribute name="Id" type="xs:string" />
             <xs:attribute name="Variable" type="xs:string" />
@@ -111,41 +108,49 @@ draft: false
         </xs:complexType>
     </xs:element>
 
-4) Move the `Util` extension's searches out of the Burn engine and into this new `ExtensionSearch` framework.
+4) Create new BundleExtensionData.xml file for bundle extensions' custom data.
 
-5) Move the `WixFileSearch`, `WixRegistrySearch`, `WixComponentSearch`, and `WixProductSearch` tables out of Wix's tables.xml and into the `UtilExtension`'s tables.xml.
+5) The Burn backend finds extension searches by looking for Tuples with the new BundleExtensionSearchTupleDefinitionTag. These are added to the BundleExtensionData based on the corresponding WixSearchTuple's ExtensionId field.
 
-6) In `CreateBurnManifestCommand`, it needs to somehow involve the extension in creating the xml.
-Ideally the extension would somehow register a table as a Burn search table, and be able to provide its own subclass of `Row` for each of the rows.
-This class would inherit from a new interface (`ISearchRow`?) which would have a method that returned an instance of `WixSearchInfo`.
-
-However, this ability for an extension to provide its own subclass of `Row` does not exist yet (this was first brought up [here](https://github.com/wixtoolset/wix4/pull/85)). So the alternative would be to create a new Wix extension interface like `IBurnBinderExtension` and get `CreateBurnManifestCommand` to call each of those extensions and generate the xml that way.
+6) Add `util:DetectSHA2Support` and the core `SetVariable` "searches" as examples.
 
 ## Example
 
 This directory search will change from
 
+manifest.xml
+
     <DirectorySearch Id="myid" Variable="InstallFolder" Condition="PreviousInstallFolder" Path="[PreviousInstallFolder]" Type="path" />
 
 to
 
+manifest.xml
+
     <UX>
         <Payload Id="UtilExtensionDll" />
     </UX>
-    <BurnExtension Id="Util" EntryPayloadId="UtilExtensionDll">
+    <BundleExtension Id="Util" EntryPayloadId="UtilExtensionDll">
         <PayloadRef Id="UtilExtensionDll" />
-    </BurnExtension>
-    <ExtensionSearch Id="myid" Variable="InstallFolder" Condition="PreviousInstallFolder" ExtensionId="Util">
-        <DirectorySearch Path="[PreviousInstallFolder]" Type="path" />
-    </ExtensionSearch>
+    </BundleExtension>
+    <ExtensionSearch Id="myid" Variable="InstallFolder" Condition="PreviousInstallFolder" ExtensionId="Util" />
+
+BundleExtensionData.xml
+
+    <BundleExtensionData>
+        <BundleExtension Id="Util">
+            <DirectorySearch Path="[PreviousInstallFolder]" Type="path" />
+        </BundleExtension>
+    </BundleExtensionData>
 
 ## Considerations
+
+Moving Util's old searches out of the core toolset will still need to be done.
 
 Once this functionality is in place, I anticipate two feature requests:
 
 1) Add the option to run the search in the elevated process in order to do IIS searches.
 
-2) Add the ability to add custom package types and execute them in the Burn extension.
+2) Add the ability to add custom package types and execute them in the Bundle extension.
 
 ## See Also
 
