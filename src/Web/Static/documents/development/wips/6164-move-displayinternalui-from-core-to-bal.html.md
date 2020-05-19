@@ -32,14 +32,14 @@ If we take #3 for Burn, then there are 3 similar approaches we can take for wixs
 
 2. Continue with the v3 design of `DisplayInternalUI`.
 The basic idea behind this approach is to use the same logic that v3 Burn used to restrict uiLevel, so MSI UI is can only be shown during install.
-The external UI handler is never disabled.
+The external UI handler is always used.
 
 3. Allow the Setup developer to show MSI UI during non-install operations.
 
 
 ## Proposal - Burn
 
-Take approach #3. Add new event for OnPlanWIPackage:
+Take approach #3. Add new event for OnPlanMsiPackage:
 
     enum BURN_MSI_PROPERTY
     {
@@ -50,7 +50,7 @@ Take approach #3. Add new event for OnPlanWIPackage:
         BURN_MSI_PROPERTY_UNINSTALL,// add BURNMSIUNINSTALL=1
     };
 
-    struct BA_ONPLANWIPACKAGE_ARGS
+    struct BA_ONPLANMSIPACKAGE_ARGS
     {
         DWORD cbSize;
         LPCWSTR wzPackageId;
@@ -58,7 +58,7 @@ Take approach #3. Add new event for OnPlanWIPackage:
         BOOTSTRAPPER_ACTION_STATE action;
     };
 
-    struct BA_ONPLANWIPACKAGE_RESULTS
+    struct BA_ONPLANMSIPACKAGE_RESULTS
     {
         DWORD cbSize;
         BOOL fCancel;
@@ -68,7 +68,7 @@ Take approach #3. Add new event for OnPlanWIPackage:
     };
 
 Burn will:
-* Call `OnPlanWIPackage` for each MSI or MSP package authored in the chain, somewhere between `OnPlanPackageBegin` and `OnPlanPackageComplete`.
+* Call `OnPlanMsiPackage` for each MSI or MSP package authored in the chain, somewhere between `OnPlanPackageBegin` and `OnPlanPackageComplete`.
 * Default `actionMsiProperty` based on the planned action.
 * Always default `uiLevel` to `INSTALLUILEVEL_NONE | INSTALLUILEVEL_SOURCERESONLY`.
 * Always default `fDisableExternalUiHandler` to false.
@@ -79,11 +79,12 @@ Burn will:
 
 Take approach #3.
 Move the `DisplayInternalUI` attribute into the `BalExtension`.
-Modify the attribute to take a condition so that it can be configured at runtime.
+Modify the attribute to take a condition so that it can be configured at runtime, and rename it to `DisplayInternalUICondition`.
 If not specified, then internal UI will never be shown.
 The same condition is used for all operations.
 wixstdba will not change the value of `actionMsiProperty`.
-wixstdba will not support EmbeddedUI so it will never set `fDisableExternalUiHandler` to true.
+wixstdba will not support EmbeddedUI so it will not change the value of `fDisableExternalUiHandler`.
+This is because if the Setup developer has the resources to implement embedded UI, then they should spend those resources creating a custom theme for wixstdba or create a custom BA.
 
 
 ## Proposal - UI.wixext
@@ -93,7 +94,8 @@ Teach all of the built-in UIs in UI.wixext about the new `BURNMSIINSTALL`, `BURN
 
 ## Considerations
 
-There are plans for adding a new built-in BA that will support EmbeddedUI.
+* There are plans for adding a new built-in BA that will support EmbeddedUI.
+* Making Burn default `uiLevel` to `INSTALLUILEVEL_NONE | INSTALLUILEVEL_SOURCERESONLY` may change in the future since `INSTALLUILEVEL_SOURCERESONLY` might cause dialogs to be shown even if the bundle is supposed to be quiet.
 
 
 ## See Also
