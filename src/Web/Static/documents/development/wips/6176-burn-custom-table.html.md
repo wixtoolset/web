@@ -16,33 +16,36 @@ draft: false
 ## Proposal
 
 Remove `Unreal` attribute from `CustomTable`.
-Add BurnCustomTable element.
+Add `BurnCustomData` element.
 
-      <xs:element name="BurnCustomTable">
+      <xs:element name="BurnCustomData">
         <xs:annotation>
-          <xs:documentation>Defines a custom table for use in a bundle.</xs:documentation>
+          <xs:documentation>Defines a custom XML element for use in a bundle data manifest.</xs:documentation>
         </xs:annotation>
         <xs:complexType>
           <xs:sequence>
-            <xs:element ref="BurnColumn" minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="BurnAttributeDefinition" minOccurs="0" maxOccurs="unbounded">
               <xs:annotation>
-                <xs:documentation>Column definition for the custom table.</xs:documentation>
+                <xs:documentation>Attribute definition for BurnCustomData.</xs:documentation>
               </xs:annotation>
             </xs:element>
-            <xs:element ref="BurnRow" minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="BurnElement" minOccurs="0" maxOccurs="unbounded">
               <xs:annotation>
-                <xs:documentation>Row definition for the custom table.</xs:documentation>
+                <xs:documentation>Instance data for BurnCustomData.</xs:documentation>
               </xs:annotation>
             </xs:element>
           </xs:sequence>
           <xs:attribute name="Id" type="xs:string" use="required">
             <xs:annotation>
-              <xs:documentation>Identifier for the custom table.</xs:documentation>
+              <xs:documentation>
+                Identifier for the custom table.
+                Also used as the name of the XML element.
+              </xs:documentation>
             </xs:annotation>
           </xs:attribute>
           <xs:attribute name="Type" type="YesNoType" use="required">
             <xs:annotation>
-              <xs:documentation>Indicates the table data is transformed into the bootstrapper application data manifest or the bundle extension data manifest.</xs:documentation>
+              <xs:documentation>Indicates the custom data is transformed into the bootstrapper application data manifest or the bundle extension data manifest.</xs:documentation>
             </xs:annotation>
             <xs:simpleType>
               <xs:restriction base="xs:NMTOKEN">
@@ -53,41 +56,41 @@ Add BurnCustomTable element.
           </xs:attribute>
         </xs:complexType>
       </xs:element>
-      <xs:element name="BurnColumn">
+      <xs:element name="BurnAttributeDefinition">
         <xs:annotation>
-          <xs:documentation>Column definition for a BurnCustomTable</xs:documentation>
+          <xs:documentation>Attribute definition for BurnCustomData.</xs:documentation>
         </xs:annotation>
         <xs:complexType>
           <xs:attribute name="Id" type="xs:string" use="required">
             <xs:annotation>
-              <xs:documentation>Identifier for the column.</xs:documentation>
+              <xs:documentation>The name of the attribute.</xs:documentation>
             </xs:annotation>
           </xs:attribute>
         </xs:complexType>
       </xs:element>
-      <xs:element name="BurnRow">
+      <xs:element name="BurnElement">
         <xs:annotation>
-          <xs:documentation>Row data for a BurnCustomTable</xs:documentation>
+          <xs:documentation>Instance data for BurnCustomData.</xs:documentation>
         </xs:annotation>
         <xs:complexType>
           <xs:sequence>
-            <xs:element ref="Data" maxOccurs="unbounded" />
+            <xs:element ref="BurnAttribute" maxOccurs="unbounded" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
-      <xs:element name="BurnData">
+      <xs:element name="BurnAttribute">
         <xs:annotation>
-          <xs:documentation>Used for a BurnCustomTable. Specifies the data for the parent BurnRow and specified BurnColumn.</xs:documentation>
+          <xs:documentation>Used for BurnCustomData. Specifies a BurnAttributeDefinition and its value for the parent BurnElement.</xs:documentation>
         </xs:annotation>
         <xs:complexType>
           <xs:simpleContent>
             <xs:extension base="xs:string">
               <xs:annotation>
-                <xs:documentation>A data value</xs:documentation>
+                <xs:documentation>An attribute's value</xs:documentation>
               </xs:annotation>
-              <xs:attribute name="Column" use="required" type="xs:string">
+              <xs:attribute name="Id" use="required" type="xs:string">
                 <xs:annotation>
-                  <xs:documentation>Specifies in which column to insert this data.</xs:documentation>
+                  <xs:documentation>Specifies the BurnAttributeDefinition associated with this value.</xs:documentation>
                 </xs:annotation>
               </xs:attribute>
             </xs:extension>
