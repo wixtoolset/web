@@ -13,7 +13,7 @@ title: WiX Layering Improvements
 
 ## Proposal
 
-Currently the `wix.dll` houses all the WiX toolset's data access objects, extensibility interfaces and processors. The exposed progamming surface area is very large and varied. It is difficult to understand what subset of objects are necessary to accomplish a task.
+Currently the `wix.dll` houses all the WiX Toolset's data access objects, extensibility interfaces and processors. The exposed programming surface area is very large and varied. It is difficult to understand what subset of objects are necessary to accomplish a task.
 
 The single `wix.dll` also makes it easier for WiX developers to inadvertently create dependencies between objects that should remain isolated for extensibility purposes.
 
