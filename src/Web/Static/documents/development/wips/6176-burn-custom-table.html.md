@@ -15,23 +15,22 @@ draft: false
 
 ## Proposal
 
-Remove `Unreal` attribute from `CustomTable`.
-Add `BurnCustomData` element.
+Add `BundleCustomData` element.
 
-      <xs:element name="BurnCustomData">
+      <xs:element name="BundleCustomData">
         <xs:annotation>
           <xs:documentation>Defines a custom XML element for use in a bundle data manifest.</xs:documentation>
         </xs:annotation>
         <xs:complexType>
           <xs:sequence>
-            <xs:element ref="BurnAttributeDefinition" minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="BundleAttributeDefinition" minOccurs="0" maxOccurs="unbounded">
               <xs:annotation>
-                <xs:documentation>Attribute definition for BurnCustomData.</xs:documentation>
+                <xs:documentation>Attribute definition for BundleCustomData.</xs:documentation>
               </xs:annotation>
             </xs:element>
-            <xs:element ref="BurnElement" minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="BundleElement" minOccurs="0" maxOccurs="unbounded">
               <xs:annotation>
-                <xs:documentation>Instance data for BurnCustomData.</xs:documentation>
+                <xs:documentation>Instance data for BundleCustomData.</xs:documentation>
               </xs:annotation>
             </xs:element>
           </xs:sequence>
@@ -54,11 +53,19 @@ Add `BurnCustomData` element.
               </xs:restriction>
             </xs:simpleType>
           </xs:attribute>
+          <xs:attribute name="ExtensionId" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+                Identifier for the bundle extension.
+                Required when Type is BundleExtension, must not be specified otherwise.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
         </xs:complexType>
       </xs:element>
-      <xs:element name="BurnAttributeDefinition">
+      <xs:element name="BundleAttributeDefinition">
         <xs:annotation>
-          <xs:documentation>Attribute definition for BurnCustomData.</xs:documentation>
+          <xs:documentation>Attribute definition for BundleCustomData.</xs:documentation>
         </xs:annotation>
         <xs:complexType>
           <xs:attribute name="Id" type="xs:string" use="required">
@@ -68,19 +75,19 @@ Add `BurnCustomData` element.
           </xs:attribute>
         </xs:complexType>
       </xs:element>
-      <xs:element name="BurnElement">
+      <xs:element name="BundleElement">
         <xs:annotation>
-          <xs:documentation>Instance data for BurnCustomData.</xs:documentation>
+          <xs:documentation>Instance data for BundleCustomData.</xs:documentation>
         </xs:annotation>
         <xs:complexType>
           <xs:sequence>
-            <xs:element ref="BurnAttribute" maxOccurs="unbounded" />
+            <xs:element ref="BundleAttribute" maxOccurs="unbounded" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
-      <xs:element name="BurnAttribute">
+      <xs:element name="BundleAttribute">
         <xs:annotation>
-          <xs:documentation>Used for BurnCustomData. Specifies a BurnAttributeDefinition and its value for the parent BurnElement.</xs:documentation>
+          <xs:documentation>Used for BundleCustomData. Specifies a BundleAttributeDefinition and its value for the parent BundleElement.</xs:documentation>
         </xs:annotation>
         <xs:complexType>
           <xs:simpleContent>
@@ -90,7 +97,7 @@ Add `BurnCustomData` element.
               </xs:annotation>
               <xs:attribute name="Id" use="required" type="xs:string">
                 <xs:annotation>
-                  <xs:documentation>Specifies the BurnAttributeDefinition associated with this value.</xs:documentation>
+                  <xs:documentation>Specifies the BundleAttributeDefinition associated with this value.</xs:documentation>
                 </xs:annotation>
               </xs:attribute>
             </xs:extension>
