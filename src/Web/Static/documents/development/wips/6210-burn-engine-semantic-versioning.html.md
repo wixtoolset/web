@@ -33,65 +33,65 @@ Finally, Metadata is compared as an ordinal string comparison.
 
 ### 1.0
 
-Major: 1
-Minor: 0
-Patch: -1 (undefined)
-Revision: -1 (undefined)
-ReleaseLabels: [] (empty)
-Metadata: null
+    Major: 1
+    Minor: 0
+    Patch: -1 (undefined)
+    Revision: -1 (undefined)
+    ReleaseLabels: [] (empty)
+    Metadata: null
 
 ### 1.2.3.004-2.a.22+abcdef
 
-Major: 1
-Minor: 2
-Patch: 3
-Revision: 4
-ReleaseLabels: [2, "a", 22]
-Metadata: "abcdef"
+    Major: 1
+    Minor: 2
+    Patch: 3
+    Revision: 4
+    ReleaseLabels: [2, "a", 22]
+    Metadata: "abcdef"
 
 ### 100.-2.0
 
-Major: 100
-Minor: -1 (undefined)
-Patch: -1 (undefined)
-Revision: -1 (undefined)
-ReleaseLabels: [] (empty)
-Metadata: "-2.0"
+    Major: 100
+    Minor: -1 (undefined)
+    Patch: -1 (undefined)
+    Revision: -1 (undefined)
+    ReleaseLabels: [] (empty)
+    Metadata: "-2.0"
 
 ### 1-2
 
-Major: 1
-Minor: -1 (undefined)
-Patch: -1 (undefined)
-Revision: -1 (undefined)
-ReleaseLabels: ["2"]
-Metadata: null
+    Major: 1
+    Minor: -1 (undefined)
+    Patch: -1 (undefined)
+    Revision: -1 (undefined)
+    ReleaseLabels: ["2"]
+    Metadata: null
 
 OR
 
-Major: -1 (undefined)
-Minor: -1 (undefined)
-Patch: -1 (undefined)
-Revision: -1 (undefined)
-ReleaseLabels: [] (empty)
-Metadata: "1-2"
+    Major: -1 (undefined)
+    Minor: -1 (undefined)
+    Patch: -1 (undefined)
+    Revision: -1 (undefined)
+    ReleaseLabels: [] (empty)
+    Metadata: "1-2"
 
 ### 2.9999999999999999999999999999999999999.0.0
 
-Major: 2
-Minor: -1 (undefined)
-Patch: -1 (undefined)
-Revision: -1 (undefined)
-ReleaseLabels: [] (empty)
-Metadata: "9999999999999999999999999999999999999.0.0"
+    Major: 2
+    Minor: -1 (undefined)
+    Patch: -1 (undefined)
+    Revision: -1 (undefined)
+    ReleaseLabels: [] (empty)
+    Metadata: "9999999999999999999999999999999999999.0.0"
 
 ### Comparisons
 
-1.2.3.4 > 1.2.3
-1.2.3.0 > 1.2.3
-1.0-2.0 > 1.0-1.19
-10.-4.0 > 10.-2.0
-0.0.1-a > 0-2
+    1.2.3.4 > 1.2.3
+    1.2.3.0 > 1.2.3
+    1.0-2.0 > 1.0-1.19
+    10.-4.0 > 10.-2.0
+    0.0.1-a > 0-2
 
 
 ## Considerations
