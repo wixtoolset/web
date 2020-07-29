@@ -18,12 +18,21 @@ In v3, wixstdba's "variable magic" for editbox controls was simple but couldn't 
 
 ## Proposal
 
-Add a new Variable/@Type called `literal`.
-This corresponds to a new variant type: `BURN_VARIANT_TYPE_LITERAL_STRING`.
+Add a new Variable/@Type called `formatted`.
+This corresponds to a new variant type: `BURN_VARIANT_TYPE_FORMATTED_STRING`.
+These work the same as the `string` type in v3.
+
+The existing `string` type in v4 will represent a literal string value.
 This replaces the internal Burn functionality in v3 where a Variable could be set as "literal".
 As in that case, when Burn tries to format a variable with a literal string value then the result is the string value unformatted.
 
-Add new methods to Burn's interface for `SetVariableLiteralString` so Bootstrapper Applications and Bundle Extensions can also use this functionality.
+Change the `SetVariableString` method on Burn's interface to
+
+    STDMETHOD(SetVariableString)(
+        __in_z LPCWSTR wzVariable,
+        __in_z_opt LPCWSTR wzValue,
+        __in BOOL fFormatted
+        )
 
 
 ## Considerations
