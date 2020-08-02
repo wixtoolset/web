@@ -11,7 +11,7 @@ draft: false
 * As a Setup developer I can author my bundle using the built-in BootstrapperApplications in BalExtension such that the correct architecture is automatically used.
 
 
-## Proposal
+## Proposal - Bal.wixext
 
 In v3.x, the built-in BootstrapperApplications in BalExtension were used by creating a `BootstrapperApplicationRef` with a documented Id.
 They were customized with child `bal:WixStandardBootstrapperApplication` and `bal:WixManagedBootstrapperApplicationHost` elements.
@@ -49,13 +49,157 @@ The `bal:WixManagedBootstrapperApplicationHost` element will also get a new `The
         </xs:simpleType>
     </xs:attribute>
 
+
+## Proposal - Core
+
+This is how the WiX BA should have been added to the bundle in v3:
+
+    <Bundle>
+      <BootstrapperApplicationRef Id='ManagedBootstrapperApplicationHost' bal:UseUILanguages='yes'>
+        <bal:WixManagedBootstrapperApplicationHost LicenseFile='..\..\..\License.txt' />
+        <Payload Name='BootstrapperCore.config' SourceFile='WixBA.BootstrapperCore.config' />
+        <Payload SourceFile='WixBA.dll' />
+      </BootstrapperApplicationRef>
+    </Bundle>
+
+Under the above proposal, this is how it would be in v4:
+
+    <Bundle>
+      <bal:WixManagedBootstrapperApplicationHost Theme='standard' LicenseFile='..\..\..\License.txt'>
+        <Payload Name='WixToolset.Mba.Core.config' SourceFile='WixBA.BootstrapperCore.config' />
+        <Payload SourceFile='WixBA.dll' />
+      </bal:WixManagedBootstrapperApplicationHost>
+    </Bundle>
+
+The problem with this is that the Bal extension is now required to parse Core elements (`Payload` and `PayloadGroupRef`).
+There is no other way for the Setup developer to add payloads to the UX container - currently that requires adding them under `BootstrapperApplication` or `BootstrapperApplicationRef`.
+The `BootstrapperApplication` is defined in Bal.wixext so can't be used by the Setup developer.
+`BootstrapperApplicationRef` can't be used by the Setup developer either, because the Id changes based on the target architecture (the issue we're solving here).
+Requiring extensions to parse Core elements is not acceptable because that parsing logic is in Core and is subject to change.
+
 In order for the Setup Developer to include their own payloads in the UXContainer, the core WiX schema needs to be enhanced.
 Here are a few options:
 
-1. Allow `BootstrapperApplicationRef` without an `Id`.
-1. Create `BootstrapperApplicationContainerRef` which has no attributes and can have children `PayloadGroupRef` elements.
-1. Create `BootstrapperApplicationPayload`, `BootstrapperApplicationPayloadGroup`, and `BootstrapperApplicationPayloadGroupRef` elements.
-1. Add `BootstrapperApplication=yes` to `Payload` elements.
+Option 1.
+Create `BootstrapperApplicationContainer` element, which can be specified any number of times.
+It can have an Id to be referenced from a new `BootstrapperApplicationContainerRef` element.
+This would look like:
+
+    <Bundle>
+      <bal:WixManagedBootstrapperApplicationHost Theme='standard' LicenseFile='..\..\..\License.txt' />
+      <BootstrapperApplicationContainer>
+        <Payload Name='WixToolset.Mba.Core.config' SourceFile='WixBA.BootstrapperCore.config' />
+        <Payload SourceFile='WixBA.dll' />
+      </BootstrapperApplicationContainer>
+    </Bundle>
+
+or
+
+    <Bundle>
+      <bal:WixManagedBootstrapperApplicationHost Theme='standard' LicenseFile='..\..\..\License.txt' />
+      <BootstrapperApplicationContainerRef Id='WixBA'>
+        <Payload Name='WixToolset.Mba.Core.config' SourceFile='WixBA.BootstrapperCore.config' />
+      </BootstrapperApplicationContainerRef>
+    </Bundle>
+    <Fragment>
+      <BootstrapperApplicationContainer Id='WixBA'>
+        <Payload SourceFile='WixBA.dll' />
+      </BootstrapperApplicationContainer>
+    </Fragment>
+
+Option 2.
+Same as option 1, but also remove the ability to specify child `Payload` or `PayloadGroup` elements under `BootstrapperApplication`.
+Require the payload information on the `BootstrapperApplication` element.
+Remove the `BootstrapperApplicationRef` element entirely.
+Require the parent of `BootstrapperApplication` to be `BootstrapperApplicationContainer` or `BootstrapperApplicationContainerRef`.
+Change the parent of the Bal BA elements to also be either `BootstrapperApplicationContainer` or `BootstrapperApplicationContainerRef`.
+The Bal.wixext currently has this authoring for MBA:
+
+    <Fragment>
+      <BootstrapperApplication Id='ManagedBootstrapperApplicationHost$(var.Suffix)' SourceFile='!(bindpath.$(var.platform))\mbahost.dll'>
+        <PayloadGroupRef Id='Mba' />
+        <PayloadGroupRef Id='MbaPreqStandard' />
+      </BootstrapperApplication>
+    </Fragment>
+
+This would change to:
+
+    <Fragment>
+      <BootstrapperApplicationContainer Id='ManagedBootstrapperApplicationHost$(var.Suffix)'>
+        <BootstrapperApplication SourceFile='!(bindpath.$(var.platform))\mbahost.dll' />
+        <PayloadGroupRef Id='Mba' />
+        <PayloadGroupRef Id='MbaPreqStandard' />
+      </BootstrapperApplication>
+    </Fragment>
+
+The bundle authoring would look like:
+
+    <Bundle>
+      <BootstrapperApplicationContainer>
+        <bal:WixManagedBootstrapperApplicationHost Theme='standard' LicenseFile='..\..\..\License.txt' />
+        <Payload Name='WixToolset.Mba.Core.config' SourceFile='WixBA.BootstrapperCore.config' />
+        <Payload SourceFile='WixBA.dll' />
+      </BootstrapperApplicationContainer>
+    </Bundle>
+
+Option 3.
+Allow `BootstrapperApplicationRef` without an `Id`.
+This would look like:
+
+    <Bundle>
+      <bal:WixManagedBootstrapperApplicationHost Theme='standard' LicenseFile='..\..\..\License.txt' />
+      <BootstrapperApplicationRef>
+        <Payload Name='WixToolset.Mba.Core.config' SourceFile='WixBA.BootstrapperCore.config' />
+        <Payload SourceFile='WixBA.dll' />
+      </BootstrapperApplicationRef>
+    </Bundle>
+
+Option 4.
+Create `BootstrapperApplicationContainerRef` which has no attributes and can have children `Payload` and `PayloadGroupRef` elements.
+This would look like:
+
+    <Bundle>
+      <bal:WixManagedBootstrapperApplicationHost Theme='standard' LicenseFile='..\..\..\License.txt' />
+      <BootstrapperApplicationContainerRef>
+        <Payload Name='WixToolset.Mba.Core.config' SourceFile='WixBA.BootstrapperCore.config' />
+        <Payload SourceFile='WixBA.dll' />
+      </BootstrapperApplicationContainerRef>
+    </Bundle>
+
+Option 5.
+Create `BootstrapperApplicationPayload`, `BootstrapperApplicationPayloadGroup`, and `BootstrapperApplicationPayloadGroupRef` elements.
+This would look like:
+
+    <Bundle>
+      <bal:WixManagedBootstrapperApplicationHost Theme='standard' LicenseFile='..\..\..\License.txt' />
+      <BootstrapperApplicationPayloadGroup Id='WixBA'>
+        <Payload Name='WixToolset.Mba.Core.config' SourceFile='WixBA.BootstrapperCore.config' />
+        <Payload SourceFile='WixBA.dll' />
+      </BootstrapperApplicationPayloadGroup>
+    </Bundle>
+
+or
+
+    <Bundle>
+      <bal:WixManagedBootstrapperApplicationHost Theme='standard' LicenseFile='..\..\..\License.txt' />
+      <PayloadGroup Id='WixBA'>
+        <BootstrapperApplicationPayload Name='WixToolset.Mba.Core.config' SourceFile='WixBA.BootstrapperCore.config' />
+        <BootstrapperApplicationPayload SourceFile='WixBA.dll' />
+      </PayloadGroup>
+    </Bundle>
+
+
+Option 6.
+Add `BootstrapperApplication=yes` to `Payload` elements.
+This would look like:
+
+    <Bundle>
+      <bal:WixManagedBootstrapperApplicationHost Theme='standard' LicenseFile='..\..\..\License.txt' />
+      <PayloadGroup Id='WixBA'>
+        <Payload BootstrapperApplication='yes' Name='WixToolset.Mba.Core.config' SourceFile='WixBA.BootstrapperCore.config' />
+        <Payload BootstrapperApplication='yes' SourceFile='WixBA.dll' />
+      </PayloadGroup>
+    </Bundle>
 
 
 ## Considerations
