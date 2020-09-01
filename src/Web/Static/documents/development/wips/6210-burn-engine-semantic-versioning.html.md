@@ -20,26 +20,60 @@ At its most basic level, Burn needs to use strings for versions.
 In order to perform comparisons, Burn needs to a new way to parse versions.
 The basic idea is to use NuGet's implementation of SemVer with some variations to keep v3 Burn functionality.
 
-1. If given a valid NuGet version, Burn will parse it just like NuGet: Major.Minor.Patch.Revision-ReleaseLabels+Metadata.
-Unlike NuGet, Major/Minor/Patch/Revision are DWORDs and undefined fields are treated as zero. Everything after Revision is parsed according to the SemVer 2.0 [spec](https://semver.org/spec/v2.0.0.html).
-1. If given an invalid NuGet version, then Burn will parse as much as it can and put the rest into Metadata.
+## Verutil Version Specification
 
-For comparisons, Burn will mostly use NuGet's rules.
+1. Simple versions take the form `Major.Minor.Patch.Revision`, where `Major`, `Minor`, `Patch`, and `Revision` are unsigned 32-bit numbers. `Minor`, `Patch`, and `Revision` are optional.
+Valid examples are `1`, `1.0`, `1.2.3.4`, `0.02.3`, `0.0`, `4294967295.4294967295.4294967295.4294967295`.
+Invalid examples are `1.`, `1.-1`, `1.2.3.4.5`, `4294967296.4294967296.4294967296.4294967296`.
+
+1. A pre-release version is a simple version followed by a hyphen followed by a series of dot separated identifiers. These identifiers may only contain ASCII alphanumeric characters or a hyphen (`[0-9a-zA-Z-]+`).
+Valid examples are `1.0-a`, `1.0-1.a`, `1.0-a-2`.
+Invalid examples are `1.0-`, `1.0-a.`, `1.0-@`.
+
+1. Build metadata is optional, and can be added to simple versions and pre-release versions.
+Build metadata starts with a plus sign.
+For example, `1.0+any` or `1.0-beta+string`.
+
+1. When not in strict mode, invalid versions are parsed as much as possible and then the rest is treated as build metadata. The version is also marked as invalid.
+
+1. Versions must be less than 2,147,483,647 characters.
+
+1. Versions may begin with `v` or `V`.
+
+The precedence rules mostly follow NuGet.
 
 1. The Major.Minor.Patch.Revision part is compared first, just like v3 Burn.
+Undefined fields are treated as zero.
+Examples: `1.2.3.4 > 1.2.3`, `1.2.3.0 = 1.2.3`, `0.0 = 0`.
+
+1. Next, the invalid flag is compared.
+Examples: `0.0 > @#$%^&*`, `0.0 > 0.0..1`, `2.0.-1 > 1.0`.
+
 1. Next, ReleaseLabels are compared as specified in the SemVer 2.0 spec except string comparisons are done case-insensitive.
-1. Finally, Metadata is compared as a case-insensitive string comparison.
+
+1. Finally, if the versions are invalid then Metadata is compared as a case-insensitive string comparison.
 
 ## Burn API Changes
 
-The only changes to the Burn API are that all places that were using a `QWORD` for a version will now use a `LPWSTR`.
+The main change to the Burn API is that all places that were using a `QWORD` for a version will now use a `LPWSTR`.
 The existing `EvaluateCondition` engine method/message can be used to compare versions.
 The details of the parsed version will not be available to the BA, they will be internal to Burn.
 This is because Burn is not the source of truth of how the version is supposed to be evaluated.
 The code will be available in `butil` (and WixToolset.Mba.Core) if the BA would like to parse the version like Burn.
-This allows Burn the flexibility to change the details of parsing the version without being a breaking change.
 
-The `>>`, `<<`, and `><` operators need to be redefined or removed when comparing versions, since they are no longer simple `QWORD`s.
+The `>>`, `<<`, and `><` operators will be removed when comparing versions, since they are no longer simple `QWORD`s.
+
+When a version variable is coerced into a numeric value, then the version string is parsed as a number (just like when coercing a string variable into a number). This will fail for most versions.
+
+When a numeric variable is coerced into a version value, then the value is split into a version using the v3 logic. The highest word is Major, the next word is Minor, the next word is Patch, and the lowest word is Revision.
+
+Add a new `CompareVersions` method for a more convenient way to compare versions:
+
+    STDMETHOD(CompareVersions)(
+        __in_z LPCWSTR wzVersionLeft,
+        __in_z LPCWSTR wzVersionRight,
+        __out int* pnResult
+        ) = 0;
 
 ## Examples
 
@@ -51,6 +85,7 @@ The `>>`, `<<`, and `><` operators need to be redefined or removed when comparin
     Revision: 0
     ReleaseLabels: [] (empty)
     Metadata: "" (empty)
+    Invalid: false
 
 ### 1.2.3.004-2.a.22+abcdef
 
@@ -60,6 +95,7 @@ The `>>`, `<<`, and `><` operators need to be redefined or removed when comparin
     Revision: 4
     ReleaseLabels: [2, "a", 22]
     Metadata: "abcdef"
+    Invalid: false
 
 ### 100.-2.0
 
@@ -69,6 +105,7 @@ The `>>`, `<<`, and `><` operators need to be redefined or removed when comparin
     Revision: 0
     ReleaseLabels: [] (empty)
     Metadata: "-2.0"
+    Invalid: true
 
 ### 1-2
 
@@ -78,6 +115,7 @@ The `>>`, `<<`, and `><` operators need to be redefined or removed when comparin
     Revision: 0
     ReleaseLabels: [2]
     Metadata: "" (empty)
+    Invalid: false
 
 ### 2.9999999999999999999999999999999999999.0.0
 
@@ -87,6 +125,7 @@ The `>>`, `<<`, and `><` operators need to be redefined or removed when comparin
     Revision: 0
     ReleaseLabels: [] (empty)
     Metadata: "9999999999999999999999999999999999999.0.0"
+    Invalid: true
 
 ### Comparisons
 
@@ -95,20 +134,20 @@ The `>>`, `<<`, and `><` operators need to be redefined or removed when comparin
     1.0-2.0 > 1.0-1.19
     1.0-2.0 < 1.0-19
     10.-4.0 > 10.-2.0
-    0       = "" (empty string)
+    0       > "" (empty string)
     0.0.1-a > 0-2
     0.0.1-a < 1-2
     0.01-a.1 = 0.1.0-a.1
     0.1-a.b.0 = 0.1.0-a.b.000
-    1.2.3+abcd = 1.2.3.abcd
-    1.2.3+abcd < 1.2.3.-abcd
+    1.2.3+abc = 1.2.3+xyz
+    1.2.3+abcd > 1.2.3.-abcd
     10.20.30.40 = v10.20.30.40
     4294967295.4294967295.4294967295.4294967295 > 4294967296.4294967296.4294967296.4294967296
 
 
 ## Considerations
 
-The behavior for invalid NuGet versions is completely arbitrary, but needs to be defined.
+The behavior for invalid versions is completely arbitrary, but needs to be defined.
 
 Allowing Bundles to author SemVer is out of scope of this issue.
 
