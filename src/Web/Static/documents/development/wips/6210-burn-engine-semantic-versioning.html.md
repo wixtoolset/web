@@ -32,7 +32,8 @@ Invalid examples are `1.0-`, `1.0-a.`, `1.0-@`.
 
 1. Build metadata is optional, and can be added to simple versions and pre-release versions.
 Build metadata starts with a plus sign.
-For example, `1.0+any` or `1.0-beta+string`.
+While any characters are allowed, characters other than `[0-9a-zA-Z-_.+]` are discouraged since Burn can't parse them in a condition expression.
+For example, `1.0+any_string+here` or `1.0-beta+string`.
 
 1. When not in strict mode, invalid versions are parsed as much as possible and then the rest is treated as build metadata. The version is also marked as invalid.
 
@@ -46,10 +47,10 @@ The precedence rules mostly follow NuGet.
 Undefined fields are treated as zero.
 Examples: `1.2.3.4 > 1.2.3`, `1.2.3.0 = 1.2.3`, `0.0 = 0`.
 
-1. Next, the invalid flag is compared.
-Examples: `0.0 > @#$%^&*`, `0.0 > 0.0..1`, `2.0.-1 > 1.0`.
-
 1. Next, ReleaseLabels are compared as specified in the SemVer 2.0 spec except string comparisons are done case-insensitive.
+
+1. Next, the invalid flag is compared.
+Examples: `0.0 > @#$%^&*`, `0.0 > 0.0..1`, `2.0.-1 > 1.0`, `1-1 > 1-2_3`.
 
 1. Finally, if the versions are invalid then Metadata is compared as a case-insensitive string comparison.
 
@@ -59,7 +60,9 @@ The main change to the Burn API is that all places that were using a `QWORD` for
 The existing `EvaluateCondition` engine method/message can be used to compare versions.
 The details of the parsed version will not be available to the BA, they will be internal to Burn.
 This is because Burn is not the source of truth of how the version is supposed to be evaluated.
-The code will be available in `butil` (and WixToolset.Mba.Core) if the BA would like to parse the version like Burn.
+The code will be available in `verutil` (and WixToolset.Mba.Core) if the BA would like to parse the version like Burn.
+
+The condition expression parser for versions will be updated to accept the characters `0-9`, `a-z`, `A-Z`, `.`, `-`, `_`, and `+`.
 
 The `>>`, `<<`, and `><` operators will be removed when comparing versions, since they are no longer simple `QWORD`s.
 
