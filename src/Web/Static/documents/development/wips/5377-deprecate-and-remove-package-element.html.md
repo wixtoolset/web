@@ -21,19 +21,19 @@ generate an arbitrary package. WiX v4.0 should
 |---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
 | AdminImage                | Eliminate. Its only use is in using WiX to construct an arbitrary database. The name encourages users to use it to try to create a package that elevates. |
 | Comments                  | Eliminate. MSI SDK describes what it _should_ say.                                                                                                        |
-| Compressed                | Move to Package/@Compressed and Module/@Compressed.                                                                                                       |
+| Compressed                | Move to Package/@Compressed.                                                                                                                              |
 | Description               | Move to SummaryInformation.                                                                                                                               |
-| Id                        | Eliminate.                                                                                                                                                |
+| Id                        | Move to Module/@Guid.                                                                                                                                     |
 | InstallerVersion          | Move to Package/@InstallerVersion and Module/@InstallerVersion.                                                                                           |
 | InstallPrivileges         | Eliminate.                                                                                                                                                |
-| InstallScope              | Move to Package/@Scope and Module/@Scope.                                                                                                                 |
+| InstallScope              | Move to Package/@Scope.                                                                                                                                   |
 | Keywords                  | Move to SummaryInformation.                                                                                                                               |
-| Languages                 | Move to SummaryInformation.                                                                                                                               |
+| Languages                 | Eliminate. WiX doesn't currently support multi-language merge modules and if that support were added, it would automatically take care of this value.     |
 | Manufacturer              | Move to SummaryInformation.                                                                                                                               |
 | Platform                  | Eliminate.                                                                                                                                                |
 | Platforms                 | Eliminate.                                                                                                                                                |
 | ReadOnly                  | Eliminate.                                                                                                                                                |
-| ShortNames                | Move to SummaryInformation.                                                                                                                               |
+| ShortNames                | Move to Package/@ShortNames.                                                                                                                              |
 | SummaryCodepage           | Move to SummaryInformation/@Codepage.                                                                                                                     |
 
 ## Considerations
