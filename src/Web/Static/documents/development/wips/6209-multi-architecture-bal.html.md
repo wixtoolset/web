@@ -15,7 +15,7 @@ draft: false
 
 In v3.x, the built-in BootstrapperApplications in BalExtension were used by creating a `BootstrapperApplicationRef` with a documented Id.
 They were customized with child `bal:WixStandardBootstrapperApplication` and `bal:WixManagedBootstrapperApplicationHost` elements.
-In order to allow the BalExtension compiler to reference the correct `BootstrapperApplication` based on the target architecture, these child elements will be the supported way of using the BA's and will need to be specified under a `Bundle` or `Fragment` element instead.
+In order to allow the BalExtension compiler to reference the correct `BootstrapperApplication` based on the target architecture, these child elements will be the supported way of using the BA's instead of a special `Id` on `BootstrapperApplicationRef`.
 
 The `bal:WixStandardBootstrapperApplication` element will get a new `Theme` attribute to specify which flavor to use:
 
@@ -78,7 +78,78 @@ The `BootstrapperApplication` is defined in Bal.wixext so can't be used by the S
 Requiring extensions to parse Core elements is not acceptable because that parsing logic is in Core and is subject to change.
 
 In order for the Setup Developer to include their own payloads in the UXContainer, the core WiX schema needs to be enhanced.
-Here are a few options:
+The basic idea is to remove the payload information from `BootstrapperApplication` and require the new `BootstrapperApplicationDll` element to declare the actual BA.
+
+Remove `Name` and `SourceFile` attributes from `BootstrapperApplication`.
+Allow `BootstrapperApplication` and `BootstrapperApplicationRef` to be specified any number of times under `Bundle`.
+All child payloads from those elements will go into the UX container.
+
+Add `BootstrapperApplicationDll` element.
+A bundle must have exactly one `BootstrapperApplicationDll`.
+
+    <xs:element name="BootstrapperApplicationDll">
+      <xs:annotation>
+        <xs:documentation>Describes the entry point to the bootstrapper application.</xs:documentation>
+        <xs:appinfo>
+          <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="BootstrapperApplication" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:complexType>
+        <xs:attribute name="Id" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>The identifier of BootstrapperApplicationDll element.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="SourceFile" type="xs:string" use="required">
+          <xs:annotation>
+            <xs:documentation>Location of the source file.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Name" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>The destination path and file name for this payload. The default is the source file name. The use of '..' directories is not allowed.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:complexType>
+    </xs:element>
+
+
+The Bal.wixext currently has this authoring for MBA:
+
+    <Fragment>
+      <BootstrapperApplication Id='ManagedBootstrapperApplicationHost$(var.Suffix)' SourceFile='!(bindpath.$(var.platform))\mbahost.dll'>
+        <PayloadGroupRef Id='Mba' />
+        <PayloadGroupRef Id='MbaPreqStandard' />
+      </BootstrapperApplication>
+    </Fragment>
+
+This will change to:
+
+    <Fragment>
+      <BootstrapperApplication Id='ManagedBootstrapperApplicationHost$(var.Suffix)'>
+        <BootstrapperApplicationDll SourceFile='!(bindpath.$(var.platform))\mbahost.dll' />
+        <PayloadGroupRef Id='Mba' />
+        <PayloadGroupRef Id='MbaPreqStandard' />
+      </BootstrapperApplication>
+    </Fragment>
+
+The bundle authoring will look like:
+
+    <Bundle>
+      <BootstrapperApplication>
+        <bal:WixManagedBootstrapperApplicationHost Theme='standard' LicenseFile='..\..\..\License.txt' />
+        <Payload Name='WixToolset.Mba.Core.config' SourceFile='WixBA.BootstrapperCore.config' />
+        <Payload SourceFile='WixBA.dll' />
+        <Payload SourceFile='mbanative.dll' />
+      </BootstrapperApplication>
+    </Bundle>
+
+## Considerations
+
+In WiX v3.x Setup developers were able to assume that no matter what architecture they picked to build the bundle, the BA would be x86 due to v3 always picking the x86 stub.
+Since some of their BA payloads may be architecture specific (bafunctions.dll, the MBA, or any of the MBA's dependencies), automatically converting the old elements could lead to an unusable bundle.
+
+These were the options considered for enhancing the language:
 
 Option 1.
 Create `BootstrapperApplicationContainer` element, which can be specified any number of times.
@@ -200,12 +271,6 @@ This would look like:
         <Payload BootstrapperApplication='yes' SourceFile='WixBA.dll' />
       </PayloadGroup>
     </Bundle>
-
-
-## Considerations
-
-In WiX v3.x Setup developers were able to assume that no matter what architecture they picked to build the bundle, the BA would be x86 due to v3 always picking the x86 stub.
-Since some of their BA payloads may be architecture specific (bafunctions.dll, the MBA, or any of the MBA's dependencies), automatically converting the old elements could lead to an unusable bundle.
 
 
 ## See Also
