@@ -1,9 +1,9 @@
 ---
-wip: #5386
+wip: 5386
 type: Feature
-by: nir.bar@panel-sw.com
+by: nir.bar@panel-sw.com and Sean Hall (r sean hall at gmail.com)
 title: Support MSI transactions
-draft: true
+draft: false
 ---
 
 ## User stories
@@ -32,8 +32,13 @@ A possible workaround for the same problem would be to detect bundle v0 and repa
 ## Considerations
 
 - When using MSI transactions:
-  - Packages can't be Permanent.
-  - Rollback can't be disabled.
-- If an ExePackage internally starts a new transaction, it would fail
-- If an ExePackage installs another MSI, it will install as part of the transaction.
-- Care should be taken to properly handle other bundle (probably a BundlePackage element could come in handy here)
+  - Permanent packages will be rolled back if the transaction rolls back.
+  - DisableRollback causes Burn to commit the transaction even if a package failed.
+- If any package internally starts a new transaction, it would fail. If this is necessary, we would need to support sending the required information for that package to join our transaction.
+- If any package installs another MSI, it will install as part of the transaction.
+- This means that installing other bundles as part of the chain inside of an MSI transaction requires that they don't use MSI transactions. This doesn't apply to related bundles, since they are always scheduled outside of a transaction.
+
+
+## See Also
+
+* [WIXFEAT:5386](https://github.com/wixtoolset/issues/issues/5386)
