@@ -13,7 +13,8 @@ draft: false
 
 ## Proposal
 
-1) Create a new concept in Burn for an extension.
+1)
+Create a new concept in Burn for an extension.
 
     enum BUNDLE_EXTENSION_MESSAGE
     {
@@ -85,7 +86,8 @@ draft: false
         BUNDLE_EXTENSION_ENGINE_MESSAGE_SETVARIABLEVERSION,
     };
 
-2) Create a new `BundleExtension` element for the Burn manifest xml.
+2)
+Create a new `BundleExtension` element for the Burn manifest xml.
 
     <xs:element name="BundleExtension">
         <xs:complexType>
@@ -97,7 +99,8 @@ draft: false
         </xs:complexType>
     </xs:element>
 
-3) Create a new `ExtensionSearch` element for the Burn manifest xml.
+3)
+Create a new `ExtensionSearch` element for the Burn manifest xml.
 
     <xs:element name="ExtensionSearch">
         <xs:complexType>
@@ -110,9 +113,9 @@ draft: false
 
 4) Create new BundleExtensionData.xml file for bundle extensions' custom data.
 
-5) The Burn backend finds extension searches by looking for Tuples with the new BundleExtensionSearchTupleDefinitionTag. These are added to the BundleExtensionData based on the corresponding WixSearchTuple's ExtensionId field.
+5) The Burn backend finds extension searches by looking for Symbols with the new `BundleExtensionSearchSymbolDefinitionTag`. These are added to the BundleExtensionData based on the corresponding `WixSearchSymbol`'s `ExtensionId` field.
 
-6) Add `util:DetectSHA2Support` and the core `SetVariable` "searches" as examples.
+6) Add `util:DetectWindowsFeature` and the core `SetVariable` "searches" as examples.
 
 ## Example
 
