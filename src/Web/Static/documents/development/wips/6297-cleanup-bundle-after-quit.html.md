@@ -23,12 +23,17 @@ See [WIP 4822](https://wixtoolset.org/development/wips/4822-dont-write-arp-entry
 
 2. During Plan, Burn needs to pay attention to whether any non-permanent packages are already present. If not, then the ARP entry should be removed and the bundle uncached on failure (given that there are still no non-permanent packages present).
 
-3. After the BA has called `Quit` with `BOOTSTRAPPER_SHUTDOWN_ACTION_NONE` and been unloaded, Burn will try to see if the bundle should be uninstalled (it will run `Detect` if it hasn't already happened):
+3. After the BA has called `Quit` with `BOOTSTRAPPER_SHUTDOWN_ACTION_NONE` and been unloaded, Burn will try to see if the bundle should be uninstalled:
   * `Apply` was never called (1 and 2 above should have taken care of it already) and
   * The bundle is installed and
-  * The bundle is per-machine or has already elevated and
+  * The bundle is per-user or has already elevated and
   * There are no non-permanent packages installed and
   * No related bundles that would run during `Apply`
+
+There are some caveats:
+* It will run `Detect` if it hasn't already happened.
+* Calling `Detect` will reset the condition on whether `Apply` has been called.
+* Calling `Apply` with some of the special actions like `Layout` will be treated as if it had never been called because it wouldn't have had a chance to remove the registration.
 
 If it should be uninstalled, then it will go through `Plan` and `Apply` for `Uninstall`.
 Since the BA has shutdown, all of this is done without interaction with the BA.
