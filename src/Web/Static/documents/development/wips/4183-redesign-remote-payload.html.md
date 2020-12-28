@@ -24,6 +24,8 @@ Each chain package element will require its new element as a child.
 1. Remove the `RemotePayload` element and move all the attributes onto the `ExePackagePayload` and `MsuPackagePayload` elements.
 This makes it straightforward to implement the same functionality for other payload elements, just add attributes for the information that the binder harvests.
 
+wix.xsd:
+
     <xs:element name="ExePackagePayload">
       <xs:annotation>
         <xs:documentation>
