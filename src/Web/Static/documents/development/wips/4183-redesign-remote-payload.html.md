@@ -13,16 +13,24 @@ This brings these elements in line with `BootstrapperApplication`, where we alre
 
 1. `RemotePayload` is currently only valid for `ExePackage` and `MsuPackage`, but the functionality has been requested for `MsiPackage` and `Payload`.
 There are different fields required for each of these scenarios (and will be different for the currently unimplemented `BundlePackage`).
+`RemotePayload` needs to be implemented differently so that the other scenarios are possible without overloading it with tons of attributes.
 
 
 ## Proposal
 
 1. Add `ExePackagePayload`, `MsiPackagePayload`, `MspPackagePayload`, and `MsuPackagePayload` elements.
 Remove all payload attributes from `ExePackage`, `MsiPackage`, `MspPackage`, and `MsuPackage`, and move them to the new elements.
-Each chain package element will require its new element as a child.
+
+1. The new payload elements can be specified as a child of their parent element, or a `PayloadGroup`.
+To reduce the verbosity of the common case where the source file is available and will be available at runtime (either compressed or not),
+put the `SourceFile` attribute back on the package elements.
+
+1. The `SourceFile` attribute on a package element and the new payload element can't both be specified for the same package, but one of them must be specified.
+
+1. If an `MsiPackage` references a `PayloadGroup` with an `MsuPackagePayload` element, that's an error (and similarly for the other elements).
 
 1. Remove the `RemotePayload` element and move all the attributes onto the `ExePackagePayload` and `MsuPackagePayload` elements.
-This makes it straightforward to implement the same functionality for other payload elements, just add attributes for the information that the binder harvests.
+This makes it straightforward to implement the same functionality for other payload elements, just add attributes (or maybe child elements) for the information that the binder harvests.
 
 wix.xsd:
 
@@ -30,9 +38,11 @@ wix.xsd:
       <xs:annotation>
         <xs:documentation>
           Describes information about the ExePackage payload.
+          Cannot be specified if the owning ExePackage specified the SourceFile attribute.
         </xs:documentation>
         <xs:appinfo>
           <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="ExePackage" />
+          <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="PayloadGroup" />
         </xs:appinfo>
       </xs:annotation>
       <xs:complexType>
@@ -45,9 +55,11 @@ wix.xsd:
       <xs:annotation>
         <xs:documentation>
           Describes information about the MsiPackage payload.
+          Cannot be specified if the owning MsiPackage specified the SourceFile attribute.
         </xs:documentation>
         <xs:appinfo>
           <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="MsiPackage" />
+          <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="PayloadGroup" />
         </xs:appinfo>
       </xs:annotation>
       <xs:complexType>
@@ -56,6 +68,29 @@ wix.xsd:
           <xs:annotation>
             <xs:documentation>
               Location of the package to add to the bundle.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:complexType>
+    </xs:element>
+    
+    
+    <xs:element name="MsuPackage">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="Payload" />
+          <xs:element ref="PayloadGroupRef" />
+          <xs:element ref="MsuPackagePayload" minOccurs="0" maxOccurs="1" />
+          <xs:any namespace="##other" processContents="lax" />
+        </xs:choice>
+        <xs:attributeGroup ref="ChainPackageCommonAttributes" />
+        <xs:attribute name="DetectCondition" type="xs:string" />
+        <xs:attribute name="KB" type="xs:string" />
+        <xs:attribute name="SourceFile" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>
+              Location of the package to add to the bundle.
+              To specify more advanced payload information such as Compressed or DownloadUrl, use the child MsuPackagePayload element instead.
             </xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -164,11 +199,11 @@ wix.xsd:
     </xs:attributeGroup>
 
     <xs:attributeGroup name="ChainPackageCommonAttributes">
-      <!-- removed <xs:attribute name="SourceFile" type="xs:string" /> -->
       <!-- removed <xs:attribute name="Name" type="xs:string" /> -->
       <!-- removed <xs:attribute name="DownloadUrl" type="xs:string" /> -->
       <!-- removed <xs:attribute name="Compressed" type="YesNoDefaultTypeUnion" /> -->
       <!-- removed <xs:attribute name="EnableSignatureVerification" type="YesNoTypeUnion" /> -->
+      <!-- removed <xs:attribute name="SourceFile" type="YesNoTypeUnion" /> -->
       <xs:attribute name="Id" type="xs:string" />
       <xs:attribute name="After" type="xs:string" />
       <xs:attribute name="InstallSize" type="xs:string" />
@@ -188,8 +223,8 @@ wix.xsd:
 ## Considerations
 
 The original motivation for #4183 was for the NetFx extension to provide the payload information for NetFx packages so the user could create their own `ExePackage`s.
-In order for this to work, the chain package elements would have to allow the package payload element to be pulled in by a `PayloadGroupRef`.
-This is possible, but would break the current logic of generating the package `Id ` from the `Name` attribute from the package payload.
+In order for this to work, the chain package elements allow the package payload element to be pulled in by a `PayloadGroupRef`.
+This breaks the current logic of generating the package `Id` from the `Name` attribute from the package payload.
 
 
 ## Alternate Proposal
