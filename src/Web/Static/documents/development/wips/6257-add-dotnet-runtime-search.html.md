@@ -1,0 +1,280 @@
+---
+wip: 6257
+type: Feature
+by: James Parsons (japarson at microsoft.com)
+title: Add DotNetRuntimeSearch to the NetFx extension for the detection of .NET Core/.NET 5 runtimes
+draft: true
+---
+
+## User stories
+
+* As a Setup developer I can specify a .NET runtime package in my bundle with built-in and robust runtime installation detection.
+
+* As a Setup developer I can run a search in my bundle that will determine if a specific version of the .NET runtime is installed such that the result can be used as an install condition for the runtime.
+
+## Proposal
+
+Right now, the NetFx extension supports .NET Core/.NET 5 runtime detection using a combination of path and registry checks. As discussed in [dotnet/runtime#36479](https://github.com/dotnet/runtime/issues/36479), this strategy is not sufficient for robust runtime installation detection.
+
+An alternate solution is to use the the NETCoreCheck tool, built and published in the .NET repo here: https://github.com/dotnet/deployment-tools/tree/master/src/clickonce/native/projects/NetCoreCheck. Using this tool in the NetFx extension would allow us to easily handle runtime dependency installation for .NET Core package definitions, including newer version detection [#6257](https://github.com/wixtoolset/issues/issues/6257) .
+
+I'm proposing that we create a DotNetRuntimeSearch that would allow us to run the NETCoreCheck tool and use the result as a condition to install a .NET runtime package. The DotNetRuntimeSearch would be implemented as an extension search as defined by this [WIP](https://wixtoolset.org/development/wips/5539-modularize-burn-searches/). The NetCoreCheck tool will be included in the binary table for any bundle using this search, which would make it available to the search through native code. This strategy would be compatible with [#6264](https://github.com/wixtoolset/issues/issues/6264), Luke's proposal for .NET Core/.NET 5 runtime installation checks with custom actions and launch conditions.
+
+I've designed a preliminary schema below:
+
+    <xs:element name="DotNetRuntimeSearch">
+        <xs:annotation>
+            <xs:documentation>Detects the existence of a .NET runtime installation.</xs:documentation>
+            <xs:appinfo>
+                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Bundle" />
+                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attribute name="Id" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation>
+                        The identifier for this DotNetRuntimeSearch.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="Type" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation>
+                        The type of .NET runtime being searched for.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="ASP.NET">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    Attempt to search for an ASP.NET Core type runtime. The ASP.NET Core Runtime enables
+                                    you to run existing web/server applications.
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="Desktop">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    Attempt to search for a .NET Desktop type runtime. The .NET Desktop Runtime enables
+                                    you to run existing Windows desktop applications.
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="Core">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    Attempt to search for a .NET type runtime. The .NET Runtime contains just the components
+                                    needed to run a console app.
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="Platform" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation>
+                        Sets the platform for the .NET runtime being searched for.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="x86">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    Attempt to search for the x86 version of a .NET runtime.
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="x64">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    Attempt to search for the x64 version of a .NET runtime.
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="Version" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation>
+                        The version of the .NET runtime being searched for.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="Variable" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation>Name of the variable in which to place the result of the search.</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="Condition" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Condition for evaluating the search. If this evaluates to false, the search is not executed at all.</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="After" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Id of the search that this one should come after.</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
+A core component of this search is the NetCoreCheck exe which is a CLI tool that can be executed with the following arguments:
+
+- Required framework name (Examples: "Microsoft.WindowsDesktop.App", "Microsoft.NETCore.App")
+- Required major/minor/build framework version (Examples: "3.1.4", "5.0.0")
+
+And returns the following codes:
+
+- Success: 0, Means the required runtime is installed on the machine
+- Failure:
+  - 1 - Failed to load HostFxr, meaning no runtime is installed
+  - 2 - Failed to initialize HostFxr for the config, meaning the required runtime isn't installed
+  - 3 - Invalid Args
+  - Other - Unexpected failures
+
+Examples:
+
+- NetCoreCheck.exe Microsoft.WindowsDesktop.App 3.1.4
+- NetCoreCheck.exe Microsoft.NETCore.App 5.0.0
+
+The search can be used by Setup developers to detect .NET runtime installations as an installation condition for a .NET runtime package:
+
+    <?xml version="1.0"?>
+    <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+         xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+      <Fragment>
+        <util:DotNetRuntimeSearch Id="Runtime"
+            Type="Desktop"
+            Platform="x86"
+            Version="3.1.10"
+            Variable="returnCode" />
+
+        <PackageGroup Id="MyPackage">
+          <ExePackage 
+            SourceFile="[sources]\packages\shared\windowsdesktop-runtime-3.1.10-win-x86.exe"
+            DownloadURL="https://download.visualstudio.microsoft.com/download/pr/865d0be5-16e2-4b3d-a990-f4c45acd280c/ec867d0a4793c0b180bae85bc3a4f329/windowsdesktop-runtime-3.1.10-win-x86.exe"
+            InstallCommand="/q /ACTION=Install"
+            RepairCommand="/q ACTION=Repair /hideconsole"
+            UninstallCommand="/q ACTION=Uninstall /hideconsole"
+            InstallCondition="x86 = 1 AND OSVersion >= v5.0.5121.0 AND returnCode = 0" />
+        </PackageGroup>
+      </Fragment>
+    </Wix>  
+
+And in the NetFx extension to improve the installation detection of the built-in .NET Core/.NET 5 package groups:
+
+NetCore3_Platform.wxi
+
+    <?foreach PLATFORM in x86;x64?>
+        <Fragment>
+            <util:DotNetRuntimeSearch Id="(var.AspNetCoreId)"
+                Type="ASP.NET"
+                Platform="$(var.PLATFORM)"
+                Version="$(var.NetCoreVersion)"
+                Variable="$(var.AspNetCoreId)" />
+        </Fragment>
+    <?endforeach?>
+
+    <?foreach PLATFORM in x86;x64?>
+        <Fragment>
+            <util:DotNetRuntimeSearch Id="$(var.DesktopNetCoreId)"
+                Type="Desktop"
+                Platform="$(var.PLATFORM)"
+                Version="$(var.NetCoreVersion)"
+                Variable="$(var.DesktopNetCoreId)" />
+        </Fragment>
+    <?endforeach?>
+
+    <?foreach PLATFORM in x86;x64?>
+        <Fragment>
+            <util:DotNetRuntimeSearch Id="$(var.DotNetCoreId)"
+                Type="Core"
+                Platform="$(var.PLATFORM)"
+                Version="$(var.NetCoreVersion)"
+                Variable="$(var.DotNetCoreId)" />
+        </Fragment>
+    <?endforeach?>
+
+NetCore3.1.8_x64.wxs
+
+    <Fragment>
+        <util:DirectorySearchRef Id="$(var.AspNetCoreId)" />
+
+        <WixVariable Id="AspNetCoreRuntime$(var.NetCoreIdVersion)Redist$(var.NetCorePlatform)DetectCondition" Value="$(var.AspNetCoreId)" Overridable="yes" />
+        <WixVariable Id="AspNetCoreRuntime$(var.NetCoreIdVersion)Redist$(var.NetCorePlatform)InstallCondition" Value="" Overridable="yes" />
+        <WixVariable Id="AspNetCoreRuntime$(var.NetCoreIdVersion)Redist$(var.NetCorePlatform)PackageDirectory" Value="redist\" Overridable="yes" />
+        <WixVariable Id="AspNetCoreRuntime$(var.NetCoreIdVersion)Redist$(var.NetCorePlatform)RepairCommand" Value="" Overridable="yes" />
+
+        <PackageGroup Id="$(var.AspNetCoreRedistId)">
+            <ExePackage
+                Name="!(wix.AspNetCoreRuntime$(var.NetCoreIdVersion)Redist$(var.NetCorePlatform)PackageDirectory)aspnetcore-runtime-$(var.NetCoreVersion)-win-$(var.NetCorePlatform).exe"
+                InstallCommand="$(var.AspNetCoreRedistInstallCommand)"
+                RepairCommand="!(wix.AspNetCoreRuntime$(var.NetCoreIdVersion)Redist$(var.NetCorePlatform)RepairCommand)"
+                UninstallCommand="$(var.AspNetCoreRedistUninstallCommand)"
+                PerMachine="yes"
+                DetectCondition="!(wix.AspNetCoreRuntime$(var.NetCoreIdVersion)Redist$(var.NetCorePlatform)DetectCondition)"
+                InstallCondition="!(wix.AspNetCoreRuntime$(var.NetCoreIdVersion)Redist$(var.NetCorePlatform)InstallCondition)"
+                Id="$(var.AspNetCoreRedistId)"
+                Vital="yes"
+                Permanent="yes"
+                Protocol="burn"
+                DownloadUrl="$(var.AspNetCoreRedistLink)"
+                LogPathVariable="$(var.AspNetCoreRedistLog)"
+                Compressed="no">
+                <RemotePayload
+                    CertificatePublicKey="3756E9BBF4461DCD0AA68E0D1FCFFA9CEA47AC18"
+                    CertificateThumbprint="2485A7AFA98E178CB8F30C9838346B514AEA4769"
+                    Description="Microsoft ASP.NET Core 3.1.8 - Shared Framework"
+                    Hash="61DC9EAA0C8968E48E13C5913ED202A2F8F94DBA"
+                    ProductName="Microsoft ASP.NET Core 3.1.8 - Shared Framework"
+                    Size="7841880"
+                    Version="3.1.8.20421" />
+            </ExePackage>
+        </PackageGroup>
+    </Fragment>
+
+Which can be used by Setup developers for built-in .NET runtime detection and installation in their bundles:
+
+    <Chain>
+        <PackageGroupRef Id="NetFx45Web"/>
+        <MsiPackage Id="MyApplication" SourceFile="$(var.MyApplicationSetup.TargetPath)"/>
+    </Chain>
+
+## Considerations
+### DotNetRuntimeSearch Implementation
+There are a few different ways that we can implement .NET Core/.NET 5 runtime detection:
+1. Run the NetCoreCheck exe to determine if a suitable runtime is installed by loading the .NET runtime. The NetCoreCheck tool will:
+    - Attempt to locate hostfxr.dll using get_hostfxr_path.
+    - Generate a temporary runtimeconfig.json file based on the runtime.
+    - Load library hostfxr.dll and call hostfxr_initialize_for_runtime_config using the generated runtimeconfig.json file, success here means the necessary runtime is installed.
+    - Call hostfxr_close and unload hostfxr library.
+2. Parse the output of dotnet.exe --list-runtimes to determine which runtimes are installed (suggested by rseanhall in [#6264](https://github.com/wixtoolset/issues/issues/6264)).
+    - More research will be needed to determine whether to try to locate the different architectures of dotnet.exe or create our own exes to run it through hostfxr_main.
+3. Use the solution outlined in [dotnet/sdk/15021](https://github.com/dotnet/sdk/issues/15021) which involves using host fxr APIs along with installed bundle directory checks.
+    - This is how dotnet.exe currently works.
+
+The main criticism of the NetCoreCheck approach is that it would load part of the runtime, which could lead to failures in certain scenarios. Since NETCoreCheck only loads hostpolicy.dll + hostfxr.dll, this seems fairly unlikely. rseanhall also mentioned that it could be more efficient to write code that could be shared with [#6264](https://github.com/wixtoolset/issues/issues/6264). One question I'd like clarified: can the NetCoreCheck approach work for both [#6257: Burn chain](https://github.com/wixtoolset/issues/issues/6257) and [#6264: Custom actions/launch conditions](https://github.com/wixtoolset/issues/issues/6264)?
+
+In [dotnet/runtime/36479](https://github.com/dotnet/runtime/issues/36479), vitek-karas addresses approach 2 (parsing the output of --list-runtimes):
+
+"I think the proposal (for this approach) is to add wrapper tool around the dotnet --list-runtimes that does the text processing and provides a return value, so that individual installers don't have to worry about it."
+
+My understanding of the ask here is to answer a question like "Will application requiring framework XYZ run on this machine?". Answering that question from just a list of installed frameworks is actually non-trivial. The entire machinery of framework resolution, version conflict resolution and roll-forward is on top of the flat list. That's a lot of logic. So I don't think that parsing the dotnet.exe output is the right approach here.
+
+I'm leaning towards the NetCoreCheck approach because it already exists, has been validated, and answers the valuable question of "will my app run?" instead of "is this software installed?".
+
+I believe the criticisms of approach 2 also apply to approach 3.
+
+### Search Location
+This [link](https://wixtoolset.org/documentation/manual/v3/bundle/bundle_define_searches.html) declares that "all searches are in the WiXUtilExtension", but this search is specific to the NetFx extension. I think it should be included in the util namespace for consistency?
+
+## See Also
+
+[dotnet/runtime#36479](https://github.com/dotnet/runtime/issues/36479)
+[WIXFEAT:6257](https://github.com/wixtoolset/issues/issues/6257)
+[WIXFEAT:6264](https://github.com/wixtoolset/issues/issues/6264)
