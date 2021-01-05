@@ -7,13 +7,11 @@ draft: true
 ---
 
 ## User stories
-
 * As a Setup developer I can specify a .NET runtime package in my bundle with built-in and robust runtime installation detection.
 
 * As a Setup developer I can run a search in my bundle that will determine if a specific version of the .NET runtime is installed such that the result can be used as an install condition for the runtime.
 
 ## Proposal
-
 Right now, the NetFx extension supports .NET Core/.NET 5 runtime detection using a combination of path and registry checks. As discussed in [dotnet/runtime#36479](https://github.com/dotnet/runtime/issues/36479), this strategy is not sufficient for robust runtime installation detection.
 
 An alternate solution is to use the the NETCoreCheck tool, built and published in the .NET repo [here](https://github.com/dotnet/deployment-tools/tree/master/src/clickonce/native/projects/NetCoreCheck). Using this tool in the NetFx extension would allow us to easily handle runtime dependency installation for .NET Core package definitions, including newer version detection [#6257](https://github.com/wixtoolset/issues/issues/6257). The NetCoreCheck tool is already being used in Visual Studio by ClickOnce and Installer Projects for the same purpose.
@@ -262,19 +260,16 @@ Approach 1 is what I have proposed in the previous section. rseanhall mentioned 
 
 In [dotnet/runtime/36479](https://github.com/dotnet/runtime/issues/36479), vitek-karas addresses approach 2 (parsing the output of --list-runtimes):
 
-"I think the proposal (for this approach) is to add wrapper tool around the dotnet --list-runtimes that does the text processing and provides a return value, so that individual installers don't have to worry about it."
-
-My understanding of the ask here is to answer a question like "Will application requiring framework XYZ run on this machine?". Answering that question from just a list of installed frameworks is actually non-trivial. The entire machinery of framework resolution, version conflict resolution and roll-forward is on top of the flat list. That's a lot of logic. So I don't think that parsing the dotnet.exe output is the right approach here.
+> "I think the proposal (for this approach) is to add wrapper tool around the dotnet --list-runtimes that does the text processing and provides a return value, so that individual installers don't have to worry about it." <br><br> My understanding of the ask here is to answer a question like "Will application requiring framework XYZ run on this machine?". Answering that question from just a list of installed frameworks is actually non-trivial. The entire machinery of framework resolution, version conflict resolution and roll-forward is on top of the flat list. That's a lot of logic. So I don't think that parsing the dotnet.exe output is the right approach here.
 
 I'm leaning towards the NetCoreCheck approach because it already exists, has been validated, and answers the valuable question of "will my app run?" instead of "is this software installed?".
 
 I believe the criticisms of approach 2 also apply to approach 3.
 
 ### Search Location
-This [link](https://wixtoolset.org/documentation/manual/v3/bundle/bundle_define_searches.html) declares that "all searches are in the WiXUtilExtension", but this search is specific to the NetFx extension. I think it should be included in the util namespace for consistency?
+This [link](https://wixtoolset.org/documentation/manual/v3/bundle/bundle_define_searches.html) declares that "all searches are in the WiXUtilExtension", but this search is specific to the NetFx extension. I think it should be included in the util namespace for consistency.
 
 ## See Also
-
-[dotnet/runtime#36479](https://github.com/dotnet/runtime/issues/36479)
-[WIXFEAT:6257](https://github.com/wixtoolset/issues/issues/6257)
-[WIXFEAT:6264](https://github.com/wixtoolset/issues/issues/6264)
+* [dotnet/runtime#36479](https://github.com/dotnet/runtime/issues/36479)
+* [WIXFEAT:6257](https://github.com/wixtoolset/issues/issues/6257)
+* [WIXFEAT:6264](https://github.com/wixtoolset/issues/issues/6264)
