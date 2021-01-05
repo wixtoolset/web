@@ -16,9 +16,9 @@ draft: true
 
 Right now, the NetFx extension supports .NET Core/.NET 5 runtime detection using a combination of path and registry checks. As discussed in [dotnet/runtime#36479](https://github.com/dotnet/runtime/issues/36479), this strategy is not sufficient for robust runtime installation detection.
 
-An alternate solution is to use the the NETCoreCheck tool, built and published in the .NET repo here: https://github.com/dotnet/deployment-tools/tree/master/src/clickonce/native/projects/NetCoreCheck. Using this tool in the NetFx extension would allow us to easily handle runtime dependency installation for .NET Core package definitions, including newer version detection [#6257](https://github.com/wixtoolset/issues/issues/6257) .
+An alternate solution is to use the the NETCoreCheck tool, built and published in the .NET repo [here](https://github.com/dotnet/deployment-tools/tree/master/src/clickonce/native/projects/NetCoreCheck). Using this tool in the NetFx extension would allow us to easily handle runtime dependency installation for .NET Core package definitions, including newer version detection [#6257](https://github.com/wixtoolset/issues/issues/6257). The NetCoreCheck tool is already being used in Visual Studio by ClickOnce and Installer Projects for the same purpose.
 
-I'm proposing that we create a DotNetRuntimeSearch that would allow us to run the NETCoreCheck tool and use the result as a condition to install a .NET runtime package. The DotNetRuntimeSearch would be implemented as an extension search as defined by this [WIP](https://wixtoolset.org/development/wips/5539-modularize-burn-searches/). The NetCoreCheck tool will be included in the binary table for any bundle using this search, which would make it available to the search through native code. This strategy would be compatible with [#6264](https://github.com/wixtoolset/issues/issues/6264), Luke's proposal for .NET Core/.NET 5 runtime installation checks with custom actions and launch conditions.
+I'm proposing that we create a `DotNetRuntimeSearch` element that would allow us to run the NETCoreCheck tool and use the result as a condition to install a .NET runtime package. The element would be implemented as an extension search as defined by this [WIP](https://wixtoolset.org/development/wips/5539-modularize-burn-searches/). The NetCoreCheck tool will be included in the binary table for any bundle using this search, which would make it available to the search through native code. This strategy would be compatible with [#6264](https://github.com/wixtoolset/issues/issues/6264), Luke's proposal for .NET Core/.NET 5 runtime installation checks with custom actions and launch conditions.
 
 I've designed a preliminary schema below:
 
@@ -152,7 +152,7 @@ The search can be used by Setup developers to detect .NET runtime installations 
             Type="Desktop"
             Platform="x86"
             Version="3.1.10"
-            Variable="returnCode" />
+            Variable="DotNetRuntimeSearchResult" />
 
         <PackageGroup Id="MyPackage">
           <ExePackage 
@@ -161,7 +161,7 @@ The search can be used by Setup developers to detect .NET runtime installations 
             InstallCommand="/q /ACTION=Install"
             RepairCommand="/q ACTION=Repair /hideconsole"
             UninstallCommand="/q ACTION=Uninstall /hideconsole"
-            InstallCondition="x86 = 1 AND OSVersion >= v5.0.5121.0 AND returnCode = 0" />
+            InstallCondition="x86 = 1 AND OSVersion >= v5.0.5121.0 AND DotNetRuntimeSearchResult = 0" />
         </PackageGroup>
       </Fragment>
     </Wix>  
@@ -172,7 +172,7 @@ NetCore3_Platform.wxi
 
     <?foreach PLATFORM in x86;x64?>
         <Fragment>
-            <util:DotNetRuntimeSearch Id="(var.AspNetCoreId)"
+            <util:DotNetRuntimeSearch Id="$(var.AspNetCoreId)"
                 Type="ASP.NET"
                 Platform="$(var.PLATFORM)"
                 Version="$(var.NetCoreVersion)"
@@ -241,7 +241,7 @@ NetCore3.1.8_x64.wxs
 Which can be used by Setup developers for built-in .NET runtime detection and installation in their bundles:
 
     <Chain>
-        <PackageGroupRef Id="NetFx45Web"/>
+        <PackageGroupRef Id="DotNetCoreRuntime31Redist_x64"/>
         <MsiPackage Id="MyApplication" SourceFile="$(var.MyApplicationSetup.TargetPath)"/>
     </Chain>
 
@@ -258,7 +258,7 @@ There are a few different ways that we can implement .NET Core/.NET 5 runtime de
 3. Use the solution outlined in [dotnet/sdk/15021](https://github.com/dotnet/sdk/issues/15021) which involves using host fxr APIs along with installed bundle directory checks.
     - This is how dotnet.exe currently works.
 
-The main criticism of the NetCoreCheck approach is that it would load part of the runtime, which could lead to failures in certain scenarios. Since NETCoreCheck only loads hostpolicy.dll + hostfxr.dll, this seems fairly unlikely. rseanhall also mentioned that it could be more efficient to write code that could be shared with [#6264](https://github.com/wixtoolset/issues/issues/6264). One question I'd like clarified: can the NetCoreCheck approach work for both [#6257: Burn chain](https://github.com/wixtoolset/issues/issues/6257) and [#6264: Custom actions/launch conditions](https://github.com/wixtoolset/issues/issues/6264)?
+Approach 1 is what I have proposed in the previous section. rseanhall mentioned that it could be more efficient to write code that could be shared with [#6264](https://github.com/wixtoolset/issues/issues/6264). One question I'm not sure about: can the NetCoreCheck-in-binary-table approach work for both [#6257: Burn chain](https://github.com/wixtoolset/issues/issues/6257) and [#6264: Custom actions/launch conditions](https://github.com/wixtoolset/issues/issues/6264)?
 
 In [dotnet/runtime/36479](https://github.com/dotnet/runtime/issues/36479), vitek-karas addresses approach 2 (parsing the output of --list-runtimes):
 
