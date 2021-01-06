@@ -99,7 +99,7 @@ I've designed a preliminary schema below:
             <xs:attribute name="Version" type="xs:string" use="required">
                 <xs:annotation>
                     <xs:documentation>
-                        The version of the .NET runtime being searched for.
+                        The version of the .NET runtime being searched for (e.g. 3.1.10, 5.0.1).
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
