@@ -274,7 +274,7 @@ In [dotnet/runtime/36479](https://github.com/dotnet/runtime/issues/36479), vitek
 
 I'm leaning towards the NetCoreCheck approach because it already exists, has been validated, and answers the valuable question of "will my app run?" instead of "is this software installed?".
 
-I believe the criticisms of approach 2 also apply to approach 3.
+Regarding approach 3, the hostfxr API in question is not currently available. Should it become available, we can easily add the functionality it provides to the NetCoreCheck tool.
 
 ### Search Location
 This [documentation](https://wixtoolset.org/documentation/manual/v3/bundle/bundle_define_searches.html) declares that "all searches are in the WiXUtilExtension", but the search I am proposing is specific to the NetFx extension. For this reason, I believe that it should be included in the NetFx extension instead.
