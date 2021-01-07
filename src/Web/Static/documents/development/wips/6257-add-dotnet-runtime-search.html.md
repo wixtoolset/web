@@ -14,11 +14,11 @@ draft: true
 ## Proposal
 Right now, the NetFx extension supports .NET Core/.NET 5 runtime detection using a combination of path and registry checks. As discussed in [dotnet/runtime#36479](https://github.com/dotnet/runtime/issues/36479), this strategy is not sufficient for robust runtime installation detection.
 
-An alternate solution is to use the the NETCoreCheck tool, built and published in the .NET repo [here](https://github.com/dotnet/deployment-tools/tree/master/src/clickonce/native/projects/NetCoreCheck). Using this tool in the NetFx extension would allow us to easily handle runtime dependency installation for .NET Core package definitions, including newer version detection [#6257](https://github.com/wixtoolset/issues/issues/6257). The NetCoreCheck tool is already being used in Visual Studio by ClickOnce and Installer Projects for the same purpose.
+An alternate solution is to use the the NETCoreCheck tool, built and published in the .NET repo [here](https://github.com/dotnet/deployment-tools/tree/master/src/clickonce/native/projects/NetCoreCheck). Using this tool in the NetFx extension will allow us to easily handle runtime dependency installation for .NET Core package definitions, including newer version detection [#6257](https://github.com/wixtoolset/issues/issues/6257). The NetCoreCheck tool is already being used in Visual Studio by ClickOnce and Installer Projects for the same purpose.
 
-I'm proposing that we create a `DotNetRuntimeSearch` element that would allow us to run the NETCoreCheck tool and use the result as a condition to install a .NET runtime package. The element would be implemented as an extension search as defined by this [WIP](https://wixtoolset.org/development/wips/5539-modularize-burn-searches/). The NetCoreCheck tool will be included in the binary table for any bundle using this search, which would make it available to the search through native code. This strategy would be compatible with [#6264](https://github.com/wixtoolset/issues/issues/6264), Luke's proposal for .NET Core/.NET 5 runtime installation checks with custom actions and launch conditions.
+I'm proposing that we create a `DotNetRuntimeSearch` element in the NetFx extension that will allow us to run the NETCoreCheck tool and use the result as a condition to install a .NET runtime package. The element will be implemented as an extension search as defined by this [WIP](https://wixtoolset.org/development/wips/5539-modularize-burn-searches/). The NetCoreCheck tool will be included by the Burn engine as an embedded payload, which makes it available to the search through native code. This strategy is compatible with [#6264](https://github.com/wixtoolset/issues/issues/6264), Luke's proposal for .NET Core/.NET 5 runtime installation checks with custom actions and launch conditions.
 
-I've designed a preliminary schema below:
+I've designed a preliminary schema for `DotNetRuntimeSearch` below:
 
     <xs:element name="DotNetRuntimeSearch">
         <xs:annotation>
@@ -36,7 +36,7 @@ I've designed a preliminary schema below:
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
-            <xs:attribute name="Type" type="xs:string" use="required">
+            <xs:attribute name="RuntimeType" type="xs:string" use="required">
                 <xs:annotation>
                     <xs:documentation>
                         The type of .NET runtime being searched for.
@@ -48,7 +48,7 @@ I've designed a preliminary schema below:
                             <xs:annotation>
                                 <xs:documentation>
                                     Attempt to search for an ASP.NET Core type runtime. The ASP.NET Core Runtime enables
-                                    you to run existing web/server applications.
+                                    you to run web/server applications.
                                 </xs:documentation>
                             </xs:annotation>
                         </xs:enumeration>
@@ -56,7 +56,7 @@ I've designed a preliminary schema below:
                             <xs:annotation>
                                 <xs:documentation>
                                     Attempt to search for a .NET Desktop type runtime. The .NET Desktop Runtime enables
-                                    you to run existing Windows desktop applications.
+                                    you to run Windows desktop applications.
                                 </xs:documentation>
                             </xs:annotation>
                         </xs:enumeration>
@@ -113,11 +113,21 @@ I've designed a preliminary schema below:
                     <xs:documentation>Condition for evaluating the search. If this evaluates to false, the search is not executed at all.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
-            <xs:attribute name="After" type="xs:string">
-                <xs:annotation>
-                    <xs:documentation>Id of the search that this one should come after.</xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
+I've also designed a schema for the corresponding `DotNetRuntimeSearchRef` element:
+
+    <xs:element name="DotNetRuntimeSearchRef">
+        <xs:annotation>
+            <xs:documentation>References a DotNetRuntimeSearchRef.</xs:documentation>
+            <xs:appinfo>
+                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Bundle" />
+                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attribute name="Id" type="xs:string" use="required" />
         </xs:complexType>
     </xs:element>
 
@@ -144,10 +154,10 @@ The search can be used by Setup developers to detect .NET runtime installations 
 
     <?xml version="1.0"?>
     <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
-         xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+         xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
       <Fragment>
-        <util:DotNetRuntimeSearch Id="Runtime"
-            Type="Desktop"
+        <netfx:DotNetRuntimeSearch Id="Runtime"
+            RuntimeType="Desktop"
             Platform="x86"
             Version="3.1.10"
             Variable="DotNetRuntimeSearchResult" />
@@ -170,8 +180,8 @@ NetCore3_Platform.wxi
 
     <?foreach PLATFORM in x86;x64?>
         <Fragment>
-            <util:DotNetRuntimeSearch Id="$(var.AspNetCoreId)"
-                Type="ASP.NET"
+            <netfx:DotNetRuntimeSearch Id="$(var.AspNetCoreId)"
+                RuntimeType="ASP.NET"
                 Platform="$(var.PLATFORM)"
                 Version="$(var.NetCoreVersion)"
                 Variable="$(var.AspNetCoreId)" />
@@ -180,8 +190,8 @@ NetCore3_Platform.wxi
 
     <?foreach PLATFORM in x86;x64?>
         <Fragment>
-            <util:DotNetRuntimeSearch Id="$(var.DesktopNetCoreId)"
-                Type="Desktop"
+            <netfx:DotNetRuntimeSearch Id="$(var.DesktopNetCoreId)"
+                RuntimeType="Desktop"
                 Platform="$(var.PLATFORM)"
                 Version="$(var.NetCoreVersion)"
                 Variable="$(var.DesktopNetCoreId)" />
@@ -190,8 +200,8 @@ NetCore3_Platform.wxi
 
     <?foreach PLATFORM in x86;x64?>
         <Fragment>
-            <util:DotNetRuntimeSearch Id="$(var.DotNetCoreId)"
-                Type="Core"
+            <netfx:DotNetRuntimeSearch Id="$(var.DotNetCoreId)"
+                RuntimeType="Core"
                 Platform="$(var.PLATFORM)"
                 Version="$(var.NetCoreVersion)"
                 Variable="$(var.DotNetCoreId)" />
@@ -201,7 +211,7 @@ NetCore3_Platform.wxi
 NetCore3.1.8_x64.wxs
 
     <Fragment>
-        <util:DirectorySearchRef Id="$(var.AspNetCoreId)" />
+        <netfx:DotNetRuntimeSearchRef Id="$(var.AspNetCoreId)" />
 
         <WixVariable Id="AspNetCoreRuntime$(var.NetCoreIdVersion)Redist$(var.NetCorePlatform)DetectCondition" Value="$(var.AspNetCoreId)" Overridable="yes" />
         <WixVariable Id="AspNetCoreRuntime$(var.NetCoreIdVersion)Redist$(var.NetCorePlatform)InstallCondition" Value="" Overridable="yes" />
@@ -267,7 +277,7 @@ I'm leaning towards the NetCoreCheck approach because it already exists, has bee
 I believe the criticisms of approach 2 also apply to approach 3.
 
 ### Search Location
-This [link](https://wixtoolset.org/documentation/manual/v3/bundle/bundle_define_searches.html) declares that "all searches are in the WiXUtilExtension", but this search is specific to the NetFx extension. I think it should be included in the util namespace for consistency.
+This [documentation](https://wixtoolset.org/documentation/manual/v3/bundle/bundle_define_searches.html) declares that "all searches are in the WiXUtilExtension", but the search I am proposing is specific to the NetFx extension. For this reason, I believe that it should be included in the NetFx extension instead.
 
 ## See Also
 * [dotnet/runtime#36479](https://github.com/dotnet/runtime/issues/36479)
