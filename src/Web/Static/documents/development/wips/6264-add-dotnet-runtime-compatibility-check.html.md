@@ -1,9 +1,9 @@
 ---
-wip: 6257
+wip: 6264
 type: Feature
 by: James Parsons (japarson at microsoft.com)
 title: Add DotNetCompatibilityCheck to the NetFx extension for the detection of .NET Core/.NET 5 runtimes
-draft: true
+draft: false
 ---
 
 ## User stories
