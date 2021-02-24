@@ -176,6 +176,7 @@ wix.xsd:
 ## Examples
 
 1. RemotePayload renamed.
+
 Before:
 
     <ExePackage>
@@ -189,6 +190,7 @@ After:
     </ExePackage>
 
 2. No more magic package payload.
+
 Before, this was valid but would be an error now:
 
     <MsiPackage Id="ABC">
@@ -208,6 +210,7 @@ After:
     </PayloadGroup>
 
 3. All payload information must be on the same element.
+
 This is an error:
 
     <ExePackage DownloadUrl="example.com">
@@ -215,11 +218,13 @@ This is an error:
     </ExePackage>
 
 4. The new elements are not required.
+
 This is still valid:
 
     <ExePackage SourceFile="abc.exe" DownloadUrl="example.com" Permanent="yes" />
 
 5. There is no difference between using the new element or specifying it on the package element.
+
 These are equivalent:
 
     <MsiPackage SourceFile="abc.exe" DownloadUrl="example.com">
