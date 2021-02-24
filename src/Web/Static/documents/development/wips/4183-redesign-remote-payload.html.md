@@ -19,13 +19,11 @@ There are different fields required for each of these scenarios (and will be dif
 ## Proposal
 
 1. Add `ExePackagePayload`, `MsiPackagePayload`, `MspPackagePayload`, and `MsuPackagePayload` elements.
-Remove all payload attributes from `ExePackage`, `MsiPackage`, `MspPackage`, and `MsuPackage`, and move them to the new elements.
 
 1. The new payload elements can be specified as a child of their parent element, or a `PayloadGroup`.
-To reduce the verbosity of the common case where the source file is available and will be available at runtime (either compressed or not),
-put the `SourceFile` attribute back on the package elements.
 
 1. The `SourceFile` attribute on a package element and the new payload element can't both be specified for the same package, but one of them must be specified.
+The `Name`, `Compressed`, and `DownloadUrl` attributes on the package element can only be specified with the `SourceFile` attribute on the package element.
 
 1. If an `MsiPackage` references a `PayloadGroup` with an `MsuPackagePayload` element, that's an error (and similarly for the other elements).
 
@@ -86,14 +84,6 @@ wix.xsd:
         <xs:attributeGroup ref="ChainPackageCommonAttributes" />
         <xs:attribute name="DetectCondition" type="xs:string" />
         <xs:attribute name="KB" type="xs:string" />
-        <xs:attribute name="SourceFile" type="xs:string">
-          <xs:annotation>
-            <xs:documentation>
-              Location of the package to add to the bundle.
-              To specify more advanced payload information such as Compressed or DownloadUrl, use the child MsuPackagePayload element instead.
-            </xs:documentation>
-          </xs:annotation>
-        </xs:attribute>
       </xs:complexType>
     </xs:element>
 
@@ -129,25 +119,10 @@ wix.xsd:
           <xs:documentation>Whether the package payload should be embedded in a container or left as an external payload.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="EnableSignatureVerification" type="YesNoTypeUnion">
-        <xs:annotation>
-          <xs:documentation>(to be removed)</xs:documentation>
-        </xs:annotation>
-      </xs:attribute>
       <xs:anyAttribute namespace="##other" processContents="lax" />
     </xs:attributeGroup>
 
     <xs:attributeGroup name="ExePackageRemoteCommonAttributes">
-      <xs:attribute name="CertificatePublicKey" type="HexType">
-        <xs:annotation>
-          <xs:documentation>(to be removed)</xs:documentation>
-        </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="CertificateThumbprint" type="HexType">
-        <xs:annotation>
-          <xs:documentation>(to be removed)</xs:documentation>
-        </xs:annotation>
-      </xs:attribute>
       <xs:attribute name="Description" type="xs:string">
         <xs:annotation>
           <xs:documentation>
@@ -198,33 +173,72 @@ wix.xsd:
       </xs:attribute>
     </xs:attributeGroup>
 
-    <xs:attributeGroup name="ChainPackageCommonAttributes">
-      <!-- removed <xs:attribute name="Name" type="xs:string" /> -->
-      <!-- removed <xs:attribute name="DownloadUrl" type="xs:string" /> -->
-      <!-- removed <xs:attribute name="Compressed" type="YesNoDefaultTypeUnion" /> -->
-      <!-- removed <xs:attribute name="EnableSignatureVerification" type="YesNoTypeUnion" /> -->
-      <!-- removed <xs:attribute name="SourceFile" type="YesNoTypeUnion" /> -->
-      <xs:attribute name="Id" type="xs:string" />
-      <xs:attribute name="After" type="xs:string" />
-      <xs:attribute name="InstallSize" type="xs:string" />
-      <xs:attribute name="InstallCondition" type="xs:string" />
-      <xs:attribute name="Cache" type="YesNoAlwaysTypeUnion" />
-      <xs:attribute name="CacheId" type="xs:string" />
-      <xs:attribute name="DisplayName" type="xs:string" />
-      <xs:attribute name="Description" type="xs:string" >
-      <xs:attribute name="LogPathVariable" type="xs:string" />
-      <xs:attribute name="RollbackLogPathVariable" type="xs:string" />
-      <xs:attribute name="Permanent" type="YesNoTypeUnion" />
-      <xs:attribute name="Vital" type="YesNoTypeUnion" />
-      <xs:anyAttribute namespace="##other" processContents="lax" />
-    </xs:attributeGroup>
+## Examples
 
+1. RemotePayload renamed.
+Before:
+
+    <ExePackage>
+      <RemotePayload DownloadUrl="example.com" Hash="..." ... />
+    </ExePackage>
+
+After:
+
+    <ExePackage>
+      <ExePackagePayload DownloadUrl="example.com" Hash="..." ... />
+    </ExePackage>
+
+2. No more magic package payload.
+Before, this was valid but would be an error now:
+
+    <MsiPackage Id="ABC">
+      <PayloadGroupRef Id="A" />
+    </MsiPackage>
+    <PayloadGroup Id="A">
+      <Payload SourceFile="abc.msi" DownloadUrl="example.com" />
+    </PayloadGroup>
+
+After:
+
+    <MsiPackage Id="ABC">
+      <PayloadGroupRef Id="A" />
+    </MsiPackage>
+    <PayloadGroup Id="A">
+      <MsiPackagePayload SourceFile="abc.msi" DownloadUrl="example.com" />
+    </PayloadGroup>
+
+3. All payload information must be on the same element.
+This is an error:
+
+    <ExePackage DownloadUrl="example.com">
+      <ExePackagePayload Hash="..." />
+    </ExePackage>
+
+4. The new elements are not required.
+This is still valid:
+
+    <ExePackage SourceFile="abc.exe" DownloadUrl="example.com" Permanent="yes" />
+
+5. There is no difference between using the new element or specifying it on the package element.
+These are equivalent:
+
+    <MsiPackage SourceFile="abc.exe" DownloadUrl="example.com">
+      <Payload SourceFile="supporting.file" />
+    </MsiPackage>
+
+    <MsiPackage>
+      <MsiPackagePayload SourceFile="abc.exe" DownloadUrl="example.com" />
+      <Payload SourceFile="supporting.file" />
+    </MsiPackage>
 
 ## Considerations
 
-The original motivation for #4183 was for the NetFx extension to provide the payload information for NetFx packages so the user could create their own `ExePackage`s.
-In order for this to work, the chain package elements allow the package payload element to be pulled in by a `PayloadGroupRef`.
-This breaks the current logic of generating the package `Id` from the `Name` attribute from the package payload.
+The original proposal removed the payload attributes from the package elements (e.g. `SourceFile`, `Name`, `Compressed`, `DownloadUrl` from `MsiPackage`) to remove confusion from having multiple ways to specify the payload information.
+Also, it's not clear at all that these attributes apply only to the magic payload created behind the scenes and not any child payloads.
+
+This was deemed to be too verbose, so a modified proposal kept only `SourceFile`.
+This was also deemed to be too verbose, so a compromise was to also keep `DownloadUrl`.
+At that point, the breakage wasn't worth it especially since `DownloadUrl` is one of the confusing attributes that doesn't apply to other payloads in the package.
 
 
 ## Alternate Proposal
