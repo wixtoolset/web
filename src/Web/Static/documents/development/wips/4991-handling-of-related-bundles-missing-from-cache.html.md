@@ -20,7 +20,7 @@ draft: false
 1. BundleA v1.1 and BundleA v1.0 are now both installed and the BA had no way to know this without manually checking for related bundles.
 
 
-## Proposal - Notification
+## Proposal
 
 To allow the BA to know about a related bundle that is registered in ARP but not in the package cache,
 add a new parameter to `OnDetectRelatedBundle`:
@@ -28,42 +28,16 @@ add a new parameter to `OnDetectRelatedBundle`:
     // Indicates whether the related bundle is missing from the package cache.
     BOOL fMissingFromCache;
 
-## Proposal - Mitigation
-
-To help related bundles gracefully handle the scenario where they're missing from the cache, add the hash and file size to the ARP registration.
-Also, add a new attribute to the `Bundle` element which will be written to the ARP registration if specified.
-
-    <xs:attribute name="DownloadUrl" type="xs:string">
-      <xs:annotation>
-        <xs:documentation>
-          The URL to use to download the bundle if missing from the package cache.
-        </xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-
-Add two new parameters to `OnDetectRelatedBundle`:
-
-    // Indicates whether the engine has the hash and file size of the related bundle to be able to recache it.
-    BOOL fCanBeRecached;
-    // The download url for the related bundle.
-    LPCWSTR wzDownloadUrl;
-
-During `Plan`, related bundles that are missing from the cache will be skipped unless the hash and file size are available.
-That means that there will also be no message(s) sent to the BA for that bundle.
-
-If the hash and file size are available, then the default action will depend on whether there's a download url for the bundle.
-If it is not available, then the default action will be to do nothing.
-Otherwise, the default action will be the same as if it were present in the cache.
+During `Plan`, related bundles that are missing from the cache will be skipped just as they are today.
+No messages for that related bundle will be sent to the BA during planning since it is impossible to run the bundle if it's missing.
 
 
 ## Considerations
 
-The Mitigation Proposal is not strictly necessary, but it helps avoid an extra UAC prompt for per-machine bundles and helps the BA to avoid manually fixing the related bundle outside of the chain.
-
-Burn has only cached itself into the package cache so far, so there might be some implementation details to work out when putting other bundles into the cache.
-For example, the `DownloadUrl` will likely point to a bundle with the attached container but the hash and file size will be for the stripped down bundle.
+The functionality for helping the BA re-cache the bundle inside the chain was moved to the WIP for #5504.
 
 
 ## See Also
 
 * [WIXBUG:4991](https://github.com/wixtoolset/issues/issues/4991)
+* [WIXBUG:4991](https://github.com/wixtoolset/issues/issues/5504)
