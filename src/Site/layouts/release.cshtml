@@ -1,0 +1,35 @@
+layout: heronone
+contentOffset: 2
+
+<h2>WiX @Model.Document.Title Release</h2>
+<p>To install the WiX Toolset please launch the installer below.</p>
+
+@foreach (var file in Model.Document.Files)
+{
+    if (@Defined(file.Promoted) && file.Promoted)
+    {
+    <div class="row">
+    <div class="col-md-8 col-md-offset1">
+        <h3>@Raw(file.Name)</h3>
+        <p>@Raw(file.Title)</p>
+        <p><a class="btn btn-primary btn-lg" href="/downloads/@Model.Document.Title/@file.Name">Launch &raquo;</a></p>
+        </div>
+    </div>
+    }
+}
+
+<h3>Additional Files</h3>
+<p>The following files are provided for special use cases. Please, only download these files if you require them.</p>
+<ul>
+@foreach (var file in Model.Document.Files)
+{
+    if (@Defined(file.Protected) && file.Protected)
+    {
+    <li>
+    <h4>@file.Name</h4>
+    <p>@Raw(file.Title)</p>
+    <p><a class="btn btn-outline" href="/downloads/@Model.Document.Title/@file.Name">Download</a></p>
+    </li>
+    }
+}
+</ul>

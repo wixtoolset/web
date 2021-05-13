@@ -16,7 +16,7 @@
 
     <DownloadFolder>$(BuildFolder)dl\</DownloadFolder>
 
-    <WebRootSourceFolder>$(ProjectFolder)src\Web\Static\</WebRootSourceFolder>
+    <WebRootSourceFolder>$(ProjectFolder)src\Site\</WebRootSourceFolder>
   </PropertyGroup>
 
   <!--
@@ -46,9 +46,6 @@
     <ItemGroup>
       <ManualZip Include="$(DownloadFolder)**\v3manual.zip">
         <OutputFolder>$(WebRootSourceFolder)documents\documentation\manual\v3</OutputFolder>
-      </ManualZip>
-      <ManualZip Include="$(DownloadFolder)**\v4manual.zip">
-        <OutputFolder>$(WebRootSourceFolder)documents\documentation\manual\v4</OutputFolder>
       </ManualZip>
 
       <ReleaseMetadataFile Include="$(DownloadFolder)**\*.md">

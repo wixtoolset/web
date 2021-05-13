@@ -5,9 +5,9 @@ namespace WixToolset.Web.Extensions
     using System;
     using System.Security.Claims;
     using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authentication.Cookies;
     using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Http.Authentication;
     using WixToolset.Web.Models;
 
     public static class HttpContextExtensions
@@ -42,7 +42,7 @@ namespace WixToolset.Web.Extensions
             {
                 var principal = new ClaimsPrincipal(new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, Guid.NewGuid().ToString("N")) }, CookieAuthenticationDefaults.AuthenticationScheme));
 
-                await context.Authentication.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, new AuthenticationProperties { IsPersistent = true });
+                await context.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, new AuthenticationProperties { IsPersistent = true });
             }
 
             return context.User.Identity.Name;

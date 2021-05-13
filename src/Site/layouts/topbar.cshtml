@@ -1,0 +1,37 @@
+@functions {
+  object NavItem(string title, string uri = null, string activeUri = null)
+  {
+    uri = String.IsNullOrEmpty(uri) ? "/" + title.ToLowerInvariant() + "/" : uri;
+
+    if (String.IsNullOrEmpty(activeUri))
+    {
+        object under;
+        if (Model.Document.TryGetValue("Under", out under))
+        {
+          activeUri = "/" + under.ToString() + "/";
+        }
+        else
+        {
+            activeUri = Model.Document.Url;
+        }
+    }
+
+    var active = uri.Equals(activeUri, StringComparison.OrdinalIgnoreCase) ? " class='active'": String.Empty;
+
+    return Raw(String.Format("<li{0}><a href=\"{1}\">{2}</a></li>", active, uri, title));
+  }
+}
+
+<header id="fh5co-header-section" role="header" class="" >
+  <div class="container">
+    <h1 id="fh5co-logo" class="pull-left"><a href="/">WiX Toolset</a></h1>
+    <nav id="fh5co-menu-wrap" role="navigation">
+      <ul class="sf-menu" id="fh5co-primary-menu">
+        @NavItem("News")
+        @NavItem("Bugs")
+        @NavItem("Documentation")
+        @NavItem("Downloads", "/releases/")
+      </ul>
+    </nav>
+  </div>
+</header>
