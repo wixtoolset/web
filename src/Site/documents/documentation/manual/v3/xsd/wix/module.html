@@ -1,0 +1,65 @@
+---
+title: Module Element
+layout: documentation_xsd_main
+---
+<dl>
+  <dt>Description</dt>
+  <dd>             The Module element is analogous to the main function in a C program.  When linking, only             one Module section can be given to the linker to produce a successful result.  Using this             element creates an msm file.             </dd>
+  <dt>Windows Installer references</dt>
+  <dd>None</dd>
+  <dt>Parents</dt>
+  <dd>
+    <a href="../wix/wix.html">Wix</a>
+  </dd>
+  <dt>Inner Text</dt>
+  <dd>None</dd>
+  <dt>Children</dt>
+  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../wix/package.html">Package</a> (min: 1, max: 1)</li><li>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wix/appid.html">AppId</a> (min: 0, max: unbounded)</li><li><a href="../wix/binary.html">Binary</a> (min: 0, max: unbounded)</li><li><a href="../wix/component.html">Component</a> (min: 0, max: unbounded)</li><li><a href="../wix/componentgroupref.html">ComponentGroupRef</a> (min: 0, max: unbounded)</li><li><a href="../wix/componentref.html">ComponentRef</a> (min: 0, max: unbounded)</li><li><a href="../wix/configuration.html">Configuration</a> (min: 0, max: unbounded)</li><li><a href="../wix/customaction.html">CustomAction</a> (min: 0, max: unbounded)</li><li><a href="../wix/customactionref.html">CustomActionRef</a> (min: 0, max: unbounded)</li><li><a href="../wix/customtable.html">CustomTable</a> (min: 0, max: unbounded)</li><li><a href="../wix/dependency.html">Dependency</a> (min: 0, max: unbounded)</li><li><a href="../wix/directory.html">Directory</a> (min: 0, max: unbounded)</li><li><a href="../wix/directoryref.html">DirectoryRef</a> (min: 0, max: unbounded)</li><li><a href="../wix/embeddedchainer.html">EmbeddedChainer</a> (min: 0, max: unbounded)</li><li><a href="../wix/embeddedchainerref.html">EmbeddedChainerRef</a> (min: 0, max: unbounded)</li><li><a href="../wix/ensuretable.html">EnsureTable</a> (min: 0, max: unbounded)</li><li><a href="../wix/exclusion.html">Exclusion</a> (min: 0, max: unbounded)</li><li><a href="../wix/icon.html">Icon</a> (min: 0, max: unbounded)</li><li><a href="../wix/ignoremodularization.html">IgnoreModularization</a> (min: 0, max: unbounded)</li><li><a href="../wix/ignoretable.html">IgnoreTable</a> (min: 0, max: unbounded)</li><li><a href="../wix/property.html">Property</a> (min: 0, max: unbounded)</li><li><a href="../wix/propertyref.html">PropertyRef</a> (min: 0, max: unbounded)</li><li><a href="../wix/setdirectory.html">SetDirectory</a> (min: 0, max: unbounded)</li><li><a href="../wix/setproperty.html">SetProperty</a> (min: 0, max: unbounded)</li><li><a href="../wix/sfpcatalog.html">SFPCatalog</a> (min: 0, max: unbounded)</li><li><a href="../wix/substitution.html">Substitution</a> (min: 0, max: unbounded)</li><li><a href="../wix/ui.html">UI</a> (min: 0, max: unbounded)</li><li><a href="../wix/uiref.html">UIRef</a> (min: 0, max: unbounded)</li><li><a href="../wix/wixvariable.html">WixVariable</a> (min: 0, max: unbounded)</li><li>Sequence (min: 1, max: 1)<ol><li><a href="../wix/installexecutesequence.html">InstallExecuteSequence</a> (min: 0, max: 1)</li><li><a href="../wix/installuisequence.html">InstallUISequence</a> (min: 0, max: 1)</li><li><a href="../wix/adminexecutesequence.html">AdminExecuteSequence</a> (min: 0, max: 1)</li><li><a href="../wix/adminuisequence.html">AdminUISequence</a> (min: 0, max: 1)</li><li><a href="../wix/advertiseexecutesequence.html">AdvertiseExecuteSequence</a> (min: 0, max: 1)</li></ol></li><li><span class="extension">Any Element (namespace='##other' processContents='Lax')                              Extensibility point in the WiX XML Schema.  Schema extensions can register additional                             elements at this point in the schema.                         </span><ul><li><a href="../util/closeapplication.html" class="extension">CloseApplication</a></li><li><a href="../complus/complusapplication.html" class="extension">ComPlusApplication</a></li><li><a href="../complus/complusapplicationrole.html" class="extension">ComPlusApplicationRole</a></li><li><a href="../complus/compluspartition.html" class="extension">ComPlusPartition</a></li><li><a href="../complus/compluspartitionrole.html" class="extension">ComPlusPartitionRole</a></li><li><a href="../util/group.html" class="extension">Group</a></li><li><a href="../vs/helpcollectionref.html" class="extension">HelpCollectionRef</a></li><li><a href="../vs/helpfilter.html" class="extension">HelpFilter</a></li><li><a href="../dependency/requires.html" class="extension">Requires</a></li><li><a href="../util/restartresource.html" class="extension">RestartResource</a></li><li><a href="../sql/sqldatabase.html" class="extension">SqlDatabase</a></li><li><a href="../util/user.html" class="extension">User</a></li><li><a href="../iis/webapplication.html" class="extension">WebApplication</a></li><li><a href="../iis/webapppool.html" class="extension">WebAppPool</a></li><li><a href="../iis/webdirproperties.html" class="extension">WebDirProperties</a></li><li><a href="../iis/weblog.html" class="extension">WebLog</a></li><li><a href="../iis/website.html" class="extension">WebSite</a></li></ul></li></ul></li></ol></dd>
+  <dt>Attributes</dt>
+  <dd>
+    <table cellspacing="0" cellpadding="0" class="schema">
+      <tr>
+        <th width="15%">Name</th>
+        <th width="15%">Type</th>
+        <th width="65%">Description</th>
+        <th width="15%">Required</th>
+      </tr>
+      <tr>
+        <td>Id</td>
+        <td>String</td>
+        <td>The name of the merge module (not the file name).</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>Codepage</td>
+        <td>String</td>
+        <td>The code page integer value or web name for the resulting MSM. See remarks for more information.</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>Guid</td>
+        <td><a href="../wix/simple_type_guid.html">Guid</a></td>
+        <td>This attribute is deprecated. Use the Package/@Id attribute instead.</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>Language</td>
+        <td><a href="../wix/simple_type_localizableinteger.html">LocalizableInteger</a></td>
+        <td>The decimal language ID (LCID) of the merge module.</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>Version</td>
+        <td>String</td>
+        <td>The major and minor versions of the merge module.</td>
+        <td>Yes</td>
+      </tr>
+    </table>
+  </dd>
+  <dt>Remarks</dt>
+  <dd><p xmlns:html="http://www.w3.org/1999/xhtml">You can specify any valid Windows code by by integer like 1252, or by web name like Windows-1252. See <a href="../../overview/codepage.html">Code Pages</a> for more information.</p></dd>
+  <dt>See Also</dt>
+  <dd>
+    <a href="../wix/index.html">Wix Schema</a>
+  </dd>
+</dl>

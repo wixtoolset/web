@@ -18,7 +18,7 @@ init:
   - git config --global user.name "WiX-BoT"
 
 build_script:
-  - tools\appveyor_bld.cmd build\deploy
+  - appveyor.cmd
 
 artifacts:
   - path: build\deploy

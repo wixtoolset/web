@@ -12,13 +12,13 @@ namespace WixToolset.Web
     using Microsoft.AspNetCore.StaticFiles;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Logging;
+    using Microsoft.Extensions.Hosting;
     using Microsoft.Net.Http.Headers;
     using WixToolset.Web.Services;
 
     public class Startup
     {
-        public Startup(IHostingEnvironment env)
+        public Startup(IWebHostEnvironment env)
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
@@ -36,18 +36,20 @@ namespace WixToolset.Web
 
             services.AddScoped<IStorageService>(s => new StorageService(connectionString));
 
-            services.AddMvc();
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                    .AddCookie(options =>
+                    {
+                        options.Cookie.Name = "wu";
+                    });
+
+            services.AddControllers();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            loggerFactory.AddConsole(this.Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
             }
             else
             {
@@ -58,20 +60,10 @@ namespace WixToolset.Web
 
             app.UseRewriter(this.LoadRewrites());
 
-            app.UseCookieAuthentication(new CookieAuthenticationOptions
-            {
-                AuthenticationScheme = CookieAuthenticationDefaults.AuthenticationScheme,
-                AutomaticAuthenticate = true,
-                AutomaticChallenge = true,
-                CookieName = "wu",
-            });
-
             app.UseDefaultFiles(new DefaultFilesOptions
             {
                 DefaultFileNames = new[] { "index.html", "index.feed" }
-            });
-
-            app.UseStaticFiles(new StaticFileOptions
+            }).UseStaticFiles(new StaticFileOptions
             {
                 ContentTypeProvider = StaticContentTypes(),
 
@@ -84,7 +76,13 @@ namespace WixToolset.Web
 
             app.UseStatusCodePagesWithReExecute("/statuscode/{0}/");
 
-            app.UseMvc();
+            app.UseRouting()
+               .UseAuthentication()
+               .UseAuthorization()
+               .UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
 
         private RewriteOptions LoadRewrites()

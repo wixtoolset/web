@@ -1,0 +1,115 @@
+---
+layout: herobig
+title: WiX Toolset
+subtitle: The most powerful set of tools available to create your Windows installation experience.
+image: /content/red_smoke_1.jpg
+news?: query data descending date take 3 where sourceRelativePath startswith "data\news"
+---
+
+<section>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+        <h2 class="fh5co-uppercase-heading-sm text-center">The WiX Toolset</h2>
+    </div>
+    <div class="col-md-8 col-md-offset-2 clearfix fh5co-header">
+        <h1 class="h1 fh5co-heading fh5co-no-margin-bottom">Integrates seamlessly</h1>
+        <h4 class="h5 fh5co-heading-sub">into build processes to create Windows installation packages.</h4>
+        <div class="fh5co-spacer fh5co-spacer-sm"></div>
+    </div>
+  </div>
+  <div class="fh5co-spacer fh5co-spacer-sm"></div>
+</div>
+</section>
+
+<section id="fh5co-feature">
+<div class="container">
+    <div class="row fh5co-feature-2">
+        <div class="col-md-4 col-sm-4 fh5co-feature-item">
+            <a href="/documentation/"><span class="fh5co-feature-icon fh5co-circle"><i class="ti-book"></i></span></a>
+            <h3 class="text-center fh5co-feature-title h4 text-uppercase">Documentation</h3>
+            <p class="text-center fh5co-feature-description">There are lots of ways to learn about the WiX toolset.</p>
+            <p class="text-center"><a href="/documentation/" class="btn btn-primary btn-sm">Read more</a></p>
+        </div>
+
+        <div class="col-md-4 col-sm-4 fh5co-feature-item">
+            <a href="/releases/"><span class="fh5co-feature-icon fh5co-circle"><i class="ti-cloud-down"></i></span></a>
+            <h3 class="text-center fh5co-feature-title h4 text-uppercase">Download</h3>
+            <p class="text-center fh5co-feature-description">You can download the WiX toolset for free.</p>
+            <p class="text-center"><a href="/releases/" class="btn btn-primary btn-sm">Latest releases</a></p>
+        </div>
+
+        <div class="col-md-4 col-sm-4 fh5co-feature-item">
+          <a href="/bugs/"><span class="fh5co-feature-icon fh5co-circle"><i class="ti-support"></i></span></a>
+          <h3 class="text-center fh5co-feature-title h4 text-uppercase">Bugs</h3>
+          <p class="text-center fh5co-feature-description">If you find a bug, let us know so we can fix it.</p>
+          <p class="text-center"><a href="/bugs/" class="btn btn-primary btn-sm">File a bug</a></p>
+        </div>
+    </div>
+</div>
+</section>
+<div class="fh5co-spacer fh5co-spacer-lg"></div>
+<section>
+<div class="container">
+  <div class="row fh5co-feature-2">
+    <div class="col-md-8" id="fh5co-content">
+    <div class="row fh5co-feature-1">
+      <div class="col-md-6">
+        <h2>About the WiX toolset</h2>
+
+        <p>
+        The WiX toolset lets developers create installers for Windows Installer,
+        the Windows installation engine.
+        </p>
+
+        <ul>
+        <li><p>The core of WiX is a set of build tools that build Windows Installer packages
+        using the same build concepts as the rest of your product: source code is compiled
+        and then linked to create executables; in this case .exe setup bundles, .msi installation
+        packages, .msm merge modules, and .msp patches. The WiX command-line build tools
+        work with any automated build system. Also, MSBuild is supported from the command
+        line, Visual Studio, and Team Build.</p></li>
+
+        <li><p>WiX includes several extensions that offer functionality beyond that of Windows
+        Installer. For example, WiX can install IIS web sites, create SQL Server databases,
+        and register exceptions in the Windows Firewall, among others.</p></li>
+
+        <li><p>With Burn, the WiX bootstrapper, you can create setup bundles that install prerequisites
+        like the .NET Framework and other runtimes along with your own product. Burn lets
+        you download packages or combine them into a single downloadable .exe.</p></li>
+
+        <li><p>The WiX SDK includes managed and native libraries that make it easier to write
+        code that works with Windows Installer, including custom actions in both C# and
+        C++.</p></li>
+        </ul>
+      </div>
+
+      <div class="col-md-6 fh5co-feature-blurb">
+        <h2>Recent news</h2>
+        <ul>
+        @foreach (var item in Model.Document.News) {
+        <li>
+        <div class="f5hco-feature-blurb-text">
+            <h3 class="fh5co-feature-blurb-title h4">@Raw(item.Title) <small><i class="ti-announcement"></i> @item.Date.ToString("yyyy/MM/dd")</small></h3>
+            <p class="fh5co-feature-blurb-description">@Raw(item.Content)</p>
+        </div>
+        </li>
+        }
+        </ul>
+        <p><a class="btn btn-primary" href="/news/">More News</a></p>
+      </div>
+    </div>
+    </div>
+    <div class="col-md-3 col-md-offset1" id="fh5co-sidebar">
+        <h3>Other sources of news</h3>
+        <p>The following blogs may have additional news about the progress of the WiX toolset:</p>
+        <ul>
+          <li><a href='http://robmensching.com/blog/'>Rob Mensching</a></li>
+          <li><a href='http://www.joyofsetup.com/'>Bob Arnson</a></li>
+          <li><a href='http://blogs.msdn.com/heaths/'>Heath Stewart</a></li>
+          <li><a href='https://www.firegiant.com/blog/'>FireGiant's Setup Matters</a></li>
+        </ul>
+    </div>
+  </div>
+</div>
+</section>

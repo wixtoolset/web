@@ -1,0 +1,68 @@
+---
+layout: herosmall
+title: Downloads
+image: /content/red_smoke_2.jpg
+bodyTitle:
+bodyHeading:
+Items: [
+  { uri: "/releases/v3.11.2/stable",
+    text: "WiX v3.11.2" },
+  { uri: "/releases/v3.10/stable",
+    text: "WiX v3.10.4" }
+  ]
+---
+
+<div class="row fh5co-feature-1">
+  <div class="col-md-5">
+    <div>
+      <h2>Recommended Build</h2>
+      <p>
+        <strong>WiX Toolset build tools</strong> includes everything you need to create installations on your development and build machines.
+      </p>
+      <p><a class="btn btn-primary" href="/releases/v3.11.2/stable">Download WiX v3.11.2</a></p>
+      <p>
+        <strong>WiX Toolset Visual Studio Extension</strong> this extension provides integration for the WiX Toolset into Visual Studio. You will still need to install the WiX Toolset v3.11.2 build tools.
+      </p>
+      <p>Download the appropriate versions from the Visual Studio Marketplace:
+        <ul>
+          <li><a href="https://marketplace.visualstudio.com/items?itemName=WixToolset.WixToolsetVisualStudio2019Extension">WiX Toolset Visual Studio 2019 Extension</a></li>
+          <li><a href="https://marketplace.visualstudio.com/items?itemName=WixToolset.WixToolsetVisualStudio2017Extension">WiX Toolset Visual Studio 2017 Extension</a></li>
+          <li><a href="https://marketplace.visualstudio.com/items?itemName=WixToolset.WixToolsetVisualStudio2015Extension">WiX Toolset Visual Studio 2015 Extension</a></li>
+          <li><a href="https://marketplace.visualstudio.com/items?itemName=WixToolset.WixToolsetVisualStudio2013Extension">WiX Toolset Visual Studio 2013 Extension</a></li>
+          <li><a href="https://marketplace.visualstudio.com/items?itemName=WixToolset.WixToolsetVisualStudio2012Extension">WiX Toolset Visual Studio 2012 Extension</a></li>
+          <li><a href="https://marketplace.visualstudio.com/items?itemName=WixToolset.WixToolsetVisualStudio2010Extension">WiX Toolset Visual Studio 2010 Extension</a></li>
+        </ul>
+      </p>
+      <p><sup><i class="ti-announcement"></i> <strong>New!</strong></sup> Visual Studio 2019 available on Visual Studio Marketplace:
+        <ul>
+          <li><a href="https://marketplace.visualstudio.com/items?itemName=WixToolset.WixToolsetVisualStudio2019Extension">WiX Toolset Visual Studio 2019 Extension</a></li>
+        </ul>
+      </p>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div>
+      <h2>Development Builds</h2>
+      <p>
+        These have the latest changes, but may introduce unexpected bugs. These are <strong>not</strong> considered to be production-ready.
+      </p>
+      <p>
+        If you are still interested, you can find them <a href="/releases/development/">here</a>.
+      </p>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div>
+    <h2>Production Builds</h2>
+      <p>These are the stable versions of the WiX Toolset.</p>
+      <ul>
+      @foreach (var item in @Model.Document.Items)
+      {
+        <li><a href="@item.Uri">@item.Text</a></li>
+      }
+      </ul>
+    </div>
+  </div>
+</div>

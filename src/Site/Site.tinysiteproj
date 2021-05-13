@@ -1,0 +1,7 @@
+<Project Sdk="tinySite/0.2.8">
+  <!-- This project exists for development purposes only. The Web.csproj builds the site for deployment purposes. -->
+  <PropertyGroup>
+    <OutputPath>$(BaseOutputPath)site-test\</OutputPath>
+    <SitemapRootUrl>https://www.wixtoolset.com/</SitemapRootUrl>
+  </PropertyGroup>
+</Project>

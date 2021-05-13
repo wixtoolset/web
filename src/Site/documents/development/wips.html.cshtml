@@ -1,0 +1,28 @@
+---
+under: Development
+title: WiX Improvement Proposals
+subtitle: better known as WIPs
+keywords: wix toolset,wix,wip
+layout: heronone
+sidebarTitle: Other developer topics
+sidebarSubtitle: The following topics may be useful when developing the WiX toolset:
+sidebarItems: [
+  { uri: "/development/",
+    text: "Development Homepage" },
+  { uri: "/development/assignment-agreement/",
+    text: "Contribution License Agreement" }
+]
+wips?: query documents where sourceRelativeFolder eq "documents\development\wips" descending builddate
+---
+
+
+<h2>WiX Improvement Proposals</h2>
+<ul>
+@foreach (var wip in @Model.Document.Wips)
+{
+  if (!wip.Draft)
+  {
+    <li><a href="@wip.RelativeUrl">WIP:@Raw(wip.Wip) - @Raw(wip.Title)</a></li>
+  }
+}
+</ul>
