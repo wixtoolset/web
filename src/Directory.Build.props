@@ -9,7 +9,10 @@
     <ProjectName Condition=" '$(ProjectName)' == '' ">$(MSBuildProjectName)</ProjectName>
     <BaseOutputPath>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\build\))</BaseOutputPath>
     <BaseIntermediateOutputPath>$(BaseOutputPath)obj\$(ProjectName)\</BaseIntermediateOutputPath>
+
+    <SiteStagingFolder>$(BaseOutputPath)obj\staging\</SiteStagingFolder>
     <OutputPath>$(BaseOutputPath)$(Configuration)\</OutputPath>
+    <SiteOutputFolder>$(OutputPath)Site\</SiteOutputFolder>
 
     <Authors>WiX Toolset Team</Authors>
     <Company>WiX Toolset</Company>

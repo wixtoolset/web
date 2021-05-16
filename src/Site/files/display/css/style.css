@@ -1633,3 +1633,79 @@ dd {
 .schema > tbody > tr:nth-child(odd) {
   background-color: #f9f9f9;
 }
+
+/* *********************	Tutorial	********************* */
+
+.tutorial-nav {
+  font-size: 14px;
+}
+
+li.nav-book {
+	padding: 6px 0px 6px 10px;
+}
+
+li.nav-book > a {
+	display: inline;
+	padding: 0px;
+}
+
+li.nav-chapter {
+	padding: 6px 0px 6px 10px;
+	margin-left: 5px;
+}
+
+li.nav-chapter > a {
+	display: inline;
+	padding: 0px;
+}
+
+li.nav-chapter.active, li.nav-chapter.active-child {
+	background: #f4f4f4;
+	border-left: 2px dotted #c0c0c0;
+	padding-left: 3px;
+}
+
+li.nav-chapter.active > a {
+	font-weight: bold;
+}
+
+li.nav-page {
+	padding: 6px 10px;
+}
+
+li.nav-page > a {
+	display: inline;
+	padding: 0px;
+}
+
+li.nav-page.active {
+	font-weight: bold;
+}
+
+.tutorial-above-toc {
+	margin-bottom: 5px;
+	border-bottom: 1px dashed #778888;
+}
+
+.tutorial-btn {
+	border-radius:0;
+	margin-top:5px;
+	color:#fcfcfc;
+	background: rgb(213,12,0);
+	border:none;
+}
+
+.tutorial-btn:hover,
+.tutorial-btn:focus,
+.tutorial-btn:active {
+	color:#fcfcfc;
+	background-color:#453951 !important;
+}
+
+.tutorial-content p {
+	font-size: 16px;
+}
+
+.support-img {
+  max-height: 120px;
+}

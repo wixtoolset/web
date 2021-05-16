@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) .NET Foundation and contributors. All rights reserved. Licensed under the Microsoft Reciprocal License. See LICENSE.TXT file in the project root for full license information. -->
+
+<Project Sdk="Microsoft.Build.NoTargets/3.0.4">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <ProcessXsdsDependsOn>
+      _CalculateXsdLayout;
+      LayoutXsdsForWeb;
+      GenerateMarkdownForWeb
+    </ProcessXsdsDependsOn>
+  </PropertyGroup>
+
+  <Target Name="_CalculateXsdLayout">
+    <ItemGroup>
+      <LayoutXsd Include="wix.xsd" LayoutPath="$(SiteStagingFolder)files\schemas\v4\wxs\index.xsd" />
+      <LayoutXsd Include="wixloc.xsd" LayoutPath="$(SiteStagingFolder)files\schemas\v4\wxl\index.xsd" />
+      <LayoutXsd Include="bal.xsd" LayoutPath="$(SiteStagingFolder)files\schemas\v4\wxs\bal\index.xsd" />
+      <LayoutXsd Include="complus.xsd" LayoutPath="$(SiteStagingFolder)files\schemas\v4\wxs\complus\index.xsd" />
+      <LayoutXsd Include="dependency.xsd" LayoutPath="$(SiteStagingFolder)files\schemas\v4\wxs\dependency\index.xsd" />
+      <LayoutXsd Include="difxapp.xsd" LayoutPath="$(SiteStagingFolder)files\schemas\v4\wxs\difxapp\index.xsd" />
+      <LayoutXsd Include="firewall.xsd" LayoutPath="$(SiteStagingFolder)files\schemas\v4\wxs\firewall\index.xsd" />
+      <LayoutXsd Include="http.xsd" LayoutPath="$(SiteStagingFolder)files\schemas\v4\wxs\http\index.xsd" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="LayoutXsdsForWeb"
+          Inputs="@(LayoutXsd)"
+          Outputs="@(LayoutXsd->'%(LayoutPath)')">
+    <Copy SourceFiles="@(LayoutXsd)" DestinationFiles="@(LayoutXsd->'%(LayoutPath)')"
+          SkipUnchangedFiles="true" Retries="3" />
+  </Target>
+
+  <Target Name="GenerateMarkdownForWeb">
+    <Exec Command="$(OutputPath)XsdToMarkdown.exe -out $(SiteStagingFolder)documents\documentation\manual\v4\reference *.xsd" />
+  </Target>
+
+  <Target Name="ProcessXsds"
+          DependsOnTargets="$(ProcessXsdsDependsOn)"
+          BeforeTargets="AfterBuild" />
+
+  <ItemGroup>
+    <ProjectReference Include="..\XsdToMarkdown\XsdToMarkdown.csproj" />
+  </ItemGroup>
+</Project>

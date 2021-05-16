@@ -9,16 +9,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Site\Site.tinysiteproj" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="WindowsAzure.Storage" Version="8.1.4" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Nerdbank.GitVersioning" Version="3.4.194" PrivateAssets="all" />
-    <PackageReference Include="tinySite" Version="0.2.8" PrivateAssets="all" />
   </ItemGroup>
 
-  <Target Name="PrecompileScript" BeforeTargets="BeforeBuild"
-          DependsOnTargets="BuildSite">
+  <Target Name="PrecompileScript" BeforeTargets="CoreCompile">
+    <ItemGroup>
+      <SiteOutputFile Include="$(SiteOutputFolder)**" />
+    </ItemGroup>
+
+    <Copy SourceFiles="@(SiteOutputFile)" DestinationFiles="@(SiteOutputFile->'wwwroot\%(RecursiveDir)%(Filename)%(Extension)')"
+          SkipUnchangedFiles="true" Retries="3" />
+
     <ItemGroup>
       <Content Update="wwwroot/**" CopyToPublishDirectory="PreserveNewest" CopyToOutputDirectory="PreserveNewest" />
     </ItemGroup>
