@@ -1,10 +1,10 @@
 ---
-title: WiX Toolset Manual Table of Contents
+title: WiX Toolset v3 Manual Table of Contents
 chm: ignore
 layout: documentation
 ---
 
-# WiX Toolset Manual Table of Contents
+# WiX Toolset v3 Manual Table of Contents
 
 * [Windows Installer XML (WiX)](main/index.html)
    * [WiX Toolset License](main/license.html)

@@ -24,6 +24,7 @@ sidebarItems: [
 The official WiX toolset reference manuals.
 
 * [WiX toolset v3.x][v3]
-* WiX toolset v4.x - (coming soon)
+* [WiX toolset v4.x][v4]
 
 [v3]: /documentation/manual/v3/
+[v4]: /documentation/manual/v4/reference/

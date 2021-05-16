@@ -1,0 +1,13 @@
+<!-- Copyright (c) .NET Foundation and contributors. All rights reserved. Licensed under the Microsoft Reciprocal License. See LICENSE.TXT file in the project root for full license information. -->
+
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+
+    <Description>XsdToMarkdown</Description>
+    <Title>WiX Toolset XsdToMarkdown doc generator</Title>
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+</Project>

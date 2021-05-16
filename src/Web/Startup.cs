@@ -62,7 +62,7 @@ namespace WixToolset.Web
 
             app.UseDefaultFiles(new DefaultFilesOptions
             {
-                DefaultFileNames = new[] { "index.html", "index.feed" }
+                DefaultFileNames = new[] { "index.html", "index.feed", "index.xsd" }
             }).UseStaticFiles(new StaticFileOptions
             {
                 ContentTypeProvider = StaticContentTypes(),
@@ -111,6 +111,7 @@ namespace WixToolset.Web
             provider.Mappings[".feed"] = "application/atom+xml";
             provider.Mappings[".wxl"] = "application/xml";
             provider.Mappings[".vbs"] = "text/plain";
+            provider.Mappings[".xsd"] = "application/xml";
 
             return provider;
         }
