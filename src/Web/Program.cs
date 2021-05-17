@@ -17,7 +17,7 @@ namespace WixToolset.Web
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseKestrel(options => options.AddServerHeader = false)
-                              //.UseContentRoot(Directory.GetCurrentDirectory())
+                              .UseIIS()
                               .UseStartup<Startup>();
                 });
     }
