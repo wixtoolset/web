@@ -13,7 +13,7 @@ if (($env:APPVEYOR_REPO_BRANCH -ne "master") -or (Test-Path env:\APPVEYOR_PULL_R
 }
 
 git config --global credential.helper store
-Add-Content "$env:USERPROFILE\.git-credentials" "https://$($GithubAccessToken):x-oauth-basic@github.com`n"
+Set-Content "$env:USERPROFILE\.git-credentials" "https://$($GithubAccessToken):x-oauth-basic@github.com`n"
 
 git tag -a v$Version -m "Build v$Version"
 git push --quiet --tags origin HEAD:master
