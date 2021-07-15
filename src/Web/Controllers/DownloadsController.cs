@@ -27,8 +27,8 @@ namespace WixToolset.Web
                 return this.Redirect("/releases");
             }
 
-            // The static.wixtoolset.org is case sensitive and all files there are lower case.
-            var redirect = String.Format("http://static.wixtoolset.org/releases/{0}/{1}", versionString.Prefixed, file).ToLowerInvariant();
+            // The blob.core.windows.net is case sensitive and all files there are lower case.
+            var redirect = String.Format("https://wixdl.blob.core.windows.net/releases/{0}/{1}", versionString.Prefixed, file).ToLowerInvariant();
 
             var visit = await this.HttpContext.CreateVisitEntityAsync("download", $"Version={versionString.Nonprefixed}+File={file}");
 
