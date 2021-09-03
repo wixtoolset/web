@@ -13,40 +13,42 @@ draft: false
 
 ## Proposal
 
+`REINSTALLMODE` has many different flags, but in the real world everyone is only interested in customizing the mutually exclusive file versioning flags: `p`, `o`, `e`, `d`, and `a`.
+`c` is essentially deprecated at this point since no one provides the checksum information in the File table.
+`u`, `m`, `s`, and `v` all have clearly defined use cases such that the Burn engine can continue to set these without input from the BA.
+
+
 Add new parameter to `OnPlanMsiPackage`:
 
-    enum BOOTSTRAPPER_REINSTALLMODE
+    enum BOOTSTRAPPER_MSI_FILE_VERSIONING
     {
-        BOOTSTRAPPER_REINSTALLMODE_AMUS,
-        BOOTSTRAPPER_REINSTALLMODE_OMUS,
-        BOOTSTRAPPER_REINSTALLMODE_VAMUS,
-        BOOTSTRAPPER_REINSTALLMODE_VOMUS,
-        BOOTSTRAPPER_REINSTALLMODE_CMUSA,
-        BOOTSTRAPPER_REINSTALLMODE_CMUSE,
-        BOOTSTRAPPER_REINSTALLMODE_CMUSO,
+        BOOTSTRAPPER_MSI_FILE_VERSIONING_MISSING_OR_OLDER,          //o
+        BOOTSTRAPPER_MSI_FILE_VERSIONING_MISSING_OR_OLDER_OR_EQUAL, //e
+        BOOTSTRAPPER_MSI_FILE_VERSIONING_ALL,                       //a
     };
 
     struct BA_ONPLANMSIPACKAGE_RESULTS
     {
         (existing parameters)
-        BOOTSTRAPPER_REINSTALLMODE reinstallMode;
+        BOOTSTRAPPER_MSI_FILE_VERSIONING fileVersioning;
     }
 
-`reinstallMode` will default to the value that Burn currently uses.
+`fileVersioning` will default to the value that Burn currently uses (`e` for repair, `o` for everything else).
+Note that this will now require Burn to explicitly set REINSTALLMODE for install where it was previously not specifying it to use the default `omus`.
 
 The recently added MEND feature will be removed since it can be achieved with this new functionality.
 
 
 ## Considerations
 
-The enum value names require knowing what each letter does. It might be better to have a more descriptive name, although that will probably just mean having to read Burn documentation in addition to MSI documentation.
+`p` and `e` were omitted since most people use `o`, `e`, or `a`. There's no technical reason for not adding them later if people ask for it.
 
-Providing an enum instead of letting the BA pick an arbitrary string is a compromise between giving the BA full control over `REINSTALLMODE` and giving it no control.
-
-Allowing `REINSTALLMODE` to be specified at build time like v3 was an anti-goal because using the same mode for all operations is almost always the wrong thing to do. Allowing `REINSTALLMODE` to be specified declaratively at build time per action is something that could possibly be added later.
+Allowing `REINSTALLMODE` to be specified at build time like v3 was an anti-goal because using the same mode for all operations is almost always the wrong thing to do.
+Allowing `REINSTALLMODE` to be customized declaratively at build time per action is something that could possibly be added later.
 
 
 ## See Also
 
+* [MSI REINSTALLMODE property](https://docs.microsoft.com/en-us/windows/win32/msi/reinstallmode)
 * [WIXFEAT:5911](https://github.com/wixtoolset/issues/issues/5911)
 * [MEND pull request](https://github.com/wixtoolset/burn/pull/51)
