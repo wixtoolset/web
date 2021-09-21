@@ -56,7 +56,7 @@ layout: documentation_xsd_main
       <tr>
         <td>SuppressSignatureVerification</td>
         <td><a href="../wix/simple_type_yesnotype.html">YesNoType</a></td>
-        <td>             By default, a Bundle will use a package's Authenticode signature to verify the contents. If the package does not             have an Authenticode signature then the Bundle will use a hash of the package instead. Set this attribute to "yes"             to suppress the default behavior and force the Bundle to always use the hash of the package even when the package             is signed.           </td>
+        <td>             By default, a Bundle will use the hash of a payload to verify its contents. If this attribute is explicitly set to "no"             and the payload is signed with an Authenticode signature the Bundle will verify the contents of the payload using the             signature instead. Therefore, the default for this attribute could be considered to be "yes". It is unusual for "yes" to             be the default of an attribute. In this case, the default was changed in WiX v3.9 after experiencing real-world issues             with Windows verifying Authenticode signatures. Since the Authenticode signatures are no more secure than hashing the             payloads directly, the default was changed.           </td>
         <td>&nbsp;</td>
       </tr>
     </table>
