@@ -24,7 +24,9 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element ref="Font" maxOccurs="unbounded" />
-                <xs:element ref="Window" />
+                <xs:element ref="Image" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element ref="ImageList" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element ref="Window" minOccurs="1" maxOccurs="1" />
             </xs:sequence>
             <xs:attribute name="ImageFile" type="xs:string">
                 <xs:annotation>
@@ -39,6 +41,7 @@
                 <xs:annotation>
                     <xs:documentation>
                         Identifier that references an image resource in the module for the window.
+                        This image is referenced by controls using the SourceX and SourceY attributes.
                         Mutually exclusive with the ImageFile attribute.
                     </xs:documentation>
                 </xs:annotation>
@@ -56,9 +59,9 @@
                     <xs:annotation>
                         <xs:documentation>Name of the font face (required).</xs:documentation>
                     </xs:annotation>
-                    <xs:attribute name="Id" type="xs:nonNegativeInteger" use="required">
+                    <xs:attribute name="Id" type="xs:string" use="required">
                         <xs:annotation>
-                            <xs:documentation>Numeric identifier for the font. Due to limitations in thmutil the first Font must start with "0" and each subsequent Font must increment the Id by 1. Failure to ensure the Font identifiers follow this strict ordering will create unexpected behavior or crashes.</xs:documentation>
+                            <xs:documentation>Identifier for the font.</xs:documentation>
                         </xs:annotation>
                     </xs:attribute>
                     <xs:attribute name="Height" type="xs:int" use="required">
@@ -101,13 +104,51 @@
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="Image">
+        <xs:annotation>
+            <xs:documentation>
+                Defines an image which can be shared between multiple controls.
+                If alternates are provided, the dimensions of the destination rectangle are compared to all of the available sources:
+                1. If there is an exact match for width and height then that source will be used (no scaling required).
+                2. If there is not an exact match then the smallest source whose width and height are larger or equal to the destination will be used and downscaled.
+                3. If there is still no match then the largest source will be used and upscaled.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="AlternateResolution" />
+            </xs:choice>
+            <xs:attribute name="Id" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation>Identifier for the Image.</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="ImageFile" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                        Relative path to an image file for the control.
+                        Mutually exclusive with ImageResource attribute.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="ImageResource" type="xs:nonNegativeInteger">
+                <xs:annotation>
+                    <xs:documentation>
+                        Identifier that references an image resource with type RT_RCDATA in the module for the control.
+                        Mutually exclusive with ImageFile attribute.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
     <xs:element name="ImageList">
         <xs:annotation>
             <xs:documentation>List of images which can be shared between multiple controls.</xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:choice maxOccurs="unbounded">
-                <xs:element ref="Image" />
+                <xs:element ref="ImageListItem" />
             </xs:choice>
             <xs:attribute name="Name" type="xs:string" use="required">
                 <xs:annotation>
@@ -141,7 +182,6 @@
         </xs:annotation>
         <xs:complexType>
             <xs:choice minOccurs="0" maxOccurs="unbounded">
-                <xs:element ref="ImageList" />
                 <xs:element ref="Page" />
                 <xs:group ref="ControlElements" minOccurs="0" maxOccurs="unbounded" />
             </xs:choice>
@@ -158,55 +198,61 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
-            <xs:attribute name="FontId" type="xs:nonNegativeInteger" use="required">
+            <xs:attribute name="FontId" type="xs:string" use="required">
                 <xs:annotation>
-                    <xs:documentation>Numeric identifier to the Font element that serves as the default font for the window.</xs:documentation>
+                    <xs:documentation>Identifier to the Font element that serves as the default font for the window.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="Height" type="xs:positiveInteger" use="required">
                 <xs:annotation>
-                    <xs:documentation>Height of the window.</xs:documentation>
+                    <xs:documentation>Height of the window's client area.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="HexStyle" type="xs:hexBinary">
                 <xs:annotation>
                     <xs:documentation>
-                        Hexadecimal window style. If this is not specified the default value is: WS_OVERLAPPED | WS_VISIBLE | WS_MINIMIZEBOX | WS_SYSMENU.
+                        Hexadecimal window style. If this is not specified the default value is: WS_OVERLAPPED | WS_VISIBLE | WS_MINIMIZEBOX | WS_SYSMENU | WS_CAPTION.
                         If SourceX and SourceY are specified, then WS_OVERLAPPED is replaced with WS_POPUP.
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="IconFile" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation>Relative path to an icon file for the window. Mutually exclusive with IconResource and SourceX and SourceY attributes.</xs:documentation>
+                    <xs:documentation>Relative path to an icon file for the window. Mutually exclusive with IconResource attribute.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="IconResource" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>
                         Identifier that references an icon resource in the module for the icon for the window.
-                        Mutually exclusive with IconFile and SourceX and SourceY attributes.
+                        Mutually exclusive with IconFile attribute.
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="MinimumHeight" type="xs:positiveInteger">
                 <xs:annotation>
-                    <xs:documentation>Minimum height of the window. Only functions if AutoResize is enabled.</xs:documentation>
+                    <xs:documentation>Minimum height of the window. Can only be specified if AutoResize is enabled.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="MinimumWidth" type="xs:positiveInteger">
                 <xs:annotation>
-                    <xs:documentation>Minimum width of the window. Only functions if AutoResize is enabled.</xs:documentation>
+                    <xs:documentation>Minimum width of the window. Can only be specified if AutoResize is enabled.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="SourceX" type="xs:nonNegativeInteger">
                 <xs:annotation>
-                    <xs:documentation>X offset of the window background in the Theme/@ImageFile. Mutually exclusive with IconFile and IconResource.</xs:documentation>
+                    <xs:documentation>
+                        X offset of the window background in the Theme/@ImageFile or Theme/@ImageResource.
+                        Can only be specified with Theme/@ImageFile or Theme/@ImageResource.
+                    </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="SourceY" type="xs:nonNegativeInteger">
                 <xs:annotation>
-                    <xs:documentation>Y offset of the window background in the Theme/@ImageFile. Mutually exclusive with IconFile and IconResource.</xs:documentation>
+                    <xs:documentation>
+                        Y offset of the window background in the Theme/@ImageFile or Theme/@ImageResource.
+                        Can only be specified with Theme/@ImageFile or Theme/@ImageResource.
+                    </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="StringId" type="xs:nonNegativeInteger">
@@ -219,7 +265,7 @@
             </xs:attribute>
             <xs:attribute name="Width" type="xs:positiveInteger" use="required">
                 <xs:annotation>
-                    <xs:documentation>Width of the window.</xs:documentation>
+                    <xs:documentation>Width of the window's client area.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
         </xs:complexType>
@@ -227,23 +273,58 @@
 
     <xs:element name="Billboard">
         <xs:annotation>
-            <xs:documentation>Defines a control that rotates through a set of images on a specified interval.</xs:documentation>
+            <xs:documentation>Defines a control that rotates through a set of panels on a specified interval.</xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="Image" />
+                <xs:element ref="BillboardPanel" />
             </xs:sequence>
             <xs:attributeGroup ref="CommonControlAttributes" />
             <xs:attribute name="Interval" type="xs:positiveInteger">
                 <xs:annotation>
                     <xs:documentation>
-                        Specifies the time to wait before showing the next image, in milliseconds.
+                        Specifies the time to wait before showing the next panel, in milliseconds.
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="Loop" type="YesNoType">
                 <xs:annotation>
-                    <xs:documentation>Specifies whether the billboard should loop through the images infinitely.</xs:documentation>
+                    <xs:documentation>Specifies whether the billboard should loop through the panels infinitely.</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="BillboardPanel">
+        <xs:annotation>
+            <xs:documentation>Defines a collection of controls.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:group ref="ControlElements" maxOccurs="unbounded"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="AlternateResolution">
+        <xs:annotation>
+            <xs:documentation>
+                Defines an alternate resolution to avoid scaling in different DPIs.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attribute name="ImageFile" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                        Relative path to an image file for the control.
+                        Mutually exclusive with ImageResource attribute.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="ImageResource" type="xs:nonNegativeInteger">
+                <xs:annotation>
+                    <xs:documentation>
+                        Identifier that references an image resource with type RT_RCDATA in the module for the control.
+                        Mutually exclusive with ImageFile attribute.
+                    </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
         </xs:complexType>
@@ -251,7 +332,9 @@
 
     <xs:element name="Button">
         <xs:annotation>
-            <xs:documentation>Defines a button.</xs:documentation>
+            <xs:documentation>
+                Defines a button.
+            </xs:documentation>
         </xs:annotation>
         <xs:complexType mixed="true">
             <xs:annotation>
@@ -267,6 +350,10 @@
                         If none of the conditions of the Action elements are true, then it uses the Action element without the Condition attribute.
                     </xs:documentation>
                 </xs:annotation>
+                <xs:element ref="ButtonImage" maxOccurs="1" />
+                <xs:element ref="ButtonFocusImage" maxOccurs="1" />
+                <xs:element ref="ButtonHoverImage" maxOccurs="1" />
+                <xs:element ref="ButtonSelectedImage" maxOccurs="1" />
                 <xs:element ref="BrowseDirectoryAction" />
                 <xs:element ref="ChangePageAction" />
                 <xs:element ref="CloseWindowAction" />
@@ -274,37 +361,20 @@
                 <xs:element ref="Tooltip" maxOccurs="1" />
             </xs:choice>
             <xs:attributeGroup ref="CommonControlAttributes" />
-            <xs:attribute name="FontId" type="xs:nonNegativeInteger" use="required">
+            <xs:attributeGroup ref="OwnerDrawImageAttributes" />
+            <xs:attribute name="FontId" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation>Numeric identifier to the Font element that serves as the font for the control. Only valid when using graphic buttons.</xs:documentation>
+                    <xs:documentation>Identifier to the Font element that serves as the font for the control. Only valid when using graphic buttons.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
-            <xs:attribute name="HoverFontId" type="xs:nonNegativeInteger">
+            <xs:attribute name="HoverFontId" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation>Numeric identifier to the Font element that serves as the font when the control is hovered over. Only valid when using graphic buttons.</xs:documentation>
+                    <xs:documentation>Identifier to the Font element that serves as the font when the control is hovered over. Only valid when using graphic buttons.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
-            <xs:attribute name="ImageFile" type="xs:string">
+            <xs:attribute name="SelectedFontId" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation>
-                        Relative path to an image file to define a graphic button.
-                        The image must be 4x the height to represent the button in 4 states: unselected, hover, selected, focused.
-                        Mutually exclusive with ImageResource and SourceX and SourceY attributes.
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
-            <xs:attribute name="ImageResource" type="xs:string">
-                <xs:annotation>
-                    <xs:documentation>
-                        Identifier that references an image resource in the module to define a graphic button.
-                        The image must be 4x the height to represent the button in 4 states: unselected, hover, selected, focused.
-                        Mutually exclusive with ImageFile and SourceX and SourceY attributes.
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
-            <xs:attribute name="SelectedFontId" type="xs:nonNegativeInteger">
-                <xs:annotation>
-                    <xs:documentation>Numeric identifier to the Font element that serves as the font when the control is selected. Only valid when using graphic buttons.</xs:documentation>
+                    <xs:documentation>Identifier to the Font element that serves as the font when the control is selected. Only valid when using graphic buttons.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="StringId" type="xs:nonNegativeInteger">
@@ -314,6 +384,55 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ButtonImage">
+        <xs:annotation>
+            <xs:documentation>
+                Defines a button image.
+                ButtonHoverImage and ButtonSelectedImage are required with ButtonImage.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attributeGroup ref="OwnerDrawImageAttributes" />
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ButtonFocusImage">
+        <xs:annotation>
+            <xs:documentation>
+                Defines a button image that is used when the control has focus.
+                ButtonImage, ButtonHoverImage, and ButtonSelectedImage are required with ButtonFocusImage.
+                If not specified, then the default focus rectangle is drawn on top of ButtonImage.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attributeGroup ref="OwnerDrawImageAttributes" />
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ButtonHoverImage">
+        <xs:annotation>
+            <xs:documentation>
+                Defines a button image that is used when the control is hovered over.
+                ButtonImage and ButtonSelectedImage are required with ButtonHoverImage.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attributeGroup ref="OwnerDrawImageAttributes" />
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ButtonSelectedImage">
+        <xs:annotation>
+            <xs:documentation>
+                Defines a button image that is used when the control is selected.
+                ButtonImage and ButtonHoverImage are required with ButtonSelectedImage.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attributeGroup ref="OwnerDrawImageAttributes" />
         </xs:complexType>
     </xs:element>
 
@@ -405,9 +524,9 @@
                 <xs:element ref="Tooltip" maxOccurs="1" />
             </xs:choice>
             <xs:attributeGroup ref="CommonControlAttributes" />
-            <xs:attribute name="FontId" type="xs:nonNegativeInteger" use="required">
+            <xs:attribute name="FontId" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation>Numeric identifier to the Font element that serves as the font for the control.</xs:documentation>
+                    <xs:documentation>Identifier to the Font element that serves as the font for the control.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="StringId" type="xs:nonNegativeInteger">
@@ -426,9 +545,9 @@
         </xs:annotation>
         <xs:complexType>
             <xs:attributeGroup ref="CommonControlAttributes" />
-            <xs:attribute name="FontId" type="xs:nonNegativeInteger" use="required">
+            <xs:attribute name="FontId" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation>Numeric identifier to the Font element that serves as the font for the control.</xs:documentation>
+                    <xs:documentation>Identifier to the Font element that serves as the font for the control.</xs:documentation>
                 </xs:annotation>
              </xs:attribute>
         </xs:complexType>
@@ -459,16 +578,16 @@
                 <xs:element ref="Text" />
             </xs:choice>
             <xs:attributeGroup ref="CommonControlAttributes" />
-            <xs:attribute name="FontId" type="xs:nonNegativeInteger" use="required">
+            <xs:attribute name="FontId" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation>Numeric identifier to the Font element that serves as the font for the control. Only valid when using graphic buttons.</xs:documentation>
+                    <xs:documentation>Identifier to the Font element that serves as the font for the control. Only valid when using graphic buttons.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="IconFile" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>
                         Relative path to an icon file to define a command link glyph.
-                        Mutually exclusive with ImageResource and SourceX and SourceY attributes.
+                        Mutually exclusive with IconResource and ImageFile and ImageResource attributes.
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
@@ -476,7 +595,7 @@
                 <xs:annotation>
                     <xs:documentation>
                         Identifier that references an icon resource in the module to define a command link glyph.
-                        Mutually exclusive with ImageFile and SourceX and SourceY attributes.
+                        Mutually exclusive with IconFile and ImageFile and ImageResource attributes.
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
@@ -484,7 +603,7 @@
                 <xs:annotation>
                     <xs:documentation>
                         Relative path to an image file to define a command link glyph.
-                        Mutually exclusive with ImageResource and SourceX and SourceY attributes.
+                        Mutually exclusive with IconFile and IconResource and ImageResource attributes.
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
@@ -492,7 +611,7 @@
                 <xs:annotation>
                     <xs:documentation>
                         Identifier that references an image resource in the module to define a command link glyph.
-                        Mutually exclusive with ImageFile and SourceX and SourceY attributes.
+                        Mutually exclusive with IconFile and IconResource and ImageFile attributes.
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
@@ -525,9 +644,9 @@
                             <xs:documentation>Specifies whether the edit box should auto-complete with file system paths.</xs:documentation>
                         </xs:annotation>
                     </xs:attribute>
-                    <xs:attribute name="FontId" type="xs:nonNegativeInteger" use="required">
+                    <xs:attribute name="FontId" type="xs:string">
                         <xs:annotation>
-                            <xs:documentation>Numeric identifier to the Font element that serves as the font for the control.</xs:documentation>
+                            <xs:documentation>Identifier to the Font element that serves as the font for the control.</xs:documentation>
                         </xs:annotation>
                     </xs:attribute>
                     <xs:attribute name="StringId" type="xs:nonNegativeInteger">
@@ -558,19 +677,19 @@
                 <xs:element ref="Tooltip" maxOccurs="1" />
             </xs:choice>
             <xs:attributeGroup ref="CommonControlAttributes" />
-            <xs:attribute name="FontId" type="xs:nonNegativeInteger" use="required">
+            <xs:attribute name="FontId" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation>Numeric identifier to the Font element that serves as the unselected font.</xs:documentation>
+                    <xs:documentation>Identifier to the Font element that serves as the unselected font.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
-            <xs:attribute name="HoverFontId" type="xs:nonNegativeInteger" use="required">
+            <xs:attribute name="HoverFontId" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation>Numeric identifier to the Font element that serves as the font when the control is hovered over.</xs:documentation>
+                    <xs:documentation>Identifier to the Font element that serves as the font when the control is hovered over.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
-            <xs:attribute name="SelectedFontId" type="xs:nonNegativeInteger" use="required">
+            <xs:attribute name="SelectedFontId" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation>Numeric identifier to the Font element that serves as the font when the control is selected.</xs:documentation>
+                    <xs:documentation>Identifier to the Font element that serves as the font when the control is selected.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="StringId" type="xs:nonNegativeInteger">
@@ -600,9 +719,9 @@
                 <xs:element ref="Tooltip" maxOccurs="1" />
             </xs:choice>
             <xs:attributeGroup ref="CommonControlAttributes" />
-            <xs:attribute name="FontId" type="xs:nonNegativeInteger" use="required">
+            <xs:attribute name="FontId" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation>Numeric identifier to the Font element that serves as the font for the control.</xs:documentation>
+                    <xs:documentation>Identifier to the Font element that serves as the font for the control.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="StringId" type="xs:nonNegativeInteger">
@@ -615,9 +734,9 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="Image">
+    <xs:element name="ImageListItem">
         <xs:annotation>
-            <xs:documentation>Defines an image for an ImageList or Billboard.</xs:documentation>
+            <xs:documentation>Defines an image for an ImageList.</xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:attribute name="ImageFile" type="xs:string">
@@ -625,7 +744,7 @@
                     <xs:documentation>Relative path to an image file. Mutually exclusive with ImageResource.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
-            <xs:attribute name="ImageResource" type="xs:string">
+            <xs:attribute name="ImageResource" type="xs:nonNegativeInteger">
                 <xs:annotation>
                     <xs:documentation>Identifier that references an image resource in the module. Mutually exclusive with ImageFile.</xs:documentation>
                 </xs:annotation>
@@ -635,20 +754,11 @@
 
     <xs:element name="ImageControl">
         <xs:annotation>
-            <xs:documentation>Defines an image.</xs:documentation>
+            <xs:documentation>Defines an image control.</xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:attributeGroup ref="CommonControlAttributes" />
-            <xs:attribute name="ImageFile" type="xs:string">
-                <xs:annotation>
-                    <xs:documentation>Relative path to an image file. Mutually exclusive with ImageResource and SourceX and SourceY attributes.</xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
-            <xs:attribute name="ImageResource" type="xs:string">
-                <xs:annotation>
-                    <xs:documentation>Identifier that references an image resource in the module. Mutually exclusive with ImageFile and SourceX and SourceY attributes.</xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
+            <xs:attributeGroup ref="OwnerDrawImageAttributes" />
         </xs:complexType>
     </xs:element>
 
@@ -678,7 +788,7 @@
                     <xs:documentation>By default ampersands (&amp;) in the text will underline the next character and treat it as an accelerator key. Set this attribute to "yes" to disable that behavior. Default is "no".</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
-            <xs:attribute name="FontId" type="xs:nonNegativeInteger" use="required">
+            <xs:attribute name="FontId" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>Numeric identifier to the Font element that serves as the font for the control.</xs:documentation>
                 </xs:annotation>
@@ -702,9 +812,9 @@
                 <xs:element ref="Column" />
             </xs:choice>
             <xs:attributeGroup ref="CommonControlAttributes" />
-            <xs:attribute name="FontId" type="xs:nonNegativeInteger">
+            <xs:attribute name="FontId" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation>Numeric identifier to the Font element that serves as the default font for the ListView.</xs:documentation>
+                    <xs:documentation>Identifier to the Font element that serves as the default font for the ListView.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="HexExtendedStyle" type="xs:hexBinary">
@@ -783,20 +893,28 @@
 
     <xs:element name="Progressbar">
         <xs:annotation>
-            <xs:documentation>Defines a progress bar.</xs:documentation>
+            <xs:documentation>
+                Defines a progress bar.
+            </xs:documentation>
         </xs:annotation>
         <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="ProgressbarImage" />
+            </xs:choice>
             <xs:attributeGroup ref="CommonControlAttributes" />
-            <xs:attribute name="ImageFile" type="xs:string">
-                <xs:annotation>
-                    <xs:documentation>Relative path to an image file for the control. The image must be 4 pixels wide: left pixel is the left side of progress bar, left middle pixel is progress used, right middle pixel is progress unused, right pixel is right side of progress bar. Mutually exclusive with ImageResource and SourceX and SourceY attributes.</xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
-            <xs:attribute name="ImageResource" type="xs:string">
-                <xs:annotation>
-                    <xs:documentation>Identifier that references an image resource in the module for the control. The image must be 4 pixels wide: left pixel is the left side of progress bar, left middle pixel is progress used, right middle pixel is progress unused, right pixel is right side of progress bar. Mutually exclusive with ImageFile and SourceX and SourceY attributes.</xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ProgressbarImage">
+        <xs:annotation>
+            <xs:documentation>
+                Defines a progress bar image.
+                The image must be 4 pixels wide: left pixel is the left side of progress bar, left middle pixel is progress used, right middle pixel is progress unused, right pixel is right side of progress bar. 
+                If multiple ProgressbarImages are given, each is assigned an index in document order and can be selected programmatically with ThemeSetProgressControlColor.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attributeGroup ref="OwnerDrawImageAttributes" />
         </xs:complexType>
     </xs:element>
 
@@ -816,9 +934,9 @@
                 <xs:element ref="Tooltip" maxOccurs="1" />
             </xs:choice>
             <xs:attributeGroup ref="CommonControlAttributes" />
-            <xs:attribute name="FontId" type="xs:nonNegativeInteger" use="required">
+            <xs:attribute name="FontId" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation>Numeric identifier to the Font element that serves as the font for the control.</xs:documentation>
+                    <xs:documentation>Identifier to the Font element that serves as the font for the control.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="StringId" type="xs:nonNegativeInteger">
@@ -868,10 +986,10 @@
                 <xs:element ref="Tooltip" maxOccurs="1" />
             </xs:choice>
             <xs:attributeGroup ref="CommonControlAttributes" />
-            <xs:attribute name="FontId" type="xs:nonNegativeInteger" use="required">
+            <xs:attribute name="FontId" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>
-                        Numeric identifier to the Font element that serves as the font for the control.
+                        Identifier to the Font element that serves as the font for the control.
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
@@ -928,9 +1046,9 @@
                 <xs:element ref="Tab" />
             </xs:choice>
             <xs:attributeGroup ref="CommonControlAttributes" />
-            <xs:attribute name="FontId" type="xs:nonNegativeInteger" use="required">
+            <xs:attribute name="FontId" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation>Numeric identifier to the Font element that serves as the font for the control.</xs:documentation>
+                    <xs:documentation>Identifier to the Font element that serves as the font for the control.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
         </xs:complexType>
@@ -1090,11 +1208,6 @@
                 <xs:documentation>Optional name for the control.</xs:documentation>
             </xs:annotation>
         </xs:attribute>
-        <xs:attribute name="DisableAutomaticBehavior" type="YesNoType">
-            <xs:annotation>
-                <xs:documentation>Set to 'yes' to disable automatic variable getting and setting, EnableCondition, VisibleCondition, and conditional Text elements. The default is 'no'.</xs:documentation>
-            </xs:annotation>
-        </xs:attribute>
         <xs:attribute name="EnableCondition" type="xs:string">
             <xs:annotation>
                 <xs:documentation>A condition that determines if the control is enabled.  If this condition is true or omitted, then the control will be enabled.</xs:documentation>
@@ -1145,6 +1258,51 @@
         <xs:attribute name="Y" type="xs:int" use="required">
             <xs:annotation>
                 <xs:documentation>Y coordinate for the control from the top of the window. Negative values are coordinates from the bottom of the window minus the height of the control.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+
+    <xs:attributeGroup name="OwnerDrawImageAttributes">
+        <xs:attribute name="ImageId" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>
+                    Identifier to the Image element that serves as the image for the control.
+                    Mutually exclusive with ImageFile and ImageResource and SourceX and SourceY attributes.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="ImageFile" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>
+                    Relative path to an image file for the control.
+                    Mutually exclusive with ImageId and ImageResource and SourceX and SourceY attributes.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="ImageResource" type="xs:nonNegativeInteger">
+            <xs:annotation>
+                <xs:documentation>
+                    Identifier that references an image resource with type RT_RCDATA in the module for the control.
+                    Mutually exclusive with ImageId and ImageFile and SourceX and SourceY attributes.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="SourceX" type="xs:nonNegativeInteger">
+            <xs:annotation>
+                <xs:documentation>
+                    X offset of the Theme/@ImageFile or Theme/@ImageResource.
+                    Can only be specified with Theme/@ImageFile or Theme/@ImageResource.
+                    Mutually exclusive with ImageId and ImageFile and ImageResource attributes.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="SourceY" type="xs:nonNegativeInteger">
+            <xs:annotation>
+                <xs:documentation>
+                    Y offset of the Theme/@ImageFile or Theme/@ImageResource.
+                    Can only be specified with Theme/@ImageFile or Theme/@ImageResource.
+                    Mutually exclusive with ImageId and ImageFile and ImageResource attributes.
+                </xs:documentation>
             </xs:annotation>
         </xs:attribute>
     </xs:attributeGroup>
