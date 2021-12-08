@@ -1916,7 +1916,7 @@
         <xs:element ref="SetProperty" />
         <xs:element ref="SFPCatalog" />
         <!-- TODO: <xs:element ref="SoftwareTag" /> -->
-        <!-- TODO: <xs:element ref="StandardDirectory" /> -->
+        <xs:element ref="StandardDirectory" />
         <xs:element ref="SummaryInformation" />
         <xs:element ref="SymbolPath" />
         <xs:element ref="UI" />
@@ -2069,6 +2069,7 @@
           <xs:element ref="SetDirectory" />
           <xs:element ref="SetProperty" />
           <xs:element ref="SFPCatalog" />
+          <xs:element ref="StandardDirectory" />
           <xs:element ref="Substitution" />
           <xs:element ref="UI" />
           <xs:element ref="UIRef" />
@@ -2352,7 +2353,7 @@
         <xs:element ref="SetVariable" />
         <xs:element ref="SetVariableRef" />
         <xs:element ref="SFPCatalog" />
-        <!-- TODO: <xs:element ref="StandardDirectory" />-->
+        <xs:element ref="StandardDirectory" />
         <xs:element ref="UI" />
         <xs:element ref="UIRef" />
         <xs:element ref="Upgrade" />
@@ -8135,9 +8136,9 @@
         <xs:any namespace="##other" processContents="lax">
           <xs:annotation>
             <xs:documentation>
-                        Extensibility point in the WiX XML Schema. Schema extensions can register additional
-                        elements at this point in the schema.
-                    </xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
           </xs:annotation>
         </xs:any>
       </xs:choice>
@@ -8149,23 +8150,23 @@
       <xs:attribute name="ComponentGuidGenerationSeed" type="Guid">
         <xs:annotation>
           <xs:documentation>
-                        The Component Guid Generation Seed is a guid that must be used when a Component with the generate guid directive ("*")
-                        is not rooted in a standard Windows Installer directory (for example, ProgramFilesFolder or CommonFilesFolder).
-                        It is recommended that this attribute be avoided and that developers install their Components under standard
-                        directories with unique names instead (for example, "ProgramFilesFolder\Company Name Product Name Version"). It is
-                        important to note that once a directory is assigned a Component Guid Generation Seed the value must not change until
-                        (and must be changed when) the path to that directory, including itself and all parent directories, changes.
-                    </xs:documentation>
+            The Component Guid Generation Seed is a guid that must be used when a Component with the generate guid directive ("*")
+            is not rooted in a standard Windows Installer directory (for example, ProgramFilesFolder or CommonFilesFolder).
+            It is recommended that this attribute be avoided and that developers install their Components under standard
+            directories with unique names instead (for example, "ProgramFilesFolder\Company Name Product Name Version"). It is
+            important to note that once a directory is assigned a Component Guid Generation Seed the value must not change until
+            (and must be changed when) the path to that directory, including itself and all parent directories, changes.
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="DiskId" type="DiskIdType">
         <xs:annotation>
           <xs:documentation>
-                        Sets the default disk identifier for the files contained in this directory.
-                        This attribute's value may be overridden by a child Component, Directory,
-                        Merge or File element. See the File or Merge elements' DiskId attribute for
-                        more information.
-                    </xs:documentation>
+            Sets the default disk identifier for the files contained in this directory.
+            This attribute's value may be overridden by a child Component, Directory,
+            Merge or File element. See the File or Merge elements' DiskId attribute for
+            more information.
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="FileSource" type="xs:string">
@@ -8219,18 +8220,18 @@
       <xs:attribute name="SourceName" type="LongFileNameType">
         <xs:annotation>
           <xs:documentation>
-                        The name of the directory on the source media.
-                        If this attribute is not specified, Windows Installer will default to the Name attribute.
+            The name of the directory on the source media.
+            If this attribute is not specified, Windows Installer will default to the Name attribute.
 
-                        In prior versions of the WiX toolset, this attribute specified the short source directory name.
-                        This attribute's value may now be either a short or long directory name.
-                        If a short directory name is specified, the ShortSourceName attribute may not be specified.
-                        If a long directory name is specified, the LongSource attribute may not be specified.
-                        Also, if this value is a long directory name, the ShortSourceName attribute may be omitted to
-                        allow WiX to attempt to generate a unique short directory name.
-                        However, if this name collides with another directory or you wish to manually specify
-                        the short directory name, then the ShortSourceName attribute may be specified.
-                    </xs:documentation>
+            In prior versions of the WiX toolset, this attribute specified the short source directory name.
+            This attribute's value may now be either a short or long directory name.
+            If a short directory name is specified, the ShortSourceName attribute may not be specified.
+            If a long directory name is specified, the LongSource attribute may not be specified.
+            Also, if this value is a long directory name, the ShortSourceName attribute may be omitted to
+            allow WiX to attempt to generate a unique short directory name.
+            However, if this name collides with another directory or you wish to manually specify
+            the short directory name, then the ShortSourceName attribute may be specified.
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:anyAttribute namespace="##other" processContents="lax">
@@ -8259,9 +8260,9 @@
         <xs:any namespace="##other" processContents="lax">
           <xs:annotation>
             <xs:documentation>
-                        Extensibility point in the WiX XML Schema. Schema extensions can register additional
-                        elements at this point in the schema.
-                    </xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
           </xs:annotation>
         </xs:any>
       </xs:choice>
@@ -8273,11 +8274,11 @@
       <xs:attribute name="DiskId" type="DiskIdType">
         <xs:annotation>
           <xs:documentation>
-                        Sets the default disk identifier for the files contained in this directory.
-                        This attribute's value may be overridden by a child Component, Directory,
-                        Merge or File element. See the File or Merge elements' DiskId attribute for
-                        more information.
-                    </xs:documentation>
+            Sets the default disk identifier for the files contained in this directory.
+            This attribute's value may be overridden by a child Component, Directory,
+            Merge or File element. See the File or Merge elements' DiskId attribute for
+            more information.
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="FileSource" type="xs:string">
@@ -8288,9 +8289,46 @@
       <xs:anyAttribute namespace="##other" processContents="lax">
         <xs:annotation>
           <xs:documentation>
-                    Extensibility point in the WiX XML Schema. Schema extensions can register additional
-                    attributes at this point in the schema.
-                </xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:anyAttribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StandardDirectory">
+    <xs:annotation>
+      <xs:documentation>References a standard Windows Installer directory, such as ProgramFilesFolder.</xs:documentation>
+      <xs:appinfo>
+        <xse:seeAlso ref="Directory" />
+        <xse:howtoRef href="files_and_registry/add_a_file.html">How To: Add a file to your installer</xse:howtoRef>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="Component" />
+        <xs:element ref="Directory" />
+        <xs:element ref="Merge" />
+        <xs:any namespace="##other" processContents="lax">
+          <xs:annotation>
+            <xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:any>
+      </xs:choice>
+      <xs:attribute name="Id" type="StandardDirectoryTypeUnion" use="required">
+        <xs:annotation>
+          <xs:documentation>The identifier of the standard directory to include in the package.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute namespace="##other" processContents="lax">
+        <xs:annotation>
+          <xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
         </xs:annotation>
       </xs:anyAttribute>
     </xs:complexType>
@@ -13005,6 +13043,50 @@
     </xs:annotation>
     <xs:restriction base="xs:string">
       <xs:pattern value="[0-9A-Fa-f]*" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="StandardDirectoryTypeUnion">
+    <xs:annotation>
+      <xs:documentation>A Windows Installer standard directory.</xs:documentation>
+    </xs:annotation>
+    <xs:union memberTypes="StandardDirectoryType PreprocessorVariables"/>
+  </xs:simpleType>
+  <xs:simpleType name="StandardDirectoryType">
+    <xs:annotation>
+      <xs:documentation>A Windows Installer standard directory.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:NMTOKEN">
+      <xs:enumeration value="TARGETDIR" />
+      <xs:enumeration value="AdminToolsFolder" />
+      <xs:enumeration value="AppDataFolder" />
+      <xs:enumeration value="CommonAppDataFolder" />
+      <xs:enumeration value="CommonFilesFolder" />
+      <xs:enumeration value="CommonFiles64Folder" />
+      <xs:enumeration value="CommonFiles6432Folder" />
+      <xs:enumeration value="DesktopFolder" />
+      <xs:enumeration value="FavoritesFolder" />
+      <xs:enumeration value="FontsFolder" />
+      <xs:enumeration value="LocalAppDataFolder" />
+      <xs:enumeration value="MyPicturesFolder" />
+      <xs:enumeration value="NetHoodFolder" />
+      <xs:enumeration value="PersonalFolder" />
+      <xs:enumeration value="PrintHoodFolder" />
+      <xs:enumeration value="ProgramFilesFolder" />
+      <xs:enumeration value="ProgramFiles64Folder" />
+      <xs:enumeration value="ProgramFiles6432Folder" />
+      <xs:enumeration value="ProgramMenuFolder" />
+      <xs:enumeration value="RecentFolder" />
+      <xs:enumeration value="SendToFolder" />
+      <xs:enumeration value="StartMenuFolder" />
+      <xs:enumeration value="StartupFolder" />
+      <xs:enumeration value="SystemFolder" />
+      <xs:enumeration value="System16Folder" />
+      <xs:enumeration value="System64Folder" />
+      <xs:enumeration value="System6432Folder" />
+      <xs:enumeration value="TempFolder" />
+      <xs:enumeration value="TemplateFolder" />
+      <xs:enumeration value="WindowsFolder" />
+      <xs:enumeration value="WindowsVolume" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="YesNoTypeUnion">
