@@ -8,19 +8,28 @@ sidebarTitle: Additional information
 sidebarItems: [
   { uri: "http://www.dotnetfoundation.org/",
     text: ".NET Foundation" },
-  { uri: "https://cla2.dotnetfoundation.org/cladoc/net-foundation-contribution-license-agreement.pdf",
-    text: "Example Contribution License Agreement" }
+  { uri: "https://github.com/wixtoolset/Home/blob/master/DNFCLA.md",
+    text: "Contribution License Agreement" }
 ]
 ---
 
 ## WiX Toolset Contribution License Agreement
 
-The WiX toolset copyright is held by the [.NET Foundation](http://dotnetfoundation.org/). Before we can accept any contributions you must have a Contribution License Agreement on file with the .NET Foundation. Fortunately the process is very easy. Just follow these steps:
+The WiX toolset copyright is held by the [.NET Foundation][dnf].
+Before we can accept any contributions you must have a [Contribution License Agreement][cla] on file.
+Fortunately the process is very easy.
 
-1. If you don't have a GitHub account, [create one](https://github.com/join).
+When you submit your first pull request, there will be a prompt to accept the CLA in the comments.
+After reading the CLA you can accept it by responding with a comment saying `I have read the CLA Document and I hereby sign the CLA`.
+This will only necessary for your first pull request.
 
-2. Go [here](https://cla2.dotnetfoundation.org/) to authorize the .NET Foundation to access your GitHub account information.
+So go out there!
+Participate in design discussions.
+Get your code written.
+Post the pull request for code reviewe.
+Then respond to the CLA prompt and your contribution will be ready to be merged into the WiX toolset.
 
-3. Complete the Contribution License Agreement form and electronically sign the document.
+Happy coding!
 
-While this process is underway you can participate in design discussions and actually write code. However, your code cannot be merged into the WiX toolset until the contribution license agreement is in place.
+[dnf]: http://dotnetfoundation.org/
+[cla]: https://github.com/wixtoolset/Home/blob/master/DNFCLA.md
