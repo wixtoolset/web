@@ -1390,7 +1390,10 @@
       <xs:attributeGroup ref="SearchCommonAttributes" />
       <xs:attribute name="Value" type="xs:string">
         <xs:annotation>
-          <xs:documentation>New value for the variable.</xs:documentation>
+          <xs:documentation>
+            New value for the variable. This string gets formatted, then converted to the specified type, then assigned to the variable.
+            Leaving Value and Type unspecified will clear the variable.
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Type" type="VariableType">
