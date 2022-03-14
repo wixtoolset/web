@@ -90,6 +90,7 @@
         <xs:element ref="RelatedBundle" />
         <xs:element ref="SetVariable" />
         <xs:element ref="SetVariableRef" />
+        <xs:element ref="SoftwareTag" />
         <xs:element ref="Update" />
         <xs:element ref="Variable" />
         <xs:element ref="WixVariable" />
@@ -1915,7 +1916,7 @@
         <xs:element ref="SetDirectory" />
         <xs:element ref="SetProperty" />
         <xs:element ref="SFPCatalog" />
-        <!-- TODO: <xs:element ref="SoftwareTag" /> -->
+        <xs:element ref="SoftwareTag" />
         <xs:element ref="StandardDirectory" />
         <xs:element ref="SummaryInformation" />
         <xs:element ref="SymbolPath" />
@@ -8296,6 +8297,78 @@
       </xs:anyAttribute>
     </xs:complexType>
   </xs:element>
+  <xs:element name="SoftwareTag">
+    <xs:annotation>
+      <xs:documentation>
+        This extension implements the ISO/IEC 19770-2:2015 specification. A SWID tag file
+        will be generated an inserted into the Package or Bundle.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="Name" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>
+              Name to use in the filename for the software id tag. By default the filename
+              uses the Bundle/@Name or Package/@Name. If the bundle name or package name contains
+              invalid filename characters such as ":" or "?", use this attribute to provide
+              a valid filename.
+            </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Regid" type="xs:string" use="required">
+        <xs:annotation>
+            <xs:documentation>
+              The regid for the software manufacturer. A regid is a URI simplified for the common
+              case. Namely, if the scheme is "http://", it can be removed. Additionally, the domain
+              should be minimized as much as possible (for example, remove "www." prefix if unnecessary).
+
+              For example, the WiX toolset regid is "wixtoolset.org".
+            </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="InstallDirectory" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>
+              A reference to an existing Directory/@Id where the software is installed. The SWID tag file will be installed in a "swidtag" folder
+              under that directory as per the specification. This attribute is required on a SoftwareTag element found under a Package element.
+            </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="InstallPath" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>
+              The path where the software is installed. The SWID tag file will be installed in a "swidtag" folder.
+              This is a formatted attribute so it is possible to use Variables as the InstallPath by setting
+              the value to, for example, "[ProgramFilesFolder]CompanyName\Product Name". This attribute is required
+              on a SoftwareTag element found under a Bundle element.
+            </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Feature" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>
+              Optional attribute to explicitly set the Feature when defining the software id tag
+              in a Package. By default the software id tag will always be installed by a top-level hidden feature.
+              It is recommended to <html:strong>not</html:strong> set this attribute.
+            </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Bitness" type="BitnessTypeUnion">
+        <xs:annotation>
+          <xs:documentation>
+            This attribute facilitates the installation of packages that install both 32-bit and 64-bit files. Set this attribute to 'always32'
+            force the software id tag to a 32-bit location (such as "ProgramFilesFolder") or 'always64' to force the tag to be installed to
+            a 64-bit location (such as "ProgramFiles64Folder").
+
+            The default value is `default` where the tag will be installed to the directory that matches the
+            same bitness as the package.
+
+            This attribute is only allowed on a SoftwareTag element found under a Package element.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="StandardDirectory">
     <xs:annotation>
       <xs:documentation>References a standard Windows Installer directory, such as ProgramFilesFolder.</xs:documentation>
@@ -11329,12 +11402,12 @@
   <xs:element name="Control">
     <xs:annotation>
       <xs:appinfo>
-        <xse:msiRef table="Control" href="http://msdn.microsoft.com/library/aa368044.aspx" />
+        <xse:msiRef table="Control" href="https://docs.microsoft.com/en-us/windows/win32/msi/control-table" />
         <xse:msiRef table="ComboBox" href="http://msdn.microsoft.com/library/aa367872.aspx" />
-        <xse:msiRef table="Dialog" href="http://msdn.microsoft.com/library/aa368286.aspx" />
+        <xse:msiRef table="Dialog" href="https://docs.microsoft.com/en-us/windows/win32/msi/dialog-table" />
         <xse:msiRef table="ListBox" href="http://msdn.microsoft.com/library/aa369762.aspx" />
         <xse:msiRef table="ListView" href="http://msdn.microsoft.com/library/aa369764.aspx" />
-        <xse:msiRef table="RadioButton" href="http://msdn.microsoft.com/library/aa370962.aspx" />
+        <xse:msiRef table="RadioButton" href="https://docs.microsoft.com/en-us/windows/win32/msi/radiobutton-table" />
       </xs:appinfo>
       <xs:documentation>Contains the controls that appear on each dialog.</xs:documentation>
     </xs:annotation>
@@ -11739,12 +11812,12 @@
   <xs:element name="Dialog">
     <xs:annotation>
       <xs:appinfo>
-        <xse:msiRef table="Control" href="http://msdn.microsoft.com/library/aa368044.aspx" />
+        <xse:msiRef table="Control" href="https://docs.microsoft.com/en-us/windows/win32/msi/control-table" />
         <xse:msiRef table="ComboBox" href="http://msdn.microsoft.com/library/aa367872.aspx" />
-        <xse:msiRef table="Dialog" href="http://msdn.microsoft.com/library/aa368286.aspx" />
+        <xse:msiRef table="Dialog" href="https://docs.microsoft.com/en-us/windows/win32/msi/dialog-table" />
         <xse:msiRef table="ListBox" href="http://msdn.microsoft.com/library/aa369762.aspx" />
         <xse:msiRef table="ListView" href="http://msdn.microsoft.com/library/aa369764.aspx" />
-        <xse:msiRef table="RadioButton" href="http://msdn.microsoft.com/library/aa370962.aspx" />
+        <xse:msiRef table="RadioButton" href="https://docs.microsoft.com/en-us/windows/win32/msi/radiobutton-table" />
       </xs:appinfo>
       <xs:documentation>
                 Defines a dialog box in the Dialog Table.
@@ -11960,8 +12033,8 @@
                 Set of items for a particular ListBox control tied to an install Property
             </xs:documentation>
       <xs:appinfo>
-        <xse:msiRef table="Control" href="http://msdn.microsoft.com/library/aa368044.aspx" />
-        <xse:msiRef table="Dialog" href="http://msdn.microsoft.com/library/aa368286.aspx" />
+        <xse:msiRef table="Control" href="https://docs.microsoft.com/en-us/windows/win32/msi/control-table" />
+        <xse:msiRef table="Dialog" href="https://docs.microsoft.com/en-us/windows/win32/msi/dialog-table" />
         <xse:msiRef table="ListView" href="http://msdn.microsoft.com/library/aa369764.aspx" />
       </xs:appinfo>
     </xs:annotation>
@@ -11987,8 +12060,8 @@
             </xs:documentation>
       <xs:appinfo>
         <xse:msiRef table="ComboBox" href="http://msdn.microsoft.com/library/aa367872.aspx" />
-        <xse:msiRef table="Control" href="http://msdn.microsoft.com/library/aa368044.aspx" />
-        <xse:msiRef table="Dialog" href="http://msdn.microsoft.com/library/aa368286.aspx" />
+        <xse:msiRef table="Control" href="https://docs.microsoft.com/en-us/windows/win32/msi/control-table" />
+        <xse:msiRef table="Dialog" href="https://docs.microsoft.com/en-us/windows/win32/msi/dialog-table" />
       </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
@@ -12013,8 +12086,8 @@
             </xs:documentation>
       <xs:appinfo>
         <xse:msiRef table="ListView" href="http://msdn.microsoft.com/library/aa369764.aspx" />
-        <xse:msiRef table="Control" href="http://msdn.microsoft.com/library/aa368044.aspx" />
-        <xse:msiRef table="Dialog" href="http://msdn.microsoft.com/library/aa368286.aspx" />
+        <xse:msiRef table="Control" href="https://docs.microsoft.com/en-us/windows/win32/msi/control-table" />
+        <xse:msiRef table="Dialog" href="https://docs.microsoft.com/en-us/windows/win32/msi/dialog-table" />
       </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
@@ -12036,9 +12109,9 @@
     <xs:annotation>
       <xs:appinfo>
         <xse:seeAlso ref="RadioButtonGroup" />
-        <xse:msiRef table="RadioButton" href="http://msdn.microsoft.com/library/aa370962.aspx" />
-        <xse:msiRef table="Control" href="http://msdn.microsoft.com/library/aa368044.aspx" />
-        <xse:msiRef table="Dialog" href="http://msdn.microsoft.com/library/aa368286.aspx" />
+        <xse:msiRef table="RadioButton" href="https://docs.microsoft.com/en-us/windows/win32/msi/radiobutton-table" />
+        <xse:msiRef table="Control" href="https://docs.microsoft.com/en-us/windows/win32/msi/control-table" />
+        <xse:msiRef table="Dialog" href="https://docs.microsoft.com/en-us/windows/win32/msi/dialog-table" />
       </xs:appinfo>
       <xs:documentation>Text or Icon plus Value that is assigned to the Property of the parent Control (RadioButtonGroup).</xs:documentation>
     </xs:annotation>
@@ -12082,12 +12155,12 @@
   <xs:element name="RadioButtonGroup">
     <xs:annotation>
       <xs:documentation>
-                Set of radio buttons tied to the specified Property
-            </xs:documentation>
+        Set of radio buttons tied to the specified Property
+      </xs:documentation>
       <xs:appinfo>
-        <xse:msiRef table="RadioButton" href="http://msdn.microsoft.com/library/aa370962.aspx" />
-        <xse:msiRef table="Control" href="http://msdn.microsoft.com/library/aa368044.aspx" />
-        <xse:msiRef table="Dialog" href="http://msdn.microsoft.com/library/aa368286.aspx" />
+        <xse:msiRef table="RadioButton" href="https://docs.microsoft.com/en-us/windows/win32/msi/radiobutton-table" />
+        <xse:msiRef table="Control" href="https://docs.microsoft.com/en-us/windows/win32/msi/control-table" />
+        <xse:msiRef table="Dialog" href="https://docs.microsoft.com/en-us/windows/win32/msi/dialog-table" />
       </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
@@ -12099,15 +12172,23 @@
           <xs:documentation>Property tied to this group.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
+      <xs:anyAttribute namespace="##other" processContents="lax">
+        <xs:annotation>
+          <xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:anyAttribute>
     </xs:complexType>
   </xs:element>
   <xs:element name="UIText">
     <xs:annotation>
       <xs:documentation>
-                Text associated with certain controls
-            </xs:documentation>
+        Text associated with certain controls.
+      </xs:documentation>
       <xs:appinfo>
-        <xse:msiRef table="UIText" href="http://msdn.microsoft.com/library/aa372101.aspx" />
+        <xse:msiRef table="UIText" href="https://docs.microsoft.com/en-us/windows/win32/msi/uitext-table" />
       </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
@@ -12117,6 +12198,19 @@
             <xs:documentation>Element value is text, may use CDATA if needed to escape XML delimiters</xs:documentation>
           </xs:annotation>
           <xs:attribute name="Id" use="required" type="xs:string" />
+          <xs:attribute name="Value" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>The UI text.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:anyAttribute namespace="##other" processContents="lax">
+            <xs:annotation>
+              <xs:documentation>
+                Extensibility point in the WiX XML Schema. Schema extensions can register additional
+                attributes at this point in the schema.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:anyAttribute>
         </xs:extension>
       </xs:simpleContent>
     </xs:complexType>
@@ -12124,9 +12218,9 @@
   <xs:element name="UIRef">
     <xs:annotation>
       <xs:documentation>
-                Reference to a UI element. This will force the entire referenced Fragment's contents
-                to be included in the installer database.
-            </xs:documentation>
+        Reference to a UI element. This will force the entire referenced Fragment's contents
+        to be included in the installer database.
+      </xs:documentation>
       <xs:appinfo>
         <xse:seeAlso ref="UI" />
       </xs:appinfo>
@@ -12136,9 +12230,9 @@
       <xs:anyAttribute namespace="##other" processContents="lax">
         <xs:annotation>
           <xs:documentation>
-                    Extensibility point in the WiX XML Schema. Schema extensions can register additional
-                    attributes at this point in the schema.
-                </xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
         </xs:annotation>
       </xs:anyAttribute>
     </xs:complexType>
@@ -12146,86 +12240,46 @@
   <xs:element name="UI">
     <xs:annotation>
       <xs:documentation>
-                Enclosing element to compartmentalize UI specifications.
-            </xs:documentation>
+        Enclosing element to compartmentalize UI specifications.
+      </xs:documentation>
       <xs:appinfo>
         <xse:seeAlso ref="UIRef" />
       </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element ref="EmbeddedUI">
-          <xs:annotation>
-            <xs:documentation>Embedded UI definition with EmbeddedResource children.</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element ref="Error">
-          <xs:annotation>
-            <xs:documentation>Error text associated with install error</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element ref="ProgressText">
-          <xs:annotation>
-            <xs:documentation>ActionText entry associated with an action</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element ref="BillboardAction">
-          <xs:annotation>
-            <xs:documentation>Billboard table item with child Controls</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element ref="ComboBox">
-          <xs:annotation>
-            <xs:documentation>ComboBox table with ListItem children</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element ref="ListBox">
-          <xs:annotation>
-            <xs:documentation>ListBox table with ListItem children</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element ref="ListView">
-          <xs:annotation>
-            <xs:documentation>ListView table with ListItem children</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element ref="RadioButtonGroup">
-          <xs:annotation>
-            <xs:documentation>RadioButton table with RadioButton children</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element ref="TextStyle">
-          <xs:annotation>
-            <xs:documentation>TextStyle entry for use in control text</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element ref="UIText">
-          <xs:annotation>
-            <xs:documentation>values for UIText property, not installer Property</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element ref="Dialog">
-          <xs:annotation>
-            <xs:documentation>Dialog specification, called from Sequence</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element ref="DialogRef">
-          <xs:annotation>
-            <xs:documentation>Reference to a Dialog specification.</xs:documentation>
-          </xs:annotation>
-        </xs:element>
+        <xs:element ref="BillboardAction" />
+        <xs:element ref="ComboBox" />
+        <xs:element ref="Dialog" />
+        <xs:element ref="DialogRef" />
+        <xs:element ref="EmbeddedUI" />
+        <xs:element ref="Error" />
+        <xs:element ref="ListBox" />
+        <xs:element ref="ListView"/>
+        <xs:element ref="ProgressText"/>
         <xs:element ref="Publish" />
-        <!-- elements with identical behavior as under Product key, solely to allow grouping with other UI elements -->
-        <xs:element ref="PropertyRef" />
-        <xs:element ref="Property" />
+        <xs:element ref="RadioButtonGroup"/>
+        <xs:element ref="TextStyle" />
+        <xs:element ref="UIText"/>
+        <!--
+          Elements with identical behavior as under Package/Fragment element, solely to allow grouping with other UI elements
+        -->
+        <xs:element ref="AdminUISequence" />
+        <xs:element ref="InstallUISequence" />
         <xs:element ref="Binary" />
-        <xs:sequence>
-          <xs:element ref="AdminUISequence" minOccurs="0" />
-          <xs:element ref="InstallUISequence" minOccurs="0" />
-        </xs:sequence>
+        <xs:element ref="Property" />
+        <xs:element ref="PropertyRef" />
         <xs:element ref="UIRef" />
       </xs:choice>
       <xs:attribute name="Id" type="xs:string" />
+      <xs:anyAttribute namespace="##other" processContents="lax">
+        <xs:annotation>
+          <xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:anyAttribute>
     </xs:complexType>
   </xs:element>
   <!-- custom table elements -->
