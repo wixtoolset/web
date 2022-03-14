@@ -6849,25 +6849,25 @@
   <xs:element name="ServiceDependency">
     <xs:annotation>
       <xs:documentation>
-                Service or group of services that must start before the parent service.
-            </xs:documentation>
+        Service or group of services that must start before the parent service.
+      </xs:documentation>
       <xs:appinfo>
-        <xse:msiRef table="ServiceInstall" href="http://msdn.microsoft.com/library/aa371637.aspx" />
+        <xse:msiRef table="ServiceInstall" href="https://docs.microsoft.com/en-us/windows/win32/msi/serviceinstall-table" />
       </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
       <xs:attribute name="Id" type="xs:string" use="required">
         <xs:annotation>
           <xs:documentation>
-                        The value of this attribute should be one of the following:
-                        <html:ol><html:li>The name (not the display name) of a previously installed service.</html:li><html:li>The name of a service group (in which case the Group attribute must be set to 'yes').</html:li></html:ol></xs:documentation>
+            The name (not the display name) of a previously installed service or the name of a service group when the Group attribute is set to 'yes'.
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Group" type="YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
-                        Set to 'yes' to indicate that the value in the Id attribute is the name of a group of services.
-                    </xs:documentation>
+            Set to 'yes' to indicate that the value in the Id attribute is the name of a group of services. If 'no' or not set, the Id attribute refers to another service by name.
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
     </xs:complexType>
@@ -6875,16 +6875,16 @@
   <xs:element name="ServiceInstall">
     <xs:annotation>
       <xs:documentation>
-                Adds services for parent Component. Use the ServiceControl element to remove services.
-            </xs:documentation>
+        Adds services for parent Component. Use the ServiceControl element to remove services.
+      </xs:documentation>
       <xs:appinfo>
-        <xse:msiRef table="ServiceInstall" href="http://msdn.microsoft.com/library/aa371637.aspx" />
+        <xse:msiRef table="ServiceInstall" href="https://docs.microsoft.com/en-us/windows/win32/msi/serviceinstall-table" />
         <xse:remarks>
-                    The service executable installed will point to the KeyPath for the Component.
-                    Therefore, you must ensure that the correct executable is either the first child
-                    File element under this Component or explicitly mark the appropriate File element
-                    as KeyPath='yes'.
-                </xse:remarks>
+          The service executable installed will point to the KeyPath for the Component.
+          Therefore, you must ensure that the correct executable is either the first child
+          File element under this Component or explicitly mark the appropriate File element
+          as KeyPath='yes'.
+        </xse:remarks>
       </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
@@ -6904,18 +6904,18 @@
         <xs:any namespace="##other" processContents="lax">
           <xs:annotation>
             <xs:documentation>
-                            Extensibility point in the WiX XML Schema. Schema extensions can register additional
-                            elements at this point in the schema.
-                        </xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
           </xs:annotation>
         </xs:any>
       </xs:choice>
       <xs:attribute name="Id" type="xs:string">
         <xs:annotation>
           <xs:documentation>
-                    Unique identifier for this service configuration. This value will default to the Name attribute if not
-                    specified.
-                </xs:documentation>
+            Unique identifier for this service configuration. This value will default to the Name attribute if not
+            specified.
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Name" type="xs:string" use="required">
@@ -6937,29 +6937,29 @@
             <xs:enumeration value="ownProcess">
               <xs:annotation>
                 <xs:documentation>
-                                    A Win32 service that runs its own process.
-                                </xs:documentation>
+                  A Win32 service that runs its own process.
+                </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="shareProcess">
               <xs:annotation>
                 <xs:documentation>
-                                    A Win32 service that shares a process.
-                                </xs:documentation>
+                  A Win32 service that shares a process.
+                </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="kernelDriver">
               <xs:annotation>
                 <xs:documentation>
-                                    A kernel driver service. This value is not currently supported by the Windows Installer.
-                                </xs:documentation>
+                  A kernel driver service. This value is not currently supported by the Windows Installer.
+                </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="systemDriver">
               <xs:annotation>
                 <xs:documentation>
-                                    A file system driver service. This value is not currently supported by the Windows Installer.
-                                </xs:documentation>
+                  A file system driver service. This value is not currently supported by the Windows Installer.
+                </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
           </xs:restriction>
@@ -6979,36 +6979,36 @@
             <xs:enumeration value="auto">
               <xs:annotation>
                 <xs:documentation>
-                                    The service will start during startup of the system.
-                                </xs:documentation>
+                  The service will start during startup of the system.
+                </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="demand">
               <xs:annotation>
                 <xs:documentation>
-                                    The service will start when the service control manager calls the StartService function.
-                                </xs:documentation>
+                  The service will start when the service control manager calls the StartService function.
+                </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="disabled">
               <xs:annotation>
                 <xs:documentation>
-                                    The service can no longer be started.
-                                </xs:documentation>
+                  The service can no longer be started.
+                </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="boot">
               <xs:annotation>
                 <xs:documentation>
-                                    The service is a device driver that will be started by the operating system boot loader. This value is not currently supported by the Windows Installer.
-                                </xs:documentation>
+                  The service is a device driver that will be started by the operating system boot loader. This value is not currently supported by the Windows Installer.
+                </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="system">
               <xs:annotation>
                 <xs:documentation>
-                                    The service is a device driver that will be started by the IoInitSystem function. This value is not currently supported by the Windows Installer.
-                                </xs:documentation>
+                  The service is a device driver that will be started by the IoInitSystem function. This value is not currently supported by the Windows Installer.
+                </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
           </xs:restriction>
@@ -7023,22 +7023,22 @@
             <xs:enumeration value="ignore">
               <xs:annotation>
                 <xs:documentation>
-                                    Logs the error and continues with the startup operation.
-                                </xs:documentation>
+                  Logs the error and continues with the startup operation.
+                </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="normal">
               <xs:annotation>
                 <xs:documentation>
-                                    Logs the error, displays a message box and continues the startup operation.
-                                </xs:documentation>
+                  Logs the error, displays a message box and continues the startup operation.
+                </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="critical">
               <xs:annotation>
                 <xs:documentation>
-                                    Logs the error if it is possible and the system is restarted with the last configuration known to be good. If the last-known-good configuration is being started, the startup operation fails.
-                                </xs:documentation>
+                  Logs the error if it is possible and the system is restarted with the last configuration known to be good. If the last-known-good configuration is being started, the startup operation fails.
+                </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
           </xs:restriction>
@@ -7046,7 +7046,7 @@
       </xs:attribute>
       <xs:attribute name="Vital" type="YesNoTypeUnion">
         <xs:annotation>
-          <xs:documentation>The overall install should fail if this service fails to install.</xs:documentation>
+          <xs:documentation>When set to 'yes' or left unspecified the overall install will fail if this service fails to install. A value of 'no' indicates failure to install the service will be ignored.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="LoadOrderGroup" type="xs:string">
