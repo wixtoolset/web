@@ -1026,6 +1026,16 @@
           <xs:documentation>Indicates the package must be executed elevated. The default is "no".</xs:documentation>
         </xs:annotation>
       </xs:attribute>
+      <xs:attribute name="Bundle" type="YesNoTypeUnion">
+        <xs:annotation>
+          <xs:documentation>
+            Indicates the package is a WiX bundle. The default is "no".
+            If "yes", then the default Protocol value is "burn".
+            The engine will prepend command line arguments such as "-norestart" for all operations,
+            as well as avoid running this bundle as a related bundle.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
       <xs:attribute name="Protocol" type="BurnExeProtocolType">
         <xs:annotation>
           <xs:documentation>Indicates the communication protocol the package supports for extended progress and error reporting. The default is "none".</xs:documentation>
