@@ -1,0 +1,4 @@
+bundle_built_in_variables.html.md:
+
+* WixBundleAction - set to the numeric value of BOOTSTRAPPER\_ACTION from the call to IBootstrapperEngine::Plan().
+* WixBundleCommandLineAction - set to the numeric value of BOOTSTRAPPER\_ACTION from the command-line.
