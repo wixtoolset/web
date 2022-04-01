@@ -782,6 +782,7 @@
         <xs:element ref="MspPackage" />
         <xs:element ref="MsuPackage" />
         <xs:element ref="ExePackage" />
+        <xs:element ref="BundlePackage" />
         <xs:element ref="RollbackBoundary" />
         <xs:element ref="PackageGroupRef" />
       </xs:choice>
@@ -1044,6 +1045,55 @@
       </xs:attribute>
     </xs:complexType>
   </xs:element>
+  <xs:element name="BundlePackage">
+    <xs:annotation>
+      <xs:documentation>Describes a single bundle package to install.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="Payload" />
+        <xs:element ref="PayloadGroupRef" />
+        <xs:element ref="BundlePackagePayload" />
+        <xs:element ref="ExitCode" />
+        <xs:element ref="CommandLine" />
+        <xs:any namespace="##other" processContents="lax">
+          <xs:annotation>
+            <xs:documentation>
+                Extensibility point in the WiX XML Schema. Schema extensions can register additional
+                elements at this point in the schema. The extension's
+                <html:code><html:nobr>CompilerExtension.ParseElement()</html:nobr></html:code>
+                method will be called with the package identifier as the first value in
+                <html:code>contextValues</html:code>.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:any>
+      </xs:choice>
+      <xs:attributeGroup ref="ChainPackageCommonAttributes" />
+      <xs:attribute name="InstallArguments" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            The command-line arguments provided to the BundlePackage during install.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="RepairArguments" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            The command-line arguments provided to the BundlePackage during repair.
+            "/repair" is added automatically.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="UninstallArguments" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            The command-line arguments provided to the BundlePackage during uninstall.
+            "/uninstall" is added automatically.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="RollbackBoundary">
     <xs:annotation>
       <xs:documentation>Describes a rollback boundary in the chain.</xs:documentation>
@@ -1254,6 +1304,7 @@
         <xs:element ref="MspPackage" />
         <xs:element ref="MsuPackage" />
         <xs:element ref="ExePackage" />
+        <xs:element ref="BundlePackage" />
         <xs:element ref="RollbackBoundary" />
         <xs:element ref="PackageGroupRef" />
       </xs:choice>
@@ -1517,9 +1568,6 @@
   <xs:element name="ExitCode">
     <xs:annotation>
       <xs:documentation>Describes map of exit code returned from executable package to a bootstrapper behavior.</xs:documentation>
-      <xs:appinfo>
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="ExePackage" />
-      </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
       <xs:attribute name="Value" type="xs:integer">
@@ -1544,7 +1592,7 @@
   </xs:element>
   <xs:element name="CommandLine">
     <xs:annotation>
-      <xs:documentation>Describes additional, conditional command-line arguments for an ExePackage.</xs:documentation>
+      <xs:documentation>Describes additional, conditional command-line arguments for an ExePackage or BundlePackage.</xs:documentation>
     </xs:annotation>
     <xs:complexType>
       <xs:attribute name="InstallArgument" type="xs:string">
@@ -1567,10 +1615,10 @@
           <xs:documentation>
               The condition that controls whether the command-line arguments specified in the
               InstallArgument, UninstallArgument, or RepairArgument attributes are appended to the
-              command line passed to the ExePackage. Which attribute is used depends on the
-              action being applied to the ExePackage. For example, when the ExePackage is
+              command line passed to the package. Which attribute is used depends on the
+              action being applied to the package. For example, when the package is
               being installed, the InstallArgument attribute value is appended to the command
-              line when the ExePackage is executed.
+              line when the package is executed.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -1643,6 +1691,7 @@
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element ref="Payload" />
+        <xs:element ref="BundlePackagePayload" />
         <xs:element ref="ExePackagePayload" />
         <xs:element ref="MsiPackagePayload" />
         <xs:element ref="MspPackagePayload" />
@@ -1669,6 +1718,18 @@
           <xs:documentation>The identifier of the PayloadGroup element to reference.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BundlePackagePayload">
+    <xs:annotation>
+      <xs:documentation>
+        Describes information about the BundlePackage payload.
+        Cannot be specified if the owning BundlePackage specified any of SourceFile, Name, DownloadUrl, or Compressed.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="ChainPackagePayloadCommonAttributes" />
+      <xs:attributeGroup ref="LocalPackagePayloadCommonAttributes" />
     </xs:complexType>
   </xs:element>
   <xs:element name="ExePackagePayload">
