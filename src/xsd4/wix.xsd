@@ -91,7 +91,7 @@
         <xs:element ref="SetVariable" />
         <xs:element ref="SetVariableRef" />
         <xs:element ref="SoftwareTag" />
-        <xs:element ref="Update" />
+        <xs:element ref="Update" minOccurs="0" maxOccurs="1" />
         <xs:element ref="Variable" />
         <xs:element ref="WixVariable" />
         <xs:any namespace="##other" processContents="lax">
@@ -847,6 +847,14 @@
         </xs:any>
       </xs:choice>
       <xs:attributeGroup ref="ChainPackageCommonAttributes" />
+      <xs:attribute name="RepairCondition" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            A condition that determines during Repair if the package will be repaired by default.
+            This condition can use built-in variables and variables returned by searches.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
       <xs:attribute name="EnableFeatureSelection" type="YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
@@ -910,6 +918,14 @@
         </xs:any>
       </xs:choice>
       <xs:attributeGroup ref="ChainPackageCommonAttributes" />
+      <xs:attribute name="RepairCondition" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            A condition that determines during Repair if the package will be repaired by default.
+            This condition can use built-in variables and variables returned by searches.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
       <xs:attribute name="PerMachine" type="YesNoDefaultTypeUnion">
         <xs:annotation>
           <xs:documentation>Indicates the package must be executed elevated. The default is "no".</xs:documentation>
@@ -1004,6 +1020,15 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
+      <xs:attribute name="RepairCondition" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            A condition that determines during Repair if the package will be repaired by default.
+            This condition can use built-in variables and variables returned by searches.
+            This attribute may only be specified if RepairArguments is also specified.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
       <xs:attribute name="InstallArguments" type="xs:string">
         <xs:annotation>
           <xs:documentation>The command-line arguments provided to the ExePackage during install. If this attribute is absent the executable will be launched with no command-line arguments.</xs:documentation>
@@ -1069,6 +1094,14 @@
         </xs:any>
       </xs:choice>
       <xs:attributeGroup ref="ChainPackageCommonAttributes" />
+      <xs:attribute name="RepairCondition" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            A condition that determines during Repair if the package will be repaired by default.
+            This condition can use built-in variables and variables returned by searches.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
       <xs:attribute name="InstallArguments" type="xs:string">
         <xs:annotation>
           <xs:documentation>
@@ -1089,6 +1122,16 @@
           <xs:documentation>
             The command-line arguments provided to the BundlePackage during uninstall.
             "/uninstall" is added automatically.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Visible" type="YesNoTypeUnion">
+        <xs:annotation>
+          <xs:documentation>
+            Specifies whether the bundle will be displayed in Programs and Features (also known as Add/Remove Programs).
+            If "yes" is specified the bundle package information will be displayed in Programs and Features.
+            "no" indicates the bundle will not be displayed.
+            If not specified, the default is the value of the Permanent attribute.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -1136,7 +1179,8 @@
       <xs:attribute name="Transaction" type="YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
-            Specifies whether the rollback boundary is wrapped in an MSI transaction. The default is "no"
+            Specifies whether the rollback boundary is wrapped in an MSI transaction. The default is "no".
+            Only MsiPackages and MspPackages may be inside of a rollback boundary with Transaction set to "yes".
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -1728,8 +1772,19 @@
       </xs:documentation>
     </xs:annotation>
     <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="RemoteBundle" minOccurs="0" maxOccurs="1" />
+        <xs:any namespace="##other" processContents="lax">
+          <xs:annotation>
+            <xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:any>
+      </xs:choice>
       <xs:attributeGroup ref="ChainPackagePayloadCommonAttributes" />
-      <xs:attributeGroup ref="LocalPackagePayloadCommonAttributes" />
+      <xs:attributeGroup ref="RemotePackagePayloadCommonAttributes" />
     </xs:complexType>
   </xs:element>
   <xs:element name="ExePackagePayload">
@@ -1890,15 +1945,164 @@
       </xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>
-  <xs:element name="RelatedBundle">
+  <xs:element name="RemoteBundle">
     <xs:annotation>
-      <xs:documentation>Create a RelatedBundle element.</xs:documentation>
-      <xs:appinfo>
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Bundle" />
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
-      </xs:appinfo>
+      <xs:documentation>
+        Describes information about the referenced Bundle.
+      </xs:documentation>
     </xs:annotation>
     <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="RemoteRelatedBundle" />
+        <xs:any namespace="##other" processContents="lax">
+          <xs:annotation>
+            <xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:any>
+      </xs:choice>
+      <xs:attribute name="BundleId" type="Guid" use="required">
+        <xs:annotation>
+          <xs:documentation>
+            The id of the bundle.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="DisplayName" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            The display name of the bundle.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="EngineVersion" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            The version of the bundle's engine.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="InstallSize" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            The size this bundle will take on disk in bytes after it is installed.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="ManifestNamespace" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>
+            The namespace of the bundle's manifest.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="PerMachine" type="YesNoTypeUnion" use="required">
+        <xs:annotation>
+          <xs:documentation>
+            Whether the bundle is per-machine.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="ProviderKey" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>
+            The provider key of the bundle.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="UpgradeCode" type="Guid" use="required">
+        <xs:annotation>
+          <xs:documentation>
+            An upgrade code of the bundle.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Version" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>
+            The version of the bundle.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Win64" type="YesNoTypeUnion" use="required">
+        <xs:annotation>
+          <xs:documentation>
+            Whether the bundle is 64-bit.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute namespace="##other" processContents="lax">
+        <xs:annotation>
+          <xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:anyAttribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoteRelatedBundle">
+    <xs:annotation>
+      <xs:documentation>
+        Defines a related bundle for the parent RemoteBundle.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:any namespace="##other" processContents="lax">
+          <xs:annotation>
+            <xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:any>
+      </xs:choice>
+      <xs:attribute name="Id" type="Guid" use="required">
+        <xs:annotation>
+          <xs:documentation>The identifier of the RelatedBundle group.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Action" use="required">
+        <xs:annotation>
+          <xs:documentation>The action to take on bundles related to this one.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Detect" />
+            <xs:enumeration value="Upgrade" />
+            <xs:enumeration value="Addon" />
+            <xs:enumeration value="Patch" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:anyAttribute namespace="##other" processContents="lax">
+        <xs:annotation>
+          <xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:anyAttribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RelatedBundle">
+    <xs:annotation>
+      <xs:documentation>Defines a related bundle for the parent Bundle.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:any namespace="##other" processContents="lax">
+          <xs:annotation>
+            <xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:any>
+      </xs:choice>
       <xs:attribute name="Id" type="Guid" use="required">
         <xs:annotation>
           <xs:documentation>The identifier of the RelatedBundle group.</xs:documentation>
@@ -1917,15 +2121,19 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
+      <xs:anyAttribute namespace="##other" processContents="lax">
+        <xs:annotation>
+          <xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:anyAttribute>
     </xs:complexType>
   </xs:element>
   <xs:element name="Update">
     <xs:annotation>
       <xs:documentation>Defines the update for a Bundle.</xs:documentation>
-      <xs:appinfo>
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Bundle" />
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
-      </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
       <xs:attribute name="Location" type="xs:string" use="required">
