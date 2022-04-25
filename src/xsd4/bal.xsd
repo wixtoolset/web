@@ -270,7 +270,6 @@
                 <xs:annotation>
                     <xs:documentation>
                         Whether the .NET Core BA was published as self-contained (SCD).
-                        Trimming requires special configuration to work with WixDotNetCoreBootstrapperApplicationHost.
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
@@ -292,7 +291,7 @@
         <xs:annotation>
             <xs:documentation>
                 When set to "yes", WixDotNetCoreBootstrapperApplicationHost will load the DLL and instantiate the type with the BootstrapperApplicationFactoryAttribute.
-                There must be corresponding deps.json and runtimeconfig.json files (set EnableDynamicLoading to True in the .NET Core project).
+                The DLL must have been built referencing the WixToolset.Dnc.HostGenerator source generator NuGet package.
                 The .NET Core project must have been published, not just built.
                 Only one payload may be marked with this attribute set to "yes".
             </xs:documentation>
