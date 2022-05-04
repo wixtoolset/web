@@ -52,7 +52,7 @@ Add new `ArpEntry` element:
 
 For example:
 
-    <ExePackage Id="MyExe" SourceFile="my.exe" DetectCondition="MyExe_Version = v1.2.3">
+    <ExePackage Id="MyExe" SourceFile="my.exe" DetectCondition="MyExe_Version = v1.2.3" InstallCondition="NOT MyExe_Version OR MyExe_Version &lt; v1.2.3>
         <ArpEntry Id="MyExeGuid" Win64="no" />
     </ExePackage>
 
