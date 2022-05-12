@@ -52,7 +52,13 @@ Add new `ArpEntry` element:
 
 For example:
 
-    <ExePackage Id="MyExe" SourceFile="my.exe" DetectCondition="MyExe_Version = v1.2.3" InstallCondition="NOT MyExe_Version OR MyExe_Version &lt; v1.2.3>
+    <!-- Only uninstall this exact version -->
+    <ExePackage Id="MyExe" SourceFile="my.exe" DetectCondition="MyExe_Version = v1.2.3" InstallCondition="NOT MyExe_Version OR MyExe_Version &lt; v1.2.3">
+        <ArpEntry Id="MyExeGuid" Win64="no" />
+    </ExePackage>
+
+    <!-- Uninstall this version and any higher versions -->
+    <ExePackage Id="MyExe" SourceFile="my.exe" DetectCondition="MyExe_Version &gt;= v1.2.3">
         <ArpEntry Id="MyExeGuid" Win64="no" />
     </ExePackage>
 
@@ -62,6 +68,48 @@ This should be used in the detect condition.
 If the package is requested to be uninstalled, then Burn will now have two options to uninstall it.
 1. If `UninstallArguments` were provided and source is available, then Burn will uninstall using those.
 2. If source can't be used (either not available or `UninstallArguments` not provided) and the ARP entry is available, then the `QuietUninstallString` value will be used to uninstall the package. This behavior will also be used for `BundlePackage`s.
+
+
+## Alternate Proposal
+
+Use the same `ArpEntry` element as above, and include additional attributes to specify a min and max version:
+
+    <xs:attribute name="MinVersion" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>
+                When detecting the package, if the DisplayVersion value of the ARP entry is greater than or equal to the MinVersion value then it is present.
+                If DisplayVersion is less than MinVersion then it is Absent.
+                At least one of MinVersion or MaxVersion is required.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="MaxVersion" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>
+                When detecting the package, if the DisplayVersion value of the ARP entry is less than or equal to the MaxVersion value then it is present.
+                If DisplayVersion is greater than MaxVersion then it is Obsolete.
+                At least one of MinVersion or MaxVersion is required.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+
+The above examples would now be:
+
+    <!-- Only uninstall this exact version -->
+    <ExePackage Id="MyExe" SourceFile="my.exe">
+        <ArpEntry Id="MyExeGuid" Win64="no" MinVersion="v1.2.3" MaxVersion="v1.2.3" />
+    </ExePackage>
+
+    <!-- Uninstall this version and any higher versions -->
+    <ExePackage Id="MyExe" SourceFile="my.exe">
+        <ArpEntry Id="MyExeGuid" Win64="no" MinVersion="v1.2.3" />
+    </ExePackage>
+
+This would mean that `DetectCondition` must not be specified with `ArpEntry` since it is handling detection.
+
+Because the ARP entry is the source of truth in this proposal, it no longer makes sense to try to uninstall the package using the original source with `UninstallArguments`.
+This means that `UninstallArguments` must not be specified.
+At this point, it might be better to create a new package type since `ArpEntry` is fundamentally changing how `ExePackage` works.
 
 
 ## Considerations
