@@ -183,6 +183,15 @@
             </xs:appinfo>
         </xs:annotation>
         <xs:complexType>
+            <xs:attribute name="AlwaysInstallPrereqs" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                        When not set or set to "no", the prereq BA is only used when the .NET Framework runtime can't be loaded.
+                        When set to "yes", the prereq BA will always run before the .NET Framework runtime is attempted to be loaded.
+                        If set to "yes" and all prereq packages are already installed, then the prereq BA's UI is not shown.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
             <xs:attribute name="LogoFile" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>Source file of the logo graphic.</xs:documentation>
@@ -251,6 +260,15 @@
             </xs:appinfo>
         </xs:annotation>
         <xs:complexType>
+            <xs:attribute name="AlwaysInstallPrereqs" type="YesNoType">
+                <xs:annotation>
+                    <xs:documentation>
+                        When not set or set to "no", the prereq BA is only used when the .NET Core runtime can't be loaded.
+                        When set to "yes", the prereq BA will always run before the .NET Core runtime is attempted to be loaded.
+                        If set to "yes" and all prereq packages are already installed, then the prereq BA's UI is not shown.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
             <xs:attribute name="LogoFile" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>Source file of the logo graphic.</xs:documentation>
@@ -348,6 +366,7 @@
                 There may only be one package in the bundle that has either the PrereqLicenseFile attribute or the PrereqLicenseUrl attribute.
             </xs:documentation>
             <xs:appinfo>
+                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="BundlePackage" />
                 <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="ExePackage" />
                 <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="MsiPackage" />
                 <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="MspPackage" />
@@ -363,6 +382,7 @@
                 There may only be one package in the bundle that has either the PrereqLicenseFile attribute or the PrereqLicenseUrl attribute.
             </xs:documentation>
             <xs:appinfo>
+                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="BundlePackage" />
                 <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="ExePackage" />
                 <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="MsiPackage" />
                 <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="MspPackage" />
@@ -377,6 +397,7 @@
                 When set to "yes", the Prereq BA will plan the package to be installed if its InstallCondition is "true" or empty.
             </xs:documentation>
             <xs:appinfo>
+                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="BundlePackage" />
                 <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="ExePackage" />
                 <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="MsiPackage" />
                 <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="MspPackage" />
