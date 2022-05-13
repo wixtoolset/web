@@ -189,6 +189,11 @@
           <xs:documentation>Directory path to search for.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
+      <xs:attribute name="DisableFileRedirection" type="YesNoType">
+        <xs:annotation>
+          <xs:documentation>When set to "yes" and the running bundle is 32-bit, Wow64DisableWow64FsRedirection is called before starting the search.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
       <xs:attribute name="Result">
         <xs:annotation>
           <xs:documentation>
@@ -336,6 +341,11 @@
       <xs:attribute name="Path" type="xs:string">
         <xs:annotation>
           <xs:documentation>File path to search for.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="DisableFileRedirection" type="YesNoType">
+        <xs:annotation>
+          <xs:documentation>When set to "yes" and the running bundle is 32-bit, Wow64DisableWow64FsRedirection is called before starting the search.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Result">
