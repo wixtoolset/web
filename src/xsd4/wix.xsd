@@ -1783,6 +1783,49 @@
           </xs:annotation>
         </xs:any>
       </xs:choice>
+      <xs:attribute name="PayloadGeneration">
+        <xs:annotation>
+          <xs:documentation>
+            Choose one of the supported payload generation types: none, externalWithoutDownloadUrl, external, all.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="none">
+              <xs:annotation>
+                <xs:documentation>
+                  None of the bundle's payloads or containers are automatically included as payloads for the package.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="externalWithoutDownloadUrl">
+              <xs:annotation>
+                <xs:documentation>
+                  All detached containers from the bundle that have no download url are included as payloads for the package,
+                  as well as all external payloads from the bundle that have no download url.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="external">
+              <xs:annotation>
+                <xs:documentation>
+                  All detached containers from the bundle are included as payloads for the package,
+                  as well as all external payloads from the bundle.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="all">
+              <xs:annotation>
+                <xs:documentation>
+                  All detached containers from the bundle are included as payloads for the package,
+                  as well as all other payloads that are not compressed into the detached containers.
+                  This option normally requires extra work to use since it requires all attached containers to have been extracted.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
       <xs:attributeGroup ref="ChainPackagePayloadCommonAttributes" />
       <xs:attributeGroup ref="RemotePackagePayloadCommonAttributes" />
     </xs:complexType>
