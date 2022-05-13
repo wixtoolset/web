@@ -11,7 +11,67 @@ draft: false
 * As a Setup developer I can provide ARP entry information for an ExePackage such that it can be used for detection and uninstall.
 
 
-## Proposal
+## Final design
+
+Add new `ArpEntry` element:
+
+    <xs:element name="ArpEntry">
+        <xs:annotation>
+            <xs:documentation>
+                Information about the Add/Remove Programs entry that is installed by the package.
+                ArpEntry may not be specified with DetectCondition or UninstallArguments.
+            </xs:documentation>
+            <xs:appinfo>
+                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="ExePackage" />
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attribute name="Id" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation>
+                        The id of the ARP entry.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="Win64" type="YesNoTypeUnion" use="required">
+                <xs:annotation>
+                    <xs:documentation>
+                        Whether the ARP entry is 64-bit.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="Version" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation>
+                        The DisplayVersion value of the ARP entry that is installed by this package.
+                        Older or missing versions cause this package to be detected as absent.
+                        Newer versions cause this package to be detected as obsolete.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
+For example:
+
+    <ExePackage Id="MyExe" SourceFile="my.exe">
+        <ArpEntry Id="MyExeGuid" Win64="no" Version="1.2.3" />
+    </ExePackage>
+
+When Burn starts detecting the `ExePackage`, it will read the ARP entry's `DisplayVersion` value.
+If the value is missing or less than the given version, then it is absent.
+If the value is equal, then it is present.
+If the value is greater, then it is obsolete.
+This means that `DetectCondition` is not allowed with `ArpEntry`.
+
+If the package is requested to be uninstalled, then the `QuietUninstallString` value is read from the ArpEntry and that is used to uninstall the package.
+If `QuietUninstallString` is missing then the package will fail during uninstall.
+The original source is not used for uninstall, so `UninstallArguments` is also not allowed with `ArpEntry`.
+
+Burn will search for the ARP entry based on whether the parent `ExePackage` is per-machine or per-user.
+Like `MsiPackage`, there will be no support for packages that can be per-machine or per-user.
+
+## Original Proposal
 
 Add new `ArpEntry` element:
 
@@ -70,7 +130,7 @@ If the package is requested to be uninstalled, then Burn will now have two optio
 2. If source can't be used (either not available or `UninstallArguments` not provided) and the ARP entry is available, then the `QuietUninstallString` value will be used to uninstall the package. This behavior will also be used for `BundlePackage`s.
 
 
-## Alternate Proposal
+## Original Alternate Proposal
 
 Use the same `ArpEntry` element as above, and include additional attributes to specify a min and max version:
 
