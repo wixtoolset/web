@@ -10,14 +10,14 @@
            xmlns="http://wixtoolset.org/schemas/v4/wxs/util">
   <xs:annotation>
     <xs:documentation>
-            The source code schema for the WiX Toolset Utility Extension.
-        </xs:documentation>
+      The source code schema for the WiX Toolset Utility Extension.
+    </xs:documentation>
   </xs:annotation>
   <xs:import namespace="http://wixtoolset.org/schemas/v4/wxs" />
   <xs:element name="CloseApplication">
     <xs:annotation>
       <xs:appinfo>
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Product" />
+        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Module" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
       </xs:appinfo>
@@ -76,7 +76,11 @@
           </xs:attribute>
           <xs:attribute name="RebootPrompt" type="YesNoType">
             <xs:annotation>
-              <xs:documentation>Optionally prompts for reboot if application is still running. The default is "yes". The TerminateProcess attribute must be "no" or not specified if this attribute is "yes".</xs:documentation>
+              <xs:documentation>
+                Optionally prompts for reboot if application is still running.
+                The TerminateProcess attribute must be "no" or not specified if this attribute is "yes".
+                The default is "yes".
+              </xs:documentation>
             </xs:annotation>
           </xs:attribute>
           <xs:attribute name="PromptToContinue" type="YesNoType">
@@ -97,8 +101,8 @@
           <xs:attribute name="TerminateProcess" type="xs:integer">
             <xs:annotation>
               <xs:documentation>
-                Attempts to terminates process and return the specified exit code if application is still running after sending any requested close and/or end session messages.
-                If this attribute is specified, the RebootPrompt attribute must be "no". The default is "no".
+                Attempts to terminates process and return the attribute value as the process's exit code if the application is still running after sending any requested close and/or end session messages.
+                If this attribute is specified, the RebootPrompt attribute must be "no".
               </xs:documentation>
             </xs:annotation>
           </xs:attribute>
