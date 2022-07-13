@@ -7,7 +7,7 @@ title: Collapse Duplicate Directories
 
 ## User stories
 
-* As a setup developer I can define the same Directory element in multiple Fragments so
+* As a setup developer I can define the same Directory element in multiple Fragments so directories can be written more like registry keys.
 
 
 ## Proposal
@@ -65,19 +65,19 @@ the following to exist:
       </ComponentGroup>
     </Fragment>
 
-In that example the "BinFolder" would be collapsed. This proposal becomes even more interesting when combined with WIP:4260.
+In that example the "BinFolder" would be collapsed. This proposal becomes even more interesting when combined with [WIP:4260].
 
 
 ## Considerations
 
-One problem with this proposal is that a single DirectoryRef element could now cause the linker to bring in multiple sections. Using the example above, a `<DirectoryRef Id="BinFolder" />` would bring in both listed Fragments. This is new behavior and has a very sersious issue. The content of the final output would not be partially dependent on the list of files provided to the linker. That goes against one of the core designs of the WiX toolset.
+One problem with this proposal is that a single DirectoryRef element could now cause the linker to bring in multiple sections. Using the example above, a `<DirectoryRef Id="BinFolder" />` would bring in both listed Fragments. This is new behavior and has a very sersious issue. The content of the final output would now be partially dependent on the list of files provided to the linker. That goes against one of the core designs of the WiX toolset.
 
-However, this problem can be mitigated if access modifiers for identifiers are implemented per WIP:4258 and collapsing is only allowed to happen between "private" duplicated Directory rows. That would change the example above to look more like the following but otherwise behave the same:
+This problem can be mitigated with [access modifiers for identifiers][WIP:4258] and only allowing collapsing to happen between "private" duplicated Directory symbols. That would change the example above to look more like the following and prevent references from other sections:
 
     <!-- file1.wxs -->
     <Fragment>
       <DirectoryRef Id="INSTALLFOLDER">
-        <Directory Id="private BinFolder" Name="bin" />
+        <Directory Id="fragment BinFolder" Name="bin" />
       </DirectoryRef>
 
       <ComponentGroup Id="Stuff1" Directory="BinFolder">
@@ -88,26 +88,10 @@ However, this problem can be mitigated if access modifiers for identifiers are i
     <!-- file2.wxs -->
     <Fragment>
       <DirectoryRef Id="INSTALLFOLDER">
-        <Directory Id="private BinFolder" Name="bin" />
+        <Directory Id="fragment BinFolder" Name="bin" />
       </DirectoryRef>
 
       <ComponentGroup Id="Stuff2" Directory="BinFolder">
-        <!-- many Component elements here -->
-      </ComponentGroup>
-    </Fragment>
-
-Or if WIP:4260 is implemented, the following:
-
-    <!-- file1.wxs -->
-    <Fragment>
-      <ComponentGroup Id="Stuff1" Directory="INSTALLFOLDER:\bin\">
-        <!-- many Component elements here -->
-      </ComponentGroup>
-    </Fragment>
-
-    <!-- file2.wxs -->
-    <Fragment>
-      <ComponentGroup Id="Stuff2" Directory="INSTALLFOLDER:\bin\">
         <!-- many Component elements here -->
       </ComponentGroup>
     </Fragment>
@@ -117,6 +101,6 @@ Or if WIP:4260 is implemented, the following:
 
 * [WIXFEAT:4259](http://wixtoolset.org/issues/4259/)
 
-* [WIP:4258](4260-inline-directory-syntax/)
+* [WIP:4258](4258-identifier-access-modifiers/)
 
-* [WIP:4260](4258-identifier-access-modifiers/)
+* [WIP:4260](4260-inline-directory-syntax/)
