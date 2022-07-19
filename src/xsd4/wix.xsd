@@ -996,6 +996,7 @@
         <xs:element ref="ExePackagePayload" />
         <xs:element ref="ExitCode" />
         <xs:element ref="CommandLine" />
+        <xs:element ref="ArpEntry" />
         <xs:any namespace="##other" processContents="lax">
           <xs:annotation>
             <xs:documentation>
@@ -1605,6 +1606,39 @@
       <xs:attribute name="Id" type="xs:string" use="required">
         <xs:annotation>
           <xs:documentation>The identifier of Container element to reference.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ArpEntry">
+    <xs:annotation>
+      <xs:documentation>
+        Information about the Add/Remove Programs entry that is installed by the package.
+        ArpEntry may not be specified with DetectCondition or UninstallArguments.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="Id" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>
+            The id of the ARP entry.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Win64" type="YesNoTypeUnion" use="required">
+        <xs:annotation>
+          <xs:documentation>
+            Whether the ARP entry is 64-bit.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Version" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>
+            The DisplayVersion value of the ARP entry that is installed by this package.
+            Older or missing versions cause this package to be detected as absent.
+            Newer versions cause this package to be detected as obsolete.
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
     </xs:complexType>
