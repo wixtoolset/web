@@ -38,7 +38,7 @@ For use outside of MSBuild, `heat.exe` can be acquired via `nuget.exe install Wi
 
 * If an installation package (MSI/Bundle) is provided for WiX v4, then `heat.exe` should also be included with `wix.exe`, `thmviewer.exe`, etc.
 
-* In v4, `wix.exe` absorbed the functionality of all the v3 executables (`candle.exe`, `light.exe`, `smoke.exe`, `pyro.exe`) as commands (or subcommands of commands) except for `heat.exe`. Given this evolution during v4 converting `heat.exe` to a `generate` (or `harvest`) command would be logical. However, given the plant to re-evaluate the code generation process in a future release it is better to isolate a standalone `heat.exe` than give false expectations that code generation will necessarily be a `wix.exe` command.
+* In v4, `wix.exe` absorbed the functionality of all the v3 executables (`candle.exe`, `light.exe`, `smoke.exe`, `pyro.exe`) as commands (or subcommands of commands) except for `heat.exe`. Given this evolution during v4 converting `heat.exe` to a `generate` (or `harvest`) command would be logical. However, given the plan to re-evaluate the code generation process in a future release it is better to isolate a standalone `heat.exe` than give false expectations that code generation will necessarily be a `wix.exe` command.
 
 
 ## See Also
