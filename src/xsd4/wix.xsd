@@ -1655,14 +1655,40 @@
       </xs:attribute>
       <xs:attribute name="Behavior" use="required">
         <xs:annotation>
-          <xs:documentation>Choose one of the supported behaviors error codes: success, error, scheduleReboot, forceReboot.</xs:documentation>
+          <xs:documentation>Choose one of the supported behaviors error codes: success, error, scheduleReboot, forceReboot, errorScheduleReboot, errorForceReboot.</xs:documentation>
         </xs:annotation>
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="success" />
-            <xs:enumeration value="error" />
-            <xs:enumeration value="scheduleReboot" />
-            <xs:enumeration value="forceReboot" />
+            <xs:enumeration value="success">
+              <xs:annotation>
+                <xs:documentation>The process completed successfully.</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="error">
+              <xs:annotation>
+                <xs:documentation>The process failed.</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="scheduleReboot">
+              <xs:annotation>
+                <xs:documentation>The process completed successfully and requires the machine to be restarted.</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="forceReboot">
+              <xs:annotation>
+                <xs:documentation>The process completed successfully and initiated a restart.</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="errorScheduleReboot">
+              <xs:annotation>
+                <xs:documentation>The process failed and requires the machine to be restarted.</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="errorForceReboot">
+              <xs:annotation>
+                <xs:documentation>The process failed and initiated a restart.</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
