@@ -458,6 +458,13 @@
     <xs:attribute name="PrimaryPackageType" default="default">
         <xs:annotation>
             <xs:documentation>Used by WixInternalUIBootstrapperApplication to determine which package is the primary package.</xs:documentation>
+            <xs:appinfo>
+                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="BundlePackage" />
+                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="ExePackage" />
+                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="MsiPackage" />
+                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="MspPackage" />
+                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="MsuPackage" />
+            </xs:appinfo>
         </xs:annotation>
         <xs:simpleType>
             <xs:restriction base="xs:NMTOKEN">
