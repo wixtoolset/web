@@ -277,7 +277,7 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="BillboardPanel" />
+                <xs:element ref="Panel" />
             </xs:sequence>
             <xs:attributeGroup ref="CommonControlAttributes" />
             <xs:attribute name="Interval" type="xs:positiveInteger">
@@ -292,15 +292,6 @@
                     <xs:documentation>Specifies whether the billboard should loop through the panels infinitely.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
-        </xs:complexType>
-    </xs:element>
-
-    <xs:element name="BillboardPanel">
-        <xs:annotation>
-            <xs:documentation>Defines a collection of controls.</xs:documentation>
-        </xs:annotation>
-        <xs:complexType>
-            <xs:group ref="ControlElements" maxOccurs="unbounded"/>
         </xs:complexType>
     </xs:element>
 
@@ -886,7 +877,7 @@
             <xs:documentation>Defines a collection of controls.</xs:documentation>
         </xs:annotation>
         <xs:complexType>
-            <xs:group ref="ControlElements" maxOccurs="unbounded"/>
+            <xs:group ref="PanelControlElements" maxOccurs="unbounded"/>
             <xs:attributeGroup ref="CommonControlAttributes" />
         </xs:complexType>
     </xs:element>
@@ -1199,6 +1190,17 @@
             <xs:element ref="Static" />
             <xs:element ref="Tabs" />
             <xs:element ref="TreeView" />
+        </xs:choice>
+    </xs:group>
+
+    <xs:group name="PanelControlElements">
+        <xs:choice>
+            <xs:element ref="Hyperlink" />
+            <xs:element ref="Hypertext" />
+            <xs:element ref="ImageControl" />
+            <xs:element ref="Label" />
+            <xs:element ref="Progressbar" />
+            <xs:element ref="Static" />
         </xs:choice>
     </xs:group>
 
