@@ -1217,7 +1217,7 @@
         </xs:attribute>
         <xs:attribute name="Height" type="xs:int" use="required">
             <xs:annotation>
-                <xs:documentation>Height of the control. Non-positive values extend the control to the bottom of the window minus the value.</xs:documentation>
+                <xs:documentation>Height of the control. Non-positive values extend the control to the bottom of the window minus the value. A zero value extends the control to the bottom of the window.</xs:documentation>
             </xs:annotation>
         </xs:attribute>
         <xs:attribute name="HexStyle" type="xs:hexBinary">
@@ -1249,7 +1249,7 @@
         </xs:attribute>
         <xs:attribute name="Width" type="xs:int" use="required">
             <xs:annotation>
-                <xs:documentation>Width of the control. Non-positive values extend the control to the right of the window minus the value.</xs:documentation>
+                <xs:documentation>Width of the control. Non-positive values extend the control to the right of the window minus the value. A zero value extends the control to the right of the window.</xs:documentation>
             </xs:annotation>
         </xs:attribute>
         <xs:attribute name="X" type="xs:int" use="required">
