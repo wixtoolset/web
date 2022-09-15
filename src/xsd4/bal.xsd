@@ -380,6 +380,23 @@
         </xs:annotation>
     </xs:attribute>
 
+    <xs:attribute name="CommandLineVariables" default="caseSensitive">
+        <xs:annotation>
+            <xs:documentation>
+                This value determines whether case sensitivity is used to match overridable variables specified on the command line.
+            </xs:documentation>
+            <xs:appinfo>
+                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Bundle" />
+            </xs:appinfo>
+            <xs:simpleType>
+                <xs:restriction base="xs:NMTOKEN">
+                    <xs:enumeration value="caseSensitive" />
+                    <xs:enumeration value="caseInsensitive" />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:annotation>
+    </xs:attribute>
+
     <xs:attribute name="DisplayInternalUICondition" type="xs:string">
         <xs:annotation>
             <xs:documentation>
