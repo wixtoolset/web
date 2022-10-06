@@ -13,6 +13,89 @@
         </xs:documentation>
     </xs:annotation>
 
+    <xs:element name="DotNetCoreSearch">
+        <xs:annotation>
+            <xs:documentation>
+                Searches for an installation of .NET Core.
+                The variable gets set to the latest version of the given Runtime, Platform, and Major Version.
+            </xs:documentation>
+            <xs:appinfo>
+                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Bundle" />
+                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attributeGroup ref="SearchCommonAttributes" />
+            <xs:attribute name="RuntimeType" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation>
+                        The type of .NET Core runtime being searched for.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="aspnet">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    Attempt to check for an ASP.NET Core type runtime.
+                                    The ASP.NET Core Runtime enables you to run web/server applications.
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="desktop">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    Attempt to check for a .NET Desktop type runtime.
+                                    The .NET Desktop Runtime enables you to run Windows desktop applications.
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="core">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    Attempt to check for a .NET type runtime.
+                                    The .NET Core Runtime contains just the components needed to run a console app.
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="Platform" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation>
+                        The platform for the .NET Core runtime being searched for.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="x86" />
+                        <xs:enumeration value="x64" />
+                        <xs:enumeration value="arm64" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="MajorVersion" type="xs:integer" use="required">
+                <xs:annotation>
+                    <xs:documentation>
+                        The major version of the .NET Core runtime being searched for (e.g. 3, 5, 6).
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DotNetCoreSearchRef">
+        <xs:annotation>
+            <xs:documentation>References a DotNetCoreSearch.</xs:documentation>
+            <xs:appinfo>
+                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Bundle" />
+                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attribute name="Id" type="xs:string" use="required" />
+        </xs:complexType>
+    </xs:element>
     <xs:element name="NativeImage">
         <xs:annotation>
             <xs:documentation>
@@ -222,6 +305,28 @@
         </xs:complexType>
     </xs:element>
 
+    <xs:attributeGroup name="SearchCommonAttributes">
+        <xs:attribute name="Id" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>Id of the search for ordering and dependency.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Variable" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>Name of the variable in which to place the result of the search.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Condition" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>Condition for evaluating the search. If this evaluates to false, the search is not executed at all.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="After" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>Id of the search that this one should come after.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
     <xs:simpleType name="YesNoType">
         <xs:annotation>
             <xs:documentation>Values of this type will either be "yes" or "no".</xs:documentation>
