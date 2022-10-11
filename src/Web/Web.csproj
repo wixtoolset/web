@@ -1,16 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-
-    <TinySiteRootFolder>..\Site</TinySiteRootFolder>
-    <TinySitePublishFolder>$(MSBuildProjectDirectory)\wwwroot</TinySitePublishFolder>
-    <SitemapRootUrl>https://www.wixtoolset.com/</SitemapRootUrl>
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Site\Site.tinysiteproj" ReferenceOutputAssembly="false" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="WindowsAzure.Storage" Version="8.1.4" />
@@ -19,17 +11,4 @@
   <ItemGroup>
     <PackageReference Include="Nerdbank.GitVersioning" Version="3.4.194" PrivateAssets="all" />
   </ItemGroup>
-
-  <Target Name="PrecompileScript" BeforeTargets="CoreCompile">
-    <ItemGroup>
-      <SiteOutputFile Include="$(SiteOutputFolder)**" />
-    </ItemGroup>
-
-    <Copy SourceFiles="@(SiteOutputFile)" DestinationFiles="@(SiteOutputFile->'wwwroot\%(RecursiveDir)%(Filename)%(Extension)')"
-          SkipUnchangedFiles="true" Retries="3" />
-
-    <ItemGroup>
-      <Content Update="wwwroot/**" CopyToPublishDirectory="PreserveNewest" CopyToOutputDirectory="PreserveNewest" />
-    </ItemGroup>
-  </Target>
 </Project>

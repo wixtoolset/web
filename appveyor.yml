@@ -20,7 +20,7 @@ init:
   - git config --global user.name "WiX-BoT"
 
 build_script:
-  - appveyor.cmd
+  - src\build.cmd release
 
 artifacts:
   - path: build\deploy

@@ -1,13 +1,9 @@
 .vs/
 bin/
 obj/
-packages/
 build/
-
-site.lastrun
-src/Web/wwwroot/
 
 *.suo
 *.user
 
-src/Site/documents/documentation/manual/v4/reference/
+src/Docusaurus/docs/reference/

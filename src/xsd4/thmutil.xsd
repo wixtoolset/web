@@ -695,7 +695,7 @@
 
     <xs:element name="Hypertext">
         <xs:annotation>
-            <xs:documentation>Defines a text block with support for HTML &lt;a&gt; tags.</xs:documentation>
+            <xs:documentation>Defines a text block with support for HTML `&lt;a&gt;` tags.</xs:documentation>
         </xs:annotation>
         <xs:complexType mixed="true">
             <xs:annotation>

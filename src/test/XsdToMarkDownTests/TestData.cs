@@ -9,7 +9,7 @@ namespace XsdToMarkDownTests
     {
         public static string Get(params string[] paths)
         {
-            var localPath = Path.GetDirectoryName(new Uri(System.Reflection.Assembly.GetCallingAssembly().CodeBase).LocalPath);
+            var localPath = Path.GetDirectoryName(new Uri(System.Reflection.Assembly.GetCallingAssembly().Location).LocalPath);
             return Path.Combine(localPath, Path.Combine(paths));
         }
     }

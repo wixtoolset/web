@@ -28,9 +28,9 @@ namespace WixBuildTools.XsdToMarkdown
         {
             return type switch
             {
-                PageType.SchemaRoot => $"{this.Xsd.SchemaName}.html".ToLowerInvariant(),
-                PageType.Element => $"{this.Xsd.SchemaName}/{name}.html".ToLowerInvariant(),
-                PageType.Type => $"{this.Xsd.SchemaName}/{name}.html".ToLowerInvariant(),
+                PageType.SchemaRoot => $"{this.Xsd.SchemaName}".ToLowerInvariant(),
+                PageType.Element => $"{this.Xsd.SchemaName}/{name}".ToLowerInvariant(),
+                PageType.Type => $"{this.Xsd.SchemaName}/{name}".ToLowerInvariant(),
                 _ => throw new ArgumentOutOfRangeException(),
             };
         }
@@ -41,7 +41,6 @@ namespace WixBuildTools.XsdToMarkdown
             {
                 "---",
                 $"title: {this.Xsd.SchemaName} schema reference",
-                $"layout: documentation4",
                 $"xsd4: schema",
                 $"order: {order}",
                 "---",
@@ -235,26 +234,26 @@ namespace WixBuildTools.XsdToMarkdown
 
             var link = (sourcePageType, destinationPageType, !String.IsNullOrEmpty(namespaceId)) switch
             {
-                (PageType.SchemaRoot, PageType.SchemaRoot, true) => $"../{namespaceId}/",
+                (PageType.SchemaRoot, PageType.SchemaRoot, true) => $"../{namespaceId}.md",
                 (PageType.SchemaRoot, PageType.SchemaRoot, false) => throw new ArgumentOutOfRangeException(),
-                (PageType.SchemaRoot, PageType.Element, true) => $"../{namespaceId}/{name}/",
-                (PageType.SchemaRoot, PageType.Element, false) => $"{name}/",
-                (PageType.SchemaRoot, PageType.Type, true) => $"../{namespaceId}/{name}/",
-                (PageType.SchemaRoot, PageType.Type, false) => $"{name}/",
+                (PageType.SchemaRoot, PageType.Element, true) => $"../{namespaceId}/{name}.md",
+                (PageType.SchemaRoot, PageType.Element, false) => $"{name}.md",
+                (PageType.SchemaRoot, PageType.Type, true) => $"../{namespaceId}/{name}.md",
+                (PageType.SchemaRoot, PageType.Type, false) => $"{name}.md",
 
-                (PageType.Element, PageType.SchemaRoot, true) => $"../{namespaceId}/",
+                (PageType.Element, PageType.SchemaRoot, true) => $"../{namespaceId}.md",
                 (PageType.Element, PageType.SchemaRoot, false) => throw new ArgumentOutOfRangeException(),
-                (PageType.Element, PageType.Element, true) => $"../../{namespaceId}/{name}/",
-                (PageType.Element, PageType.Element, false) => $"../{name}/",
+                (PageType.Element, PageType.Element, true) => $"../{namespaceId}/{name}.md",
+                (PageType.Element, PageType.Element, false) => $"{name}.md",
                 (PageType.Element, PageType.Type, true) => throw new ArgumentOutOfRangeException(),
-                (PageType.Element, PageType.Type, false) => $"../{name}/",
+                (PageType.Element, PageType.Type, false) => $"{name}.md",
 
-                (PageType.Type, PageType.SchemaRoot, true) => $"../{namespaceId}/",
+                (PageType.Type, PageType.SchemaRoot, true) => $"../{namespaceId}.md",
                 (PageType.Type, PageType.SchemaRoot, false) => throw new ArgumentOutOfRangeException(),
-                (PageType.Type, PageType.Element, true) => $"../../{namespaceId}/{name}/",
-                (PageType.Type, PageType.Element, false) => $"../{name}/",
+                (PageType.Type, PageType.Element, true) => $"../{namespaceId}/{name}.md",
+                (PageType.Type, PageType.Element, false) => $"{name}.md",
                 (PageType.Type, PageType.Type, true) => throw new ArgumentOutOfRangeException(),
-                (PageType.Type, PageType.Type, false) => $"../{name}/",
+                (PageType.Type, PageType.Type, false) => $"{name}.md",
 
                 _ => throw new NotImplementedException(),
             };
