@@ -38,7 +38,7 @@
                         and will not automatically support upgrades.
                     </html:p>
                     <html:p>
-                        By default this uses the Product/@Id attribute value, which may be automatically generated.
+                        By default this uses the Package/@ProductCode attribute value, which may be automatically generated.
                     </html:p>
                 </xse:remarks>
                 <xse:howtoRef href="author_product_dependencies.html">How To: Author product dependencies</xse:howtoRef>
@@ -90,7 +90,7 @@
                 <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Bundle" />
                 <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
                 <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Module" />
-                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Product" />
+                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
                 <xse:remarks>
                     <html:p>
                         This element declares a dependency on any product that uses the Provides element. If that product is uninstalled

@@ -22,12 +22,12 @@
                 <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Component" />
                 <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
                 <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Module" />
-                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Product" />
+                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
                 <xse:remarks>
                     <html:dl>
                         <html:dd>Nesting SqlDatabase under a Component element will result in a SqlDatabase being installed to the machine as the package is installed.</html:dd>
                         <html:dd>
-                            Nesting SqlDatabase under Product, Fragment, or Module
+                            Nesting SqlDatabase under Package, Fragment, or Module
                             results in a database "locator" record being created in
                             the SqlDatabase table.  This means that the database
                             itself is neither installed nor uninstalled by the MSI
@@ -44,7 +44,7 @@
                         </html:dd>
                     </html:dl>
                 </xse:remarks>
-                <xse:seeAlso namespace="http://schemas.microsoft.com/wix/UtilExtension" ref="User"/>
+                <xse:seeAlso namespace="http://wixtoolset.org/schemas/v4/wxs/util" ref="User"/>
             </xs:appinfo>
             <xs:documentation>SQL Database</xs:documentation>
         </xs:annotation>
