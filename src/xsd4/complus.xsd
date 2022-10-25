@@ -22,12 +22,12 @@
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Component" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Module" />
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Product" />
+        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
       </xs:appinfo>
       <xs:documentation>
         Defines a COM+ partition. If this element is a child of a
         Component element, the partition will be created in association with this
-        component. If the element is a child of any of the Fragment, Module or Product
+        component. If the element is a child of any of the Fragment, Module, or Package
         elements it is considered to be a locater, referencing an existing partition.
       </xs:documentation>
     </xs:annotation>
@@ -70,7 +70,7 @@
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Component" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Module" />
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Product" />
+        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
       </xs:appinfo>
       <xs:documentation>
         Defines a COM+ partition role. Partition roles can not be
@@ -203,13 +203,13 @@
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Component" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Module" />
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Product" />
+        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
       </xs:appinfo>
       <xs:documentation>
         Defines a COM+ application. If this element is a descendent
         of a Component element, the application will be created in association with
-        this component. If the element is a child of any of the Fragment, Module or
-        Product elements it is considered to be a locater, referencing an existing
+        this component. If the element is a child of any of the Fragment, Module, or
+        Package elements it is considered to be a locater, referencing an existing
         application.
 
         If the element is a child of a ComPlusPartition element,
@@ -361,13 +361,13 @@
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Component" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Module" />
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Product" />
+        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
       </xs:appinfo>
       <xs:documentation>
         Defines an application role. If this element is a descendent
         of a Component element, the application role will be created in association
-        with this component. If the element is a child of any of the Fragment, Module
-        or Product elements it is considered to be a locater, referencing an existing
+        with this component. If the element is a child of any of the Fragment, Module,
+        or Package elements it is considered to be a locater, referencing an existing
         application role.
       </xs:documentation>
     </xs:annotation>

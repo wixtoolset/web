@@ -12,6 +12,27 @@ namespace WixBuildTools.XsdToMarkdown
     {
         public Xsd Xsd { get; private set; }
 
+        public static Page WriteReferenceRoot(IEnumerable<Xsd> xsds)
+        {
+            var content = new List<string>
+            {
+                "---",
+                "sidebar_position: 4",
+                "custom_edit_url: null",
+                "---",
+                "",
+                "# Schema reference",
+                "",
+            };
+
+            foreach (var xsd in xsds)
+            {
+                content.Add($"- [{xsd.SchemaName} schema]({xsd.SchemaName}/)");
+            }
+
+            return new Page("index", content);
+        }
+
         public IEnumerable<Page> Convert(int order, Xsd xsd)
         {
             this.Xsd = xsd;
@@ -28,7 +49,7 @@ namespace WixBuildTools.XsdToMarkdown
         {
             return type switch
             {
-                PageType.SchemaRoot => $"{this.Xsd.SchemaName}".ToLowerInvariant(),
+                PageType.SchemaRoot => $"{this.Xsd.SchemaName}/index".ToLowerInvariant(),
                 PageType.Element => $"{this.Xsd.SchemaName}/{name}".ToLowerInvariant(),
                 PageType.Type => $"{this.Xsd.SchemaName}/{name}".ToLowerInvariant(),
                 _ => throw new ArgumentOutOfRangeException(),
@@ -40,11 +61,10 @@ namespace WixBuildTools.XsdToMarkdown
             var content = new List<string>
             {
                 "---",
-                $"title: {this.Xsd.SchemaName} schema reference",
-                $"xsd4: schema",
-                $"order: {order}",
+                "custom_edit_url: null",
+                $"sidebar_position: {order}",
                 "---",
-                //$"# {this.Xsd.SchemaName} schema",
+                $"# {this.Xsd.SchemaName} schema",
                 this.Xsd.SchemaDocumentation,
                 "## Target namespace",
                 this.Xsd.TargetNamespace
@@ -79,18 +99,17 @@ namespace WixBuildTools.XsdToMarkdown
             var content = new List<string>()
             {
                 "---",
-                $"title: {title}",
-                $"layout: documentation4",
-                $"order: {order}",
+                "custom_edit_url: null",
+                $"sidebar_position: {order}",
                 "---",
-                //$"## {title}",
+                $"# {title}",
                 element.Documentation,
             };
 
             if (!element.MsiRefs.IsNullOrEmpty())
             {
                 content.Add(String.Empty);
-                content.Add("### Windows Installer references");
+                content.Add("## Windows Installer references");
                 content.Add(String.Join(", ", element.MsiRefs.SelectMany(msiRef => FormatMsiRefElement(msiRef))));
             }
 
@@ -99,21 +118,21 @@ namespace WixBuildTools.XsdToMarkdown
             if (!element.Parents.IsNullOrEmpty())
             {
                 content.Add(String.Empty);
-                content.Add("### Parents");
+                content.Add("## Parents");
                 content.Add(String.Join(", ", element.Parents.Values.Select(parent => this.FormatParentElement(parent))));
             }
 
             if (!element.Children.IsNullOrEmpty())
             {
                 content.Add(String.Empty);
-                content.Add("### Children");
+                content.Add("## Children");
                 content.AddRange(element.Children.Values.OrderBy(child => child.Name).Select(child => this.FormatChildElement(child)));
             }
 
             if (!String.IsNullOrEmpty(element.Remarks))
             {
                 content.Add(String.Empty);
-                content.Add("### Remarks");
+                content.Add("## Remarks");
                 content.Add(element.Remarks);
             }
 
@@ -121,7 +140,7 @@ namespace WixBuildTools.XsdToMarkdown
             if (element.Attributes.Any())
             {
                 content.Add(String.Empty);
-                content.Add("### Attributes");
+                content.Add("## Attributes");
 
                 foreach (var attribute in element.Attributes.Values)
                 {
@@ -154,7 +173,7 @@ namespace WixBuildTools.XsdToMarkdown
             if (!element.SeeAlsos.IsNullOrEmpty())
             {
                 content.Add(String.Empty);
-                content.Add("### See also");
+                content.Add("## See also");
                 content.Add(String.Join(", ", element.SeeAlsos.Select(seeAlso => this.FormatSeeAlsoElement(seeAlso))));
             }
 
@@ -172,18 +191,17 @@ namespace WixBuildTools.XsdToMarkdown
             var content = new List<string>()
             {
                 "---",
-                $"title: {title}",
-                $"layout: documentation4",
-                $"order: {order}",
+                "custom_edit_url: null",
+                $"sidebar_position: {order}",
                 "---",
-                //$"## {title}",
+                $"# {title}",
                 simpleType.Documentation,
             };
 
             if (simpleType.EnumValues?.Any() == true)
             {
                 content.Add(String.Empty);
-                content.Add("### Enumeration values");
+                content.Add("## Enumeration values");
                 content.AddRange(EnumValuesDocumentation(simpleType.EnumValues));
             }
 
@@ -261,15 +279,22 @@ namespace WixBuildTools.XsdToMarkdown
             return link.ToLowerInvariant();
         }
 
-        private string LinkForElement(PageType sourcePageType, string targetNamespace, string elementName) =>
-            this.RelativeLinkForPage(sourcePageType, PageType.Element, targetNamespace, elementName);
+        private string LinkForElement(PageType sourcePageType, string targetNamespace, string elementName)
+        {
+            return this.RelativeLinkForPage(sourcePageType, PageType.Element, targetNamespace, elementName);
+        }
 
-        private string LinkForType(PageType sourcePageType, string typeName) =>
-            $"{this.RelativeLinkForPage(sourcePageType, PageType.Type, targetNamespace: null, typeName.EndsWith("TypeUnion") ? typeName.Replace("TypeUnion", "Type") : typeName)}";
+        private string LinkForType(PageType sourcePageType, string typeName)
+        {
+            return $"{this.RelativeLinkForPage(sourcePageType, PageType.Type, targetNamespace: null, typeName.EndsWith("TypeUnion") ? typeName.Replace("TypeUnion", "Type") : typeName)}";
+        }
     }
 
     public static class Extensions
     {
-        public static bool IsNullOrEmpty<TSource>(this IEnumerable<TSource> enumerable) => enumerable == null || !enumerable.Any();
+        public static bool IsNullOrEmpty<TSource>(this IEnumerable<TSource> enumerable)
+        {
+            return enumerable == null || !enumerable.Any();
+        }
     }
 }

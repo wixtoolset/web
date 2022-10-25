@@ -74,7 +74,6 @@
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element ref="ApprovedExeForElevation" />
         <xs:element ref="Log" minOccurs="0" maxOccurs="1" />
-        <xs:element ref="Catalog" />
         <xs:element ref="BootstrapperApplication" />
         <xs:element ref="BootstrapperApplicationRef" />
         <xs:element ref="BundleCustomData" />
@@ -3294,7 +3293,7 @@
       </xs:attribute>
       <xs:attribute name="Comments" type="xs:string">
         <xs:annotation>
-          <xs:documentation>General purpose of the patch package. For example, "This patch contains the logic and data required to install <html:i>&lt;product&gt;</html:i>."</xs:documentation>
+          <xs:documentation>General purpose of the patch package. For example, "This patch contains the logic and data required to install _product_."</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="ReadOnly" type="YesNoDefaultTypeUnion">
@@ -5169,20 +5168,18 @@
       </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
-      <xs:sequence>
-        <xs:element ref="Condition" minOccurs="0">
-          <xs:annotation>
-            <xs:documentation>
-                        Optional condition that controls whether the permissions are applied.
-                    </xs:documentation>
-          </xs:annotation>
-        </xs:element>
-      </xs:sequence>
       <xs:attribute name="Id" type="xs:string">
         <xs:annotation>
           <xs:documentation>
                     Primary key used to identify this particular entry. If this is not specified the parent element's Id attribute
                     will be used instead.
+                </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Condition" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+                        Optional condition that controls whether the permissions are applied.
                 </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -6709,49 +6706,49 @@
                     When being used in unadvertised mode, the attributes in the AppId element correspond to registry keys
                     as follows (values that can be specified in authoring are in bold):
                     <html:dl><html:dt>Id</html:dt><html:dd><html:dl><html:dt>In General</html:dt><html:dd>
-                                    [HKCR\AppID\{<html:b>Id</html:b>}]<html:br /></html:dd><html:dt>Specific Example</html:dt><html:dd>
-                                    [HKCR\AppID\{<html:b>01234567-89AB-CDEF-0123-456789ABCDEF</html:b>}]<html:br /></html:dd></html:dl></html:dd><html:dt>ActivateAtStorage</html:dt><html:dd><html:dl><html:dt>In General</html:dt><html:dd>
-                                    [HKCR\AppID\{<html:b>Id</html:b>}]<html:br />
-                                    ActivateAtStorage="<html:b>ActivateAtStorage</html:b>"
+                                    [HKCR\AppID\{'{'}**Id**{'}'}]<html:br /></html:dd><html:dt>Specific Example</html:dt><html:dd>
+                                    [HKCR\AppID\{'{'}**01234567-89AB-CDEF-0123-456789ABCDEF**{'}'}]<html:br /></html:dd></html:dl></html:dd><html:dt>ActivateAtStorage</html:dt><html:dd><html:dl><html:dt>In General</html:dt><html:dd>
+                                    [HKCR\AppID\{'{'}**Id**{'}'}]<html:br />
+                                    ActivateAtStorage="**ActivateAtStorage**"
                                 </html:dd><html:dt>Specific Example</html:dt><html:dd>
-                                    [HKCR\AppID\{<html:b>01234567-89AB-CDEF-0123-456789ABCDEF</html:b>}]<html:br />
-                                    ActivateAtStorage="<html:b>Y</html:b>"
+                                    [HKCR\AppID\{'{'}**01234567-89AB-CDEF-0123-456789ABCDEF**{'}'}]<html:br />
+                                    ActivateAtStorage="**Y**"
                                 </html:dd></html:dl></html:dd><html:dt>Description</html:dt><html:dd><html:dl><html:dt>In General</html:dt><html:dd>
-                                    [HKCR\AppID\{<html:b>Id</html:b>}]<html:br />
-                                    @="<html:b>Description</html:b>"
+                                    [HKCR\AppID\{'{'}**Id**{'}'}]<html:br />
+                                    @="**Description**"
                                 </html:dd><html:dt>Specific Example</html:dt><html:dd>
-                                    [HKCR\AppID\{<html:b>01234567-89AB-CDEF-0123-456789ABCDEF</html:b>}]<html:br />
-                                    @="<html:b>My AppId Description</html:b>"
+                                    [HKCR\AppID\{'{'}**01234567-89AB-CDEF-0123-456789ABCDEF**{'}'}]<html:br />
+                                    @="**My AppId Description**"
                                 </html:dd></html:dl></html:dd><html:dt>DllSurrogate</html:dt><html:dd><html:dl><html:dt>In General</html:dt><html:dd>
-                                    [HKCR\AppID\{<html:b>Id</html:b>}]<html:br />
-                                    DllSurrogate="<html:b>DllSurrogate</html:b>"
+                                    [HKCR\AppID\{'{'}**Id**{'}'}]<html:br />
+                                    DllSurrogate="**DllSurrogate**"
                                 </html:dd><html:dt>Specific Example</html:dt><html:dd>
-                                    [HKCR\AppID\{<html:b>01234567-89AB-CDEF-0123-456789ABCDEF</html:b>}]<html:br />
-                                    DllSurrogate="<html:b>C:\surrogate.exe</html:b>"
+                                    [HKCR\AppID\{'{'}**01234567-89AB-CDEF-0123-456789ABCDEF**{'}'}]<html:br />
+                                    DllSurrogate="**C:\surrogate.exe**"
                                 </html:dd></html:dl></html:dd><html:dt>LocalService</html:dt><html:dd><html:dl><html:dt>In General</html:dt><html:dd>
-                                    [HKCR\AppID\{<html:b>Id</html:b>}]<html:br />
-                                    LocalService="<html:b>LocalService</html:b>"
+                                    [HKCR\AppID\{'{'}**Id**{'}'}]<html:br />
+                                    LocalService="**LocalService**"
                                 </html:dd><html:dt>Specific Example</html:dt><html:dd>
-                                    [HKCR\AppID\{<html:b>01234567-89AB-CDEF-0123-456789ABCDEF</html:b>}]<html:br />
-                                    LocalService="<html:b>MyServiceName</html:b>"
+                                    [HKCR\AppID\{'{'}**01234567-89AB-CDEF-0123-456789ABCDEF**{'}'}]<html:br />
+                                    LocalService="**MyServiceName**"
                                 </html:dd></html:dl></html:dd><html:dt>RemoteServerName</html:dt><html:dd><html:dl><html:dt>In General</html:dt><html:dd>
-                                    [HKCR\AppID\{<html:b>Id</html:b>}]<html:br />
-                                    RemoteServerName="<html:b>RemoteServerName</html:b>"
+                                    [HKCR\AppID\{'{'}**Id**{'}'}]<html:br />
+                                    RemoteServerName="**RemoteServerName**"
                                 </html:dd><html:dt>Specific Example</html:dt><html:dd>
-                                    [HKCR\AppID\{<html:b>01234567-89AB-CDEF-0123-456789ABCDEF</html:b>}]<html:br />
-                                    RemoteServerName="<html:b>MyRemoteServer</html:b>"
+                                    [HKCR\AppID\{'{'}**01234567-89AB-CDEF-0123-456789ABCDEF**{'}'}]<html:br />
+                                    RemoteServerName="**MyRemoteServer**"
                                 </html:dd></html:dl></html:dd><html:dt>RunAsInteractiveUser</html:dt><html:dd><html:dl><html:dt>In General</html:dt><html:dd>
-                                    [HKCR\AppID\{<html:b>Id</html:b>}]<html:br />
-                                    RunAs="<html:b>RunAsInteractiveUser</html:b>"
+                                    [HKCR\AppID\{'{'}**Id**{'}'}]<html:br />
+                                    RunAs="**RunAsInteractiveUser**"
                                 </html:dd><html:dt>Specific Example</html:dt><html:dd>
-                                    [HKCR\AppID\{<html:b>01234567-89AB-CDEF-0123-456789ABCDEF</html:b>}]<html:br />
-                                    RunAs="<html:b>Interactive User</html:b>"
+                                    [HKCR\AppID\{'{'}**01234567-89AB-CDEF-0123-456789ABCDEF**{'}'}]<html:br />
+                                    RunAs="**Interactive User**"
                                 </html:dd></html:dl></html:dd><html:dt>ServiceParameters</html:dt><html:dd><html:dl><html:dt>In General</html:dt><html:dd>
-                                    [HKCR\AppID\{<html:b>Id</html:b>}]<html:br />
-                                    ServiceParameters="<html:b>ServiceParameters</html:b>"
+                                    [HKCR\AppID\{'{'}**Id**{'}'}]<html:br />
+                                    ServiceParameters="**ServiceParameters**"
                                 </html:dd><html:dt>Specific Example</html:dt><html:dd>
-                                    [HKCR\AppID\{<html:b>01234567-89AB-CDEF-0123-456789ABCDEF</html:b>}]<html:br />
-                                    ServiceParameters="<html:b>-param</html:b>"
+                                    [HKCR\AppID\{'{'}**01234567-89AB-CDEF-0123-456789ABCDEF**{'}'}]<html:br />
+                                    ServiceParameters="**-param**"
                                 </html:dd></html:dl></html:dd></html:dl></xse:remarks>
       </xs:appinfo>
     </xs:annotation>
@@ -6844,105 +6841,105 @@
                     When being used in unadvertised mode, the attributes in the Class element correspond to registry keys
                     as follows (values that can be specified in authoring are in bold):
                     <html:dl><html:dt>Id/Context/Server</html:dt><html:dd><html:dl><html:dt>In General</html:dt><html:dd>
-                                    [HKCR\CLSID\{<html:b>Id</html:b>}\<html:b>Context1</html:b>]<html:br />
-                                    @="[!<html:b>Server</html:b>]"<html:br />
-                                    [HKCR\CLSID\{<html:b>Id</html:b>}\<html:b>Context2</html:b>]<html:br />
-                                    @="[!<html:b>Server</html:b>]"
+                                    [HKCR\CLSID\{'{'}**Id**{'}'}\**Context1**]<html:br />
+                                    @="[!**Server**]"<html:br />
+                                    [HKCR\CLSID\{'{'}**Id**{'}'}\**Context2**]<html:br />
+                                    @="[!**Server**]"
                                 </html:dd><html:dt>Specific Example</html:dt><html:dd>
-                                    [HKCR\CLSID\{<html:b>01234567-89AB-CDEF-0123-456789ABCDEF</html:b>}\<html:b>LocalServer</html:b>]<html:br />
-                                    @="[!<html:b>comserv.dll</html:b>]"<html:br />
-                                    [HKCR\CLSID\{<html:b>01234567-89AB-CDEF-0123-456789ABCDEF</html:b>}\<html:b>LocalServer32</html:b>]<html:br />
-                                    @="[!<html:b>comserv.dll</html:b>]"
+                                    [HKCR\CLSID\{'{'}**01234567-89AB-CDEF-0123-456789ABCDEF**{'}'}\**LocalServer**]<html:br />
+                                    @="[!**comserv.dll**]"<html:br />
+                                    [HKCR\CLSID\{'{'}**01234567-89AB-CDEF-0123-456789ABCDEF**{'}'}\**LocalServer32**]<html:br />
+                                    @="[!**comserv.dll**]"
                                 </html:dd></html:dl></html:dd><html:dt>Id/Context/ForeignServer</html:dt><html:dd><html:dl><html:dt>In General</html:dt><html:dd>
-                                  [HKCR\CLSID\{<html:b>Id</html:b>}\<html:b>Context1</html:b>]<html:br />
-                                  @="<html:b>ForeignServer</html:b>"<html:br />
-                                  [HKCR\CLSID\{<html:b>Id</html:b>}\<html:b>Context2</html:b>]<html:br />
-                                  @="<html:b>ForeignServer</html:b>"
+                                  [HKCR\CLSID\{'{'}**Id**{'}'}\**Context1**]<html:br />
+                                  @="**ForeignServer**"<html:br />
+                                  [HKCR\CLSID\{'{'}**Id**{'}'}\**Context2**]<html:br />
+                                  @="**ForeignServer**"
                                 </html:dd><html:dt>Specific Example</html:dt><html:dd>
-                                  [HKCR\CLSID\{<html:b>01234567-89AB-CDEF-0123-456789ABCDEF</html:b>}\<html:b>LocalServer</html:b>]<html:br />
-                                  @="<html:b>mscoree.dll</html:b>"<html:br />
-                                  [HKCR\CLSID\{<html:b>01234567-89AB-CDEF-0123-456789ABCDEF</html:b>}\<html:b>LocalServer32</html:b>]<html:br />
-                                  @="<html:b>mscoree.dll</html:b>"
+                                  [HKCR\CLSID\{'{'}**01234567-89AB-CDEF-0123-456789ABCDEF**{'}'}\**LocalServer**]<html:br />
+                                  @="**mscoree.dll**"<html:br />
+                                  [HKCR\CLSID\{'{'}**01234567-89AB-CDEF-0123-456789ABCDEF**{'}'}\**LocalServer32**]<html:br />
+                                  @="**mscoree.dll**"
                                 </html:dd></html:dl></html:dd><html:dt>AppId</html:dt><html:dd><html:dl><html:dt>In General</html:dt><html:dd>
-                                    [HKCR\CLSID\{<html:b>Id</html:b>}]<html:br />
-                                    AppId="{<html:b>AppId</html:b>}"
+                                    [HKCR\CLSID\{'{'}**Id**{'}'}]<html:br />
+                                    AppId="{'{'}**AppId**{'}'}"
                                 </html:dd><html:dt>Specific Example</html:dt><html:dd>
-                                    [HKCR\CLSID\{<html:b>01234567-89AB-CDEF-0123-456789ABCDEF</html:b>}]<html:br />
-                                    AppId="{<html:b>00000000-89AB-0000-0123-000000000000</html:b>}"
+                                    [HKCR\CLSID\{'{'}**01234567-89AB-CDEF-0123-456789ABCDEF**{'}'}]<html:br />
+                                    AppId="{'{'}**00000000-89AB-0000-0123-000000000000**{'}'}"
                                 </html:dd></html:dl></html:dd><html:dt>Argument</html:dt><html:dd><html:dl><html:dt>In General</html:dt><html:dd>
-                                    [HKCR\CLSID\{<html:b>Id</html:b>}\<html:b>Context</html:b>]<html:br />
-                                    @="[!<html:b>Server</html:b>] <html:b>Argument</html:b>"
+                                    [HKCR\CLSID\{'{'}**Id**{'}'}\**Context**]<html:br />
+                                    @="[!**Server**] **Argument**"
                                 </html:dd><html:dt>Specific Example</html:dt><html:dd>
-                                    [HKCR\CLSID\{<html:b>01234567-89AB-CDEF-0123-456789ABCDEF</html:b>}\<html:b>LocalServer32</html:b>]<html:br />
-                                    @="[!<html:b>comserv.dll</html:b>] <html:b>/arg1 /arg2 /arg3</html:b>"<html:br /></html:dd></html:dl></html:dd><html:dt>Control</html:dt><html:dd><html:dl><html:dt>In General</html:dt><html:dd>
+                                    [HKCR\CLSID\{'{'}**01234567-89AB-CDEF-0123-456789ABCDEF**{'}'}\**LocalServer32**]<html:br />
+                                    @="[!**comserv.dll**] **/arg1 /arg2 /arg3**"<html:br /></html:dd></html:dl></html:dd><html:dt>Control</html:dt><html:dd><html:dl><html:dt>In General</html:dt><html:dd>
                                     Value "yes" specified:<html:br />
-                                    [HKCR\CLSID\{<html:b>Id</html:b>}\Control]
+                                    [HKCR\CLSID\{'{'}**Id**{'}'}\Control]
                                 </html:dd><html:dt>Specific Example</html:dt><html:dd>
-                                    [HKCR\CLSID\{<html:b>01234567-89AB-CDEF-0123-456789ABCDEF</html:b>}\Control]
+                                    [HKCR\CLSID\{'{'}**01234567-89AB-CDEF-0123-456789ABCDEF**{'}'}\Control]
                                 </html:dd></html:dl></html:dd><html:dt>Description</html:dt><html:dd><html:dl><html:dt>In General</html:dt><html:dd>
-                                    [HKCR\CLSID\{<html:b>Id</html:b>}]<html:br />
-                                    @="<html:b>Description</html:b>"
+                                    [HKCR\CLSID\{'{'}**Id**{'}'}]<html:br />
+                                    @="**Description**"
                                 </html:dd><html:dt>Specific Example</html:dt><html:dd>
-                                    [HKCR\CLSID\{<html:b>01234567-89AB-CDEF-0123-456789ABCDEF</html:b>}]<html:br />
-                                    @="<html:b>Description of Example COM Component</html:b>"
+                                    [HKCR\CLSID\{'{'}**01234567-89AB-CDEF-0123-456789ABCDEF**{'}'}]<html:br />
+                                    @="**Description of Example COM Component**"
                                 </html:dd></html:dl></html:dd><html:dt>Handler</html:dt><html:dd><html:dl><html:dt>In General</html:dt><html:dd>
                                     Value "1" specified:<html:br />
-                                    [HKCR\CLSID\{<html:b>Id</html:b>}\InprocHandler]<html:br />
+                                    [HKCR\CLSID\{'{'}**Id**{'}'}\InprocHandler]<html:br />
                                     @="ole.dll"<html:br />
                                     Value "2" specified:<html:br />
-                                    [HKCR\CLSID\{<html:b>Id</html:b>}\InprocHandler32]<html:br />
+                                    [HKCR\CLSID\{'{'}**Id**{'}'}\InprocHandler32]<html:br />
                                     @="ole32.dll"<html:br />
                                     Value "3" specified:<html:br />
-                                    [HKCR\CLSID\{<html:b>Id</html:b>}\InprocHandler]<html:br />
+                                    [HKCR\CLSID\{'{'}**Id**{'}'}\InprocHandler]<html:br />
                                     @="ole.dll"<html:br />
-                                    [HKCR\CLSID\{<html:b>Id</html:b>}\InprocHandler32]<html:br />
+                                    [HKCR\CLSID\{'{'}**Id**{'}'}\InprocHandler32]<html:br />
                                     @="ole32.dll"<html:br />
                                     Other value specified:<html:br />
-                                    [HKCR\CLSID\{<html:b>Id</html:b>}\InprocHandler32]<html:br />
-                                    @="<html:b>Handler</html:b>"
+                                    [HKCR\CLSID\{'{'}**Id**{'}'}\InprocHandler32]<html:br />
+                                    @="**Handler**"
                                 </html:dd><html:dt>Specific Example (for other value)</html:dt><html:dd>
-                                    [HKCR\CLSID\{<html:b>01234567-89AB-CDEF-0123-456789ABCDEF</html:b>}\InprocHandler32]<html:br />
-                                    @="<html:b>handler.dll</html:b>"
+                                    [HKCR\CLSID\{'{'}**01234567-89AB-CDEF-0123-456789ABCDEF**{'}'}\InprocHandler32]<html:br />
+                                    @="**handler.dll**"
                                 </html:dd></html:dl></html:dd><html:dt>Icon/IconIndex</html:dt><html:dd>This is not currently handled properly.</html:dd><html:dt>Insertable</html:dt><html:dd><html:dl><html:dt>In General</html:dt><html:dd>
                                     Value "no" specified:<html:br />
-                                    [HKCR\CLSID\{<html:b>Id</html:b>}\NotInsertable]<html:br />
+                                    [HKCR\CLSID\{'{'}**Id**{'}'}\NotInsertable]<html:br />
                                     Value "yes" specified:<html:br />
-                                    [HKCR\CLSID\{<html:b>Id</html:b>}\Insertable]
+                                    [HKCR\CLSID\{'{'}**Id**{'}'}\Insertable]
                                 </html:dd><html:dt>Specific Example</html:dt><html:dd>
-                                    [HKCR\CLSID\{<html:b>01234567-89AB-CDEF-0123-456789ABCDEF</html:b>}\Insertable]
+                                    [HKCR\CLSID\{'{'}**01234567-89AB-CDEF-0123-456789ABCDEF**{'}'}\Insertable]
                                 </html:dd></html:dl></html:dd><html:dt>Programmable</html:dt><html:dd><html:dl><html:dt>In General</html:dt><html:dd>
                                     Value "yes" specified:<html:br />
-                                    [HKCR\CLSID\{<html:b>Id</html:b>}\Programmable]
+                                    [HKCR\CLSID\{'{'}**Id**{'}'}\Programmable]
                                 </html:dd><html:dt>Specific Example</html:dt><html:dd>
-                                    [HKCR\CLSID\{<html:b>01234567-89AB-CDEF-0123-456789ABCDEF</html:b>}\Programmable]
+                                    [HKCR\CLSID\{'{'}**01234567-89AB-CDEF-0123-456789ABCDEF**{'}'}\Programmable]
                                 </html:dd></html:dl></html:dd><html:dt>RelativePath</html:dt><html:dd>Unsupported. Please contribute this back to WiX if you know.</html:dd><html:dt>SafeForInitializing</html:dt><html:dd><html:dl><html:dt>In General</html:dt><html:dd>
                                     Value "yes" specified:<html:br />
-                                    [HKCR\CLSID\{<html:b>Id</html:b>}\Implemented Categories\{7DD95802-9882-11CF-9FA9-00AA006C42C4}]
+                                    [HKCR\CLSID\{'{'}**Id**{'}'}\Implemented Categories\{'{'}7DD95802-9882-11CF-9FA9-00AA006C42C4{'}'}]
                                 </html:dd><html:dt>Specific Example</html:dt><html:dd>
-                                    [HKCR\CLSID\{<html:b>01234567-89AB-CDEF-0123-456789ABCDEF</html:b>}\Implemented Categories\{7DD95802-9882-11CF-9FA9-00AA006C42C4}]
+                                    [HKCR\CLSID\{'{'}**01234567-89AB-CDEF-0123-456789ABCDEF**{'}'}\Implemented Categories\{'{'}7DD95802-9882-11CF-9FA9-00AA006C42C4{'}'}]
                                 </html:dd></html:dl></html:dd><html:dt>SafeForScripting</html:dt><html:dd><html:dl><html:dt>In General</html:dt><html:dd>
                                     Value "yes" specified:<html:br />
-                                    [HKCR\CLSID\{<html:b>Id</html:b>}\Implemented Categories\{7DD95801-9882-11CF-9FA9-00AA006C42C4}]
+                                    [HKCR\CLSID\{'{'}**Id**{'}'}\Implemented Categories\{'{'}7DD95801-9882-11CF-9FA9-00AA006C42C4{'}'}]
                                 </html:dd><html:dt>Specific Example</html:dt><html:dd>
-                                    [HKCR\CLSID\{<html:b>01234567-89AB-CDEF-0123-456789ABCDEF</html:b>}\Implemented Categories\{7DD95801-9882-11CF-9FA9-00AA006C42C4}]
+                                    [HKCR\CLSID\{'{'}**01234567-89AB-CDEF-0123-456789ABCDEF**{'}'}\Implemented Categories\{'{'}7DD95801-9882-11CF-9FA9-00AA006C42C4{'}'}]
                                 </html:dd></html:dl></html:dd><html:dt>ThreadingModel</html:dt><html:dd><html:dl><html:dt>In General</html:dt><html:dd>
-                                    [HKCR\CLSID\{<html:b>Id</html:b>}\<html:b>Context</html:b>]<html:br />
-                                    ThreadingModel="<html:b>ThreadingModel</html:b>"
+                                    [HKCR\CLSID\{'{'}**Id**{'}'}\**Context**]<html:br />
+                                    ThreadingModel="**ThreadingModel**"
                                 </html:dd><html:dt>Specific Example</html:dt><html:dd>
-                                    [HKCR\CLSID\{<html:b>01234567-89AB-CDEF-0123-456789ABCDEF</html:b>}\<html:b>LocalServer32</html:b>]<html:br />
-                                    ThreadingModel="<html:b>Apartment</html:b>"
+                                    [HKCR\CLSID\{'{'}**01234567-89AB-CDEF-0123-456789ABCDEF**{'}'}\**LocalServer32**]<html:br />
+                                    ThreadingModel="**Apartment**"
                                 </html:dd></html:dl></html:dd><html:dt>TypeLibId (from parent TypeLib/@Id)</html:dt><html:dd><html:dl><html:dt>In General</html:dt><html:dd>
-                                    [HKCR\CLSID\{<html:b>Id</html:b>}\TypeLib]<html:br />
-                                    @="{<html:b>TypeLibId</html:b>}"
+                                    [HKCR\CLSID\{'{'}**Id**{'}'}\TypeLib]<html:br />
+                                    @="{'{'}**TypeLibId**{'}'}"
                                 </html:dd><html:dt>Specific Example</html:dt><html:dd>
-                                    [HKCR\CLSID\{<html:b>01234567-89AB-CDEF-0123-456789ABCDEF</html:b>}\TypeLib]<html:br />
-                                    @="{<html:b>11111111-89AB-1111-0123-111111111111</html:b>}"
+                                    [HKCR\CLSID\{'{'}**01234567-89AB-CDEF-0123-456789ABCDEF**{'}'}\TypeLib]<html:br />
+                                    @="{'{'}**11111111-89AB-1111-0123-111111111111**{'}'}"
                                 </html:dd></html:dl></html:dd><html:dt>Version</html:dt><html:dd><html:dl><html:dt>In General</html:dt><html:dd>
-                                    [HKCR\CLSID\{<html:b>Id</html:b>}\Version]<html:br />
-                                    @="<html:b>Version</html:b>"
+                                    [HKCR\CLSID\{'{'}**Id**{'}'}\Version]<html:br />
+                                    @="**Version**"
                                 </html:dd><html:dt>Specific Example</html:dt><html:dd>
-                                    [HKCR\CLSID\{<html:b>01234567-89AB-CDEF-0123-456789ABCDEF</html:b>}\Version]<html:br />
-                                    @="<html:b>1.0.0.0</html:b>"
+                                    [HKCR\CLSID\{'{'}**01234567-89AB-CDEF-0123-456789ABCDEF**{'}'}\Version]<html:br />
+                                    @="**1.0.0.0**"
                                 </html:dd></html:dl></html:dd></html:dl></xse:remarks>
       </xs:appinfo>
     </xs:annotation>
@@ -9017,7 +9014,7 @@
           <xs:documentation>
                         Determines the initial display of this feature in the feature tree.
                         This attribute's value should be one of the following:
-                        <html:dl><html:dt class="enumerationValue"><html:dfn>collapse</html:dfn></html:dt><html:dd>Initially shows the feature collapsed. This is the default value.</html:dd><html:dt class="enumerationValue"><html:dfn>expand</html:dfn></html:dt><html:dd>Initially shows the feature expanded.</html:dd><html:dt class="enumerationValue"><html:dfn>hidden</html:dfn></html:dt><html:dd>Prevents the feature from displaying in the user interface.</html:dd><html:dt class="enumerationValue"><html:dfn>&lt;an explicit integer value&gt;</html:dfn></html:dt><html:dd>
+                        <html:dl><html:dt class="enumerationValue"><html:dfn>collapse</html:dfn></html:dt><html:dd>Initially shows the feature collapsed. This is the default value.</html:dd><html:dt class="enumerationValue"><html:dfn>expand</html:dfn></html:dt><html:dd>Initially shows the feature expanded.</html:dd><html:dt class="enumerationValue"><html:dfn>hidden</html:dfn></html:dt><html:dd>Prevents the feature from displaying in the user interface.</html:dd><html:dt class="enumerationValue"><html:dfn>(an explicit integer value)</html:dfn></html:dt><html:dd>
                                 For advanced users only, it is possible to directly set the integer value
                                 of the display value that will appear in the Feature row.
                             </html:dd></html:dl></xs:documentation>
@@ -10494,7 +10491,7 @@
   <xs:element name="LaunchConditions" type="ActionModuleSequenceType">
     <xs:annotation>
       <xs:appinfo>
-        <xse:seeAlso ref="Condition" />
+        <xse:seeAlso ref="Launch" />
         <xse:msiRef action="LaunchConditions" href="http://msdn.microsoft.com/library/aa369751.aspx" />
       </xs:appinfo>
       <xs:documentation>Queries the LaunchCondition table and evaluates each conditional statement recorded there. If any of these conditional statements fail, an error message is displayed to the user and the installation is terminated. The LaunchConditions action is optional. This action is normally the first in the sequence, but the AppSearch Action may be sequenced before the LaunchConditions action. If there are launch conditions that do not apply to all installation modes, the appropriate installation mode property should be used in a conditional expression in the appropriate sequence table. The condition for this action may be specified in the element's inner text.</xs:documentation>
@@ -12980,7 +12977,7 @@
         <xs:annotation>
           <xs:documentation>
                         Set this value to 'yes' in order to make the variable's value overridable either by
-                        another WixVariable entry or via the command-line option -d&lt;name&gt;=&lt;value&gt;
+                        another WixVariable entry or via the command-line option -d_name_=_value_;
                         for light.exe. If the same variable is declared overridable in multiple places it
                         will cause an error (since WiX won't know which value is correct). The default value
                         is 'no'.

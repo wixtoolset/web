@@ -21,7 +21,7 @@
             <xs:appinfo>
                 <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
                 <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Module" />
-                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Product" />
+                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
             </xs:appinfo>
             <xs:documentation>
                 WebDirProperties used by one or more WebSites. Lists properties common to IIS web sites and vroots. Corresponding properties can be viewed through the IIS Manager snap-in. One property entry can be reused by multiple sites or vroots using the Id field as a reference, using WebVirtualDir.DirProperties, WebSite.DirProperties, or WebDir.DirProperties.
@@ -308,7 +308,7 @@
                 <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Component" />
                 <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
                 <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Module" />
-                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Product" />
+                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
             </xs:appinfo>
             <xs:documentation>IIS6 Application Pool</xs:documentation>
         </xs:annotation>
@@ -645,7 +645,7 @@
             <xs:appinfo>
                 <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
                 <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Module" />
-                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Product" />
+                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
             </xs:appinfo>
             <xs:documentation>Defines properties for a web application. These properties can be used for more than one application defined in a web site or vroot, by defining this element in a common location and referring to it by setting the WebApplication attribute of the WebSite and WebVirtualDir elements.</xs:documentation>
         </xs:annotation>
@@ -869,12 +869,12 @@
                 <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Component" />
                 <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
                 <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Module" />
-                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Product" />
+                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
                 <xse:remarks>
                     <html:dl>
                         <html:dd>Nesting WebSite under a Component element will result in a WebSite being installed to the machine as the package is installed.</html:dd>
                         <html:dd>
-                            Nesting WebSite under Product, Fragment, or Module
+                            Nesting WebSite under Package, Fragment, or Module
                             results in a web site "locator" record being created in
                             the IIsWebSite table.  This means that the web site
                             itself is neither installed nor uninstalled by the MSI
@@ -980,7 +980,7 @@
             <xs:appinfo>
                 <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
                 <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Module" />
-                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Product" />
+                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
             </xs:appinfo>
             <xs:documentation>WebLog definition.</xs:documentation>
         </xs:annotation>

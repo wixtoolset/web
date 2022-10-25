@@ -3,6 +3,7 @@
 namespace WixBuildTools.XsdToMarkdown
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Xml.Linq;
@@ -28,7 +29,8 @@ namespace WixBuildTools.XsdToMarkdown
 
             // Convert 'em to Markdown.
             var converter = new ConvertXsdToMarkdownCommand();
-            var pages = finalizedXsds.SelectMany((xsd, order) => converter.Convert(order + 1, xsd));
+            var pages = finalizedXsds.SelectMany((xsd, order) => converter.Convert(order + 1, xsd)).ToList();
+            pages.Add(ConvertXsdToMarkdownCommand.WriteReferenceRoot(finalizedXsds));
 
             foreach (var page in pages)
             {
@@ -49,8 +51,8 @@ namespace WixBuildTools.XsdToMarkdown
         /// </summary>
         private static int OrderXsds(Xsd x, Xsd y)
         {
-            var wxsSchemaX = x.TargetNamespace.Contains("/wxs");
-            var wxsSchemaY = y.TargetNamespace.Contains("/wxs");
+            var wxsSchemaX = x.TargetNamespace.EndsWith("/wxs");
+            var wxsSchemaY = y.TargetNamespace.EndsWith("/wxs");
 
             if (wxsSchemaX)
             {
@@ -68,8 +70,8 @@ namespace WixBuildTools.XsdToMarkdown
                 return 1;
             }
 
-            var wxlSchemaX = x.TargetNamespace.Contains("/wxl");
-            var wxlSchemaY = y.TargetNamespace.Contains("/wxl");
+            var wxlSchemaX = x.TargetNamespace.EndsWith("/wxl");
+            var wxlSchemaY = y.TargetNamespace.EndsWith("/wxl");
 
             if (wxlSchemaX)
             {

@@ -498,7 +498,7 @@
       <xs:appinfo>
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Module" />
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Product" />
+        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
       </xs:appinfo>
       <xs:documentation>
                 Finds user groups on the local machine or specified Active Directory domain. The local machine will be
@@ -1026,7 +1026,7 @@
           <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Component" />
           <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
           <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Module" />
-          <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Product" />
+          <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
       </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
@@ -1304,7 +1304,7 @@
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Component" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Module" />
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Product" />
+        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
         <xse:seeAlso ref="Group" />
         <xse:seeAlso ref="GroupRef" />
       </xs:appinfo>
@@ -1611,7 +1611,7 @@
     <xs:annotation>
       <xs:documentation>Schedules the BroadcastEnvironmentChange custom action for the current platform.</xs:documentation>
       <xs:appinfo>
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Product" />
+        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Module" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="UI" />
@@ -1622,7 +1622,7 @@
     <xs:annotation>
       <xs:documentation>Schedules the BroadcastSettingChange custom action for the current platform.</xs:documentation>
       <xs:appinfo>
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Product" />
+        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Module" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="UI" />
@@ -1633,7 +1633,7 @@
     <xs:annotation>
       <xs:documentation>Schedules the CheckRebootRequired custom action for the current platform.</xs:documentation>
       <xs:appinfo>
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Product" />
+        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Module" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="UI" />
@@ -1644,7 +1644,7 @@
     <xs:annotation>
       <xs:documentation>Schedules the ExitEarlyWithSuccess custom action for the current platform.</xs:documentation>
       <xs:appinfo>
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Product" />
+        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Module" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="UI" />
@@ -1655,7 +1655,7 @@
     <xs:annotation>
       <xs:documentation>Schedules the FailWhenDeferred custom action for the current platform.</xs:documentation>
       <xs:appinfo>
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Product" />
+        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Module" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="UI" />
@@ -1666,7 +1666,7 @@
     <xs:annotation>
       <xs:documentation>Schedules the WaitForEvent custom action for the current platform.</xs:documentation>
       <xs:appinfo>
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Product" />
+        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Module" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="UI" />
@@ -1677,7 +1677,7 @@
     <xs:annotation>
       <xs:documentation>Schedules the WaitForEventDeferred custom action for the current platform.</xs:documentation>
       <xs:appinfo>
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Product" />
+        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Module" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="UI" />
@@ -1688,7 +1688,7 @@
     <xs:annotation>
       <xs:documentation>Schedules the QueryOsDirs custom action for the current platform.</xs:documentation>
       <xs:appinfo>
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Product" />
+        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Module" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="UI" />
@@ -1699,7 +1699,7 @@
     <xs:annotation>
       <xs:documentation>Schedules the QueryOsDriverInfo custom action for the current platform.</xs:documentation>
       <xs:appinfo>
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Product" />
+        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Module" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="UI" />
@@ -1710,7 +1710,7 @@
     <xs:annotation>
       <xs:documentation>Schedules the QueryOsInfo custom action for the current platform.</xs:documentation>
       <xs:appinfo>
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Product" />
+        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Module" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="UI" />
@@ -1721,7 +1721,7 @@
     <xs:annotation>
       <xs:documentation>Schedules the QueryOsWellKnownSID custom action for the current platform.</xs:documentation>
       <xs:appinfo>
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Product" />
+        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Module" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="UI" />
