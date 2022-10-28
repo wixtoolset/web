@@ -30,9 +30,9 @@ Committers have no authority over the overall direction of the project. However,
 
 Contributors are community members who submit pull requests for the project. These pull requests may be a one-time occurrence or occur over time. The expectation is that that contributors will submit pull requests that are small at first. Ideally larger or more complex contributions are sent once the contributor has built confidence in the quality of their pull requests with the community.
 
-Before a contributor's first pull request is put into the repository they must sign a [Contribution License Agreement](/development/assignment-agreement/). The pull request can be submitted and discussed but it cannot be committed to the repository without the appropriate paperwork in place.
+Before a contributor's first pull request is put into the repository they must sign a [Contribution License Agreement](https://cla.dotnetfoundation.org/). The pull request can be submitted and discussed but it cannot be committed to the repository without the appropriate paperwork in place.
 
-**How to become a Contributor:** Participate in the project as a [developer](/development/).
+**How to become a Contributor:** Participate in the project as a [developer](../development/index.md).
 
 #### Users
 
@@ -43,10 +43,10 @@ Users should be encouraged to participate in the life of the project and the com
 * Advocating the use of the project
 * Informing developers of the project strength and weaknesses from a new user's perspective
 * Providing moral support (a 'thank you' goes a long way)
-* Writing [documentation](/documentation/manual) and [tutorials](/documentation/tutorial)
-* Filing [bug reports and feature requests](/bugs/)
-* Participating on the [mailing lists](/documentation/mailinglist)
+* Writing [documentation](gethelp.md#doc)
+* Filing [bug reports and feature requests](gethelp.md#bugs)
+* Participating on the [mailing lists](gethelp.md#mailinglists) and [discussion forum](gethelp.md#forum)
 
 Users who continue to engage with the project and its community will often find themselves becoming more and more involved. Such users may then go on to become Contributors, as described above.
 
-**How to become a User:** [Download the WiX toolset](/releases/) and participate in the [mailing lists](/documentation/mailinglist).
+**How to become a User:** Use the WiX toolset and participate on the [mailing lists](gethelp.md#mailinglists) and [discussion forum](gethelp.md#forum).

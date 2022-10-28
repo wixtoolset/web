@@ -1,10 +1,10 @@
 ---
-sidebar_position: 1
+sidebar_position: 10
 ---
 
-# About the WiX toolset
+# About
 
-The WiX toolset lets developers create installers for Windows Installer,
+The WiX Toolset lets developers create installers for Windows Installer,
 the Windows installation engine.
 
 * The core of WiX is a set of build tools that build Windows Installer packages
@@ -12,7 +12,7 @@ the Windows installation engine.
   and then linked to create executables; in this case .exe setup bundles, .msi installation
   packages, .msm merge modules, and .msp patches. The WiX command-line build tools
   work with any automated build system. Also, MSBuild is supported from the command
-  line, Visual Studio, and Team Build.
+  line, Visual Studio, and common CI/CD build systems like GitHub Actions.
 
 * WiX includes several extensions that offer functionality beyond that of Windows
   Installer. For example, WiX can install IIS web sites, create SQL Server databases,

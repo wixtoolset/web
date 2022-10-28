@@ -36,11 +36,9 @@ understand your proposal.
 improvement does and how it makes WiX better; that allows the triage team and attendees to offer
 feedback and, if all goes well, schedule the feature in an appropriate release.
 
-- **Draft your WIP.** Get the ideas "down on paper." Send a pull request to get feedback on the draft and
-updated in the WiX Git repository.
+- **Draft your WIP.** Get the ideas "down on paper." Send a pull request to get feedback on the draft and updated in the WiX Git repository.
 
-- **Get public feedback.** You have many options for feedback: E-mail to [wix-devs] describing the
-proposed change. E-mail to [wix-users] for the user perspective. Blog posts. Tweets.
+- **Get public feedback.** You have many options for feedback: E-mail to the [wix-devs mailing list] describing the proposed change. E-mail to the [wix-users mailing list] for the user perspective. Blog posts. Tweets.
 
 - **Capture the feedback.** Use the feedback to improve your WIP. Add useful suggestions. Address
 weaknesses. List alternatives. Consider what it means if you're getting lots of negative feedback. (But
@@ -135,5 +133,7 @@ Finally, this is not a college writing assignment. Use as many words as necessar
 idea. No need to write a book. Also, feel free to enlist others to help you write the document.
 Start with a rough draft and have someone help flesh out the missing details.
 
-  [issue tracker]: /issues/
-  [wix-devs]: /documentation/mailinglist/
+
+[issue tracker]: gethelp.md#bugs
+[wix-devs mailing list]: gethelp.md#wixdevs
+[wix-users mailing list]: gethelp.md#wixusers
