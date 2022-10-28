@@ -16,7 +16,7 @@ dotnet test test\XsdToMarkdownTests\XsdToMarkdownTests.csproj -c %_C% -nologo -m
 
 :: Build reference markdown from xsds into site
 
-..\build\%_C%\net6.0\XsdToMarkdown.exe -out Docusaurus\docs\reference xsd4\*.xsd || exit /b
+..\build\%_C%\net6.0\XsdToMarkdown.exe -out Docusaurus\docs\reference\schema xsd4\*.xsd || exit /b
 
 :: Publish dynamic web site
 

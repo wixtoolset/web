@@ -4,6 +4,10 @@ sidebar_position: 3
 
 # Building WiX
 
+:::caution
+TODO: Update for WiX v4
+:::
+
 ## Before your first build
 
 To perform the one-time configuration the WiX build requires:

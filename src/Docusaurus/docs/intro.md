@@ -2,46 +2,50 @@
 sidebar_position: 0
 ---
 
-# Tutorial Intro
+# Get started with WiX
 
-Let's discover **Docusaurus in less than 5 minutes**.
+There are three ways to use WiX v4:
 
-## Getting Started
+- [Command-line .NET tool](#nettool)
+- [MSBuild on the command line and CI/CD build systems](#msbuild)
+- [Visual Studio](#vs)
 
-Get started by **creating a new site**.
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+## Command-line .NET tool {#nettool}
 
-### What you'll need
+WiX v4 is available as a [.NET tool](https://learn.microsoft.com/en-us/dotnet/core/tools/global-tools) for your command-line pleasure.
 
-- [Node.js](https://nodejs.org/en/download/) version 16.14 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+:::note
+The `wix.exe` tool requires the .NET 6 SDK.
+:::
 
-## Generate a new site
+Wix.exe supports commands to perform particular operations. For example, the `build` command lets you build MSI packages, bundles, and other package types.
 
-Generate a new Docusaurus site using the **classic template**.
+To install the Wix.exe .NET tool:
 
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest my-website classic
+```sh
+dotnet tool install --global wix --version 4.0.0-preview.1
 ```
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+To verify Wix.exe was successfully installed:
 
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
+```sh
+wix --version
 ```
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+#### See also
+- [Wix.exe command-line reference](reference/wixexe.md)
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+## MSBuild on the command line and CI/CD build systems {#msbuild}
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+WiX v4 is available as an MSBuild SDK for building from the command line using `dotnet build` from the .NET SDK or the .NET Framework-based `MSBuild` from Visual Studio. SDK-style projects have smart defaults that make for simple .wixproj project authoring. For example, here's a minimal .wixproj that builds an MSI from the .wxs source files in the project directory:
+
+```xml
+<Project Sdk="WixToolset.Sdk/4.0.0-preview.1">
+</Project>
+```
+
+
+## Visual Studio {#vs}
+
+TODO

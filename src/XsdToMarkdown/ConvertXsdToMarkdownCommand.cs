@@ -17,7 +17,7 @@ namespace WixBuildTools.XsdToMarkdown
             var content = new List<string>
             {
                 "---",
-                "sidebar_position: 4",
+                "sidebar_position: 99",
                 "custom_edit_url: null",
                 "---",
                 "",
@@ -27,7 +27,7 @@ namespace WixBuildTools.XsdToMarkdown
 
             foreach (var xsd in xsds)
             {
-                content.Add($"- [{xsd.SchemaName} schema]({xsd.SchemaName}/)");
+                content.Add($"- [{xsd.SchemaName} schema]({xsd.SchemaName.ToLowerInvariant()}/)");
             }
 
             return new Page("index", content);
