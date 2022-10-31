@@ -9,7 +9,7 @@
            xmlns="http://wixtoolset.org/schemas/v4/wxs">
   <xs:annotation>
     <xs:documentation>
-            Schema for describing Windows Installer database files (.msi/.msm/.pcp).
+      Schema for describing Windows Installer database files (.msi/.msm/.pcp).
     </xs:documentation>
     <xs:appinfo>
       <xse:main />
@@ -2427,55 +2427,51 @@
       </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
-      <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="AppId" />
+        <xs:element ref="Binary" />
+        <xs:element ref="Component" />
+        <xs:element ref="ComponentGroupRef" />
+        <xs:element ref="ComponentRef" />
+        <xs:element ref="Configuration" />
+        <xs:element ref="CustomAction" />
+        <xs:element ref="CustomActionRef" />
+        <xs:element ref="CustomTable" />
+        <xs:element ref="CustomTableRef" />
+        <xs:element ref="Dependency" />
+        <xs:element ref="Directory" />
+        <xs:element ref="DirectoryRef" />
+        <xs:element ref="EmbeddedChainer" />
+        <xs:element ref="EmbeddedChainerRef" />
+        <xs:element ref="EnsureTable" />
+        <xs:element ref="Exclusion" />
+        <xs:element ref="Icon" />
+        <xs:element ref="IgnoreTable" />
+        <xs:element ref="Property" />
+        <xs:element ref="PropertyRef" />
+        <xs:element ref="SetDirectory" />
+        <xs:element ref="SetProperty" />
+        <xs:element ref="SFPCatalog" />
+        <xs:element ref="StandardDirectory" />
+        <xs:element ref="Substitution" />
         <xs:element ref="SummaryInformation" />
-        <xs:choice minOccurs="0" maxOccurs="unbounded">
-          <xs:element ref="AppId" />
-          <xs:element ref="Binary" />
-          <xs:element ref="Component" />
-          <xs:element ref="ComponentGroupRef" />
-          <xs:element ref="ComponentRef" />
-          <xs:element ref="Configuration" />
-          <xs:element ref="CustomAction" />
-          <xs:element ref="CustomActionRef" />
-          <xs:element ref="CustomTable" />
-          <xs:element ref="CustomTableRef" />
-          <xs:element ref="Dependency" />
-          <xs:element ref="Directory" />
-          <xs:element ref="DirectoryRef" />
-          <xs:element ref="EmbeddedChainer" />
-          <xs:element ref="EmbeddedChainerRef" />
-          <xs:element ref="EnsureTable" />
-          <xs:element ref="Exclusion" />
-          <xs:element ref="Icon" />
-          <xs:element ref="IgnoreTable" />
-          <xs:element ref="Property" />
-          <xs:element ref="PropertyRef" />
-          <xs:element ref="SetDirectory" />
-          <xs:element ref="SetProperty" />
-          <xs:element ref="SFPCatalog" />
-          <xs:element ref="StandardDirectory" />
-          <xs:element ref="Substitution" />
-          <xs:element ref="UI" />
-          <xs:element ref="UIRef" />
-          <xs:element ref="WixVariable" />
-          <xs:sequence>
-            <xs:element ref="InstallExecuteSequence" minOccurs="0" />
-            <xs:element ref="InstallUISequence" minOccurs="0" />
-            <xs:element ref="AdminExecuteSequence" minOccurs="0" />
-            <xs:element ref="AdminUISequence" minOccurs="0" />
-            <xs:element ref="AdvertiseExecuteSequence" minOccurs="0" />
-          </xs:sequence>
-          <xs:any namespace="##other" processContents="lax">
-            <xs:annotation>
-              <xs:documentation>
-                            Extensibility point in the WiX XML Schema. Schema extensions can register additional
-                            elements at this point in the schema.
-                        </xs:documentation>
-            </xs:annotation>
-          </xs:any>
-        </xs:choice>
-      </xs:sequence>
+        <xs:element ref="UI" />
+        <xs:element ref="UIRef" />
+        <xs:element ref="WixVariable" />
+        <xs:element ref="InstallExecuteSequence" />
+        <xs:element ref="InstallUISequence" />
+        <xs:element ref="AdminExecuteSequence" />
+        <xs:element ref="AdminUISequence" />
+        <xs:element ref="AdvertiseExecuteSequence" />
+        <xs:any namespace="##other" processContents="lax">
+          <xs:annotation>
+            <xs:documentation>
+                          Extensibility point in the WiX XML Schema. Schema extensions can register additional
+                          elements at this point in the schema.
+                      </xs:documentation>
+          </xs:annotation>
+        </xs:any>
+      </xs:choice>
       <xs:attribute name="Id" type="xs:string" use="required">
         <xs:annotation>
           <xs:documentation>The name of the merge module (not the file name).</xs:documentation>
@@ -3061,7 +3057,7 @@
       </xs:choice>
       <xs:attribute name="Id" type="xs:string" use="required">
         <xs:annotation>
-          <xs:documentation>Identifier for a set of product versions.</xs:documentation>
+          <xs:documentation>Identifier for a set of product versions. It is recommended to use short identifiers like 'RTM' and 'SP1'. The identifier will been trimmed to less than 28 characters as required by the Windows Installer.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
     </xs:complexType>
@@ -4124,13 +4120,13 @@
       </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
-      <xs:sequence>
-        <xs:element ref="Property" minOccurs="0" maxOccurs="unbounded">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="Property">
           <xs:annotation>
             <xs:documentation>Translates into ODBCSourceAttributes</xs:documentation>
           </xs:annotation>
         </xs:element>
-      </xs:sequence>
+      </xs:choice>
       <xs:attribute name="Id" use="required" type="xs:string">
         <xs:annotation>
           <xs:documentation>Identifier of the data source.</xs:documentation>
@@ -4186,14 +4182,14 @@
       </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
-      <xs:sequence>
-        <xs:element ref="Property" minOccurs="0" maxOccurs="unbounded">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="Property">
           <xs:annotation>
             <xs:documentation>Translates into ODBCSourceAttributes</xs:documentation>
           </xs:annotation>
         </xs:element>
-        <xs:element ref="ODBCDataSource" minOccurs="0" maxOccurs="unbounded" />
-      </xs:sequence>
+        <xs:element ref="ODBCDataSource" />
+      </xs:choice>
       <xs:attribute name="Id" use="required" type="xs:string">
         <xs:annotation>
           <xs:documentation>Identifier for the driver.</xs:documentation>
@@ -4258,7 +4254,7 @@
         <xse:seeAlso ref="IniFileSearch" />
         <xse:seeAlso ref="RegistrySearch" />
         <xse:msiRef table="DrLocator" href="http://msdn.microsoft.com/library/aa368331.aspx" />
-        <xse:msiRef table="Signature" href="http://msdn.microsoft.com/library/aa371853.aspx" />
+        <xse:msiRef table="Signature" href="https://docs.microsoft.com/en-us/windows/win32/msi/signature-table" />
         <xse:howtoRef href="files_and_registry/check_the_version_number.html">How To: Check the version number of a file during installation</xse:howtoRef>
         <xse:remarks>
           <html:a>When the parent DirectorySearch/@Depth attribute is greater than 0, the FileSearch/@Id attribute must be absent or the same as the parent DirectorySearch/@Id attribute value, unless the parent DirectorySearch/@AssignToProperty attribute value is 'yes'.</html:a>
@@ -4356,7 +4352,7 @@
         <xse:seeAlso ref="IniFileSearch" />
         <xse:seeAlso ref="RegistrySearch" />
         <xse:msiRef table="DrLocator" href="http://msdn.microsoft.com/library/aa368331.aspx" />
-        <xse:msiRef table="Signature" href="http://msdn.microsoft.com/library/aa371853.aspx" />
+        <xse:msiRef table="Signature" href="https://docs.microsoft.com/en-us/windows/win32/msi/signature-table" />
         <xse:howtoRef href="files_and_registry/check_the_version_number.html">How To: Check the version number of a file during installation</xse:howtoRef>
         <xse:howtoRef href="files_and_registry/directorysearchref.html">How To: Reference another DirectorySearch element</xse:howtoRef>
         <xse:howtoRef href="files_and_registry/parentdirectorysearch.html">How To: Get the parent directory of a file search</xse:howtoRef>
@@ -4441,7 +4437,7 @@
         <xse:seeAlso ref="IniFileSearch" />
         <xse:seeAlso ref="RegistrySearch" />
         <xse:msiRef table="CompLocator" href="http://msdn.microsoft.com/library/aa368001.aspx" />
-        <xse:msiRef table="Signature" href="http://msdn.microsoft.com/library/aa371853.aspx" />
+        <xse:msiRef table="Signature" href="https://docs.microsoft.com/en-us/windows/win32/msi/signature-table" />
       </xs:appinfo>
       <xs:documentation>Searches for file or directory and assigns to value of parent Property.</xs:documentation>
     </xs:annotation>
@@ -4489,7 +4485,7 @@
         <xse:seeAlso ref="ComponentSearch" />
         <xse:seeAlso ref="RegistrySearch" />
         <xse:msiRef table="IniLocator" href="http://msdn.microsoft.com/library/aa369283.aspx" />
-        <xse:msiRef table="Signature" href="http://msdn.microsoft.com/library/aa371853.aspx" />
+        <xse:msiRef table="Signature" href="https://docs.microsoft.com/en-us/windows/win32/msi/signature-table" />
       </xs:appinfo>
       <xs:documentation>Searches for file, directory or registry key and assigns to value of parent Property</xs:documentation>
     </xs:annotation>
@@ -4573,7 +4569,7 @@
         <xse:seeAlso ref="ComponentSearch" />
         <xse:seeAlso ref="IniFileSearch" />
         <xse:msiRef table="RegLocator" href="http://msdn.microsoft.com/library/aa371171.aspx" />
-        <xse:msiRef table="Signature" href="http://msdn.microsoft.com/library/aa371853.aspx" />
+        <xse:msiRef table="Signature" href="https://docs.microsoft.com/en-us/windows/win32/msi/signature-table" />
         <xse:howtoRef href="files_and_registry/read_a_registry_entry.html">How To: Read a registry entry during installation</xse:howtoRef>
         <xse:remarks>
           <html:p>
@@ -4721,8 +4717,8 @@
     <xs:annotation>
       <xs:appinfo>
         <xse:seeAlso ref="Property" />
-        <xse:msiRef table="CCPSearch" href="http://msdn.microsoft.com/library/aa367846.aspx" />
-        <xse:msiRef table="Signature" href="http://msdn.microsoft.com/library/aa371853.aspx" />
+        <xse:msiRef table="CCPSearch" href="https://docs.microsoft.com/en-us/windows/win32/msi/ccpsearch-table" />
+        <xse:msiRef table="Signature" href="https://docs.microsoft.com/en-us/windows/win32/msi/signature-table" />
       </xs:appinfo>
       <xs:documentation>Adds a row to the CCPSearch table.</xs:documentation>
     </xs:annotation>
@@ -4742,18 +4738,18 @@
         <xs:any namespace="##other" processContents="lax">
           <xs:annotation>
             <xs:documentation>
-                        Extensibility point in the WiX XML Schema. Schema extensions can register additional
-                        elements at this point in the schema.
-                    </xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
           </xs:annotation>
         </xs:any>
       </xs:choice>
       <xs:anyAttribute namespace="##other" processContents="lax">
         <xs:annotation>
           <xs:documentation>
-                    Extensibility point in the WiX XML Schema. Schema extensions can register additional
-                    attributes at this point in the schema.
-                </xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
         </xs:annotation>
       </xs:anyAttribute>
     </xs:complexType>
@@ -10640,7 +10636,7 @@
   <xs:element name="InstallUISequence">
     <xs:annotation>
       <xs:appinfo>
-        <xse:msiRef table="InstallUISequence" href="http://msdn.microsoft.com/library/aa369543.aspx" />
+        <xse:msiRef table="InstallUISequence" href="https://docs.microsoft.com/en-us/windows/win32/msi/installuisequence-table" />
       </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
@@ -10731,12 +10727,11 @@
   <xs:element name="InstallExecuteSequence">
     <xs:annotation>
       <xs:appinfo>
-        <xse:msiRef table="InstallExecuteSequence" href="http://msdn.microsoft.com/library/aa369500.aspx" />
+        <xse:msiRef table="InstallExecuteSequence" href="https://docs.microsoft.com/en-us/windows/win32/msi/installexecutesequence-table" />
       </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <!-- used only to supply default op for child action elements -->
         <xs:element ref="Custom" minOccurs="0" maxOccurs="unbounded">
           <xs:annotation>
             <xs:documentation>Use to sequence a custom action.</xs:documentation>
@@ -11082,7 +11077,6 @@
             <xs:documentation>Disables rollback for the remainder of the installation.</xs:documentation>
           </xs:annotation>
         </xs:element>
-        <!-- InstallExecute and InstallExecuteAgain can optionally appear anywhere between InstallInitialize and InstallFinalize -->
         <xs:element ref="InstallExecute" minOccurs="0">
           <xs:annotation>
             <xs:documentation>Runs a script containing all operations spooled since either the start of the installation or the last InstallExecute action, or InstallExecuteAgain action.</xs:documentation>
@@ -11093,7 +11087,6 @@
             <xs:documentation>Runs a script containing all operations spooled since either the start of the installation or the last InstallExecute action, or InstallExecuteAgain action.</xs:documentation>
           </xs:annotation>
         </xs:element>
-        <!-- Windows Installer 1.5 actions -->
         <xs:element ref="MsiPublishAssemblies">
           <xs:annotation>
             <xs:documentation>Manages the advertisement of CLR and Win32 assemblies.</xs:documentation>
@@ -11110,7 +11103,7 @@
   <xs:element name="AdminUISequence">
     <xs:annotation>
       <xs:appinfo>
-        <xse:msiRef table="AdminUISequence" href="http://msdn.microsoft.com/library/aa367544.aspx" />
+        <xse:msiRef table="AdminUISequence" href="https://docs.microsoft.com/en-us/windows/win32/msi/adminuisequence-table" />
       </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
@@ -11177,7 +11170,7 @@
   <xs:element name="AdminExecuteSequence">
     <xs:annotation>
       <xs:appinfo>
-        <xse:msiRef table="AdminExecuteSequence" href="http://msdn.microsoft.com/library/aa367540.aspx" />
+        <xse:msiRef table="AdminExecuteSequence" href="https://docs.microsoft.com/en-us/windows/win32/msi/adminexecutesequence-table" />
       </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
@@ -11248,7 +11241,7 @@
   <xs:element name="AdvertiseExecuteSequence">
     <xs:annotation>
       <xs:appinfo>
-        <xse:msiRef table="AdvtExecuteSequence" href="http://msdn.microsoft.com/library/aa367551.aspx" />
+        <xse:msiRef table="AdvtExecuteSequence" href="https://docs.microsoft.com/en-us/windows/win32/msi/advtexecutesequence-table" />
       </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
@@ -11323,7 +11316,6 @@
             <xs:documentation>Marks the end of a sequence of actions that change the system.</xs:documentation>
           </xs:annotation>
         </xs:element>
-        <!-- Windows Installer 1.5 actions -->
         <xs:element ref="MsiPublishAssemblies">
           <xs:annotation>
             <xs:documentation>Manages the advertisement of CLR and Win32 assemblies.</xs:documentation>
@@ -11790,10 +11782,10 @@
     <xs:annotation>
       <xs:appinfo>
         <xse:msiRef table="Control" href="https://docs.microsoft.com/en-us/windows/win32/msi/control-table" />
-        <xse:msiRef table="ComboBox" href="http://msdn.microsoft.com/library/aa367872.aspx" />
+        <xse:msiRef table="ComboBox" href="https://docs.microsoft.com/en-us/windows/win32/msi/combobox-table" />
         <xse:msiRef table="Dialog" href="https://docs.microsoft.com/en-us/windows/win32/msi/dialog-table" />
-        <xse:msiRef table="ListBox" href="http://msdn.microsoft.com/library/aa369762.aspx" />
-        <xse:msiRef table="ListView" href="http://msdn.microsoft.com/library/aa369764.aspx" />
+        <xse:msiRef table="ListBox" href="https://docs.microsoft.com/en-us/windows/win32/msi/listbox-table" />
+        <xse:msiRef table="ListView" href="https://docs.microsoft.com/en-us/windows/win32/msi/listview-table" />
         <xse:msiRef table="RadioButton" href="https://docs.microsoft.com/en-us/windows/win32/msi/radiobutton-table" />
       </xs:appinfo>
       <xs:documentation>Contains the controls that appear on each dialog.</xs:documentation>
@@ -12200,10 +12192,10 @@
     <xs:annotation>
       <xs:appinfo>
         <xse:msiRef table="Control" href="https://docs.microsoft.com/en-us/windows/win32/msi/control-table" />
-        <xse:msiRef table="ComboBox" href="http://msdn.microsoft.com/library/aa367872.aspx" />
+        <xse:msiRef table="ComboBox" href="https://docs.microsoft.com/en-us/windows/win32/msi/combobox-table" />
         <xse:msiRef table="Dialog" href="https://docs.microsoft.com/en-us/windows/win32/msi/dialog-table" />
-        <xse:msiRef table="ListBox" href="http://msdn.microsoft.com/library/aa369762.aspx" />
-        <xse:msiRef table="ListView" href="http://msdn.microsoft.com/library/aa369764.aspx" />
+        <xse:msiRef table="ListBox" href="https://docs.microsoft.com/en-us/windows/win32/msi/listbox-table" />
+        <xse:msiRef table="ListView" href="https://docs.microsoft.com/en-us/windows/win32/msi/listview-table" />
         <xse:msiRef table="RadioButton" href="https://docs.microsoft.com/en-us/windows/win32/msi/radiobutton-table" />
       </xs:appinfo>
       <xs:documentation>
@@ -12349,7 +12341,7 @@
   <xs:element name="TextStyle">
     <xs:annotation>
       <xs:appinfo>
-        <xse:msiRef table="TextStyle" href="http://msdn.microsoft.com/library/aa372074.aspx" />
+        <xse:msiRef table="TextStyle" href="https://docs.microsoft.com/en-us/windows/win32/msi/textstyle-table" />
       </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
@@ -12375,54 +12367,70 @@
       <xs:attribute name="Italic" type="YesNoTypeUnion" />
       <xs:attribute name="Underline" type="YesNoTypeUnion" />
       <xs:attribute name="Strike" type="YesNoTypeUnion" />
+      <xs:anyAttribute namespace="##other" processContents="lax">
+        <xs:annotation>
+          <xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:anyAttribute>
     </xs:complexType>
   </xs:element>
   <xs:element name="ListItem">
     <xs:annotation>
       <xs:documentation>
-                The value (and optional text) associated with an item in a ComboBox, ListBox, or ListView.
-            </xs:documentation>
+        The value (and optional text) associated with an item in a ComboBox, ListBox, or ListView.
+      </xs:documentation>
       <xs:appinfo>
-        <xse:msiRef table="ComboBox" href="http://msdn.microsoft.com/library/aa367872.aspx" />
-        <xse:msiRef table="ListBox" href="http://msdn.microsoft.com/library/aa369762.aspx" />
-        <xse:msiRef table="ListView" href="http://msdn.microsoft.com/library/aa369764.aspx" />
+        <xse:msiRef table="ComboBox" href="https://docs.microsoft.com/en-us/windows/win32/msi/combobox-table" />
+        <xse:msiRef table="ListBox" href="https://docs.microsoft.com/en-us/windows/win32/msi/listbox-table" />
+        <xse:msiRef table="ListView" href="https://docs.microsoft.com/en-us/windows/win32/msi/listview-table" />
       </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
       <xs:attribute name="Value" type="xs:string" use="required">
         <xs:annotation>
           <xs:documentation>
-                        The value assigned to the associated ComboBox, ListBox, or ListView property if this item is selected.
-                    </xs:documentation>
+            The value assigned to the associated ComboBox, ListBox, or ListView property if this item is selected.
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Text" type="xs:string">
         <xs:annotation>
           <xs:documentation>
-                        The localizable, visible text to be assigned to the item.
-                        If not specified, this will default to the value of the Value attribute.
-                    </xs:documentation>
+            The localizable, visible text to be assigned to the item.
+            If not specified, this will default to the value of the Value attribute.
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Icon" type="xs:string">
         <xs:annotation>
           <xs:documentation>
-                        The identifier of the Binary (not Icon) element containing the icon to associate with this item.
-                        This value is only valid when nested under a ListView element.
-                    </xs:documentation>
+            The identifier of the Binary (not Icon) element containing the icon to associate with this item.
+            This value is only valid when nested under a ListView element.
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
+      <xs:anyAttribute namespace="##other" processContents="lax">
+        <xs:annotation>
+          <xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:anyAttribute>
     </xs:complexType>
   </xs:element>
   <xs:element name="ListBox">
     <xs:annotation>
       <xs:documentation>
-                Set of items for a particular ListBox control tied to an install Property
-            </xs:documentation>
+        Set of items for a particular ListBox control tied to an install Property
+      </xs:documentation>
       <xs:appinfo>
         <xse:msiRef table="Control" href="https://docs.microsoft.com/en-us/windows/win32/msi/control-table" />
         <xse:msiRef table="Dialog" href="https://docs.microsoft.com/en-us/windows/win32/msi/dialog-table" />
-        <xse:msiRef table="ListView" href="http://msdn.microsoft.com/library/aa369764.aspx" />
+        <xse:msiRef table="ListView" href="https://docs.microsoft.com/en-us/windows/win32/msi/listview-table" />
       </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
@@ -12438,15 +12446,23 @@
           <xs:documentation>Property tied to this group</xs:documentation>
         </xs:annotation>
       </xs:attribute>
+      <xs:anyAttribute namespace="##other" processContents="lax">
+        <xs:annotation>
+          <xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:anyAttribute>
     </xs:complexType>
   </xs:element>
   <xs:element name="ComboBox">
     <xs:annotation>
       <xs:documentation>
-                Set of items for a particular ComboBox control tied to an install Property
-            </xs:documentation>
+        Set of items for a particular ComboBox control tied to an install Property
+      </xs:documentation>
       <xs:appinfo>
-        <xse:msiRef table="ComboBox" href="http://msdn.microsoft.com/library/aa367872.aspx" />
+        <xse:msiRef table="ComboBox" href="https://docs.microsoft.com/en-us/windows/win32/msi/combobox-table" />
         <xse:msiRef table="Control" href="https://docs.microsoft.com/en-us/windows/win32/msi/control-table" />
         <xse:msiRef table="Dialog" href="https://docs.microsoft.com/en-us/windows/win32/msi/dialog-table" />
       </xs:appinfo>
@@ -12464,15 +12480,23 @@
           <xs:documentation>Property tied to this group</xs:documentation>
         </xs:annotation>
       </xs:attribute>
+      <xs:anyAttribute namespace="##other" processContents="lax">
+        <xs:annotation>
+          <xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:anyAttribute>
     </xs:complexType>
   </xs:element>
   <xs:element name="ListView">
     <xs:annotation>
       <xs:documentation>
-                Set of items for a particular ListView control tied to an install Property
-            </xs:documentation>
+        Set of items for a particular ListView control tied to an install Property
+      </xs:documentation>
       <xs:appinfo>
-        <xse:msiRef table="ListView" href="http://msdn.microsoft.com/library/aa369764.aspx" />
+        <xse:msiRef table="ListView" href="https://docs.microsoft.com/en-us/windows/win32/msi/listview-table" />
         <xse:msiRef table="Control" href="https://docs.microsoft.com/en-us/windows/win32/msi/control-table" />
         <xse:msiRef table="Dialog" href="https://docs.microsoft.com/en-us/windows/win32/msi/dialog-table" />
       </xs:appinfo>
@@ -12490,6 +12514,14 @@
           <xs:documentation>Property tied to this group</xs:documentation>
         </xs:annotation>
       </xs:attribute>
+      <xs:anyAttribute namespace="##other" processContents="lax">
+        <xs:annotation>
+          <xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:anyAttribute>
     </xs:complexType>
   </xs:element>
   <xs:element name="RadioButton">
@@ -12506,10 +12538,10 @@
       <xs:attribute name="Bitmap" type="xs:string">
         <xs:annotation>
           <xs:documentation>
-                    This attribute defines the bitmap displayed with the radio button. The value of the attribute creates a reference
-                    to a Binary element that represents the bitmap. This attribute is mutually exclusive with the Icon and Text
-                    attributes.
-                </xs:documentation>
+            This attribute defines the bitmap displayed with the radio button. The value of the attribute creates a reference
+            to a Binary element that represents the bitmap. This attribute is mutually exclusive with the Icon and Text
+            attributes.
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Height" use="required" type="LocalizableInteger" />
@@ -12517,10 +12549,10 @@
       <xs:attribute name="Icon" type="xs:string">
         <xs:annotation>
           <xs:documentation>
-                    This attribute defines the icon displayed with the radio button. The value of the attribute creates a reference
-                    to a Binary element that represents the icon. This attribute is mutually exclusive with the Bitmap and Text
-                    attributes.
-                </xs:documentation>
+            This attribute defines the icon displayed with the radio button. The value of the attribute creates a reference
+            to a Binary element that represents the icon. This attribute is mutually exclusive with the Bitmap and Text
+            attributes.
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Text" type="xs:string">
@@ -12537,6 +12569,14 @@
       <xs:attribute name="Width" use="required" type="LocalizableInteger" />
       <xs:attribute name="X" use="required" type="LocalizableInteger" />
       <xs:attribute name="Y" use="required" type="LocalizableInteger" />
+      <xs:anyAttribute namespace="##other" processContents="lax">
+        <xs:annotation>
+          <xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:anyAttribute>
     </xs:complexType>
   </xs:element>
   <xs:element name="RadioButtonGroup">
