@@ -924,11 +924,13 @@
 
   <xs:simpleType name="YesNoType">
     <xs:annotation>
-      <xs:documentation>Values of this type will either be "yes" or "no".</xs:documentation>
+      <xs:documentation>Values of this type will either be "yes"/"true" or "no"/"false".</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:NMTOKEN">
       <xs:enumeration value="no" />
+      <xs:enumeration value="false" />
       <xs:enumeration value="yes" />
+      <xs:enumeration value="true" />
     </xs:restriction>
   </xs:simpleType>
 
