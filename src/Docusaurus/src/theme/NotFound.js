@@ -2,6 +2,16 @@ import React from 'react';
 import Translate, {translate} from '@docusaurus/Translate';
 import {PageMetadata} from '@docusaurus/theme-common';
 import Layout from '@theme/Layout';
+import BrowserOnly from '@docusaurus/BrowserOnly';
+
+const OpenIssueLink = () => {
+  return (
+    <BrowserOnly fallback={<a href="https://github.com/wixtoolset/issues/issues/new?assignees=&labels=triage&template=page_not_found.yml&title=Page Not Found: put page url here">open an issue</a>}>
+      {() => <a href={"https://github.com/wixtoolset/issues/issues/new?assignees=&labels=triage&template=page_not_found.yml&title=Page Not Found: " + encodeURIComponent(window.location.pathname + window.location.hash + window.location.search) + "&page=" + encodeURIComponent(window.location.href) + "&ref=" + encodeURIComponent(document.referrer)}>open an issue</a>}
+    </BrowserOnly>
+  );
+};
+
 export default function NotFound() {
   return (
     <>
@@ -30,7 +40,7 @@ export default function NotFound() {
                 </Translate>
               </p>
               <p>
-                Please <a href={"https://github.com/wixtoolset/issues/issues/new?assignees=&labels=triage&template=page_not_found.yml&title=Page Not Found: " + encodeURIComponent(window.location.pathname + window.location.hash + window.location.search) + "&page=" + encodeURIComponent(window.location.href) + "&ref=" + encodeURIComponent(document.referrer)}>open an issue</a> with
+                Please <OpenIssueLink /> with
                 this page URL and the URL of the page that sent you here. That will help us track down the missing page.
               </p>
             </div>
