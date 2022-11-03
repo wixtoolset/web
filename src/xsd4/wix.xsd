@@ -35,10 +35,10 @@
             <xs:element ref="Package" />
             <xs:element ref="Module" />
             <xs:element ref="Patch" />
+            <xs:element ref="PatchCreation" />
           </xs:choice>
           <xs:element ref="Fragment" minOccurs="0" maxOccurs="unbounded" />
         </xs:sequence>
-        <xs:element ref="PatchCreation" />
       </xs:choice>
       <xs:attribute name="RequiredVersion" type="VersionType">
         <xs:annotation>
@@ -57,8 +57,8 @@
   <xs:element name="Include">
     <xs:annotation>
       <xs:documentation>
-            This is the top-level container element for every wxi file.
-        </xs:documentation>
+        This is the top-level container element for every wxi file.
+      </xs:documentation>
     </xs:annotation>
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -73,7 +73,6 @@
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element ref="ApprovedExeForElevation" />
-        <xs:element ref="Log" minOccurs="0" maxOccurs="1" />
         <xs:element ref="BootstrapperApplication" />
         <xs:element ref="BootstrapperApplicationRef" />
         <xs:element ref="BundleCustomData" />
@@ -84,9 +83,11 @@
         <xs:element ref="Chain" minOccurs="1" maxOccurs="1" />
         <xs:element ref="Container" />
         <xs:element ref="ContainerRef" />
+        <xs:element ref="Log" minOccurs="0" maxOccurs="1" />
         <xs:element ref="PayloadGroup" />
         <xs:element ref="PayloadGroupRef" />
         <xs:element ref="RelatedBundle" />
+        <xs:element ref="Requires" />
         <xs:element ref="SetVariable" />
         <xs:element ref="SetVariableRef" />
         <xs:element ref="SoftwareTag" />
@@ -110,17 +111,27 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
+      <xs:attribute name="Compressed" type="YesNoDefaultTypeUnion">
+        <xs:annotation>
+          <xs:documentation>Whether Packages and Payloads not assigned to a container should be added to the default attached container or if they should be external. The default is yes.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Condition" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            The condition of the bundle. If the condition is not met, the bundle will
+            refuse to run. Conditions are checked before the bootstrapper application is loaded
+            (before detect), and thus can only reference built-in variables such as
+            variables which indicate the version of the OS.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
       <xs:attribute name="Copyright" type="xs:string">
         <xs:annotation>
           <xs:documentation>
             The legal copyright found in the version resources of final bundle executable. If
             this attribute is not provided the copyright will be set to "Copyright (c) [Bundle/@Manufacturer]. All rights reserved.".
           </xs:documentation>
-        </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="Compressed" type="YesNoDefaultTypeUnion">
-        <xs:annotation>
-          <xs:documentation>Whether Packages and Payloads not assigned to a container should be added to the default attached container or if they should be external. The default is yes.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="DisableModify" type="YesNoButtonTypeUnion">
@@ -145,13 +156,6 @@
             bundle will not be displayed in Progams and Features and another mechanism (such as
             registering as a related bundle addon) must be used to ensure the bundle can be removed.
           </xs:documentation>
-        </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="DisableRepair" type="YesNoTypeUnion">
-        <xs:annotation>
-          <xs:appinfo>
-            <xse:deprecated />
-          </xs:appinfo>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="HelpTelephone" type="xs:string">
@@ -179,6 +183,13 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
+      <xs:attribute name="InProgressName" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            Optional name to display in Add/Remove Programs while the bundle is being installed, uninstalled, repaired.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
       <xs:attribute name="Manufacturer" type="xs:string">
         <xs:annotation>
           <xs:documentation>
@@ -202,6 +213,22 @@
             The name of the parent bundle to display in Installed Updates (also known as Add/Remove
             Programs). This name is used to nest or group bundles that will appear as updates.
             If the parent name does not actually exist, a virtual parent is created automatically.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="ProviderKey" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            Optional attribute to explicitly author the provider key for the entire bundle.
+            <html:p>
+              This provider key is designed to persist throughout compatible upgrades so that dependent bundles do not have to be reinstalled
+              and will not prevent your product from being upgraded. If this attribute is not authored, the value is the
+              automatically-generated bundle ID and will not automatically support upgrades.
+            </html:p>
+            <html:p>
+              Only a single provider key is supported for bundles. To author that your bundle provides additional features via
+              packages, author different provider keys for your packages.
+            </html:p>
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -237,16 +264,6 @@
             The version of the bundle. Newer versions upgrade earlier versions of the bundles
             with matching UpgradeCodes. If the bundle is registered in Programs and Features
             then this attribute will be displayed in the Programs and Features user interface.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="Condition" type="xs:string">
-        <xs:annotation>
-          <xs:documentation>
-            The condition of the bundle. If the condition is not met, the bundle will
-            refuse to run. Conditions are checked before the bootstrapper application is loaded
-            (before detect), and thus can only reference built-in variables such as
-            variables which indicate the version of the OS.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -314,27 +331,27 @@
       <xs:attribute name="Disable" type="YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
-                        Disables the default logging in the Bundle. The end user can still generate a
-                        log file by specifying the "-l" command-line argument when installing the
-                        Bundle.
-                    </xs:documentation>
+            Disables the default logging in the Bundle. The end user can still generate a
+            log file by specifying the "-l" command-line argument when installing the
+            Bundle.
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="PathVariable" type="xs:string">
         <xs:annotation>
           <xs:documentation>
-                        Name of a Variable that will hold the path to the log file. An empty value
-                        will cause the variable to not be set. The default is "WixBundleLog".
-                    </xs:documentation>
+            Name of a Variable that will hold the path to the log file. An empty value
+            will cause the variable to not be set. The default is "WixBundleLog".
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Prefix" type="xs:string">
         <xs:annotation>
           <xs:documentation>
-                        File name and optionally a relative path to use as the prefix for the log file. The
-                        default is to use the Bundle/@Name or, if Bundle/@Name is not specified, the value
-                        "Setup".
-                    </xs:documentation>
+            File name and optionally a relative path to use as the prefix for the log file. The
+            default is to use the Bundle/@Name or, if Bundle/@Name is not specified, the value
+            "Setup".
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Extension" type="xs:string">
@@ -353,9 +370,9 @@
         <xs:any namespace="##other" processContents="lax">
           <xs:annotation>
             <xs:documentation>
-                Extensibility point in the WiX XML Schema. Schema extensions can register additional
-                elements at this point in the schema.
-              </xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
           </xs:annotation>
         </xs:any>
       </xs:choice>
@@ -435,9 +452,9 @@
         <xs:any namespace="##other" processContents="lax">
           <xs:annotation>
             <xs:documentation>
-                Extensibility point in the WiX XML Schema. Schema extensions can register additional
-                elements at this point in the schema.
-              </xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
           </xs:annotation>
         </xs:any>
       </xs:choice>
@@ -459,10 +476,6 @@
   <xs:element name="BootstrapperApplicationRef">
     <xs:annotation>
       <xs:documentation>Used to reference a BootstrapperApplication element and optionally add additional payloads to the bootstrapper application.</xs:documentation>
-      <xs:appinfo>
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Bundle" />
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
-      </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -471,9 +484,9 @@
         <xs:any namespace="##other" processContents="lax">
           <xs:annotation>
             <xs:documentation>
-                Extensibility point in the WiX XML Schema. Schema extensions can register additional
-                elements at this point in the schema.
-              </xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
           </xs:annotation>
         </xs:any>
       </xs:choice>
@@ -485,42 +498,11 @@
       <xs:anyAttribute namespace="##other" processContents="lax">
         <xs:annotation>
           <xs:documentation>
-              Extensibility point in the WiX XML Schema. Schema extensions can register additional
-              attributes at this point in the schema.
-            </xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
         </xs:annotation>
       </xs:anyAttribute>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="UX">
-    <xs:annotation>
-      <xs:documentation>This element has been deprecated. Use the BootstrapperApplication element instead.</xs:documentation>
-      <xs:appinfo>
-        <xse:deprecated ref="BootstrapperApplication" />
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Bundle" />
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:complexType>
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element ref="Payload" />
-        <xs:element ref="PayloadGroupRef" />
-      </xs:choice>
-      <xs:attribute name="SourceFile" type="xs:string">
-        <xs:annotation>
-          <xs:documentation>See the BootstrapperApplication instead.</xs:documentation>
-        </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="Name" type="xs:string">
-        <xs:annotation>
-          <xs:documentation>See the BootstrapperApplication instead.</xs:documentation>
-        </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="SplashScreenSourceFile" type="xs:string">
-        <xs:annotation>
-          <xs:documentation>See the BootstrapperApplication instead.</xs:documentation>
-        </xs:annotation>
-      </xs:attribute>
     </xs:complexType>
   </xs:element>
   <xs:element name="BundleCustomData">
@@ -528,18 +510,18 @@
       <xs:documentation>Defines a custom XML element for use in a bundle data manifest.</xs:documentation>
     </xs:annotation>
     <xs:complexType>
-      <xs:sequence>
-        <xs:element ref="BundleAttributeDefinition" minOccurs="1" maxOccurs="unbounded">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="BundleAttributeDefinition">
           <xs:annotation>
-            <xs:documentation>Attribute definition for BundleCustomData.</xs:documentation>
+            <xs:documentation>Attribute definition for BundleCustomData. There must be at least one defined.</xs:documentation>
           </xs:annotation>
         </xs:element>
-        <xs:element ref="BundleElement" minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="BundleElement">
           <xs:annotation>
             <xs:documentation>Instance data for BundleCustomData.</xs:documentation>
           </xs:annotation>
         </xs:element>
-      </xs:sequence>
+      </xs:choice>
       <xs:attribute name="Id" type="xs:string" use="required">
         <xs:annotation>
           <xs:documentation>
@@ -599,18 +581,16 @@
       <xs:documentation>Used for BundleCustomData. Specifies a BundleAttributeDefinition and its value for the parent BundleElement.</xs:documentation>
     </xs:annotation>
     <xs:complexType>
-      <xs:simpleContent>
-        <xs:extension base="xs:string">
-          <xs:annotation>
-            <xs:documentation>An attribute's value</xs:documentation>
-          </xs:annotation>
-          <xs:attribute name="Id" use="required" type="xs:string">
-            <xs:annotation>
-              <xs:documentation>Specifies the BundleAttributeDefinition associated with this value.</xs:documentation>
-            </xs:annotation>
-          </xs:attribute>
-        </xs:extension>
-      </xs:simpleContent>
+      <xs:attribute name="Id" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>Specifies the BundleAttributeDefinition associated with this value.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Value" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>An attribute's value.</xs:documentation>
+      </xs:annotation>
+      </xs:attribute>
     </xs:complexType>
   </xs:element>
   <xs:element name="BundleCustomDataRef">
@@ -618,13 +598,13 @@
       <xs:documentation>Used to reference a BundleCustomData element and optionally add more data.</xs:documentation>
     </xs:annotation>
     <xs:complexType>
-      <xs:sequence>
-        <xs:element ref="BundleElement" minOccurs="0" maxOccurs="unbounded">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="BundleElement">
           <xs:annotation>
             <xs:documentation>Instance data for BundleCustomData.</xs:documentation>
           </xs:annotation>
         </xs:element>
-      </xs:sequence>
+      </xs:choice>
       <xs:attribute name="Id" type="xs:string" use="required">
         <xs:annotation>
           <xs:documentation>
@@ -645,24 +625,15 @@
         <xs:any namespace="##other" processContents="lax">
           <xs:annotation>
             <xs:documentation>
-                Extensibility point in the WiX XML Schema. Schema extensions can register additional
-                elements at this point in the schema.
-              </xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
           </xs:annotation>
         </xs:any>
       </xs:choice>
       <xs:attribute name="Id" type="xs:string">
         <xs:annotation>
           <xs:documentation>The identifier of the BundleExtension element. Only required if you want to reference this element using a BundleExtensionRef element.</xs:documentation>
-        </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="SourceFile" type="xs:string">
-        <xs:annotation>
-          <xs:documentation>
-            The DLL with the bundle extension entry function.
-            The default value is the Name attribute, if provided.
-            At a minimum, the SourceFile or Name attribute must be specified.
-          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Name" type="xs:string">
@@ -672,6 +643,15 @@
             The default is the source file name. Use this attribute to rename the bundle extension DLL or extract it into a subfolder.
             At a minimum, the Name or SourceFile attribute must be specified.
             This must be a relative path ('\foo' or 'C:\foo' is not allowed).
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="SourceFile" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            The DLL with the bundle extension entry function.
+            The default value is the Name attribute, if provided.
+            At a minimum, the SourceFile or Name attribute must be specified.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -833,6 +813,7 @@
         <xs:element ref="Payload" />
         <xs:element ref="PayloadGroupRef" />
         <xs:element ref="MsiPackagePayload" />
+        <xs:element ref="Provides" />
         <xs:any namespace="##other" processContents="lax">
           <xs:annotation>
             <xs:documentation>
@@ -871,15 +852,6 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="SuppressLooseFilePayloadGeneration" type="YesNoTypeUnion">
-        <xs:annotation>
-          <xs:documentation>
-            This attribute has been deprecated. When the value is "yes", the Binder will not read the MSI package
-            to detect uncompressed files that would otherwise be automatically included in the Bundle as Payloads.
-            The resulting Bundle may not be able to install the MSI package correctly. The default is "no".
-          </xs:documentation>
-        </xs:annotation>
-      </xs:attribute>
       <xs:attribute name="Visible" type="YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
@@ -904,6 +876,7 @@
         <xs:element ref="Payload" />
         <xs:element ref="PayloadGroupRef" />
         <xs:element ref="MspPackagePayload" />
+        <xs:element ref="Provides" />
         <xs:any namespace="##other" processContents="lax">
           <xs:annotation>
             <xs:documentation>
@@ -949,6 +922,7 @@
         <xs:element ref="Payload" />
         <xs:element ref="PayloadGroupRef" />
         <xs:element ref="MsuPackagePayload" />
+        <xs:element ref="Provides" />
         <xs:any namespace="##other" processContents="lax">
           <xs:annotation>
             <xs:documentation>
@@ -973,15 +947,6 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="KB" type="xs:string">
-        <xs:annotation>
-          <xs:documentation>
-            The knowledge base identifier for the MSU. The KB attribute must be specified to enable the MSU package to
-            be uninstalled. Even then MSU uninstallation is only supported on Windows 7 and later. When the KB attribute
-            is specified, the Permanent attribute will the control whether the package is uninstalled.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:attribute>
     </xs:complexType>
   </xs:element>
   <xs:element name="ExePackage">
@@ -996,14 +961,15 @@
         <xs:element ref="ExitCode" />
         <xs:element ref="CommandLine" />
         <xs:element ref="ArpEntry" />
+        <xs:element ref="Provides" />
         <xs:any namespace="##other" processContents="lax">
           <xs:annotation>
             <xs:documentation>
-                Extensibility point in the WiX XML Schema. Schema extensions can register additional
-                elements at this point in the schema. The extension's
-                <html:code><html:nobr>CompilerExtension.ParseElement()</html:nobr></html:code>
-                method will be called with the package identifier as the first value in
-                <html:code>contextValues</html:code>.
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema. The extension's
+              <html:code><html:nobr>CompilerExtension.ParseElement()</html:nobr></html:code>
+              method will be called with the package identifier as the first value in
+              <html:code>contextValues</html:code>.
             </xs:documentation>
           </xs:annotation>
         </xs:any>
@@ -1081,14 +1047,15 @@
         <xs:element ref="BundlePackagePayload" />
         <xs:element ref="ExitCode" />
         <xs:element ref="CommandLine" />
+        <xs:element ref="Provides" />
         <xs:any namespace="##other" processContents="lax">
           <xs:annotation>
             <xs:documentation>
-                Extensibility point in the WiX XML Schema. Schema extensions can register additional
-                elements at this point in the schema. The extension's
-                <html:code><html:nobr>CompilerExtension.ParseElement()</html:nobr></html:code>
-                method will be called with the package identifier as the first value in
-                <html:code>contextValues</html:code>.
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema. The extension's
+              <html:code><html:nobr>CompilerExtension.ParseElement()</html:nobr></html:code>
+              method will be called with the package identifier as the first value in
+              <html:code>contextValues</html:code>.
             </xs:documentation>
           </xs:annotation>
         </xs:any>
@@ -1140,21 +1107,17 @@
   <xs:element name="RollbackBoundary">
     <xs:annotation>
       <xs:documentation>Describes a rollback boundary in the chain.</xs:documentation>
-      <xs:appinfo>
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Chain" />
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="PackageGroup" />
-      </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:any namespace="##other" processContents="lax">
           <xs:annotation>
             <xs:documentation>
-                Extensibility point in the WiX XML Schema. Schema extensions can register additional
-                elements at this point in the schema. The extension's
-                <html:code><html:nobr>CompilerExtension.ParseElement()</html:nobr></html:code>
-                method will be called with the rollback boundary identifier as the 'RollbackBoundaryId' key in
-                <html:code>contextValues</html:code>.
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema. The extension's
+              <html:code><html:nobr>CompilerExtension.ParseElement()</html:nobr></html:code>
+              method will be called with the rollback boundary identifier as the 'RollbackBoundaryId' key in
+              <html:code>contextValues</html:code>.
             </xs:documentation>
           </xs:annotation>
         </xs:any>
@@ -1173,6 +1136,14 @@
             Specifies whether the rollback boundary aborts the chain. The default "yes" indicates that if
             the rollback boundary is encountered then the chain will fail and rollback or stop. If "no"
             is specified then the chain should continue successfuly at the next rollback boundary.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="LogPathVariable" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            Name of a Variable that will hold the path to the log file when the rollback boundary is a MSI package transaction.
+            An empty value will cause the variable to not be set. The default is "WixBundleLog_[RollbackBoundaryId]".
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -1285,33 +1256,33 @@
     <xs:attribute name="LogPathVariable" type="xs:string">
       <xs:annotation>
         <xs:documentation>
-            Name of a Variable that will hold the path to the log file. An empty value will cause the variable to not
-            be set. The default is "WixBundleLog_[PackageId]" except for MSU packages which default to no logging.
+          Name of a Variable that will hold the path to the log file. An empty value will cause the variable to not
+          be set. The default is "WixBundleLog_[PackageId]" except for MSU packages which default to no logging.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
     <xs:attribute name="RollbackLogPathVariable" type="xs:string">
       <xs:annotation>
         <xs:documentation>
-            Name of a Variable that will hold the path to the log file used during rollback. An empty value will cause
-            the variable to not be set. The default is "WixBundleRollbackLog_[PackageId]" except for MSU packages which
-            default to no logging.
+          Name of a Variable that will hold the path to the log file used during rollback. An empty value will cause
+          the variable to not be set. The default is "WixBundleRollbackLog_[PackageId]" except for MSU packages which
+          default to no logging.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
     <xs:attribute name="Permanent" type="YesNoTypeUnion">
       <xs:annotation>
         <xs:documentation>
-            Specifies whether the package can be uninstalled. The default is "no".
+          Specifies whether the package can be uninstalled. The default is "no".
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
     <xs:attribute name="Vital" type="YesNoTypeUnion">
       <xs:annotation>
         <xs:documentation>
-            Specifies whether the package must succeed for the chain to continue. The default "yes"
-            indicates that if the package fails then the chain will fail and rollback or stop. If
-            "no" is specified then the chain will continue even if the package reports failure.
+          Specifies whether the package must succeed for the chain to continue. The default "yes"
+          indicates that if the package fails then the chain will fail and rollback or stop. If
+          "no" is specified then the chain will continue even if the package reports failure.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
@@ -1326,11 +1297,11 @@
     <xs:anyAttribute namespace="##other" processContents="lax">
       <xs:annotation>
         <xs:documentation>
-            Extensibility point in the WiX XML Schema. Schema extensions can register additional
-            attributes at this point in the schema. The extension's
-            <html:code><html:nobr>CompilerExtension.ParseAttribute()</html:nobr></html:code>
-            method will be called with the package identifier in
-            <html:code><html:nobr>contextValues["PackageId"]</html:nobr></html:code>.
+          Extensibility point in the WiX XML Schema. Schema extensions can register additional
+          attributes at this point in the schema. The extension's
+          <html:code><html:nobr>CompilerExtension.ParseAttribute()</html:nobr></html:code>
+          method will be called with the package identifier in
+          <html:code><html:nobr>contextValues["PackageId"]</html:nobr></html:code>.
         </xs:documentation>
       </xs:annotation>
     </xs:anyAttribute>
@@ -1364,9 +1335,6 @@
       <xs:documentation>Create a reference to PackageGroup element that exists inside a Bundle or Fragment element.</xs:documentation>
       <xs:appinfo>
         <xse:seeAlso ref="PackageGroup" />
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Chain" />
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Container" />
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="PackageGroup" />
       </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
@@ -1400,6 +1368,11 @@
           <xs:documentation>The value to set the property to. This string is evaluated by the burn engine and can be as simple as a burn engine variable reference or as complex as a full expression.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
+      <xs:attribute name="Condition" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Condition to determine whether to pass the MSI Property. If this evaluates to false, the MSI Property is not passed along.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
     </xs:complexType>
   </xs:element>
   <xs:element name="SlipstreamMsp">
@@ -1407,7 +1380,6 @@
       <xs:documentation>Specifies a patch included in the same bundle that is installed when the parent MSI package is installed.</xs:documentation>
       <xs:appinfo>
         <xse:seeAlso ref="MspPackage" />
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="MsiPackage" />
         <xse:remarks>
           <html:p>You can also specify that any MspPackage elements in the chain are automatically slipstreamed by setting the Slipstream attribute of an MspPackage to "yes". This will reduce the amount of authoring you need to write and will determine which msi packages can slipstream patches when building a bundle.</html:p>
         </xse:remarks>
@@ -1424,10 +1396,6 @@
   <xs:element name="Variable">
     <xs:annotation>
       <xs:documentation>Describes a burn engine variable to define.</xs:documentation>
-      <xs:appinfo>
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Bundle" />
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
-      </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
       <xs:attribute name="Hidden" type="YesNoTypeUnion">
@@ -1458,9 +1426,9 @@
       <xs:anyAttribute namespace="##other" processContents="lax">
         <xs:annotation>
           <xs:documentation>
-                    Extensibility point in the WiX XML Schema. Schema extensions can register additional
-                    attributes at this point in the schema.
-                </xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
         </xs:annotation>
       </xs:anyAttribute>
     </xs:complexType>
@@ -1528,9 +1496,9 @@
         <xs:any namespace="##other" processContents="lax">
           <xs:annotation>
             <xs:documentation>
-                Extensibility point in the WiX XML Schema. Schema extensions can register additional
-                elements at this point in the schema.
-              </xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
           </xs:annotation>
         </xs:any>
       </xs:choice>
@@ -1542,9 +1510,9 @@
       <xs:anyAttribute namespace="##other" processContents="lax">
         <xs:annotation>
           <xs:documentation>
-              Extensibility point in the WiX XML Schema. Schema extensions can register additional
-              attributes at this point in the schema.
-            </xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
         </xs:annotation>
       </xs:anyAttribute>
     </xs:complexType>
@@ -1552,9 +1520,6 @@
   <xs:element name="Container">
     <xs:annotation>
       <xs:documentation>Representation of a file that contains one or more files.</xs:documentation>
-      <xs:appinfo>
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Bundle" />
-      </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -1598,7 +1563,6 @@
       <xs:documentation>Create a reference to an existing Container element.</xs:documentation>
       <xs:appinfo>
         <xse:seeAlso ref="Container" />
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Bundle" />
       </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
@@ -1716,12 +1680,12 @@
       <xs:attribute name="Condition" type="xs:string">
         <xs:annotation>
           <xs:documentation>
-              The condition that controls whether the command-line arguments specified in the
-              InstallArgument, UninstallArgument, or RepairArgument attributes are appended to the
-              command line passed to the package. Which attribute is used depends on the
-              action being applied to the package. For example, when the package is
-              being installed, the InstallArgument attribute value is appended to the command
-              line when the package is executed.
+            The condition that controls whether the command-line arguments specified in the
+            InstallArgument, UninstallArgument, or RepairArgument attributes are appended to the
+            command line passed to the package. Which attribute is used depends on the
+            action being applied to the package. For example, when the package is
+            being installed, the InstallArgument attribute value is appended to the command
+            line when the package is executed.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -1737,9 +1701,24 @@
           <xs:documentation>The identifier of Payload element.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
+      <xs:attribute name="CertificatePublicKey" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Optional public key of the certificate used to sign the payload. It is not recommended to use this attribute and rely on the Hash alone.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="CertificateThumbprint" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Optional thumbprint of the certificate used to sign the payload. It is not recommended to use this attribute and rely on the Hash alone.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
       <xs:attribute name="Compressed" type="YesNoDefaultTypeUnion">
         <xs:annotation>
           <xs:documentation>Whether the payload should be embedded in a container or left as an external payload.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Hash" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Optional SHA256 hash of the payload. Must be provided if the SourceFile attribute is not used.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="SourceFile" type="xs:string">
@@ -1793,12 +1772,12 @@
     </xs:annotation>
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element ref="Payload" />
         <xs:element ref="BundlePackagePayload" />
         <xs:element ref="ExePackagePayload" />
         <xs:element ref="MsiPackagePayload" />
         <xs:element ref="MspPackagePayload" />
         <xs:element ref="MsuPackagePayload" />
+        <xs:element ref="Payload" />
         <xs:element ref="PayloadGroupRef" />
       </xs:choice>
       <xs:attribute name="Id" type="xs:string" use="required">
@@ -1994,15 +1973,14 @@
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="Name" type="xs:string">
+    <xs:attribute name="CertificatePublicKey" type="xs:string">
       <xs:annotation>
-        <xs:documentation>
-          The destination path and file name for this chain payload.
-          Use this attribute to rename the chain entry point or extract it into a subfolder.
-          The default value is the file name from the SourceFile attribute.
-          Required if Hash is specified.
-          This must be a relative path ('\foo' or 'C:\foo' is not allowed).
-        </xs:documentation>
+        <xs:documentation>Optional public key of the certificate used to sign the payload. It is not recommended to use this attribute and rely on the Hash alone.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="CertificateThumbprint" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>Optional thumbprint of the certificate used to sign the payload. It is not recommended to use this attribute and rely on the Hash alone.</xs:documentation>
       </xs:annotation>
     </xs:attribute>
     <xs:attribute name="Description" type="xs:string">
@@ -2173,10 +2151,10 @@
         </xs:annotation>
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="Detect" />
-            <xs:enumeration value="Upgrade" />
-            <xs:enumeration value="Addon" />
-            <xs:enumeration value="Patch" />
+            <xs:enumeration value="detect" />
+            <xs:enumeration value="upgrade" />
+            <xs:enumeration value="addon" />
+            <xs:enumeration value="patch" />
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
@@ -2216,10 +2194,10 @@
         </xs:annotation>
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="Detect" />
-            <xs:enumeration value="Upgrade" />
-            <xs:enumeration value="Addon" />
-            <xs:enumeration value="Patch" />
+            <xs:enumeration value="detect" />
+            <xs:enumeration value="upgrade" />
+            <xs:enumeration value="addon" />
+            <xs:enumeration value="patch" />
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
@@ -2296,7 +2274,7 @@
         <xs:element ref="PatchCertificates" />
         <xs:element ref="Property" />
         <xs:element ref="PropertyRef" />
-        <!-- TODO: <xs:element ref="Requires" /> -->
+        <xs:element ref="Requires" />
         <xs:element ref="SetDirectory" />
         <xs:element ref="SetProperty" />
         <xs:element ref="SFPCatalog" />
@@ -2340,7 +2318,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Language" type="LocalizableInteger" use="required">
+      <xs:attribute name="Language" type="LocalizableInteger">
         <xs:annotation>
           <xs:documentation>The decimal language ID (LCID) for the product.</xs:documentation>
         </xs:annotation>
@@ -2449,6 +2427,7 @@
         <xs:element ref="IgnoreTable" />
         <xs:element ref="Property" />
         <xs:element ref="PropertyRef" />
+        <xs:element ref="Requires" />
         <xs:element ref="SetDirectory" />
         <xs:element ref="SetProperty" />
         <xs:element ref="SFPCatalog" />
@@ -2728,7 +2707,7 @@
         <xs:element ref="Property" />
         <xs:element ref="PropertyRef" />
         <xs:element ref="RelatedBundle" />
-        <!-- TODO: <xs:element ref="Requires" />-->
+        <xs:element ref="Requires" />
         <xs:element ref="SetDirectory" />
         <xs:element ref="SetProperty" />
         <xs:element ref="SetVariable" />
@@ -7985,6 +7964,7 @@
         <xs:element ref="ODBCDriver" />
         <xs:element ref="ODBCTranslator" />
         <xs:element ref="ProgId" />
+        <xs:element ref="Provides" />
         <xs:element ref="Registry" />
         <xs:element ref="RegistryKey" />
         <xs:element ref="RegistryValue" />
@@ -13816,41 +13796,27 @@
     </xs:restriction>
   </xs:simpleType>
 
-
-
-
-
-
-<!-- dependency.xsd contents that moved to wix.xsd
-     copied below and need to be factored into wix.xsd (if not already)
--->
-
   <xs:element name="Provides">
     <xs:annotation>
       <xs:documentation>
         Describes the information for this product or feature that serves as a dependency of other products or features.
       </xs:documentation>
       <xs:appinfo>
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Component" />
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="ExePackage" />
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="MsiPackage" />
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="MspPackage" />
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="MsuPackage" />
         <xse:remarks>
           <html:p>
-                        This element is required for any product, feature, or bundle that will use the Dependency feature to properly reference count
-                        other products or features. It should be authored into a component that is always installed and removed with the
-                        product or features that contain it. This guarantees that product dependencies are not removed before those products that
-                        depend on them.
+            This element is required for any product, feature, or bundle that will use the Dependency feature to properly reference count
+            other products or features. It should be authored into a component that is always installed and removed with the
+            product or features that contain it. This guarantees that product dependencies are not removed before those products that
+            depend on them.
           </html:p>
           <html:p>
-                        The @Key attribute should identify a version range for your product that you guarantee will be backward compatible.
-                        This key is designed to persist throughout compatible upgrades so that dependent products do not have to be reinstalled
-                        and will not prevent your product from being upgraded. If this attribute is not authored, the value is the ProductCode
-                        and will not automatically support upgrades.
+            The @Key attribute should identify a version range for your product that you guarantee will be backward compatible.
+            This key is designed to persist throughout compatible upgrades so that dependent products do not have to be reinstalled
+            and will not prevent your product from being upgraded. If this attribute is not authored, the value is the ProductCode
+            and will not automatically support upgrades.
           </html:p>
           <html:p>
-                        By default this uses the Package/@ProductCode attribute value, which may be automatically generated.
+            By default this uses the Package/@ProductCode attribute value, which may be automatically generated.
           </html:p>
         </xse:remarks>
         <xse:howtoRef href="author_product_dependencies.html">How To: Author product dependencies</xse:howtoRef>
@@ -13864,30 +13830,30 @@
       <xs:attribute name="Id" type="xs:string">
         <xs:annotation>
           <xs:documentation>
-                        Dependency provider identity. If this attribute is not specified, an identifier will be generated automatically.
+            Dependency provider identity. If this attribute is not specified, an identifier will be generated automatically.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Key" type="xs:string">
         <xs:annotation>
           <xs:documentation>
-                        Optional unique registry key name that identifies a product version range on which other products can depend.
-                        This attribute is required in package authoring, but optional for components.
+            Optional unique registry key name that identifies a product version range on which other products can depend.
+            This attribute is required in package authoring, but optional for components.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Version" type="VersionType">
         <xs:annotation>
           <xs:documentation>
-                        The version of the package. For MSI packages, the ProductVersion will be used by default
-                        and this attribute should not be specified.
+            The version of the package. For MSI packages, the ProductVersion will be used by default
+            and this attribute should not be specified.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="DisplayName" type="xs:string">
         <xs:annotation>
           <xs:documentation>
-                        Optional display name of the package. For MSI packages, the ProductName will be used by default.
+            Optional display name of the package. For MSI packages, the ProductName will be used by default.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -13896,22 +13862,18 @@
   <xs:element name="Requires">
     <xs:annotation>
       <xs:documentation>
-                Describes a dependency on a provider for the current component or package.
+        Describes a dependency on a provider for the current component or package.
       </xs:documentation>
       <xs:appinfo>
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Bundle" />
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Module" />
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
         <xse:remarks>
           <html:p>
-                        This element declares a dependency on any product that uses the Provides element. If that product is uninstalled
-                        before a product that requires it, the uninstall will err or warn the user that other products are installed
-                        which depend on that product. This behavior can be modified by changing the attribute values on the Requires element.
+            This element declares a dependency on any product that uses the Provides element. If that product is uninstalled
+            before a product that requires it, the uninstall will err or warn the user that other products are installed
+            which depend on that product. This behavior can be modified by changing the attribute values on the Requires element.
           </html:p>
           <html:p>
-                        If you do not nest this element under a Provides element, you must specify the @Id attribute
-                        so that it can be referenced by a RequiresRef element nested under a Provides element.
+            If you do not nest this element under a Provides element, you must specify the @Id attribute
+            so that it can be referenced by a RequiresRef element nested under a Provides element.
           </html:p>
         </xse:remarks>
         <xse:seeAlso ref="RequiresRef" />
@@ -13922,43 +13884,43 @@
       <xs:attribute name="Id" type="xs:string">
         <xs:annotation>
           <xs:documentation>
-                        Dependency requirement identity. If this attribute is not specified, an identifier will be generated automatically.
-                        If this element is not authored under a Provides element, this attribute is required.
+            Dependency requirement identity. If this attribute is not specified, an identifier will be generated automatically.
+            If this element is not authored under a Provides element, this attribute is required.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="ProviderKey" type="xs:string" use="required">
         <xs:annotation>
           <xs:documentation>
-                        The unique registry key name for the dependency provider to require during installation of this product.
+            The unique registry key name for the dependency provider to require during installation of this product.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Minimum" type="VersionType">
         <xs:annotation>
           <xs:documentation>
-                        The minimum version of the dependency provider required to be installed. The default is unbound.
+            The minimum version of the dependency provider required to be installed. The default is unbound.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Maximum" type="VersionType">
         <xs:annotation>
           <xs:documentation>
-                        The maximum version of the dependency provider required to be installed. The default is unbound.
+            The maximum version of the dependency provider required to be installed. The default is unbound.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="IncludeMinimum" type="YesNoType">
         <xs:annotation>
           <xs:documentation>
-                        Set to "yes" to make the range of dependency provider versions required include the value specified in Minimum.
+            Set to "yes" to make the range of dependency provider versions required include the value specified in Minimum.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="IncludeMaximum" type="YesNoType">
         <xs:annotation>
           <xs:documentation>
-                        Set to "yes" to make the range of dependency provider versions required include the value specified in Maximum.
+            Set to "yes" to make the range of dependency provider versions required include the value specified in Maximum.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -13967,14 +13929,14 @@
   <xs:element name="RequiresRef">
     <xs:annotation>
       <xs:documentation>
-                References existing authoring for a dependency on a provider for the current component or package.
+        References existing authoring for a dependency on a provider for the current component or package.
       </xs:documentation>
       <xs:appinfo>
         <xse:remarks>
           <html:p>
-                        This element references a dependency on any product that uses the Provides element. If that product is uninstalled
-                        before a product that requires it, the uninstall will err or warn the user that other products are installed
-                        which depend on that product. This behavior can be modified by changing the attribute values on the Requires element.
+            This element references a dependency on any product that uses the Provides element. If that product is uninstalled
+            before a product that requires it, the uninstall will err or warn the user that other products are installed
+            which depend on that product. This behavior can be modified by changing the attribute values on the Requires element.
           </html:p>
         </xse:remarks>
         <xse:seeAlso ref="Requires" />
@@ -13985,32 +13947,10 @@
       <xs:attribute name="Id" type="xs:string" use="required">
         <xs:annotation>
           <xs:documentation>
-                        The identifier of the Requires element to reference.
+            The identifier of the Requires element to reference.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
     </xs:complexType>
   </xs:element>
-  <xs:attribute name="ProviderKey" type="xs:string">
-    <xs:annotation>
-      <xs:documentation>
-                Optional attribute to explicitly author the provider key for the entire bundle.
-      </xs:documentation>
-      <xs:appinfo>
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Bundle" />
-        <xse:remarks>
-          <html:p>
-                        This provider key is designed to persist throughout compatible upgrades so that dependent bundles do not have to be reinstalled
-                        and will not prevent your product from being upgraded. If this attribute is not authored, the value is the
-                        automatically-generated bundle ID and will not automatically support upgrades.
-          </html:p>
-          <html:p>
-                        Only a single provider key is supported for bundles. To author that your bundle provides additional features via
-                        packages, author different provider keys for your packages.
-          </html:p>
-        </xse:remarks>
-        <xse:seeAlso ref="Provides" />
-      </xs:appinfo>
-    </xs:annotation>
-  </xs:attribute>
 </xs:schema>
