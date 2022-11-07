@@ -3,7 +3,6 @@
 namespace WixBuildTools.XsdToMarkdown
 {
     using System;
-    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Xml.Linq;
@@ -19,7 +18,7 @@ namespace WixBuildTools.XsdToMarkdown
             }
 
             // Load 'em up.
-            var xsds = commandLine.Files.Select(path => new Xsd(XDocument.Load(path)));
+            var xsds = commandLine.Files.Select(path => new Xsd(XDocument.Load(path, LoadOptions.SetLineInfo | LoadOptions.PreserveWhitespace), path));
             Console.WriteLine($"XsdToMarkdown: Processing {xsds.Count()} XSDs.");
 
             // Put 'em together... sorted.

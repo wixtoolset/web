@@ -4,7 +4,9 @@ namespace WixBuildTools.XsdToMarkdown
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
+    using System.Xml.Linq;
 
     // todo: handle embedded HTML: convert xsd html to markdown?
 
@@ -177,6 +179,15 @@ namespace WixBuildTools.XsdToMarkdown
                 content.Add(String.Join(", ", element.SeeAlsos.Select(seeAlso => this.FormatSeeAlsoElement(seeAlso))));
             }
 
+            if (element.LineNumber is not null)
+            {
+                content.Add(String.Empty);
+                var schemaName = Path.GetFileName(this.Xsd.Path);
+                content.Add($"[Edit the schema for this page](https://github.com/wixtoolset/web/blob/master/src/xsd4/{schemaName})");
+                //TODO: Figure out line numbers being off...
+                //content.Add($"[Edit the {schemaName} schema for this page](https://github.com/wixtoolset/web/blob/master/src/xsd4/{schemaName}#L{element.LineNumber})");
+            }
+
             return new Page(this.PageId(PageType.Element, element.Name), content);
         }
 
@@ -203,6 +214,15 @@ namespace WixBuildTools.XsdToMarkdown
                 content.Add(String.Empty);
                 content.Add("## Enumeration values");
                 content.AddRange(EnumValuesDocumentation(simpleType.EnumValues));
+            }
+
+            if (simpleType.LineNumber is not null)
+            {
+                content.Add(String.Empty);
+                var schemaName = Path.GetFileName(this.Xsd.Path);
+                content.Add($"[Edit the schema for this page](https://github.com/wixtoolset/web/blob/master/src/xsd4/{schemaName})");
+                //TODO: Figure out line numbers being off...
+                //content.Add($"[Edit the {schemaName} schema for this page](https://github.com/wixtoolset/web/blob/master/src/xsd4/{schemaName}#L{simpleType.LineNumber})");
             }
 
             return new Page(this.PageId(PageType.Type, simpleType.Name), content);
