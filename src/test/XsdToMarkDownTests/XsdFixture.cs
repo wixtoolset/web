@@ -56,7 +56,7 @@ namespace XsdToMarkDownTests
         {
             var folder = TestData.Get(@"TestData");
             var document = XDocument.Load(Path.Combine(folder, "wix.xsd"));
-            var xsd = new Xsd(document);
+            var xsd = new Xsd(document, "wix.xsd");
 
             Assert.True(xsd.IsMainSchema);
             Assert.Equal("Wxs", xsd.SchemaName);
@@ -153,7 +153,7 @@ namespace XsdToMarkDownTests
                 Path.Combine(folder, "util.xsd"),
             };
 
-            var xsds = paths.Select(path => new Xsd(XDocument.Load(path))).ToList();
+            var xsds = paths.Select(path => new Xsd(XDocument.Load(path), path)).ToList();
             return XsdFinalizer.Finalize(xsds);
         }
     }

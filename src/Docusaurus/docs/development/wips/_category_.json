@@ -1,0 +1,8 @@
+{
+  "label": "WIPs",
+  "position": 10,
+  "link": {
+    "type": "generated-index",
+    "description": "WiX Improvement Proposals"
+  }
+}

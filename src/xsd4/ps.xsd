@@ -13,7 +13,9 @@
       The source code schema for the WiX Toolset PowerShell Extension.
     </xs:documentation>
   </xs:annotation>
+
   <xs:import namespace="http://wixtoolset.org/schemas/v4/wxs" />
+
   <xs:element name="FormatsFile">
     <xs:annotation>
       <xs:documentation>
@@ -27,6 +29,16 @@
       </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:any namespace="##other" processContents="lax">
+          <xs:annotation>
+            <xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:any>
+      </xs:choice>
       <xs:attribute name="FileId" type="xs:string">
         <xs:annotation>
           <xs:documentation>
@@ -41,8 +53,17 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
+      <xs:anyAttribute namespace="##other" processContents="lax">
+        <xs:annotation>
+          <xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:anyAttribute>
     </xs:complexType>
   </xs:element>
+
   <xs:element name="TypesFile">
     <xs:annotation>
       <xs:documentation>
@@ -56,6 +77,16 @@
       </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:any namespace="##other" processContents="lax">
+          <xs:annotation>
+            <xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:any>
+      </xs:choice>
       <xs:attribute name="FileId" type="xs:string">
         <xs:annotation>
           <xs:documentation>
@@ -70,8 +101,17 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
+      <xs:anyAttribute namespace="##other" processContents="lax">
+        <xs:annotation>
+          <xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              attributes at this point in the schema.
+            </xs:documentation>
+        </xs:annotation>
+      </xs:anyAttribute>
     </xs:complexType>
   </xs:element>
+
   <xs:element name="SnapIn">
     <xs:annotation>
       <xs:documentation>
@@ -80,10 +120,9 @@
       <xs:appinfo>
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="File" />
         <xse:remarks>
-          <html:a href="http://www.microsoft.com/powershell">PowerShell</html:a> snap-ins
-          allow developers to extend the functionality of of the PowerShell engine.
-          Add this element to identify the parent File as a PowerShell snap-in that will
-          get registered on the system.
+          [PowerShell](http://www.microsoft.com/powershell) snap-ins allow developers to
+          extend the functionality of of the PowerShell engine. Add this element to identify
+          the parent File as a PowerShell snap-in that will get registered on the system.
         </xse:remarks>
       </xs:appinfo>
     </xs:annotation>
@@ -91,22 +130,20 @@
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element ref="FormatsFile" />
         <xs:element ref="TypesFile" />
+        <xs:any namespace="##other" processContents="lax">
+          <xs:annotation>
+            <xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:any>
       </xs:choice>
       <xs:attribute name="Id" type="xs:string" use="required">
         <xs:annotation>
           <xs:documentation>
             The identifier for this PowerShell snap-in.
           </xs:documentation>
-        </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="AssemblyName" type="xs:string">
-        <xs:annotation>
-          <xs:documentation>
-            The fully-qualified name of the assembly.
-          </xs:documentation>
-          <xs:appinfo>
-            <xse:deprecated />
-          </xs:appinfo>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="CustomSnapInType" type="xs:string">
@@ -161,14 +198,23 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
+      <xs:anyAttribute namespace="##other" processContents="lax">
+        <xs:annotation>
+          <xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              attributes at this point in the schema.
+            </xs:documentation>
+        </xs:annotation>
+      </xs:anyAttribute>
     </xs:complexType>
   </xs:element>
+
   <xs:simpleType name="EmbeddedResource">
     <xs:annotation>
       <xs:documentation>
         <html:p>
-          Values should be in the format <html:i>ResourceName,StringName</html:i>, where <html:i>ResourceName</html:i>
-          is the name of the embedded resource in your assembly sans the ".resources" extension, and <html:i>StringName</html:i>
+          Values should be in the format *ResourceName,StringName*, where *ResourceName*
+          is the name of the embedded resource in your assembly sans the ".resources" extension, and *StringName*
           is the name of the string resource in the embedded resource.
         </html:p>
         <html:p>
@@ -178,6 +224,7 @@
     </xs:annotation>
     <xs:restriction base="xs:string" />
   </xs:simpleType>
+
   <xs:simpleType name="VersionType">
     <xs:annotation>
       <xs:documentation>

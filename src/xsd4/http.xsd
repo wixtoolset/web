@@ -15,14 +15,97 @@
 
   <xs:import namespace="http://wixtoolset.org/schemas/v4/wxs" />
 
+  <xs:element name="SniSslCertificate">
+    <xs:annotation>
+      <xs:documentation>
+        Associates an SNI SSL certificate with HTTP.SYS.
+      </xs:documentation>
+      <xs:appinfo>
+        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Component" />
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:any namespace="##other" processContents="lax">
+          <xs:annotation>
+            <xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:any>
+      </xs:choice>
+      <xs:attribute name="Id" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            Unique ID of this SNI SSL.
+            If this attribute is not specified, an identifier will be generated automatically.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+
+      <xs:attribute name="AppId" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A GUID used ot identify the SNI SSL binding.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+
+      <xs:attribute name="HandleExisting">
+        <xs:annotation>
+          <xs:documentation>
+            Rights for this ACE. Default is "all".
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="replace" />
+            <xs:enumeration value="ignore" />
+            <xs:enumeration value="fail" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+
+      <xs:attribute name="Host" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>Host of the URL to bind with the SNI SSL certificate.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+
+      <xs:attribute name="Port" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>Host of the URL to bind with the SNI SSL certificate.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+
+      <xs:attribute name="Store" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Certificate store containing the SNI SSL certificate.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+
+      <xs:attribute name="Thumbprint" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>Thumbprint of the SNI SSL certificate.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+
+      <xs:anyAttribute namespace="##other" processContents="lax">
+        <xs:annotation>
+          <xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:anyAttribute>
+    </xs:complexType>
+  </xs:element>
+
   <xs:element name="UrlReservation">
     <xs:annotation>
       <xs:documentation>
         Makes a reservation record for the HTTP Server API configuration store on Windows XP SP2,
         Windows Server 2003, and later.  For more information about the HTTP Server API, see
-        <html:a href="http://msdn.microsoft.com/library/windows/desktop/aa364510.aspx">
-          HTTP Server API
-        </html:a>.
+        [HTTP Server API](https://learn.microsoft.com/en-us/windows/win32/http/http-api-start-page).
       </xs:documentation>
       <xs:appinfo>
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Component" />
@@ -38,6 +121,14 @@
           </xs:documentation>
         </xs:annotation>
         <xs:element ref="UrlAce" />
+        <xs:any namespace="##other" processContents="lax">
+          <xs:annotation>
+            <xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:any>
       </xs:choice>
 
       <xs:attribute name="HandleExisting">
@@ -94,11 +185,20 @@
       <xs:attribute name="Url" type="xs:string" use="required">
         <xs:annotation>
           <xs:documentation>
-            The <html:a href="http://msdn.microsoft.com/library/windows/desktop/aa364698.aspx">UrlPrefix</html:a>
+            The [UrlPrefix](https://learn.microsoft.com/en-us/windows/win32/http/urlprefix-strings)
             string that defines the portion of the URL namespace to which this reservation pertains.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
+
+      <xs:anyAttribute namespace="##other" processContents="lax">
+        <xs:annotation>
+          <xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:anyAttribute>
     </xs:complexType>
   </xs:element>
 
@@ -109,6 +209,16 @@
       </xs:documentation>
     </xs:annotation>
     <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:any namespace="##other" processContents="lax">
+          <xs:annotation>
+            <xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:any>
+      </xs:choice>
       <xs:attribute name="Id" type="xs:string">
         <xs:annotation>
           <xs:documentation>
@@ -121,10 +231,10 @@
       <xs:attribute name="SecurityPrincipal" type="xs:string">
         <xs:annotation>
           <xs:documentation>
-            The security principal for this ACE.  When the UrlReservation is under a ServiceInstall element, this defaults to
-            "NT SERVICE\ServiceInstallName".  This may be either a SID or an account name in a format that
-            <html:a href="http://msdn.microsoft.com/library/windows/desktop/aa379159.aspx">LookupAccountName</html:a>
-            supports.  When using a SID, an asterisk must be prepended.  For example, "*S-1-5-18".
+            The security principal for this ACE. When the UrlReservation is under a ServiceInstall element, this defaults to
+            "NT SERVICE\ServiceInstallName". This may be either a SID or an account name in a format that
+            [LookupAccountName](https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-lookupaccountnamea)
+            supports. When using a SID, an asterisk must be prepended.  For example, "*S-1-5-18".
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -143,6 +253,15 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
+
+      <xs:anyAttribute namespace="##other" processContents="lax">
+        <xs:annotation>
+          <xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:anyAttribute>
     </xs:complexType>
   </xs:element>
 </xs:schema>

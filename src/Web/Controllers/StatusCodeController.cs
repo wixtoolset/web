@@ -47,7 +47,7 @@ namespace WixToolset.Web.Controllers
 
             await this.StorageService.LogErrorAsync(code, ip, page, referrer, exceptionFeature?.Error);
 
-            var file = Path.GetFullPath(code == 404 ? "wwwroot/notfound/index.html" : "wwwroot/error/index.html");
+            var file = Path.GetFullPath(code == 404 ? "wwwroot/404.html" : "wwwroot/error.html");
 
             return this.PhysicalFile(file, "text/html");
         }

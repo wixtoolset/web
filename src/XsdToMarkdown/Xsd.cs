@@ -6,6 +6,7 @@ namespace WixBuildTools.XsdToMarkdown
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Linq;
+    using System.Xml;
     using System.Xml.Linq;
 
     [DebuggerDisplay("SchemaName={SchemaName,nq} TargetNamespace={TargetNamespace,nq}")]
@@ -34,19 +35,31 @@ namespace WixBuildTools.XsdToMarkdown
         private static readonly XName DeprecatedElement = XmlSchemaExtensionNamespace + "deprecated";
 
         public XDocument Document { get; private set; }
+        
+        public string Path { get; }
+        
         public bool IsMainSchema { get; private set; }
+        
         public string TargetNamespace { get; private set; }
+        
         public string SchemaName { get; private set; }
+        
         public string SchemaDocumentation { get; private set; }
+        
         public IDictionary<string, Element> Elements { get; }
+        
         public IEnumerable<Element> RootElements { get; }
+        
         public IDictionary<string, IEnumerable<Attribute>> AttributeGroups { get; private set; }
+        
         public IDictionary<string, Attribute> RootAttributes { get; private set; }
+        
         public IDictionary<string, SimpleType> SimpleTypes { get; }
 
-        public Xsd(XDocument xsd)
+        public Xsd(XDocument xsd, string path)
         {
             this.Document = xsd;
+            this.Path = path;
             this.IsMainSchema = xsd.Root.Element(AnnotationElement)?.Element(AppInfoElement)?.Element(MainElement) != null;
             this.TargetNamespace = xsd.Root.Attribute("targetNamespace").Value;
             this.SchemaName = GetSchemaNameFromNamespace(this.TargetNamespace);
@@ -82,7 +95,7 @@ namespace WixBuildTools.XsdToMarkdown
             var doc = GetDocumentationFromAnnotation(xSimpleType.Element(AnnotationElement));
             var enumValues = CreateEmuerationValues(xSimpleType);
 
-            return new SimpleType(name, doc, enumValues);
+            return new SimpleType(name, doc, enumValues, xSimpleType);
         }
 
         private static IEnumerable<EnumValue> CreateEmuerationValues(XElement xSimpleType)
@@ -118,7 +131,7 @@ namespace WixBuildTools.XsdToMarkdown
 
             var seeAlsos = xAppInfo?.Elements(SeeAlsoElement).SelectMany(x => this.CreateSeeAlsoElement(x));
 
-            return new Element(name, this.TargetNamespace, documentation, remarks, attributes, parents, children, msiRefs, seeAlsos);
+            return new Element(name, this.TargetNamespace, documentation, remarks, attributes, parents, children, msiRefs, seeAlsos, xElement);
         }
 
         private IEnumerable<Element> CreateSeeAlsoElement(XElement xSeeAlso)
@@ -387,6 +400,7 @@ namespace WixBuildTools.XsdToMarkdown
         public IDictionary<string, Child> Children { get; }
         public IDictionary<string, Attribute> Attributes { get; set; }
         public IEnumerable<Element> SeeAlsos { get; set; }
+        public int? LineNumber { get; }
 
         public Element(string name, string @namespace)
         {
@@ -394,7 +408,7 @@ namespace WixBuildTools.XsdToMarkdown
             this.Namespace = @namespace;
         }
 
-        public Element(string name, string @namespace, string documentation, string remarks, IEnumerable<Attribute> attributes, IEnumerable<Parent> parents, IEnumerable<Child> children, IEnumerable<MsiRef> msiRefs, IEnumerable<Element> seeAlsos)
+        public Element(string name, string @namespace, string documentation, string remarks, IEnumerable<Attribute> attributes, IEnumerable<Parent> parents, IEnumerable<Child> children, IEnumerable<MsiRef> msiRefs, IEnumerable<Element> seeAlsos, IXmlLineInfo lineInfo)
         {
             this.Name = name;
             this.Namespace = @namespace;
@@ -405,6 +419,7 @@ namespace WixBuildTools.XsdToMarkdown
             this.Children = children?.ToDictionary(x => x.Name) ?? new Dictionary<string, Child>();
             this.MsiRefs = msiRefs;
             this.SeeAlsos = seeAlsos;
+            this.LineNumber = lineInfo?.LineNumber;
         }
     }
 
@@ -437,12 +452,14 @@ namespace WixBuildTools.XsdToMarkdown
         public string Name { get; }
         public string Documentation { get; }
         public IEnumerable<EnumValue> EnumValues { get; }
+        public int? LineNumber { get; }
 
-        public SimpleType(string name, string documentation, IEnumerable<EnumValue> enumValues)
+        public SimpleType(string name, string documentation, IEnumerable<EnumValue> enumValues, IXmlLineInfo lineInfo)
         {
             this.Name = name;
             this.Documentation = documentation;
             this.EnumValues = enumValues;
+            this.LineNumber = lineInfo?.LineNumber;
         }
     }
 
