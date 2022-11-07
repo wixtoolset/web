@@ -46,6 +46,5 @@ WiX v4 is available as an MSBuild SDK for building from the command line using `
 ```
 
 
-## Visual Studio {#vs}
+## TODO: Visual Studio {#vs}
 
-TODO

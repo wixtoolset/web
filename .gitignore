@@ -6,4 +6,4 @@ build/
 *.suo
 *.user
 
-src/Docusaurus/docs/reference/
+src/Docusaurus/docs/reference/schema
