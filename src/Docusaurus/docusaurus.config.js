@@ -126,6 +126,14 @@ const config = {
         additionalLanguages: ['csharp'],
       },
     }),
+
+  scripts: [
+    {
+      'src': "https://plausible.io/js/script.js",
+      'defer': true,
+      'data-domain': "wixtoolset.org"
+    }
+  ]
 };
 
 module.exports = config;
