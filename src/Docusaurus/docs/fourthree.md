@@ -10,11 +10,12 @@ TODO: WiX v4 documentation is under development.
  
 A lot about WiX has changed between v3 and v4 but the nuts and bolts of authoring .wxs files will appear very similar. Here are some higher-level things that have changed:
 
-- For command-line afficionados, most executables have been merged into a single `wix.exe` tool with commands. For example, in WiX v3, you might build by calling Candle.exe one or more times to compile your authoring and then calling Light.exe to link and bind the compiled authoring into an .msi package. In WiX v4 using `wix.exe`, that's one command: `wix build -o product.msi product.wxs`.
 - WiX v4 doesn't have to be installed on every dev machine and build image like WiX v3. Instead, WiX v4 follows the modern .NET model of using NuGet to deliver tools.
   - WiX v4 MSBuild projects are SDK-style projects; MSBuild and NuGet work together to bring down the WiX v4 MSBuild SDK NuGet package.
+  - Both .NET Framework MSBuild and `dotnet build` are supported.
   - To build packages from the command line, WiX v4 is available as a .NET tool, which is also a NuGet package.
   - WiX extensions are delivered as NuGet packages, which are usable from both MSBuild projects via `PackageReference` and the WiX .NET tool.
+- For command-line afficionados, most executables have been merged into a single `wix.exe` tool with commands. For example, in WiX v3, you might build by calling Candle.exe one or more times to compile your authoring and then calling Light.exe to link and bind the compiled authoring into an .msi package. In WiX v4 using `wix.exe`, that's one command: `wix build -o product.msi product.wxs`.
 
 The WiX v4 language has some simplifications and uses a new namespace, so WiX v3 authoring needs to be converted. Luckily, there's an app for that.
 
@@ -36,5 +37,5 @@ By default, `wix convert` converts the files in place, overwriting the original 
 ## TODO: Convert WiX projects and authoring from Visual Studio
 
 
-## When manual conversion is required
+## When manual conversion is required {#manual}
 
