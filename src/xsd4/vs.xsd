@@ -4,6 +4,8 @@
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
           xmlns:xse="http://wixtoolset.org/schemas/XmlSchemaExtension"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:wxs="http://wixtoolset.org/schemas/v4/wxs"
     targetNamespace="http://wixtoolset.org/schemas/v4/wxs/vs"
               xmlns="http://wixtoolset.org/schemas/v4/wxs/vs">
   <xs:annotation>
@@ -11,6 +13,8 @@
       The source code schema for the WiX Toolset Visual Studio Extension.
     </xs:documentation>
   </xs:annotation>
+
+  <xs:import namespace="http://wixtoolset.org/schemas/v4/wxs" />
 
   <xs:element name="FindVisualStudio">
     <xs:annotation>
@@ -79,7 +83,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Permanent" type="YesNoType">
+      <xs:attribute name="Permanent" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
             Indicates whether the VSIX package is uninstalled when the parent Component is uninstalled.
@@ -98,7 +102,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="TargetVersion" type="VersionType">
+      <xs:attribute name="TargetVersion" type="wxs:VersionType">
         <xs:annotation>
           <xs:documentation>
             Specifies the version of Visual Studio in which to register the extension. This attribute
@@ -106,7 +110,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Vital" type="YesNoType">
+      <xs:attribute name="Vital" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
             Indicates whether failure to install the VSIX package causes the installation to rollback.
@@ -133,25 +137,4 @@
       </xs:anyAttribute>
     </xs:complexType>
   </xs:element>
-
-  <xs:simpleType name="VersionType">
-    <xs:annotation>
-      <xs:documentation>Values of this type will look like: "x.x.x.x" where x is an integer from 0 to 65534.</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:string">
-      <xs:pattern value="(\d{1,5}\.){0,3}\d{1,5}"/>
-    </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="YesNoType">
-    <xs:annotation>
-      <xs:documentation>Values of this type will either be "yes"/"true" or "no"/"false".</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:NMTOKEN">
-      <xs:enumeration value="no" />
-      <xs:enumeration value="false" />
-      <xs:enumeration value="yes" />
-      <xs:enumeration value="true" />
-    </xs:restriction>
-  </xs:simpleType>
 </xs:schema>

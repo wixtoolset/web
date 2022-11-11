@@ -2,12 +2,12 @@
 <!-- Copyright (c) .NET Foundation and contributors. All rights reserved. Licensed under the Microsoft Reciprocal License. See LICENSE.TXT file in the project root for full license information. -->
 
 
-<xs:schema xmlns:html="http://www.w3.org/1999/xhtml"
-           xmlns:wix="http://wixtoolset.org/schemas/v4/wxs"
-           xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:xse="http://wixtoolset.org/schemas/XmlSchemaExtension"
-           targetNamespace="http://wixtoolset.org/schemas/v4/wxs/util"
-           xmlns="http://wixtoolset.org/schemas/v4/wxs/util">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns:xse="http://wixtoolset.org/schemas/XmlSchemaExtension"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:wxs="http://wixtoolset.org/schemas/v4/wxs"
+    targetNamespace="http://wixtoolset.org/schemas/v4/wxs/util"
+              xmlns="http://wixtoolset.org/schemas/v4/wxs/util">
   <xs:annotation>
     <xs:documentation>
       The source code schema for the WiX Toolset Utility Extension.
@@ -65,27 +65,27 @@
           <xs:documentation>Optionally orders the applications to be closed.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="CloseMessage" type="YesNoType">
+      <xs:attribute name="CloseMessage" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Optionally sends a close message to the application. Default is no.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="EndSessionMessage" type="YesNoType">
+      <xs:attribute name="EndSessionMessage" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Sends WM_QUERYENDSESSION then WM_ENDSESSION messages to the application. Default is "no".</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="ElevatedCloseMessage" type="YesNoType">
+      <xs:attribute name="ElevatedCloseMessage" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Optionally sends a close message to the application from deffered action without impersonation. Default is no.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="ElevatedEndSessionMessage" type="YesNoType">
+      <xs:attribute name="ElevatedEndSessionMessage" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Sends WM_QUERYENDSESSION then WM_ENDSESSION messages to the application from a deffered action without impersonation. Default is "no".</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="RebootPrompt" type="YesNoType">
+      <xs:attribute name="RebootPrompt" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
             Optionally prompts for reboot if application is still running.
@@ -94,7 +94,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="PromptToContinue" type="YesNoType">
+      <xs:attribute name="PromptToContinue" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
             When this attribute is set to "yes", the user will be prompted when the application is still running. The Description attribute must contain the message to
@@ -259,7 +259,7 @@
           <xs:documentation>Directory path to search for.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="DisableFileRedirection" type="YesNoType">
+      <xs:attribute name="DisableFileRedirection" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>When set to "yes" and the running bundle is 32-bit, Wow64DisableWow64FsRedirection is called before starting the search.</xs:documentation>
         </xs:annotation>
@@ -371,7 +371,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="KeyPath" type="YesNoType">
+      <xs:attribute name="KeyPath" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
             Marks the EventSource registry as the key path of the component it belongs to.
@@ -399,35 +399,35 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="SupportsErrors" type="YesNoType">
+      <xs:attribute name="SupportsErrors" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
             Equivalent to EVENTLOG_ERROR_TYPE.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="SupportsFailureAudits" type="YesNoType">
+      <xs:attribute name="SupportsFailureAudits" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
             Equivalent to EVENTLOG_AUDIT_FAILURE.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="SupportsInformationals" type="YesNoType">
+      <xs:attribute name="SupportsInformationals" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
             Equivalent to EVENTLOG_INFORMATION_TYPE.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="SupportsSuccessAudits" type="YesNoType">
+      <xs:attribute name="SupportsSuccessAudits" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
             Equivalent to EVENTLOG_AUDIT_SUCCESS.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="SupportsWarnings" type="YesNoType">
+      <xs:attribute name="SupportsWarnings" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
             Equivalent to EVENTLOG_WARNING_TYPE.
@@ -470,7 +470,7 @@
           <xs:documentation>File path to search for.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="DisableFileRedirection" type="YesNoType">
+      <xs:attribute name="DisableFileRedirection" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>When set to "yes" and the running bundle is 32-bit, Wow64DisableWow64FsRedirection is called before starting the search.</xs:documentation>
         </xs:annotation>
@@ -607,43 +607,43 @@
       </xs:choice>
       <xs:attribute name="User" use="required" type="xs:string"></xs:attribute>
       <!-- Common ACLs -->
-      <xs:attribute name="Read" type="YesNoType"></xs:attribute>
-      <xs:attribute name="Delete" type="YesNoType"></xs:attribute>
-      <xs:attribute name="ReadPermission" type="YesNoType"></xs:attribute>
-      <xs:attribute name="ChangePermission" type="YesNoType"></xs:attribute>
-      <xs:attribute name="TakeOwnership" type="YesNoType"></xs:attribute>
+      <xs:attribute name="Read" type="wxs:YesNoTypeUnion"></xs:attribute>
+      <xs:attribute name="Delete" type="wxs:YesNoTypeUnion"></xs:attribute>
+      <xs:attribute name="ReadPermission" type="wxs:YesNoTypeUnion"></xs:attribute>
+      <xs:attribute name="ChangePermission" type="wxs:YesNoTypeUnion"></xs:attribute>
+      <xs:attribute name="TakeOwnership" type="wxs:YesNoTypeUnion"></xs:attribute>
       <!-- Folder and File ACLs -->
-      <xs:attribute name="ReadAttributes" type="YesNoType"></xs:attribute>
-      <xs:attribute name="WriteAttributes" type="YesNoType"></xs:attribute>
-      <xs:attribute name="ReadExtendedAttributes" type="YesNoType"></xs:attribute>
-      <xs:attribute name="WriteExtendedAttributes" type="YesNoType"></xs:attribute>
-      <xs:attribute name="Synchronize" type="YesNoType"></xs:attribute>
+      <xs:attribute name="ReadAttributes" type="wxs:YesNoTypeUnion"></xs:attribute>
+      <xs:attribute name="WriteAttributes" type="wxs:YesNoTypeUnion"></xs:attribute>
+      <xs:attribute name="ReadExtendedAttributes" type="wxs:YesNoTypeUnion"></xs:attribute>
+      <xs:attribute name="WriteExtendedAttributes" type="wxs:YesNoTypeUnion"></xs:attribute>
+      <xs:attribute name="Synchronize" type="wxs:YesNoTypeUnion"></xs:attribute>
       <!-- Folder only ACLs -->
-      <xs:attribute name="CreateFile" type="YesNoType">
+      <xs:attribute name="CreateFile" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>For a directory, the right to create a file in the directory.  Only valid under a 'CreateFolder' parent.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="CreateChild" type="YesNoType">
+      <xs:attribute name="CreateChild" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>For a directory, the right to create a subdirectory.  Only valid under a 'CreateFolder' parent.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="DeleteChild" type="YesNoType">
+      <xs:attribute name="DeleteChild" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>For a directory, the right to delete a directory and all the files it contains, including read-only files.  Only valid under a 'CreateFolder' parent.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Traverse" type="YesNoType">
+      <xs:attribute name="Traverse" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>For a directory, the right to traverse the directory.  By default, users are assigned the BYPASS_TRAVERSE_CHECKING privilege, which ignores the FILE_TRAVERSE access right.  Only valid under a 'CreateFolder' parent.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <!-- Generic ACLs, mapped by system to appropriate permissions -->
-      <xs:attribute name="GenericAll" type="YesNoType"></xs:attribute>
-      <xs:attribute name="GenericExecute" type="YesNoType"></xs:attribute>
-      <xs:attribute name="GenericWrite" type="YesNoType"></xs:attribute>
-      <xs:attribute name="GenericRead" type="YesNoType">
+      <xs:attribute name="GenericAll" type="wxs:YesNoTypeUnion"></xs:attribute>
+      <xs:attribute name="GenericExecute" type="wxs:YesNoTypeUnion"></xs:attribute>
+      <xs:attribute name="GenericWrite" type="wxs:YesNoTypeUnion"></xs:attribute>
+      <xs:attribute name="GenericRead" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>specifying this will fail to grant read access</xs:documentation>
         </xs:annotation>
@@ -904,7 +904,7 @@
           <xs:documentation>Optional help text for the performance counter category.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="MultiInstance" type="YesNoType">
+      <xs:attribute name="MultiInstance" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Flag that specifies whether the performance counter category is multi or single instanced.  Default is single instance.</xs:documentation>
         </xs:annotation>
@@ -1134,105 +1134,105 @@
       </xs:choice>
       <xs:attribute name="User" type="xs:string" use="required"></xs:attribute>
       <xs:attribute name="Domain" type="xs:string"></xs:attribute>
-      <xs:attribute name="Inheritable" type="xs:YesNoType">
+      <xs:attribute name="Inheritable" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Whether the permissions are inheritable. The default is "yes".</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <!-- Common ACLs -->
-      <xs:attribute name="Read" type="YesNoType"></xs:attribute>
-      <xs:attribute name="Delete" type="YesNoType"></xs:attribute>
-      <xs:attribute name="ReadPermission" type="YesNoType"></xs:attribute>
-      <xs:attribute name="ChangePermission" type="YesNoType"></xs:attribute>
-      <xs:attribute name="TakeOwnership" type="YesNoType"></xs:attribute>
+      <xs:attribute name="Read" type="wxs:YesNoTypeUnion"></xs:attribute>
+      <xs:attribute name="Delete" type="wxs:YesNoTypeUnion"></xs:attribute>
+      <xs:attribute name="ReadPermission" type="wxs:YesNoTypeUnion"></xs:attribute>
+      <xs:attribute name="ChangePermission" type="wxs:YesNoTypeUnion"></xs:attribute>
+      <xs:attribute name="TakeOwnership" type="wxs:YesNoTypeUnion"></xs:attribute>
       <!-- Folder and File ACLs -->
-      <xs:attribute name="ReadAttributes" type="YesNoType"></xs:attribute>
-      <xs:attribute name="WriteAttributes" type="YesNoType"></xs:attribute>
-      <xs:attribute name="ReadExtendedAttributes" type="YesNoType"></xs:attribute>
-      <xs:attribute name="WriteExtendedAttributes" type="YesNoType"></xs:attribute>
-      <xs:attribute name="Synchronize" type="YesNoType"></xs:attribute>
+      <xs:attribute name="ReadAttributes" type="wxs:YesNoTypeUnion"></xs:attribute>
+      <xs:attribute name="WriteAttributes" type="wxs:YesNoTypeUnion"></xs:attribute>
+      <xs:attribute name="ReadExtendedAttributes" type="wxs:YesNoTypeUnion"></xs:attribute>
+      <xs:attribute name="WriteExtendedAttributes" type="wxs:YesNoTypeUnion"></xs:attribute>
+      <xs:attribute name="Synchronize" type="wxs:YesNoTypeUnion"></xs:attribute>
       <!-- Folder only ACLs -->
-      <xs:attribute name="CreateFile" type="YesNoType">
+      <xs:attribute name="CreateFile" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>For a directory, the right to create a file in the directory.  Only valid under a 'CreateFolder' parent.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="CreateChild" type="YesNoType">
+      <xs:attribute name="CreateChild" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>For a directory, the right to create a subdirectory.  Only valid under a 'CreateFolder' parent.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="DeleteChild" type="YesNoType">
+      <xs:attribute name="DeleteChild" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>For a directory, the right to delete a directory and all the files it contains, including read-only files.  Only valid under a 'CreateFolder' parent.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Traverse" type="YesNoType">
+      <xs:attribute name="Traverse" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>For a directory, the right to traverse the directory.  By default, users are assigned the BYPASS_TRAVERSE_CHECKING privilege, which ignores the FILE_TRAVERSE access right.  Only valid under a 'CreateFolder' parent.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <!-- File only ACLs -->
-      <xs:attribute name="Append" type="YesNoType"></xs:attribute>
-      <xs:attribute name="Execute" type="YesNoType"></xs:attribute>
+      <xs:attribute name="Append" type="wxs:YesNoTypeUnion"></xs:attribute>
+      <xs:attribute name="Execute" type="wxs:YesNoTypeUnion"></xs:attribute>
       <!-- File and Registry ACLs -->
-      <xs:attribute name="Write" type="YesNoType"></xs:attribute>
+      <xs:attribute name="Write" type="wxs:YesNoTypeUnion"></xs:attribute>
       <!-- Registry only ACLs -->
-      <xs:attribute name="CreateSubkeys" type="YesNoType"></xs:attribute>
-      <xs:attribute name="EnumerateSubkeys" type="YesNoType"></xs:attribute>
-      <xs:attribute name="Notify" type="YesNoType"></xs:attribute>
-      <xs:attribute name="CreateLink" type="YesNoType"></xs:attribute>
+      <xs:attribute name="CreateSubkeys" type="wxs:YesNoTypeUnion"></xs:attribute>
+      <xs:attribute name="EnumerateSubkeys" type="wxs:YesNoTypeUnion"></xs:attribute>
+      <xs:attribute name="Notify" type="wxs:YesNoTypeUnion"></xs:attribute>
+      <xs:attribute name="CreateLink" type="wxs:YesNoTypeUnion"></xs:attribute>
       <!-- Generic ACLs, mapped by system to appropriate permissions -->
-      <xs:attribute name="GenericAll" type="YesNoType"></xs:attribute>
-      <xs:attribute name="GenericExecute" type="YesNoType"></xs:attribute>
-      <xs:attribute name="GenericWrite" type="YesNoType"></xs:attribute>
-      <xs:attribute name="GenericRead" type="YesNoType">
+      <xs:attribute name="GenericAll" type="wxs:YesNoTypeUnion"></xs:attribute>
+      <xs:attribute name="GenericExecute" type="wxs:YesNoTypeUnion"></xs:attribute>
+      <xs:attribute name="GenericWrite" type="wxs:YesNoTypeUnion"></xs:attribute>
+      <xs:attribute name="GenericRead" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>specifying this will fail to grant read access</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <!-- Service only ACLs -->
-      <xs:attribute name="ServiceQueryConfig" type="YesNoType">
+      <xs:attribute name="ServiceQueryConfig" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Required to call the QueryServiceConfig and QueryServiceConfig2 functions to query the service configuration.  Only valid under a 'ServiceInstall' parent.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="ServiceChangeConfig" type="YesNoType">
+      <xs:attribute name="ServiceChangeConfig" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Required to call the ChangeServiceConfig or ChangeServiceConfig2 function to change the service configuration.  Only valid under a 'ServiceInstall' parent.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="ServiceQueryStatus" type="YesNoType">
+      <xs:attribute name="ServiceQueryStatus" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Required to call the QueryServiceStatus function to ask the service control manager about the status of the service.  Only valid under a 'ServiceInstall' parent.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="ServiceEnumerateDependents" type="YesNoType">
+      <xs:attribute name="ServiceEnumerateDependents" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Required to call the EnumDependentServices function to enumerate all the services dependent on the service.  Only valid under a 'ServiceInstall' parent.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="ServiceStart" type="YesNoType">
+      <xs:attribute name="ServiceStart" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Required to call the StartService function to start the service.  Only valid under a 'ServiceInstall' parent.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="ServiceStop" type="YesNoType">
+      <xs:attribute name="ServiceStop" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Required to call the ControlService function to stop the service.  Only valid under a 'ServiceInstall' parent.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="ServicePauseContinue" type="YesNoType">
+      <xs:attribute name="ServicePauseContinue" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Required to call the ControlService function to pause or continue the service.  Only valid under a 'ServiceInstall' parent.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="ServiceInterrogate" type="YesNoType">
+      <xs:attribute name="ServiceInterrogate" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Required to call the ControlService function to ask the service to report its status immediately.  Only valid under a 'ServiceInstall' parent.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="ServiceUserDefinedControl" type="YesNoType">
+      <xs:attribute name="ServiceUserDefinedControl" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Required to call the ControlService function to specify a user-defined control code.  Only valid under a 'ServiceInstall' parent.</xs:documentation>
         </xs:annotation>
@@ -1551,7 +1551,7 @@
         </xs:any>
       </xs:choice>
       <xs:attributeGroup ref="SearchCommonAttributes" />
-      <xs:attribute name="Bitness" type="BitnessTypeUnion">
+      <xs:attribute name="Bitness" type="wxs:BitnessTypeUnion">
         <xs:annotation>
           <xs:documentation>
             Overrides the default registry to search. The value `always64` will force
@@ -1602,7 +1602,7 @@
           <xs:documentation>Optional value to search for under the given Key.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="ExpandEnvironmentVariables" type="YesNoType">
+      <xs:attribute name="ExpandEnvironmentVariables" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Whether to expand any environment variables in REG_SZ, REG_EXPAND_SZ, or REG_MULTI_SZ values.</xs:documentation>
         </xs:annotation>
@@ -1798,22 +1798,22 @@
           <xs:documentation>Path of the file to update. This value is formatted.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="OnInstall" type="YesNoType">
+      <xs:attribute name="OnInstall" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Specifies whether or not the modified time of the file should be updated on install. If the OnInstall, OnReinstall and OnUninstall attributes are all absent the default is 'yes'.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="OnReinstall" type="YesNoType">
+      <xs:attribute name="OnReinstall" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Specifies whether or not the modified time of the file should be updated on reinstall. If the OnInstall, OnReinstall and OnUninstall attributes are all absent the default is 'yes'.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="OnUninstall" type="YesNoType">
+      <xs:attribute name="OnUninstall" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Specifies whether or not the modified time of the file should be updated on uninstall. If the OnInstall, OnReinstall and OnUninstall attributes are all absent the default is 'no'.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Nonvital" type="YesNoType">
+      <xs:attribute name="Nonvital" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Indicates the installation will succeed even if the modified time of the file cannot be updated. The default is 'no'.</xs:documentation>
         </xs:annotation>
@@ -1869,57 +1869,57 @@
           <xs:documentation>Usually a Property that is passed in on the command-line to keep it more secure.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="PasswordNeverExpires" type="YesNoType">
+      <xs:attribute name="PasswordNeverExpires" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>The account's password never expires. Equivalent to UF_DONT_EXPIRE_PASSWD.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="CanNotChangePassword" type="YesNoType">
+      <xs:attribute name="CanNotChangePassword" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>The user cannot change the account's password. Equivalent to UF_PASSWD_CANT_CHANGE.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="RemoveOnUninstall" type="YesNoType">
+      <xs:attribute name="RemoveOnUninstall" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Indicates whether the user account should be removed or left behind on uninstall.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="FailIfExists" type="YesNoType">
+      <xs:attribute name="FailIfExists" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Indicates if the install should fail if the user already exists.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="LogonAsService" type="YesNoType">
+      <xs:attribute name="LogonAsService" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Indicates whether or not the user can logon as a serivce.  User creation can be skipped if all that is desired is to set this access right on the user.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="LogonAsBatchJob" type="YesNoType">
+      <xs:attribute name="LogonAsBatchJob" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Indicates whether or not the user can logon as a batch job.  User creation can be skipped if all that is desired is to set this access right on the user.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="UpdateIfExists" type="YesNoType">
+      <xs:attribute name="UpdateIfExists" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Indicates if the user account properties should be updated if the user already exists.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="PasswordExpired" type="YesNoType">
+      <xs:attribute name="PasswordExpired" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Indicates whether the user must change their password on their first login.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Disabled" type="YesNoType">
+      <xs:attribute name="Disabled" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>The account is disabled. Equivalent to UF_ACCOUNTDISABLE.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="CreateUser" type="YesNoType">
+      <xs:attribute name="CreateUser" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Indicates whether or not to create the user.  User creation can be skipped if all that is desired is to join a user to groups.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Vital" type="YesNoType">
+      <xs:attribute name="Vital" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Indicates whether failure to create the user or add the user to a group fails the installation. The default value is "yes".</xs:documentation>
         </xs:annotation>
@@ -2087,12 +2087,12 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="Permanent" type="YesNoType">
+      <xs:attribute name="Permanent" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Specifies whether or not the modification should be removed on uninstall.  This has no effect on uninstall if the action was deleteValue.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="PreserveModifiedDate" type="YesNoType">
+      <xs:attribute name="PreserveModifiedDate" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Specifies wheter or not the modification should preserve the modified date.  Preserving the modified date will allow the file to be patched if no other modifications have been made.</xs:documentation>
         </xs:annotation>
@@ -2197,7 +2197,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="PreserveModifiedDate" type="YesNoType">
+      <xs:attribute name="PreserveModifiedDate" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Specifies wheter or not the modification should preserve the modified date.  Preserving the modified date will allow the file to be patched if no other modifications have been made.</xs:documentation>
         </xs:annotation>
@@ -2393,35 +2393,6 @@
       </xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>
-
-  <xs:simpleType name="BitnessTypeUnion">
-    <xs:annotation>
-      <xs:documentation>Values of this type will be "default", "always32" or "always64".</xs:documentation>
-    </xs:annotation>
-    <xs:union memberTypes="BitnessType PreprocessorVariables"/>
-  </xs:simpleType>
-  <xs:simpleType name="BitnessType">
-    <xs:annotation>
-      <xs:documentation>Values of this type will be "default", "always32" or "always64".</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:NMTOKEN">
-      <xs:enumeration value="default" />
-      <xs:enumeration value="always32" />
-      <xs:enumeration value="always64" />
-    </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="YesNoType">
-    <xs:annotation>
-      <xs:documentation>Values of this type will either be "yes"/"true" or "no"/"false".</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:NMTOKEN">
-      <xs:enumeration value="no" />
-      <xs:enumeration value="false" />
-      <xs:enumeration value="yes" />
-      <xs:enumeration value="true" />
-    </xs:restriction>
-  </xs:simpleType>
 
   <xs:simpleType name="PerformanceCounterLanguageType">
     <xs:annotation>

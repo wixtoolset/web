@@ -2,12 +2,12 @@
 <!-- Copyright (c) .NET Foundation and contributors. All rights reserved. Licensed under the Microsoft Reciprocal License. See LICENSE.TXT file in the project root for full license information. -->
 
 
-<xs:schema xmlns:html="http://www.w3.org/1999/xhtml"
-            xmlns:wix="http://wixtoolset.org/schemas/v4/wxs"
-             xmlns:xs="http://www.w3.org/2001/XMLSchema"
-            xmlns:xse="http://wixtoolset.org/schemas/XmlSchemaExtension"
-      targetNamespace="http://wixtoolset.org/schemas/v4/wxs/iis"
-                xmlns="http://wixtoolset.org/schemas/v4/wxs/iis">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns:xse="http://wixtoolset.org/schemas/XmlSchemaExtension"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:wxs="http://wixtoolset.org/schemas/v4/wxs"
+    targetNamespace="http://wixtoolset.org/schemas/v4/wxs/iis"
+              xmlns="http://wixtoolset.org/schemas/v4/wxs/iis">
   <xs:annotation>
     <xs:documentation>
       The source code schema for the WiX Toolset Internet Information Services Extension.
@@ -43,11 +43,11 @@
           <xs:documentation>Identifier for the WebDirProperties. The Id is required when the parent is a Fragment, Module, or Package. Otherwise, Id is optional and if not specified, it will be generated.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Read" type="YesNoType"/>
-      <xs:attribute name="Write" type="YesNoType"/>
-      <xs:attribute name="Script" type="YesNoType"/>
-      <xs:attribute name="Execute" type="YesNoType"/>
-      <xs:attribute name="AnonymousAccess" type="YesNoType">
+      <xs:attribute name="Read" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="Write" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="Script" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="Execute" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="AnonymousAccess" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Sets the Enable Anonymous Access checkbox, which maps anonymous users to a Windows user account. When setting this to 'yes' you should also provide the user account using the AnonymousUser attribute, and determine what setting to use for the IIsControlledPassword attribute. Defaults to 'no.'</xs:documentation>
         </xs:annotation>
@@ -57,37 +57,37 @@
           <xs:documentation>Reference to the Id attribute on the User element to be used as the anonymous user for the directory. See the User element for more information.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="IIsControlledPassword" type="YesNoType">
+      <xs:attribute name="IIsControlledPassword" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Sets whether IIS should control the password used for the Windows account specified in the AnonymousUser attribute. Defaults to 'no.'</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="WindowsAuthentication" type="YesNoType">
+      <xs:attribute name="WindowsAuthentication" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Sets the Windows Authentication option, which enables integrated Windows authentication to be used on the site. Defaults to 'no.'</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="DigestAuthentication" type="YesNoType">
+      <xs:attribute name="DigestAuthentication" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Sets the Digest Authentication option, which allows using digest authentication with domain user accounts. Defaults to 'no.'</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="BasicAuthentication" type="YesNoType">
+      <xs:attribute name="BasicAuthentication" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Sets the Basic Authentication option, which allows clients to provide credentials in plaintext over the wire. Defaults to 'no.'</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="PassportAuthentication" type="YesNoType">
+      <xs:attribute name="PassportAuthentication" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Sets the Passport Authentication option, which allows clients to provide credentials via a .Net Passport account. Defaults to 'no.'</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="LogVisits" type="YesNoType">
+      <xs:attribute name="LogVisits" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Sets whether visits to this site should be logged. Defaults to 'no.'</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Index" type="YesNoType">
+      <xs:attribute name="Index" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Sets the Index Resource option, which specifies whether this web directory should be indexed. Defaults to 'no.'</xs:documentation>
         </xs:annotation>
@@ -97,7 +97,7 @@
           <xs:documentation>The list of default documents to set for this web directory, in comma-delimited format.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="AspDetailedError" type="YesNoType">
+      <xs:attribute name="AspDetailedError" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Sets the option for whether to send detailed ASP errors back to the client on script error. Default is 'no.'</xs:documentation>
         </xs:annotation>
@@ -117,32 +117,32 @@
           <xs:documentation>Custom HTTP 1.1 cache control directives.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="ClearCustomError" type="YesNoType">
+      <xs:attribute name="ClearCustomError" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Specifies whether IIs will return custom errors for this directory.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="AccessSSL" type="YesNoType">
+      <xs:attribute name="AccessSSL" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>A value of true indicates that file access requires SSL file permission processing, with or without a client certificate. This corresponds to AccessSSL flag for AccessSSLFlags IIS metabase property.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="AccessSSL128" type="YesNoType">
+      <xs:attribute name="AccessSSL128" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>A value of true indicates that file access requires SSL file permission processing with a minimum key size of 128 bits, with or without a client certificate. This corresponds to AccessSSL128 flag for AccessSSLFlags IIS metabase property.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="AccessSSLMapCert" type="YesNoType">
+      <xs:attribute name="AccessSSLMapCert" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>This corresponds to AccessSSLMapCert flag for AccessSSLFlags IIS metabase property.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="AccessSSLNegotiateCert" type="YesNoType">
+      <xs:attribute name="AccessSSLNegotiateCert" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>This corresponds to AccessSSLNegotiateCert flag for AccessSSLFlags IIS metabase property.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="AccessSSLRequireCert" type="YesNoType">
+      <xs:attribute name="AccessSSLRequireCert" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>This corresponds to AccessSSLRequireCert flag for AccessSSLFlags IIS metabase property.</xs:documentation>
         </xs:annotation>
@@ -404,9 +404,9 @@
       </xs:attribute>
       <xs:attribute name="Verbs" type="xs:string">
       </xs:attribute>
-      <xs:attribute name="Script" type="YesNoType">
+      <xs:attribute name="Script" type="wxs:YesNoTypeUnion">
       </xs:attribute>
-      <xs:attribute name="CheckPath" type="YesNoType">
+      <xs:attribute name="CheckPath" type="wxs:YesNoTypeUnion">
       </xs:attribute>
       <xs:anyAttribute namespace="##other" processContents="lax">
         <xs:annotation>
@@ -693,9 +693,9 @@
         </xs:simpleType>
       </xs:attribute>
       <!-- The Overwrite attribute is not implemented at this time.
-      <xs:attribute name="Overwrite" type="YesNoType"/>
+      <xs:attribute name="Overwrite" type="wxs:YesNoTypeUnion" />
       -->
-      <xs:attribute name="Request" type="YesNoType">
+      <xs:attribute name="Request" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
             This attribute controls whether the CertificatePath attribute is a path to a certificate file (Request=&apos;no&apos;) or the
@@ -731,7 +731,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Vital" type="YesNoType">
+      <xs:attribute name="Vital" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
             Indicates whether to fail the install if the certificate fails to install. The default is "yes".
@@ -917,7 +917,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="AllowSessions" type="YesNoDefaultType">
+      <xs:attribute name="AllowSessions" type="wxs:YesNoDefaultTypeUnion">
         <xs:annotation>
           <xs:documentation>Sets the Enable Session State option. When enabled, you can set the session timeout using the SessionTimeout attribute.</xs:documentation>
         </xs:annotation>
@@ -927,12 +927,12 @@
           <xs:documentation>Sets the timeout value for sessions in minutes.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Buffer" type="YesNoDefaultType">
+      <xs:attribute name="Buffer" type="wxs:YesNoDefaultTypeUnion">
         <xs:annotation>
           <xs:documentation>Sets the option that enables response buffering in the application, which allows ASP script to set response headers anywhere in the script.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="ParentPaths" type="YesNoDefaultType">
+      <xs:attribute name="ParentPaths" type="wxs:YesNoDefaultTypeUnion">
         <xs:annotation>
           <xs:documentation>Sets the parent paths option, which allows a client to use relative paths to reach parent directories from this application.</xs:documentation>
         </xs:annotation>
@@ -953,12 +953,12 @@
           <xs:documentation>Sets the timeout value in seconds for executing ASP scripts.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="ServerDebugging" type="YesNoDefaultType">
+      <xs:attribute name="ServerDebugging" type="wxs:YesNoDefaultTypeUnion">
         <xs:annotation>
           <xs:documentation>Enable ASP server-side script debugging.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="ClientDebugging" type="YesNoDefaultType">
+      <xs:attribute name="ClientDebugging" type="wxs:YesNoDefaultTypeUnion">
         <xs:annotation>
           <xs:documentation>Enable ASP client-side script debugging.</xs:documentation>
         </xs:annotation>
@@ -1024,7 +1024,7 @@
       </xs:attribute>
       <xs:attribute name="Port" type="xs:string" use="required"/>
       <xs:attribute name="Header" type="xs:string"/>
-      <xs:attribute name="Secure" type="YesNoType">
+      <xs:attribute name="Secure" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Determines if this address represents a secure binding.  The default is 'no'.</xs:documentation>
         </xs:annotation>
@@ -1218,12 +1218,12 @@
           <xs:documentation>Identifier for the WebSite. Used within the MSI package only. If the Id is not specified, it will be generated.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="AutoStart" type="YesNoType">
+      <xs:attribute name="AutoStart" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Specifies whether to automatically start the web site.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="ConfigureIfExists" type="YesNoType">
+      <xs:attribute name="ConfigureIfExists" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Specifies whether to configure the web site if it already exists.  Note: This will not affect uninstall behavior.  If the web site exists on uninstall, it will be removed.</xs:documentation>
         </xs:annotation>
@@ -1268,7 +1268,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="StartOnInstall" type="YesNoType">
+      <xs:attribute name="StartOnInstall" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Specifies whether to start the web site on install.</xs:documentation>
         </xs:annotation>
@@ -1409,12 +1409,12 @@
           <xs:documentation>String used to identify groups of extensions.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Allow" use="required" type="YesNoType">
+      <xs:attribute name="Allow" use="required" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Indicates if the extension is allowed or denied.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="UIDeletable" type="YesNoType">
+      <xs:attribute name="UIDeletable" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>Indicates if the UI is allowed to delete the extension from the list of not.  Default: Not deletable.</xs:documentation>
         </xs:annotation>
@@ -1436,31 +1436,6 @@
     </xs:annotation>
     <xs:restriction base="xs:nonNegativeInteger">
       <xs:maxInclusive value="100"/>
-    </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="YesNoType">
-    <xs:annotation>
-      <xs:documentation>Values of this type will either be "yes"/"true" or "no"/"false".</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:NMTOKEN">
-      <xs:enumeration value="no" />
-      <xs:enumeration value="false" />
-      <xs:enumeration value="yes" />
-      <xs:enumeration value="true" />
-    </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="YesNoDefaultType">
-    <xs:annotation>
-      <xs:documentation>Values of this type will either be "default", "yes"/"true", or "no"/"false".</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base='xs:NMTOKEN'>
-      <xs:enumeration value="default"/>
-      <xs:enumeration value="no"/>
-      <xs:enumeration value="false" />
-      <xs:enumeration value="yes"/>
-      <xs:enumeration value="true" />
     </xs:restriction>
   </xs:simpleType>
 

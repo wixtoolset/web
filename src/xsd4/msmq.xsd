@@ -2,12 +2,12 @@
 <!-- Copyright (c) .NET Foundation and contributors. All rights reserved. Licensed under the Microsoft Reciprocal License. See LICENSE.TXT file in the project root for full license information. -->
 
 
-<xs:schema xmlns:html="http://www.w3.org/1999/xhtml"
-            xmlns:wix="http://wixtoolset.org/schemas/v4/wxs"
-             xmlns:xs="http://www.w3.org/2001/XMLSchema"
-            xmlns:xse="http://wixtoolset.org/schemas/XmlSchemaExtension"
-      targetNamespace="http://wixtoolset.org/schemas/v4/wxs/msmq"
-                xmlns="http://wixtoolset.org/schemas/v4/wxs/msmq">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns:xse="http://wixtoolset.org/schemas/XmlSchemaExtension"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:wxs="http://wixtoolset.org/schemas/v4/wxs"
+    targetNamespace="http://wixtoolset.org/schemas/v4/wxs/msmq"
+              xmlns="http://wixtoolset.org/schemas/v4/wxs/msmq">
   <xs:annotation>
     <xs:documentation>
       The source code schema for the WiX Toolset MSMQ Extension.
@@ -17,8 +17,8 @@
   <xs:import namespace="http://wixtoolset.org/schemas/v4/wxs" />
 
   <xs:element name="MessageQueue">
-    <xs:annotation>Installs an MSMQ message queue.<xs:documentation>
-    </xs:documentation>
+    <xs:annotation>
+      <xs:documentation>Installs an MSMQ message queue.</xs:documentation>
       <xs:appinfo>
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Component" />
       </xs:appinfo>
@@ -40,7 +40,7 @@
           <xs:documentation>Identifier for the message queue. If the Id is not specified, one will be generated.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Authenticate" type="YesNoType">
+      <xs:attribute name="Authenticate" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>The default value is "no".</xs:documentation>
         </xs:annotation>
@@ -50,7 +50,7 @@
           <xs:documentation>The base priority of the queue.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Journal" type="YesNoType">
+      <xs:attribute name="Journal" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>The default value is "no".</xs:documentation>
         </xs:annotation>
@@ -69,7 +69,7 @@
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="Quota" type="xs:integer" />
-      <xs:attribute name="Transactional" type="YesNoType">
+      <xs:attribute name="Transactional" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>The default value is "no".</xs:documentation>
         </xs:annotation>
@@ -124,22 +124,22 @@
           <xs:documentation></xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="DeleteMessage" type="YesNoType" />
-      <xs:attribute name="PeekMessage" type="YesNoType" />
-      <xs:attribute name="WriteMessage" type="YesNoType" />
-      <xs:attribute name="DeleteJournalMessage" type="YesNoType" />
-      <xs:attribute name="SetQueueProperties" type="YesNoType" />
-      <xs:attribute name="GetQueueProperties" type="YesNoType" />
-      <xs:attribute name="DeleteQueue" type="YesNoType" />
-      <xs:attribute name="GetQueuePermissions" type="YesNoType" />
-      <xs:attribute name="ChangeQueuePermissions" type="YesNoType" />
-      <xs:attribute name="TakeQueueOwnership" type="YesNoType" />
-      <xs:attribute name="ReceiveMessage" type="YesNoType" />
-      <xs:attribute name="ReceiveJournalMessage" type="YesNoType" />
-      <xs:attribute name="QueueGenericRead" type="YesNoType" />
-      <xs:attribute name="QueueGenericWrite" type="YesNoType" />
-      <xs:attribute name="QueueGenericExecute" type="YesNoType" />
-      <xs:attribute name="QueueGenericAll" type="YesNoType" />
+      <xs:attribute name="DeleteMessage" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="PeekMessage" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="WriteMessage" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="DeleteJournalMessage" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="SetQueueProperties" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="GetQueueProperties" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="DeleteQueue" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="GetQueuePermissions" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="ChangeQueuePermissions" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="TakeQueueOwnership" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="ReceiveMessage" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="ReceiveJournalMessage" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="QueueGenericRead" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="QueueGenericWrite" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="QueueGenericExecute" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="QueueGenericAll" type="wxs:YesNoTypeUnion" />
       <xs:anyAttribute namespace="##other" processContents="lax">
         <xs:annotation>
           <xs:documentation>
@@ -150,17 +150,4 @@
       </xs:anyAttribute>
     </xs:complexType>
   </xs:element>
-
-  <xs:simpleType name="YesNoType">
-    <xs:annotation>
-      <xs:documentation>Values of this type will either be "yes"/"true" or "no"/"false".</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:NMTOKEN">
-      <xs:enumeration value="no" />
-      <xs:enumeration value="false" />
-      <xs:enumeration value="yes" />
-      <xs:enumeration value="true" />
-    </xs:restriction>
-  </xs:simpleType>
-
 </xs:schema>

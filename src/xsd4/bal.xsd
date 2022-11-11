@@ -5,11 +5,12 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
           xmlns:xse="http://wixtoolset.org/schemas/XmlSchemaExtension"
          xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:wxs="http://wixtoolset.org/schemas/v4/wxs"
     targetNamespace="http://wixtoolset.org/schemas/v4/wxs/bal"
               xmlns="http://wixtoolset.org/schemas/v4/wxs/bal">
   <xs:annotation>
     <xs:documentation>
-            The source code schema for the WiX Toolset Bootstrapper Application Layer Extension.
+      The source code schema for the WiX Toolset Bootstrapper Application Layer Extension.
     </xs:documentation>
   </xs:annotation>
 
@@ -174,7 +175,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="LaunchHidden" type="YesNoType">
+      <xs:attribute name="LaunchHidden" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
             If set to "yes", WixStdBA will launch the application specified by the LaunchTarget attribute with the SW_HIDE flag.
@@ -222,12 +223,12 @@
           <xs:documentation>Source file of the theme localization .wxl file.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="SuppressOptionsUI" type="YesNoType">
+      <xs:attribute name="SuppressOptionsUI" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>If set to "yes", the Options button will not be shown and the user will not be able to choose an installation directory.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="SuppressDowngradeFailure" type="YesNoType">
+      <xs:attribute name="SuppressDowngradeFailure" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
             If set to "yes", attempting to installer a downgraded version of a bundle will be treated as a successful do-nothing operation.
@@ -235,17 +236,17 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="SuppressRepair" type="YesNoType">
+      <xs:attribute name="SuppressRepair" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>If set to "yes", the Repair button will not be shown in the maintenance-mode UI.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="ShowVersion" type="YesNoType">
+      <xs:attribute name="ShowVersion" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>If set to "yes", the application version will be displayed on the UI.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="SupportCacheOnly" type="YesNoType">
+      <xs:attribute name="SupportCacheOnly" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>If set to "yes", the bundle can be pre-cached using the /cache command line argument.</xs:documentation>
         </xs:annotation>
@@ -409,7 +410,7 @@
           </xs:annotation>
         </xs:any>
       </xs:choice>
-      <xs:attribute name="AlwaysInstallPrereqs" type="YesNoType">
+      <xs:attribute name="AlwaysInstallPrereqs" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
             When not set or set to "no", the prereq BA is only used when the .NET Core runtime can't be loaded.
@@ -433,7 +434,7 @@
           <xs:documentation>Source file of the theme localization .wxl file.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="SelfContainedDeployment" type="YesNoType">
+      <xs:attribute name="SelfContainedDeployment" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
             Whether the .NET Core BA was published as self-contained (SCD).
@@ -462,7 +463,7 @@
     </xs:complexType>
   </xs:element>
 
-  <xs:attribute name="BAFactoryAssembly" type="YesNoType">
+  <xs:attribute name="BAFactoryAssembly" type="wxs:YesNoTypeUnion">
     <xs:annotation>
       <xs:documentation>
         When set to "yes", WixDotNetCoreBootstrapperApplicationHost will load the DLL and instantiate the type with the BootstrapperApplicationFactoryAttribute.
@@ -476,7 +477,7 @@
     </xs:annotation>
   </xs:attribute>
 
-  <xs:attribute name="BAFunctions" type="YesNoType">
+  <xs:attribute name="BAFunctions" type="wxs:YesNoTypeUnion">
     <xs:annotation>
       <xs:documentation>
         When set to "yes", WixStdBA will load the DLL and work with it to handle BA messages.
@@ -496,13 +497,13 @@
       <xs:appinfo>
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Bundle" />
       </xs:appinfo>
-      <xs:simpleType>
-        <xs:restriction base="xs:NMTOKEN">
-          <xs:enumeration value="caseSensitive" />
-          <xs:enumeration value="caseInsensitive" />
-        </xs:restriction>
-      </xs:simpleType>
     </xs:annotation>
+    <xs:simpleType>
+      <xs:restriction base="xs:NMTOKEN">
+        <xs:enumeration value="caseSensitive" />
+        <xs:enumeration value="caseInsensitive" />
+      </xs:restriction>
+    </xs:simpleType>
   </xs:attribute>
 
   <xs:attribute name="DisplayInternalUICondition" type="xs:string">
@@ -520,7 +521,7 @@
     </xs:annotation>
   </xs:attribute>
 
-  <xs:attribute name="Overridable" type="YesNoType">
+  <xs:attribute name="Overridable" type="wxs:YesNoTypeUnion">
     <xs:annotation>
       <xs:documentation>
         When set to "yes", lets the user override the variable's default value by specifying another value on the command line,
@@ -565,7 +566,7 @@
     </xs:annotation>
   </xs:attribute>
 
-  <xs:attribute name="PrereqPackage" type="YesNoType">
+  <xs:attribute name="PrereqPackage" type="wxs:YesNoTypeUnion">
     <xs:annotation>
       <xs:documentation>
         When set to "yes", the Prereq BA will plan the package to be installed if its InstallCondition is "true" or empty.
@@ -624,16 +625,4 @@
       </xs:restriction>
     </xs:simpleType>
   </xs:attribute>
-
-  <xs:simpleType name="YesNoType">
-    <xs:annotation>
-      <xs:documentation>Values of this type will either be "yes"/"true" or "no"/"false".</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:NMTOKEN">
-      <xs:enumeration value="no" />
-      <xs:enumeration value="false" />
-      <xs:enumeration value="yes" />
-      <xs:enumeration value="true" />
-    </xs:restriction>
-  </xs:simpleType>
 </xs:schema>
