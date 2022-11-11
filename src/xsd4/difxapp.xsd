@@ -2,12 +2,12 @@
 <!-- Copyright (c) .NET Foundation and contributors. All rights reserved. Licensed under the Microsoft Reciprocal License. See LICENSE.TXT file in the project root for full license information. -->
 
 
-<xs:schema xmlns:html="http://www.w3.org/1999/xhtml"
-            xmlns:wix="http://wixtoolset.org/schemas/v4/wxs"
-             xmlns:xs="http://www.w3.org/2001/XMLSchema"
-            xmlns:xse="http://wixtoolset.org/schemas/XmlSchemaExtension"
-      targetNamespace="http://wixtoolset.org/schemas/v4/wxs/difxapp"
-                xmlns="http://wixtoolset.org/schemas/v4/wxs/difxapp">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns:xse="http://wixtoolset.org/schemas/XmlSchemaExtension"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:wxs="http://wixtoolset.org/schemas/v4/wxs"
+    targetNamespace="http://wixtoolset.org/schemas/v4/wxs/difxapp"
+              xmlns="http://wixtoolset.org/schemas/v4/wxs/difxapp">
   <xs:annotation>
     <xs:documentation>
       The source code schema for the WiX Toolset Driver Install Frameworks for Applications Extension.
@@ -38,7 +38,7 @@
           </xs:annotation>
         </xs:any>
       </xs:choice>
-      <xs:attribute name="AddRemovePrograms" type="YesNoType">
+      <xs:attribute name="AddRemovePrograms" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
             Specifies that the DIFxApp CustomActions should add an entry in the Add/Remove Programs Control
@@ -46,7 +46,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="DeleteFiles" type="YesNoType">
+      <xs:attribute name="DeleteFiles" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
             If set to "yes", configures DIFxApp to delete binary files that were copied to the system from the driver
@@ -59,7 +59,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="ForceInstall" type="YesNoType">
+      <xs:attribute name="ForceInstall" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
             Specifies that the DIFxApp CustomActions should force the installation of a new Plug and Play driver
@@ -70,7 +70,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Legacy" type="YesNoType">
+      <xs:attribute name="Legacy" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
             If set to "yes", configures DIFxApp to install unsigned driver packages and driver packages with missing
@@ -84,7 +84,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="PlugAndPlayPrompt" type="YesNoType">
+      <xs:attribute name="PlugAndPlayPrompt" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
             Specifies that the DIFxApp CustomActions should prompt the user to connect the Plug and Play
@@ -112,16 +112,4 @@
       </xs:anyAttribute>
     </xs:complexType>
   </xs:element>
-
-  <xs:simpleType name="YesNoType">
-    <xs:annotation>
-      <xs:documentation>Values of this type will either be "yes"/"true" or "no"/"false".</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:NMTOKEN">
-      <xs:enumeration value="no" />
-      <xs:enumeration value="false" />
-      <xs:enumeration value="yes" />
-      <xs:enumeration value="true" />
-    </xs:restriction>
-  </xs:simpleType>
 </xs:schema>

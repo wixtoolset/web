@@ -5,6 +5,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
           xmlns:xse="http://wixtoolset.org/schemas/XmlSchemaExtension"
          xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:wxs="http://wixtoolset.org/schemas/v4/wxs"
     targetNamespace="http://wixtoolset.org/schemas/v4/wxs/firewall"
               xmlns="http://wixtoolset.org/schemas/v4/wxs/firewall">
   <xs:annotation>
@@ -145,7 +146,7 @@
         </xs:annotation>
       </xs:attribute>
 
-      <xs:attribute name="IgnoreFailure" type="YesNoType">
+      <xs:attribute name="IgnoreFailure" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
             If "yes", failures to register this firewall exception will be silently
@@ -178,7 +179,7 @@
         </xs:annotation>
       </xs:attribute>
 
-      <xs:attribute name="Outbound" type="YesNoType">
+      <xs:attribute name="Outbound" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
             If "yes", registers an outbound firewall rule. The default is "no".
@@ -234,16 +235,4 @@
       </xs:anyAttribute>
     </xs:complexType>
   </xs:element>
-
-  <xs:simpleType name="YesNoType">
-    <xs:annotation>
-      <xs:documentation>Values of this type will either be "yes"/"true" or "no"/"false".</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:NMTOKEN">
-      <xs:enumeration value="no" />
-      <xs:enumeration value="false" />
-      <xs:enumeration value="yes" />
-      <xs:enumeration value="true" />
-    </xs:restriction>
-  </xs:simpleType>
 </xs:schema>

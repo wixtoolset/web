@@ -2,12 +2,12 @@
 <!-- Copyright (c) .NET Foundation and contributors. All rights reserved. Licensed under the Microsoft Reciprocal License. See LICENSE.TXT file in the project root for full license information. -->
 
 
-<xs:schema xmlns:html="http://www.w3.org/1999/xhtml"
-            xmlns:wix="http://wixtoolset.org/schemas/v4/wxs"
-             xmlns:xs="http://www.w3.org/2001/XMLSchema"
-            xmlns:xse="http://wixtoolset.org/schemas/XmlSchemaExtension"
-      targetNamespace="http://wixtoolset.org/schemas/v4/wxs/complus"
-                xmlns="http://wixtoolset.org/schemas/v4/wxs/complus">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns:xse="http://wixtoolset.org/schemas/XmlSchemaExtension"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:wxs="http://wixtoolset.org/schemas/v4/wxs"
+    targetNamespace="http://wixtoolset.org/schemas/v4/wxs/complus"
+              xmlns="http://wixtoolset.org/schemas/v4/wxs/complus">
   <xs:annotation>
     <xs:documentation>
       The source code schema for the WiX Toolset COM+ Extension.
@@ -58,8 +58,8 @@
           attribute.
         </xs:documentation></xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Changeable" use="optional" type="YesNoType" />
-      <xs:attribute name="Deleteable" use="optional" type="YesNoType" />
+      <xs:attribute name="Changeable" use="optional" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="Deleteable" use="optional" type="wxs:YesNoTypeUnion" />
       <xs:attribute name="Description" use="optional" type="xs:string" />
     </xs:complexType>
   </xs:element>
@@ -250,7 +250,7 @@
           attribute.
         </xs:documentation></xs:annotation>
       </xs:attribute>
-      <xs:attribute name="ThreeGigSupportEnabled" use="optional" type="YesNoType" />
+      <xs:attribute name="ThreeGigSupportEnabled" use="optional" type="wxs:YesNoTypeUnion" />
       <xs:attribute name="AccessChecksLevel" use="optional">
         <xs:simpleType>
           <xs:restriction base="xs:NMTOKEN">
@@ -267,7 +267,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="ApplicationAccessChecksEnabled" use="optional" type="YesNoType" />
+      <xs:attribute name="ApplicationAccessChecksEnabled" use="optional" type="wxs:YesNoTypeUnion" />
       <xs:attribute name="ApplicationDirectory" use="optional" type="xs:string" />
       <xs:attribute name="Authentication" use="optional">
         <xs:simpleType>
@@ -292,19 +292,19 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="Changeable" use="optional" type="YesNoType" />
+      <xs:attribute name="Changeable" use="optional" type="wxs:YesNoTypeUnion" />
       <xs:attribute name="CommandLine" use="optional" type="xs:string" />
       <xs:attribute name="ConcurrentApps" use="optional" type="xs:int" />
       <xs:attribute name="CreatedBy" use="optional" type="xs:string" />
-      <xs:attribute name="CRMEnabled" use="optional" type="YesNoType" />
+      <xs:attribute name="CRMEnabled" use="optional" type="wxs:YesNoTypeUnion" />
       <xs:attribute name="CRMLogFile" use="optional" type="xs:string" />
-      <xs:attribute name="Deleteable" use="optional" type="YesNoType" />
+      <xs:attribute name="Deleteable" use="optional" type="wxs:YesNoTypeUnion" />
       <xs:attribute name="Description" use="optional" type="xs:string" />
-      <xs:attribute name="DumpEnabled" use="optional" type="YesNoType" />
-      <xs:attribute name="DumpOnException" use="optional" type="YesNoType" />
-      <xs:attribute name="DumpOnFailfast" use="optional" type="YesNoType" />
+      <xs:attribute name="DumpEnabled" use="optional" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="DumpOnException" use="optional" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="DumpOnFailfast" use="optional" type="wxs:YesNoTypeUnion" />
       <xs:attribute name="DumpPath" use="optional" type="xs:string" />
-      <xs:attribute name="EventsEnabled" use="optional" type="YesNoType" />
+      <xs:attribute name="EventsEnabled" use="optional" type="wxs:YesNoTypeUnion" />
       <xs:attribute name="Identity" use="optional" type="xs:string" />
       <xs:attribute name="ImpersonationLevel" use="optional">
         <xs:simpleType>
@@ -316,7 +316,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="IsEnabled" use="optional" type="YesNoType" />
+      <xs:attribute name="IsEnabled" use="optional" type="wxs:YesNoTypeUnion" />
       <xs:attribute name="MaxDumpCount" use="optional" type="xs:int" />
       <xs:attribute name="Password" use="optional" type="xs:string" />
       <xs:attribute name="QCAuthenticateMsgs" use="optional">
@@ -329,21 +329,21 @@
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="QCListenerMaxThreads" use="optional" type="xs:int" />
-      <xs:attribute name="QueueListenerEnabled" use="optional" type="YesNoType" />
-      <xs:attribute name="QueuingEnabled" use="optional" type="YesNoType" />
+      <xs:attribute name="QueueListenerEnabled" use="optional" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="QueuingEnabled" use="optional" type="wxs:YesNoTypeUnion" />
       <xs:attribute name="RecycleActivationLimit" use="optional" type="xs:int" />
       <xs:attribute name="RecycleCallLimit" use="optional" type="xs:int" />
       <xs:attribute name="RecycleExpirationTimeout" use="optional" type="xs:int" />
       <xs:attribute name="RecycleLifetimeLimit" use="optional" type="xs:int" />
       <xs:attribute name="RecycleMemoryLimit" use="optional" type="xs:int" />
-      <xs:attribute name="Replicable" use="optional" type="YesNoType" />
-      <xs:attribute name="RunForever" use="optional" type="YesNoType" />
+      <xs:attribute name="Replicable" use="optional" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="RunForever" use="optional" type="wxs:YesNoTypeUnion" />
       <xs:attribute name="ShutdownAfter" use="optional" type="xs:int" />
-      <xs:attribute name="SoapActivated" use="optional" type="YesNoType" />
+      <xs:attribute name="SoapActivated" use="optional" type="wxs:YesNoTypeUnion" />
       <xs:attribute name="SoapBaseUrl" use="optional" type="xs:string" />
       <xs:attribute name="SoapMailTo" use="optional" type="xs:string" />
       <xs:attribute name="SoapVRoot" use="optional" type="xs:string" />
-      <xs:attribute name="SRPEnabled" use="optional" type="YesNoType" />
+      <xs:attribute name="SRPEnabled" use="optional" type="wxs:YesNoTypeUnion" />
       <xs:attribute name="SRPTrustLevel" use="optional">
         <xs:simpleType>
           <xs:restriction base="xs:NMTOKEN">
@@ -560,14 +560,14 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="EventClass" use="optional" type="YesNoType">
+      <xs:attribute name="EventClass" use="optional" type="wxs:YesNoTypeUnion">
         <xs:annotation><xs:documentation>
           Indicates that the assembly is to be installed as an event
           class DLL. This attribute is only valid for native assemblies. The assembly
           will be installed with the COM+ catalog’s InstallEventClass() function.
         </xs:documentation></xs:annotation>
       </xs:attribute>
-      <xs:attribute name="DllPathFromGAC" use="optional" type="YesNoType">
+      <xs:attribute name="DllPathFromGAC" use="optional" type="wxs:YesNoTypeUnion">
         <xs:annotation><xs:documentation>
           Indicates that the DLL path should be extracted from the
           GAC instead for being provided in the DllPath attribute. If this attribute is
@@ -577,7 +577,7 @@
           element.
         </xs:documentation></xs:annotation>
       </xs:attribute>
-      <xs:attribute name="RegisterInCommit" use="optional" type="YesNoType">
+      <xs:attribute name="RegisterInCommit" use="optional" type="wxs:YesNoTypeUnion">
         <xs:annotation><xs:documentation>
           Indicates that the assembly should be installed in the
           commit custom action instead of the normal deferred custom action. This is
@@ -641,30 +641,30 @@
           CLSID of the component.
         </xs:documentation></xs:annotation>
       </xs:attribute>
-      <xs:attribute name="AllowInprocSubscribers" use="optional" type="YesNoType" />
-      <xs:attribute name="ComponentAccessChecksEnabled" use="optional" type="YesNoType" />
+      <xs:attribute name="AllowInprocSubscribers" use="optional" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="ComponentAccessChecksEnabled" use="optional" type="wxs:YesNoTypeUnion" />
       <xs:attribute name="ComponentTransactionTimeout" use="optional" type="xs:int" />
-      <xs:attribute name="ComponentTransactionTimeoutEnabled" use="optional" type="YesNoType" />
-      <xs:attribute name="COMTIIntrinsics" use="optional" type="YesNoType" />
-      <xs:attribute name="ConstructionEnabled" use="optional" type="YesNoType" />
+      <xs:attribute name="ComponentTransactionTimeoutEnabled" use="optional" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="COMTIIntrinsics" use="optional" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="ConstructionEnabled" use="optional" type="wxs:YesNoTypeUnion" />
       <xs:attribute name="ConstructorString" use="optional" type="xs:string" />
       <xs:attribute name="CreationTimeout" use="optional" type="xs:int" />
       <xs:attribute name="Description" use="optional" type="xs:string" />
-      <xs:attribute name="EventTrackingEnabled" use="optional" type="YesNoType" />
+      <xs:attribute name="EventTrackingEnabled" use="optional" type="wxs:YesNoTypeUnion" />
       <xs:attribute name="ExceptionClass" use="optional" type="xs:string" />
-      <xs:attribute name="FireInParallel" use="optional" type="YesNoType" />
-      <xs:attribute name="IISIntrinsics" use="optional" type="YesNoType" />
-      <xs:attribute name="InitializesServerApplication" use="optional" type="YesNoType" />
-      <xs:attribute name="IsEnabled" use="optional" type="YesNoType" />
-      <xs:attribute name="IsPrivateComponent" use="optional" type="YesNoType" />
-      <xs:attribute name="JustInTimeActivation" use="optional" type="YesNoType" />
-      <xs:attribute name="LoadBalancingSupported" use="optional" type="YesNoType" />
+      <xs:attribute name="FireInParallel" use="optional" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="IISIntrinsics" use="optional" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="InitializesServerApplication" use="optional" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="IsEnabled" use="optional" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="IsPrivateComponent" use="optional" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="JustInTimeActivation" use="optional" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="LoadBalancingSupported" use="optional" type="wxs:YesNoTypeUnion" />
       <xs:attribute name="MaxPoolSize" use="optional" type="xs:int" />
       <xs:attribute name="MinPoolSize" use="optional" type="xs:int" />
       <xs:attribute name="MultiInterfacePublisherFilterCLSID" use="optional" type="xs:string" />
-      <xs:attribute name="MustRunInClientContext" use="optional" type="YesNoType" />
-      <xs:attribute name="MustRunInDefaultContext" use="optional" type="YesNoType" />
-      <xs:attribute name="ObjectPoolingEnabled" use="optional" type="YesNoType" />
+      <xs:attribute name="MustRunInClientContext" use="optional" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="MustRunInDefaultContext" use="optional" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="ObjectPoolingEnabled" use="optional" type="wxs:YesNoTypeUnion" />
       <xs:attribute name="PublisherID" use="optional" type="xs:string" />
       <xs:attribute name="SoapAssemblyName" use="optional" type="xs:string" />
       <xs:attribute name="SoapTypeName" use="optional" type="xs:string" />
@@ -757,7 +757,7 @@
         </xs:documentation></xs:annotation>
       </xs:attribute>
       <xs:attribute name="Description" use="optional" type="xs:string" />
-      <xs:attribute name="QueuingEnabled" use="optional" type="YesNoType" />
+      <xs:attribute name="QueuingEnabled" use="optional" type="wxs:YesNoTypeUnion" />
     </xs:complexType>
   </xs:element>
 
@@ -825,7 +825,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="AutoComplete" use="optional" type="YesNoType" />
+      <xs:attribute name="AutoComplete" use="optional" type="wxs:YesNoTypeUnion" />
       <xs:attribute name="Description" use="optional" type="xs:string" />
     </xs:complexType>
   </xs:element>
@@ -909,30 +909,18 @@
         </xs:documentation></xs:annotation>
       </xs:attribute>
       <xs:attribute name="Description" use="optional" type="xs:string" />
-      <xs:attribute name="Enabled" use="optional" type="YesNoType" />
+      <xs:attribute name="Enabled" use="optional" type="wxs:YesNoTypeUnion" />
       <xs:attribute name="EventClassPartitionID" use="optional" type="xs:string" />
       <xs:attribute name="FilterCriteria" use="optional" type="xs:string" />
       <xs:attribute name="InterfaceID" use="optional" type="xs:string" />
       <xs:attribute name="MachineName" use="optional" type="xs:string" />
       <xs:attribute name="MethodName" use="optional" type="xs:string" />
-      <xs:attribute name="PerUser" use="optional" type="YesNoType" />
-      <xs:attribute name="Queued" use="optional" type="YesNoType" />
+      <xs:attribute name="PerUser" use="optional" type="wxs:YesNoTypeUnion" />
+      <xs:attribute name="Queued" use="optional" type="wxs:YesNoTypeUnion" />
       <xs:attribute name="SubscriberMoniker" use="optional" type="xs:string" />
       <xs:attribute name="UserName" use="optional" type="xs:string" />
     </xs:complexType>
   </xs:element>
-
-  <xs:simpleType name="YesNoType">
-    <xs:annotation>
-      <xs:documentation>Values of this type will either be "yes"/"true" or "no"/"false".</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:NMTOKEN">
-      <xs:enumeration value="no" />
-      <xs:enumeration value="false" />
-      <xs:enumeration value="yes" />
-      <xs:enumeration value="true" />
-    </xs:restriction>
-  </xs:simpleType>
 
   <xs:simpleType name="uuid">
     <xs:annotation>

@@ -5,6 +5,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
           xmlns:xse="http://wixtoolset.org/schemas/XmlSchemaExtension"
          xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:wxs="http://wixtoolset.org/schemas/v4/wxs"
     targetNamespace="http://wixtoolset.org/schemas/v4/wxs/netfx"
               xmlns="http://wixtoolset.org/schemas/v4/wxs/netfx">
   <xs:annotation>
@@ -12,6 +13,8 @@
       The source code schema for the WiX Toolset .NET Framework Extension.
     </xs:documentation>
   </xs:annotation>
+
+  <xs:import namespace="http://wixtoolset.org/schemas/v4/wxs" />
 
   <xs:element name="NativeImage">
     <xs:annotation>
@@ -117,7 +120,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Debug" type="YesNoType">
+      <xs:attribute name="Debug" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
             Set to "yes" to generate native images that can be used under a debugger.
@@ -125,7 +128,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Dependencies" type="YesNoType">
+      <xs:attribute name="Dependencies" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
             Set to "no" to generate the minimum number of native images.
@@ -219,7 +222,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="Profile" type="YesNoType">
+      <xs:attribute name="Profile" type="wxs:YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
             Set to "yes" to generate native images that can be used under a profiler.
@@ -279,7 +282,7 @@
           <xs:documentation>Id of the search that this one should come after.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="RuntimeType" type="xs:string">
+      <xs:attribute name="RuntimeType">
         <xs:annotation>
           <xs:documentation>The .NET runtime to search for.</xs:documentation>
         </xs:annotation>
@@ -291,7 +294,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="Platform" type="xs:string">
+      <xs:attribute name="Platform">
         <xs:annotation>
           <xs:documentation>The platform to search for.</xs:documentation>
         </xs:annotation>
@@ -392,7 +395,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="RuntimeType" type="xs:string">
+      <xs:attribute name="RuntimeType">
         <xs:annotation>
           <xs:documentation>The .NET runtime to check against.</xs:documentation>
         </xs:annotation>
@@ -404,7 +407,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="Platform" type="xs:string">
+      <xs:attribute name="Platform">
         <xs:annotation>
           <xs:documentation>The platform to use to validate.</xs:documentation>
         </xs:annotation>
@@ -416,12 +419,12 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="Version" type="VersionType">
+      <xs:attribute name="Version" type="wxs:VersionType">
         <xs:annotation>
           <xs:documentation>Version of .NET to check against.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="RollForward" type="xs:string">
+      <xs:attribute name="RollForward">
         <xs:annotation>
           <xs:documentation>The roll forward policy to use while validating.</xs:documentation>
         </xs:annotation>
@@ -477,28 +480,5 @@
       </xs:anyAttribute>
     </xs:complexType>
   </xs:element>
-
-  <xs:simpleType name="VersionType">
-    <xs:annotation>
-      <xs:documentation>
-        Values of this type will look like: "x", "x.x", "x.x.x", or "x.x.x.x" where x is an integer from 0 to 65534.
-      </xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:string">
-      <xs:pattern value="\d{1,5}(\.\d{1,5}){0,3}"/>
-    </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="YesNoType">
-    <xs:annotation>
-      <xs:documentation>Values of this type will either be "yes"/"true" or "no"/"false".</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:NMTOKEN">
-      <xs:enumeration value="no" />
-      <xs:enumeration value="false" />
-      <xs:enumeration value="yes" />
-      <xs:enumeration value="true" />
-    </xs:restriction>
-  </xs:simpleType>
 
 </xs:schema>
