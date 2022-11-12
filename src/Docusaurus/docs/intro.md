@@ -33,7 +33,7 @@ To verify Wix.exe was successfully installed:
 wix --version
 ```
 
-#### See also
+### See also
 - [Wix.exe command-line reference](reference/wixexe.md)
 
 ## MSBuild on the command line and CI/CD build systems {#msbuild}
@@ -45,6 +45,20 @@ WiX v4 is available as an MSBuild SDK for building from the command line using `
 </Project>
 ```
 
+### See also
+- [MSBuild reference](./reference/msbuild/index.md)
 
-## TODO: Visual Studio {#vs}
 
+## Visual Studio {#vs}
+
+[FireGiant](https://www.firegiant.com/) has released [HeatWave Community Edition][heatwave] to support WiX v4 SDK-style MSBuild projects in Visual Studio. HeatWave supports:
+
+- Conversion of WiX v3 projects and authoring
+- Building of WiX v4 SDK-style projects
+- Project and item templates
+- Property pages to control how the project builds
+
+[HeatWave Community Edition is available free of charge.][heatwave]
+
+
+[heatwave]: https://www.firegiant.com/wix/heatwave/
