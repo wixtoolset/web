@@ -34,8 +34,16 @@ By default, `wix convert` converts the files in place, overwriting the original 
 - To convert all WiX source, include, and localization files in a specified directory tree: `wix convert --recurse path\to\*.wx?`.
 
 
-## TODO: Convert WiX projects and authoring from Visual Studio
+## Convert WiX projects and authoring from Visual Studio
+
+[FireGiant](https://www.firegiant.com/)'s [HeatWave Community Edition][heatwave] includes support for converting WiX v3 authoring (like using `wix convert`) and converting WiX v3 .wixproj MSBuild projects to SDK-style WiX v4 projects.
+
+![HeatWave converter screenshot](hwconverter.png)
+
+[HeatWave Community Edition is available free of charge.][heatwave]
 
 
 ## When manual conversion is required {#manual}
 
+
+[heatwave]: https://www.firegiant.com/wix/heatwave/

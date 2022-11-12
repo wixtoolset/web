@@ -4,7 +4,9 @@ sidebar_position: 2
 
 # WiX release notes
 
-## WiX v4 (released Friday, 11-November-2022)
+## WiX v4 {#v4}
+
+> Preview 1 released Friday, 11-November-2022
 
 WiX v4 is a major release of the WiX Toolset, years in the making. [More than 500 issues were closed in WiX v4](https://github.com/wixtoolset/issues/issues?q=is%3Aissue+milestone%3Av4.0+is%3Aclosed)!
 
