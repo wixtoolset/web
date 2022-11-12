@@ -28,7 +28,7 @@ const FeatureList = [
       </>
     ),
     linkText: 'Latest releases',
-    href: '/docs/about/releases/'
+    href: '/docs/wix3/'
   },
   {
     title: 'Bugs',
@@ -39,7 +39,7 @@ const FeatureList = [
       </>
     ),
     linkText: 'File a bug',
-    href: '/docs/development/bugs/'
+    href: '/docs/gethelp#bugs'
   },
 ];
 

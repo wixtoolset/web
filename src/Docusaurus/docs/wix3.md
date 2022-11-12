@@ -18,13 +18,13 @@ sidebar_position: 90
 
 Download the appropriate versions from the Visual Studio Marketplace:
 
-* [WiX Toolset Visual Studio 2022 Extension](https://marketplace.visualstudio.com/items?itemName=WixToolset.WixToolsetVisualStudio2022Extension)
-* [WiX Toolset Visual Studio 2019 Extension](https://marketplace.visualstudio.com/items?itemName=WixToolset.WixToolsetVisualStudio2019Extension)
-* [WiX Toolset Visual Studio 2017 Extension](https://marketplace.visualstudio.com/items?itemName=WixToolset.WixToolsetVisualStudio2017Extension)
-* [WiX Toolset Visual Studio 2015 Extension](https://marketplace.visualstudio.com/items?itemName=WixToolset.WixToolsetVisualStudio2015Extension)
-* [WiX Toolset Visual Studio 2013 Extension](https://marketplace.visualstudio.com/items?itemName=WixToolset.WixToolsetVisualStudio2013Extension)
-* [WiX Toolset Visual Studio 2012 Extension](https://marketplace.visualstudio.com/items?itemName=WixToolset.WixToolsetVisualStudio2012Extension)
-* [WiX Toolset Visual Studio 2010 Extension](https://marketplace.visualstudio.com/items?itemName=WixToolset.WixToolsetVisualStudio2010Extension)
+* [WiX v3 - Visual Studio 2022 Extension](https://marketplace.visualstudio.com/items?itemName=WixToolset.WixToolsetVisualStudio2022Extension)
+* [WiX v3 - Visual Studio 2019 Extension](https://marketplace.visualstudio.com/items?itemName=WixToolset.WixToolsetVisualStudio2019Extension)
+* [WiX v3 - Visual Studio 2017 Extension](https://marketplace.visualstudio.com/items?itemName=WixToolset.WixToolsetVisualStudio2017Extension)
+* [WiX v3 - Visual Studio 2015 Extension](https://marketplace.visualstudio.com/items?itemName=WixToolset.WixToolsetVisualStudio2015Extension)
+* [WiX v3 - Visual Studio 2013 Extension](https://marketplace.visualstudio.com/items?itemName=WixToolset.WixToolsetVisualStudio2013Extension)
+* [WiX v3 - Visual Studio 2012 Extension](https://marketplace.visualstudio.com/items?itemName=WixToolset.WixToolsetVisualStudio2012Extension)
+* [WiX v3 - Visual Studio 2010 Extension](https://marketplace.visualstudio.com/items?itemName=WixToolset.WixToolsetVisualStudio2010Extension)
 
 
 ### Development Builds
