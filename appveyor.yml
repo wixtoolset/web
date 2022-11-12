@@ -20,6 +20,7 @@ init:
   - git config --global user.name "WiX-BoT"
 
 build_script:
+  - src\restore.cmd
   - src\build.cmd release
 
 artifacts:
