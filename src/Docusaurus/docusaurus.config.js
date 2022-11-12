@@ -13,6 +13,7 @@ const config = {
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'favicon.ico',
+  trailingSlash: true,
 
   organizationName: 'wixtoolset',
   projectName: 'web',
