@@ -29,4 +29,4 @@ Download the appropriate versions from the Visual Studio Marketplace:
 
 ### Development Builds
 
-Development builds have the latest changes, but may introduce unexpected bugs. These are **not** considered to be production-ready. The latest development build is [v3.14.0.6526](/releases/v3-14-0-6526/), published on 26-May-2022.
+Development builds have the latest changes, but may introduce unexpected bugs. These are **not** considered to be production-ready. The latest development build is [v3.14.0.6526](/docs/v3/releases/v3-14-0-6526/), published on 26-May-2022.
