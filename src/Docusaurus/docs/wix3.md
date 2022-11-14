@@ -4,7 +4,7 @@ sidebar_position: 90
 
 # WiX v3
 
-[The WiX v3 documentation is available here.](../docs/v3/)
+[The WiX v3 documentation is available here.](/docs/v3/)
 
 ## Releases
 
