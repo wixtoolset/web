@@ -16,34 +16,34 @@ There are several variants of the WiX Standard Bootstrapper Application.
 
 To use the WiX Standard Bootstrapper Application, a [&lt;BootstrapperApplicationRef&gt;](../../xsd/wix/bootstrapperapplicationref.md) element must reference one of the above identifiers. The following example uses the bootstrapper application that displays the license:
 
-```
-    &lt;?xml version=&quot;1.0&quot;?&gt;
-    &lt;Wix xmlns=&quot;http://schemas.microsoft.com/wix/2006/wi&quot;&gt;
-      &lt;Bundle&gt;
-        <strong class="highlight">&lt;BootstrapperApplicationRef Id=&quot;WixStandardBootstrapperApplication.RtfLicense&quot; /&gt;</strong>
-        &lt;Chain&gt;
-        &lt;/Chain&gt;
-      &lt;/Bundle&gt;
-    &lt;/Wix&gt;
+```xml
+<?xml version="1.0"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Bundle>
+    <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense" />
+    <Chain>
+    </Chain>
+  </Bundle>
+</Wix>
 ```
 
 HyperlinkLargeTheme, HyperlinkSidebarTheme, and RtfLargeTheme can optionally display the bundle version on the welcome page:
 
-```
-    &lt;?xml version=&quot;1.0&quot;?&gt;
-    &lt;Wix xmlns=&quot;http://schemas.microsoft.com/wix/2006/wi&quot;
-            xmlns:bal=&quot;http://schemas.microsoft.com/wix/BalExtension&quot;&gt;
-      &lt;Bundle&gt;
-        &lt;BootstrapperApplicationRef Id=&quot;WixStandardBootstrapperApplication.RtfLicense&quot;&gt;
-          &lt;bal:WixStandardBootstrapperApplication
-            LicenseFile=&quot;path\to\license.rtf&quot;
-            <strong class="highlight">ShowVersion=&quot;yes&quot;</strong>
-            /&gt;
-        &lt;/BootstrapperApplicationRef&gt;
-        &lt;Chain&gt;
-        &lt;/Chain&gt;
-      &lt;/Bundle&gt;
-    &lt;/Wix&gt;
+```xml
+<?xml version="1.0"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:bal="http://schemas.microsoft.com/wix/BalExtension">
+  <Bundle>
+    <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense">
+      <bal:WixStandardBootstrapperApplication
+        LicenseFile="path\to\license.rtf"
+        ShowVersion="yes"
+        />
+    </BootstrapperApplicationRef>
+    <Chain>
+    </Chain>
+  </Bundle>
+</Wix>
 ```
 
 When building the bundle, the WixBalExtension must be provided. If the above code was in a file called &quot;example.wxs&quot;, the following steps would create an &quot;example.exe&quot; bundle:
