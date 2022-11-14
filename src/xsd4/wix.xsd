@@ -2313,8 +2313,8 @@
           <xs:documentation>
             The minimum version of the Windows Installer required to install this package. Take the major version of the required Windows Installer
             and multiply by a 100 then add the minor version of the Windows Installer. For example, "200" would represent Windows Installer 2.0 and
-            "405" would represent Windows Installer 4.5. For 64-bit Windows Installer packages, this property is set to 200 by default as
-            Windows Installer 2.0 was the first version to support 64-bit packages.
+            "405" would represent Windows Installer 4.5. This value is defaulted to "500" which is the latest version of the Windows Installer and
+            present in Windows 7 and later.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -2463,6 +2463,16 @@
       <xs:attribute name="Guid" type="Guid">
         <xs:annotation>
           <xs:documentation>The GUID of the Merge Module that will be appended to primary keys in the database.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="InstallerVersion" type="xs:integer">
+        <xs:annotation>
+          <xs:documentation>
+            The minimum version of the Windows Installer required to install this package. Take the major version of the required Windows Installer
+            and multiply by a 100 then add the minor version of the Windows Installer. For example, "200" would represent Windows Installer 2.0 and
+            "405" would represent Windows Installer 4.5. This value is defaulted to "500" which is the latest version of the Windows Installer and
+            present in Windows 7 and later.
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Language" type="LocalizableInteger" use="required">
