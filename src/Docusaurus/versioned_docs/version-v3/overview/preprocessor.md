@@ -163,25 +163,25 @@ For &lt;ifdef ?&gt;, if the variable has been defined, this statement will be tr
 
 Note that these examples will actually each be a no-op because there aren&rsquo;t any tags between the if and endif tags.
 
-```
-    &lt;?define myValue  = "3"?&gt;
-    &lt;?define system32=$(env.windir)\system32  ?&gt;
-    &lt;?define B = "good var" ?&gt;
-    &lt;?define C =3 ?&gt;
-    &lt;?define IExist ?&gt;
-    
-    &lt;?if $(var.Iexist)       ?&gt;&lt;?endif?&gt; <span class="comment">&lt;!-- true --&gt;</span>
-    &lt;?if $(var.myValue) = 6  ?&gt;&lt;?endif?&gt; <span class="comment">&lt;!-- false --&gt;</span>
-    &lt;?if $(var.myValue)!=3   ?&gt;&lt;?endif?&gt; <span class="comment">&lt;!-- false --&gt;</span>
-    &lt;?if not "x"= "y"?&gt;              &lt;?endif?&gt; <span class="comment">&lt;!-- true --&gt;</span>
-    &lt;?if $(env.systemdrive)=a?&gt;&lt;?endif?&gt; <span class="comment">&lt;!-- false --&gt;</span>
-    &lt;?if 3 &lt; $(var.myValue)?&gt;   &lt;?endif?&gt; <span class="comment">&lt;!-- false --&gt;</span>
-    &lt;?if $(var.B) = "good VAR"?&gt; &lt;?endif?&gt; <span class="comment">&lt;!-- false --&gt;</span>
-    &lt;?if $(var.A) and not $(env.MyEnvVariable)      ?&gt; &lt;?endif?&gt; <span class="comment">&lt;!-- false --&gt;</span>
-    &lt;?if $(var.A) Or ($(var.B) And $(var.myValue) &gt;=3)?&gt;&lt;?endif?&gt; <span class="comment">&lt;!-- true --&gt;</span>
-    &lt;?ifdef IExist ?&gt; <span class="comment">&lt;!-- true --&gt;</span>
-      &lt;?else?&gt; <span class="comment">&lt;!-- false --&gt;</span>
-    &lt;?endif?&gt;
+```xml
+<?define myValue  = "3"?>
+<?define system32=$(env.windir)\system32  ?>
+<?define B = "good var" ?>
+<?define C =3 ?>
+<?define IExist ?>
+
+<?if $(var.Iexist)       ?><?endif?> <!-- true -->
+<?if $(var.myValue) = 6  ?><?endif?> <!-- false -->
+<?if $(var.myValue)!=3   ?><?endif?> <!-- false -->
+<?if not "x"= "y"?>              <?endif?> <!-- true -->
+<?if $(env.systemdrive)=a?><?endif?> <!-- false -->
+<?if 3 < $(var.myValue)?>   <?endif?> <!-- false -->
+<?if $(var.B) = "good VAR"?> <?endif?> <!-- false -->
+<?if $(var.A) and not $(env.MyEnvVariable)      ?> <?endif?> <!-- false -->
+<?if $(var.A) Or ($(var.B) And $(var.myValue) >=3)?><?endif?> <!-- true -->
+<?ifdef IExist ?> <!-- true -->
+  <?else?> <!-- false -->
+<?endif?>
 ```
 
 ## Errors and Warnings
@@ -190,9 +190,11 @@ You can use the preprocessor to show meaningful error and warning messages using
 
 An example:
 
-    <?ifndef RequiredVariable ?>
-        <?error RequiredVariable must be defined ?>
-    <?endif?>
+```xml
+<?ifndef RequiredVariable ?>
+  <?error RequiredVariable must be defined ?>
+<?endif?>
+```
 
 ## Iteration Statements
 There is a single iteration statement, &lt;?foreach variable-name in semi-colon-delimited-list ?&gt; &lt;?endforeach?&gt;.&nbsp; When this occurs the preprocessor will
@@ -205,42 +207,49 @@ The effect of this process is that the fragment is used as a template by the pre
 
 An few examples:
 
-    <?foreach LCID in 1033;1041;1055?>
-        <Fragment Id='Fragment.$(var.LCID)'>
-            <DirectoryRef Id='TARGETDIR'>
-                <Component Id='MyComponent.$(var.LCID)' />
-            </DirectoryRef>
-        </Fragment>
-    <?endforeach?>
+```xml
+<?foreach LCID in 1033;1041;1055?>
+  <Fragment Id='Fragment.$(var.LCID)'>
+    <DirectoryRef Id='TARGETDIR'>
+      <Component Id='MyComponent.$(var.LCID)' />
+    </DirectoryRef>
+  </Fragment>
+<?endforeach?>
+```
 
 or
 
+```xml
+<?define LcidList=1033;1041;1055?>
+<?foreach LCID in $(var.LcidList)?>
+  <Fragment Id='Fragment.$(var.LCID)'>
+    <DirectoryRef Id='TARGETDIR'>
+      <Component Id='MyComponent.$(var.LCID)' />
+    </DirectoryRef>
+  </Fragment>
+<?endforeach?>
+```
+
+or filename: ExtentOfLocalization.wxi
+
+```xml
+<Include>
     <?define LcidList=1033;1041;1055?>
-    <?foreach LCID in $(var.LcidList)?>
-        <Fragment Id='Fragment.$(var.LCID)'>
-            <DirectoryRef Id='TARGETDIR'>
-                <Component Id='MyComponent.$(var.LCID)' />
-            </DirectoryRef>
-        </Fragment>
-    <?endforeach?>
-
-or
-
-    filename: ExtentOfLocalization.wxi
-    <Include>
-        <?define LcidList=1033;1041;1055?>
-    </Include>
+</Include>
+```
 
 and
 
-    <?include ExtentOfLocalization.wxi ?>
-    <?foreach LCID in $(var.LcidList)?>
-        <Fragment Id='Fragment.$(var.LCID)'>
-            <DirectoryRef Id='TARGETDIR'>
-                <Component Id='MyComponent.$(var.LCID)' />
-            </DirectoryRef>
-        </Fragment>
-    <?endforeach?>
+```xml
+<?include ExtentOfLocalization.wxi ?>
+<?foreach LCID in $(var.LcidList)?>
+  <Fragment Id='Fragment.$(var.LCID)'>
+    <DirectoryRef Id='TARGETDIR'>
+      <Component Id='MyComponent.$(var.LCID)' />
+    </DirectoryRef>
+  </Fragment>
+<?endforeach?>
+```
 
 An alternative to the foreach process would be to write the template WiX fragment into a separate file and have another process generate the authoring that will be passed to WiX. The greatest merit of this alternative is that it&apos;s easier to debug.
 
