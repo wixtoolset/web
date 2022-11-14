@@ -2394,15 +2394,10 @@
   <xs:element name="Module">
     <xs:annotation>
       <xs:documentation>
-            The Module element is analogous to the main function in a C program. When linking, only
-            one Module section can be given to the linker to produce a successful result. Using this
-            element creates an msm file.
-            </xs:documentation>
-      <xs:appinfo>
-        <xse:remarks>
-          <html:p>You can specify any valid Windows code by by integer like 1252, or by web name like Windows-1252. See [Code pages](reference/codepage.md) for more information.</html:p>
-        </xse:remarks>
-      </xs:appinfo>
+        The Module element is analogous to the main function in a C program. When linking, only
+        one Module section can be given to the linker to produce a successful result. Using this
+        element creates an msm file.
+      </xs:documentation>
     </xs:annotation>
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -2445,9 +2440,9 @@
         <xs:any namespace="##other" processContents="lax">
           <xs:annotation>
             <xs:documentation>
-                          Extensibility point in the WiX XML Schema. Schema extensions can register additional
-                          elements at this point in the schema.
-                      </xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
           </xs:annotation>
         </xs:any>
       </xs:choice>
@@ -2458,12 +2453,16 @@
       </xs:attribute>
       <xs:attribute name="Codepage" type="xs:string">
         <xs:annotation>
-          <xs:documentation>The code page integer value or web name for the resulting MSM. See remarks for more information.</xs:documentation>
+          <xs:documentation>
+            The code page integer value or web name for the resulting MSM. You can specify any valid Windows
+            code by by integer like 1252, or by web name like Windows-1252. See [Code pages](reference/codepage.md)
+            for more information.
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Guid" type="Guid">
         <xs:annotation>
-          <xs:documentation>This attribute is deprecated. Use the Package/@Id attribute instead.</xs:documentation>
+          <xs:documentation>The GUID of the Merge Module that will be appended to primary keys in the database.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Language" type="LocalizableInteger" use="required">
