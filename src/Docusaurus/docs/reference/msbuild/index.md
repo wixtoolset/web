@@ -21,7 +21,7 @@ You can set the following properties in your .wixproj to control the build:
 | -------- | ----------- |
 | AdditionalCub | Semicolon-delimited list of .cub files to use during MSI validation. Default: darice.cub for .msi packages; mergemod.cub for .msm packages |
 | BindFiles | When **true**, bind referenced files into the output file. Valid only when building .wixlib WiX libraries. Default: **false** |
-| CabinetCreationThreadCount | Specifies the number of simultaneous threads used when building multiple cabinets. Default: The number of logical processors in the system. (TODO: See https://github.com/wixtoolset/issues/issues/6978.) |
+| CabinetCreationThreadCount | Specifies the number of simultaneous threads used when building multiple cabinets. Default: The number of logical processors in the system. |
 | CompilerAdditionalOptions | A string specifying arbitrary [Wix.exe command-line arguments](../wixexe.md) to use during the build. Default: none |
 | DebugType | Specifies the .wixpdb output: *full* for full symbol information or *none* to suppress the .wixpdb. Default: *full* |
 | DefaultCompressionLevel | Specifies the compression level used when none is specified via `MediaTemplate` or `Media`. Valid values are: *none*, *low*, *medium*, *high*, *mszip*. Default: *medium*. Default Wix.exe switch: `-defaultcompressionlevel` |
