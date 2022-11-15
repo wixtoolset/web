@@ -16,7 +16,7 @@ There are three ways to use WiX v4:
 WiX v4 is available as a [.NET tool](https://learn.microsoft.com/en-us/dotnet/core/tools/global-tools) for your command-line pleasure.
 
 :::note
-The `wix.exe` tool requires the .NET 6 SDK.
+The `wix.exe` tool requires the .NET SDK, version 6 or later.
 :::
 
 Wix.exe supports commands to perform particular operations. For example, the `build` command lets you build MSI packages, bundles, and other package types.
