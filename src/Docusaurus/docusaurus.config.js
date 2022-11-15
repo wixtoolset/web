@@ -73,7 +73,6 @@ const config = {
         items: [
           { to: '/news', label: 'News', position: 'right' },
           { type: 'doc', docId: 'intro', label: 'Docs', position: 'right' },
-          { type: 'doc', docId: 'intro', label: 'Getting Started', position: 'right' },
           { href: 'https://github.com/wixtoolset/', label: 'GitHub', position: 'right' },
           { href: 'https://www.firegiant.com/services/', label: 'Enterprise', position: 'right'},
         ],
