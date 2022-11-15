@@ -12,7 +12,7 @@ If you do not have Visual Studio available, a .wixproj file can be created using
 If you want to copy and paste this example, remember to change the &lt;ProjectGuid&gt; 
 value to match your own.
 
-```
+```xml
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
