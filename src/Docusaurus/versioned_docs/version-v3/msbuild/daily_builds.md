@@ -20,12 +20,12 @@ To avoid having to install WiX on build machines you can check all the tools nec
 
 After checking the WiX tools into source code control the .wixproj file must be modified to point to the location of the checked in tools. Open the .wixproj file in any text editor, such as Visual Studio, and add the following to the file anywhere between the &lt;Project&gt; element before the &lt;Import&gt; element:
 
-```
-<font size="2" color="#0000FF">&lt;<font size="2" color="#A31515">PropertyGroup</font>&gt;
-      &lt;</font><font size="2" color="#A31515">WixToolPath</font><font size="2" color="#0000FF">&gt;</font><font size="2">$(SourceCodeControlRoot)\wix\[[Version]]</font><font size="2" color="#0000FF">\&lt;/</font><font size="2" color="#A31515">WixToolPath</font><font size="2" color="#0000FF">&gt;
-      &lt;</font><font size="2" color="#A31515">WixTargetsPath</font><font size="2" color="#0000FF">&gt;</font><font size="2">$(WixToolPath)Wix.targets</font><font size="2" color="#0000FF">&lt;/</font><font size="2" color="#A31515">WixTargetsPath</font><font size="2" color="#0000FF">&gt;
-      &lt;</font><font size="2" color="#A31515">WixTasksPath</font><font size="2" color="#0000FF">&gt;</font><font size="2">$(WixToolPath)wixtasks.dll</font><font size="2" color="#0000FF">&lt;/</font><font size="2" color="#A31515">WixTasksPath</font><font size="2" color="#0000FF">&gt;
-&lt;</font><font size="2" color="#A31515">/PropertyGroup</font><font size="2" color="#0000FF">&gt;</font>
+```xml
+<PropertyGroup>
+  <WixToolPath>$(SourceCodeControlRoot)\wix\[[Version]]<WixToolPath>
+  <WixTargetsPath>$(WixToolPath)Wix.targets<WixTargetsPath>
+  <WixTasksPath>$(WixToolPath)wixtasks.dll<WixTasksPath>
+</PropertyGroup>
 ```
 
 The WixToolPath must be set to point to the location of the WiX tools directory created in Step 1. The method used to reference the location will vary depending on your build system, but common choices are an MSBuild property that is set via an environment variable (such as **$(BinariesRoot)** in a Team Foundation Server build) or a custom property passed in on the command-line.

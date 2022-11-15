@@ -34,15 +34,15 @@ If you have an existing Build Definition, you need to use the following steps to
   <li>Check out and open the file named TFSBuild.proj.</li>
   <li>Add the following build configurations to the &lt;ConfigurationToBuild&gt; section if they do not already exist there, or update them if they do already exist:
 
-```
-<font size="2" color="#0000FF">&lt;</font><font size="2" color="#A31515">ConfigurationToBuild</font><font size="2" color="#0000FF"> </font><font size="2" color="#FF0000">Include</font><font size="2" color="#0000FF">=</font><font size="2">"</font><font size="2" color="#0000FF">Debug|Mixed Platforms</font><font size="2">"</font><font size="2" color="#0000FF">&gt;
-        &lt;</font><font size="2" color="#A31515">FlavorToBuild</font><font size="2" color="#0000FF">&gt;</font><font size="2">Debug</font><font size="2" color="#0000FF">&lt;/</font><font size="2" color="#A31515">FlavorToBuild</font><font size="2" color="#0000FF">&gt;
-        &lt;</font><font size="2" color="#A31515">PlatformToBuild</font><font size="2" color="#0000FF">&gt;</font><font size="2">Mixed Platforms</font><font size="2" color="#0000FF">&lt;/</font><font size="2" color="#A31515">PlatformToBuild</font><font size="2" color="#0000FF">&gt;
-&lt;</font><font size="2" color="#A31515">/ConfigurationToBuild</font><font size="2" color="#0000FF">&gt;</font>
-<font size="2" color="#0000FF">&lt;</font><font size="2" color="#A31515">ConfigurationToBuild</font><font size="2" color="#0000FF"> </font><font size="2" color="#FF0000">Include</font><font size="2" color="#0000FF">=</font><font size="2">"</font><font size="2" color="#0000FF">Release|Mixed Platforms</font><font size="2">"</font><font size="2" color="#0000FF">&gt;
-        &lt;</font><font size="2" color="#A31515">FlavorToBuild</font><font size="2" color="#0000FF">&gt;</font><font size="2">Release</font><font size="2" color="#0000FF">&lt;/</font><font size="2" color="#A31515">FlavorToBuild</font><font size="2" color="#0000FF">&gt;
-        &lt;</font><font size="2" color="#A31515">PlatformToBuild</font><font size="2" color="#0000FF">&gt;</font><font size="2">Mixed Platforms</font><font size="2" color="#0000FF">&lt;/</font><font size="2" color="#A31515">PlatformToBuild</font><font size="2" color="#0000FF">&gt;
-&lt;</font><font size="2" color="#A31515">/ConfigurationToBuild</font><font size="2" color="#0000FF">&gt;</font>
+```xml
+<ConfigurationToBuild Include="Debug|Mixed Platforms">
+   <FlavorToBuild>Debug</FlavorToBuild>
+   <PlatformToBuild>Mixed Platforms</PlatformToBuild>
+</ConfigurationToBuild>
+<ConfigurationToBuild Include="Release|Mixed Platforms">
+  <FlavorToBuild>Release</FlavorToBuild>
+  <PlatformToBuild>Mixed Platforms</PlatformToBuild>
+</ConfigurationToBuild>
 ```
 
   </li>
