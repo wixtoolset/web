@@ -11,7 +11,7 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/file">File</a>
+    <a href="../file/">File</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>

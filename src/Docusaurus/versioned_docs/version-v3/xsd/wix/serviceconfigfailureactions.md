@@ -11,11 +11,11 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/component">Component</a>, <a href="../wix/serviceinstall">ServiceInstall</a></dd>
+    <a href="../component/">Component</a>, <a href="../serviceinstall/">ServiceInstall</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wix/failure">Failure</a> (min: 0, max: unbounded): Ordered list of failure actions to apply to service.</li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../failure/">Failure</a> (min: 0, max: unbounded): Ordered list of failure actions to apply to service.</li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -39,19 +39,19 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>OnInstall</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                     Specifies whether to configure the service when the parent Component is installed. This attribute may be combined with OnReinstall                     and OnUninstall.                 </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>OnReinstall</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                     Specifies whether to configure the service when the parent Component is reinstalled. This attribute may be combined with OnInstall                     and OnUninstall.                 </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>OnUninstall</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                     Specifies whether to configure the service when the parent Component is uninstalled. This attribute may be combined with OnInstall                     and OnReinstall.                 </td>
         <td>&nbsp;</td>
       </tr>

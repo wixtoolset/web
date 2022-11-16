@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/class">Class</a>
+    <a href="../class/">Class</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -26,7 +26,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Mask</td>
-        <td><a href="../wix/simple_type_hextype">HexType</a></td>
+        <td><a href="../simple_type_hextype/">HexType</a></td>
         <td>Hex value that is AND'd against the bytes in the file at Offset.</td>
         <td>Yes</td>
       </tr>
@@ -38,7 +38,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Value</td>
-        <td><a href="../wix/simple_type_hextype">HexType</a></td>
+        <td><a href="../simple_type_hextype/">HexType</a></td>
         <td>If the result of the AND'ing of Mask with the bytes in the file is Value, the file is a match for this File Type.</td>
         <td>Yes</td>
       </tr>

@@ -9,11 +9,11 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/chain">Chain</a>, <a href="../wix/packagegroup">PackageGroup</a></dd>
+    <a href="../chain/">Chain</a>, <a href="../packagegroup/">PackageGroup</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wix/msiproperty">MsiProperty</a> (min: 0, max: unbounded)</li><li><a href="../wix/payload">Payload</a> (min: 0, max: unbounded)</li><li><a href="../wix/payloadgroupref">PayloadGroupRef</a> (min: 0, max: unbounded)</li><li><span class="extension">Any Element (namespace='##other' processContents='Lax')                  Extensibility point in the WiX XML Schema.  Schema extensions can register additional                 elements at this point in the schema.  The extension's                 <code><nobr>CompilerExtension.ParseElement()</nobr></code>                 method will be called with the package identifier as the first value in                 <code>contextValues</code>.             </span><ul><li><a href="../wix/payload">Payload</a></li><li><a href="../dependency/provides" class="extension">Provides</a></li></ul></li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../msiproperty/">MsiProperty</a> (min: 0, max: unbounded)</li><li><a href="../payload/">Payload</a> (min: 0, max: unbounded)</li><li><a href="../payloadgroupref/">PayloadGroupRef</a> (min: 0, max: unbounded)</li><li><span class="extension">Any Element (namespace='##other' processContents='Lax')                  Extensibility point in the WiX XML Schema.  Schema extensions can register additional                 elements at this point in the schema.  The extension's                 <code><nobr>CompilerExtension.ParseElement()</nobr></code>                 method will be called with the package identifier as the first value in                 <code>contextValues</code>.             </span><ul><li><a href="../payload/">Payload</a></li><li><a href="../dependency/provides" class="extension">Provides</a></li></ul></li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -31,7 +31,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Cache</td>
-        <td><a href="../wix/simple_type_yesnoalwaystype">YesNoAlwaysType</a></td>
+        <td><a href="../simple_type_yesnoalwaystype/">YesNoAlwaysType</a></td>
         <td>Whether to cache the package. The default is "yes".</td>
         <td>&nbsp;</td>
       </tr>
@@ -43,7 +43,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Compressed</td>
-        <td><a href="../wix/simple_type_yesnodefaulttype">YesNoDefaultType</a></td>
+        <td><a href="../simple_type_yesnodefaulttype/">YesNoDefaultType</a></td>
         <td>Whether the package payload should be embedded in a container or left as an external payload.</td>
         <td>&nbsp;</td>
       </tr>
@@ -55,7 +55,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>DisplayInternalUI</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>             Specifies whether the bundle will show the UI authored into the msp package. The default is "no"             which means all information is routed to the bootstrapper application to provide a unified installation             experience. If "yes" is specified the UI authored into the msp package will be displayed on top of             any bootstrapper application UI.           </td>
         <td>&nbsp;</td>
       </tr>
@@ -103,13 +103,13 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>PerMachine</td>
-        <td><a href="../wix/simple_type_yesnodefaulttype">YesNoDefaultType</a></td>
+        <td><a href="../simple_type_yesnodefaulttype/">YesNoDefaultType</a></td>
         <td>Indicates the package must be executed elevated. The default is "no".</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Permanent</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>             Specifies whether the package can be uninstalled. The default is "no".         </td>
         <td>&nbsp;</td>
       </tr>
@@ -121,7 +121,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Slipstream</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>             Specifies whether to automatically slipstream the patch for any target msi packages in the chain. The default is "no".             Even when the value is "no", you can still author the SlipstreamMsp element under MsiPackage elements as desired.           </td>
         <td>&nbsp;</td>
       </tr>
@@ -133,13 +133,13 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>SuppressSignatureVerification</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>           By default, a Bundle will use the hash of a package to verify its contents. If this attribute is explicitly set to "no"           and the package is signed with an Authenticode signature the Bundle will verify the contents of the package using the           signature instead. Therefore, the default for this attribute could be considered to be "yes". It is unusual for "yes" to           be the default of an attribute. In this case, the default was changed in WiX v3.9 after experiencing real-world issues           with Windows verifying Authenticode signatures. Since the Authenticode signatures are no more secure than hashing the           packages directly, the default was changed.         </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Vital</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>             Specifies whether the package must succeed for the chain to continue. The default "yes"             indicates that if the package fails then the chain will fail and rollback or stop. If             "no" is specified then the chain will continue even if the package reports failure.         </td>
         <td>&nbsp;</td>
       </tr>
@@ -160,5 +160,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../wix/slipstreammsp">SlipstreamMsp</a></dd>
+    <a href="../wix">Wix Schema</a>, <a href="../slipstreammsp/">SlipstreamMsp</a></dd>
 </dl>

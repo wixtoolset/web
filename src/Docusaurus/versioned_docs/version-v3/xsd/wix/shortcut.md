@@ -11,11 +11,11 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/component">Component</a>, <a href="../wix/createfolder">CreateFolder</a>, <a href="../wix/file">File</a></dd>
+    <a href="../component/">Component</a>, <a href="../createfolder/">CreateFolder</a>, <a href="../file/">File</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wix/icon">Icon</a> (min: 0, max: unbounded)</li><li><a href="../wix/shortcutproperty">ShortcutProperty</a> (min: 0, max: unbounded)</li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../icon/">Icon</a> (min: 0, max: unbounded)</li><li><a href="../shortcutproperty/">ShortcutProperty</a> (min: 0, max: unbounded)</li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -33,7 +33,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Advertise</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Specifies if the shortcut should be advertised or not. Note that advertised shortcuts                 always point at a particular application, identified by a ProductCode, and should not be shared between applications.                 Advertised shortcuts only work for the most recently installed application, and are removed when that application is                 removed.  The default value is 'no'.</td>
         <td>&nbsp;</td>
       </tr>
@@ -99,19 +99,19 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>LongName</td>
-        <td><a href="../wix/simple_type_longfilenametype">LongFileNameType</a></td>
+        <td><a href="../simple_type_longfilenametype/">LongFileNameType</a></td>
         <td>This attribute has been deprecated; please use the Name attribute instead.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Name</td>
-        <td><a href="../wix/simple_type_longfilenametype">LongFileNameType</a></td>
+        <td><a href="../simple_type_longfilenametype/">LongFileNameType</a></td>
         <td>                         In prior versions of the WiX toolset, this attribute specified the short name.                         This attribute's value may now be either a short or long name.                         If a short name is specified, the ShortName attribute may not be specified.                         If a long name is specified, the LongName attribute may not be specified.                         Also, if this value is a long name, the ShortName attribute may be omitted to                         allow WiX to attempt to generate a unique short name.                         However, if this name collides with another shortcut or you wish to manually specify                         the short name, then the ShortName attribute may be specified.                     </td>
         <td>Yes</td>
       </tr>
       <tr>
         <td>ShortName</td>
-        <td><a href="../wix/simple_type_shortfilenametype">ShortFileNameType</a></td>
+        <td><a href="../simple_type_shortfilenametype/">ShortFileNameType</a></td>
         <td>                         The short name of the shortcut in 8.3 format.                         This attribute should only be set if there is a conflict between generated short names                         or the user wants to manually specify the short name.                     </td>
         <td>&nbsp;</td>
       </tr>

@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/bundle">Bundle</a>, <a href="../wix/fragment">Fragment</a></dd>
+    <a href="../bundle/">Bundle</a>, <a href="../fragment/">Fragment</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
@@ -25,7 +25,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Hidden</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Whether the value of the variable should be hidden.</td>
         <td>&nbsp;</td>
       </tr>
@@ -37,7 +37,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Persisted</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Whether the variable should be persisted.</td>
         <td>&nbsp;</td>
       </tr>

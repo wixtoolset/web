@@ -11,7 +11,7 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/fragment">Fragment</a>, <a href="../wix/module">Module</a>, <a href="../wix/product">Product</a></dd>
+    <a href="../fragment/">Fragment</a>, <a href="../module/">Module</a>, <a href="../product/">Product</a></dd>
   <dt>Inner Text (xs:string)</dt>
   <dd>                         The text node is only valid if the Script attribute is specified.  In that case, the text node contains the script to embed.                     </dd>
   <dt>Children</dt>
@@ -75,13 +75,13 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>HideTarget</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Ensures the installer does not log the CustomActionData for the deferred custom action.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Impersonate</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                                 This attribute specifies whether the Windows Installer, which executes as LocalSystem,                                 should impersonate the user context of the installing user when executing this custom action.                                 Typically the value should be 'yes', except when the custom action needs elevated privileges                                 to apply changes to the machine.                             </td>
         <td>&nbsp;</td>
       </tr>
@@ -93,7 +93,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>PatchUninstall</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                                 This attribute specifies that the Windows Installer, execute the custom action only when                                 a patch is being uninstalled.  These custom actions should also be conditioned using the                                 MSIPATCHREMOVE property to ensure proper down level (less than Windows Installer 4.5)                                 behavior.                             </td>
         <td>&nbsp;</td>
       </tr>
@@ -117,13 +117,13 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>SuppressModularization</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                                 Use to suppress modularization of this custom action name in merge modules.                                 This should only be necessary for table-driven custom actions because the                                 table name which they interact with cannot be modularized, so there can only                                 be one instance of the table.                             </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>TerminalServerAware</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                                 This attribute specifies controls whether the custom action will impersonate the                                 installing user during per-machine installs on Terminal Server machines.                                 Deferred execution custom actions that do not specify this attribute, or explicitly set it 'no',                                 will run with no user impersonation on Terminal Server machines during                                 per-machine installations.  This attribute is only applicable when installing on the                                 Windows Server 2003 family.                             </td>
         <td>&nbsp;</td>
       </tr>
@@ -141,7 +141,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Win64</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                                 Specifies that a script custom action targets a 64-bit platform. Valid only when used with                                 the Script, VBScriptCall, and JScriptCall attributes.           The default value is based on the platform set by the -arch switch to candle.exe           or the InstallerPlatform property in a .wixproj MSBuild project:            For x86 and ARM, the default value is 'no'.            For x64, ARM64, and IA64, the default value is 'yes'.               </td>
         <td>&nbsp;</td>
       </tr>
@@ -154,5 +154,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../wix/custom">Custom</a>, <a href="../wix/customactionref">CustomActionRef</a></dd>
+    <a href="../wix">Wix Schema</a>, <a href="../custom/">Custom</a>, <a href="../customactionref/">CustomActionRef</a></dd>
 </dl>

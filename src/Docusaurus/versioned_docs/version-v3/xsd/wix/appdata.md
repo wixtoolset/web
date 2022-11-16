@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/category">Category</a>
+    <a href="../category/">Category</a>
   </dd>
   <dt>See Also</dt>
   <dd>

@@ -9,12 +9,12 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/patch">Patch</a>
+    <a href="../patch/">Patch</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 1, max: unbounded)<ul><li><a href="../wix/targetproductcode">TargetProductCode</a> (min: 1, max: unbounded)</li></ul></dd>
+  <dd>Choice of elements (min: 1, max: unbounded)<ul><li><a href="../targetproductcode/">TargetProductCode</a> (min: 1, max: unbounded)</li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -26,7 +26,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Replace</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Whether to replace the product codes that can accept the patch from the target packages with the child elements.</td>
         <td>&nbsp;</td>
       </tr>

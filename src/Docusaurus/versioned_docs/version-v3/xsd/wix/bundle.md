@@ -9,12 +9,12 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/wix">Wix</a>
+    <a href="../wix/">Wix</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wix/approvedexeforelevation">ApprovedExeForElevation</a> (min: 0, max: unbounded)</li><li><a href="../wix/bootstrapperapplication">BootstrapperApplication</a> (min: 0, max: 1)</li><li><a href="../wix/bootstrapperapplicationref">BootstrapperApplicationRef</a> (min: 0, max: 1)</li><li><a href="../wix/catalog">Catalog</a> (min: 0, max: unbounded)</li><li><a href="../wix/chain">Chain</a> (min: 1, max: 1)</li><li><a href="../wix/container">Container</a> (min: 0, max: unbounded)</li><li><a href="../wix/containerref">ContainerRef</a> (min: 0, max: unbounded)</li><li><a href="../wix/log">Log</a> (min: 0, max: 1)</li><li><a href="../wix/optionalupdateregistration">OptionalUpdateRegistration</a> (min: 0, max: 1)</li><li><a href="../wix/payloadgroup">PayloadGroup</a> (min: 0, max: unbounded)</li><li><a href="../wix/payloadgroupref">PayloadGroupRef</a> (min: 0, max: unbounded)</li><li><a href="../wix/relatedbundle">RelatedBundle</a> (min: 0, max: unbounded)</li><li><a href="../wix/update">Update</a> (min: 0, max: unbounded)</li><li><a href="../wix/variable">Variable</a> (min: 0, max: unbounded)</li><li><a href="../wix/wixvariable">WixVariable</a> (min: 0, max: unbounded)</li><li><span class="extension">Any Element (namespace='##other' processContents='Lax')                Extensibility point in the WiX XML Schema.  Schema extensions can register additional               elements at this point in the schema.             </span><ul><li><a href="../wix/approvedexeforelevation">ApprovedExeForElevation</a></li><li><a href="../wix/bootstrapperapplication">BootstrapperApplication</a></li><li><a href="../wix/bootstrapperapplicationref">BootstrapperApplicationRef</a></li><li><a href="../wix/catalog">Catalog</a></li><li><a href="../wix/chain">Chain</a></li><li><a href="../util/componentsearch" class="extension">ComponentSearch</a></li><li><a href="../util/componentsearchref" class="extension">ComponentSearchRef</a></li><li><a href="../bal/condition" class="extension">Condition</a></li><li><a href="../wix/container">Container</a></li><li><a href="../wix/containerref">ContainerRef</a></li><li><a href="../util/directorysearch" class="extension">DirectorySearch</a></li><li><a href="../util/directorysearchref" class="extension">DirectorySearchRef</a></li><li><a href="../util/filesearch" class="extension">FileSearch</a></li><li><a href="../util/filesearchref" class="extension">FileSearchRef</a></li><li><a href="../wix/log">Log</a></li><li><a href="../util/productsearch" class="extension">ProductSearch</a></li><li><a href="../util/productsearchref" class="extension">ProductSearchRef</a></li><li><a href="../util/registrysearch" class="extension">RegistrySearch</a></li><li><a href="../util/registrysearchref" class="extension">RegistrySearchRef</a></li><li><a href="../wix/relatedbundle">RelatedBundle</a></li><li><a href="../dependency/requires" class="extension">Requires</a></li><li><a href="../tag/tag" class="extension">Tag</a></li><li><a href="../wix/update">Update</a></li><li><a href="../wix/ux">UX</a></li><li><a href="../wix/variable">Variable</a></li></ul></li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../approvedexeforelevation/">ApprovedExeForElevation</a> (min: 0, max: unbounded)</li><li><a href="../bootstrapperapplication/">BootstrapperApplication</a> (min: 0, max: 1)</li><li><a href="../bootstrapperapplicationref/">BootstrapperApplicationRef</a> (min: 0, max: 1)</li><li><a href="../catalog/">Catalog</a> (min: 0, max: unbounded)</li><li><a href="../chain/">Chain</a> (min: 1, max: 1)</li><li><a href="../container/">Container</a> (min: 0, max: unbounded)</li><li><a href="../containerref/">ContainerRef</a> (min: 0, max: unbounded)</li><li><a href="../log/">Log</a> (min: 0, max: 1)</li><li><a href="../optionalupdateregistration/">OptionalUpdateRegistration</a> (min: 0, max: 1)</li><li><a href="../payloadgroup/">PayloadGroup</a> (min: 0, max: unbounded)</li><li><a href="../payloadgroupref/">PayloadGroupRef</a> (min: 0, max: unbounded)</li><li><a href="../relatedbundle/">RelatedBundle</a> (min: 0, max: unbounded)</li><li><a href="../update/">Update</a> (min: 0, max: unbounded)</li><li><a href="../variable/">Variable</a> (min: 0, max: unbounded)</li><li><a href="../wixvariable/">WixVariable</a> (min: 0, max: unbounded)</li><li><span class="extension">Any Element (namespace='##other' processContents='Lax')                Extensibility point in the WiX XML Schema.  Schema extensions can register additional               elements at this point in the schema.             </span><ul><li><a href="../approvedexeforelevation/">ApprovedExeForElevation</a></li><li><a href="../bootstrapperapplication/">BootstrapperApplication</a></li><li><a href="../bootstrapperapplicationref/">BootstrapperApplicationRef</a></li><li><a href="../catalog/">Catalog</a></li><li><a href="../chain/">Chain</a></li><li><a href="../util/componentsearch" class="extension">ComponentSearch</a></li><li><a href="../util/componentsearchref" class="extension">ComponentSearchRef</a></li><li><a href="../bal/condition" class="extension">Condition</a></li><li><a href="../container/">Container</a></li><li><a href="../containerref/">ContainerRef</a></li><li><a href="../util/directorysearch" class="extension">DirectorySearch</a></li><li><a href="../util/directorysearchref" class="extension">DirectorySearchRef</a></li><li><a href="../util/filesearch" class="extension">FileSearch</a></li><li><a href="../util/filesearchref" class="extension">FileSearchRef</a></li><li><a href="../log/">Log</a></li><li><a href="../util/productsearch" class="extension">ProductSearch</a></li><li><a href="../util/productsearchref" class="extension">ProductSearchRef</a></li><li><a href="../util/registrysearch" class="extension">RegistrySearch</a></li><li><a href="../util/registrysearchref" class="extension">RegistrySearchRef</a></li><li><a href="../relatedbundle/">RelatedBundle</a></li><li><a href="../dependency/requires" class="extension">Requires</a></li><li><a href="../tag/tag" class="extension">Tag</a></li><li><a href="../update/">Update</a></li><li><a href="../ux/">UX</a></li><li><a href="../variable/">Variable</a></li></ul></li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -32,7 +32,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Compressed</td>
-        <td><a href="../wix/simple_type_yesnodefaulttype">YesNoDefaultType</a></td>
+        <td><a href="../simple_type_yesnodefaulttype/">YesNoDefaultType</a></td>
         <td>Whether Packages and Payloads not assigned to a container should be added to the default attached container or if they should be external. The default is yes.</td>
         <td>&nbsp;</td>
       </tr>
@@ -50,19 +50,19 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>DisableModify</td>
-        <td><a href="../wix/simple_type_yesnobuttontype">YesNoButtonType</a></td>
+        <td><a href="../simple_type_yesnobuttontype/">YesNoButtonType</a></td>
         <td>             Determines whether the bundle can be modified via the Programs and Features (also known as             Add/Remove Programs). If the value is "button" then Programs and Features will show a single             "Uninstall/Change" button. If the value is "yes" then Programs and Features will only show             the "Uninstall" button". If the value is "no", the default, then a "Change" button is shown.             See the DisableRemove attribute for information how to not display the bundle in Programs             and Features.           </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>DisableRemove</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>             Determines whether the bundle can be removed via the Programs and Features (also             known as Add/Remove Programs). If the value is "yes" then the "Uninstall" button will             not be displayed. The default is "no" which ensures there is an "Uninstall" button to             remove the bundle. If the "DisableModify" attribute is also "yes" or "button" then the             bundle will not be displayed in Progams and Features and another mechanism (such as             registering as a related bundle addon) must be used to ensure the bundle can be removed.           </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>DisableRepair</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>This attribute has been deprecated.</td>
         <td>&nbsp;</td>
       </tr>
@@ -122,7 +122,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>UpgradeCode</td>
-        <td><a href="../wix/simple_type_guid">Guid</a></td>
+        <td><a href="../simple_type_guid/">Guid</a></td>
         <td>             Unique identifier for a family of bundles. If two bundles have the same UpgradeCode the             bundle with the highest version will be installed.           </td>
         <td>Yes</td>
       </tr>

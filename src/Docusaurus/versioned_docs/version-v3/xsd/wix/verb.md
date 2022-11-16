@@ -10,7 +10,7 @@ layout: documentation_xsd_main
     <a href="http://msdn.microsoft.com/library/aa372487.aspx" target="_blank">Verb Table</a>, <a href="http://msdn.microsoft.com/library/aa371168.aspx" target="_blank">Registry Table</a></dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/extension">Extension</a>
+    <a href="../extension/">Extension</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>

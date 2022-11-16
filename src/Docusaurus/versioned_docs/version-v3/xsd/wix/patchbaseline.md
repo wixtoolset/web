@@ -9,12 +9,12 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/media">Media</a>
+    <a href="../media/">Media</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: 1)<ul><li><a href="../wix/validate">Validate</a> (min: 0, max: 1)</li></ul></dd>
+  <dd>Choice of elements (min: 0, max: 1)<ul><li><a href="../validate/">Validate</a> (min: 0, max: 1)</li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">

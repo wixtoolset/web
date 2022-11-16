@@ -10,11 +10,11 @@ layout: documentation_xsd_main
     <a href="http://msdn.microsoft.com/library/aa370879.aspx" target="_blank">ProgId Table</a>, <a href="http://msdn.microsoft.com/library/aa367861.aspx" target="_blank">Class Table</a>, <a href="http://msdn.microsoft.com/library/aa371168.aspx" target="_blank">Registry Table</a>, <a href="http://msdn.microsoft.com/library/aa369210.aspx" target="_blank">Icon Table</a></dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/class">Class</a>, <a href="../wix/component">Component</a>, <a href="../wix/progid">ProgId</a></dd>
+    <a href="../class/">Class</a>, <a href="../component/">Component</a>, <a href="../progid/">ProgId</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../wix/progid">ProgId</a> (min: 0, max: unbounded): The version-independent ProgId must be the first child element of actual ProgId.  Nesting other ProgId elements within the Version-independent ProgId will create COM+ aliases, see <a href="http://support.microsoft.com/kb/305745">http://support.microsoft.com/kb/305745</a> for more information.</li><li><a href="../wix/extension">Extension</a> (min: 0, max: unbounded): Extensions that refer to this ProgId</li></ol></dd>
+  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../progid/">ProgId</a> (min: 0, max: unbounded): The version-independent ProgId must be the first child element of actual ProgId.  Nesting other ProgId elements within the Version-independent ProgId will create COM+ aliases, see <a href="http://support.microsoft.com/kb/305745">http://support.microsoft.com/kb/305745</a> for more information.</li><li><a href="../extension/">Extension</a> (min: 0, max: unbounded): Extensions that refer to this ProgId</li></ol></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -32,7 +32,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Advertise</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>

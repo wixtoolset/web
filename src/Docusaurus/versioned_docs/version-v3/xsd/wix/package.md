@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/module">Module</a>, <a href="../wix/product">Product</a></dd>
+    <a href="../module/">Module</a>, <a href="../product/">Product</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
@@ -25,7 +25,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>AdminImage</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Set to 'yes' if the source is an admin image.</td>
         <td>&nbsp;</td>
       </tr>
@@ -37,7 +37,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Compressed</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                         Set to 'yes' to have compressed files in the source.                         This attribute cannot be set for merge modules.                     </td>
         <td>&nbsp;</td>
       </tr>
@@ -49,7 +49,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Id</td>
-        <td><a href="../wix/simple_type_autogenguid">AutogenGuid</a></td>
+        <td><a href="../simple_type_autogenguid/">AutogenGuid</a></td>
         <td>                         The package code GUID for a product or merge module.                         When compiling a product, this attribute should not be set in order to allow the package                         code to be generated for each build.                         When compiling a merge module, this attribute must be set to the modularization guid.                     </td>
         <td>&nbsp;</td>
       </tr>
@@ -103,13 +103,13 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>ReadOnly</td>
-        <td><a href="../wix/simple_type_yesnodefaulttype">YesNoDefaultType</a></td>
+        <td><a href="../simple_type_yesnodefaulttype/">YesNoDefaultType</a></td>
         <td>             The value of this attribute conveys whether the package should be opened as read-only.             A database editing tool should not modify a read-only enforced database and should             issue a warning at attempts to modify a read-only recommended database.           </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ShortNames</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Set to 'yes' to have short filenames in the source.</td>
         <td>&nbsp;</td>
       </tr>

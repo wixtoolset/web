@@ -9,11 +9,11 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/fragment">Fragment</a>, <a href="../wix/patch">Patch</a></dd>
+    <a href="../fragment/">Fragment</a>, <a href="../patch/">Patch</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wix/patchfamily">PatchFamily</a> (min: 0, max: unbounded)</li><li><a href="../wix/patchfamilygroupref">PatchFamilyGroupRef</a> (min: 0, max: unbounded)</li><li><a href="../wix/patchfamilyref">PatchFamilyRef</a> (min: 0, max: unbounded)</li><li><span class="extension">Any Element (namespace='##other' processContents='Lax')                Extensibility point in the WiX XML Schema.  Schema extensions can register additional               elements at this point in the schema.             </span></li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../patchfamily/">PatchFamily</a> (min: 0, max: unbounded)</li><li><a href="../patchfamilygroupref/">PatchFamilyGroupRef</a> (min: 0, max: unbounded)</li><li><a href="../patchfamilyref/">PatchFamilyRef</a> (min: 0, max: unbounded)</li><li><span class="extension">Any Element (namespace='##other' processContents='Lax')                Extensibility point in the WiX XML Schema.  Schema extensions can register additional               elements at this point in the schema.             </span></li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -38,5 +38,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../wix/patchfamilygroupref">PatchFamilyGroupRef</a></dd>
+    <a href="../wix">Wix Schema</a>, <a href="../patchfamilygroupref/">PatchFamilyGroupRef</a></dd>
 </dl>

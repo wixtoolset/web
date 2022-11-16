@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/exepackage">ExePackage</a>, <a href="../wix/msupackage">MsuPackage</a></dd>
+    <a href="../exepackage/">ExePackage</a>, <a href="../msupackage/">MsuPackage</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
@@ -25,13 +25,13 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>CertificatePublicKey</td>
-        <td><a href="../wix/simple_type_hextype">HexType</a></td>
+        <td><a href="../simple_type_hextype/">HexType</a></td>
         <td>Public key of the authenticode certificate used to sign the RemotePayload.  Include this attribute if the remote file is signed.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>CertificateThumbprint</td>
-        <td><a href="../wix/simple_type_hextype">HexType</a></td>
+        <td><a href="../simple_type_hextype/">HexType</a></td>
         <td>Thumbprint of the authenticode certificate used to sign the RemotePayload.  Include this attribute if the remote file is signed.</td>
         <td>&nbsp;</td>
       </tr>
@@ -43,7 +43,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Hash</td>
-        <td><a href="../wix/simple_type_hextype">HexType</a></td>
+        <td><a href="../simple_type_hextype/">HexType</a></td>
         <td>SHA-1 hash of the RemotePayload.</td>
         <td>Yes</td>
       </tr>
@@ -61,7 +61,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Version</td>
-        <td><a href="../wix/simple_type_versiontype">VersionType</a></td>
+        <td><a href="../simple_type_versiontype/">VersionType</a></td>
         <td>Version of the remote file</td>
         <td>Yes</td>
       </tr>

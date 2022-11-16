@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/adminexecutesequence">AdminExecuteSequence</a>, <a href="../wix/adminuisequence">AdminUISequence</a>, <a href="../wix/advertiseexecutesequence">AdvertiseExecuteSequence</a>, <a href="../wix/installexecutesequence">InstallExecuteSequence</a>, <a href="../wix/installuisequence">InstallUISequence</a></dd>
+    <a href="../adminexecutesequence/">AdminExecuteSequence</a>, <a href="../adminuisequence/">AdminUISequence</a>, <a href="../advertiseexecutesequence/">AdvertiseExecuteSequence</a>, <a href="../installexecutesequence/">InstallExecuteSequence</a>, <a href="../installuisequence/">InstallUISequence</a></dd>
   <dt>Inner Text (xs:string)</dt>
   <dd>Text node specifies the condition of the action.</dd>
   <dt>Children</dt>
@@ -43,13 +43,13 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>OnExit</td>
-        <td><a href="../wix/simple_type_exittype">ExitType</a></td>
+        <td><a href="../simple_type_exittype/">ExitType</a></td>
         <td>Mutually exclusive with Before, After, and Sequence attributes</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Overridable</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                                 If "yes", the sequencing of this action may be overridden by sequencing elsewhere.                             </td>
         <td>&nbsp;</td>
       </tr>
@@ -63,5 +63,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../wix/customaction">CustomAction</a></dd>
+    <a href="../wix">Wix Schema</a>, <a href="../customaction/">CustomAction</a></dd>
 </dl>

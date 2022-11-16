@@ -11,7 +11,7 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/servicecontrol">ServiceControl</a>
+    <a href="../servicecontrol/">ServiceControl</a>
   </dd>
   <dt>See Also</dt>
   <dd>

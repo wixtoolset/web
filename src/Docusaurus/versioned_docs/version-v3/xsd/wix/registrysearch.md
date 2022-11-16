@@ -10,11 +10,11 @@ layout: documentation_xsd_main
     <a href="http://msdn.microsoft.com/library/aa371171.aspx" target="_blank">RegLocator Table</a>, <a href="http://msdn.microsoft.com/library/aa371853.aspx" target="_blank">Signature Table</a></dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/compliancecheck">ComplianceCheck</a>, <a href="../wix/property">Property</a></dd>
+    <a href="../compliancecheck/">ComplianceCheck</a>, <a href="../property/">Property</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: 1)<ul><li><a href="../wix/directorysearch">DirectorySearch</a> (min: 0, max: 1)</li><li><a href="../wix/directorysearchref">DirectorySearchRef</a> (min: 0, max: 1)</li><li><a href="../wix/filesearch">FileSearch</a> (min: 0, max: 1)</li><li><a href="../wix/filesearchref">FileSearchRef</a> (min: 0, max: 1)</li></ul></dd>
+  <dd>Choice of elements (min: 0, max: 1)<ul><li><a href="../directorysearch/">DirectorySearch</a> (min: 0, max: 1)</li><li><a href="../directorysearchref/">DirectorySearchRef</a> (min: 0, max: 1)</li><li><a href="../filesearch/">FileSearch</a> (min: 0, max: 1)</li><li><a href="../filesearchref/">FileSearchRef</a> (min: 0, max: 1)</li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -56,7 +56,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Win64</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Instructs the search to look in the 64-bit registry when the value is 'yes'. When the value is 'no', the search looks in the 32-bit registry.           The default value is based on the platform set by the -arch switch to candle.exe           or the InstallerPlatform property in a .wixproj MSBuild project:            For x86 and ARM, the default value is 'no'.            For x64, ARM64, and IA64, the default value is 'yes'.           </td>
         <td>&nbsp;</td>
       </tr>
@@ -74,5 +74,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../wix/componentsearch">ComponentSearch</a>, <a href="../wix/inifilesearch">IniFileSearch</a></dd>
+    <a href="../wix">Wix Schema</a>, <a href="../componentsearch/">ComponentSearch</a>, <a href="../inifilesearch/">IniFileSearch</a></dd>
 </dl>

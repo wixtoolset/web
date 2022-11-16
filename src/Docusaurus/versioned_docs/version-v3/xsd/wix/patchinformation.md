@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/patch">Patch</a>, <a href="../wix/patchcreation">PatchCreation</a></dd>
+    <a href="../patch/">Patch</a>, <a href="../patchcreation/">PatchCreation</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
@@ -25,7 +25,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>AdminImage</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>This attribute has been deprecated.</td>
         <td>&nbsp;</td>
       </tr>
@@ -37,7 +37,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Compressed</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>This attribute has been deprecated.</td>
         <td>&nbsp;</td>
       </tr>
@@ -73,13 +73,13 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>ReadOnly</td>
-        <td><a href="../wix/simple_type_yesnodefaulttype">YesNoDefaultType</a></td>
+        <td><a href="../simple_type_yesnodefaulttype/">YesNoDefaultType</a></td>
         <td>                         The value of this attribute conveys whether the package should be opened as read-only.                         A database editing tool should not modify a read-only enforced database and should                         issue a warning at attempts to modify a read-only recommended database.                     </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ShortNames</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>This attribute has been deprecated.</td>
         <td>&nbsp;</td>
       </tr>

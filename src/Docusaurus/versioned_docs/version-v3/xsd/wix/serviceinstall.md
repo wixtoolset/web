@@ -11,12 +11,12 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/component">Component</a>
+    <a href="../component/">Component</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wix/permissionex">PermissionEx</a> (min: 0, max: unbounded): Configures the ACLs for this service.</li><li><a href="../wix/serviceconfig">ServiceConfig</a> (min: 0, max: unbounded)</li><li><a href="../wix/serviceconfigfailureactions">ServiceConfigFailureActions</a> (min: 0, max: unbounded)</li><li><a href="../wix/servicedependency">ServiceDependency</a> (min: 0, max: unbounded): Ordered list of dependencies when installing services.</li><li><span class="extension">Any Element (namespace='##other' processContents='Lax')                              Extensibility point in the WiX XML Schema.  Schema extensions can register additional                             elements at this point in the schema.                         </span><ul><li><a href="../util/serviceconfig" class="extension">ServiceConfig</a></li><li><a href="../http/urlreservation" class="extension">UrlReservation</a></li></ul></li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../permissionex/">PermissionEx</a> (min: 0, max: unbounded): Configures the ACLs for this service.</li><li><a href="../serviceconfig/">ServiceConfig</a> (min: 0, max: unbounded)</li><li><a href="../serviceconfigfailureactions/">ServiceConfigFailureActions</a> (min: 0, max: unbounded)</li><li><a href="../servicedependency/">ServiceDependency</a> (min: 0, max: unbounded): Ordered list of dependencies when installing services.</li><li><span class="extension">Any Element (namespace='##other' processContents='Lax')                              Extensibility point in the WiX XML Schema.  Schema extensions can register additional                             elements at this point in the schema.                         </span><ul><li><a href="../util/serviceconfig" class="extension">ServiceConfig</a></li><li><a href="../http/urlreservation" class="extension">UrlReservation</a></li></ul></li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -52,7 +52,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>EraseDescription</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Determines whether the existing service description will be ignored. If 'yes', the service description will be null, even if the Description attribute is set.</td>
         <td>&nbsp;</td>
       </tr>
@@ -70,7 +70,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Interactive</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Whether or not the service interacts with the desktop.</td>
         <td>&nbsp;</td>
       </tr>
@@ -106,7 +106,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Vital</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>The overall install should fail if this service fails to install.</td>
         <td>&nbsp;</td>
       </tr>

@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/bundle">Bundle</a>
+    <a href="../bundle/">Bundle</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>

@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/bundle">Bundle</a>, <a href="../wix/fragment">Fragment</a></dd>
+    <a href="../bundle/">Bundle</a>, <a href="../fragment/">Fragment</a></dd>
   <dt>Inner Text (xs:string)</dt>
   <dd>                             The condition that must evaluate to true for the installation to continue.                         </dd>
   <dt>Children</dt>

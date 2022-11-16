@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/serviceconfigfailureactions">ServiceConfigFailureActions</a>
+    <a href="../serviceconfigfailureactions/">ServiceConfigFailureActions</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>

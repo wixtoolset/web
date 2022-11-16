@@ -11,7 +11,7 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/control">Control</a>
+    <a href="../control/">Control</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>

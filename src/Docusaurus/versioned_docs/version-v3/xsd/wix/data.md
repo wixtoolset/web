@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/row">Row</a>
+    <a href="../row/">Row</a>
   </dd>
   <dt>Inner Text (xs:string)</dt>
   <dd>A data value</dd>

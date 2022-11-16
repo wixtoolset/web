@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/patchfamily">PatchFamily</a>
+    <a href="../patchfamily/">PatchFamily</a>
   </dd>
   <dt>Remarks</dt>
   <dd><p>Warning: this is intended for testing purposes only. Shipping a patch with all changes negates the benefits of using patch families for including only specific changes.</p><p>Because changing the ProductCode is not supported in a patch, the ProductCode property is automatically removed from the transform.</p></dd>

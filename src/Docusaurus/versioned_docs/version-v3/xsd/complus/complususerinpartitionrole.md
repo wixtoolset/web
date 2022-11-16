@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../complus/compluspartitionrole" class="extension">ComPlusPartitionRole</a>, <a href="../wix/component">Component</a></dd>
+    <a href="../complus/compluspartitionrole" class="extension">ComPlusPartitionRole</a>, <a href="../component/">Component</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>

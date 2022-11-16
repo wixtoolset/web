@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/bundle">Bundle</a>
+    <a href="../bundle/">Bundle</a>
   </dd>
   <dt>Remarks</dt>
   <dd><p>                         This provider key is designed to persist throughout compatible upgrades so that dependent bundles do not have to be reinstalled                         and will not prevent your product from being upgraded. If this attribute is not authored, the value is the                         automatically-generated bundle ID and will not automatically support upgrades.                     </p><p>                         Only a single provider key is supported for bundles. To author that your bundle provides additional features via                         packages, author different provider keys for your packages.                     </p></dd>

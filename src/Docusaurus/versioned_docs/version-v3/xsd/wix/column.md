@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/customtable">CustomTable</a>
+    <a href="../customtable/">CustomTable</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -56,7 +56,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Localizable</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Whether this column can be localized.</td>
         <td>&nbsp;</td>
       </tr>
@@ -80,13 +80,13 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Nullable</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Whether this column can be left null.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>PrimaryKey</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Whether this column is a primary key.</td>
         <td>&nbsp;</td>
       </tr>

@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/bundle">Bundle</a>
+    <a href="../bundle/">Bundle</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -44,7 +44,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Win64</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>             Instructs the search to look in the 64-bit registry when the value is 'yes'.             When the value is 'no', the search looks in the 32-bit registry.             The default value is 'no'.           </td>
         <td>&nbsp;</td>
       </tr>

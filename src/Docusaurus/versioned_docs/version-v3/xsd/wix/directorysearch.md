@@ -10,11 +10,11 @@ layout: documentation_xsd_main
     <a href="http://msdn.microsoft.com/library/aa368331.aspx" target="_blank">DrLocator Table</a>, <a href="http://msdn.microsoft.com/library/aa371853.aspx" target="_blank">Signature Table</a></dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/compliancecheck">ComplianceCheck</a>, <a href="../wix/compliancedrive">ComplianceDrive</a>, <a href="../wix/componentsearch">ComponentSearch</a>, <a href="../wix/directorysearch">DirectorySearch</a>, <a href="../wix/directorysearchref">DirectorySearchRef</a>, <a href="../wix/inifilesearch">IniFileSearch</a>, <a href="../wix/property">Property</a>, <a href="../wix/registrysearch">RegistrySearch</a></dd>
+    <a href="../compliancecheck/">ComplianceCheck</a>, <a href="../compliancedrive/">ComplianceDrive</a>, <a href="../componentsearch/">ComponentSearch</a>, <a href="../directorysearch/">DirectorySearch</a>, <a href="../directorysearchref/">DirectorySearchRef</a>, <a href="../inifilesearch/">IniFileSearch</a>, <a href="../property/">Property</a>, <a href="../registrysearch/">RegistrySearch</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: 1)<ul><li><a href="../wix/directorysearch">DirectorySearch</a> (min: 0, max: 1)</li><li><a href="../wix/directorysearchref">DirectorySearchRef</a> (min: 0, max: 1)</li><li><a href="../wix/filesearch">FileSearch</a> (min: 0, max: 1)</li><li><a href="../wix/filesearchref">FileSearchRef</a> (min: 0, max: 1)</li></ul></dd>
+  <dd>Choice of elements (min: 0, max: 1)<ul><li><a href="../directorysearch/">DirectorySearch</a> (min: 0, max: 1)</li><li><a href="../directorysearchref/">DirectorySearchRef</a> (min: 0, max: 1)</li><li><a href="../filesearch/">FileSearch</a> (min: 0, max: 1)</li><li><a href="../filesearchref/">FileSearchRef</a> (min: 0, max: 1)</li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -32,7 +32,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>AssignToProperty</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Set the value of the outer Property to the result of this search. See remarks for more information.</td>
         <td>&nbsp;</td>
       </tr>
@@ -68,5 +68,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../wix/componentsearch">ComponentSearch</a>, <a href="../wix/inifilesearch">IniFileSearch</a>, <a href="../wix/registrysearch">RegistrySearch</a></dd>
+    <a href="../wix">Wix Schema</a>, <a href="../componentsearch/">ComponentSearch</a>, <a href="../inifilesearch/">IniFileSearch</a>, <a href="../registrysearch/">RegistrySearch</a></dd>
 </dl>

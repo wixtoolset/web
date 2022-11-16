@@ -10,11 +10,11 @@ layout: documentation_xsd_main
     <a href="http://msdn.microsoft.com/library/aa372092.aspx" target="_blank">TypeLib Table</a>, <a href="http://msdn.microsoft.com/library/aa371168.aspx" target="_blank">Registry Table</a></dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/component">Component</a>, <a href="../wix/file">File</a></dd>
+    <a href="../component/">Component</a>, <a href="../file/">File</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wix/appid">AppId</a> (min: 0, max: unbounded)</li><li><a href="../wix/class">Class</a> (min: 0, max: unbounded)</li><li><a href="../wix/interface">Interface</a> (min: 0, max: unbounded)</li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../appid/">AppId</a> (min: 0, max: unbounded)</li><li><a href="../class/">Class</a> (min: 0, max: unbounded)</li><li><a href="../interface/">Interface</a> (min: 0, max: unbounded)</li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -26,19 +26,19 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Id</td>
-        <td><a href="../wix/simple_type_guid">Guid</a></td>
+        <td><a href="../simple_type_guid/">Guid</a></td>
         <td>The GUID that identifes the type library.</td>
         <td>Yes</td>
       </tr>
       <tr>
         <td>Advertise</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                     Value of 'yes' will create a row in the TypeLib table.                     Value of 'no' will create rows in the Registry table.                     The default value is 'no'.                 </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Control</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                     Value of 'yes' means the type library describes controls, and should not be displayed in type browsers intended for nonvisual objects.                     This attribute can only be set if Advertise='no'.                 </td>
         <td>&nbsp;</td>
       </tr>
@@ -56,7 +56,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>HasDiskImage</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                     Value of 'yes' means the type library exists in a persisted form on disk.  This attribute can only be set if Advertise='no'.                 </td>
         <td>&nbsp;</td>
       </tr>
@@ -68,7 +68,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Hidden</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                     Value of 'yes' means the type library should not be displayed to users, although its use is not restricted.                     Should be used by controls.  Hosts should create a new type library that wraps the control with extended properties.                     This attribute can only be set if Advertise='no'.                 </td>
         <td>&nbsp;</td>
       </tr>
@@ -98,7 +98,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Restricted</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                     Value of 'yes' means the type library is restricted, and should not be displayed to users.  This attribute can only be set if Advertise='no'.                 </td>
         <td>&nbsp;</td>
       </tr>

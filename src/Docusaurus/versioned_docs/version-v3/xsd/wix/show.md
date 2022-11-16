@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/adminuisequence">AdminUISequence</a>, <a href="../wix/installuisequence">InstallUISequence</a></dd>
+    <a href="../adminuisequence/">AdminUISequence</a>, <a href="../installuisequence/">InstallUISequence</a></dd>
   <dt>Inner Text (xs:string)</dt>
   <dd>This element may have inner text.</dd>
   <dt>Children</dt>
@@ -43,13 +43,13 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>OnExit</td>
-        <td><a href="../wix/simple_type_exittype">ExitType</a></td>
+        <td><a href="../simple_type_exittype/">ExitType</a></td>
         <td>mutually exclusive with Before, After, and Sequence attributes</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Overridable</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                                 If "yes", the sequencing of this dialog may be overridden by sequencing elsewhere.                             </td>
         <td>&nbsp;</td>
       </tr>

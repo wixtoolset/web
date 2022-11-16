@@ -9,11 +9,11 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/fragment">Fragment</a>, <a href="../wix/module">Module</a>, <a href="../wix/product">Product</a></dd>
+    <a href="../fragment/">Fragment</a>, <a href="../module/">Module</a>, <a href="../product/">Product</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../wix/column">Column</a> (min: 0, max: unbounded): Column definition for the custom table.</li><li><a href="../wix/row">Row</a> (min: 0, max: unbounded): Row definition for the custom table.</li></ol></dd>
+  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../column/">Column</a> (min: 0, max: unbounded): Column definition for the custom table.</li><li><a href="../row/">Row</a> (min: 0, max: unbounded): Row definition for the custom table.</li></ol></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -31,7 +31,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>BootstrapperApplicationData</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Indicates the table data is transformed into the bootstrapper application data manifest.</td>
         <td>&nbsp;</td>
       </tr>

@@ -11,7 +11,7 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/control">Control</a>, <a href="../wix/ui">UI</a></dd>
+    <a href="../control/">Control</a>, <a href="../ui/">UI</a></dd>
   <dt>Inner Text (xs:string)</dt>
   <dd>The element value is the optional Condition expression.</dd>
   <dt>Children</dt>

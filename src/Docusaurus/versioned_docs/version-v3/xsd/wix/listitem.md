@@ -10,7 +10,7 @@ layout: documentation_xsd_main
     <a href="http://msdn.microsoft.com/library/aa367872.aspx" target="_blank">ComboBox Table</a>, <a href="http://msdn.microsoft.com/library/aa369762.aspx" target="_blank">ListBox Table</a>, <a href="http://msdn.microsoft.com/library/aa369764.aspx" target="_blank">ListView Table</a></dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/combobox">ComboBox</a>, <a href="../wix/listbox">ListBox</a>, <a href="../wix/listview">ListView</a></dd>
+    <a href="../combobox/">ComboBox</a>, <a href="../listbox/">ListBox</a>, <a href="../listview/">ListView</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>

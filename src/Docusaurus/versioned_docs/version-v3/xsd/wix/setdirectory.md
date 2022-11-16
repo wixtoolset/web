@@ -11,7 +11,7 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/fragment">Fragment</a>, <a href="../wix/module">Module</a>, <a href="../wix/product">Product</a></dd>
+    <a href="../fragment/">Fragment</a>, <a href="../module/">Module</a>, <a href="../product/">Product</a></dd>
   <dt>Inner Text (xs:string)</dt>
   <dd>                         The condition that determines whether the Directory is set. If the condition evaluates to false, the SetDirectory is skipped.                     </dd>
   <dt>Children</dt>
@@ -39,7 +39,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Sequence</td>
-        <td><a href="../wix/simple_type_sequencetype">SequenceType</a></td>
+        <td><a href="../simple_type_sequencetype/">SequenceType</a></td>
         <td>                                 Controls which sequences the Directory assignment is sequenced in.                                 For 'execute', the assignment is scheduled in the InstallExecuteSequence.                                 For 'ui', the assignment is scheduled in the InstallUISequence.                                 For 'first', the assignment is scheduled in the InstallUISequence or the InstallExecuteSequence if the InstallUISequence is skipped at install time.                                 For 'both', the assignment is scheduled in both the InstallUISequence and the InstallExecuteSequence.                                  The default is 'both'.                             </td>
         <td>&nbsp;</td>
       </tr>
@@ -58,5 +58,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../wix/custom">Custom</a>, <a href="../wix/customactionref">CustomActionRef</a>, <a href="../wix/installuisequence">InstallUISequence</a>, <a href="../wix/installexecutesequence">InstallExecuteSequence</a></dd>
+    <a href="../wix">Wix Schema</a>, <a href="../custom/">Custom</a>, <a href="../customactionref/">CustomActionRef</a>, <a href="../installuisequence/">InstallUISequence</a>, <a href="../installexecutesequence/">InstallExecuteSequence</a></dd>
 </dl>

@@ -11,11 +11,11 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/fragment">Fragment</a>, <a href="../wix/module">Module</a>, <a href="../wix/product">Product</a>, <a href="../wix/sfpcatalog">SFPCatalog</a></dd>
+    <a href="../fragment/">Fragment</a>, <a href="../module/">Module</a>, <a href="../product/">Product</a>, <a href="../sfpcatalog/">SFPCatalog</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wix/sfpcatalog">SFPCatalog</a> (min: 0, max: unbounded)</li><li><a href="../wix/sfpfile">SFPFile</a> (min: 0, max: unbounded): Primary Key to File Table.</li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../sfpcatalog/">SFPCatalog</a> (min: 0, max: unbounded)</li><li><a href="../sfpfile/">SFPFile</a> (min: 0, max: unbounded): Primary Key to File Table.</li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">

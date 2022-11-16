@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/component">Component</a>, <a href="../wix/directory">Directory</a>, <a href="../wix/externalfile">ExternalFile</a>, <a href="../wix/file">File</a>, <a href="../wix/media">Media</a>, <a href="../wix/product">Product</a>, <a href="../wix/targetfile">TargetFile</a>, <a href="../wix/targetimage">TargetImage</a>, <a href="../wix/upgradefile">UpgradeFile</a>, <a href="../wix/upgradeimage">UpgradeImage</a></dd>
+    <a href="../component/">Component</a>, <a href="../directory/">Directory</a>, <a href="../externalfile/">ExternalFile</a>, <a href="../file/">File</a>, <a href="../media/">Media</a>, <a href="../product/">Product</a>, <a href="../targetfile/">TargetFile</a>, <a href="../targetimage/">TargetImage</a>, <a href="../upgradefile/">UpgradeFile</a>, <a href="../upgradeimage/">UpgradeImage</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>

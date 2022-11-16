@@ -9,11 +9,11 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/fragment">Fragment</a>, <a href="../wix/patch">Patch</a>, <a href="../wix/patchfamilygroup">PatchFamilyGroup</a></dd>
+    <a href="../fragment/">Fragment</a>, <a href="../patch/">Patch</a>, <a href="../patchfamilygroup/">PatchFamilyGroup</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Sequence (min: 1, max: 1)<ol><li>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wix/all">All</a> (min: 0, max: unbounded)</li><li><a href="../wix/binaryref">BinaryRef</a> (min: 0, max: unbounded)</li><li><a href="../wix/componentref">ComponentRef</a> (min: 0, max: unbounded)</li><li><a href="../wix/customactionref">CustomActionRef</a> (min: 0, max: unbounded)</li><li><a href="../wix/digitalcertificateref">DigitalCertificateRef</a> (min: 0, max: unbounded)</li><li><a href="../wix/directoryref">DirectoryRef</a> (min: 0, max: unbounded)</li><li><a href="../wix/featureref">FeatureRef</a> (min: 0, max: unbounded)</li><li><a href="../wix/iconref">IconRef</a> (min: 0, max: unbounded)</li><li><a href="../wix/propertyref">PropertyRef</a> (min: 0, max: unbounded)</li><li><a href="../wix/uiref">UIRef</a> (min: 0, max: unbounded)</li><li><span class="extension">Any Element (namespace='##other' processContents='Lax')                              Extensibility point in the WiX XML Schema.  Schema extensions can register additional                             elements at this point in the schema.                         </span><ul><li><a href="../tag/tagref" class="extension">TagRef</a></li></ul></li></ul></li></ol></dd>
+  <dd>Sequence (min: 1, max: 1)<ol><li>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../all/">All</a> (min: 0, max: unbounded)</li><li><a href="../binaryref/">BinaryRef</a> (min: 0, max: unbounded)</li><li><a href="../componentref/">ComponentRef</a> (min: 0, max: unbounded)</li><li><a href="../customactionref/">CustomActionRef</a> (min: 0, max: unbounded)</li><li><a href="../digitalcertificateref/">DigitalCertificateRef</a> (min: 0, max: unbounded)</li><li><a href="../directoryref/">DirectoryRef</a> (min: 0, max: unbounded)</li><li><a href="../featureref/">FeatureRef</a> (min: 0, max: unbounded)</li><li><a href="../iconref/">IconRef</a> (min: 0, max: unbounded)</li><li><a href="../propertyref/">PropertyRef</a> (min: 0, max: unbounded)</li><li><a href="../uiref/">UIRef</a> (min: 0, max: unbounded)</li><li><span class="extension">Any Element (namespace='##other' processContents='Lax')                              Extensibility point in the WiX XML Schema.  Schema extensions can register additional                             elements at this point in the schema.                         </span><ul><li><a href="../tag/tagref" class="extension">TagRef</a></li></ul></li></ul></li></ol></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -31,13 +31,13 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>ProductCode</td>
-        <td><a href="../wix/simple_type_guid">Guid</a></td>
+        <td><a href="../simple_type_guid/">Guid</a></td>
         <td>                         Specifies the ProductCode of the product that this family applies to.                     </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Supersede</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                         Set this value to 'yes' to indicate that this patch will supersede all previous patches in this patch family.                         The default value is 'no'.                     </td>
         <td>&nbsp;</td>
       </tr>

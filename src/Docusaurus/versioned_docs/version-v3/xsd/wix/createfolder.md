@@ -11,12 +11,12 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/component">Component</a>
+    <a href="../component/">Component</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wix/permission">Permission</a> (min: 0, max: unbounded): ACL permission</li><li><a href="../wix/permissionex">PermissionEx</a> (min: 0, max: unbounded): Can also configure the ACLs for this folder.</li><li><a href="../wix/shortcut">Shortcut</a> (min: 0, max: unbounded): Non-advertised shortcut to this folder, Shortcut Target is preset to the folder</li><li><span class="extension">Any Element (namespace='##other' processContents='Lax')                              Extensibility point in the WiX XML Schema.  Schema extensions can register additional                             elements at this point in the schema.                         </span><ul><li><a href="../util/permissionex" class="extension">PermissionEx</a></li></ul></li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../permission/">Permission</a> (min: 0, max: unbounded): ACL permission</li><li><a href="../permissionex/">PermissionEx</a> (min: 0, max: unbounded): Can also configure the ACLs for this folder.</li><li><a href="../shortcut/">Shortcut</a> (min: 0, max: unbounded): Non-advertised shortcut to this folder, Shortcut Target is preset to the folder</li><li><span class="extension">Any Element (namespace='##other' processContents='Lax')                              Extensibility point in the WiX XML Schema.  Schema extensions can register additional                             elements at this point in the schema.                         </span><ul><li><a href="../util/permissionex" class="extension">PermissionEx</a></li></ul></li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -36,5 +36,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../wix/removefolder">RemoveFolder</a></dd>
+    <a href="../wix">Wix Schema</a>, <a href="../removefolder/">RemoveFolder</a></dd>
 </dl>

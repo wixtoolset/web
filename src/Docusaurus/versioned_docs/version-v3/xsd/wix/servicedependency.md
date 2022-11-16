@@ -11,7 +11,7 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/serviceinstall">ServiceInstall</a>
+    <a href="../serviceinstall/">ServiceInstall</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -34,7 +34,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Group</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                         Set to 'yes' to indicate that the value in the Id attribute is the name of a group of services.                     </td>
         <td>&nbsp;</td>
       </tr>

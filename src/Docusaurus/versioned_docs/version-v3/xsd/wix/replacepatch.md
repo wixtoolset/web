@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/patchcreation">PatchCreation</a>
+    <a href="../patchcreation/">PatchCreation</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -26,7 +26,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Id</td>
-        <td><a href="../wix/simple_type_guid">Guid</a></td>
+        <td><a href="../simple_type_guid/">Guid</a></td>
         <td>Patch GUID to be unregistered if it exists on the machine targeted by this patch.</td>
         <td>Yes</td>
       </tr>

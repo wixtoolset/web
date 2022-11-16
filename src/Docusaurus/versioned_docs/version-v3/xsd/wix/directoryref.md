@@ -9,11 +9,11 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/fragment">Fragment</a>, <a href="../wix/module">Module</a>, <a href="../wix/patchfamily">PatchFamily</a>, <a href="../wix/product">Product</a></dd>
+    <a href="../fragment/">Fragment</a>, <a href="../module/">Module</a>, <a href="../patchfamily/">PatchFamily</a>, <a href="../product/">Product</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wix/component">Component</a> (min: 0, max: unbounded)</li><li><a href="../wix/directory">Directory</a> (min: 0, max: unbounded)</li><li><a href="../wix/merge">Merge</a> (min: 0, max: unbounded)</li><li><span class="extension">Any Element (namespace='##other' processContents='Lax')                          Extensibility point in the WiX XML Schema.  Schema extensions can register additional                         elements at this point in the schema.                     </span></li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../component/">Component</a> (min: 0, max: unbounded)</li><li><a href="../directory/">Directory</a> (min: 0, max: unbounded)</li><li><a href="../merge/">Merge</a> (min: 0, max: unbounded)</li><li><span class="extension">Any Element (namespace='##other' processContents='Lax')                          Extensibility point in the WiX XML Schema.  Schema extensions can register additional                         elements at this point in the schema.                     </span></li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -31,7 +31,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>DiskId</td>
-        <td><a href="../wix/simple_type_diskidtype">DiskIdType</a></td>
+        <td><a href="../simple_type_diskidtype/">DiskIdType</a></td>
         <td>                         Sets the default disk identifier for the files contained in this directory.                         This attribute's value may be overridden by a child Component, Directory,                         Merge or File element. See the File or Merge elements' DiskId attribute for                         more information.                     </td>
         <td>&nbsp;</td>
       </tr>
@@ -64,5 +64,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../wix/directory">Directory</a></dd>
+    <a href="../wix">Wix Schema</a>, <a href="../directory/">Directory</a></dd>
 </dl>

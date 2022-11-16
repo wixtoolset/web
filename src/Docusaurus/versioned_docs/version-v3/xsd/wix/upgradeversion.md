@@ -11,7 +11,7 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/upgrade">Upgrade</a>
+    <a href="../upgrade/">Upgrade</a>
   </dd>
   <dt>Inner Text (xs:string)</dt>
   <dd>This element may have inner text.</dd>
@@ -28,25 +28,25 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>ExcludeLanguages</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Set to "yes" to detect all languages, excluding the languages listed in the Language attribute.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>IgnoreRemoveFailure</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Set to "yes" to continue installation upon failure to remove a product or application.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>IncludeMaximum</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Set to "yes" to make the range of versions detected include the value specified in Maximum.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>IncludeMinimum</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Set to "no" to make the range of versions detected exclude the value specified in Minimum.  This attribute is "yes" by default.</td>
         <td>&nbsp;</td>
       </tr>
@@ -64,7 +64,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>MigrateFeatures</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Set to "yes" to migrate feature states from upgraded products by enabling the logic in the MigrateFeatureStates action.</td>
         <td>&nbsp;</td>
       </tr>
@@ -76,7 +76,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>OnlyDetect</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Set to "yes" to detect products and applications but do not uninstall.</td>
         <td>&nbsp;</td>
       </tr>

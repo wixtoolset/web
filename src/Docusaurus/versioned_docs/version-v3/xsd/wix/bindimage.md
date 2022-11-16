@@ -10,7 +10,7 @@ layout: documentation_xsd_main
     <a href="http://msdn.microsoft.com/library/aa367828.aspx" target="_blank">BindImage Table</a>, <a href="http://msdn.microsoft.com/library/aa367827.aspx" target="_blank">BindImage Action</a></dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/installexecutesequence">InstallExecuteSequence</a>
+    <a href="../installexecutesequence/">InstallExecuteSequence</a>
   </dd>
   <dt>Inner Text (xs:string)</dt>
   <dd>This element may have inner text.</dd>
@@ -33,7 +33,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Suppress</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>If yes, this action will not occur.</td>
         <td>&nbsp;</td>
       </tr>

@@ -9,11 +9,11 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/bundle">Bundle</a>, <a href="../wix/fragment">Fragment</a></dd>
+    <a href="../bundle/">Bundle</a>, <a href="../fragment/">Fragment</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wix/payload">Payload</a> (min: 0, max: unbounded)</li><li><a href="../wix/payloadgroupref">PayloadGroupRef</a> (min: 0, max: unbounded)</li><li><span class="extension">Any Element (namespace='##other' processContents='Lax')                  Extensibility point in the WiX XML Schema.  Schema extensions can register additional                 elements at this point in the schema.               </span><ul><li><a href="../bal/wixmanagedbootstrapperapplicationhost" class="extension">WixManagedBootstrapperApplicationHost</a></li><li><a href="../bal/wixstandardbootstrapperapplication" class="extension">WixStandardBootstrapperApplication</a></li></ul></li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../payload/">Payload</a> (min: 0, max: unbounded)</li><li><a href="../payloadgroupref/">PayloadGroupRef</a> (min: 0, max: unbounded)</li><li><span class="extension">Any Element (namespace='##other' processContents='Lax')                  Extensibility point in the WiX XML Schema.  Schema extensions can register additional                 elements at this point in the schema.               </span><ul><li><a href="../bal/wixmanagedbootstrapperapplicationhost" class="extension">WixManagedBootstrapperApplicationHost</a></li><li><a href="../bal/wixstandardbootstrapperapplication" class="extension">WixStandardBootstrapperApplication</a></li></ul></li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">

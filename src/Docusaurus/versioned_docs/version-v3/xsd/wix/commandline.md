@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/exepackage">ExePackage</a>
+    <a href="../exepackage/">ExePackage</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>

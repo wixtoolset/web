@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/feature">Feature</a>, <a href="../wix/featuregroup">FeatureGroup</a>, <a href="../wix/featureref">FeatureRef</a></dd>
+    <a href="../feature/">Feature</a>, <a href="../featuregroup/">FeatureGroup</a>, <a href="../featureref/">FeatureRef</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
@@ -31,7 +31,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Primary</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Specifies whether the feature containing this MergeRef is the primary feature for advertising the merge module's components.</td>
         <td>&nbsp;</td>
       </tr>
@@ -52,5 +52,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../wix/merge">Merge</a></dd>
+    <a href="../wix">Wix Schema</a>, <a href="../merge/">Merge</a></dd>
 </dl>

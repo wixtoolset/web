@@ -11,7 +11,7 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/installexecutesequence">InstallExecuteSequence</a>
+    <a href="../installexecutesequence/">InstallExecuteSequence</a>
   </dd>
   <dt>Inner Text (xs:string)</dt>
   <dd>Text node specifies the condition of the action.</dd>
@@ -40,7 +40,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Overridable</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                             If "yes", the sequencing of this action may be overridden by sequencing elsewhere.                         </td>
         <td>&nbsp;</td>
       </tr>
@@ -52,7 +52,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Suppress</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>If yes, this action will not occur.</td>
         <td>&nbsp;</td>
       </tr>

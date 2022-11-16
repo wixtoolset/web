@@ -10,7 +10,7 @@ layout: documentation_xsd_main
     <a href="http://msdn.microsoft.com/library/aa370962.aspx" target="_blank">RadioButton Table</a>, <a href="http://msdn.microsoft.com/library/aa368044.aspx" target="_blank">Control Table</a>, <a href="http://msdn.microsoft.com/library/aa368286.aspx" target="_blank">Dialog Table</a></dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/radiobuttongroup">RadioButtonGroup</a>
+    <a href="../radiobuttongroup/">RadioButtonGroup</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -33,7 +33,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Height</td>
-        <td><a href="../wix/simple_type_localizableinteger">LocalizableInteger</a></td>
+        <td><a href="../simple_type_localizableinteger/">LocalizableInteger</a></td>
         <td>&nbsp;</td>
         <td>Yes</td>
       </tr>
@@ -69,19 +69,19 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Width</td>
-        <td><a href="../wix/simple_type_localizableinteger">LocalizableInteger</a></td>
+        <td><a href="../simple_type_localizableinteger/">LocalizableInteger</a></td>
         <td>&nbsp;</td>
         <td>Yes</td>
       </tr>
       <tr>
         <td>X</td>
-        <td><a href="../wix/simple_type_localizableinteger">LocalizableInteger</a></td>
+        <td><a href="../simple_type_localizableinteger/">LocalizableInteger</a></td>
         <td>&nbsp;</td>
         <td>Yes</td>
       </tr>
       <tr>
         <td>Y</td>
-        <td><a href="../wix/simple_type_localizableinteger">LocalizableInteger</a></td>
+        <td><a href="../simple_type_localizableinteger/">LocalizableInteger</a></td>
         <td>&nbsp;</td>
         <td>Yes</td>
       </tr>
@@ -89,5 +89,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../wix/radiobuttongroup">RadioButtonGroup</a></dd>
+    <a href="../wix">Wix Schema</a>, <a href="../radiobuttongroup/">RadioButtonGroup</a></dd>
 </dl>

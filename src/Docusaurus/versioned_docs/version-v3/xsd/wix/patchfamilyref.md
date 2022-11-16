@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/patch">Patch</a>, <a href="../wix/patchfamilygroup">PatchFamilyGroup</a></dd>
+    <a href="../patch/">Patch</a>, <a href="../patchfamilygroup/">PatchFamilyGroup</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
@@ -31,7 +31,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>ProductCode</td>
-        <td><a href="../wix/simple_type_guid">Guid</a></td>
+        <td><a href="../simple_type_guid/">Guid</a></td>
         <td>Specifies the ProductCode of the product that this family applies to.</td>
         <td>&nbsp;</td>
       </tr>
@@ -44,5 +44,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../wix/patchfamily">PatchFamily</a></dd>
+    <a href="../wix">Wix Schema</a>, <a href="../patchfamily/">PatchFamily</a></dd>
 </dl>

@@ -10,11 +10,11 @@ layout: documentation_xsd_main
     <a href="http://msdn.microsoft.com/library/aa368044.aspx" target="_blank">Control Table</a>, <a href="http://msdn.microsoft.com/library/aa368286.aspx" target="_blank">Dialog Table</a>, <a href="http://msdn.microsoft.com/library/aa369764.aspx" target="_blank">ListView Table</a></dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/control">Control</a>, <a href="../wix/ui">UI</a></dd>
+    <a href="../control/">Control</a>, <a href="../ui/">UI</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../wix/listitem">ListItem</a> (min: 0, max: unbounded): entry for ListBox table</li></ol></dd>
+  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../listitem/">ListItem</a> (min: 0, max: unbounded): entry for ListBox table</li></ol></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">

@@ -10,7 +10,7 @@ layout: documentation_xsd_main
     <a href="http://msdn.microsoft.com/library/aa371168.aspx" target="_blank">Registry Table</a>, <a href="http://msdn.microsoft.com/library/aa371208.aspx" target="_blank">RemoveRegistry Table</a></dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/component">Component</a>
+    <a href="../component/">Component</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -45,7 +45,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Root</td>
-        <td><a href="../wix/simple_type_registryroottype">RegistryRootType</a></td>
+        <td><a href="../simple_type_registryroottype/">RegistryRootType</a></td>
         <td>                         The predefined root key for the registry value.                     </td>
         <td>&nbsp;</td>
       </tr>

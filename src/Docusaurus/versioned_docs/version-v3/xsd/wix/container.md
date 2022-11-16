@@ -9,11 +9,11 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/bundle">Bundle</a>, <a href="../wix/fragment">Fragment</a></dd>
+    <a href="../bundle/">Bundle</a>, <a href="../fragment/">Fragment</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wix/packagegroupref">PackageGroupRef</a> (min: 0, max: unbounded)</li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../packagegroupref/">PackageGroupRef</a> (min: 0, max: unbounded)</li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -43,7 +43,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Type</td>
-        <td><a href="../wix/simple_type_burncontainertype">BurnContainerType</a></td>
+        <td><a href="../simple_type_burncontainertype/">BurnContainerType</a></td>
         <td>             Indicates whether the container is "attached" to the bundle executable or placed external to the bundle extecutable as "detached". If             this attribute is not specified, the default is to create a detached container.           </td>
         <td>&nbsp;</td>
       </tr>

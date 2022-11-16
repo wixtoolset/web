@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/bundle">Bundle</a>
+    <a href="../bundle/">Bundle</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -26,7 +26,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Disable</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                         Disables the default logging in the Bundle. The end user can still generate a                         log file by specifying the "-l" command-line argument when installing the                         Bundle.                     </td>
         <td>&nbsp;</td>
       </tr>

@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/patchbaseline">PatchBaseline</a>
+    <a href="../patchbaseline/">PatchBaseline</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -26,49 +26,49 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>IgnoreAddExistingRow</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Ignore errors when adding existing rows. The default is 'yes'.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>IgnoreAddExistingTable</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Ignore errors when adding existing tables. The default is 'yes'.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>IgnoreChangingCodePage</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Ignore errors when changing the database code page. The default is 'no'.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>IgnoreDeleteMissingRow</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Ignore errors when deleting missing rows. The default is 'yes'.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>IgnoreDeleteMissingTable</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Ignore errors when deleting missing tables. The default is 'yes'.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>IgnoreUpdateMissingRow</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Ignore errors when updating missing rows. The default is 'yes'.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ProductId</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Requires that the installed ProductCode match the target ProductCode used to create the transform. The default is 'yes'.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ProductLanguage</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Requires that the installed ProductLanguage match the target ProductLanguage used to create the transform. The default is 'no'.</td>
         <td>&nbsp;</td>
       </tr>
@@ -86,7 +86,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>UpgradeCode</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Requires that the installed UpgradeCode match the target UpgradeCode used to create the transform. The default is 'yes'.</td>
         <td>&nbsp;</td>
       </tr>

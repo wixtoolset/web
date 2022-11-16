@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/createfolder">CreateFolder</a>, <a href="../wix/file">File</a>, <a href="../wix/registry">Registry</a>, <a href="../wix/registrykey">RegistryKey</a>, <a href="../wix/registryvalue">RegistryValue</a></dd>
+    <a href="../createfolder/">CreateFolder</a>, <a href="../file/">File</a>, <a href="../registry/">Registry</a>, <a href="../registrykey/">RegistryKey</a>, <a href="../registryvalue/">RegistryValue</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>

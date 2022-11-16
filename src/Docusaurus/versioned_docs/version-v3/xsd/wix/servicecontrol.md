@@ -11,12 +11,12 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/component">Component</a>
+    <a href="../component/">Component</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../wix/serviceargument">ServiceArgument</a> (min: 0, max: unbounded): Ordered list of arguments used when modifying services.</li></ol></dd>
+  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../serviceargument/">ServiceArgument</a> (min: 0, max: unbounded): Ordered list of arguments used when modifying services.</li></ol></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -40,25 +40,25 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Remove</td>
-        <td><a href="../wix/simple_type_installuninstalltype">InstallUninstallType</a></td>
+        <td><a href="../simple_type_installuninstalltype/">InstallUninstallType</a></td>
         <td>                     Specifies whether the service should be removed by the DeleteServices action on install, uninstall or both.                     For 'install', the service will be removed only when the parent component is being installed (msiInstallStateLocal or                     msiInstallStateSource); for 'uninstall', the service will be removed only when the parent component                     is being removed (msiInstallStateAbsent); for 'both', the service will be removed in both cases.                 </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Start</td>
-        <td><a href="../wix/simple_type_installuninstalltype">InstallUninstallType</a></td>
+        <td><a href="../simple_type_installuninstalltype/">InstallUninstallType</a></td>
         <td>                     Specifies whether the service should be started by the StartServices action on install, uninstall or both.                     For 'install', the service will be started only when the parent component is being installed (msiInstallStateLocal or                     msiInstallStateSource); for 'uninstall', the service will be started only when the parent component                     is being removed (msiInstallStateAbsent); for 'both', the service will be started in both cases.                 </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Stop</td>
-        <td><a href="../wix/simple_type_installuninstalltype">InstallUninstallType</a></td>
+        <td><a href="../simple_type_installuninstalltype/">InstallUninstallType</a></td>
         <td>                     Specifies whether the service should be stopped by the StopServices action on install, uninstall or both.                     For 'install', the service will be stopped only when the parent component is being installed (msiInstallStateLocal or                     msiInstallStateSource); for 'uninstall', the service will be stopped only when the parent component                     is being removed (msiInstallStateAbsent); for 'both', the service will be stopped in both cases.                 </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Wait</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Specifies whether or not to wait for the service to complete before continuing. The default is 'yes'.</td>
         <td>&nbsp;</td>
       </tr>

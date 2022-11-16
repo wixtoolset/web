@@ -10,11 +10,11 @@ layout: documentation_xsd_main
     <a href="http://msdn.microsoft.com/library/aa367861.aspx" target="_blank">Class Table</a>, <a href="http://msdn.microsoft.com/library/aa370879.aspx" target="_blank">ProgId Table</a>, <a href="http://msdn.microsoft.com/library/aa371168.aspx" target="_blank">Registry Table</a>, <a href="http://msdn.microsoft.com/library/aa367566.aspx" target="_blank">AppId Table</a></dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/appid">AppId</a>, <a href="../wix/component">Component</a>, <a href="../wix/file">File</a>, <a href="../wix/typelib">TypeLib</a></dd>
+    <a href="../appid/">AppId</a>, <a href="../component/">Component</a>, <a href="../file/">File</a>, <a href="../typelib/">TypeLib</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wix/filetypemask">FileTypeMask</a> (min: 0, max: unbounded)</li><li><a href="../wix/interface">Interface</a> (min: 0, max: unbounded): These Interfaces will be registered with the parent Class and TypeLib (if present).</li><li><a href="../wix/progid">ProgId</a> (min: 0, max: unbounded): A ProgId associated with Class must be a child element of the Class element</li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../filetypemask/">FileTypeMask</a> (min: 0, max: unbounded)</li><li><a href="../interface/">Interface</a> (min: 0, max: unbounded): These Interfaces will be registered with the parent Class and TypeLib (if present).</li><li><a href="../progid/">ProgId</a> (min: 0, max: unbounded): A ProgId associated with Class must be a child element of the Class element</li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -26,19 +26,19 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Id</td>
-        <td><a href="../wix/simple_type_guid">Guid</a></td>
+        <td><a href="../simple_type_guid/">Guid</a></td>
         <td>The Class identifier (CLSID) of a COM server.</td>
         <td>Yes</td>
       </tr>
       <tr>
         <td>Advertise</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                     Set this value to "yes" in order to create a normal Class table row.  Set this value to                     "no" in order to generate Registry rows that perform similar registration (without the                     often problematic Windows Installer advertising behavior).                 </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>AppId</td>
-        <td><a href="../wix/simple_type_guid">Guid</a></td>
+        <td><a href="../simple_type_guid/">Guid</a></td>
         <td>                     This attribute is only allowed when a Class is advertised.  Using this attribute will reference an Application ID                     containing DCOM information for the associated application GUID.  The value must correspond to an AppId/@Id of an                     AppId element nested under a Fragment, Module, or Product element.  To associate an AppId with a non-advertised                     class, nest the class within a parent AppId element.                 </td>
         <td>&nbsp;</td>
       </tr>
@@ -56,7 +56,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Control</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                     Set this attribute's value to 'yes' to identify an object as an ActiveX Control.  The default value is 'no'.                 </td>
         <td>&nbsp;</td>
       </tr>
@@ -92,31 +92,31 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Insertable</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                     Specifies the CLSID may be insertable.                 </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Programmable</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                     Specifies the CLSID may be programmable.                 </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>RelativePath</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                     When the value is "yes", the bare file name can be used for COM servers. The installer                     registers the file name only instead of the complete path.  This enables the server in                     the current directory to take precedence and allows multiple copies of the same component.                 </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>SafeForInitializing</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                     May only be specified if the value of the Advertise attribute is "no".                 </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>SafeForScripting</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                     May only be specified if the value of the Advertise attribute is "no".                 </td>
         <td>&nbsp;</td>
       </tr>
@@ -128,7 +128,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>ShortPath</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                         Specifies whether or not to use the short path for the COM server.  This can only apply when Advertise is set to 'no'.  The default is 'no' meaning that it will use the long file name for the COM server.                     </td>
         <td>&nbsp;</td>
       </tr>
@@ -149,5 +149,5 @@ layout: documentation_xsd_main
   <dt>Remarks</dt>
   <dd>When being used in unadvertised mode, the attributes in the Class element correspond to registry keys                     as follows (values that can be specified in authoring are in bold):                     <dl><dt>Id/Context/Server</dt><dd><dl><dt>In General</dt><dd>                                     [HKCR\CLSID\{'{'}<b>Id</b>{'}'}\<b>Context1</b>]<br />                                     @="[!<b>Server</b>]"<br />                                     [HKCR\CLSID\{'{'}<b>Id</b>{'}'}\<b>Context2</b>]<br />                                     @="[!<b>Server</b>]"                                 </dd><dt>Specific Example</dt><dd>                                     [HKCR\CLSID\{'{'}<b>01234567-89AB-CDEF-0123-456789ABCDEF</b>{'}'}\<b>LocalServer</b>]<br />                                     @="[!<b>comserv.dll</b>]"<br />                                     [HKCR\CLSID\{'{'}<b>01234567-89AB-CDEF-0123-456789ABCDEF</b>{'}'}\<b>LocalServer32</b>]<br />                                     @="[!<b>comserv.dll</b>]"                                 </dd></dl></dd><dt>Id/Context/ForeignServer</dt><dd><dl><dt>In General</dt><dd>                                   [HKCR\CLSID\{'{'}<b>Id</b>{'}'}\<b>Context1</b>]<br />                                   @="<b>ForeignServer</b>"<br />                                   [HKCR\CLSID\{'{'}<b>Id</b>{'}'}\<b>Context2</b>]<br />                                   @="<b>ForeignServer</b>"                                 </dd><dt>Specific Example</dt><dd>                                   [HKCR\CLSID\{'{'}<b>01234567-89AB-CDEF-0123-456789ABCDEF</b>{'}'}\<b>LocalServer</b>]<br />                                   @="<b>mscoree.dll</b>"<br />                                   [HKCR\CLSID\{'{'}<b>01234567-89AB-CDEF-0123-456789ABCDEF</b>{'}'}\<b>LocalServer32</b>]<br />                                   @="<b>mscoree.dll</b>"                                 </dd></dl></dd><dt>AppId</dt><dd><dl><dt>In General</dt><dd>                                     [HKCR\CLSID\{'{'}<b>Id</b>{'}'}]<br />                                     AppId="{'{'}<b>AppId</b>{'}'}"                                 </dd><dt>Specific Example</dt><dd>                                     [HKCR\CLSID\{'{'}<b>01234567-89AB-CDEF-0123-456789ABCDEF</b>{'}'}]<br />                                     AppId="{'{'}<b>00000000-89AB-0000-0123-000000000000</b>{'}'}"                                 </dd></dl></dd><dt>Argument</dt><dd><dl><dt>In General</dt><dd>                                     [HKCR\CLSID\{'{'}<b>Id</b>{'}'}\<b>Context</b>]<br />                                     @="[!<b>Server</b>] <b>Argument</b>"                                 </dd><dt>Specific Example</dt><dd>                                     [HKCR\CLSID\{'{'}<b>01234567-89AB-CDEF-0123-456789ABCDEF</b>{'}'}\<b>LocalServer32</b>]<br />                                     @="[!<b>comserv.dll</b>] <b>/arg1 /arg2 /arg3</b>"<br /></dd></dl></dd><dt>Control</dt><dd><dl><dt>In General</dt><dd>                                     Value "yes" specified:<br />                                     [HKCR\CLSID\{'{'}<b>Id</b>{'}'}\Control]                                 </dd><dt>Specific Example</dt><dd>                                     [HKCR\CLSID\{'{'}<b>01234567-89AB-CDEF-0123-456789ABCDEF</b>{'}'}\Control]                                 </dd></dl></dd><dt>Description</dt><dd><dl><dt>In General</dt><dd>                                     [HKCR\CLSID\{'{'}<b>Id</b>{'}'}]<br />                                     @="<b>Description</b>"                                 </dd><dt>Specific Example</dt><dd>                                     [HKCR\CLSID\{'{'}<b>01234567-89AB-CDEF-0123-456789ABCDEF</b>{'}'}]<br />                                     @="<b>Description of Example COM Component</b>"                                 </dd></dl></dd><dt>Handler</dt><dd><dl><dt>In General</dt><dd>                                     Value "1" specified:<br />                                     [HKCR\CLSID\{'{'}<b>Id</b>{'}'}\InprocHandler]<br />                                     @="ole.dll"<br />                                     Value "2" specified:<br />                                     [HKCR\CLSID\{'{'}<b>Id</b>{'}'}\InprocHandler32]<br />                                     @="ole32.dll"<br />                                     Value "3" specified:<br />                                     [HKCR\CLSID\{'{'}<b>Id</b>{'}'}\InprocHandler]<br />                                     @="ole.dll"<br />                                     [HKCR\CLSID\{'{'}<b>Id</b>{'}'}\InprocHandler32]<br />                                     @="ole32.dll"<br />                                     Other value specified:<br />                                     [HKCR\CLSID\{'{'}<b>Id</b>{'}'}\InprocHandler32]<br />                                     @="<b>Handler</b>"                                 </dd><dt>Specific Example (for other value)</dt><dd>                                     [HKCR\CLSID\{'{'}<b>01234567-89AB-CDEF-0123-456789ABCDEF</b>{'}'}\InprocHandler32]<br />                                     @="<b>handler.dll</b>"                                 </dd></dl></dd><dt>Icon/IconIndex</dt><dd>This is not currently handled properly.</dd><dt>Insertable</dt><dd><dl><dt>In General</dt><dd>                                     Value "no" specified:<br />                                     [HKCR\CLSID\{'{'}<b>Id</b>{'}'}\NotInsertable]<br />                                     Value "yes" specified:<br />                                     [HKCR\CLSID\{'{'}<b>Id</b>{'}'}\Insertable]                                 </dd><dt>Specific Example</dt><dd>                                     [HKCR\CLSID\{'{'}<b>01234567-89AB-CDEF-0123-456789ABCDEF</b>{'}'}\Insertable]                                 </dd></dl></dd><dt>Programmable</dt><dd><dl><dt>In General</dt><dd>                                     Value "yes" specified:<br />                                     [HKCR\CLSID\{'{'}<b>Id</b>{'}'}\Programmable]                                 </dd><dt>Specific Example</dt><dd>                                     [HKCR\CLSID\{'{'}<b>01234567-89AB-CDEF-0123-456789ABCDEF</b>{'}'}\Programmable]                                 </dd></dl></dd><dt>RelativePath</dt><dd>Unsupported.  Please contribute this back to WiX if you know.</dd><dt>SafeForInitializing</dt><dd><dl><dt>In General</dt><dd>                                     Value "yes" specified:<br />                                     [HKCR\CLSID\{'{'}<b>Id</b>{'}'}\Implemented Categories\{'{'}7DD95802-9882-11CF-9FA9-00AA006C42C4{'}'}]                                 </dd><dt>Specific Example</dt><dd>                                     [HKCR\CLSID\{'{'}<b>01234567-89AB-CDEF-0123-456789ABCDEF</b>{'}'}\Implemented Categories\{'{'}7DD95802-9882-11CF-9FA9-00AA006C42C4{'}'}]                                 </dd></dl></dd><dt>SafeForScripting</dt><dd><dl><dt>In General</dt><dd>                                     Value "yes" specified:<br />                                     [HKCR\CLSID\{'{'}<b>Id</b>{'}'}\Implemented Categories\{'{'}7DD95801-9882-11CF-9FA9-00AA006C42C4{'}'}]                                 </dd><dt>Specific Example</dt><dd>                                     [HKCR\CLSID\{'{'}<b>01234567-89AB-CDEF-0123-456789ABCDEF</b>{'}'}\Implemented Categories\{'{'}7DD95801-9882-11CF-9FA9-00AA006C42C4{'}'}]                                 </dd></dl></dd><dt>ThreadingModel</dt><dd><dl><dt>In General</dt><dd>                                     [HKCR\CLSID\{'{'}<b>Id</b>{'}'}\<b>Context</b>]<br />                                     ThreadingModel="<b>ThreadingModel</b>"                                 </dd><dt>Specific Example</dt><dd>                                     [HKCR\CLSID\{'{'}<b>01234567-89AB-CDEF-0123-456789ABCDEF</b>{'}'}\<b>LocalServer32</b>]<br />                                     ThreadingModel="<b>Apartment</b>"                                 </dd></dl></dd><dt>TypeLibId (from parent TypeLib/@Id)</dt><dd><dl><dt>In General</dt><dd>                                     [HKCR\CLSID\{'{'}<b>Id</b>{'}'}\TypeLib]<br />                                     @="{'{'}<b>TypeLibId</b>{'}'}"                                 </dd><dt>Specific Example</dt><dd>                                     [HKCR\CLSID\{'{'}<b>01234567-89AB-CDEF-0123-456789ABCDEF</b>{'}'}\TypeLib]<br />                                     @="{'{'}<b>11111111-89AB-1111-0123-111111111111</b>{'}'}"                                 </dd></dl></dd><dt>Version</dt><dd><dl><dt>In General</dt><dd>                                     [HKCR\CLSID\{'{'}<b>Id</b>{'}'}\Version]<br />                                     @="<b>Version</b>"                                 </dd><dt>Specific Example</dt><dd>                                     [HKCR\CLSID\{'{'}<b>01234567-89AB-CDEF-0123-456789ABCDEF</b>{'}'}\Version]<br />                                     @="<b>1.0.0.0</b>"                                 </dd></dl></dd></dl></dd>  <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../wix/appid">AppId</a></dd>
+    <a href="../wix">Wix Schema</a>, <a href="../appid/">AppId</a></dd>
 </dl>

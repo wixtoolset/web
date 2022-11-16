@@ -11,12 +11,12 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/patchcreation">PatchCreation</a>
+    <a href="../patchcreation/">PatchCreation</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Sequence (min: 1, max: 1)<ol><li>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wix/customproperty">CustomProperty</a> (min: 0, max: unbounded): A custom property that extends the standard set.</li><li><a href="../wix/optimizecustomactions">OptimizeCustomActions</a> (min: 0, max: 1): Indicates whether custom actions can be skipped when applying the patch.</li></ul></li></ol></dd>
+  <dd>Sequence (min: 1, max: 1)<ol><li>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../customproperty/">CustomProperty</a> (min: 0, max: unbounded): A custom property that extends the standard set.</li><li><a href="../optimizecustomactions/">OptimizeCustomActions</a> (min: 0, max: 1): Indicates whether custom actions can be skipped when applying the patch.</li></ul></li></ol></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -28,7 +28,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>AllowRemoval</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Whether this is an uninstallable patch.</td>
         <td>Yes</td>
       </tr>
@@ -76,7 +76,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>OptimizedInstallMode</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                     If this attribute is set to 'yes' in all the patches to be applied in a transaction, the                     application of the patch is optimized if possible.  Available beginning with Windows Installer 3.1.                 </td>
         <td>&nbsp;</td>
       </tr>

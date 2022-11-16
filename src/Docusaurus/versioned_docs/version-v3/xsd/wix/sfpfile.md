@@ -11,7 +11,7 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/sfpcatalog">SFPCatalog</a>
+    <a href="../sfpcatalog/">SFPCatalog</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>

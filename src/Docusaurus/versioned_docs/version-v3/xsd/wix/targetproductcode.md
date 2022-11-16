@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/patchcreation">PatchCreation</a>, <a href="../wix/targetproductcodes">TargetProductCodes</a></dd>
+    <a href="../patchcreation/">PatchCreation</a>, <a href="../targetproductcodes/">TargetProductCodes</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>

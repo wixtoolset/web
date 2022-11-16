@@ -11,7 +11,7 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/patch">Patch</a>, <a href="../wix/patchcreation">PatchCreation</a></dd>
+    <a href="../patch/">Patch</a>, <a href="../patchcreation/">PatchCreation</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>

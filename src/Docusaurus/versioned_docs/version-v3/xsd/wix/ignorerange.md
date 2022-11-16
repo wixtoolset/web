@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/externalfile">ExternalFile</a>, <a href="../wix/targetfile">TargetFile</a></dd>
+    <a href="../externalfile/">ExternalFile</a>, <a href="../targetfile/">TargetFile</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
