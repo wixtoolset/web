@@ -11,7 +11,7 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/component">Component</a>
+    <a href="../component/">Component</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -40,19 +40,19 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>LongName</td>
-        <td><a href="../wix/simple_type_wildcardlongfilenametype">WildCardLongFileNameType</a></td>
+        <td><a href="../simple_type_wildcardlongfilenametype/">WildCardLongFileNameType</a></td>
         <td>This attribute has been deprecated; please use the Name attribute instead.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Name</td>
-        <td><a href="../wix/simple_type_wildcardlongfilenametype">WildCardLongFileNameType</a></td>
+        <td><a href="../simple_type_wildcardlongfilenametype/">WildCardLongFileNameType</a></td>
         <td>                     This value should be set to the localizable name of the file(s) to be removed.  All of the files that                     match the wild card will be removed from the specified directory.  The value is a filename that may also                     contain the wild card characters "?" for any single character or "*" for zero or more occurrences of any character.                     In prior versions of the WiX toolset, this attribute specified the short file name.                     This attribute's value may now be either a short or long file name.                     If a short file name is specified, the ShortName attribute may not be specified.                     If a long file name is specified, the LongName attribute may not be specified.                     Also, if this value is a long file name, the ShortName attribute may be omitted to                     allow WiX to attempt to generate a unique short file name.                     However, if you wish to manually specify the short file name, then the ShortName attribute may be specified.                 </td>
         <td>Yes</td>
       </tr>
       <tr>
         <td>On</td>
-        <td><a href="../wix/simple_type_installuninstalltype">InstallUninstallType</a></td>
+        <td><a href="../simple_type_installuninstalltype/">InstallUninstallType</a></td>
         <td>                         This value determines the time at which the file(s) may be removed. For 'install', the file will                         be removed only when the parent component is being installed (msiInstallStateLocal or                         msiInstallStateSource); for 'uninstall', the file will be removed only when the parent component                         is being removed (msiInstallStateAbsent); for 'both', the file will be removed in both cases.                     </td>
         <td>Yes</td>
       </tr>
@@ -64,7 +64,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>ShortName</td>
-        <td><a href="../wix/simple_type_wildcardshortfilenametype">WildCardShortFileNameType</a></td>
+        <td><a href="../simple_type_wildcardshortfilenametype/">WildCardShortFileNameType</a></td>
         <td>                         The short file name of the file in 8.3 format.                         This attribute should only be set if you want to manually specify the short file name.                     </td>
         <td>&nbsp;</td>
       </tr>
@@ -72,5 +72,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../wix/copyfile">CopyFile</a></dd>
+    <a href="../wix">Wix Schema</a>, <a href="../copyfile/">CopyFile</a></dd>
 </dl>

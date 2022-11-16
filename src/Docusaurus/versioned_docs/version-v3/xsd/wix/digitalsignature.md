@@ -11,12 +11,12 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/media">Media</a>
+    <a href="../media/">Media</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 1, max: 1)<ul><li><a href="../wix/digitalcertificate">DigitalCertificate</a> (min: 1, max: 1)</li></ul></dd>
+  <dd>Choice of elements (min: 1, max: 1)<ul><li><a href="../digitalcertificate/">DigitalCertificate</a> (min: 1, max: 1)</li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">

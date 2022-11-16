@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/product">Product</a>
+    <a href="../product/">Product</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -26,19 +26,19 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>AllowDowngrades</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                     When set to no (the default), products with lower version numbers are blocked from                     installing when a product with a higher version is installed; the DowngradeErrorMessage                     attribute must also be specified.<br/><br/>                    When set to yes, any version can be installed over any other version.                 </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>AllowSameVersionUpgrades</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                     When set to no (the default), installing a product with the same version and upgrade code                     (but different product code) is allowed and treated by MSI as two products. When set to yes,                     WiX sets the msidbUpgradeAttributesVersionMaxInclusive attribute, which tells MSI to treat                     a product with the same version as a major upgrade.<br/><br/>                    This is useful when two product versions differ only in the fourth version field. MSI                     specifically ignores that field when comparing product versions, so two products that                     differ only in the fourth version field are the same product and need this attribute set to                     yes to be detected.<br/><br/>                    Note that because MSI ignores the fourth product version field, setting this attribute to                     yes also allows downgrades when the first three product version fields are identical.                     For example, product version 1.0.0.1 will "upgrade" 1.0.0.2998 because they're seen as the                     same version (1.0.0). That could reintroduce serious bugs so the safest choice is to change                     the first three version fields and omit this attribute to get the default of no.<br/><br/>                    This attribute cannot be "yes" when AllowDowngrades is also "yes" -- AllowDowngrades                     already allows two products with the same version number to upgrade each other.                 </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Disallow</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                       When set to yes, products with higer version numbers are blocked from                       installing when a product with a lower version is installed; the UpgradeErrorMessage                       attribute must also be specified.<br/><br/>                      When set to no (the default), any version can be installed over any lower version.                   </td>
         <td>&nbsp;</td>
       </tr>
@@ -56,13 +56,13 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>IgnoreRemoveFailure</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                         When set to yes, failures removing the installed product during the upgrade will be                         ignored.<br/><br/>                        When set to no (the default), failures removing the installed product during the upgrade                         will be considered a failure and, depending on the scheduling, roll back the upgrade.                     </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>MigrateFeatures</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                         When set to yes (the default), the MigrateFeatureStates standard action will set the                         feature states of the upgrade product to those of the installed product.<br/><br/>                        When set to no, the installed features have no effect on the upgrade installation.                     </td>
         <td>&nbsp;</td>
       </tr>

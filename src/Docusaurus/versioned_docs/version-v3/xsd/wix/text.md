@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/control">Control</a>
+    <a href="../control/">Control</a>
   </dd>
   <dt>Inner Text (xs:string)</dt>
   <dd>This element may have inner text.</dd>

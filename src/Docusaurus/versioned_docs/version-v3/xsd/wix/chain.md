@@ -9,12 +9,12 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/bundle">Bundle</a>
+    <a href="../bundle/">Bundle</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wix/exepackage">ExePackage</a> (min: 0, max: unbounded)</li><li><a href="../wix/msipackage">MsiPackage</a> (min: 0, max: unbounded)</li><li><a href="../wix/msppackage">MspPackage</a> (min: 0, max: unbounded)</li><li><a href="../wix/msupackage">MsuPackage</a> (min: 0, max: unbounded)</li><li><a href="../wix/packagegroupref">PackageGroupRef</a> (min: 0, max: unbounded)</li><li><a href="../wix/rollbackboundary">RollbackBoundary</a> (min: 0, max: unbounded)</li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../exepackage/">ExePackage</a> (min: 0, max: unbounded)</li><li><a href="../msipackage/">MsiPackage</a> (min: 0, max: unbounded)</li><li><a href="../msppackage/">MspPackage</a> (min: 0, max: unbounded)</li><li><a href="../msupackage/">MsuPackage</a> (min: 0, max: unbounded)</li><li><a href="../packagegroupref/">PackageGroupRef</a> (min: 0, max: unbounded)</li><li><a href="../rollbackboundary/">RollbackBoundary</a> (min: 0, max: unbounded)</li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -26,19 +26,19 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>DisableRollback</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>             Specifies whether the bundle will attempt to rollback packages             executed in the chain. If "yes" is specified then when a vital             package fails to install only that package will rollback and the             chain will stop with the error. The default is "no" which             indicates all packages executed during the chain will be             rolledback to their previous state when a vital package fails.           </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>DisableSystemRestore</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>             Specifies whether the bundle will attempt to create a system             restore point when executing the chain. If "yes" is specified then             a system restore point will not be created. The default is "no" which             indicates a system restore point will be created when the bundle is             installed, uninstalled, repaired, modified, etc. If the system restore             point cannot be created, the bundle will log the issue and continue.           </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ParallelCache</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>             Specifies whether the bundle will start installing packages             while other packages are still being cached. If "yes",             packages will start executing when a rollback boundary is             encountered. The default is "no" which dictates all packages             must be cached before any packages will start to be installed.           </td>
         <td>&nbsp;</td>
       </tr>

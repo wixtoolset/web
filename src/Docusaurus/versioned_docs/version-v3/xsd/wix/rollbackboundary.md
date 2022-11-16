@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/chain">Chain</a>, <a href="../wix/packagegroup">PackageGroup</a></dd>
+    <a href="../chain/">Chain</a>, <a href="../packagegroup/">PackageGroup</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
@@ -31,7 +31,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Vital</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>             Specifies whether the rollback boundary aborts the chain. The default "yes" indicates that if             the rollback boundary is encountered then the chain will fail and rollback or stop. If "no"             is specified then the chain should continue successfuly at the next rollback boundary.           </td>
         <td>&nbsp;</td>
       </tr>

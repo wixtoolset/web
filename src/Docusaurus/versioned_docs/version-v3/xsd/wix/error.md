@@ -11,7 +11,7 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/ui">UI</a>
+    <a href="../ui/">UI</a>
   </dd>
   <dt>Inner Text (xs:string)</dt>
   <dd>Element value is Message, use CDATA if message contains delimiter characters</dd>

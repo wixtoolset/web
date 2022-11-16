@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/msipackage">MsiPackage</a>, <a href="../wix/msppackage">MspPackage</a></dd>
+    <a href="../msipackage/">MsiPackage</a>, <a href="../msppackage/">MspPackage</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>

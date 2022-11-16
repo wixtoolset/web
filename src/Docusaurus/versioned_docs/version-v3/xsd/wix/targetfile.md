@@ -9,12 +9,12 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/targetimage">TargetImage</a>
+    <a href="../targetimage/">TargetImage</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../wix/symbolpath">SymbolPath</a> (min: 0, max: 1)</li><li>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wix/ignorerange">IgnoreRange</a> (min: 0, max: unbounded)</li><li><a href="../wix/protectrange">ProtectRange</a> (min: 0, max: unbounded)</li></ul></li></ol></dd>
+  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../symbolpath/">SymbolPath</a> (min: 0, max: 1)</li><li>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../ignorerange/">IgnoreRange</a> (min: 0, max: unbounded)</li><li><a href="../protectrange/">ProtectRange</a> (min: 0, max: unbounded)</li></ul></li></ol></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">

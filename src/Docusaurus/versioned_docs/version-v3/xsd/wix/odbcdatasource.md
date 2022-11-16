@@ -11,11 +11,11 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/component">Component</a>, <a href="../wix/odbcdriver">ODBCDriver</a></dd>
+    <a href="../component/">Component</a>, <a href="../odbcdriver/">ODBCDriver</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../wix/property">Property</a> (min: 0, max: unbounded): Translates into ODBCSourceAttributes</li></ol></dd>
+  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../property/">Property</a> (min: 0, max: unbounded): Translates into ODBCSourceAttributes</li></ol></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -39,7 +39,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>KeyPath</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Set 'yes' to force this file to be key path for parent Component</td>
         <td>&nbsp;</td>
       </tr>

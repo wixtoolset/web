@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/fragment">Fragment</a>, <a href="../wix/module">Module</a>, <a href="../wix/product">Product</a></dd>
+    <a href="../fragment/">Fragment</a>, <a href="../module/">Module</a>, <a href="../product/">Product</a></dd>
   <dt>Inner Text (xs:string)</dt>
   <dd>               Condition that determines if the application should be closed.  Must be blank or evaluate to true               for the application to be scheduled for closing.             </dd>
   <dt>Children</dt>

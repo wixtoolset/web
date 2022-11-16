@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/patch">Patch</a>, <a href="../wix/patchfamilygroup">PatchFamilyGroup</a></dd>
+    <a href="../patch/">Patch</a>, <a href="../patchfamilygroup/">PatchFamilyGroup</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
@@ -38,5 +38,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../wix/patchfamilygroupref">PatchFamilyGroupRef</a></dd>
+    <a href="../wix">Wix Schema</a>, <a href="../patchfamilygroupref/">PatchFamilyGroupRef</a></dd>
 </dl>

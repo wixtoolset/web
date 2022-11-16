@@ -10,7 +10,7 @@ layout: documentation_xsd_main
     <a href="http://msdn.microsoft.com/library/aa367579.aspx" target="_blank">AppSearch Table</a>, <a href="http://msdn.microsoft.com/library/aa367578.aspx" target="_blank">AppSearch Action</a></dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/installexecutesequence">InstallExecuteSequence</a>, <a href="../wix/installuisequence">InstallUISequence</a></dd>
+    <a href="../installexecutesequence/">InstallExecuteSequence</a>, <a href="../installuisequence/">InstallUISequence</a></dd>
   <dt>Inner Text (xs:string)</dt>
   <dd>Text node specifies the condition of the action.</dd>
   <dt>Children</dt>
@@ -38,7 +38,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Overridable</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                             If "yes", the sequencing of this action may be overridden by sequencing elsewhere.                         </td>
         <td>&nbsp;</td>
       </tr>
@@ -50,7 +50,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Suppress</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>If yes, this action will not occur.</td>
         <td>&nbsp;</td>
       </tr>
@@ -58,5 +58,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../wix/componentsearch">ComponentSearch</a>, <a href="../wix/filesearch">FileSearch</a>, <a href="../wix/inifilesearch">IniFileSearch</a>, <a href="../wix/registrysearch">RegistrySearch</a></dd>
+    <a href="../wix">Wix Schema</a>, <a href="../componentsearch/">ComponentSearch</a>, <a href="../filesearch/">FileSearch</a>, <a href="../inifilesearch/">IniFileSearch</a>, <a href="../registrysearch/">RegistrySearch</a></dd>
 </dl>

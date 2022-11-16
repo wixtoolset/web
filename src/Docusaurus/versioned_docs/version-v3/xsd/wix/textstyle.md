@@ -11,7 +11,7 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/ui">UI</a>
+    <a href="../ui/">UI</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -40,7 +40,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Bold</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
@@ -58,7 +58,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Italic</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
@@ -76,13 +76,13 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Strike</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Underline</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>

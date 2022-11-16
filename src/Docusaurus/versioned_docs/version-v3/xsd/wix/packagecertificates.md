@@ -11,11 +11,11 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/fragment">Fragment</a>, <a href="../wix/product">Product</a></dd>
+    <a href="../fragment/">Fragment</a>, <a href="../product/">Product</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 1, max: unbounded)<ul><li><a href="../wix/digitalcertificate">DigitalCertificate</a> (min: 1, max: unbounded)</li></ul></dd>
+  <dd>Choice of elements (min: 1, max: unbounded)<ul><li><a href="../digitalcertificate/">DigitalCertificate</a> (min: 1, max: unbounded)</li></ul></dd>
   <dt>Attributes</dt>
   <dd>None</dd>
   <dt>See Also</dt>

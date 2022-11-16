@@ -11,7 +11,7 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/control">Control</a>, <a href="../wix/fragment">Fragment</a>, <a href="../wix/module">Module</a>, <a href="../wix/product">Product</a>, <a href="../wix/ui">UI</a></dd>
+    <a href="../control/">Control</a>, <a href="../fragment/">Fragment</a>, <a href="../module/">Module</a>, <a href="../product/">Product</a>, <a href="../ui/">UI</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
@@ -45,7 +45,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>SuppressModularization</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                         Use to suppress modularization of this Binary identifier in merge modules.                     </td>
         <td>&nbsp;</td>
       </tr>

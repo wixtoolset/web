@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/module">Module</a>
+    <a href="../module/">Module</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -68,7 +68,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>KeyNoOrphan</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Does not merge rule according to rules in MSI SDK.</td>
         <td>&nbsp;</td>
       </tr>
@@ -80,7 +80,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>NonNullable</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>If yes, null is not a valid entry.</td>
         <td>&nbsp;</td>
       </tr>

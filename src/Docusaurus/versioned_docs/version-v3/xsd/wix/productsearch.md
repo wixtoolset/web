@@ -11,7 +11,7 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/property">Property</a>
+    <a href="../property/">Property</a>
   </dd>
   <dt>Inner Text (xs:string)</dt>
   <dd>This element may have inner text.</dd>
@@ -28,19 +28,19 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>ExcludeLanguages</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Set to "yes" to detect all languages, excluding the languages listed in the Language attribute.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>IncludeMaximum</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Set to "yes" to make the range of versions detected include the value specified in Maximum.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>IncludeMinimum</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Set to "no" to make the range of versions detected exclude the value specified in Minimum.  This attribute is "yes" by default.</td>
         <td>&nbsp;</td>
       </tr>
@@ -64,7 +64,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>UpgradeCode</td>
-        <td><a href="../wix/simple_type_guid">Guid</a></td>
+        <td><a href="../simple_type_guid/">Guid</a></td>
         <td>This value specifies the upgrade code for the products that are to be detected by the FindRelatedProducts action.</td>
         <td>Yes</td>
       </tr>

@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/fragment">Fragment</a>, <a href="../lux/mutation" class="extension">Mutation</a>, <a href="../lux/unittest" class="extension">UnitTest</a></dd>
+    <a href="../fragment/">Fragment</a>, <a href="../lux/mutation" class="extension">Mutation</a>, <a href="../lux/unittest" class="extension">UnitTest</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>

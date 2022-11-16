@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/property">Property</a>
+    <a href="../property/">Property</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -34,5 +34,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../wix/registrysearch">RegistrySearch</a></dd>
+    <a href="../wix">Wix Schema</a>, <a href="../registrysearch/">RegistrySearch</a></dd>
 </dl>

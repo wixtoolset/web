@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/merge">Merge</a>
+    <a href="../merge/">Merge</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>

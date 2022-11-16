@@ -11,7 +11,7 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/component">Component</a>
+    <a href="../component/">Component</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -52,7 +52,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Permanent</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Specifies that the environment variable should not be removed on uninstall.</td>
         <td>&nbsp;</td>
       </tr>
@@ -64,7 +64,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>System</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                     Specifies that the environment variable should be added to the system environment space.  The default                     is 'no' which indicates the environment variable is added to the user environment space.                 </td>
         <td>&nbsp;</td>
       </tr>

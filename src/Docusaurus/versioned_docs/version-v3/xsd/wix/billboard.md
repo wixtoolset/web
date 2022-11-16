@@ -10,12 +10,12 @@ layout: documentation_xsd_main
     <a href="http://msdn.microsoft.com/library/aa367823.aspx" target="_blank">Billboard Table</a>, <a href="http://msdn.microsoft.com/library/aa367818.aspx" target="_blank">BBControl Table</a></dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/billboardaction">BillboardAction</a>
+    <a href="../billboardaction/">BillboardAction</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../wix/control">Control</a> (min: 0, max: unbounded): Only controls of static type such as: Text, Bitmap, Icon, or custom control can be placed on a billboard.</li></ol></dd>
+  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../control/">Control</a> (min: 0, max: unbounded): Only controls of static type such as: Text, Bitmap, Icon, or custom control can be placed on a billboard.</li></ol></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">

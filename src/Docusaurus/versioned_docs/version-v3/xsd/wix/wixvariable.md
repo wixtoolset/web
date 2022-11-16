@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/bundle">Bundle</a>, <a href="../wix/fragment">Fragment</a>, <a href="../wix/module">Module</a>, <a href="../wix/product">Product</a></dd>
+    <a href="../bundle/">Bundle</a>, <a href="../fragment/">Fragment</a>, <a href="../module/">Module</a>, <a href="../product/">Product</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
@@ -31,7 +31,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Overridable</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                         Set this value to 'yes' in order to make the variable's value overridable either by                         another WixVariable entry or via the command-line option -d&lt;name&gt;=&lt;value&gt;                         for light.exe.  If the same variable is declared overridable in multiple places it                         will cause an error (since WiX won't know which value is correct).  The default value                         is 'no'.                     </td>
         <td>&nbsp;</td>
       </tr>

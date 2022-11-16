@@ -11,7 +11,7 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/extension">Extension</a>
+    <a href="../extension/">Extension</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -28,13 +28,13 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Advertise</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Whether this MIME is to be advertised. The default is to match whatever the parent extension element uses.  If the parent element is not advertised, then this element cannot be advertised either.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Class</td>
-        <td><a href="../wix/simple_type_guid">Guid</a></td>
+        <td><a href="../simple_type_guid/">Guid</a></td>
         <td>Class ID for the COM server that is to be associated with the MIME content.</td>
         <td>&nbsp;</td>
       </tr>
@@ -46,7 +46,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Default</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>If 'yes', become the content type for the parent Extension.  The default value is 'no'.</td>
         <td>&nbsp;</td>
       </tr>

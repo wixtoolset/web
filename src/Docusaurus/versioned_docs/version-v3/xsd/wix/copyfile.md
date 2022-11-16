@@ -10,7 +10,7 @@ layout: documentation_xsd_main
     <a href="http://msdn.microsoft.com/library/aa368335.aspx" target="_blank">DuplicateFile Table</a>, <a href="http://msdn.microsoft.com/library/aa370055.aspx" target="_blank">MoveFile Table</a></dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/component">Component</a>, <a href="../wix/file">File</a></dd>
+    <a href="../component/">Component</a>, <a href="../file/">File</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
@@ -32,7 +32,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Delete</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                     This attribute cannot be specified if the element is nested under a File element or the FileId attribute is specified.  In other                     cases, if the attribute is not specified, the default value is "no" and the file is copied, not moved.  Set the value to "yes"                     in order to move the file (thus deleting the source file) instead of copying it.                 </td>
         <td>&nbsp;</td>
       </tr>
@@ -44,13 +44,13 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>DestinationLongName</td>
-        <td><a href="../wix/simple_type_longfilenametype">LongFileNameType</a></td>
+        <td><a href="../simple_type_longfilenametype/">LongFileNameType</a></td>
         <td>This attribute has been deprecated; please use the DestinationName attribute instead.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>DestinationName</td>
-        <td><a href="../wix/simple_type_longfilenametype">LongFileNameType</a></td>
+        <td><a href="../simple_type_longfilenametype/">LongFileNameType</a></td>
         <td>                   In prior versions of the WiX toolset, this attribute specified the short file name.                   Now set this value to the localizable name to be given to the original file after it is moved or copied.                   If this attribute is not specified, then the destination file is given the same name as the source file.                   If a short file name is specified, the DestinationShortName attribute may not be specified.                   If a long file name is specified, the DestinationLongName attribute may not be specified.                   Also, if this value is a long file name, the DestinationShortName attribute may be omitted to                   allow WiX to attempt to generate a unique short file name.                   However, if this name collides with another file or you wish to manually specify                   the short file name, then the DestinationShortName attribute may be specified.                 </td>
         <td>&nbsp;</td>
       </tr>
@@ -62,7 +62,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>DestinationShortName</td>
-        <td><a href="../wix/simple_type_shortfilenametype">ShortFileNameType</a></td>
+        <td><a href="../simple_type_shortfilenametype/">ShortFileNameType</a></td>
         <td>                   The short file name of the file in 8.3 format.                   This attribute should only be set if there is a conflict between generated short file names                   or you wish to manually specify the short file name.                 </td>
         <td>&nbsp;</td>
       </tr>
@@ -80,7 +80,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>SourceName</td>
-        <td><a href="../wix/simple_type_wildcardlongfilenametype">WildCardLongFileNameType</a></td>
+        <td><a href="../simple_type_wildcardlongfilenametype/">WildCardLongFileNameType</a></td>
         <td>                     This attribute cannot be specified if the element is nested under a File element or the FileId attribute is specified.  Set                     this value to the localizable name of the file(s) to be copied or moved.  All of the files that                     match the wild card will be removed from the specified directory.  The value is a filename that may also                     contain the wild card characters "?" for any single character or "*" for zero or more occurrences of any character.  If this                     attribute is not specified (and this element is not nested under a File element or specify a FileId attribute) then the                     SourceProperty attribute should be set to the name of a property that will resolve to the full path of the source filename.                     If the value of this attribute contains a "*" wildcard and the DestinationName attribute is specified, all moved or copied                     files retain the file names from their sources.                 </td>
         <td>&nbsp;</td>
       </tr>
@@ -94,5 +94,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../wix/removefile">RemoveFile</a></dd>
+    <a href="../wix">Wix Schema</a>, <a href="../removefile/">RemoveFile</a></dd>
 </dl>

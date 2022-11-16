@@ -9,12 +9,12 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/wix">Wix</a>
+    <a href="../wix/">Wix</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../wix/patchinformation">PatchInformation</a> (min: 1, max: 1)</li><li><a href="../wix/patchmetadata">PatchMetadata</a> (min: 0, max: 1)</li><li><a href="../wix/family">Family</a> (min: 1, max: unbounded)</li><li>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wix/patchproperty">PatchProperty</a> (min: 0, max: unbounded)</li><li><a href="../wix/patchsequence">PatchSequence</a> (min: 0, max: unbounded)</li><li><a href="../wix/replacepatch">ReplacePatch</a> (min: 0, max: unbounded)</li><li><a href="../wix/targetproductcode">TargetProductCode</a> (min: 0, max: unbounded)</li></ul></li></ol></dd>
+  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../patchinformation/">PatchInformation</a> (min: 1, max: 1)</li><li><a href="../patchmetadata/">PatchMetadata</a> (min: 0, max: 1)</li><li><a href="../family/">Family</a> (min: 1, max: unbounded)</li><li>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../patchproperty/">PatchProperty</a> (min: 0, max: unbounded)</li><li><a href="../patchsequence/">PatchSequence</a> (min: 0, max: unbounded)</li><li><a href="../replacepatch/">ReplacePatch</a> (min: 0, max: unbounded)</li><li><a href="../targetproductcode/">TargetProductCode</a> (min: 0, max: unbounded)</li></ul></li></ol></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -26,25 +26,25 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Id</td>
-        <td><a href="../wix/simple_type_guid">Guid</a></td>
+        <td><a href="../simple_type_guid/">Guid</a></td>
         <td>PatchCreation identifier; this is the primary key for identifying patches.</td>
         <td>Yes</td>
       </tr>
       <tr>
         <td>AllowMajorVersionMismatches</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Use this to set whether the major versions between the upgrade and target images match. See <a href="http://msdn.microsoft.com/library/aa370890.aspx" target="_blank">AllowProductVersionMajorMismatches</a> for more information.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>AllowProductCodeMismatches</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Use this to set whether the product code between the upgrade and target images match. See <a href="http://msdn.microsoft.com/library/aa370890.aspx" target="_blank">AllowProductCodeMismatches</a> for more information.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>CleanWorkingFolder</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Use this to set whether Patchwiz should clean the temp folder when finished. See <a href="http://msdn.microsoft.com/library/aa370890.aspx" target="_blank">DontRemoveTempFolderWhenFinished</a> for more information.</td>
         <td>&nbsp;</td>
       </tr>
@@ -74,7 +74,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>WholeFilesOnly</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Use this to set whether changing files should be included in their entirety. See <a href="http://msdn.microsoft.com/library/aa370890.aspx" target="_blank">IncludeWholeFilesOnly</a> for more information.</td>
         <td>&nbsp;</td>
       </tr>

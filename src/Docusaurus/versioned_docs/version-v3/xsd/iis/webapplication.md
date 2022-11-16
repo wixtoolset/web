@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/fragment">Fragment</a>, <a href="../wix/module">Module</a>, <a href="../wix/product">Product</a>, <a href="../iis/webdir" class="extension">WebDir</a>, <a href="../iis/website" class="extension">WebSite</a>, <a href="../iis/webvirtualdir" class="extension">WebVirtualDir</a></dd>
+    <a href="../fragment/">Fragment</a>, <a href="../module/">Module</a>, <a href="../product/">Product</a>, <a href="../iis/webdir" class="extension">WebDir</a>, <a href="../iis/website" class="extension">WebSite</a>, <a href="../iis/webvirtualdir" class="extension">WebVirtualDir</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>

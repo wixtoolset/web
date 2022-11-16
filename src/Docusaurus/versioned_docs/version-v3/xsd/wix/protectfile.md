@@ -9,12 +9,12 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/family">Family</a>
+    <a href="../family/">Family</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 1, max: unbounded)<ul><li><a href="../wix/protectrange">ProtectRange</a> (min: 1, max: unbounded)</li></ul></dd>
+  <dd>Choice of elements (min: 1, max: unbounded)<ul><li><a href="../protectrange/">ProtectRange</a> (min: 1, max: unbounded)</li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">

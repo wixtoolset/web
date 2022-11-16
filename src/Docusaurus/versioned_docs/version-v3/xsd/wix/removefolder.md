@@ -11,7 +11,7 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/component">Component</a>
+    <a href="../component/">Component</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -40,7 +40,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>On</td>
-        <td><a href="../wix/simple_type_installuninstalltype">InstallUninstallType</a></td>
+        <td><a href="../simple_type_installuninstalltype/">InstallUninstallType</a></td>
         <td>                         This value determines the time at which the folder may be removed, based on the install/uninstall of the parent component.                         For 'install', the folder will be removed only when the parent component is being installed (msiInstallStateLocal or                         msiInstallStateSource); for 'uninstall', the folder will be removed only when the parent component                         is being removed (msiInstallStateAbsent); for 'both', the folder will be removed in both cases.                     </td>
         <td>Yes</td>
       </tr>
@@ -54,5 +54,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../wix/createfolder">CreateFolder</a></dd>
+    <a href="../wix">Wix Schema</a>, <a href="../createfolder/">CreateFolder</a></dd>
 </dl>

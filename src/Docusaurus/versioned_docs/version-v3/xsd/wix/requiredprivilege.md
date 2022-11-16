@@ -11,7 +11,7 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/serviceconfig">ServiceConfig</a>
+    <a href="../serviceconfig/">ServiceConfig</a>
   </dd>
   <dt>See Also</dt>
   <dd>

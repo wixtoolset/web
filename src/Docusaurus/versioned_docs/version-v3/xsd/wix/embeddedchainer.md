@@ -11,7 +11,7 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/fragment">Fragment</a>, <a href="../wix/module">Module</a>, <a href="../wix/product">Product</a></dd>
+    <a href="../fragment/">Fragment</a>, <a href="../module/">Module</a>, <a href="../product/">Product</a></dd>
   <dt>Inner Text (xs:string)</dt>
   <dd>                             Element value is the condition.  CDATA may be used to when a condition contains many XML characters                             that must be escaped.  It is important to note that each EmbeddedChainer element must have a mutually exclusive condition                             to ensure that only one embedded chainer will execute at a time. If the conditions are not mutually exclusive the chainer                             that executes is undeterministic.                         </dd>
   <dt>Children</dt>
@@ -59,5 +59,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../wix/binary">Binary</a>, <a href="../wix/file">File</a>, <a href="../wix/property">Property</a>, <a href="../wix/embeddedchainerref">EmbeddedChainerRef</a></dd>
+    <a href="../wix">Wix Schema</a>, <a href="../binary/">Binary</a>, <a href="../file/">File</a>, <a href="../property/">Property</a>, <a href="../embeddedchainerref/">EmbeddedChainerRef</a></dd>
 </dl>

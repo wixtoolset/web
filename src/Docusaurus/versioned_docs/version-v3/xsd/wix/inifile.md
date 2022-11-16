@@ -10,7 +10,7 @@ layout: documentation_xsd_main
     <a href="http://msdn.microsoft.com/library/aa369282.aspx" target="_blank">IniFile Table</a>, <a href="http://msdn.microsoft.com/library/aa371204.aspx" target="_blank">RemoveIniFile Table</a></dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/component">Component</a>
+    <a href="../component/">Component</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -51,13 +51,13 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>LongName</td>
-        <td><a href="../wix/simple_type_longfilenametype">LongFileNameType</a></td>
+        <td><a href="../simple_type_longfilenametype/">LongFileNameType</a></td>
         <td>This attribute has been deprecated; please use the Name attribute instead.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Name</td>
-        <td><a href="../wix/simple_type_longfilenametype">LongFileNameType</a></td>
+        <td><a href="../simple_type_longfilenametype/">LongFileNameType</a></td>
         <td>                         In prior versions of the WiX toolset, this attribute specified the short name.                         This attribute's value may now be either a short or long name.                         If a short name is specified, the ShortName attribute may not be specified.                         If a long name is specified, the LongName attribute may not be specified.                         Also, if this value is a long name, the ShortName attribute may be omitted to                         allow WiX to attempt to generate a unique short name.                         However, if this name collides with another file or you wish to manually specify                         the short name, then the ShortName attribute may be specified.                     </td>
         <td>Yes</td>
       </tr>
@@ -69,7 +69,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>ShortName</td>
-        <td><a href="../wix/simple_type_shortfilenametype">ShortFileNameType</a></td>
+        <td><a href="../simple_type_shortfilenametype/">ShortFileNameType</a></td>
         <td>                         The short name of the in 8.3 format.                         This attribute should only be set if there is a conflict between generated short names                         or the user wants to manually specify the short name.                     </td>
         <td>&nbsp;</td>
       </tr>

@@ -11,7 +11,7 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/digitalsignature">DigitalSignature</a>, <a href="../wix/packagecertificates">PackageCertificates</a>, <a href="../wix/patchcertificates">PatchCertificates</a></dd>
+    <a href="../digitalsignature/">DigitalSignature</a>, <a href="../packagecertificates/">PackageCertificates</a>, <a href="../patchcertificates/">PatchCertificates</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>

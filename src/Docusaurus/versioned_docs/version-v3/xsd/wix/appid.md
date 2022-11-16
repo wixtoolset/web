@@ -10,11 +10,11 @@ layout: documentation_xsd_main
     <a href="http://msdn.microsoft.com/library/aa367566.aspx" target="_blank">AppId Table</a>, <a href="http://msdn.microsoft.com/library/aa371168.aspx" target="_blank">Registry Table</a></dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/component">Component</a>, <a href="../wix/file">File</a>, <a href="../wix/fragment">Fragment</a>, <a href="../wix/module">Module</a>, <a href="../wix/product">Product</a>, <a href="../wix/typelib">TypeLib</a></dd>
+    <a href="../component/">Component</a>, <a href="../file/">File</a>, <a href="../fragment/">Fragment</a>, <a href="../module/">Module</a>, <a href="../product/">Product</a>, <a href="../typelib/">TypeLib</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wix/class">Class</a> (min: 0, max: unbounded)</li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../class/">Class</a> (min: 0, max: unbounded)</li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -26,19 +26,19 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Id</td>
-        <td><a href="../wix/simple_type_guid">Guid</a></td>
+        <td><a href="../simple_type_guid/">Guid</a></td>
         <td>                     Set this value to the AppID GUID that corresponds to the named executable.                 </td>
         <td>Yes</td>
       </tr>
       <tr>
         <td>ActivateAtStorage</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                     Set this value to 'yes' to configure the client to activate on the same system as persistent storage.                 </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Advertise</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                     Set this value to 'yes' in order to create a normal AppId table row.  Set this value to 'no' in order to                     generate Registry rows that perform similar registration (without the often problematic Windows Installer                     advertising behavior).                 </td>
         <td>&nbsp;</td>
       </tr>
@@ -68,7 +68,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>RunAsInteractiveUser</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                     Set this value to 'yes' to configure a class to run under the identity of the user currently                     logged on and connected to the interactive desktop when activated by a remote client without                     being written as a Win32 service.                 </td>
         <td>&nbsp;</td>
       </tr>

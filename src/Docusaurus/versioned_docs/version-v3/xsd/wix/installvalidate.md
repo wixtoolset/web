@@ -11,7 +11,7 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/adminexecutesequence">AdminExecuteSequence</a>, <a href="../wix/adminuisequence">AdminUISequence</a>, <a href="../wix/advertiseexecutesequence">AdvertiseExecuteSequence</a>, <a href="../wix/installexecutesequence">InstallExecuteSequence</a></dd>
+    <a href="../adminexecutesequence/">AdminExecuteSequence</a>, <a href="../adminuisequence/">AdminUISequence</a>, <a href="../advertiseexecutesequence/">AdvertiseExecuteSequence</a>, <a href="../installexecutesequence/">InstallExecuteSequence</a></dd>
   <dt>Inner Text (xs:string)</dt>
   <dd>This element may have inner text.</dd>
   <dt>Children</dt>
@@ -33,7 +33,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Suppress</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>If yes, this action will not occur.</td>
         <td>&nbsp;</td>
       </tr>

@@ -11,7 +11,7 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/shortcut">Shortcut</a>
+    <a href="../shortcut/">Shortcut</a>
   </dd>
   <dt>Inner Text (xs:string)</dt>
   <dd>This element may have inner text.</dd>
@@ -48,5 +48,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../wix/shortcut">Shortcut</a></dd>
+    <a href="../wix">Wix Schema</a>, <a href="../shortcut/">Shortcut</a></dd>
 </dl>

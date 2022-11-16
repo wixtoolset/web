@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/file">File</a>, <a href="../ps/snapin" class="extension">SnapIn</a></dd>
+    <a href="../file/">File</a>, <a href="../ps/snapin" class="extension">SnapIn</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>

@@ -10,7 +10,7 @@ layout: documentation_xsd_main
     <a href="http://msdn.microsoft.com/library/aa368007.aspx" target="_blank">Component Table</a>, <a href="http://msdn.microsoft.com/library/aa368035.aspx" target="_blank">ControlCondition Table</a>, <a href="http://msdn.microsoft.com/library/aa368014.aspx" target="_blank">Condition Table</a>, <a href="http://msdn.microsoft.com/library/aa369752.aspx" target="_blank">LaunchCondition Table</a></dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/component">Component</a>, <a href="../wix/control">Control</a>, <a href="../wix/feature">Feature</a>, <a href="../wix/fragment">Fragment</a>, <a href="../wix/permissionex">PermissionEx</a>, <a href="../wix/product">Product</a></dd>
+    <a href="../component/">Component</a>, <a href="../control/">Control</a>, <a href="../feature/">Feature</a>, <a href="../fragment/">Fragment</a>, <a href="../permissionex/">PermissionEx</a>, <a href="../product/">Product</a></dd>
   <dt>Inner Text (xs:string)</dt>
   <dd>                         Under a Component element, the condition becomes the condition of the component.  Under a Control element,                         the condition becomes a ControlCondition entry.  Under a Feature element, the condition becomes a Condition                         entry.  Under a Fragment or Product element, the condition becomes a LaunchCondition entry.                     </dd>
   <dt>Children</dt>

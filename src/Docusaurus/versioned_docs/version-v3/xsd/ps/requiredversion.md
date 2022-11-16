@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/wix">Wix</a>
+    <a href="../wix/">Wix</a>
   </dd>
   <dt>See Also</dt>
   <dd>

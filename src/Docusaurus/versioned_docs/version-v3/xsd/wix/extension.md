@@ -10,11 +10,11 @@ layout: documentation_xsd_main
     <a href="http://msdn.microsoft.com/library/aa370035.aspx" target="_blank">MIME Table</a>, <a href="http://msdn.microsoft.com/library/aa372487.aspx" target="_blank">Verb Table</a>, <a href="http://msdn.microsoft.com/library/aa371168.aspx" target="_blank">Registry Table</a></dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/component">Component</a>, <a href="../wix/progid">ProgId</a></dd>
+    <a href="../component/">Component</a>, <a href="../progid/">ProgId</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wix/mime">MIME</a> (min: 0, max: unbounded)</li><li><a href="../wix/verb">Verb</a> (min: 0, max: unbounded)</li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../mime/">MIME</a> (min: 0, max: unbounded)</li><li><a href="../verb/">Verb</a> (min: 0, max: unbounded)</li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -32,7 +32,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Advertise</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Whether this extension is to be advertised. The default is "no".</td>
         <td>&nbsp;</td>
       </tr>

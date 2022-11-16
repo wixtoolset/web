@@ -9,12 +9,12 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/fragment">Fragment</a>
+    <a href="../fragment/">Fragment</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wix/exepackage">ExePackage</a> (min: 0, max: unbounded)</li><li><a href="../wix/msipackage">MsiPackage</a> (min: 0, max: unbounded)</li><li><a href="../wix/msppackage">MspPackage</a> (min: 0, max: unbounded)</li><li><a href="../wix/msupackage">MsuPackage</a> (min: 0, max: unbounded)</li><li><a href="../wix/packagegroupref">PackageGroupRef</a> (min: 0, max: unbounded)</li><li><a href="../wix/rollbackboundary">RollbackBoundary</a> (min: 0, max: unbounded)</li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../exepackage/">ExePackage</a> (min: 0, max: unbounded)</li><li><a href="../msipackage/">MsiPackage</a> (min: 0, max: unbounded)</li><li><a href="../msppackage/">MspPackage</a> (min: 0, max: unbounded)</li><li><a href="../msupackage/">MsuPackage</a> (min: 0, max: unbounded)</li><li><a href="../packagegroupref/">PackageGroupRef</a> (min: 0, max: unbounded)</li><li><a href="../rollbackboundary/">RollbackBoundary</a> (min: 0, max: unbounded)</li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">

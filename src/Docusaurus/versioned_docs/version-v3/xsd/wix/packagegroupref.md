@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/chain">Chain</a>, <a href="../wix/container">Container</a>, <a href="../wix/packagegroup">PackageGroup</a></dd>
+    <a href="../chain/">Chain</a>, <a href="../container/">Container</a>, <a href="../packagegroup/">PackageGroup</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
@@ -39,5 +39,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../wix/packagegroup">PackageGroup</a></dd>
+    <a href="../wix">Wix Schema</a>, <a href="../packagegroup/">PackageGroup</a></dd>
 </dl>

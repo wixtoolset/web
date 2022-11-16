@@ -11,7 +11,7 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/registryvalue">RegistryValue</a>
+    <a href="../registryvalue/">RegistryValue</a>
   </dd>
   <dt>See Also</dt>
   <dd>

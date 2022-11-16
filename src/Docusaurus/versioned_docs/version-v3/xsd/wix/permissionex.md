@@ -11,11 +11,11 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/createfolder">CreateFolder</a>, <a href="../wix/file">File</a>, <a href="../wix/registry">Registry</a>, <a href="../wix/registrykey">RegistryKey</a>, <a href="../wix/registryvalue">RegistryValue</a>, <a href="../wix/serviceinstall">ServiceInstall</a></dd>
+    <a href="../createfolder/">CreateFolder</a>, <a href="../file/">File</a>, <a href="../registry/">Registry</a>, <a href="../registrykey/">RegistryKey</a>, <a href="../registryvalue/">RegistryValue</a>, <a href="../serviceinstall/">ServiceInstall</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../wix/condition">Condition</a> (min: 0, max: 1): Optional condition that controls whether the permissions are applied.</li></ol></dd>
+  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../condition/">Condition</a> (min: 0, max: 1): Optional condition that controls whether the permissions are applied.</li></ol></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">

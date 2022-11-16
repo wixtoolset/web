@@ -11,7 +11,7 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/embeddedui">EmbeddedUI</a>
+    <a href="../embeddedui/">EmbeddedUI</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -34,7 +34,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Name</td>
-        <td><a href="../wix/simple_type_longfilenametype">LongFileNameType</a></td>
+        <td><a href="../simple_type_longfilenametype/">LongFileNameType</a></td>
         <td>                         The name for the resource when it is extracted from the Product for use by the embedded UI DLL. (Windows                         Installer does not support the typical short filename and long filename combination for embedded UI files                         as it does for other kinds of files.) If this attribute is not specified the Id attribute will be used.                     </td>
         <td>Yes</td>
       </tr>
@@ -48,5 +48,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../wix/embeddedui">EmbeddedUI</a></dd>
+    <a href="../wix">Wix Schema</a>, <a href="../embeddedui/">EmbeddedUI</a></dd>
 </dl>

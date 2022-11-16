@@ -11,7 +11,7 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/patchcreation">PatchCreation</a>
+    <a href="../patchcreation/">PatchCreation</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -34,7 +34,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>ProductCode</td>
-        <td><a href="../wix/simple_type_guid">Guid</a></td>
+        <td><a href="../simple_type_guid/">Guid</a></td>
         <td>                         Specifies the ProductCode of the product that this family applies to.                         This attribute cannot the specified if the TargetImage attribute is specified.                     </td>
         <td>&nbsp;</td>
       </tr>
@@ -46,7 +46,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Supersede</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                         Set this value to 'yes' to indicate that this patch will supersede all previous patches in this patch family.                         The default value is 'no'.                     </td>
         <td>&nbsp;</td>
       </tr>

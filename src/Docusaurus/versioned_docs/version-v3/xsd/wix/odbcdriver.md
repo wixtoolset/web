@@ -11,11 +11,11 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/component">Component</a>, <a href="../wix/file">File</a></dd>
+    <a href="../component/">Component</a>, <a href="../file/">File</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../wix/property">Property</a> (min: 0, max: unbounded): Translates into ODBCSourceAttributes</li><li><a href="../wix/odbcdatasource">ODBCDataSource</a> (min: 0, max: unbounded)</li></ol></dd>
+  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../property/">Property</a> (min: 0, max: unbounded): Translates into ODBCSourceAttributes</li><li><a href="../odbcdatasource/">ODBCDataSource</a> (min: 0, max: unbounded)</li></ol></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">

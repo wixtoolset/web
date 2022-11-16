@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/component">Component</a>, <a href="../sql/sqldatabase" class="extension">SqlDatabase</a></dd>
+    <a href="../component/">Component</a>, <a href="../sql/sqldatabase" class="extension">SqlDatabase</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>

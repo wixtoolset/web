@@ -11,11 +11,11 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/component">Component</a>, <a href="../wix/registrykey">RegistryKey</a></dd>
+    <a href="../component/">Component</a>, <a href="../registrykey/">RegistryKey</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wix/permission">Permission</a> (min: 0, max: unbounded): ACL permission</li><li><a href="../wix/permissionex">PermissionEx</a> (min: 0, max: unbounded): Can also configure the ACLs for this registry key.</li><li><a href="../wix/registrykey">RegistryKey</a> (min: 0, max: unbounded)</li><li><a href="../wix/registryvalue">RegistryValue</a> (min: 0, max: unbounded)</li><li><span class="extension">Any Element (namespace='##other' processContents='Lax')                              Extensibility point in the WiX XML Schema.  Schema extensions can register additional                             elements at this point in the schema.                         </span><ul><li><a href="../util/permissionex" class="extension">PermissionEx</a></li></ul></li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../permission/">Permission</a> (min: 0, max: unbounded): ACL permission</li><li><a href="../permissionex/">PermissionEx</a> (min: 0, max: unbounded): Can also configure the ACLs for this registry key.</li><li><a href="../registrykey/">RegistryKey</a> (min: 0, max: unbounded)</li><li><a href="../registryvalue/">RegistryValue</a> (min: 0, max: unbounded)</li><li><span class="extension">Any Element (namespace='##other' processContents='Lax')                              Extensibility point in the WiX XML Schema.  Schema extensions can register additional                             elements at this point in the schema.                         </span><ul><li><a href="../util/permissionex" class="extension">PermissionEx</a></li></ul></li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -33,13 +33,13 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>ForceCreateOnInstall</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                         Set this attribute to 'yes' to create an empty key, if absent, when the parent component is installed.                         This value is needed only to create an empty key with no subkeys or values. Windows Installer creates                         keys as needed to store subkeys and values. The default is "no".                     </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ForceDeleteOnUninstall</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                         Set this attribute to 'yes' to remove the key with all its values and subkeys when the parent component is uninstalled.                         Note that this value is useful only if your program creates additional values or subkeys under this key and you want an uninstall to remove them. MSI already                         removes all values and subkeys that it creates, so this option just adds additional overhead to uninstall.                         The default is "no".                     </td>
         <td>&nbsp;</td>
       </tr>
@@ -57,7 +57,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Root</td>
-        <td><a href="../wix/simple_type_registryroottype">RegistryRootType</a></td>
+        <td><a href="../simple_type_registryroottype/">RegistryRootType</a></td>
         <td>                         The predefined root key for the registry value.                     </td>
         <td>&nbsp;</td>
       </tr>

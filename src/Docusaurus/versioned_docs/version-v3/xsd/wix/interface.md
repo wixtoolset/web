@@ -11,7 +11,7 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/class">Class</a>, <a href="../wix/component">Component</a>, <a href="../wix/typelib">TypeLib</a></dd>
+    <a href="../class/">Class</a>, <a href="../component/">Component</a>, <a href="../typelib/">TypeLib</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
@@ -27,13 +27,13 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Id</td>
-        <td><a href="../wix/simple_type_guid">Guid</a></td>
+        <td><a href="../simple_type_guid/">Guid</a></td>
         <td>GUID identifier for COM Interface.</td>
         <td>Yes</td>
       </tr>
       <tr>
         <td>BaseInterface</td>
-        <td><a href="../wix/simple_type_guid">Guid</a></td>
+        <td><a href="../simple_type_guid/">Guid</a></td>
         <td>Identifies the interface from which the current interface is derived.</td>
         <td>&nbsp;</td>
       </tr>
@@ -51,19 +51,19 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>ProxyStubClassId</td>
-        <td><a href="../wix/simple_type_guid">Guid</a></td>
+        <td><a href="../simple_type_guid/">Guid</a></td>
         <td>GUID CLSID for proxy stub to COM Interface.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ProxyStubClassId32</td>
-        <td><a href="../wix/simple_type_guid">Guid</a></td>
+        <td><a href="../simple_type_guid/">Guid</a></td>
         <td>GUID CLSID for 32-bit proxy stub to COM Interface.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Versioned</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Determines whether a Typelib version entry should be created with the other COM Interface registry keys.  Default is 'yes'.</td>
         <td>&nbsp;</td>
       </tr>

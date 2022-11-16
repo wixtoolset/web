@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/bootstrapperapplication">BootstrapperApplication</a>, <a href="../wix/bootstrapperapplicationref">BootstrapperApplicationRef</a>, <a href="../wix/bundle">Bundle</a>, <a href="../wix/exepackage">ExePackage</a>, <a href="../wix/msipackage">MsiPackage</a>, <a href="../wix/msppackage">MspPackage</a>, <a href="../wix/msupackage">MsuPackage</a>, <a href="../wix/payloadgroup">PayloadGroup</a>, <a href="../wix/ux">UX</a></dd>
+    <a href="../bootstrapperapplication/">BootstrapperApplication</a>, <a href="../bootstrapperapplicationref/">BootstrapperApplicationRef</a>, <a href="../bundle/">Bundle</a>, <a href="../exepackage/">ExePackage</a>, <a href="../msipackage/">MsiPackage</a>, <a href="../msppackage/">MspPackage</a>, <a href="../msupackage/">MsuPackage</a>, <a href="../payloadgroup/">PayloadGroup</a>, <a href="../ux/">UX</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
@@ -33,5 +33,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../wix/payloadgroup">PayloadGroup</a></dd>
+    <a href="../wix">Wix Schema</a>, <a href="../payloadgroup/">PayloadGroup</a></dd>
 </dl>

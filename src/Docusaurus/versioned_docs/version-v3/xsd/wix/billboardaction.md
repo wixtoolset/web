@@ -10,12 +10,12 @@ layout: documentation_xsd_main
     <a href="http://msdn.microsoft.com/library/aa367823.aspx" target="_blank">Billboard Table</a>, <a href="http://msdn.microsoft.com/library/aa367818.aspx" target="_blank">BBControl Table</a></dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/ui">UI</a>
+    <a href="../ui/">UI</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../wix/billboard">Billboard</a> (min: 1, max: unbounded): Order of Billboard elements determines order of display</li></ol></dd>
+  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../billboard/">Billboard</a> (min: 1, max: unbounded): Order of Billboard elements determines order of display</li></ol></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">

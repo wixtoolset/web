@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/instancetransforms">InstanceTransforms</a>
+    <a href="../instancetransforms/">InstanceTransforms</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -32,7 +32,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>ProductCode</td>
-        <td><a href="../wix/simple_type_autogenguid">AutogenGuid</a></td>
+        <td><a href="../simple_type_autogenguid/">AutogenGuid</a></td>
         <td>The ProductCode for this instance.</td>
         <td>Yes</td>
       </tr>
@@ -44,7 +44,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>UpgradeCode</td>
-        <td><a href="../wix/simple_type_guid">Guid</a></td>
+        <td><a href="../simple_type_guid/">Guid</a></td>
         <td>The UpgradeCode for this instance.</td>
         <td>&nbsp;</td>
       </tr>

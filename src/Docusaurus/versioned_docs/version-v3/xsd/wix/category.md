@@ -11,12 +11,12 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/component">Component</a>
+    <a href="../component/">Component</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Sequence (min: 0, max: unbounded)<ol><li><a href="../wix/appdata">AppData</a> (min: 0, max: unbounded)</li></ol></dd>
+  <dd>Sequence (min: 0, max: unbounded)<ol><li><a href="../appdata/">AppData</a> (min: 0, max: unbounded)</li></ol></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -28,7 +28,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Id</td>
-        <td><a href="../wix/simple_type_guid">Guid</a></td>
+        <td><a href="../simple_type_guid/">Guid</a></td>
         <td>A string GUID that represents the category of components being grouped together.</td>
         <td>Yes</td>
       </tr>

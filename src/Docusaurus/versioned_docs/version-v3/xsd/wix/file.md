@@ -11,12 +11,12 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/component">Component</a>
+    <a href="../component/">Component</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wix/appid">AppId</a> (min: 0, max: unbounded)</li><li><a href="../wix/assemblyname">AssemblyName</a> (min: 0, max: unbounded)</li><li><a href="../wix/class">Class</a> (min: 0, max: unbounded)</li><li><a href="../wix/copyfile">CopyFile</a> (min: 0, max: unbounded): Used to create a duplicate of this file elsewhere.</li><li><a href="../wix/odbcdriver">ODBCDriver</a> (min: 0, max: unbounded)</li><li><a href="../wix/odbctranslator">ODBCTranslator</a> (min: 0, max: unbounded)</li><li><a href="../wix/permission">Permission</a> (min: 0, max: unbounded): Used to configure the ACLs for this file.</li><li><a href="../wix/permissionex">PermissionEx</a> (min: 0, max: unbounded): Can also configure the ACLs for this file.</li><li><a href="../wix/shortcut">Shortcut</a> (min: 0, max: unbounded): Target of the shortcut will be set to this file.</li><li><a href="../wix/symbolpath">SymbolPath</a> (min: 0, max: unbounded)</li><li><a href="../wix/typelib">TypeLib</a> (min: 0, max: unbounded)</li><li><span class="extension">Any Element (namespace='##other' processContents='Lax')                          Extensibility point in the WiX XML Schema.  Schema extensions can register additional                         elements at this point in the schema.                     </span><ul><li><a href="../util/eventmanifest" class="extension">EventManifest</a></li><li><a href="../firewall/firewallexception" class="extension">FirewallException</a></li><li><a href="../ps/formatsfile" class="extension">FormatsFile</a></li><li><a href="../gaming/game" class="extension">Game</a></li><li><a href="../vs/helpcollection" class="extension">HelpCollection</a></li><li><a href="../vs/helpfile" class="extension">HelpFile</a></li><li><a href="../netfx/nativeimage" class="extension">NativeImage</a></li><li><a href="../util/perfcounter" class="extension">PerfCounter</a></li><li><a href="../util/perfcountermanifest" class="extension">PerfCounterManifest</a></li><li><a href="../util/permissionex" class="extension">PermissionEx</a></li><li><a href="../ps/snapin" class="extension">SnapIn</a></li><li><a href="../ps/typesfile" class="extension">TypesFile</a></li><li><a href="../vs/vsixpackage" class="extension">VsixPackage</a></li></ul></li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../appid/">AppId</a> (min: 0, max: unbounded)</li><li><a href="../assemblyname/">AssemblyName</a> (min: 0, max: unbounded)</li><li><a href="../class/">Class</a> (min: 0, max: unbounded)</li><li><a href="../copyfile/">CopyFile</a> (min: 0, max: unbounded): Used to create a duplicate of this file elsewhere.</li><li><a href="../odbcdriver/">ODBCDriver</a> (min: 0, max: unbounded)</li><li><a href="../odbctranslator/">ODBCTranslator</a> (min: 0, max: unbounded)</li><li><a href="../permission/">Permission</a> (min: 0, max: unbounded): Used to configure the ACLs for this file.</li><li><a href="../permissionex/">PermissionEx</a> (min: 0, max: unbounded): Can also configure the ACLs for this file.</li><li><a href="../shortcut/">Shortcut</a> (min: 0, max: unbounded): Target of the shortcut will be set to this file.</li><li><a href="../symbolpath/">SymbolPath</a> (min: 0, max: unbounded)</li><li><a href="../typelib/">TypeLib</a> (min: 0, max: unbounded)</li><li><span class="extension">Any Element (namespace='##other' processContents='Lax')                          Extensibility point in the WiX XML Schema.  Schema extensions can register additional                         elements at this point in the schema.                     </span><ul><li><a href="../util/eventmanifest" class="extension">EventManifest</a></li><li><a href="../firewall/firewallexception" class="extension">FirewallException</a></li><li><a href="../ps/formatsfile" class="extension">FormatsFile</a></li><li><a href="../gaming/game" class="extension">Game</a></li><li><a href="../vs/helpcollection" class="extension">HelpCollection</a></li><li><a href="../vs/helpfile" class="extension">HelpFile</a></li><li><a href="../netfx/nativeimage" class="extension">NativeImage</a></li><li><a href="../util/perfcounter" class="extension">PerfCounter</a></li><li><a href="../util/perfcountermanifest" class="extension">PerfCounterManifest</a></li><li><a href="../util/permissionex" class="extension">PermissionEx</a></li><li><a href="../ps/snapin" class="extension">SnapIn</a></li><li><a href="../ps/typesfile" class="extension">TypesFile</a></li><li><a href="../vs/vsixpackage" class="extension">VsixPackage</a></li></ul></li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -52,7 +52,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Checksum</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>This attribute should be set to "yes" for every executable file in the installation that has a valid checksum stored in the Portable Executable (PE) file header.  Only those files that have this attribute set will be verified for valid checksum during a reinstall.</td>
         <td>&nbsp;</td>
       </tr>
@@ -64,7 +64,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Compressed</td>
-        <td><a href="../wix/simple_type_yesnodefaulttype">YesNoDefaultType</a></td>
+        <td><a href="../simple_type_yesnodefaulttype/">YesNoDefaultType</a></td>
         <td>Sets the file's source type compression.  A setting of "yes" or "no" will override the setting in the Word Count Summary Property.</td>
         <td>&nbsp;</td>
       </tr>
@@ -88,7 +88,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>DiskId</td>
-        <td><a href="../wix/simple_type_diskidtype">DiskIdType</a></td>
+        <td><a href="../simple_type_diskidtype/">DiskIdType</a></td>
         <td>                     The value of this attribute should correspond to the Id attribute of a Media                     element authored elsewhere.  By creating this connection between a file and                     its media, you set the packaging options to the values specified in the Media                     element (values such as compression level, cab embedding, etc...). Specifying                     the DiskId attribute on the File element overrides the default DiskId attribute                     from the parent Component element. If no DiskId attribute is specified,                     the default is "1". This DiskId attribute is ignored when creating a merge module                     because merge modules do not have media.                 </td>
         <td>&nbsp;</td>
       </tr>
@@ -100,7 +100,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Hidden</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Set to yes in order to have the file's hidden attribute set when it is installed on the target machine.</td>
         <td>&nbsp;</td>
       </tr>
@@ -112,25 +112,25 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>KeyPath</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Set to yes in order to force this file to be the key path for the parent component.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>LongName</td>
-        <td><a href="../wix/simple_type_longfilenametype">LongFileNameType</a></td>
+        <td><a href="../simple_type_longfilenametype/">LongFileNameType</a></td>
         <td>This attribute has been deprecated; please use the Name attribute instead.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Name</td>
-        <td><a href="../wix/simple_type_longfilenametype">LongFileNameType</a></td>
+        <td><a href="../simple_type_longfilenametype/">LongFileNameType</a></td>
         <td>                         In prior versions of the WiX toolset, this attribute specified the short file name.                         This attribute's value may now be either a short or long file name.                         If a short file name is specified, the ShortName attribute may not be specified.                         If a long file name is specified, the LongName attribute may not be specified.                         Also, if this value is a long file name, the ShortName attribute may be omitted to                         allow WiX to attempt to generate a unique short file name.                         However, if this name collides with another file or you wish to manually specify                         the short file name, then the ShortName attribute may be specified.                         Finally, if this attribute is omitted then its default value is the file name portion                         of the Source attribute, if one is specified, or the value of the Id attribute, if                         the Source attribute is omitted or doesn't contain a file name.                     </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>PatchAllowIgnoreOnError</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Set to indicate that the patch is non-vital.</td>
         <td>&nbsp;</td>
       </tr>
@@ -142,13 +142,13 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>PatchIgnore</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Prevents the updating of the file that is in fact changed in the upgraded image relative to the target images.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>PatchWholeFile</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Set if the entire file should be installed rather than creating a binary patch.</td>
         <td>&nbsp;</td>
       </tr>
@@ -160,7 +160,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>ReadOnly</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Set to yes in order to have the file's read-only attribute set when it is installed on the target machine.</td>
         <td>&nbsp;</td>
       </tr>
@@ -172,7 +172,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>ShortName</td>
-        <td><a href="../wix/simple_type_shortfilenametype">ShortFileNameType</a></td>
+        <td><a href="../simple_type_shortfilenametype/">ShortFileNameType</a></td>
         <td>                         The short file name of the file in 8.3 format.                         This attribute should only be set if there is a conflict between generated short file names                         or the user wants to manually specify the short file name.                     </td>
         <td>&nbsp;</td>
       </tr>
@@ -190,19 +190,19 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>System</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Set to yes in order to have the file's system attribute set when it is installed on the target machine.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>TrueType</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Causes an entry to be generated for the file in the Font table with no FontTitle specified. This attribute is intended to be used to register the file as a TrueType font.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Vital</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>If a file is vital, then installation cannot proceed unless the file is successfully installed.  The user will have no option to ignore an error installing this file.  If an error occurs, they can merely retry to install the file or abort the installation. The default is "yes," unless the -sfdvital switch (candle.exe) or SuppressFileDefaultVital property (.wixproj) is used.</td>
         <td>&nbsp;</td>
       </tr>

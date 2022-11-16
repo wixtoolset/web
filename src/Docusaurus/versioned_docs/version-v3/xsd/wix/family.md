@@ -9,12 +9,12 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/patchcreation">PatchCreation</a>
+    <a href="../patchcreation/">PatchCreation</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../wix/upgradeimage">UpgradeImage</a> (min: 1, max: unbounded)</li><li>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wix/externalfile">ExternalFile</a> (min: 0, max: unbounded)</li><li><a href="../wix/protectfile">ProtectFile</a> (min: 0, max: unbounded)</li></ul></li></ol></dd>
+  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../upgradeimage/">UpgradeImage</a> (min: 1, max: unbounded)</li><li>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../externalfile/">ExternalFile</a> (min: 0, max: unbounded)</li><li><a href="../protectfile/">ProtectFile</a> (min: 0, max: unbounded)</li></ul></li></ol></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -26,7 +26,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>DiskId</td>
-        <td><a href="../wix/simple_type_diskidtype">DiskIdType</a></td>
+        <td><a href="../simple_type_diskidtype/">DiskIdType</a></td>
         <td>Entered into the DiskId field of the new Media table record.</td>
         <td>&nbsp;</td>
       </tr>

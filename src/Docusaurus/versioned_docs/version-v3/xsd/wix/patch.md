@@ -9,12 +9,12 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/wix">Wix</a>
+    <a href="../wix/">Wix</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Sequence (min: 1, max: 1)<ol><li>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wix/media">Media</a> (min: 1, max: unbounded)</li><li><a href="../wix/optimizecustomactions">OptimizeCustomActions</a> (min: 0, max: 1): Indicates whether custom actions can be skipped when applying the patch.</li><li><a href="../wix/patchfamily">PatchFamily</a> (min: 1, max: unbounded)</li><li><a href="../wix/patchfamilygroup">PatchFamilyGroup</a> (min: 1, max: unbounded)</li><li><a href="../wix/patchfamilygroupref">PatchFamilyGroupRef</a> (min: 0, max: unbounded)</li><li><a href="../wix/patchfamilyref">PatchFamilyRef</a> (min: 0, max: unbounded)</li><li><a href="../wix/patchinformation">PatchInformation</a> (min: 0, max: 1): Optional element that allows overriding summary information properties.</li><li><a href="../wix/patchproperty">PatchProperty</a> (min: 0, max: unbounded)</li><li><a href="../wix/targetproductcodes">TargetProductCodes</a> (min: 0, max: unbounded)</li><li><span class="extension">Any Element (namespace='##other' processContents='Lax')                              Extensibility point in the WiX XML Schema.  Schema extensions can register additional                             elements at this point in the schema.                         </span></li></ul></li></ol></dd>
+  <dd>Sequence (min: 1, max: 1)<ol><li>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../media/">Media</a> (min: 1, max: unbounded)</li><li><a href="../optimizecustomactions/">OptimizeCustomActions</a> (min: 0, max: 1): Indicates whether custom actions can be skipped when applying the patch.</li><li><a href="../patchfamily/">PatchFamily</a> (min: 1, max: unbounded)</li><li><a href="../patchfamilygroup/">PatchFamilyGroup</a> (min: 1, max: unbounded)</li><li><a href="../patchfamilygroupref/">PatchFamilyGroupRef</a> (min: 0, max: unbounded)</li><li><a href="../patchfamilyref/">PatchFamilyRef</a> (min: 0, max: unbounded)</li><li><a href="../patchinformation/">PatchInformation</a> (min: 0, max: 1): Optional element that allows overriding summary information properties.</li><li><a href="../patchproperty/">PatchProperty</a> (min: 0, max: unbounded)</li><li><a href="../targetproductcodes/">TargetProductCodes</a> (min: 0, max: unbounded)</li><li><span class="extension">Any Element (namespace='##other' processContents='Lax')                              Extensibility point in the WiX XML Schema.  Schema extensions can register additional                             elements at this point in the schema.                         </span></li></ul></li></ol></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -26,25 +26,25 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>AllowRemoval</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Whether this is an uninstallable patch.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ApiPatchingSymbolNoFailuresFlag</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Flag used when creating a binary file patch. Default is "no". Don't fail patch due to imagehlp failures.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ApiPatchingSymbolNoImagehlpFlag</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Flag used when creating a binary file patch. Default is "no". Don't use imagehlp.dll.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ApiPatchingSymbolUndecoratedTooFlag</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Flag used when creating a binary file patch. Default is "no". After matching decorated symbols, try to match remaining by undecorated names.</td>
         <td>&nbsp;</td>
       </tr>
@@ -86,7 +86,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Id</td>
-        <td><a href="../wix/simple_type_autogenguid">AutogenGuid</a></td>
+        <td><a href="../simple_type_autogenguid/">AutogenGuid</a></td>
         <td>Patch code for this patch.</td>
         <td>&nbsp;</td>
       </tr>
@@ -98,7 +98,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>MinorUpdateTargetRTM</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                     Indicates that the patch targets the RTM version of the product or the most recent major                     upgrade patch.  Author this optional property in minor update patches that contain sequencing                     information to indicate that the patch removes all patches up to the RTM version of the                     product, or up to the most recent major upgrade patch.  This property is available beginning                     with Windows Installer 3.1.                 </td>
         <td>&nbsp;</td>
       </tr>
@@ -110,13 +110,13 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>OptimizedInstallMode</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>                     If this attribute is set to 'yes' in all the patches to be applied in a transaction, the                     application of the patch is optimized if possible.  Available beginning with Windows Installer 3.1.                 </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>OptimizePatchSizeForLargeFiles</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>When this attribute is set, patches for files greater than approximately 4 MB in size may be made smaller.</td>
         <td>&nbsp;</td>
       </tr>

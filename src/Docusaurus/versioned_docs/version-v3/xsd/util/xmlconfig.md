@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/component">Component</a>, <a href="../util/xmlconfig" class="extension">XmlConfig</a></dd>
+    <a href="../component/">Component</a>, <a href="../util/xmlconfig" class="extension">XmlConfig</a></dd>
   <dt>Inner Text (xs:string)</dt>
   <dd>This element may have inner text.</dd>
   <dt>Children</dt>

@@ -11,11 +11,11 @@ layout: documentation_xsd_main
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/fragment">Fragment</a>, <a href="../wix/patch">Patch</a>, <a href="../wix/product">Product</a></dd>
+    <a href="../fragment/">Fragment</a>, <a href="../patch/">Patch</a>, <a href="../product/">Product</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Sequence (min: 1, max: 1)<ol><li>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wix/digitalsignature">DigitalSignature</a> (min: 0, max: unbounded)</li><li><a href="../wix/patchbaseline">PatchBaseline</a> (min: 0, max: unbounded)</li><li><a href="../wix/symbolpath">SymbolPath</a> (min: 0, max: unbounded)</li></ul></li></ol></dd>
+  <dd>Sequence (min: 1, max: 1)<ol><li>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../digitalsignature/">DigitalSignature</a> (min: 0, max: unbounded)</li><li><a href="../patchbaseline/">PatchBaseline</a> (min: 0, max: unbounded)</li><li><a href="../symbolpath/">SymbolPath</a> (min: 0, max: unbounded)</li></ul></li></ol></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -27,7 +27,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>Id</td>
-        <td><a href="../wix/simple_type_diskidtype">DiskIdType</a></td>
+        <td><a href="../simple_type_diskidtype/">DiskIdType</a></td>
         <td>Disk identifier for Media table. This number must be equal to or greater than 1.</td>
         <td>Yes</td>
       </tr>
@@ -39,7 +39,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>CompressionLevel</td>
-        <td><a href="../wix/simple_type_compressionleveltype">CompressionLevelType</a></td>
+        <td><a href="../simple_type_compressionleveltype/">CompressionLevelType</a></td>
         <td>                         Indicates the compression level for the Media's cabinet.  This attribute can                         only be used in conjunction with the Cabinet attribute.  The default is 'mszip'.                     </td>
         <td>&nbsp;</td>
       </tr>
@@ -51,7 +51,7 @@ layout: documentation_xsd_main
       </tr>
       <tr>
         <td>EmbedCab</td>
-        <td><a href="../wix/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype/">YesNoType</a></td>
         <td>Instructs the binder to embed the cabinet in the product if 'yes'.  This attribute can only be specified in conjunction with the Cabinet attribute.</td>
         <td>&nbsp;</td>
       </tr>

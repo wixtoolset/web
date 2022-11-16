@@ -9,7 +9,7 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wix/patchmetadata">PatchMetadata</a>
+    <a href="../patchmetadata/">PatchMetadata</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
