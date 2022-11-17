@@ -1220,7 +1220,11 @@
     </xs:attribute>
     <xs:attribute name="InstallCondition" type="xs:string">
       <xs:annotation>
-        <xs:documentation>A condition to evaluate before installing the package. The package will only be installed if the condition evaluates to true. If the condition evaluates to false and the bundle is being installed, repaired, or modified, the package will be uninstalled.</xs:documentation>
+        <xs:documentation>
+          A condition to evaluate before installing the package. The package will only be installed if the condition
+          evaluates to true. If the condition evaluates to false and the bundle is being installed, repaired, or modified,
+          the package will be uninstalled.
+        </xs:documentation>
       </xs:annotation>
     </xs:attribute>
     <xs:attribute name="Cache" type="YesNoAlwaysTypeUnion">
@@ -5189,8 +5193,8 @@
       <xs:attribute name="Condition" type="xs:string">
         <xs:annotation>
           <xs:documentation>
-                        Optional condition that controls whether the permissions are applied.
-                </xs:documentation>
+            Optional condition that controls whether the permissions are applied.
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Sddl" type="xs:string" use="required">
@@ -8866,80 +8870,76 @@
       </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
-      <xs:simpleContent>
-        <xs:extension base="xs:string">
-          <xs:attribute name="Minimum" type="xs:string">
-            <xs:annotation>
-              <xs:documentation>Specifies the lower bound on the range of product versions to be detected by FindRelatedProducts.</xs:documentation>
-            </xs:annotation>
-          </xs:attribute>
-          <xs:attribute name="Maximum" type="xs:string">
-            <xs:annotation>
-              <xs:documentation>Specifies the upper boundary of the range of product versions detected by FindRelatedProducts.</xs:documentation>
-            </xs:annotation>
-          </xs:attribute>
-          <xs:attribute name="Language" type="xs:string">
-            <xs:annotation>
-              <xs:documentation>Specifies the set of languages detected by FindRelatedProducts. Enter a list of numeric language identifiers (LANGID) separated by commas (,). Leave this value null to specify all languages. Set ExcludeLanguages to "yes" in order detect all languages, excluding the languages listed in this value.</xs:documentation>
-            </xs:annotation>
-          </xs:attribute>
-          <xs:attribute name="RemoveFeatures" type="xs:string">
-            <xs:annotation>
-              <xs:documentation>The installer sets the REMOVE property to features specified in this column. The features to be removed can be determined at run time. The Formatted string entered in this field must evaluate to a comma-delimited list of feature names. For example: [Feature1],[Feature2],[Feature3]. No features are removed if the field contains formatted text that evaluates to an empty string. The installer sets REMOVE=ALL only if the Remove field is empty.</xs:documentation>
-            </xs:annotation>
-          </xs:attribute>
-          <xs:attribute name="Property" type="xs:string" use="required">
-            <xs:annotation>
-              <xs:documentation>When the FindRelatedProducts action detects a related product installed on the system, it appends the product code to the property specified in this field. Windows Installer documentation for the <html:a href="http://msdn.microsoft.com/library/aa372379.aspx" target="_blank">Upgrade table</html:a> states that the property specified in this field must be a public property and must be added to the <html:a href="http://msdn.microsoft.com/library/aa371571.aspx" target="_blank">SecureCustomProperties</html:a> property. WiX automatically appends the property specified in this field to the SecureCustomProperties property when creating an MSI. Each UpgradeVersion must have a unique Property value. After the FindRelatedProducts action is run, the value of this property is a list of product codes, separated by semicolons (;), detected on the system.</xs:documentation>
-            </xs:annotation>
-          </xs:attribute>
-          <xs:attribute name="MigrateFeatures" type="YesNoTypeUnion">
-            <xs:annotation>
-              <xs:documentation>Set to "yes" to migrate feature states from upgraded products by enabling the logic in the MigrateFeatureStates action.</xs:documentation>
-            </xs:annotation>
-          </xs:attribute>
-          <xs:attribute name="OnlyDetect" type="YesNoTypeUnion">
-            <xs:annotation>
-              <xs:documentation>Set to "yes" to detect products and applications but do not uninstall.</xs:documentation>
-            </xs:annotation>
-          </xs:attribute>
-          <xs:attribute name="IgnoreRemoveFailure" type="YesNoTypeUnion">
-            <xs:annotation>
-              <xs:documentation>Set to "yes" to continue installation upon failure to remove a product or application.</xs:documentation>
-            </xs:annotation>
-          </xs:attribute>
-          <xs:attribute name="IncludeMinimum" type="YesNoTypeUnion">
-            <xs:annotation>
-              <xs:documentation>Set to "no" to make the range of versions detected exclude the value specified in Minimum. This attribute is "yes" by default.</xs:documentation>
-            </xs:annotation>
-          </xs:attribute>
-          <xs:attribute name="IncludeMaximum" type="YesNoTypeUnion">
-            <xs:annotation>
-              <xs:documentation>Set to "yes" to make the range of versions detected include the value specified in Maximum.</xs:documentation>
-            </xs:annotation>
-          </xs:attribute>
-          <xs:attribute name="ExcludeLanguages" type="YesNoTypeUnion">
-            <xs:annotation>
-              <xs:documentation>Set to "yes" to detect all languages, excluding the languages listed in the Language attribute.</xs:documentation>
-            </xs:annotation>
-          </xs:attribute>
-          <xs:anyAttribute namespace="##other" processContents="lax">
-            <xs:annotation>
-              <xs:documentation>
-                            Extensibility point in the WiX XML Schema. Schema extensions can register additional
-                            attributes at this point in the schema.
-                        </xs:documentation>
-            </xs:annotation>
-          </xs:anyAttribute>
-        </xs:extension>
-      </xs:simpleContent>
+      <xs:attribute name="Minimum" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Specifies the lower bound on the range of product versions to be detected by FindRelatedProducts.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Maximum" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Specifies the upper boundary of the range of product versions detected by FindRelatedProducts.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Language" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Specifies the set of languages detected by FindRelatedProducts. Enter a list of numeric language identifiers (LANGID) separated by commas (,). Leave this value null to specify all languages. Set ExcludeLanguages to "yes" in order detect all languages, excluding the languages listed in this value.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="RemoveFeatures" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The installer sets the REMOVE property to features specified in this column. The features to be removed can be determined at run time. The Formatted string entered in this field must evaluate to a comma-delimited list of feature names. For example: [Feature1],[Feature2],[Feature3]. No features are removed if the field contains formatted text that evaluates to an empty string. The installer sets REMOVE=ALL only if the Remove field is empty.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Property" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>When the FindRelatedProducts action detects a related product installed on the system, it appends the product code to the property specified in this field. Windows Installer documentation for the <html:a href="http://msdn.microsoft.com/library/aa372379.aspx" target="_blank">Upgrade table</html:a> states that the property specified in this field must be a public property and must be added to the <html:a href="http://msdn.microsoft.com/library/aa371571.aspx" target="_blank">SecureCustomProperties</html:a> property. WiX automatically appends the property specified in this field to the SecureCustomProperties property when creating an MSI. Each UpgradeVersion must have a unique Property value. After the FindRelatedProducts action is run, the value of this property is a list of product codes, separated by semicolons (;), detected on the system.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="MigrateFeatures" type="YesNoTypeUnion">
+        <xs:annotation>
+          <xs:documentation>Set to "yes" to migrate feature states from upgraded products by enabling the logic in the MigrateFeatureStates action.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="OnlyDetect" type="YesNoTypeUnion">
+        <xs:annotation>
+          <xs:documentation>Set to "yes" to detect products and applications but do not uninstall.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="IgnoreRemoveFailure" type="YesNoTypeUnion">
+        <xs:annotation>
+          <xs:documentation>Set to "yes" to continue installation upon failure to remove a product or application.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="IncludeMinimum" type="YesNoTypeUnion">
+        <xs:annotation>
+          <xs:documentation>Set to "no" to make the range of versions detected exclude the value specified in Minimum. This attribute is "yes" by default.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="IncludeMaximum" type="YesNoTypeUnion">
+        <xs:annotation>
+          <xs:documentation>Set to "yes" to make the range of versions detected include the value specified in Maximum.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="ExcludeLanguages" type="YesNoTypeUnion">
+        <xs:annotation>
+          <xs:documentation>Set to "yes" to detect all languages, excluding the languages listed in the Language attribute.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute namespace="##other" processContents="lax">
+        <xs:annotation>
+          <xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:anyAttribute>
     </xs:complexType>
   </xs:element>
   <xs:element name="Upgrade">
     <xs:annotation>
       <xs:documentation>
-                Upgrade info for a particular UpgradeCode
-          </xs:documentation>
+        Upgrade info for a particular UpgradeCode
+      </xs:documentation>
       <xs:appinfo>
         <xse:msiRef table="Upgrade" href="http://msdn.microsoft.com/library/aa372379.aspx" />
       </xs:appinfo>
@@ -8950,9 +8950,9 @@
         <xs:element ref="Property">
           <xs:annotation>
             <xs:documentation>
-                            Nesting a Property element under an Upgrade element has been deprecated.
-                            Please nest Property elements in any of the other supported locations.
-                        </xs:documentation>
+              Nesting a Property element under an Upgrade element has been deprecated.
+              Please nest Property elements in any of the other supported locations.
+            </xs:documentation>
           </xs:annotation>
         </xs:element>
       </xs:choice>
@@ -8966,12 +8966,12 @@
   <xs:element name="Feature">
     <xs:annotation>
       <xs:documentation>
-                A feature for the Feature table. Features are the smallest installable unit. See msi.chm for more
-                detailed information on the myriad installation options for a feature.
-            </xs:documentation>
+        A feature for the Feature table. Features are the smallest installable unit. See msi.chm for more
+        detailed information on the myriad installation options for a feature.
+      </xs:documentation>
       <xs:appinfo>
         <xse:seeAlso ref="FeatureRef" />
-        <xse:msiRef table="Feature" href="http://msdn.microsoft.com/library/aa368585.aspx" />
+        <xse:msiRef table="Feature" href="https://learn.microsoft.com/en-us/windows/win32/msi/feature-table" />
         <xse:howtoRef href="files_and_registry/add_a_file.html">How To: Add a file to your installer</xse:howtoRef>
       </xs:appinfo>
     </xs:annotation>
@@ -8988,133 +8988,90 @@
         <xs:any namespace="##other" processContents="lax">
           <xs:annotation>
             <xs:documentation>
-                        Extensibility point in the WiX XML Schema. Schema extensions can register additional
-                        elements at this point in the schema.
-                    </xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
           </xs:annotation>
         </xs:any>
       </xs:choice>
       <xs:attribute name="Id" type="xs:string" use="required">
         <xs:annotation>
-          <xs:documentation>Unique identifier of the feature.</xs:documentation>
+          <xs:documentation>Unique identifier of the feature. The id must be shorter than 38 characters.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Absent">
+      <xs:attribute name="AllowAbsent" type="YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
-                        This attribute determines if a user will have the option to set a feature to absent in the user interface.
-                    </xs:documentation>
+            This attribute determines if a user will have the option to set a feature to absent in the user interface.
+          </xs:documentation>
         </xs:annotation>
-        <xs:simpleType>
-          <xs:restriction base="xs:NMTOKEN">
-            <xs:enumeration value="allow">
-              <xs:annotation>
-                <xs:documentation>
-                                    Allows the user interface to display an option to change the feature state to Absent.
-                                </xs:documentation>
-              </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="disallow">
-              <xs:annotation>
-                <xs:documentation>
-                                    Prevents the user interface from displaying an option to change the feature state
-                                    to Absent by setting the msidbFeatureAttributesUIDisallowAbsent attribute. This will force the feature
-                                    to the installation state, whether or not the feature is visible in the UI.
-                                </xs:documentation>
-              </xs:annotation>
-            </xs:enumeration>
-          </xs:restriction>
-        </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="AllowAdvertise">
+      <xs:attribute name="AllowAdvertise" type="YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
-                        This attribute determines the possible advertise states for this feature.
-                    </xs:documentation>
+            This attribute determines the possible advertise states for this feature. The default is 'yes'.
+          </xs:documentation>
         </xs:annotation>
-        <xs:simpleType>
-          <xs:restriction base="xs:NMTOKEN">
-            <xs:enumeration value="no">
-              <xs:annotation>
-                <xs:documentation>
-                                    Prevents this feature from being advertised by setting the msidbFeatureAttributesDisallowAdvertise attribute.
-                                </xs:documentation>
-              </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="system">
-              <xs:annotation>
-                <xs:documentation>
-                                    Prevents advertising for this feature if the operating system shell does not support Windows Installer
-                                    descriptors by setting the msidbFeatureAttributesNoUnsupportedAdvertise attribute.
-                                </xs:documentation>
-              </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="yes">
-              <xs:annotation>
-                <xs:documentation>
-                                    Allows the feature to be advertised.
-                                </xs:documentation>
-              </xs:annotation>
-            </xs:enumeration>
-          </xs:restriction>
-        </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="ConfigurableDirectory" type="xs:string">
         <xs:annotation>
           <xs:documentation>
-                    Specify the Id of a Directory that can be configured by the user at installation time. This identifier
-                    must be a public property and therefore completely uppercase.
-                </xs:documentation>
+            Specify the Id of a Directory that can be configured by the user at installation time. This identifier
+            must be a public property and therefore completely uppercase.
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Description" type="xs:string">
         <xs:annotation>
           <xs:documentation>
-                    Longer string of text describing the feature. This localizable string is displayed by the
-                    Text Control of the Selection Dialog.
-                </xs:documentation>
+            Longer string of text describing the feature. This localizable string is displayed by the
+            Text Control of the Selection Dialog.
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Display" type="xs:string">
         <xs:annotation>
           <xs:documentation>
-                        Determines the initial display of this feature in the feature tree.
-                        This attribute's value should be one of the following:
-                        <html:dl><html:dt class="enumerationValue"><html:dfn>collapse</html:dfn></html:dt><html:dd>Initially shows the feature collapsed. This is the default value.</html:dd><html:dt class="enumerationValue"><html:dfn>expand</html:dfn></html:dt><html:dd>Initially shows the feature expanded.</html:dd><html:dt class="enumerationValue"><html:dfn>hidden</html:dfn></html:dt><html:dd>Prevents the feature from displaying in the user interface.</html:dd><html:dt class="enumerationValue"><html:dfn>(an explicit integer value)</html:dfn></html:dt><html:dd>
-                                For advanced users only, it is possible to directly set the integer value
-                                of the display value that will appear in the Feature row.
-                            </html:dd></html:dl></xs:documentation>
+            Determines the initial display of this feature in the feature tree.
+            This attribute's value should be one of the following:
+            <html:dl>
+              <html:dt class="enumerationValue"><html:dfn>collapse</html:dfn></html:dt>
+              <html:dd>Initially shows the feature collapsed. This is the default value.</html:dd><html:dt class="enumerationValue"><html:dfn>expand</html:dfn></html:dt><html:dd>Initially shows the feature expanded.</html:dd><html:dt class="enumerationValue"><html:dfn>hidden</html:dfn></html:dt><html:dd>Prevents the feature from displaying in the user interface.</html:dd><html:dt class="enumerationValue"><html:dfn>(an explicit integer value)</html:dfn></html:dt><html:dd>
+              For advanced users only, it is possible to directly set the integer value
+              of the display value that will appear in the Feature row.</html:dd>
+            </html:dl>
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="InstallDefault">
         <xs:annotation>
           <xs:documentation>
-                        This attribute determines the default install/run location of a feature. This attribute cannot be specified
-                        if the value of the FollowParent attribute is 'yes' since that would ask the installer to force this feature
-                        to follow the parent installation state and simultaneously favor a particular installation state just for this feature.
-                    </xs:documentation>
+            This attribute determines the default install/run location of a feature. This attribute cannot be specified
+            if the value of the FollowParent attribute is 'yes' since that would ask the installer to force this feature
+            to follow the parent installation state and simultaneously favor a particular installation state just for this feature.
+          </xs:documentation>
         </xs:annotation>
         <xs:simpleType>
           <xs:restriction base="xs:NMTOKEN">
             <xs:enumeration value="followParent">
               <xs:annotation>
                 <xs:documentation>
-                                    Forces the feature to follow the same installation state as its parent feature.
-                                </xs:documentation>
+                  Forces the feature to follow the same installation state as its parent feature.
+                </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="local">
               <xs:annotation>
                 <xs:documentation>
-                                    Favors installing this feature locally by setting the msidbFeatureAttributesFavorLocal attribute.
-                                </xs:documentation>
+                  Favors installing this feature locally by setting the msidbFeatureAttributesFavorLocal attribute.
+                </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="source">
               <xs:annotation>
                 <xs:documentation>
-                                    Favors running this feature from source by setting the msidbFeatureAttributesFavorSource attribute.
-                                </xs:documentation>
+                  Favors running this feature from source by setting the msidbFeatureAttributesFavorSource attribute.
+                </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
           </xs:restriction>
@@ -9123,42 +9080,42 @@
       <xs:attribute name="Level" type="xs:integer">
         <xs:annotation>
           <xs:documentation>
-                    Sets the install level of this feature. A value of 0 will disable the feature. Processing the
-                    Condition Table can modify the level value (this is set via the Condition child element). The
-                    default value is "1".
-                </xs:documentation>
+            Sets the install level of this feature. A value of 0 will disable the feature. Processing the
+            Condition Table can modify the level value (this is set via the Condition child element). The
+            default value is "1".
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Title" type="xs:string">
         <xs:annotation>
           <xs:documentation>
-                    Short string of text identifying the feature. This string is listed as an item by the
-                    SelectionTree control of the Selection Dialog.
-                </xs:documentation>
+            Short string of text identifying the feature. This string is listed as an item by the
+            SelectionTree control of the Selection Dialog.
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="TypicalDefault">
         <xs:annotation>
           <xs:documentation>
-                    This attribute determines the default advertise state of the feature.
-                </xs:documentation>
+            This attribute determines the default advertise state of the feature.
+          </xs:documentation>
         </xs:annotation>
         <xs:simpleType>
           <xs:restriction base="xs:NMTOKEN">
             <xs:enumeration value="advertise">
               <xs:annotation>
                 <xs:documentation>
-                                    Sets the feature to be advertised by setting the msidbFeatureAttributesFavorAdvertise attribute.
-                                    This value cannot be set if the value of the AllowAdvertise attribute is 'no' since that would ask the installer to
-                                    disallow the advertised state for this feature while at the same time favoring it.
-                                </xs:documentation>
+                  Sets the feature to be advertised by setting the msidbFeatureAttributesFavorAdvertise attribute.
+                  This value cannot be set if the value of the AllowAdvertise attribute is 'no' since that would ask the installer to
+                  disallow the advertised state for this feature while at the same time favoring it.
+                </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="install">
               <xs:annotation>
                 <xs:documentation>
-                                    Sets the feature to the default non-advertised installation option.
-                                </xs:documentation>
+                  Sets the feature to the default non-advertised installation option.
+                </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
           </xs:restriction>
@@ -9167,9 +9124,9 @@
       <xs:anyAttribute namespace="##other" processContents="lax">
         <xs:annotation>
           <xs:documentation>
-                    Extensibility point in the WiX XML Schema. Schema extensions can register additional
-                    attributes at this point in the schema.
-                </xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
         </xs:annotation>
       </xs:anyAttribute>
     </xs:complexType>
@@ -9177,8 +9134,8 @@
   <xs:element name="FeatureGroup">
     <xs:annotation>
       <xs:documentation>
-                Groups together multiple components, features, and merges to be used in other locations.
-            </xs:documentation>
+        Groups together multiple components, features, and merges to be used in other locations.
+      </xs:documentation>
       <xs:appinfo>
         <xse:seeAlso ref="FeatureGroupRef" />
       </xs:appinfo>
@@ -9195,9 +9152,9 @@
         <xs:any namespace="##other" processContents="lax">
           <xs:annotation>
             <xs:documentation>
-                            Extensibility point in the WiX XML Schema. Schema extensions can register additional
-                            elements at this point in the schema.
-                        </xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
           </xs:annotation>
         </xs:any>
       </xs:choice>
@@ -9209,9 +9166,9 @@
       <xs:anyAttribute namespace="##other" processContents="lax">
         <xs:annotation>
           <xs:documentation>
-                        Extensibility point in the WiX XML Schema. Schema extensions can register additional
-                        attributes at this point in the schema.
-                    </xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
         </xs:annotation>
       </xs:anyAttribute>
     </xs:complexType>
@@ -9232,34 +9189,34 @@
       <xs:attribute name="IgnoreParent" type="YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
-                    Normally feature group references that end up nested under a parent element create a
-                    connection to that parent. This behavior is undesirable when trying to simply reference
-                    to a FeatureGroup in a different Fragment. Specify 'yes' to have this feature group
-                    reference not create a connection to its parent. The default is 'no'.
-                </xs:documentation>
+            Normally feature group references that end up nested under a parent element create a
+            connection to that parent. This behavior is undesirable when trying to simply reference
+            to a FeatureGroup in a different Fragment. Specify 'yes' to have this feature group
+            reference not create a connection to its parent. The default is 'no'.
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Primary" type="YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
-                        Set this attribute to 'yes' in order to make the parent feature of this group
-                        the primary feature for any components and merges contained in the group.
-                        Features may belong to multiple features. By designating a feature as the
-                        primary feature of a component or merge, you ensure that whenever a component is
-                        selected for install-on-demand (IOD), the primary feature will be the one to install
-                        it. This attribute should only be set if a component actually nests under multiple
-                        features. If a component nests under only one feature, that feature is the primary
-                        feature for the component. You cannot set more than one feature as the primary
-                        feature of a given component.
-                    </xs:documentation>
+            Set this attribute to 'yes' in order to make the parent feature of this group
+            the primary feature for any components and merges contained in the group.
+            Features may belong to multiple features. By designating a feature as the
+            primary feature of a component or merge, you ensure that whenever a component is
+            selected for install-on-demand (IOD), the primary feature will be the one to install
+            it. This attribute should only be set if a component actually nests under multiple
+            features. If a component nests under only one feature, that feature is the primary
+            feature for the component. You cannot set more than one feature as the primary
+            feature of a given component.
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:anyAttribute namespace="##other" processContents="lax">
         <xs:annotation>
           <xs:documentation>
-                        Extensibility point in the WiX XML Schema. Schema extensions can register additional
-                        attributes at this point in the schema.
-                    </xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
         </xs:annotation>
       </xs:anyAttribute>
     </xs:complexType>
@@ -9284,9 +9241,9 @@
         <xs:any namespace="##other" processContents="lax">
           <xs:annotation>
             <xs:documentation>
-                        Extensibility point in the WiX XML Schema. Schema extensions can register additional
-                        elements at this point in the schema.
-                    </xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
           </xs:annotation>
         </xs:any>
       </xs:choice>
@@ -9298,19 +9255,19 @@
       <xs:attribute name="IgnoreParent" type="YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
-                    Normally feature references that are nested under a parent element create a connection to that
-                    parent. This behavior is undesirable when trying to simply reference a Feature in a different
-                    Fragment. Specify 'yes' to have this feature reference not create a connection to its parent.
-                    The default is 'no'.
-                </xs:documentation>
+            Normally feature references that are nested under a parent element create a connection to that
+            parent. This behavior is undesirable when trying to simply reference a Feature in a different
+            Fragment. Specify 'yes' to have this feature reference not create a connection to its parent.
+            The default is 'no'.
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:anyAttribute namespace="##other" processContents="lax">
         <xs:annotation>
           <xs:documentation>
-                    Extensibility point in the WiX XML Schema. Schema extensions can register additional
-                    attributes at this point in the schema.
-                </xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
         </xs:annotation>
       </xs:anyAttribute>
     </xs:complexType>
@@ -10645,69 +10602,85 @@
       <xs:documentation>Use to sequence a custom action.</xs:documentation>
     </xs:annotation>
     <xs:complexType>
-      <xs:simpleContent>
-        <xs:extension base="xs:string">
-          <xs:annotation>
-            <xs:documentation>Text node specifies the condition of the action.</xs:documentation>
-          </xs:annotation>
-          <xs:attribute name="Action" type="xs:string" use="required">
-            <xs:annotation>
-              <xs:documentation>The action to which the Custom element applies.</xs:documentation>
-            </xs:annotation>
-          </xs:attribute>
-          <xs:attribute name="OnExit" type="ExitType">
-            <xs:annotation>
-              <xs:documentation>Mutually exclusive with Before, After, and Sequence attributes</xs:documentation>
-            </xs:annotation>
-          </xs:attribute>
-          <xs:attribute name="Before" type="xs:string">
-            <xs:annotation>
-              <xs:documentation>The name of the standard or custom action before which this action should be performed. Mutually exclusive with OnExit, After, and Sequence attributes</xs:documentation>
-            </xs:annotation>
-          </xs:attribute>
-          <xs:attribute name="After" type="xs:string">
-            <xs:annotation>
-              <xs:documentation>The name of the standard or custom action after which this action should be performed. Mutually exclusive with Before, OnExit, and Sequence attributes</xs:documentation>
-            </xs:annotation>
-          </xs:attribute>
-          <xs:attribute name="Overridable" type="YesNoTypeUnion">
-            <xs:annotation>
-              <xs:documentation>
-                                If "yes", the sequencing of this action may be overridden by sequencing elsewhere.
-                            </xs:documentation>
-            </xs:annotation>
-          </xs:attribute>
-          <xs:attribute name="Sequence" type="xs:integer">
-            <xs:annotation>
-              <xs:documentation>The sequence number for this action. Mutually exclusive with Before, After, and OnExit attributes</xs:documentation>
-            </xs:annotation>
-          </xs:attribute>
-        </xs:extension>
-      </xs:simpleContent>
+      <xs:annotation>
+        <xs:documentation>Text node specifies the condition of the action.</xs:documentation>
+      </xs:annotation>
+      <xs:attribute name="Action" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>The CustomAction to which the Custom element applies.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Condition" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Optional condition that determines whether the action should be executed.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="OnExit" type="ExitType">
+        <xs:annotation>
+          <xs:documentation>Mutually exclusive with Before, After, and Sequence attributes</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Before" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The name of the standard or custom action before which this action should be performed. Mutually exclusive with OnExit, After, and Sequence attributes</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="After" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The name of the standard or custom action after which this action should be performed. Mutually exclusive with Before, OnExit, and Sequence attributes</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Overridable" type="YesNoTypeUnion">
+        <xs:annotation>
+          <xs:documentation>If "yes", the sequencing of this action may be overridden by sequencing elsewhere.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Sequence" type="xs:integer">
+        <xs:annotation>
+          <xs:documentation>The sequence number for this action. It is recommended to use one of the other mutually exclusive attributes: OnExit, After, and Before.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
     </xs:complexType>
   </xs:element>
   <xs:element name="Show">
     <xs:complexType>
-      <xs:simpleContent>
-        <xs:extension base="xs:string">
-          <xs:attribute name="Dialog" type="xs:string" use="required" />
-          <xs:attribute name="OnExit" type="ExitType">
-            <xs:annotation>
-              <xs:documentation>mutually exclusive with Before, After, and Sequence attributes</xs:documentation>
-            </xs:annotation>
-          </xs:attribute>
-          <xs:attribute name="Before" type="xs:string" />
-          <xs:attribute name="After" type="xs:string" />
-          <xs:attribute name="Overridable" type="YesNoTypeUnion">
-            <xs:annotation>
-              <xs:documentation>
-                                If "yes", the sequencing of this dialog may be overridden by sequencing elsewhere.
-                            </xs:documentation>
-            </xs:annotation>
-          </xs:attribute>
-          <xs:attribute name="Sequence" type="xs:integer" />
-        </xs:extension>
-      </xs:simpleContent>
+      <xs:attribute name="Dialog" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>Reference to dialog to show.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Condition" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Optional condition that determines whether the dialog should be displayed.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="OnExit" type="ExitType">
+        <xs:annotation>
+          <xs:documentation>Show the dialog Mutually exclusive with Before, After, and Sequence attributes.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Before" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Show the dialog before the specified action. Mutually exclusive with OnExit, After, and Sequence attributes.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="After" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Show the dialog after the specified action. Mutually exclusive with OnExit, Before, and Sequence attributes.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Overridable" type="YesNoTypeUnion">
+        <xs:annotation>
+          <xs:documentation>
+            If "yes", the sequencing of this dialog may be overridden by sequencing elsewhere. The default is "no".
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Sequence" type="xs:integer">
+        <xs:annotation>
+          <xs:documentation>Show the dialog at the specified sequence. It is recommended to use one of the other mutually exclusive attributes: OnExit, After, and Before.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
     </xs:complexType>
   </xs:element>
   <!-- standard sequence table compositions -->

@@ -561,7 +561,7 @@
           </xs:annotation>
         </xs:any>
       </xs:choice>
-      <xs:attribute name="Id" type="xs:string" use="required">
+      <xs:attribute name="Id" type="xs:string">
         <xs:annotation>
           <xs:documentation>Identifier for the file share (primary key).</xs:documentation>
         </xs:annotation>
@@ -723,7 +723,7 @@
           </xs:annotation>
         </xs:any>
       </xs:choice>
-      <xs:attribute name="Id" type="xs:string" use="required">
+      <xs:attribute name="Id" type="xs:string">
         <xs:annotation>
           <xs:documentation>Unique identifier in your installation package for this group.</xs:documentation>
         </xs:annotation>
@@ -795,7 +795,7 @@
           </xs:annotation>
         </xs:any>
       </xs:choice>
-      <xs:attribute name="Id" type="xs:string" use="required">
+      <xs:attribute name="Id" type="xs:string">
         <xs:annotation>
           <xs:documentation>Unique identifier in your installation package for this Internet shortcut.</xs:documentation>
         </xs:annotation>
