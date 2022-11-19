@@ -71,5 +71,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../mergeref/">MergeRef</a></dd>
+    <a href="../">Wix Schema</a>, <a href="../mergeref/">MergeRef</a></dd>
 </dl>

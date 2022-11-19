@@ -70,5 +70,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../custom/">Custom</a>, <a href="../customactionref/">CustomActionRef</a>, <a href="../installuisequence/">InstallUISequence</a>, <a href="../installexecutesequence/">InstallExecuteSequence</a></dd>
+    <a href="../">Wix Schema</a>, <a href="../custom/">Custom</a>, <a href="../customactionref/">CustomActionRef</a>, <a href="../installuisequence/">InstallUISequence</a>, <a href="../installexecutesequence/">InstallExecuteSequence</a></dd>
 </dl>

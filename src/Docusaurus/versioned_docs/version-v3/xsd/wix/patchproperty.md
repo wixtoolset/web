@@ -49,6 +49,6 @@ layout: documentation_xsd_main
   <dd><p>When authored under the Patch element, the PatchProperty defines entries in the MsiPatchMetadata table.</p></dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>
+    <a href="../">Wix Schema</a>
   </dd>
 </dl>

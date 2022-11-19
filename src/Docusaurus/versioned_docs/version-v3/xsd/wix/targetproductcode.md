@@ -35,6 +35,6 @@ layout: documentation_xsd_main
   <dd><p>When using the PatchCreation element, if the Id attribute value is '*' or this element is not authored, the product codes of all products referenced by the TargetImages element are used.</p><p>When using the Patch element, the Id attribute value must not be '*'. Use the TargetProductCodes/@Replace attribute instead.</p></dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>
+    <a href="../">Wix Schema</a>
   </dd>
 </dl>

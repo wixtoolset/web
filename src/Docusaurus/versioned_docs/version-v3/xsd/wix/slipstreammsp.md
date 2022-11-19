@@ -36,5 +36,5 @@ layout: documentation_xsd_main
   <dd><p>You can also specify that any MspPackage elements in the chain are automatically slipstreamed by setting the Slipstream attribute of an MspPackage to "yes". This will reduce the amount of authoring you need to write and will determine which msi packages can slipstream patches when building a bundle.</p></dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../msppackage/">MspPackage</a></dd>
+    <a href="../">Wix Schema</a>, <a href="../msppackage/">MspPackage</a></dd>
 </dl>

@@ -44,5 +44,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../patchfamily/">PatchFamily</a></dd>
+    <a href="../">Wix Schema</a>, <a href="../patchfamily/">PatchFamily</a></dd>
 </dl>

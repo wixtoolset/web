@@ -60,6 +60,6 @@ layout: documentation_xsd_main
   <dd><p>The attributes are used to write the following registry values to the key:           <code>SOFTWARE\[Manufacturer]\Updates\[ProductFamily]\[Name]</code></p><ul><li>ThisVersionInstalled: Y</li><li>PackageName: &gt;bundle name&lt;</li><li>PackageVersion: &gt;bundle version&lt;</li><li>Publisher: [Manufacturer]</li><li>PublishingGroup: [Department]</li><li>ReleaseType: [Classification]</li><li>InstalledBy: [LogonUser]</li><li>InstalledDate: [Date]</li><li>InstallerName: &gt;installer name&lt;</li><li>InstallerVersion: &gt;installer version&lt;</li></ul></dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>
+    <a href="../">Wix Schema</a>
   </dd>
 </dl>

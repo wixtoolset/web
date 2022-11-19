@@ -9,6 +9,6 @@ layout: documentation_xsd_simpletype
   <dd>Possible values: success, cancel, error, suspend</dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>
+    <a href="../">Wix Schema</a>
   </dd>
 </dl>

@@ -9,6 +9,6 @@ layout: documentation_xsd_simpletype
   <dd>Possible values: both, first, execute, ui</dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>
+    <a href="../">Wix Schema</a>
   </dd>
 </dl>

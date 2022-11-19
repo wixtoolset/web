@@ -102,5 +102,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../featureref/">FeatureRef</a></dd>
+    <a href="../">Wix Schema</a>, <a href="../featureref/">FeatureRef</a></dd>
 </dl>

@@ -35,6 +35,6 @@ layout: documentation_xsd_main
   <dd>This element is particularly useful for two problems that may occur while merging merge modules:                     <ol><li>                             The first likely problem is that in order to properly merge you need to have certain                             tables present prior to merging.  Using this element is one way to ensure those tables                             are present prior to the merging.                         </li><li>                             The other common problem is that a merge module has incorrect validation information                             about some tables.  By ensuring these tables prior to merging, you can avoid this                             problem because the correct validation information will go into the installer database                             before the merge module has a chance to set it incorrectly.                         </li></ol></dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>
+    <a href="../">Wix Schema</a>
   </dd>
 </dl>

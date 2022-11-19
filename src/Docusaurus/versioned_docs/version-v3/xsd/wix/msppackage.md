@@ -160,5 +160,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../slipstreammsp/">SlipstreamMsp</a></dd>
+    <a href="../">Wix Schema</a>, <a href="../slipstreammsp/">SlipstreamMsp</a></dd>
 </dl>

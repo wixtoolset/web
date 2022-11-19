@@ -19,5 +19,5 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../property/">Property</a></dd>
+    <a href="../">Wix Schema</a>, <a href="../property/">Property</a></dd>
 </dl>

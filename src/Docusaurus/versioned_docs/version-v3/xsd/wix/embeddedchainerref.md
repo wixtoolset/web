@@ -38,5 +38,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../embeddedchainer/">EmbeddedChainer</a></dd>
+    <a href="../">Wix Schema</a>, <a href="../embeddedchainer/">EmbeddedChainer</a></dd>
 </dl>

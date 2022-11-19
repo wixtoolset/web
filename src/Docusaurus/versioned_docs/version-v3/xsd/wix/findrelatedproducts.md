@@ -59,5 +59,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../upgrade/">Upgrade</a></dd>
+    <a href="../">Wix Schema</a>, <a href="../upgrade/">Upgrade</a></dd>
 </dl>
