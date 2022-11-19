@@ -56,13 +56,13 @@ layout: documentation_xsd_main
   <dd>
     <ul>
       <li>
-        <a href="../../howtos/files_and_registry/check_the_version_number">How To: Check the version number of a file during installation</a>
+        <a href="../../../howtos/files_and_registry/check_the_version_number">How To: Check the version number of a file during installation</a>
       </li>
       <li>
-        <a href="../../howtos/files_and_registry/directorysearchref">How To: Reference another DirectorySearch element</a>
+        <a href="../../../howtos/files_and_registry/directorysearchref">How To: Reference another DirectorySearch element</a>
       </li>
       <li>
-        <a href="../../howtos/files_and_registry/parentdirectorysearch">How To: Get the parent directory of a file search</a>
+        <a href="../../../howtos/files_and_registry/parentdirectorysearch">How To: Get the parent directory of a file search</a>
       </li>
     </ul>
   </dd>

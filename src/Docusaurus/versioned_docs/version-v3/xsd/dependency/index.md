@@ -10,13 +10,13 @@ layout: documentation_xsd_extension
   <dd>
     <ul>
       <li>
-        <a href="../dependency/provides" class="extension">Provides</a>
+        <a href="./provides" class="extension">Provides</a>
       </li>
       <li>
-        <a href="../dependency/requires" class="extension">Requires</a>
+        <a href="./requires" class="extension">Requires</a>
       </li>
       <li>
-        <a href="../dependency/requiresref" class="extension">RequiresRef</a>
+        <a href="./requiresref" class="extension">RequiresRef</a>
       </li>
     </ul>
   </dd>

@@ -9,11 +9,11 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../component/">Component</a>, <a href="../exepackage/">ExePackage</a>, <a href="../msipackage/">MsiPackage</a>, <a href="../msppackage/">MspPackage</a>, <a href="../msupackage/">MsuPackage</a></dd>
+    <a href="../../wix/component/">Component</a>, <a href="../../wix/exepackage/">ExePackage</a>, <a href="../../wix/msipackage/">MsiPackage</a>, <a href="../../wix/msppackage/">MspPackage</a>, <a href="../../wix/msupackage/">MsuPackage</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../dependency/requires" class="extension">Requires</a> (min: 0, max: unbounded)</li><li><a href="../dependency/requiresref" class="extension">RequiresRef</a> (min: 0, max: unbounded)</li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../requires" class="extension">Requires</a> (min: 0, max: unbounded)</li><li><a href="../requiresref" class="extension">RequiresRef</a> (min: 0, max: unbounded)</li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -43,7 +43,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>Version</td>
-        <td><a href="../dependency/simple_type_versiontype">VersionType</a></td>
+        <td><a href="../simple_type_versiontype">VersionType</a></td>
         <td>                         The version of the package. For MSI packages, the ProductVersion will be used by default                         and this attribute should not be specified.                     </td>
         <td>&nbsp;</td>
       </tr>
@@ -55,12 +55,12 @@ layout: documentation_xsd_extension
   <dd>
     <ul>
       <li>
-        <a href="../../howtos/author_product_dependencies">How To: Author product dependencies</a>
+        <a href="../../../howtos/author_product_dependencies">How To: Author product dependencies</a>
       </li>
     </ul>
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../dependency">Dependency Schema</a>
+    <a href="../">Dependency Schema</a>
   </dd>
 </dl>

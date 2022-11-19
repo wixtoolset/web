@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../file/">File</a>
+    <a href="../../wix/file/">File</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -44,13 +44,13 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>Debug</td>
-        <td><a href="../netfx/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype">YesNoType</a></td>
         <td>                         Set to "yes" to generate native images that can be used under a debugger.                         The default value is "no".                     </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Dependencies</td>
-        <td><a href="../netfx/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype">YesNoType</a></td>
         <td>                         Set to "no" to generate the minimum number of native images.                         The default value is "yes".                     </td>
         <td>&nbsp;</td>
       </tr>
@@ -68,7 +68,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>Profile</td>
-        <td><a href="../netfx/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype">YesNoType</a></td>
         <td>                         Set to "yes" to generate native images that can be used under a profiler.                         The default value is "no".                     </td>
         <td>&nbsp;</td>
       </tr>
@@ -78,6 +78,6 @@ layout: documentation_xsd_extension
   <dd><p>                         Native images are files containing compiled processor-specific machine code, which                         are installed into the native image cache on the local computer. The runtime                         can use native images from the cache instead using the just-in-time (JIT)                         compiler to compile the original assembly.                     </p><p>                         The native image custom actions are configured to ignore failures so that failing                         to generate or remove a native image will not cause setup to fail and roll back.                     </p><p><b>Note for patches:</b> if you built your target, or baseline, MSI with                         previous versions 3.0 or 3.5 of this extension and want to upgrade to formattable                         values for @AssemblyApplication or @AppBaseDirectory you must also include a                         BinaryRef to "NetFxCA" to pull in necessary changes. If you do use formattable                         values and do not include the binary changes ngen.exe will not optimize your                         native images for the specified application.                     </p><p>                         This should be a rare occurrence, however. Because you cannot remove components                         in a patch - and pyro does validate you do not - it is not practical to switch                         from using identifiers to formattable values in a patch. One practical possibility                         is if you wanted to use a different application to optimize your native images                         and that application is not already installed with the MSI to be updated.                     </p></dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../netfx">Netfx Schema</a>
+    <a href="../">Netfx Schema</a>
   </dd>
 </dl>

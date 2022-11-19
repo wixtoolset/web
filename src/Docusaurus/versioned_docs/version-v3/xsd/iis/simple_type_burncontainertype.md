@@ -9,6 +9,6 @@ layout: documentation_xsd_simpletype
   <dd>Possible values: attached, detached</dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../iis">Iis Schema</a>
+    <a href="../">Iis Schema</a>
   </dd>
 </dl>

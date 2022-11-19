@@ -9,6 +9,6 @@ layout: documentation_xsd_simpletype
   <dd>Must match the regular expression: '(\$\(\w+\.(\w|[.])+\))+'.</dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../firewall">Firewall Schema</a>
+    <a href="../">Firewall Schema</a>
   </dd>
 </dl>

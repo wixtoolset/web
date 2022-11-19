@@ -9,6 +9,6 @@ layout: documentation_xsd_simpletype
   <dd>Must match the regular expression: '[0-9][0-9]*|([!$])\((loc|bind)\.[_A-Za-z][0-9A-Za-z_.]+\)'.</dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../ps">Ps Schema</a>
+    <a href="../">Ps Schema</a>
   </dd>
 </dl>

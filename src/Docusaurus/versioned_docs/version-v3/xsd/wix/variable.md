@@ -60,7 +60,7 @@ layout: documentation_xsd_main
             <td>
               <span class="extension">Overridable</span>
             </td>
-            <td><a href="../bal/simple_type_yesnotype">YesNoType</a></td>
+            <td><a href="../../bal/simple_type_yesnotype">YesNoType</a></td>
             <td>                 When set to "yes", lets the user override the variable's default value by specifying another value on the command line,                 in the form Variable=Value. Otherwise, WixStdBA won't overwrite the default value and will log                  "Ignoring attempt to set non-overridable variable: 'BAR'."              (http://schemas.microsoft.com/wix/BalExtension)</td>
             <td>&nbsp;</td>
           </tr>

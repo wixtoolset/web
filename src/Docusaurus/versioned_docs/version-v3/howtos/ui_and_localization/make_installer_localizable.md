@@ -33,7 +33,7 @@ Once you have defined the strings you can use them in your project wherever you 
 
 ```
 <font size="2" color="#0000FF">&lt;</font><font size="2" color="#A31515">Product</font><font size="2" color="#0000FF"> </font><font size="2" color="#FF0000">Id</font><font size="2" color="#0000FF">=</font><font size="2">"</font><font size="2" color="#0000FF">*"
-         </font><font size="2" color="#FF0000">UpgradeCode</font><font size="2" color="#0000FF">=</font><font size="2">"<a href="../../howtos/general/generate_guids">PUT-GUID-HERE</a>"</font>
+         </font><font size="2" color="#FF0000">UpgradeCode</font><font size="2" color="#0000FF">=</font><font size="2">"<a href="../../../howtos/general/generate_guids">PUT-GUID-HERE</a>"</font>
 <font size="2" color="#FF0000">  Version</font><font size="2" color="#0000FF">=</font><font size="2">"</font><font size="2" color="#0000FF">1.0.0.0</font><font size="2">"</font>
 <font size="2" color="#FF0000">  Language</font><font size="2" color="#0000FF">=</font><font size="2">"</font><font size="2" color="#0000FF">1033</font><font size="2">"</font>
 <font size="2" color="#FF0000">  Name</font><font size="2" color="#0000FF">=</font><font size="2">"</font><font size="2" color="#0000FF">!(loc.ApplicationName)</font><font size="2">"

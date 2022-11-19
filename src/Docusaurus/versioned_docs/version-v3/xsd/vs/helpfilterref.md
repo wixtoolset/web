@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../vs/helpcollection" class="extension">HelpCollection</a>
+    <a href="../../vs/helpcollection" class="extension">HelpCollection</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -39,6 +39,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../vs">Vs Schema</a>
+    <a href="../">Vs Schema</a>
   </dd>
 </dl>

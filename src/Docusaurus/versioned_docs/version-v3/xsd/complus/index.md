@@ -10,58 +10,58 @@ layout: documentation_xsd_extension
   <dd>
     <ul>
       <li>
-        <a href="../complus/complusapplication" class="extension">ComPlusApplication</a>
+        <a href="./complusapplication" class="extension">ComPlusApplication</a>
       </li>
       <li>
-        <a href="../complus/complusapplicationrole" class="extension">ComPlusApplicationRole</a>
+        <a href="./complusapplicationrole" class="extension">ComPlusApplicationRole</a>
       </li>
       <li>
-        <a href="../complus/complusassembly" class="extension">ComPlusAssembly</a>
+        <a href="./complusassembly" class="extension">ComPlusAssembly</a>
       </li>
       <li>
-        <a href="../complus/complusassemblydependency" class="extension">ComPlusAssemblyDependency</a>
+        <a href="./complusassemblydependency" class="extension">ComPlusAssemblyDependency</a>
       </li>
       <li>
-        <a href="../complus/compluscomponent" class="extension">ComPlusComponent</a>
+        <a href="./compluscomponent" class="extension">ComPlusComponent</a>
       </li>
       <li>
-        <a href="../complus/complusgroupinapplicationrole" class="extension">ComPlusGroupInApplicationRole</a>
+        <a href="./complusgroupinapplicationrole" class="extension">ComPlusGroupInApplicationRole</a>
       </li>
       <li>
-        <a href="../complus/complusgroupinpartitionrole" class="extension">ComPlusGroupInPartitionRole</a>
+        <a href="./complusgroupinpartitionrole" class="extension">ComPlusGroupInPartitionRole</a>
       </li>
       <li>
-        <a href="../complus/complusinterface" class="extension">ComPlusInterface</a>
+        <a href="./complusinterface" class="extension">ComPlusInterface</a>
       </li>
       <li>
-        <a href="../complus/complusmethod" class="extension">ComPlusMethod</a>
+        <a href="./complusmethod" class="extension">ComPlusMethod</a>
       </li>
       <li>
-        <a href="../complus/compluspartition" class="extension">ComPlusPartition</a>
+        <a href="./compluspartition" class="extension">ComPlusPartition</a>
       </li>
       <li>
-        <a href="../complus/compluspartitionrole" class="extension">ComPlusPartitionRole</a>
+        <a href="./compluspartitionrole" class="extension">ComPlusPartitionRole</a>
       </li>
       <li>
-        <a href="../complus/compluspartitionuser" class="extension">ComPlusPartitionUser</a>
+        <a href="./compluspartitionuser" class="extension">ComPlusPartitionUser</a>
       </li>
       <li>
-        <a href="../complus/complusroleforcomponent" class="extension">ComPlusRoleForComponent</a>
+        <a href="./complusroleforcomponent" class="extension">ComPlusRoleForComponent</a>
       </li>
       <li>
-        <a href="../complus/complusroleforinterface" class="extension">ComPlusRoleForInterface</a>
+        <a href="./complusroleforinterface" class="extension">ComPlusRoleForInterface</a>
       </li>
       <li>
-        <a href="../complus/complusroleformethod" class="extension">ComPlusRoleForMethod</a>
+        <a href="./complusroleformethod" class="extension">ComPlusRoleForMethod</a>
       </li>
       <li>
-        <a href="../complus/complussubscription" class="extension">ComPlusSubscription</a>
+        <a href="./complussubscription" class="extension">ComPlusSubscription</a>
       </li>
       <li>
-        <a href="../complus/complususerinapplicationrole" class="extension">ComPlusUserInApplicationRole</a>
+        <a href="./complususerinapplicationrole" class="extension">ComPlusUserInApplicationRole</a>
       </li>
       <li>
-        <a href="../complus/complususerinpartitionrole" class="extension">ComPlusUserInPartitionRole</a>
+        <a href="./complususerinpartitionrole" class="extension">ComPlusUserInPartitionRole</a>
       </li>
     </ul>
   </dd>

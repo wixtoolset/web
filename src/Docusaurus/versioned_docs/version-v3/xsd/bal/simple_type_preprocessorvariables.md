@@ -9,6 +9,6 @@ layout: documentation_xsd_simpletype
   <dd>Must match the regular expression: '(\$\(\w+\.(\w|[.])+\))+'.</dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../bal">Bal Schema</a>
+    <a href="../">Bal Schema</a>
   </dd>
 </dl>

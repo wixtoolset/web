@@ -10,13 +10,13 @@ layout: documentation_xsd_extension
   <dd>
     <ul>
       <li>
-        <a href="../ps/formatsfile" class="extension">FormatsFile</a>
+        <a href="./formatsfile" class="extension">FormatsFile</a>
       </li>
       <li>
-        <a href="../ps/snapin" class="extension">SnapIn</a>
+        <a href="./snapin" class="extension">SnapIn</a>
       </li>
       <li>
-        <a href="../ps/typesfile" class="extension">TypesFile</a>
+        <a href="./typesfile" class="extension">TypesFile</a>
       </li>
     </ul>
   </dd>

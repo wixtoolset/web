@@ -9,6 +9,6 @@ layout: documentation_xsd_simpletype
   <dd>Must match the regular expression: '[0-9A-Fa-f]*'.</dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../firewall">Firewall Schema</a>
+    <a href="../">Firewall Schema</a>
   </dd>
 </dl>

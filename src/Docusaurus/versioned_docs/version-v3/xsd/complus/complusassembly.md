@@ -9,11 +9,11 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../complus/complusapplication" class="extension">ComPlusApplication</a>, <a href="../component/">Component</a></dd>
+    <a href="../../complus/complusapplication" class="extension">ComPlusApplication</a>, <a href="../../wix/component/">Component</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Sequence (min: 1, max: 1)<ol><li>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../complus/complusassemblydependency" class="extension">ComPlusAssemblyDependency</a> (min: 0, max: unbounded)</li><li><a href="../complus/compluscomponent" class="extension">ComPlusComponent</a> (min: 0, max: unbounded)</li></ul></li></ol></dd>
+  <dd>Sequence (min: 1, max: 1)<ol><li>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../../complus/complusassemblydependency" class="extension">ComPlusAssemblyDependency</a> (min: 0, max: unbounded)</li><li><a href="../../complus/compluscomponent" class="extension">ComPlusComponent</a> (min: 0, max: unbounded)</li></ul></li></ol></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -49,13 +49,13 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>DllPathFromGAC</td>
-        <td><a href="../complus/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../complus/simple_type_yesnotype">YesNoType</a></td>
         <td>           Indicates that the DLL path should be extracted from the           GAC instead for being provided in the DllPath attribute. If this attribute is           set to “yes”, the name of the assembly can be provided using the AssemblyName           attribute. Or, if this AssemblyName attribute is missing, the name will be           extracted from the MsiAssemblyName table using the id of the parent Component           element.         </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>EventClass</td>
-        <td><a href="../complus/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../complus/simple_type_yesnotype">YesNoType</a></td>
         <td>           Indicates that the assembly is to be installed as an event           class DLL. This attribute is only valid for native assemblies. The assembly           will be installed with the COM+ catalog’s InstallEventClass() function.         </td>
         <td>&nbsp;</td>
       </tr>
@@ -67,7 +67,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>RegisterInCommit</td>
-        <td><a href="../complus/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../complus/simple_type_yesnotype">YesNoType</a></td>
         <td>           Indicates that the assembly should be installed in the           commit custom action instead of the normal deferred custom action. This is           necessary when installing .NET assemblies to the GAC in the same           installation, as the assemblies are not visible in the GAC until after the           InstallFinalize action has run.         </td>
         <td>&nbsp;</td>
       </tr>
@@ -89,6 +89,6 @@ layout: documentation_xsd_extension
   <dd><p>             When installing a native assembly, all components             contained in the assembly must be represented as ComPlusComponent elements             under this element. Any component not listed will not be removed during             uninstall.           </p><p>             The fields DllPath, TlbPath and PSDllPath are formatted             fields that should contain file paths to there respective file types. A typical             value for DllPath for example, should be something like “[#MyAssembly_dll]”,             where “MyAssembly_dll” is the key of the dll file in the File table.           </p><p><b>Warning</b>: The assembly name provided in the AssemblyName             attribute must be a fully specified assembly name, if a partial name is             provided a random assembly matching the partial name will be selected.           </p></dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../complus">Complus Schema</a>
+    <a href="../">Complus Schema</a>
   </dd>
 </dl>

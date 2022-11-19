@@ -9,11 +9,11 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../component/">Component</a>, <a href="../fragment/">Fragment</a>, <a href="../module/">Module</a>, <a href="../product/">Product</a></dd>
+    <a href="../../wix/component/">Component</a>, <a href="../../wix/fragment/">Fragment</a>, <a href="../../wix/module/">Module</a>, <a href="../../wix/product/">Product</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../iis/recycletime" class="extension">RecycleTime</a> (min: 0, max: unbounded)</li></ol></dd>
+  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../../iis/recycletime" class="extension">RecycleTime</a> (min: 0, max: unbounded)</li></ol></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -61,7 +61,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>MaxCpuUsage</td>
-        <td><a href="../iis/simple_type_percenttype">PercentType</a></td>
+        <td><a href="../../iis/simple_type_percenttype">PercentType</a></td>
         <td>Maximum CPU usage (percent).</td>
         <td>&nbsp;</td>
       </tr>
@@ -123,6 +123,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../iis">Iis Schema</a>
+    <a href="../">Iis Schema</a>
   </dd>
 </dl>

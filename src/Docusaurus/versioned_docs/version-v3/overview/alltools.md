@@ -18,8 +18,8 @@ To view the usage information of the tools, run /? on the tool via the command l
     </td>
     <td>
       <p>Preprocesses and compiles WiX source files into object files (.wixobj). For more 
-      information on compiling, see <a href="candle">Compiler</a>. For more information on 
-      preprocessing, see <a href="preprocessor">Preprocessor</a>.</p>
+      information on compiling, see <a href="../candle/">Compiler</a>. For more information on 
+      preprocessing, see <a href="../preprocessor/">Preprocessor</a>.</p>
     </td>
   </tr>
   <tr>
@@ -30,7 +30,7 @@ To view the usage information of the tools, run /? on the tool via the command l
       <p>Links and binds one or more .wixobj files and creates a Windows Installer 
       database (.msi or .msm). When necessary, Light will also create cabinets and embed 
       streams into the Windows Installer database it creates.&nbsp;For more information 
-      on linking, see <a href="light">Linker</a>.</p>
+      on linking, see <a href="../light/">Linker</a>.</p>
     </td>
   </tr>
   <tr>
@@ -39,7 +39,7 @@ To view the usage information of the tools, run /? on the tool via the command l
     </td>
     <td>
       <p>Combines multiple .wixobj files into libraries that can be consumed by Light. 
-      For more information, see <a href="lit">Librarian</a>.</p>
+      For more information, see <a href="../lit/">Librarian</a>.</p>
     </td>
   </tr>
   <tr>
@@ -72,7 +72,7 @@ To view the usage information of the tools, run /? on the tool via the command l
     </td>
     <td>
       <p>Inscribes an installer database with information about the digital certificates its external cabs are signed with. 
-      For more information, see <a href="insignia">Insignia</a>.</p>
+      For more information, see <a href="../insignia/">Insignia</a>.</p>
     </td>
   </tr>
   <tr>
@@ -113,7 +113,7 @@ To view the usage information of the tools, run /? on the tool via the command l
     </td>
     <td>
       <p>Enforces standards on WiX source files. WixCop can also be used to assist in converting a set of WiX source files created using an older version of WiX to the latest version of WiX.
-      For more information, see <a href="wixcop">WixCop</a>.</p>
+      For more information, see <a href="../wixcop/">WixCop</a>.</p>
     </td>
   </tr>
   <tr>
@@ -131,7 +131,7 @@ To view the usage information of the tools, run /? on the tool via the command l
     </td>
     <td>
       <p>Author and run declarative unit tests for custom actions. For more information,
-      see <a href="lux">Unit-testing custom actions with Lux</a>.</p>
+      see <a href="../lux/">Unit-testing custom actions with Lux</a>.</p>
     </td>
   </tr>
 </table>

@@ -9,11 +9,11 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../component/">Component</a>, <a href="../util/xmlconfig" class="extension">XmlConfig</a></dd>
+    <a href="../../wix/component/">Component</a>, <a href="../../util/xmlconfig" class="extension">XmlConfig</a></dd>
   <dt>Inner Text (xs:string)</dt>
   <dd>This element may have inner text.</dd>
   <dt>Children</dt>
-  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../util/xmlconfig" class="extension">XmlConfig</a> (min: 0, max: unbounded)</li></ol></dd>
+  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../../util/xmlconfig" class="extension">XmlConfig</a> (min: 0, max: unbounded)</li></ol></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -73,7 +73,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>PreserveModifiedDate</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>Specifies wheter or not the modification should preserve the modified date.  Preserving the modified date will allow the file to be patched if no other modifications have been made.</td>
         <td>&nbsp;</td>
       </tr>
@@ -99,6 +99,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../util">Util Schema</a>
+    <a href="../">Util Schema</a>
   </dd>
 </dl>

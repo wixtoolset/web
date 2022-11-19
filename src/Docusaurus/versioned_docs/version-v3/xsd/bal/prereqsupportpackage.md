@@ -9,9 +9,9 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../exepackage/">ExePackage</a>, <a href="../msipackage/">MsiPackage</a>, <a href="../msppackage/">MspPackage</a>, <a href="../msupackage/">MsuPackage</a></dd>
+    <a href="../../wix/exepackage/">ExePackage</a>, <a href="../../wix/msipackage/">MsiPackage</a>, <a href="../../wix/msppackage/">MspPackage</a>, <a href="../../wix/msupackage/">MsuPackage</a></dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../bal">Bal Schema</a>
+    <a href="../">Bal Schema</a>
   </dd>
 </dl>

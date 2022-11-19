@@ -8,10 +8,10 @@ layout: documentation_xsd_main
   <dd>
     <ul>
       <li>
-        <a href="../include/">Include</a>
+        <a href="../wix/include/">Include</a>
       </li>
       <li>
-        <a href="../wix/">Wix</a>
+        <a href="../wix/wix/">Wix</a>
       </li>
     </ul>
   </dd>
@@ -20,8 +20,8 @@ layout: documentation_xsd_main
   <dt>Document Should Look Like</dt>
   <dd>
     <ul>
-      <li>&lt;?xml version="1.0"?&gt;<br />&lt;<a href="../include/">Include</a> xmlns="http://schemas.microsoft.com/wix/2006/wi"&gt;<br />.<br />.<br />.<br />&lt;/Include&gt;</li>
-      <li>&lt;?xml version="1.0"?&gt;<br />&lt;<a href="../wix/">Wix</a> xmlns="http://schemas.microsoft.com/wix/2006/wi"&gt;<br />.<br />.<br />.<br />&lt;/Wix&gt;</li>
+      <li>&lt;?xml version="1.0"?&gt;<br />&lt;<a href="../wix/include/">Include</a> xmlns="http://schemas.microsoft.com/wix/2006/wi"&gt;<br />.<br />.<br />.<br />&lt;/Include&gt;</li>
+      <li>&lt;?xml version="1.0"?&gt;<br />&lt;<a href="../wix/wix/">Wix</a> xmlns="http://schemas.microsoft.com/wix/2006/wi"&gt;<br />.<br />.<br />.<br />&lt;/Wix&gt;</li>
     </ul>
   </dd>
 </dl>

@@ -12,7 +12,7 @@ To accomplish this, you must include an UpgradeCode attribute in your [Product](
 
 ```
 &lt;<font color="#A31515">Product</font><font color="#0000FF"> </font><font color="#FF0000">Id</font><font color="#0000FF">=</font>"<font color="#0000FF">*</font>"
-         <font color="#FF0000">UpgradeCode</font><font color="#0000FF">=</font>"<a href="../../howtos/general/generate_guids">PUT-GUID-HERE</a>"
+         <font color="#FF0000">UpgradeCode</font><font color="#0000FF">=</font>"<a href="../../../howtos/general/generate_guids">PUT-GUID-HERE</a>"
          <font color="#FF0000">Name</font><font color="#0000FF">=</font>"<font color="#0000FF">My Application Name</font>"
          <font color="#FF0000">Language</font><font color="#0000FF">=</font>"<font color="#0000FF">1033</font>"
          <font color="#FF0000">Version</font><font color="#0000FF">=</font>"<font color="#0000FF">1.0.1</font>"

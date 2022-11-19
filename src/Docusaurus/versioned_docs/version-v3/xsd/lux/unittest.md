@@ -9,11 +9,11 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../fragment/">Fragment</a>, <a href="../lux/mutation" class="extension">Mutation</a>, <a href="../lux/unittest" class="extension">UnitTest</a></dd>
+    <a href="../../wix/fragment/">Fragment</a>, <a href="../../lux/mutation" class="extension">Mutation</a>, <a href="../../lux/unittest" class="extension">UnitTest</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../lux/condition" class="extension">Condition</a> (min: 0, max: unbounded)</li><li><a href="../lux/expression" class="extension">Expression</a> (min: 0, max: unbounded)</li><li><a href="../lux/unittest" class="extension">UnitTest</a> (min: 0, max: unbounded)</li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../../lux/condition" class="extension">Condition</a> (min: 0, max: unbounded)</li><li><a href="../../lux/expression" class="extension">Expression</a> (min: 0, max: unbounded)</li><li><a href="../../lux/unittest" class="extension">UnitTest</a> (min: 0, max: unbounded)</li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -75,6 +75,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../lux">Lux Schema</a>
+    <a href="../">Lux Schema</a>
   </dd>
 </dl>

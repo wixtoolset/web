@@ -66,7 +66,7 @@ The following external resources are useful but not managed by the WiX community
 * [Stackoverflow tagged 'wix'][so]
 * [FireGiant WiX Knowledge Base][fg]
 
-[v3]: wix3/
+[v3]: wix3.md
 [v4]: intro.md
 [tutorial]: https://www.firegiant.com/wix/tutorial/
 [book1]: https://www.packtpub.com/product/wix-3-6-a-developer-s-guide-to-windows-installer-xml/9781782160427

@@ -13,7 +13,7 @@ layout: documentation_xsd_main
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../commandline/">CommandLine</a> (min: 0, max: unbounded)</li><li><a href="../exitcode/">ExitCode</a> (min: 0, max: unbounded)</li><li><a href="../payload/">Payload</a> (min: 0, max: unbounded)</li><li><a href="../payloadgroupref/">PayloadGroupRef</a> (min: 0, max: unbounded)</li><li><a href="../remotepayload/">RemotePayload</a> (min: 0, max: unbounded)</li><li><span class="extension">Any Element (namespace='##other' processContents='Lax')                  Extensibility point in the WiX XML Schema.  Schema extensions can register additional                 elements at this point in the schema.  The extension's                 <code><nobr>CompilerExtension.ParseElement()</nobr></code>                 method will be called with the package identifier as the first value in                 <code>contextValues</code>.             </span><ul><li><a href="../exitcode/">ExitCode</a></li><li><a href="../payload/">Payload</a></li><li><a href="../dependency/provides" class="extension">Provides</a></li><li><a href="../remotepayload/">RemotePayload</a></li></ul></li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../commandline/">CommandLine</a> (min: 0, max: unbounded)</li><li><a href="../exitcode/">ExitCode</a> (min: 0, max: unbounded)</li><li><a href="../payload/">Payload</a> (min: 0, max: unbounded)</li><li><a href="../payloadgroupref/">PayloadGroupRef</a> (min: 0, max: unbounded)</li><li><a href="../remotepayload/">RemotePayload</a> (min: 0, max: unbounded)</li><li><span class="extension">Any Element (namespace='##other' processContents='Lax')                  Extensibility point in the WiX XML Schema.  Schema extensions can register additional                 elements at this point in the schema.  The extension's                 <code><nobr>CompilerExtension.ParseElement()</nobr></code>                 method will be called with the package identifier as the first value in                 <code>contextValues</code>.             </span><ul><li><a href="../exitcode/">ExitCode</a></li><li><a href="../payload/">Payload</a></li><li><a href="../../dependency/provides" class="extension">Provides</a></li><li><a href="../remotepayload/">RemotePayload</a></li></ul></li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -168,7 +168,7 @@ layout: documentation_xsd_main
             <td>
               <span class="extension">PrereqSupportPackage</span>
             </td>
-            <td><a href="../bal/simple_type_yesnotype">YesNoType</a></td>
+            <td><a href="../../bal/simple_type_yesnotype">YesNoType</a></td>
             <td>                 When set to "yes", the Prereq BA will plan the package to be installed if its InstallCondition is "true" or empty.              (http://schemas.microsoft.com/wix/BalExtension)</td>
             <td>&nbsp;</td>
           </tr>

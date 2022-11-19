@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../component/">Component</a>, <a href="../sql/sqldatabase" class="extension">SqlDatabase</a></dd>
+    <a href="../../wix/component/">Component</a>, <a href="../../sql/sqldatabase" class="extension">SqlDatabase</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
@@ -37,43 +37,43 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>ContinueOnError</td>
-        <td><a href="../sql/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../sql/simple_type_yesnotype">YesNoType</a></td>
         <td>Continue executing scripts even if this one fails.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ExecuteOnInstall</td>
-        <td><a href="../sql/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../sql/simple_type_yesnotype">YesNoType</a></td>
         <td>Specifies to execute the script when the associated component is installed.  This attribute is mutually exclusive with the RollbackOnInstall, RollbackOnReinstall and RollbackOnUninstall attributes.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ExecuteOnReinstall</td>
-        <td><a href="../sql/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../sql/simple_type_yesnotype">YesNoType</a></td>
         <td>Specifies whether to execute the script when the associated component is reinstalled.  Setting ExecuteOnInstall to yes does <b>not</b> imply ExecuteOnReinstall is set to yes.  ExecuteOnReinstall must be set in addition to ExecuteOnInstall for it to be executed during both install and reinstall.  This attribute is mutually exclusive with the RollbackOnInstall, RollbackOnReinstall and RollbackOnUninstall attributes.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ExecuteOnUninstall</td>
-        <td><a href="../sql/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../sql/simple_type_yesnotype">YesNoType</a></td>
         <td>Specifies to execute the script when the associated component is uninstalled.  This attribute is mutually exclusive with the RollbackOnInstall, RollbackOnReinstall and RollbackOnUninstall attributes.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>RollbackOnInstall</td>
-        <td><a href="../sql/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../sql/simple_type_yesnotype">YesNoType</a></td>
         <td>Specifies whether to execute the script on rollback if an attempt is made to install the associated component.  This attribute is mutually exclusive with the ExecuteOnInstall, ExecuteOnReinstall and ExecuteOnUninstall attributes.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>RollbackOnReinstall</td>
-        <td><a href="../sql/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../sql/simple_type_yesnotype">YesNoType</a></td>
         <td>Specifies whether to execute the script on rollback if an attempt is made to reinstall the associated component.  This attribute is mutually exclusive with the ExecuteOnInstall, ExecuteOnReinstall and ExecuteOnUninstall attributes.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>RollbackOnUninstall</td>
-        <td><a href="../sql/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../sql/simple_type_yesnotype">YesNoType</a></td>
         <td>Specifies whether to execute the script on rollback if an attempt is made to uninstall the associated component.  This attribute is mutually exclusive with the ExecuteOnInstall, ExecuteOnReinstall and ExecuteOnUninstall attributes.</td>
         <td>&nbsp;</td>
       </tr>
@@ -99,6 +99,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../sql">Sql Schema</a>
+    <a href="../">Sql Schema</a>
   </dd>
 </dl>

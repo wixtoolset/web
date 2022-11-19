@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../http/urlreservation" class="extension">UrlReservation</a>
+    <a href="../urlreservation" class="extension">UrlReservation</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -46,6 +46,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../http">Http Schema</a>
+    <a href="../">Http Schema</a>
   </dd>
 </dl>

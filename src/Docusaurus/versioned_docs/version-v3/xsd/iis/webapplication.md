@@ -9,11 +9,11 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../fragment/">Fragment</a>, <a href="../module/">Module</a>, <a href="../product/">Product</a>, <a href="../iis/webdir" class="extension">WebDir</a>, <a href="../iis/website" class="extension">WebSite</a>, <a href="../iis/webvirtualdir" class="extension">WebVirtualDir</a></dd>
+    <a href="../../wix/fragment/">Fragment</a>, <a href="../../wix/module/">Module</a>, <a href="../../wix/product/">Product</a>, <a href="../../iis/webdir" class="extension">WebDir</a>, <a href="../../iis/website" class="extension">WebSite</a>, <a href="../../iis/webvirtualdir" class="extension">WebVirtualDir</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../iis/webapplicationextension" class="extension">WebApplicationExtension</a> (min: 0, max: unbounded)</li></ol></dd>
+  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../../iis/webapplicationextension" class="extension">WebApplicationExtension</a> (min: 0, max: unbounded)</li></ol></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -31,19 +31,19 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>AllowSessions</td>
-        <td><a href="../iis/simple_type_yesnodefaulttype">YesNoDefaultType</a></td>
+        <td><a href="../../iis/simple_type_yesnodefaulttype">YesNoDefaultType</a></td>
         <td>Sets the Enable Session State option. When enabled, you can set the session timeout using the SessionTimeout attribute.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Buffer</td>
-        <td><a href="../iis/simple_type_yesnodefaulttype">YesNoDefaultType</a></td>
+        <td><a href="../../iis/simple_type_yesnodefaulttype">YesNoDefaultType</a></td>
         <td>Sets the option that enables response buffering in the application, which allows ASP script to set response headers anywhere in the script.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ClientDebugging</td>
-        <td><a href="../iis/simple_type_yesnodefaulttype">YesNoDefaultType</a></td>
+        <td><a href="../../iis/simple_type_yesnodefaulttype">YesNoDefaultType</a></td>
         <td>Enable ASP client-side script debugging.</td>
         <td>&nbsp;</td>
       </tr>
@@ -67,7 +67,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>ParentPaths</td>
-        <td><a href="../iis/simple_type_yesnodefaulttype">YesNoDefaultType</a></td>
+        <td><a href="../../iis/simple_type_yesnodefaulttype">YesNoDefaultType</a></td>
         <td>Sets the parent paths option, which allows a client to use relative paths to reach parent directories from this application.</td>
         <td>&nbsp;</td>
       </tr>
@@ -79,7 +79,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>ServerDebugging</td>
-        <td><a href="../iis/simple_type_yesnodefaulttype">YesNoDefaultType</a></td>
+        <td><a href="../../iis/simple_type_yesnodefaulttype">YesNoDefaultType</a></td>
         <td>Enable ASP server-side script debugging.</td>
         <td>&nbsp;</td>
       </tr>
@@ -99,6 +99,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../iis">Iis Schema</a>
+    <a href="../">Iis Schema</a>
   </dd>
 </dl>

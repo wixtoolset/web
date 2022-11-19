@@ -9,6 +9,6 @@ layout: documentation_xsd_simpletype
   <dd>Possible values: no, yes, button</dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../tag">Tag Schema</a>
+    <a href="../">Tag Schema</a>
   </dd>
 </dl>

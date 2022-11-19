@@ -9,6 +9,6 @@ layout: documentation_xsd_simpletype
   <dd>Possible values: attached, detached</dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../lux">Lux Schema</a>
+    <a href="../">Lux Schema</a>
   </dd>
 </dl>

@@ -10,7 +10,7 @@ layout: documentation_xsd_extension
   <dd>
     <ul>
       <li>
-        <a href="../netfx/nativeimage" class="extension">NativeImage</a>
+        <a href="./nativeimage" class="extension">NativeImage</a>
       </li>
     </ul>
   </dd>

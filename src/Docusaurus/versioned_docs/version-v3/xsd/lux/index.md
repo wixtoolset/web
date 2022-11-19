@@ -10,19 +10,19 @@ layout: documentation_xsd_extension
   <dd>
     <ul>
       <li>
-        <a href="../lux/condition" class="extension">Condition</a>
+        <a href="./condition" class="extension">Condition</a>
       </li>
       <li>
-        <a href="../lux/expression" class="extension">Expression</a>
+        <a href="./expression" class="extension">Expression</a>
       </li>
       <li>
-        <a href="../lux/mutation" class="extension">Mutation</a>
+        <a href="./mutation" class="extension">Mutation</a>
       </li>
       <li>
-        <a href="../lux/unittest" class="extension">UnitTest</a>
+        <a href="./unittest" class="extension">UnitTest</a>
       </li>
       <li>
-        <a href="../lux/unittestref" class="extension">UnitTestRef</a>
+        <a href="./unittestref" class="extension">UnitTestRef</a>
       </li>
     </ul>
   </dd>

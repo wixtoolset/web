@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../complus/compluscomponent" class="extension">ComPlusComponent</a>, <a href="../component/">Component</a></dd>
+    <a href="../../complus/compluscomponent" class="extension">ComPlusComponent</a>, <a href="../../wix/component/">Component</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
@@ -43,7 +43,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>Enabled</td>
-        <td><a href="../complus/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../complus/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
@@ -91,7 +91,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>PerUser</td>
-        <td><a href="../complus/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../complus/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
@@ -103,7 +103,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>Queued</td>
-        <td><a href="../complus/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../complus/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
@@ -129,6 +129,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../complus">Complus Schema</a>
+    <a href="../">Complus Schema</a>
   </dd>
 </dl>

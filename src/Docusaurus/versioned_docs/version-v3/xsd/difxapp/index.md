@@ -10,7 +10,7 @@ layout: documentation_xsd_extension
   <dd>
     <ul>
       <li>
-        <a href="../difxapp/driver" class="extension">Driver</a>
+        <a href="./driver" class="extension">Driver</a>
       </li>
     </ul>
   </dd>

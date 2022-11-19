@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../thmutil/page" class="extension">Page</a>, <a href="../thmutil/theme" class="extension">Theme</a></dd>
+    <a href="../page" class="extension">Page</a>, <a href="../theme" class="extension">Theme</a></dd>
   <dt>Inner Text (xs:string)</dt>
   <dd>Caption of the tab.</dd>
   <dt>Children</dt>
@@ -18,6 +18,6 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../thmutil">Thmutil Schema</a>
+    <a href="../">Thmutil Schema</a>
   </dd>
 </dl>

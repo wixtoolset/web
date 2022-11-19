@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../fragment/">Fragment</a>, <a href="../module/">Module</a>, <a href="../product/">Product</a></dd>
+    <a href="../../wix/fragment/">Fragment</a>, <a href="../../wix/module/">Module</a>, <a href="../../wix/product/">Product</a></dd>
   <dt>Inner Text (xs:string)</dt>
   <dd>               Condition that determines if the application should be closed.  Must be blank or evaluate to true               for the application to be scheduled for closing.             </dd>
   <dt>Children</dt>
@@ -25,7 +25,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>CloseMessage</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>Optionally sends a close message to the application. Default is no.</td>
         <td>&nbsp;</td>
       </tr>
@@ -37,19 +37,19 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>ElevatedCloseMessage</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>Optionally sends a close message to the application from deffered action without impersonation. Default is no.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ElevatedEndSessionMessage</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>Sends WM_QUERYENDSESSION then WM_ENDSESSION messages to the application from a deffered action without impersonation. Default is "no".</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>EndSessionMessage</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>Sends WM_QUERYENDSESSION then WM_ENDSESSION messages to the application. Default is "no".</td>
         <td>&nbsp;</td>
       </tr>
@@ -61,7 +61,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>PromptToContinue</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>                 When this attribute is set to "yes", the user will be prompted when the application is still running. The Description attribute must contain the message to                 display in the prompt. The prompt occurs before executing any of the other options and gives the options to "Abort", "Retry", or "Ignore". Abort will cancel                 the install. Retry will attempt the check again and if the application is still running, prompt again. "Ignore" will continue and execute any other options                 set on the CloseApplication element. The default is "no".               </td>
         <td>&nbsp;</td>
       </tr>
@@ -73,7 +73,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>RebootPrompt</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>Optionally prompts for reboot if application is still running. The default is "yes". The TerminateProcess attribute must be "no" or not specified if this attribute is "yes".</td>
         <td>&nbsp;</td>
       </tr>
@@ -105,6 +105,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../util">Util Schema</a>
+    <a href="../">Util Schema</a>
   </dd>
 </dl>

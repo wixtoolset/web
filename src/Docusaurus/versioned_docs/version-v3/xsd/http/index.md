@@ -10,10 +10,10 @@ layout: documentation_xsd_extension
   <dd>
     <ul>
       <li>
-        <a href="../http/urlace" class="extension">UrlAce</a>
+        <a href="./urlace" class="extension">UrlAce</a>
       </li>
       <li>
-        <a href="../http/urlreservation" class="extension">UrlReservation</a>
+        <a href="./urlreservation" class="extension">UrlReservation</a>
       </li>
     </ul>
   </dd>

@@ -10,58 +10,58 @@ layout: documentation_xsd_extension
   <dd>
     <ul>
       <li>
-        <a href="../iis/certificate" class="extension">Certificate</a>
+        <a href="./certificate" class="extension">Certificate</a>
       </li>
       <li>
-        <a href="../iis/certificateref" class="extension">CertificateRef</a>
+        <a href="./certificateref" class="extension">CertificateRef</a>
       </li>
       <li>
-        <a href="../iis/httpheader" class="extension">HttpHeader</a>
+        <a href="./httpheader" class="extension">HttpHeader</a>
       </li>
       <li>
-        <a href="../iis/mimemap" class="extension">MimeMap</a>
+        <a href="./mimemap" class="extension">MimeMap</a>
       </li>
       <li>
-        <a href="../iis/recycletime" class="extension">RecycleTime</a>
+        <a href="./recycletime" class="extension">RecycleTime</a>
       </li>
       <li>
-        <a href="../iis/webaddress" class="extension">WebAddress</a>
+        <a href="./webaddress" class="extension">WebAddress</a>
       </li>
       <li>
-        <a href="../iis/webapplication" class="extension">WebApplication</a>
+        <a href="./webapplication" class="extension">WebApplication</a>
       </li>
       <li>
-        <a href="../iis/webapplicationextension" class="extension">WebApplicationExtension</a>
+        <a href="./webapplicationextension" class="extension">WebApplicationExtension</a>
       </li>
       <li>
-        <a href="../iis/webapppool" class="extension">WebAppPool</a>
+        <a href="./webapppool" class="extension">WebAppPool</a>
       </li>
       <li>
-        <a href="../iis/webdir" class="extension">WebDir</a>
+        <a href="./webdir" class="extension">WebDir</a>
       </li>
       <li>
-        <a href="../iis/webdirproperties" class="extension">WebDirProperties</a>
+        <a href="./webdirproperties" class="extension">WebDirProperties</a>
       </li>
       <li>
-        <a href="../iis/weberror" class="extension">WebError</a>
+        <a href="./weberror" class="extension">WebError</a>
       </li>
       <li>
-        <a href="../iis/webfilter" class="extension">WebFilter</a>
+        <a href="./webfilter" class="extension">WebFilter</a>
       </li>
       <li>
-        <a href="../iis/weblog" class="extension">WebLog</a>
+        <a href="./weblog" class="extension">WebLog</a>
       </li>
       <li>
-        <a href="../iis/webproperty" class="extension">WebProperty</a>
+        <a href="./webproperty" class="extension">WebProperty</a>
       </li>
       <li>
-        <a href="../iis/webserviceextension" class="extension">WebServiceExtension</a>
+        <a href="./webserviceextension" class="extension">WebServiceExtension</a>
       </li>
       <li>
-        <a href="../iis/website" class="extension">WebSite</a>
+        <a href="./website" class="extension">WebSite</a>
       </li>
       <li>
-        <a href="../iis/webvirtualdir" class="extension">WebVirtualDir</a>
+        <a href="./webvirtualdir" class="extension">WebVirtualDir</a>
       </li>
     </ul>
   </dd>

@@ -10,13 +10,13 @@ layout: documentation_xsd_extension
   <dd>
     <ul>
       <li>
-        <a href="../gaming/game" class="extension">Game</a>
+        <a href="./game" class="extension">Game</a>
       </li>
       <li>
-        <a href="../gaming/playtask" class="extension">PlayTask</a>
+        <a href="./playtask" class="extension">PlayTask</a>
       </li>
       <li>
-        <a href="../gaming/supporttask" class="extension">SupportTask</a>
+        <a href="./supporttask" class="extension">SupportTask</a>
       </li>
     </ul>
   </dd>

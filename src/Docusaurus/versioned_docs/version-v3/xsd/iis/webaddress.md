@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../iis/website" class="extension">WebSite</a>
+    <a href="../../iis/website" class="extension">WebSite</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -50,7 +50,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>Secure</td>
-        <td><a href="../iis/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../iis/simple_type_yesnotype">YesNoType</a></td>
         <td>Determines if this address represents a secure binding.  The default is 'no'.</td>
         <td>&nbsp;</td>
       </tr>
@@ -58,6 +58,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../iis">Iis Schema</a>
+    <a href="../">Iis Schema</a>
   </dd>
 </dl>

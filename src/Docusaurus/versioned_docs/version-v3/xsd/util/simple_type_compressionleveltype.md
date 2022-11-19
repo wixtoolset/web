@@ -9,6 +9,6 @@ layout: documentation_xsd_simpletype
   <dd>Possible values: high, low, medium, mszip, none</dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../util">Util Schema</a>
+    <a href="../">Util Schema</a>
   </dd>
 </dl>

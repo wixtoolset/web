@@ -9,6 +9,6 @@ layout: documentation_xsd_simpletype
   <dd>Must match the regular expression: '(\d{1,5}\.){3}\d{1,5}'.</dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../http">Http Schema</a>
+    <a href="../">Http Schema</a>
   </dd>
 </dl>

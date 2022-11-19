@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../bootstrapperapplicationref/">BootstrapperApplicationRef</a>
+    <a href="../../wix/bootstrapperapplicationref/">BootstrapperApplicationRef</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -64,6 +64,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../bal">Bal Schema</a>
+    <a href="../">Bal Schema</a>
   </dd>
 </dl>
