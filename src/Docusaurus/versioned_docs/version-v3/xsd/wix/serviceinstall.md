@@ -116,6 +116,6 @@ layout: documentation_xsd_main
   <dd>The service executable installed will point to the KeyPath for the Component.                     Therefore, you must ensure that the correct executable is either the first child                     File element under this Component or explicitly mark the appropriate File element                     as KeyPath='yes'.</dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>
+    <a href="../">Wix Schema</a>
   </dd>
 </dl>

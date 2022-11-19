@@ -35,5 +35,5 @@ layout: documentation_xsd_main
   <dd><p>A reference to another FileSearch element must reference the same Id and the same Parent Id. If any of these attribute values are different you must instead use a FileSearch element.</p></dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../filesearch/">FileSearch</a></dd>
+    <a href="../">Wix Schema</a>, <a href="../filesearch/">FileSearch</a></dd>
 </dl>

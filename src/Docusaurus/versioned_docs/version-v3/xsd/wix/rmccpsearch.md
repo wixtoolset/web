@@ -59,5 +59,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../ccpsearch/">CCPSearch</a>, <a href="../compliancecheck/">ComplianceCheck</a></dd>
+    <a href="../">Wix Schema</a>, <a href="../ccpsearch/">CCPSearch</a>, <a href="../compliancecheck/">ComplianceCheck</a></dd>
 </dl>

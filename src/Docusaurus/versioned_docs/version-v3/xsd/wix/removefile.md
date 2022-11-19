@@ -72,5 +72,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../copyfile/">CopyFile</a></dd>
+    <a href="../">Wix Schema</a>, <a href="../copyfile/">CopyFile</a></dd>
 </dl>

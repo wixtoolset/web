@@ -59,5 +59,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../binary/">Binary</a>, <a href="../file/">File</a>, <a href="../property/">Property</a>, <a href="../embeddedchainerref/">EmbeddedChainerRef</a></dd>
+    <a href="../">Wix Schema</a>, <a href="../binary/">Binary</a>, <a href="../file/">File</a>, <a href="../property/">Property</a>, <a href="../embeddedchainerref/">EmbeddedChainerRef</a></dd>
 </dl>

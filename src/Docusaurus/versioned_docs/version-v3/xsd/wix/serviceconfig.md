@@ -85,6 +85,6 @@ layout: documentation_xsd_main
   <dd><p>MsiServiceConfig functionality is documented in the Windows Installer SDK to "not [work] as expected." Consider using   the WixUtilExtension ServiceConfig instead.</p></dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>
+    <a href="../">Wix Schema</a>
   </dd>
 </dl>

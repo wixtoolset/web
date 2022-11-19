@@ -89,5 +89,5 @@ layout: documentation_xsd_main
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wix">Wix Schema</a>, <a href="../radiobuttongroup/">RadioButtonGroup</a></dd>
+    <a href="../">Wix Schema</a>, <a href="../radiobuttongroup/">RadioButtonGroup</a></dd>
 </dl>
