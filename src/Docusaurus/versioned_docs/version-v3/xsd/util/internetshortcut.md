@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../component/">Component</a>
+    <a href="../../wix/component/">Component</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -72,12 +72,12 @@ layout: documentation_xsd_extension
   <dd>
     <ul>
       <li>
-        <a href="../../howtos/files_and_registry/create_internet_shortcut">How To: Create a shortcut to a webpage</a>
+        <a href="../../../howtos/files_and_registry/create_internet_shortcut">How To: Create a shortcut to a webpage</a>
       </li>
     </ul>
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../util">Util Schema</a>
+    <a href="../">Util Schema</a>
   </dd>
 </dl>

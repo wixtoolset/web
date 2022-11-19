@@ -12,7 +12,7 @@ layout: documentation_xsd_extension
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../wixloc/string" class="extension">String</a> (min: 0, max: unbounded)</li><li><a href="../wixloc/ui" class="extension">UI</a> (min: 0, max: unbounded)</li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../string" class="extension">String</a> (min: 0, max: unbounded)</li><li><a href="../ui" class="extension">UI</a> (min: 0, max: unbounded)</li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -43,20 +43,20 @@ layout: documentation_xsd_extension
     </table>
   </dd>
   <dt>Remarks</dt>
-  <dd><p>You can specify any valid Windows code page by integer like 1252, or by web name like Windows-1252 or iso-8859-1. See <a href="../../overview/codepage" xmlns="http://schemas.microsoft.com/wix/2006/localization">Code Pages</a> for more information.</p></dd>
+  <dd><p>You can specify any valid Windows code page by integer like 1252, or by web name like Windows-1252 or iso-8859-1. See <a href="../../../overview/codepage">Code Pages</a> for more information.</p></dd>
   <dt>How Tos and Examples</dt>
   <dd>
     <ul>
       <li>
-        <a href="../../howtos/ui_and_localization/build_a_localized_version">How To: Build a localized version of your installer</a>
+        <a href="../../../howtos/ui_and_localization/build_a_localized_version">How To: Build a localized version of your installer</a>
       </li>
       <li>
-        <a href="../../howtos/ui_and_localization/make_installer_localizable">How To: Make your installer localizable</a>
+        <a href="../../../howtos/ui_and_localization/make_installer_localizable">How To: Make your installer localizable</a>
       </li>
     </ul>
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wixloc">Wixloc Schema</a>
+    <a href="../">Wixloc Schema</a>
   </dd>
 </dl>

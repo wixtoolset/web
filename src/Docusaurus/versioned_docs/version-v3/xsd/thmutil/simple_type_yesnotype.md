@@ -9,6 +9,6 @@ layout: documentation_xsd_simpletype
   <dd>Possible values: no, yes</dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../thmutil">Thmutil Schema</a>
+    <a href="../">Thmutil Schema</a>
   </dd>
 </dl>

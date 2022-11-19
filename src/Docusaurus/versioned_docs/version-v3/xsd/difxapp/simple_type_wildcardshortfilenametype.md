@@ -9,6 +9,6 @@ layout: documentation_xsd_simpletype
   <dd>Must match the regular expression: '[^\\\|&gt;&lt;:/"\+,;=\[\]\. ]{1,16}(\.[^\\\|&gt;&lt;:/"\+,;=\[\]\. ]{0,6})?|([!$])\(loc\.[_A-Za-z][0-9A-Za-z_.]*\)'.</dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../difxapp">Difxapp Schema</a>
+    <a href="../">Difxapp Schema</a>
   </dd>
 </dl>

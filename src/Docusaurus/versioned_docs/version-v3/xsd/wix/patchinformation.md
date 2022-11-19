@@ -92,7 +92,7 @@ layout: documentation_xsd_main
     </table>
   </dd>
   <dt>Remarks</dt>
-  <dd><p>You can specify any valid Windows code by by integer like 1252, or by web name like Windows-1252. See <a href="../../overview/codepage">Code Pages</a> for more information.</p></dd>
+  <dd><p>You can specify any valid Windows code by by integer like 1252, or by web name like Windows-1252. See <a href="../../../overview/codepage">Code Pages</a> for more information.</p></dd>
   <dt>See Also</dt>
   <dd>
     <a href="../wix">Wix Schema</a>

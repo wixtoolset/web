@@ -9,12 +9,12 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../component/">Component</a>
+    <a href="../../wix/component/">Component</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../util/performancecounter" class="extension">PerformanceCounter</a> (min: 0, max: unbounded)</li></ol></dd>
+  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../../util/performancecounter" class="extension">PerformanceCounter</a> (min: 0, max: unbounded)</li></ol></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -38,7 +38,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>DefaultLanguage</td>
-        <td><a href="../util/simple_type_performancecounterlanguagetype">PerformanceCounterLanguageType</a></td>
+        <td><a href="../../util/simple_type_performancecounterlanguagetype">PerformanceCounterLanguageType</a></td>
         <td>Default language for the performance category and contained counters' names and help text.</td>
         <td>&nbsp;</td>
       </tr>
@@ -62,7 +62,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>MultiInstance</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>Flag that specifies whether the performance counter category is multi or single instanced.  Default is single instance.</td>
         <td>&nbsp;</td>
       </tr>
@@ -82,6 +82,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../util">Util Schema</a>
+    <a href="../">Util Schema</a>
   </dd>
 </dl>

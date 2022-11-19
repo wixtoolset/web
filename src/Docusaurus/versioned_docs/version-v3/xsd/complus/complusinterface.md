@@ -9,12 +9,12 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../complus/compluscomponent" class="extension">ComPlusComponent</a>
+    <a href="../../complus/compluscomponent" class="extension">ComPlusComponent</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Sequence (min: 1, max: 1)<ol><li>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../complus/complusmethod" class="extension">ComPlusMethod</a> (min: 0, max: unbounded)</li><li><a href="../complus/complusroleforinterface" class="extension">ComPlusRoleForInterface</a> (min: 0, max: unbounded)</li></ul></li></ol></dd>
+  <dd>Sequence (min: 1, max: 1)<ol><li>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../../complus/complusmethod" class="extension">ComPlusMethod</a> (min: 0, max: unbounded)</li><li><a href="../../complus/complusroleforinterface" class="extension">ComPlusRoleForInterface</a> (min: 0, max: unbounded)</li></ul></li></ol></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -38,13 +38,13 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>IID</td>
-        <td><a href="../complus/simple_type_uuid">Uuid</a></td>
+        <td><a href="../../complus/simple_type_uuid">Uuid</a></td>
         <td>           IID of the interface.         </td>
         <td>Yes</td>
       </tr>
       <tr>
         <td>QueuingEnabled</td>
-        <td><a href="../complus/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../complus/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
@@ -52,6 +52,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../complus">Complus Schema</a>
+    <a href="../">Complus Schema</a>
   </dd>
 </dl>

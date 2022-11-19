@@ -10,91 +10,91 @@ layout: documentation_xsd_extension
   <dd>
     <ul>
       <li>
-        <a href="../util/closeapplication" class="extension">CloseApplication</a>
+        <a href="./closeapplication" class="extension">CloseApplication</a>
       </li>
       <li>
-        <a href="../util/componentsearch" class="extension">ComponentSearch</a>
+        <a href="./componentsearch" class="extension">ComponentSearch</a>
       </li>
       <li>
-        <a href="../util/componentsearchref" class="extension">ComponentSearchRef</a>
+        <a href="./componentsearchref" class="extension">ComponentSearchRef</a>
       </li>
       <li>
-        <a href="../util/directorysearch" class="extension">DirectorySearch</a>
+        <a href="./directorysearch" class="extension">DirectorySearch</a>
       </li>
       <li>
-        <a href="../util/directorysearchref" class="extension">DirectorySearchRef</a>
+        <a href="./directorysearchref" class="extension">DirectorySearchRef</a>
       </li>
       <li>
-        <a href="../util/eventmanifest" class="extension">EventManifest</a>
+        <a href="./eventmanifest" class="extension">EventManifest</a>
       </li>
       <li>
-        <a href="../util/eventsource" class="extension">EventSource</a>
+        <a href="./eventsource" class="extension">EventSource</a>
       </li>
       <li>
-        <a href="../util/filesearch" class="extension">FileSearch</a>
+        <a href="./filesearch" class="extension">FileSearch</a>
       </li>
       <li>
-        <a href="../util/filesearchref" class="extension">FileSearchRef</a>
+        <a href="./filesearchref" class="extension">FileSearchRef</a>
       </li>
       <li>
-        <a href="../util/fileshare" class="extension">FileShare</a>
+        <a href="./fileshare" class="extension">FileShare</a>
       </li>
       <li>
-        <a href="../util/filesharepermission" class="extension">FileSharePermission</a>
+        <a href="./filesharepermission" class="extension">FileSharePermission</a>
       </li>
       <li>
-        <a href="../util/group" class="extension">Group</a>
+        <a href="./group" class="extension">Group</a>
       </li>
       <li>
-        <a href="../util/groupref" class="extension">GroupRef</a>
+        <a href="./groupref" class="extension">GroupRef</a>
       </li>
       <li>
-        <a href="../util/internetshortcut" class="extension">InternetShortcut</a>
+        <a href="./internetshortcut" class="extension">InternetShortcut</a>
       </li>
       <li>
-        <a href="../util/perfcounter" class="extension">PerfCounter</a>
+        <a href="./perfcounter" class="extension">PerfCounter</a>
       </li>
       <li>
-        <a href="../util/perfcountermanifest" class="extension">PerfCounterManifest</a>
+        <a href="./perfcountermanifest" class="extension">PerfCounterManifest</a>
       </li>
       <li>
-        <a href="../util/performancecategory" class="extension">PerformanceCategory</a>
+        <a href="./performancecategory" class="extension">PerformanceCategory</a>
       </li>
       <li>
-        <a href="../util/performancecounter" class="extension">PerformanceCounter</a>
+        <a href="./performancecounter" class="extension">PerformanceCounter</a>
       </li>
       <li>
-        <a href="../util/permissionex" class="extension">PermissionEx</a>
+        <a href="./permissionex" class="extension">PermissionEx</a>
       </li>
       <li>
-        <a href="../util/productsearch" class="extension">ProductSearch</a>
+        <a href="./productsearch" class="extension">ProductSearch</a>
       </li>
       <li>
-        <a href="../util/productsearchref" class="extension">ProductSearchRef</a>
+        <a href="./productsearchref" class="extension">ProductSearchRef</a>
       </li>
       <li>
-        <a href="../util/registrysearch" class="extension">RegistrySearch</a>
+        <a href="./registrysearch" class="extension">RegistrySearch</a>
       </li>
       <li>
-        <a href="../util/registrysearchref" class="extension">RegistrySearchRef</a>
+        <a href="./registrysearchref" class="extension">RegistrySearchRef</a>
       </li>
       <li>
-        <a href="../util/removefolderex" class="extension">RemoveFolderEx</a>
+        <a href="./removefolderex" class="extension">RemoveFolderEx</a>
       </li>
       <li>
-        <a href="../util/restartresource" class="extension">RestartResource</a>
+        <a href="./restartresource" class="extension">RestartResource</a>
       </li>
       <li>
-        <a href="../util/serviceconfig" class="extension">ServiceConfig</a>
+        <a href="./serviceconfig" class="extension">ServiceConfig</a>
       </li>
       <li>
-        <a href="../util/user" class="extension">User</a>
+        <a href="./user" class="extension">User</a>
       </li>
       <li>
-        <a href="../util/xmlconfig" class="extension">XmlConfig</a>
+        <a href="./xmlconfig" class="extension">XmlConfig</a>
       </li>
       <li>
-        <a href="../util/xmlfile" class="extension">XmlFile</a>
+        <a href="./xmlfile" class="extension">XmlFile</a>
       </li>
     </ul>
   </dd>

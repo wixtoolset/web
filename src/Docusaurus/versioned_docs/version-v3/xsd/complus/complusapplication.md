@@ -9,11 +9,11 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../complus/compluspartition" class="extension">ComPlusPartition</a>, <a href="../component/">Component</a>, <a href="../fragment/">Fragment</a>, <a href="../module/">Module</a>, <a href="../product/">Product</a></dd>
+    <a href="../../complus/compluspartition" class="extension">ComPlusPartition</a>, <a href="../../wix/component/">Component</a>, <a href="../../wix/fragment/">Fragment</a>, <a href="../../wix/module/">Module</a>, <a href="../../wix/product/">Product</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Sequence (min: 1, max: 1)<ol><li>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../complus/complusapplicationrole" class="extension">ComPlusApplicationRole</a> (min: 0, max: unbounded)</li><li><a href="../complus/complusassembly" class="extension">ComPlusAssembly</a> (min: 0, max: unbounded)</li></ul></li></ol></dd>
+  <dd>Sequence (min: 1, max: 1)<ol><li>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../../complus/complusapplicationrole" class="extension">ComPlusApplicationRole</a> (min: 0, max: unbounded)</li><li><a href="../../complus/complusassembly" class="extension">ComPlusAssembly</a> (min: 0, max: unbounded)</li></ul></li></ol></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -43,7 +43,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>ApplicationAccessChecksEnabled</td>
-        <td><a href="../complus/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../complus/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
@@ -73,7 +73,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>Changeable</td>
-        <td><a href="../complus/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../complus/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
@@ -97,7 +97,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>CRMEnabled</td>
-        <td><a href="../complus/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../complus/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
@@ -109,7 +109,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>Deleteable</td>
-        <td><a href="../complus/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../complus/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
@@ -121,19 +121,19 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>DumpEnabled</td>
-        <td><a href="../complus/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../complus/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>DumpOnException</td>
-        <td><a href="../complus/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../complus/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>DumpOnFailfast</td>
-        <td><a href="../complus/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../complus/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
@@ -145,7 +145,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>EventsEnabled</td>
-        <td><a href="../complus/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../complus/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
@@ -163,7 +163,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>IsEnabled</td>
-        <td><a href="../complus/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../complus/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
@@ -205,13 +205,13 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>QueueListenerEnabled</td>
-        <td><a href="../complus/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../complus/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>QueuingEnabled</td>
-        <td><a href="../complus/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../complus/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
@@ -247,13 +247,13 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>Replicable</td>
-        <td><a href="../complus/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../complus/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>RunForever</td>
-        <td><a href="../complus/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../complus/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
@@ -265,7 +265,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>SoapActivated</td>
-        <td><a href="../complus/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../complus/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
@@ -289,7 +289,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>SRPEnabled</td>
-        <td><a href="../complus/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../complus/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
@@ -301,7 +301,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>ThreeGigSupportEnabled</td>
-        <td><a href="../complus/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../complus/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
@@ -309,6 +309,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../complus">Complus Schema</a>
+    <a href="../">Complus Schema</a>
   </dd>
 </dl>

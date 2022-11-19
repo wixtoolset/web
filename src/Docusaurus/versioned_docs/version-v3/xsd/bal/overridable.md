@@ -9,10 +9,10 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../variable/">Variable</a>
+    <a href="../../wix/variable/">Variable</a>
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../bal">Bal Schema</a>
+    <a href="../">Bal Schema</a>
   </dd>
 </dl>

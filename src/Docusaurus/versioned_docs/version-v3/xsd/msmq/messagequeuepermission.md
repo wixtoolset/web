@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../component/">Component</a>, <a href="../msmq/messagequeue" class="extension">MessageQueue</a></dd>
+    <a href="../../wix/component/">Component</a>, <a href="../messagequeue" class="extension">MessageQueue</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
@@ -31,37 +31,37 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>ChangeQueuePermissions</td>
-        <td><a href="../msmq/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>DeleteJournalMessage</td>
-        <td><a href="../msmq/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>DeleteMessage</td>
-        <td><a href="../msmq/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>DeleteQueue</td>
-        <td><a href="../msmq/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>GetQueuePermissions</td>
-        <td><a href="../msmq/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>GetQueueProperties</td>
-        <td><a href="../msmq/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
@@ -79,55 +79,55 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>PeekMessage</td>
-        <td><a href="../msmq/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>QueueGenericAll</td>
-        <td><a href="../msmq/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>QueueGenericExecute</td>
-        <td><a href="../msmq/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>QueueGenericRead</td>
-        <td><a href="../msmq/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>QueueGenericWrite</td>
-        <td><a href="../msmq/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ReceiveJournalMessage</td>
-        <td><a href="../msmq/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ReceiveMessage</td>
-        <td><a href="../msmq/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>SetQueueProperties</td>
-        <td><a href="../msmq/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>TakeQueueOwnership</td>
-        <td><a href="../msmq/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
@@ -139,7 +139,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>WriteMessage</td>
-        <td><a href="../msmq/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
@@ -147,6 +147,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../msmq">Msmq Schema</a>
+    <a href="../">Msmq Schema</a>
   </dd>
 </dl>

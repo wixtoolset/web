@@ -9,12 +9,12 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../file/">File</a>
+    <a href="../../wix/file/">File</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../vs/helpfileref" class="extension">HelpFileRef</a> (min: 0, max: unbounded)</li><li><a href="../vs/helpfilterref" class="extension">HelpFilterRef</a> (min: 0, max: unbounded)</li><li><a href="../vs/plugcollectioninto" class="extension">PlugCollectionInto</a> (min: 0, max: unbounded)</li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../../vs/helpfileref" class="extension">HelpFileRef</a> (min: 0, max: unbounded)</li><li><a href="../../vs/helpfilterref" class="extension">HelpFilterRef</a> (min: 0, max: unbounded)</li><li><a href="../../vs/plugcollectioninto" class="extension">PlugCollectionInto</a> (min: 0, max: unbounded)</li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -44,7 +44,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>SuppressCustomActions</td>
-        <td><a href="../vs/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../vs/simple_type_yesnotype">YesNoType</a></td>
         <td>Suppress linking Help registration custom actions.  Help redistributable merge modules will be required.  Use this when building a merge module.</td>
         <td>&nbsp;</td>
       </tr>
@@ -52,6 +52,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../vs">Vs Schema</a>
+    <a href="../">Vs Schema</a>
   </dd>
 </dl>

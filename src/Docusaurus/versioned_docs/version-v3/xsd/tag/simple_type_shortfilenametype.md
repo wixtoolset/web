@@ -9,6 +9,6 @@ layout: documentation_xsd_simpletype
   <dd>Must match the regular expression: '[^\\\?|&gt;&lt;:/\*"\+,;=\[\]\. ]{1,8}(\.[^\\\?|&gt;&lt;:/\*"\+,;=\[\]\. ]{0,3})?|([!$])\(loc\.[_A-Za-z][0-9A-Za-z_.]*\)'.</dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../tag">Tag Schema</a>
+    <a href="../">Tag Schema</a>
   </dd>
 </dl>

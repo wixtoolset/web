@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../component/">Component</a>, <a href="../serviceinstall/">ServiceInstall</a></dd>
+    <a href="../../wix/component/">Component</a>, <a href="../../wix/serviceinstall/">ServiceInstall</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
@@ -77,6 +77,6 @@ layout: documentation_xsd_extension
   <dd><dl><dd>Nesting a ServiceConfig element under a ServiceInstall element will result in the service being installed to be configured.</dd><dd>Nesting a ServiceConfig element under a component element will result in an already installed service to be configured.  If the service does not exist prior to the install of the MSI package, the install will fail.</dd></dl></dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../util">Util Schema</a>
+    <a href="../">Util Schema</a>
   </dd>
 </dl>

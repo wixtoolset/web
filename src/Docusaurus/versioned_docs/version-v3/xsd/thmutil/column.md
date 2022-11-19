@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../thmutil/listview" class="extension">ListView</a>
+    <a href="../listview" class="extension">ListView</a>
   </dd>
   <dt>Inner Text (xs:string)</dt>
   <dd>Text for the column header.</dd>
@@ -26,7 +26,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>Expands</td>
-        <td><a href="../thmutil/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype">YesNoType</a></td>
         <td>Whether or not this column can grow to fill available width of the listview.                                 More than one column can be marked with yes - all expandable columns will share available extra space.                                 This is especially useful if the Window/@AutoResize is yes.                             </td>
         <td>&nbsp;</td>
       </tr>
@@ -40,6 +40,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../thmutil">Thmutil Schema</a>
+    <a href="../">Thmutil Schema</a>
   </dd>
 </dl>

@@ -9,6 +9,6 @@ layout: documentation_xsd_simpletype
   <dd>Must match the regular expression: '[{'{'}(]?[0-9A-Fa-f]{'{'}8{'}'}\-?[0-9A-Fa-f]{'{'}4{'}'}\-?[0-9A-Fa-f]{'{'}4{'}'}\-?[0-9A-Fa-f]{'{'}4{'}'}\-?[0-9A-Fa-f]{'{'}12{'}'}[{'}'})]?|[{'{'}(]?\?{'{'}8{'}'}\-\?{'{'}4{'}'}\-\?{'{'}4{'}'}\-\?{'{'}4{'}'}\-\?{'{'}12{'}'}[{'}'})]?|PUT\-GUID\-(\d+\-)?HERE|([!$])(\(var|\(loc|\(wix)\.[_A-Za-z][0-9A-Za-z_.]*\)|\*|^$'.</dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../gaming">Gaming Schema</a>
+    <a href="../">Gaming Schema</a>
   </dd>
 </dl>

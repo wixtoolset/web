@@ -48,10 +48,10 @@ layout: documentation_xsd_main
   <dd>
     <ul>
       <li>
-        <a href="../../howtos/redistributables_and_install_checks/block_install_on_os">How To: Block installation based on OS version</a>
+        <a href="../../../howtos/redistributables_and_install_checks/block_install_on_os">How To: Block installation based on OS version</a>
       </li>
       <li>
-        <a href="../../howtos/files_and_registry/check_the_version_number">How To: Check the version number of a file during installation</a>
+        <a href="../../../howtos/files_and_registry/check_the_version_number">How To: Check the version number of a file during installation</a>
       </li>
     </ul>
   </dd>

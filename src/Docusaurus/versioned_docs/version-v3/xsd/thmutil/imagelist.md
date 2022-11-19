@@ -9,12 +9,12 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../thmutil/theme" class="extension">Theme</a>
+    <a href="../theme" class="extension">Theme</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 1, max: unbounded)<ul><li><a href="../thmutil/image" class="extension">Image</a> (min: 1, max: unbounded)</li></ul></dd>
+  <dd>Choice of elements (min: 1, max: unbounded)<ul><li><a href="../image" class="extension">Image</a> (min: 1, max: unbounded)</li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -34,6 +34,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../thmutil">Thmutil Schema</a>
+    <a href="../">Thmutil Schema</a>
   </dd>
 </dl>

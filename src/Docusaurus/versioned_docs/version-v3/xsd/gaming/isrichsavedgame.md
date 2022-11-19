@@ -9,10 +9,10 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../extension/">Extension</a>
+    <a href="../../wix/extension/">Extension</a>
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../gaming">Gaming Schema</a>
+    <a href="../">Gaming Schema</a>
   </dd>
 </dl>

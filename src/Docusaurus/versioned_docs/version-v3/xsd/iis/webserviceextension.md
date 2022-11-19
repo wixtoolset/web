@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../component/">Component</a>
+    <a href="../../wix/component/">Component</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -32,7 +32,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>Allow</td>
-        <td><a href="../iis/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../iis/simple_type_yesnotype">YesNoType</a></td>
         <td>Indicates if the extension is allowed or denied.</td>
         <td>Yes</td>
       </tr>
@@ -56,7 +56,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>UIDeletable</td>
-        <td><a href="../iis/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../iis/simple_type_yesnotype">YesNoType</a></td>
         <td>Indicates if the UI is allowed to delete the extension from the list of not.  Default: Not deletable.</td>
         <td>&nbsp;</td>
       </tr>
@@ -64,6 +64,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../iis">Iis Schema</a>
+    <a href="../">Iis Schema</a>
   </dd>
 </dl>

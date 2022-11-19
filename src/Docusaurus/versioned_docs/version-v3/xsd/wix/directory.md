@@ -46,7 +46,7 @@ layout: documentation_xsd_main
       <tr>
         <td>FileSource</td>
         <td>String</td>
-        <td>Used to set the file system source for this directory's child elements. For more information, see <a href="../../howtos/general/specifying_source_files">Specifying source files</a>.</td>
+        <td>Used to set the file system source for this directory's child elements. For more information, see <a href="../../../howtos/general/specifying_source_files">Specifying source files</a>.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
@@ -102,7 +102,7 @@ layout: documentation_xsd_main
   <dd>
     <ul>
       <li>
-        <a href="../../howtos/files_and_registry/add_a_file">How To: Add a file to your installer</a>
+        <a href="../../../howtos/files_and_registry/add_a_file">How To: Add a file to your installer</a>
       </li>
     </ul>
   </dd>

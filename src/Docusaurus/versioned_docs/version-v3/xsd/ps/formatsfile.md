@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../file/">File</a>, <a href="../ps/snapin" class="extension">SnapIn</a></dd>
+    <a href="../../wix/file/">File</a>, <a href="../snapin" class="extension">SnapIn</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
@@ -41,6 +41,6 @@ layout: documentation_xsd_extension
   <dd>A formats XML file that defines output formats for objects on the pipeline.</dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../ps">Ps Schema</a>
+    <a href="../">Ps Schema</a>
   </dd>
 </dl>

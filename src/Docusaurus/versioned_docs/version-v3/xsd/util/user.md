@@ -9,11 +9,11 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../component/">Component</a>, <a href="../fragment/">Fragment</a>, <a href="../module/">Module</a>, <a href="../product/">Product</a></dd>
+    <a href="../../wix/component/">Component</a>, <a href="../../wix/fragment/">Fragment</a>, <a href="../../wix/module/">Module</a>, <a href="../../wix/product/">Product</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../util/groupref" class="extension">GroupRef</a> (min: 0, max: unbounded)</li></ol></dd>
+  <dd>Sequence (min: 1, max: 1)<ol><li><a href="../../util/groupref" class="extension">GroupRef</a> (min: 0, max: unbounded)</li></ol></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -31,19 +31,19 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>CanNotChangePassword</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>The user cannot change the account's password. Equivalent to UF_PASSWD_CANT_CHANGE.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>CreateUser</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>Indicates whether or not to create the user.  User creation can be skipped if all that is desired is to join a user to groups.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Disabled</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>The account is disabled. Equivalent to UF_ACCOUNTDISABLE.</td>
         <td>&nbsp;</td>
       </tr>
@@ -55,19 +55,19 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>FailIfExists</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>Indicates if the install should fail if the user already exists.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>LogonAsBatchJob</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>Indicates whether or not the user can logon as a batch job.  User creation can be skipped if all that is desired is to set this access right on the user.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>LogonAsService</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>Indicates whether or not the user can logon as a serivce.  User creation can be skipped if all that is desired is to set this access right on the user.</td>
         <td>&nbsp;</td>
       </tr>
@@ -85,31 +85,31 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>PasswordExpired</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>Indicates whether the user must change their password on their first login.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>PasswordNeverExpires</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>The account's password never expires. Equivalent to UF_DONT_EXPIRE_PASSWD.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>RemoveOnUninstall</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>Indicates whether the user account should be removed or left behind on uninstall.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>UpdateIfExists</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>Indicates if the user account properties should be updated if the user already exists.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Vital</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>Indicates whether failure to create the user or add the user to a group fails the installation. The default value is "yes".</td>
         <td>&nbsp;</td>
       </tr>
@@ -117,5 +117,5 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../util">Util Schema</a>, <a href="../util/group" class="extension">Group</a>, <a href="../util/groupref" class="extension">GroupRef</a></dd>
+    <a href="../">Util Schema</a>, <a href="../../util/group" class="extension">Group</a>, <a href="../../util/groupref" class="extension">GroupRef</a></dd>
 </dl>

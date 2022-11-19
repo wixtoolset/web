@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../patchfamily/">PatchFamily</a>
+    <a href="../../wix/patchfamily/">PatchFamily</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -34,6 +34,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../tag">Tag Schema</a>
+    <a href="../">Tag Schema</a>
   </dd>
 </dl>

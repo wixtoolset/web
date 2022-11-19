@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../util/performancecategory" class="extension">PerformanceCategory</a>
+    <a href="../../util/performancecategory" class="extension">PerformanceCategory</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -32,7 +32,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>Language</td>
-        <td><a href="../util/simple_type_performancecounterlanguagetype">PerformanceCounterLanguageType</a></td>
+        <td><a href="../../util/simple_type_performancecounterlanguagetype">PerformanceCounterLanguageType</a></td>
         <td>Language for the peformance counter name and help.  The default is to use the parent PerformanceCategory element's DefaultLanguage attribute.</td>
         <td>&nbsp;</td>
       </tr>
@@ -44,7 +44,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>Type</td>
-        <td><a href="../util/simple_type_performancecountertypestype">PerformanceCounterTypesType</a></td>
+        <td><a href="../../util/simple_type_performancecountertypestype">PerformanceCounterTypesType</a></td>
         <td>Type of the performance counter.</td>
         <td>&nbsp;</td>
       </tr>
@@ -52,6 +52,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../util">Util Schema</a>
+    <a href="../">Util Schema</a>
   </dd>
 </dl>

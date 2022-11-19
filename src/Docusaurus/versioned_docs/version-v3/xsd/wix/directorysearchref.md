@@ -49,7 +49,7 @@ layout: documentation_xsd_main
   <dd>
     <ul>
       <li>
-        <a href="../../howtos/files_and_registry/directorysearchref">How To: Reference another DirectorySearch element</a>
+        <a href="../../../howtos/files_and_registry/directorysearchref">How To: Reference another DirectorySearch element</a>
       </li>
     </ul>
   </dd>

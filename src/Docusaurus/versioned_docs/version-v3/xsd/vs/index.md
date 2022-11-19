@@ -10,28 +10,28 @@ layout: documentation_xsd_extension
   <dd>
     <ul>
       <li>
-        <a href="../vs/helpcollection" class="extension">HelpCollection</a>
+        <a href="./helpcollection" class="extension">HelpCollection</a>
       </li>
       <li>
-        <a href="../vs/helpcollectionref" class="extension">HelpCollectionRef</a>
+        <a href="./helpcollectionref" class="extension">HelpCollectionRef</a>
       </li>
       <li>
-        <a href="../vs/helpfile" class="extension">HelpFile</a>
+        <a href="./helpfile" class="extension">HelpFile</a>
       </li>
       <li>
-        <a href="../vs/helpfileref" class="extension">HelpFileRef</a>
+        <a href="./helpfileref" class="extension">HelpFileRef</a>
       </li>
       <li>
-        <a href="../vs/helpfilter" class="extension">HelpFilter</a>
+        <a href="./helpfilter" class="extension">HelpFilter</a>
       </li>
       <li>
-        <a href="../vs/helpfilterref" class="extension">HelpFilterRef</a>
+        <a href="./helpfilterref" class="extension">HelpFilterRef</a>
       </li>
       <li>
-        <a href="../vs/plugcollectioninto" class="extension">PlugCollectionInto</a>
+        <a href="./plugcollectioninto" class="extension">PlugCollectionInto</a>
       </li>
       <li>
-        <a href="../vs/vsixpackage" class="extension">VsixPackage</a>
+        <a href="./vsixpackage" class="extension">VsixPackage</a>
       </li>
     </ul>
   </dd>

@@ -9,11 +9,11 @@ layout: documentation_xsd_main
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../bundle/">Bundle</a>, <a href="../fragment/">Fragment</a></dd>
+    <a href="../../wix/bundle/">Bundle</a>, <a href="../../wix/fragment/">Fragment</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../packagegroupref/">PackageGroupRef</a> (min: 0, max: unbounded)</li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../../wix/packagegroupref/">PackageGroupRef</a> (min: 0, max: unbounded)</li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">

@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../component/">Component</a>
+    <a href="../../wix/component/">Component</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -56,13 +56,13 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>Permanent</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>Specifies whether or not the modification should be removed on uninstall.  This has no effect on uninstall if the action was deleteValue.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>PreserveModifiedDate</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>Specifies wheter or not the modification should preserve the modified date.  Preserving the modified date will allow the file to be patched if no other modifications have been made.</td>
         <td>&nbsp;</td>
       </tr>
@@ -88,6 +88,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../util">Util Schema</a>
+    <a href="../">Util Schema</a>
   </dd>
 </dl>

@@ -10,10 +10,10 @@ layout: documentation_xsd_extension
   <dd>
     <ul>
       <li>
-        <a href="../msmq/messagequeue" class="extension">MessageQueue</a>
+        <a href="./messagequeue" class="extension">MessageQueue</a>
       </li>
       <li>
-        <a href="../msmq/messagequeuepermission" class="extension">MessageQueuePermission</a>
+        <a href="./messagequeuepermission" class="extension">MessageQueuePermission</a>
       </li>
     </ul>
   </dd>

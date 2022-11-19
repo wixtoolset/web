@@ -8,7 +8,7 @@ layout: documentation_xsd_extension
   <dd>
     <ul>
       <li>
-        <a href="../wixloc/wixlocalization" class="extension">WixLocalization</a>
+        <a href="./wixlocalization/" class="extension">WixLocalization</a>
       </li>
     </ul>
   </dd>
@@ -17,7 +17,7 @@ layout: documentation_xsd_extension
   <dt>Document Should Look Like</dt>
   <dd>
     <ul>
-      <li>&lt;?xml version="1.0"?&gt;<br />&lt;<a href="../wixloc/wixlocalization" class="extension">WixLocalization</a> xmlns="http://schemas.microsoft.com/wix/2006/localization"&gt;<br />.<br />.<br />.<br />&lt;/WixLocalization&gt;</li>
+      <li>&lt;?xml version="1.0"?&gt;<br />&lt;<a href="./wixlocalization/" class="extension">WixLocalization</a> xmlns="http://schemas.microsoft.com/wix/2006/localization"&gt;<br />.<br />.<br />.<br />&lt;/WixLocalization&gt;</li>
     </ul>
   </dd>
 </dl>

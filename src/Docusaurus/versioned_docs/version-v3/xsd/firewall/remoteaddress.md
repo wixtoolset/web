@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../firewall/firewallexception" class="extension">FirewallException</a>
+    <a href="../../firewall/firewallexception" class="extension">FirewallException</a>
   </dd>
   <dt>Inner Text (xs:string)</dt>
   <dd>                             A remote address.                         </dd>
@@ -19,6 +19,6 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../firewall">Firewall Schema</a>
+    <a href="../">Firewall Schema</a>
   </dd>
 </dl>

@@ -10,19 +10,19 @@ layout: documentation_xsd_extension
   <dd>
     <ul>
       <li>
-        <a href="../sql/sqldatabase" class="extension">SqlDatabase</a>
+        <a href="./sqldatabase" class="extension">SqlDatabase</a>
       </li>
       <li>
-        <a href="../sql/sqlfilespec" class="extension">SqlFileSpec</a>
+        <a href="./sqlfilespec" class="extension">SqlFileSpec</a>
       </li>
       <li>
-        <a href="../sql/sqllogfilespec" class="extension">SqlLogFileSpec</a>
+        <a href="./sqllogfilespec" class="extension">SqlLogFileSpec</a>
       </li>
       <li>
-        <a href="../sql/sqlscript" class="extension">SqlScript</a>
+        <a href="./sqlscript" class="extension">SqlScript</a>
       </li>
       <li>
-        <a href="../sql/sqlstring" class="extension">SqlString</a>
+        <a href="./sqlstring" class="extension">SqlString</a>
       </li>
     </ul>
   </dd>

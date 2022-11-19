@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../component/">Component</a>, <a href="../file/">File</a></dd>
+    <a href="../../wix/component/">Component</a>, <a href="../../wix/file/">File</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
@@ -37,7 +37,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>Permanent</td>
-        <td><a href="../vs/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../vs/simple_type_yesnotype">YesNoType</a></td>
         <td>                     Indicates whether the VSIX package is uninstalled when the parent Component is uninstalled.                     The default is 'no'.                     </td>
         <td>&nbsp;</td>
       </tr>
@@ -49,13 +49,13 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>TargetVersion</td>
-        <td><a href="../vs/simple_type_versiontype">VersionType</a></td>
+        <td><a href="../../vs/simple_type_versiontype">VersionType</a></td>
         <td>                     Specifies the version of Visual Studio in which to register the extension. This attribute                     is required if the Target attribute is specified.                     </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Vital</td>
-        <td><a href="../vs/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../vs/simple_type_yesnotype">YesNoType</a></td>
         <td>                     Indicates whether failure to install the VSIX package causes the installation to rollback.                     The default is 'yes'.                     </td>
         <td>&nbsp;</td>
       </tr>
@@ -74,6 +74,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../vs">Vs Schema</a>
+    <a href="../">Vs Schema</a>
   </dd>
 </dl>

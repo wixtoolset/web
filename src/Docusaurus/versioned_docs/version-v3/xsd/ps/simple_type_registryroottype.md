@@ -9,6 +9,6 @@ layout: documentation_xsd_simpletype
   <dd>Possible values: HKMU, HKCR, HKCU, HKLM, HKU</dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../ps">Ps Schema</a>
+    <a href="../">Ps Schema</a>
   </dd>
 </dl>

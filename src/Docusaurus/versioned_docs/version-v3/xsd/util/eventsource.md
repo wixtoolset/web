@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../component/">Component</a>
+    <a href="../../wix/component/">Component</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -44,7 +44,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>KeyPath</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>                         Marks the EventSource registry as the key path of the component it belongs to.                     </td>
         <td>&nbsp;</td>
       </tr>
@@ -68,31 +68,31 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>SupportsErrors</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>                         Equivalent to EVENTLOG_ERROR_TYPE.                     </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>SupportsFailureAudits</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>                         Equivalent to EVENTLOG_AUDIT_FAILURE.                     </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>SupportsInformationals</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>                         Equivalent to EVENTLOG_INFORMATION_TYPE.                     </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>SupportsSuccessAudits</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>                         Equivalent to EVENTLOG_AUDIT_SUCCESS.                     </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>SupportsWarnings</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>                         Equivalent to EVENTLOG_WARNING_TYPE.                     </td>
         <td>&nbsp;</td>
       </tr>
@@ -100,6 +100,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../util">Util Schema</a>
+    <a href="../">Util Schema</a>
   </dd>
 </dl>

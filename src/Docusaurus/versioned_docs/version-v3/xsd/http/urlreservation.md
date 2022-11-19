@@ -9,11 +9,11 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../component/">Component</a>, <a href="../serviceinstall/">ServiceInstall</a></dd>
+    <a href="../../wix/component/">Component</a>, <a href="../../wix/serviceinstall/">ServiceInstall</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../http/urlace" class="extension">UrlAce</a> (min: 0, max: unbounded)</li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../urlace" class="extension">UrlAce</a> (min: 0, max: unbounded)</li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -51,6 +51,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../http">Http Schema</a>
+    <a href="../">Http Schema</a>
   </dd>
 </dl>

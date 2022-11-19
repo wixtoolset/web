@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../bootstrapperapplicationref/">BootstrapperApplicationRef</a>
+    <a href="../../wix/bootstrapperapplicationref/">BootstrapperApplicationRef</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -32,7 +32,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>LaunchHidden</td>
-        <td><a href="../bal/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../bal/simple_type_yesnotype">YesNoType</a></td>
         <td>                         If set to "yes", WixStdBA will launch the application specified by the LaunchTarget attribute with the SW_HIDE flag.                         This attribute is ignored when the LaunchTargetElevatedId attribute is specified.                     </td>
         <td>&nbsp;</td>
       </tr>
@@ -86,37 +86,37 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>ShowFilesInUse</td>
-        <td><a href="../bal/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../bal/simple_type_yesnotype">YesNoType</a></td>
         <td>If set to "yes", WixStdBA will show a page allowing the user to restart applications when files are in use.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ShowVersion</td>
-        <td><a href="../bal/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../bal/simple_type_yesnotype">YesNoType</a></td>
         <td>If set to "yes", the application version will be displayed on the UI.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>SupportCacheOnly</td>
-        <td><a href="../bal/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../bal/simple_type_yesnotype">YesNoType</a></td>
         <td>If set to "yes", the bundle can be pre-cached using the /cache command line argument.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>SuppressDowngradeFailure</td>
-        <td><a href="../bal/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../bal/simple_type_yesnotype">YesNoType</a></td>
         <td>If set to "yes", attempting to installer a downgraded version of a bundle will be treated as a successful do-nothing operation.                     The default behavior (or when explicitly set to "no") is to treat downgrade attempts as failures. </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>SuppressOptionsUI</td>
-        <td><a href="../bal/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../bal/simple_type_yesnotype">YesNoType</a></td>
         <td>If set to "yes", the Options button will not be shown and the user will not be able to choose an installation directory.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>SuppressRepair</td>
-        <td><a href="../bal/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../bal/simple_type_yesnotype">YesNoType</a></td>
         <td>If set to "yes", the Repair button will not be shown in the maintenance-mode UI.</td>
         <td>&nbsp;</td>
       </tr>
@@ -130,6 +130,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../bal">Bal Schema</a>
+    <a href="../">Bal Schema</a>
   </dd>
 </dl>

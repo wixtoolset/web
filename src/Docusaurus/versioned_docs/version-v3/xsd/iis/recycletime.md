@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../iis/webapppool" class="extension">WebAppPool</a>
+    <a href="../../iis/webapppool" class="extension">WebAppPool</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -34,6 +34,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../iis">Iis Schema</a>
+    <a href="../">Iis Schema</a>
   </dd>
 </dl>

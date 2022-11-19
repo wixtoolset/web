@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../component/">Component</a>
+    <a href="../../wix/component/">Component</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -42,6 +42,6 @@ layout: documentation_xsd_extension
   <dd>Here is an explanation of the acceptable values for each property and their meaning:                     <ul><li>                             For the Ids IIs5IsolationMode and LogInUTF8, no value should be specified since                             the presence of this property indicates that the setting should be set.                         </li><li>                             For the MaxGlobalBandwidth Id, the value should be specified in kilobytes.  The                             value should be a base 10 number.                         </li><li>                             ETagChangeNumber sets the machine-specific portion of ETag as a number. This value,                             when synchronized across servers in a web farm, allows the web farm to return an                             identical ETag for a given resource regardless of the server that handled the                             request.  The value should be a base 10 number.                         </li></ul></dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../iis">Iis Schema</a>
+    <a href="../">Iis Schema</a>
   </dd>
 </dl>

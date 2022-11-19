@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../thmutil/page" class="extension">Page</a>, <a href="../thmutil/theme" class="extension">Theme</a></dd>
+    <a href="../page" class="extension">Page</a>, <a href="../theme" class="extension">Theme</a></dd>
   <dt>Inner Text (xs:string)</dt>
   <dd>Text to display.</dd>
   <dt>Children</dt>
@@ -25,13 +25,13 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>Center</td>
-        <td><a href="../thmutil/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype">YesNoType</a></td>
         <td>Specifies whether the text should be centered horizontally in the width of the control. Default is "no".</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>DisablePrefix</td>
-        <td><a href="../thmutil/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype">YesNoType</a></td>
         <td>By default ampersands (&amp;) in the text will underline the next character and treat it as an accelerator key. Set this attribute to "yes" to disable that behavior. Default is "no".</td>
         <td>&nbsp;</td>
       </tr>
@@ -55,7 +55,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>HideWhenDisabled</td>
-        <td><a href="../thmutil/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype">YesNoType</a></td>
         <td>Specifies whether the control should be hidden when disabled.</td>
         <td>&nbsp;</td>
       </tr>
@@ -67,13 +67,13 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>TabStop</td>
-        <td><a href="../thmutil/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype">YesNoType</a></td>
         <td>Specifies whether the control is part of the tab sequence of controls.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Visible</td>
-        <td><a href="../thmutil/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../simple_type_yesnotype">YesNoType</a></td>
         <td>Specifies whether the control is initially visible.</td>
         <td>&nbsp;</td>
       </tr>
@@ -99,6 +99,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../thmutil">Thmutil Schema</a>
+    <a href="../">Thmutil Schema</a>
   </dd>
 </dl>

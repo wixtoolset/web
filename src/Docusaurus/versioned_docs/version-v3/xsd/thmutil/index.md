@@ -8,7 +8,7 @@ layout: documentation_xsd_extension
   <dd>
     <ul>
       <li>
-        <a href="../thmutil/theme" class="extension">Theme</a>
+        <a href="theme" class="extension">Theme</a>
       </li>
     </ul>
   </dd>
@@ -17,7 +17,7 @@ layout: documentation_xsd_extension
   <dt>Document Should Look Like</dt>
   <dd>
     <ul>
-      <li>&lt;?xml version="1.0"?&gt;<br />&lt;<a href="../thmutil/theme" class="extension">Theme</a> xmlns="http://wixtoolset.org/schemas/thmutil/2010"&gt;<br />.<br />.<br />.<br />&lt;/Theme&gt;</li>
+      <li>&lt;?xml version="1.0"?&gt;<br />&lt;<a href="theme" class="extension">Theme</a> xmlns="http://wixtoolset.org/schemas/thmutil/2010"&gt;<br />.<br />.<br />.<br />&lt;/Theme&gt;</li>
     </ul>
   </dd>
 </dl>

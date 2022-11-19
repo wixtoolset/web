@@ -9,12 +9,12 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../file/">File</a>
+    <a href="../../wix/file/">File</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../gaming/playtask" class="extension">PlayTask</a> (min: 0, max: unbounded)</li><li><a href="../gaming/supporttask" class="extension">SupportTask</a> (min: 0, max: unbounded)</li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../playtask" class="extension">PlayTask</a> (min: 0, max: unbounded)</li><li><a href="../supporttask" class="extension">SupportTask</a> (min: 0, max: unbounded)</li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -26,7 +26,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>Id</td>
-        <td><a href="../gaming/simple_type_guid">Guid</a></td>
+        <td><a href="../simple_type_guid">Guid</a></td>
         <td>The game's instance ID.</td>
         <td>Yes</td>
       </tr>
@@ -46,6 +46,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../gaming">Gaming Schema</a>
+    <a href="../">Gaming Schema</a>
   </dd>
 </dl>

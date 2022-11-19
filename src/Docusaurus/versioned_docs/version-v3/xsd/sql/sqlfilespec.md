@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../sql/sqldatabase" class="extension">SqlDatabase</a>
+    <a href="../../sql/sqldatabase" class="extension">SqlDatabase</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -64,6 +64,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../sql">Sql Schema</a>
+    <a href="../">Sql Schema</a>
   </dd>
 </dl>

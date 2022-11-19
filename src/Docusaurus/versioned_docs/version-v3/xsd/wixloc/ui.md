@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../wixloc/wixlocalization" class="extension">WixLocalization</a>
+    <a href="../wixlocalization" class="extension">WixLocalization</a>
   </dd>
   <dt>Inner Text (xs:string)</dt>
   <dd>This element may have inner text.</dd>
@@ -44,19 +44,19 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>LeftScroll</td>
-        <td><a href="../wixloc/simple_type_localizationyesnotype">LocalizationYesNoType</a></td>
+        <td><a href="../simple_type_localizationyesnotype">LocalizationYesNoType</a></td>
         <td>Set this attribute to "yes" to cause the scroll bar to display on the left side of the Control. Not valid for a dialog.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>RightAligned</td>
-        <td><a href="../wixloc/simple_type_localizationyesnotype">LocalizationYesNoType</a></td>
+        <td><a href="../simple_type_localizationyesnotype">LocalizationYesNoType</a></td>
         <td>Set this attribute to "yes" to cause the Control to be right aligned. Not valid for a dialog.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>RightToLeft</td>
-        <td><a href="../wixloc/simple_type_localizationyesnotype">LocalizationYesNoType</a></td>
+        <td><a href="../simple_type_localizationyesnotype">LocalizationYesNoType</a></td>
         <td>Set this attribute to "yes" to cause the Control to display from right to left. Not valid for a dialog.</td>
         <td>&nbsp;</td>
       </tr>
@@ -82,6 +82,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../wixloc">Wixloc Schema</a>
+    <a href="../">Wixloc Schema</a>
   </dd>
 </dl>

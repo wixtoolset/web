@@ -9,6 +9,6 @@ layout: documentation_xsd_simpletype
   <dd>Possible values: both, first, execute, ui</dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../lux">Lux Schema</a>
+    <a href="../">Lux Schema</a>
   </dd>
 </dl>

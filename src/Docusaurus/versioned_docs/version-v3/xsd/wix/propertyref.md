@@ -40,7 +40,7 @@ layout: documentation_xsd_main
   <dd>
     <ul>
       <li>
-        <a href="../../howtos/redistributables_and_install_checks/check_for_dotnet">How To: Check for .NET Framework versions</a>
+        <a href="../../../howtos/redistributables_and_install_checks/check_for_dotnet">How To: Check for .NET Framework versions</a>
       </li>
     </ul>
   </dd>

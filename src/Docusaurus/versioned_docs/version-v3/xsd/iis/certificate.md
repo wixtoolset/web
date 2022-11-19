@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../component/">Component</a>
+    <a href="../../wix/component/">Component</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -50,7 +50,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>Overwrite</td>
-        <td><a href="../iis/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../iis/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
@@ -62,7 +62,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>Request</td>
-        <td><a href="../iis/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../iis/simple_type_yesnotype">YesNoType</a></td>
         <td>                         This attribute controls whether the CertificatePath attribute is a path to a certificate file (Request='no') or the                         certificate authority to request the certificate from  (Request='yes').                     </td>
         <td>&nbsp;</td>
       </tr>
@@ -82,5 +82,5 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../iis">Iis Schema</a>, <a href="../iis/certificateref" class="extension">CertificateRef</a></dd>
+    <a href="../">Iis Schema</a>, <a href="../../iis/certificateref" class="extension">CertificateRef</a></dd>
 </dl>

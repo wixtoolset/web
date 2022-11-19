@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../dependency/provides" class="extension">Provides</a>
+    <a href="../../dependency/provides" class="extension">Provides</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -38,11 +38,11 @@ layout: documentation_xsd_extension
   <dd>
     <ul>
       <li>
-        <a href="../../howtos/author_product_dependencies">How To: Author product dependencies</a>
+        <a href="../../../howtos/author_product_dependencies">How To: Author product dependencies</a>
       </li>
     </ul>
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../dependency">Dependency Schema</a>, <a href="../dependency/requires" class="extension">Requires</a></dd>
+    <a href="../">Dependency Schema</a>, <a href="../../dependency/requires" class="extension">Requires</a></dd>
 </dl>

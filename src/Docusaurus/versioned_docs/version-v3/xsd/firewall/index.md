@@ -10,10 +10,10 @@ layout: documentation_xsd_extension
   <dd>
     <ul>
       <li>
-        <a href="../firewall/firewallexception" class="extension">FirewallException</a>
+        <a href="./firewallexception" class="extension">FirewallException</a>
       </li>
       <li>
-        <a href="../firewall/remoteaddress" class="extension">RemoteAddress</a>
+        <a href="./remoteaddress" class="extension">RemoteAddress</a>
       </li>
     </ul>
   </dd>

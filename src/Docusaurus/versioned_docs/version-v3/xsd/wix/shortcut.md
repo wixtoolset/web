@@ -139,7 +139,7 @@ layout: documentation_xsd_main
   <dd>
     <ul>
       <li>
-        <a href="../../howtos/files_and_registry/create_start_menu_shortcut">How To: Create a shortcut on the Start Menu</a>
+        <a href="../../../howtos/files_and_registry/create_start_menu_shortcut">How To: Create a shortcut on the Start Menu</a>
       </li>
     </ul>
   </dd>

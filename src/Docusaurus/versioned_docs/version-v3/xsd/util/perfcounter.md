@@ -4,12 +4,12 @@ layout: documentation_xsd_extension
 ---
 <dl>
   <dt>Description</dt>
-  <dd>This element has been deprecated; please use the <a href="../util/performancecounter" class="extension">PerformanceCounter</a> element instead.</dd>
+  <dd>This element has been deprecated; please use the <a href="../../util/performancecounter" class="extension">PerformanceCounter</a> element instead.</dd>
   <dt>Windows Installer references</dt>
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../file/">File</a>
+    <a href="../../wix/file/">File</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -34,6 +34,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../util">Util Schema</a>
+    <a href="../">Util Schema</a>
   </dd>
 </dl>

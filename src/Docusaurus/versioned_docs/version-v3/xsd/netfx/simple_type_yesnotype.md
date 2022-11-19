@@ -9,6 +9,6 @@ layout: documentation_xsd_simpletype
   <dd>Possible values: no, yes</dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../netfx">Netfx Schema</a>
+    <a href="../">Netfx Schema</a>
   </dd>
 </dl>

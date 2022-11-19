@@ -9,11 +9,11 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../component/">Component</a>, <a href="../fragment/">Fragment</a>, <a href="../module/">Module</a>, <a href="../product/">Product</a></dd>
+    <a href="../../wix/component/">Component</a>, <a href="../../wix/fragment/">Fragment</a>, <a href="../../wix/module/">Module</a>, <a href="../../wix/product/">Product</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../iis/certificateref" class="extension">CertificateRef</a> (min: 0, max: unbounded)</li><li><a href="../iis/httpheader" class="extension">HttpHeader</a> (min: 0, max: unbounded)</li><li><a href="../iis/mimemap" class="extension">MimeMap</a> (min: 0, max: unbounded)</li><li><a href="../iis/webaddress" class="extension">WebAddress</a> (min: 1, max: unbounded)</li><li><a href="../iis/webapplication" class="extension">WebApplication</a> (min: 0, max: 1)</li><li><a href="../iis/webdir" class="extension">WebDir</a> (min: 0, max: unbounded)</li><li><a href="../iis/webdirproperties" class="extension">WebDirProperties</a> (min: 0, max: 1)</li><li><a href="../iis/weberror" class="extension">WebError</a> (min: 0, max: unbounded)</li><li><a href="../iis/webfilter" class="extension">WebFilter</a> (min: 0, max: unbounded)</li><li><a href="../iis/webvirtualdir" class="extension">WebVirtualDir</a> (min: 0, max: unbounded)</li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../../iis/certificateref" class="extension">CertificateRef</a> (min: 0, max: unbounded)</li><li><a href="../../iis/httpheader" class="extension">HttpHeader</a> (min: 0, max: unbounded)</li><li><a href="../../iis/mimemap" class="extension">MimeMap</a> (min: 0, max: unbounded)</li><li><a href="../../iis/webaddress" class="extension">WebAddress</a> (min: 1, max: unbounded)</li><li><a href="../../iis/webapplication" class="extension">WebApplication</a> (min: 0, max: 1)</li><li><a href="../../iis/webdir" class="extension">WebDir</a> (min: 0, max: unbounded)</li><li><a href="../../iis/webdirproperties" class="extension">WebDirProperties</a> (min: 0, max: 1)</li><li><a href="../../iis/weberror" class="extension">WebError</a> (min: 0, max: unbounded)</li><li><a href="../../iis/webfilter" class="extension">WebFilter</a> (min: 0, max: unbounded)</li><li><a href="../../iis/webvirtualdir" class="extension">WebVirtualDir</a> (min: 0, max: unbounded)</li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -31,13 +31,13 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>AutoStart</td>
-        <td><a href="../iis/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../iis/simple_type_yesnotype">YesNoType</a></td>
         <td>Specifies whether to automatically start the web site.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ConfigureIfExists</td>
-        <td><a href="../iis/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../iis/simple_type_yesnotype">YesNoType</a></td>
         <td>Specifies whether to configure the web site if it already exists.  Note: This will not affect uninstall behavior.  If the web site exists on uninstall, it will be removed.</td>
         <td>&nbsp;</td>
       </tr>
@@ -79,7 +79,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>StartOnInstall</td>
-        <td><a href="../iis/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../iis/simple_type_yesnotype">YesNoType</a></td>
         <td>Specifies whether to start the web site on install.</td>
         <td>&nbsp;</td>
       </tr>
@@ -101,6 +101,6 @@ layout: documentation_xsd_extension
   <dd><dl><dd>Nesting WebSite under a Component element will result in a WebSite being installed to the machine as the package is installed.</dd><dd>                             Nesting WebSite under Product, Fragment, or Module                             results in a web site "locator" record being created in                             the IIsWebSite table.  This means that the web site                             itself is neither installed nor uninstalled by the MSI                             package.  It does make the database available for referencing                             from a WebApplication, WebVirtualDir or WebDir record.  This allows an MSI to install                             WebApplications, WebVirtualDirs or WebDirs to already existing web sites on the machine.                             The install will fail if the web site does not exist in these cases.                         </dd></dl></dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../iis">Iis Schema</a>
+    <a href="../">Iis Schema</a>
   </dd>
 </dl>

@@ -9,6 +9,6 @@ layout: documentation_xsd_simpletype
   <dd>Possible values: no, yes</dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../http">Http Schema</a>
+    <a href="../">Http Schema</a>
   </dd>
 </dl>

@@ -11,7 +11,7 @@ layout: documentation_xsd_extension
   </dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../component/">Component</a>
+    <a href="../../wix/component/">Component</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -50,6 +50,6 @@ layout: documentation_xsd_extension
   <dd><p>The custom action that implements RemoveFolderEx does so by writing temporary rows to the RemoveFile table                 for each subfolder of the root folder you specify. Because it might dramatically affect Windows Installer's                 <a href="http://msdn.microsoft.com/en-us/library/aa368593.aspx">File Costing</a>,                  the temporary rows must be written before the CostInitialize standard action. Unfortunately, MSI doesn't                 create properties for the Directory hierarchy in your package until later, in the CostFinalize action.</p><p>An easy workaround for a typical use case of removing a folder during uninstall is to write the directory                 path to the registry and to load it during uninstall. See                  <a href="http://robmensching.com/blog/posts/2010/5/2/the-wix-toolsets-remember-property-pattern">The WiX toolset's "Remember Property" pattern</a>                 for an example.</p><p>If you use custom actions to set properties, ensure that they are scheduled before the WixRemoveFoldersEx custom action.</p></dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../util">Util Schema</a>
+    <a href="../">Util Schema</a>
   </dd>
 </dl>

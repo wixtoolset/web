@@ -98,7 +98,7 @@ layout: documentation_xsd_main
   <dd>
     <ul>
       <li>
-        <a href="../../howtos/files_and_registry/check_the_version_number">How To: Check the version number of a file during installation</a>
+        <a href="../../../howtos/files_and_registry/check_the_version_number">How To: Check the version number of a file during installation</a>
       </li>
     </ul>
   </dd>

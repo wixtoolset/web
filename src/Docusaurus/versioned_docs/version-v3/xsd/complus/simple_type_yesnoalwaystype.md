@@ -9,6 +9,6 @@ layout: documentation_xsd_simpletype
   <dd>Possible values: always, no, yes</dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../complus">Complus Schema</a>
+    <a href="../">Complus Schema</a>
   </dd>
 </dl>

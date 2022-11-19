@@ -15,7 +15,7 @@ layout: documentation_xsd_main
   <dt>Inner Text (xs:string)</dt>
   <dd>This element may have inner text.</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../multistringvalue/">MultiStringValue</a> (min: 0, max: unbounded)</li><li><a href="../permission/">Permission</a> (min: 0, max: unbounded)</li><li><a href="../permissionex/">PermissionEx</a> (min: 0, max: unbounded): Can also configure the ACLs for this registry value.</li><li><span class="extension">Any Element (namespace='##other' processContents='Lax')                              Extensibility point in the WiX XML Schema.  Schema extensions can register additional                             elements at this point in the schema.                         </span><ul><li><a href="../util/permissionex" class="extension">PermissionEx</a></li></ul></li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../multistringvalue/">MultiStringValue</a> (min: 0, max: unbounded)</li><li><a href="../permission/">Permission</a> (min: 0, max: unbounded)</li><li><a href="../permissionex/">PermissionEx</a> (min: 0, max: unbounded): Can also configure the ACLs for this registry value.</li><li><span class="extension">Any Element (namespace='##other' processContents='Lax')                              Extensibility point in the WiX XML Schema.  Schema extensions can register additional                             elements at this point in the schema.                         </span><ul><li><a href="../../util/permissionex" class="extension">PermissionEx</a></li></ul></li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -79,7 +79,7 @@ layout: documentation_xsd_main
   <dd>
     <ul>
       <li>
-        <a href="../../howtos/files_and_registry/write_a_registry_entry">How To: Write a registry entry during installation</a>
+        <a href="../../../howtos/files_and_registry/write_a_registry_entry">How To: Write a registry entry during installation</a>
       </li>
     </ul>
   </dd>

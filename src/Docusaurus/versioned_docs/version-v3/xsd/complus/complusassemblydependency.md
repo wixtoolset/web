@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../complus/complusassembly" class="extension">ComPlusAssembly</a>
+    <a href="../../complus/complusassembly" class="extension">ComPlusAssembly</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -36,6 +36,6 @@ layout: documentation_xsd_extension
   <dd>It is only necessary to explicitly specify dependencies between           assemblies contained in the same package (MSI or MSM). Assemblies merged in to a           package from a merge module will always be installed before any assemblies           specified in the base package. Assemblies merged in from different merge           modules are sequenced using the ModuleDependency MSI table. It is not possible           to have cross dependencies between merge modules or have an assembly in a merge           module depend on an assembly in the base package.</dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../complus">Complus Schema</a>
+    <a href="../">Complus Schema</a>
   </dd>
 </dl>

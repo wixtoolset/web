@@ -9,6 +9,6 @@ layout: documentation_xsd_simpletype
   <dd>Possible values: HKMU, HKCR, HKCU, HKLM, HKU</dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../sql">Sql Schema</a>
+    <a href="../">Sql Schema</a>
   </dd>
 </dl>

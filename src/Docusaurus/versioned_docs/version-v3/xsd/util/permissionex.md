@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../createfolder/">CreateFolder</a>, <a href="../file/">File</a>, <a href="../registry/">Registry</a>, <a href="../registrykey/">RegistryKey</a>, <a href="../registryvalue/">RegistryValue</a></dd>
+    <a href="../../wix/createfolder/">CreateFolder</a>, <a href="../../wix/file/">File</a>, <a href="../../wix/registry/">Registry</a>, <a href="../../wix/registrykey/">RegistryKey</a>, <a href="../../wix/registryvalue/">RegistryValue</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
@@ -25,49 +25,49 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>Append</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ChangePermission</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>CreateChild</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>For a directory, the right to create a subdirectory.  Only valid under a 'CreateFolder' parent.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>CreateFile</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>For a directory, the right to create a file in the directory.  Only valid under a 'CreateFolder' parent.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>CreateLink</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>CreateSubkeys</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Delete</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>DeleteChild</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>For a directory, the right to delete a directory and all the files it contains, including read-only files.  Only valid under a 'CreateFolder' parent.</td>
         <td>&nbsp;</td>
       </tr>
@@ -79,139 +79,139 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>EnumerateSubkeys</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Execute</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>GenericAll</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>GenericExecute</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>GenericRead</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>specifying this will fail to grant read access</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>GenericWrite</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Notify</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Read</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ReadAttributes</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ReadExtendedAttributes</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ReadPermission</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ServiceChangeConfig</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>Required to call the ChangeServiceConfig or ChangeServiceConfig2 function to change the service configuration.  Only valid under a 'ServiceInstall' parent.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ServiceEnumerateDependents</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>Required to call the EnumDependentServices function to enumerate all the services dependent on the service.  Only valid under a 'ServiceInstall' parent.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ServiceInterrogate</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>Required to call the ControlService function to ask the service to report its status immediately.  Only valid under a 'ServiceInstall' parent.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ServicePauseContinue</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>Required to call the ControlService function to pause or continue the service.  Only valid under a 'ServiceInstall' parent.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ServiceQueryConfig</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>Required to call the QueryServiceConfig and QueryServiceConfig2 functions to query the service configuration.  Only valid under a 'ServiceInstall' parent.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ServiceQueryStatus</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>Required to call the QueryServiceStatus function to ask the service control manager about the status of the service.  Only valid under a 'ServiceInstall' parent.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ServiceStart</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>Required to call the StartService function to start the service.  Only valid under a 'ServiceInstall' parent.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ServiceStop</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>Required to call the ControlService function to stop the service.  Only valid under a 'ServiceInstall' parent.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>ServiceUserDefinedControl</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>Required to call the ControlService function to specify a user-defined control code.  Only valid under a 'ServiceInstall' parent.</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Synchronize</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>TakeOwnership</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Traverse</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>For a directory, the right to traverse the directory.  By default, users are assigned the BYPASS_TRAVERSE_CHECKING privilege, which ignores the FILE_TRAVERSE access right.  Only valid under a 'CreateFolder' parent.</td>
         <td>&nbsp;</td>
       </tr>
@@ -223,19 +223,19 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>Write</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>WriteAttributes</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>WriteExtendedAttributes</td>
-        <td><a href="../util/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../util/simple_type_yesnotype">YesNoType</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
@@ -243,6 +243,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../util">Util Schema</a>
+    <a href="../">Util Schema</a>
   </dd>
 </dl>

@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../fragment/">Fragment</a>, <a href="../module/">Module</a>, <a href="../product/">Product</a></dd>
+    <a href="../../wix/fragment/">Fragment</a>, <a href="../../wix/module/">Module</a>, <a href="../../wix/product/">Product</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
@@ -43,7 +43,7 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>SuppressCustomActions</td>
-        <td><a href="../vs/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../vs/simple_type_yesnotype">YesNoType</a></td>
         <td>Suppress linking Help registration custom actions.  Help redistributable merge modules will be required.  Use this when building a merge module.</td>
         <td>&nbsp;</td>
       </tr>
@@ -51,6 +51,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../vs">Vs Schema</a>
+    <a href="../">Vs Schema</a>
   </dd>
 </dl>

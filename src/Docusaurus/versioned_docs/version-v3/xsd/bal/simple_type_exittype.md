@@ -9,6 +9,6 @@ layout: documentation_xsd_simpletype
   <dd>Possible values: success, cancel, error, suspend</dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../bal">Bal Schema</a>
+    <a href="../">Bal Schema</a>
   </dd>
 </dl>

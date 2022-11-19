@@ -9,11 +9,11 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../component/">Component</a>, <a href="../iis/website" class="extension">WebSite</a></dd>
+    <a href="../../wix/component/">Component</a>, <a href="../../iis/website" class="extension">WebSite</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
-  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../iis/webapplication" class="extension">WebApplication</a> (min: 0, max: 1)</li><li><a href="../iis/webdirproperties" class="extension">WebDirProperties</a> (min: 0, max: 1)</li></ul></dd>
+  <dd>Choice of elements (min: 0, max: unbounded)<ul><li><a href="../../iis/webapplication" class="extension">WebApplication</a> (min: 0, max: 1)</li><li><a href="../../iis/webdirproperties" class="extension">WebDirProperties</a> (min: 0, max: 1)</li></ul></dd>
   <dt>Attributes</dt>
   <dd>
     <table cellspacing="0" cellpadding="0" class="schema">
@@ -51,6 +51,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../iis">Iis Schema</a>
+    <a href="../">Iis Schema</a>
   </dd>
 </dl>

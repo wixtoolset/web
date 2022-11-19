@@ -10,13 +10,13 @@ layout: documentation_xsd_extension
   <dd>
     <ul>
       <li>
-        <a href="../bal/condition" class="extension">Condition</a>
+        <a href="./condition" class="extension">Condition</a>
       </li>
       <li>
-        <a href="../bal/wixmanagedbootstrapperapplicationhost" class="extension">WixManagedBootstrapperApplicationHost</a>
+        <a href="./wixmanagedbootstrapperapplicationhost" class="extension">WixManagedBootstrapperApplicationHost</a>
       </li>
       <li>
-        <a href="../bal/wixstandardbootstrapperapplication" class="extension">WixStandardBootstrapperApplication</a>
+        <a href="./wixstandardbootstrapperapplication" class="extension">WixStandardBootstrapperApplication</a>
       </li>
     </ul>
   </dd>

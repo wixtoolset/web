@@ -9,6 +9,6 @@ layout: documentation_xsd_simpletype
   <dd>Possible values: both, first, execute, ui</dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../difxapp">Difxapp Schema</a>
+    <a href="../">Difxapp Schema</a>
   </dd>
 </dl>

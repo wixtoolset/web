@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../gaming/game" class="extension">Game</a>
+    <a href="../game" class="extension">Game</a>
   </dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
@@ -40,6 +40,6 @@ layout: documentation_xsd_extension
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../gaming">Gaming Schema</a>
+    <a href="../">Gaming Schema</a>
   </dd>
 </dl>

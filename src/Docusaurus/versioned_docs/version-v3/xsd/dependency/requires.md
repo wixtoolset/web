@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../bundle/">Bundle</a>, <a href="../fragment/">Fragment</a>, <a href="../module/">Module</a>, <a href="../product/">Product</a>, <a href="../dependency/provides" class="extension">Provides</a></dd>
+    <a href="../../wix/bundle/">Bundle</a>, <a href="../../wix/fragment/">Fragment</a>, <a href="../../wix/module/">Module</a>, <a href="../../wix/product/">Product</a>, <a href="../../dependency/provides" class="extension">Provides</a></dd>
   <dt>Inner Text</dt>
   <dd>None</dd>
   <dt>Children</dt>
@@ -31,25 +31,25 @@ layout: documentation_xsd_extension
       </tr>
       <tr>
         <td>IncludeMaximum</td>
-        <td><a href="../dependency/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../dependency/simple_type_yesnotype">YesNoType</a></td>
         <td>                         Set to "yes" to make the range of dependency provider versions required include the value specified in Maximum.                     </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>IncludeMinimum</td>
-        <td><a href="../dependency/simple_type_yesnotype">YesNoType</a></td>
+        <td><a href="../../dependency/simple_type_yesnotype">YesNoType</a></td>
         <td>                         Set to "yes" to make the range of dependency provider versions required include the value specified in Minimum.                     </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Maximum</td>
-        <td><a href="../dependency/simple_type_versiontype">VersionType</a></td>
+        <td><a href="../../dependency/simple_type_versiontype">VersionType</a></td>
         <td>                         The maximum version of the dependency provider required to be installed. The default is unbound.                     </td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td>Minimum</td>
-        <td><a href="../dependency/simple_type_versiontype">VersionType</a></td>
+        <td><a href="../../dependency/simple_type_versiontype">VersionType</a></td>
         <td>                         The minimum version of the dependency provider required to be installed. The default is unbound.                     </td>
         <td>&nbsp;</td>
       </tr>
@@ -67,11 +67,11 @@ layout: documentation_xsd_extension
   <dd>
     <ul>
       <li>
-        <a href="../../howtos/author_product_dependencies">How To: Author product dependencies</a>
+        <a href="../../../howtos/author_product_dependencies">How To: Author product dependencies</a>
       </li>
     </ul>
   </dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../dependency">Dependency Schema</a>, <a href="../dependency/requiresref" class="extension">RequiresRef</a></dd>
+    <a href="../">Dependency Schema</a>, <a href="../../dependency/requiresref" class="extension">RequiresRef</a></dd>
 </dl>

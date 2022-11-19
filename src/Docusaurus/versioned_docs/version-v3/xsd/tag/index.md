@@ -10,10 +10,10 @@ layout: documentation_xsd_extension
   <dd>
     <ul>
       <li>
-        <a href="../tag/tag" class="extension">Tag</a>
+        <a href="./tag" class="extension">Tag</a>
       </li>
       <li>
-        <a href="../tag/tagref" class="extension">TagRef</a>
+        <a href="./tagref" class="extension">TagRef</a>
       </li>
     </ul>
   </dd>

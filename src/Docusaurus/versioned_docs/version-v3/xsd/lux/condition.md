@@ -9,7 +9,7 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>Parents</dt>
   <dd>
-    <a href="../lux/unittest" class="extension">UnitTest</a>
+    <a href="../../lux/unittest" class="extension">UnitTest</a>
   </dd>
   <dt>Inner Text (xs:string)</dt>
   <dd>This element may have inner text.</dd>
@@ -19,6 +19,6 @@ layout: documentation_xsd_extension
   <dd>None</dd>
   <dt>See Also</dt>
   <dd>
-    <a href="../lux">Lux Schema</a>
+    <a href="../">Lux Schema</a>
   </dd>
 </dl>
