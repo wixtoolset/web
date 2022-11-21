@@ -7,7 +7,7 @@ layout: documentation_xsd_main
   <dd>                 Configures a service being installed or one that already exists. This element's functionality is available starting with MSI 5.0.             </dd>
   <dt>Windows Installer references</dt>
   <dd>
-    <a href="http://msdn.microsoft.com/library/aa371637.aspx" target="_blank">MsiServiceConfig Table</a>
+    <a href="https://learn.microsoft.com/en-us/windows/win32/msi/msiserviceconfig-table" target="_blank">MsiServiceConfig Table</a>
   </dd>
   <dt>Parents</dt>
   <dd>
