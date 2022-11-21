@@ -13,29 +13,29 @@ these settings in your .wixproj file, you can create a PropertyGroup and specify
 settings that you want to use for your build process. The following is a sample
 PropertyGroup that contains settings that will be used by the <b>HeatDirectory</b> task:
 
-```
-<span style="color: blue">&lt;</span><span style="color: #a31515">HeatDirectory
-</span><span style="color: red">NoLogo</span><span style="color: blue">=</span>&quot;<span style="color: blue">$(HarvestDirectoryNoLogo)</span>&quot;
-<span style="color: red">SuppressAllWarnings</span><span style="color: blue">=</span>&quot;<span style="color: blue">$(HarvestDirectorySuppressAllWarnings)</span>&quot;
-<span style="color: red">SuppressSpecificWarnings</span><span style="color: blue">=</span>&quot;<span style="color: blue">$(HarvestDirectorySuppressSpecificWarnings)</span>&quot;
-<span style="color: red">ToolPath</span><span style="color: blue">=</span>&quot;<span style="color: blue">$(WixToolPath)</span>&quot;
-<span style="color: red">TreatWarningsAsErrors</span><span style="color: blue">=</span>&quot;<span style="color: blue">$(HarvestDirectoryTreatWarningsAsErrors)</span>&quot;
-<span style="color: red">TreatSpecificWarningsAsErrors</span><span style="color: blue">=</span>&quot;<span style="color: blue">$(HarvestDirectoryTreatSpecificWarningsAsErrors)</span>&quot;
-<span style="color: red">VerboseOutput</span><span style="color: blue">=</span>&quot;<span style="color: blue">$(HarvestDirectoryVerboseOutput)</span>&quot;
-<span style="color: red">AutogenerateGuids</span><span style="color: blue">=</span>&quot;<span style="color: blue">$(HarvestDirectoryAutogenerateGuids)</span>&quot;
-<span style="color: red">GenerateGuidsNow</span><span style="color: blue">=</span>&quot;<span style="color: blue">$(HarvestDirectoryGenerateGuidsNow)</span>&quot;
-<span style="color: red">OutputFile</span><span style="color: blue">=</span>&quot;<span style="color: blue">$(IntermediateOutputPath)_%(HarvestDirectory.Filename)_dir.wxs</span>&quot;
-<span style="color: red">SuppressFragments</span><span style="color: blue">=</span>&quot;<span style="color: blue">$(HarvestDirectorySuppressFragments)</span>&quot;
-<span style="color: red">SuppressUniqueIds</span><span style="color: blue">=</span>&quot;<span style="color: blue">$(HarvestDirectorySuppressUniqueIds)</span>&quot;
-<span style="color: red">Transforms</span><span style="color: blue">=</span>&quot;<span style="color: blue">%(HarvestDirectory.Transforms)</span>&quot;
-<span style="color: red">Directory</span><span style="color: blue">=</span>&quot;<span style="color: blue">@(HarvestDirectory)</span>&quot;
-<span style="color: red">ComponentGroupName</span><span style="color: blue">=</span>&quot;<span style="color: blue">%(HarvestDirectory.ComponentGroupName)</span>&quot;
-<span style="color: red">DirectoryRefId</span><span style="color: blue">=</span>&quot;<span style="color: blue">%(HarvestDirectory.DirectoryRefId)</span>&quot;
-<span style="color: red">KeepEmptyDirectories</span><span style="color: blue">=</span>&quot;<span style="color: blue">%(HarvestDirectory.KeepEmptyDirectories)</span>&quot;
-<span style="color: red">PreprocessorVariable</span><span style="color: blue">=</span>&quot;<span style="color: blue">%(HarvestDirectory.PreprocessorVariable)</span>&quot;
-<span style="color: red">SuppressCom</span><span style="color: blue">=</span>&quot;<span style="color: blue">%(HarvestDirectory.SuppressCom)</span>&quot;
-<span style="color: red">SuppressRootDirectory</span><span style="color: blue">=</span>&quot;<span style="color: blue">%(HarvestDirectory.SuppressRootDirectory)</span>&quot;
-<span style="color: red">SuppressRegistry</span><span style="color: blue">=</span>&quot;<span style="color: blue">%(HarvestDirectory.SuppressRegistry)</span>&quot; <span style="color: blue">/&gt;</span>
+```xml
+<HeatDirectory
+  NoLogo="$(HarvestDirectoryNoLogo)"
+  SuppressAllWarnings="$(HarvestDirectorySuppressAllWarnings)"
+  SuppressSpecificWarnings="$(HarvestDirectorySuppressSpecificWarnings)"
+  ToolPath="$(WixToolPath)"
+  TreatWarningsAsErrors="$(HarvestDirectoryTreatWarningsAsErrors)"
+  TreatSpecificWarningsAsErrors="$(HarvestDirectoryTreatSpecificWarningsAsErrors)"
+  VerboseOutput="$(HarvestDirectoryVerboseOutput)"
+  AutogenerateGuids="$(HarvestDirectoryAutogenerateGuids)"
+  GenerateGuidsNow="$(HarvestDirectoryGenerateGuidsNow)"
+  OutputFile="$(IntermediateOutputPath)_%(HarvestDirectory.Filename)_dir.wxs"
+  SuppressFragments="$(HarvestDirectorySuppressFragments)"
+  SuppressUniqueIds="$(HarvestDirectorySuppressUniqueIds)"
+  Transforms="%(HarvestDirectory.Transforms)"
+  Directory="@(HarvestDirectory)"
+  ComponentGroupName="%(HarvestDirectory.ComponentGroupName)"
+  DirectoryRefId="%(HarvestDirectory.DirectoryRefId)"
+  KeepEmptyDirectories="%(HarvestDirectory.KeepEmptyDirectories)"
+  PreprocessorVariable="%(HarvestDirectory.PreprocessorVariable)"
+  SuppressCom="%(HarvestDirectory.SuppressCom)"
+  SuppressRootDirectory="%(HarvestDirectory.SuppressRootDirectory)"
+  SuppressRegistry="%(HarvestDirectory.SuppressRegistry)" />
 ```
 
 The following table describes the common WiX MSBuild parameters that are applicable
