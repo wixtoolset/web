@@ -220,7 +220,7 @@ When this occurs the preprocessor:
 For example:
 
 ```xml
-<?foreach LCID in "1033;1041;1055" ?>
+<?foreach LCID in 1033;1041;1055 ?>
     <Fragment>
         <DirectoryRef Id='TARGETDIR'>
             <Component Id='MyComponent.$(LCID)' />
