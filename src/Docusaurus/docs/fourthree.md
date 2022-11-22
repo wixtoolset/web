@@ -43,7 +43,13 @@ By default, `wix convert` converts the files in place, overwriting the original 
 [HeatWave Community Edition is available free of charge.][heatwave]
 
 
-## When manual conversion is required {#manual}
+## Conversion FAQ {#faq}
+
+### Converting the `Win64` attribute
+
+### Converting custom action ids
+
+### Converting custom WixUI dialog sets
 
 
 [heatwave]: https://www.firegiant.com/wix/heatwave/
