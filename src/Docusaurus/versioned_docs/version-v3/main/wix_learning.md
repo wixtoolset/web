@@ -17,8 +17,7 @@ This help file includes a set of [How To Guides](../howtos/index.md) that explai
 
 ## Community
 
-If you prefer to learn by interacting with the community, there is a 
-<a href="http://wixtoolset.org/documentation/mailinglist/" target="_blank">WiX users mailing list</a>.
+If you prefer to learn by interacting with the community, there is a <a href="/docs/gethelp/#wixusers" target="_blank">WiX users mailing list</a>.
 
 ## Integrated Development Environment
 
@@ -38,5 +37,5 @@ If you prefer to learn by reading code, WiX is an open source project, and you c
 
 If you prefer to learn by writing code, you can review the <a href="http://wixtoolset.org/bugs/" target="_blank">WiX issue tracker</a>.
 
-For WiX development assistance, there is a <a href="http://wixtoolset.org/documentation/mailinglist/" target="_blank">WiX developer mailing list</a>.
+For WiX development assistance, there is a <a href="/docs/gethelp/#wixdevs" target="_blank">WiX developer mailing list</a>.
  
