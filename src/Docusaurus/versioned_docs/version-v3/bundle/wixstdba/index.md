@@ -14,7 +14,7 @@ There are several variants of the WiX Standard Bootstrapper Application.
 1. WixStandardBootstrapperApplication.RtfLargeLicense - this variant is similar to RtfLicense but is a larger dialog and supports the option of displaying the version number.
 1. WixStandardBootstrapperApplication.HyperlinkLargeLicense - this variant is similar to HyperlinkLicense but is a larger dialog and supports the option of displaying the version number.
 
-To use the WiX Standard Bootstrapper Application, a [&lt;BootstrapperApplicationRef&gt;](../../xsd/wix/bootstrapperapplicationref.md) element must reference one of the above identifiers. The following example uses the bootstrapper application that displays the license:
+To use the WiX Standard Bootstrapper Application, a [BootstrapperApplicationRef](../../xsd/wix/bootstrapperapplicationref.md) element must reference one of the above identifiers. The following example uses the bootstrapper application that displays the license:
 
 ```xml
 <?xml version="1.0"?>

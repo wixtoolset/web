@@ -6,18 +6,18 @@ If your application depends on the Visual C++ runtimes you can include them as p
 The Visual C++ runtime merge modules are installed with Visual Studio and are located in **\Program Files\Common Files\Merge Modules**. The Visual C++ 8.0 runtime file is **Microsoft\_VC80\_CRT\_x86.msm**. This same MSM is used for the Visual C++ 8.0 SP1 runtime, however it is updated in place by the Visual Studio 2005 SP1 installer. The Visual Studio 9.0 runtime file is **Microsoft\_VC90\_CRT\_x86.msm**. There is generally no need to include the policy MSMs as part of the installation.
 
 ## Step 2: Include the merge module in your installer
-To include the merge module in your installer use the [&lt;Merge&gt;](../../xsd/wix/merge.md) and [&lt;MergeRef&gt;](../../xsd/wix/mergeref.md) elements. The following example illustrates how these elements are used.
+To include the merge module in your installer use the [Merge](../../xsd/wix/merge.md) and [MergeRef](../../xsd/wix/mergeref.md) elements. The following example illustrates how these elements are used.
 
-```
-<font size="2" color="#0000FF">&lt;</font><font size="2" color="#A31515">DirectoryRef</font><font size="2" color="#0000FF"> </font><font size="2" color="#FF0000">Id</font><font size="2" color="#0000FF">=</font><font size="2">"TARGETDIR"</font><font size="2" color="#0000FF">&gt;
-    &lt;</font><font size="2" color="#A31515">Merge</font><font size="2" color="#0000FF"> </font><font size="2" color="#FF0000">Id</font><font size="2" color="#0000FF">=</font><font size="2">"</font><font size="2" color="#0000FF">VCRedist</font><font size="2">"</font><font size="2" color="#0000FF"> </font><font size="2" color="#FF0000">SourceFile</font><font size="2" color="#0000FF">=</font><font size="2">"</font><font size="2">MySourceFiles</font><font size="2" color="#0000FF">\Microsoft_VC80_CRT_x86.msm</font><font size="2">"</font><font size="2" color="#0000FF"> </font><font size="2" color="#FF0000">DiskId</font><font size="2" color="#0000FF">=</font><font size="2">"</font><font size="2" color="#0000FF">1</font><font size="2">"</font><font size="2" color="#0000FF"> </font><font size="2" color="#FF0000">Language</font><font size="2" color="#0000FF">=</font><font size="2">"</font><font size="2" color="#0000FF">0</font><font size="2">"</font><font size="2" color="#0000FF">/&gt;
-&lt;/</font><font size="2" color="#A31515">DirectoryRef</font><font size="2" color="#0000FF">&gt;</font>
+```xml
+<DirectoryRef Id="TARGETDIR">
+  <Merge Id="VCRedist" SourceFile="MySourceFiles\Microsoft_VC80_CRT_x86.msm" DiskId="1" Language="0"/>
+</DirectoryRef>
 ```
 
-```
-<font size="2" color="#0000FF">&lt;</font><font size="2" color="#A31515">Feature</font><font size="2" color="#0000FF"> </font><font size="2" color="#FF0000">Id</font><font size="2" color="#0000FF">=</font><font size="2">"</font><font size="2" color="#0000FF">VCRedist</font><font size="2">"</font><font size="2" color="#0000FF"> </font><font size="2" color="#FF0000">Title</font><font size="2" color="#0000FF">=</font><font size="2">"Visual C++ 8.0 Runtime"</font><font size="2" color="#0000FF"> </font><font size="2" color="#FF0000">AllowAdvertise</font><font size="2" color="#0000FF">=</font><font size="2">"</font><font size="2" color="#0000FF">no</font><font size="2">"</font><font size="2" color="#0000FF"> </font><font size="2" color="#FF0000">Display</font><font size="2" color="#0000FF">=</font><font size="2">"</font><font size="2" color="#0000FF">hidden</font><font size="2">"</font><font size="2" color="#0000FF"> </font><font size="2" color="#FF0000">Level</font><font size="2" color="#0000FF">=</font><font size="2">"</font><font size="2" color="#0000FF">1</font><font size="2">"</font><font size="2" color="#0000FF">&gt;
-    &lt;</font><font size="2" color="#A31515">MergeRef</font><font size="2" color="#0000FF"> </font><font size="2" color="#FF0000">Id</font><font size="2" color="#0000FF">=</font><font size="2">"</font><font size="2" color="#0000FF">VCRedist</font><font size="2">"</font><font size="2" color="#0000FF">/&gt;
-&lt;/</font><font size="2" color="#A31515">Feature</font><font size="2" color="#0000FF">&gt;</font>
+```xml
+<Feature Id="VCRedist" Title="Visual C++ 8.0 Runtime" AllowAdvertise="no" Display="hidden" Level="1">
+  <MergeRef Id="VCRedist"/>
+</Feature>
 ```
 
 The Merge element ensures the merge module is included in the final Windows Installer package. A unique id is assigned using the Id attribute. The SourceFile attribute points to the location of the merge module on your machine. The DiskId attribute should match the DiskId specified in your project&apos;s Media element. The Language attribute should always be 0.
@@ -46,4 +46,4 @@ Including the Visual C++ Runtime merge module in your installer will result in t
     light.exe(0,0): warning LGHT1076: ICE82: This action SystemFolder.98CB24AD_52FB_DB5F_FF1F_C8B3B9A1E18E has duplicate sequence number 1 in the table AdminUISequence
     light.exe(0,0): warning LGHT1076: ICE82: This action SystemFolder.98CB24AD_52FB_DB5F_FF1F_C8B3B9A1E18E has duplicate sequence number 1 in the table AdvtExecuteSequence
 
-These warnings are expected and are due to how the Visual C++ merge modules were authored. For more details see <a href="http://blogs.msdn.com/b/astebner/archive/2007/02/13/building-an-msi-using-wix-v3-0-that-includes-the-vc-8-0-runtime-merge-modules.aspx" target="_blank">Aaron Stebner&apos;s blog entry</a>.
+These warnings are expected and are due to how the Visual C++ merge modules were authored.

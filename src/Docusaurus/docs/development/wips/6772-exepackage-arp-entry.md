@@ -15,48 +15,52 @@ draft: false
 
 Add new `ArpEntry` element:
 
-    <xs:element name="ArpEntry">
-        <xs:annotation>
-            <xs:documentation>
-                Information about the Add/Remove Programs entry that is installed by the package.
-                ArpEntry may not be specified with DetectCondition or UninstallArguments.
-            </xs:documentation>
-            <xs:appinfo>
-                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="ExePackage" />
-            </xs:appinfo>
-        </xs:annotation>
-        <xs:complexType>
-            <xs:attribute name="Id" type="xs:string" use="required">
-                <xs:annotation>
-                    <xs:documentation>
-                        The id of the ARP entry.
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
-            <xs:attribute name="Win64" type="YesNoTypeUnion" use="required">
-                <xs:annotation>
-                    <xs:documentation>
-                        Whether the ARP entry is 64-bit.
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
-            <xs:attribute name="Version" type="xs:string" use="required">
-                <xs:annotation>
-                    <xs:documentation>
-                        The DisplayVersion value of the ARP entry that is installed by this package.
-                        Older or missing versions cause this package to be detected as absent.
-                        Newer versions cause this package to be detected as obsolete.
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
-        </xs:complexType>
-    </xs:element>
+```xml
+<xs:element name="ArpEntry">
+    <xs:annotation>
+        <xs:documentation>
+            Information about the Add/Remove Programs entry that is installed by the package.
+            ArpEntry may not be specified with DetectCondition or UninstallArguments.
+        </xs:documentation>
+        <xs:appinfo>
+            <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="ExePackage" />
+        </xs:appinfo>
+    </xs:annotation>
+    <xs:complexType>
+        <xs:attribute name="Id" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    The id of the ARP entry.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Win64" type="YesNoTypeUnion" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    Whether the ARP entry is 64-bit.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Version" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    The DisplayVersion value of the ARP entry that is installed by this package.
+                    Older or missing versions cause this package to be detected as absent.
+                    Newer versions cause this package to be detected as obsolete.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+</xs:element>
+```
 
 For example:
 
-    <ExePackage Id="MyExe" SourceFile="my.exe">
-        <ArpEntry Id="MyExeGuid" Win64="no" Version="1.2.3" />
-    </ExePackage>
+```xml
+<ExePackage Id="MyExe" SourceFile="my.exe">
+    <ArpEntry Id="MyExeGuid" Win64="no" Version="1.2.3" />
+</ExePackage>
+```
 
 When Burn starts detecting the `ExePackage`, it will read the ARP entry's `DisplayVersion` value.
 If the value is missing or less than the given version, then it is absent.
@@ -75,52 +79,56 @@ Like `MsiPackage`, there will be no support for packages that can be per-machine
 
 Add new `ArpEntry` element:
 
-    <xs:element name="ArpEntry">
-        <xs:annotation>
-            <xs:documentation>
-                Information about the Add/Remove Programs entry that is installed by the package.
-            </xs:documentation>
-            <xs:appinfo>
-                <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="ExePackage" />
-            </xs:appinfo>
-        </xs:annotation>
-        <xs:complexType>
-            <xs:attribute name="Id" type="xs:string" use="required">
-                <xs:annotation>
-                    <xs:documentation>
-                        The id of the ARP entry.
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
-            <xs:attribute name="Win64" type="YesNoTypeUnion" use="required">
-                <xs:annotation>
-                    <xs:documentation>
-                        Whether the ARP entry is 64-bit.
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
-            <xs:attribute name="VersionVariable" type="xs:string">
-                <xs:annotation>
-                    <xs:documentation>
-                        Name of a Variable that will hold the DisplayVersion value of the ARP entry.
-                        The default is "[PackageId]_Version".
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
-        </xs:complexType>
-    </xs:element>
+```xml
+<xs:element name="ArpEntry">
+    <xs:annotation>
+        <xs:documentation>
+            Information about the Add/Remove Programs entry that is installed by the package.
+        </xs:documentation>
+        <xs:appinfo>
+            <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="ExePackage" />
+        </xs:appinfo>
+    </xs:annotation>
+    <xs:complexType>
+        <xs:attribute name="Id" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    The id of the ARP entry.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Win64" type="YesNoTypeUnion" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    Whether the ARP entry is 64-bit.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="VersionVariable" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>
+                    Name of a Variable that will hold the DisplayVersion value of the ARP entry.
+                    The default is "[PackageId]_Version".
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+</xs:element>
+```
 
 For example:
 
-    <!-- Only uninstall this exact version -->
-    <ExePackage Id="MyExe" SourceFile="my.exe" DetectCondition="MyExe_Version = v1.2.3" InstallCondition="NOT MyExe_Version OR MyExe_Version &lt; v1.2.3">
-        <ArpEntry Id="MyExeGuid" Win64="no" />
-    </ExePackage>
+```xml
+<!-- Only uninstall this exact version -->
+<ExePackage Id="MyExe" SourceFile="my.exe" DetectCondition="MyExe_Version = v1.2.3" InstallCondition="NOT MyExe_Version OR MyExe_Version &lt; v1.2.3">
+    <ArpEntry Id="MyExeGuid" Win64="no" />
+</ExePackage>
 
-    <!-- Uninstall this version and any higher versions -->
-    <ExePackage Id="MyExe" SourceFile="my.exe" DetectCondition="MyExe_Version &gt;= v1.2.3">
-        <ArpEntry Id="MyExeGuid" Win64="no" />
-    </ExePackage>
+<!-- Uninstall this version and any higher versions -->
+<ExePackage Id="MyExe" SourceFile="my.exe" DetectCondition="MyExe_Version &gt;= v1.2.3">
+    <ArpEntry Id="MyExeGuid" Win64="no" />
+</ExePackage>
+```
 
 When Burn starts detecting the `ExePackage`, it will populate a `Variable` with the ARP entry's `DisplayVersion` value.
 This should be used in the detect condition.
@@ -134,36 +142,40 @@ If the package is requested to be uninstalled, then Burn will now have two optio
 
 Use the same `ArpEntry` element as above, and include additional attributes to specify a min and max version:
 
-    <xs:attribute name="MinVersion" type="xs:string">
-        <xs:annotation>
-            <xs:documentation>
-                When detecting the package, if the DisplayVersion value of the ARP entry is greater than or equal to the MinVersion value then it is present.
-                If DisplayVersion is less than MinVersion then it is Absent.
-                At least one of MinVersion or MaxVersion is required.
-            </xs:documentation>
-        </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="MaxVersion" type="xs:string">
-        <xs:annotation>
-            <xs:documentation>
-                When detecting the package, if the DisplayVersion value of the ARP entry is less than or equal to the MaxVersion value then it is present.
-                If DisplayVersion is greater than MaxVersion then it is Obsolete.
-                At least one of MinVersion or MaxVersion is required.
-            </xs:documentation>
-        </xs:annotation>
-    </xs:attribute>
+```xml
+<xs:attribute name="MinVersion" type="xs:string">
+    <xs:annotation>
+        <xs:documentation>
+            When detecting the package, if the DisplayVersion value of the ARP entry is greater than or equal to the MinVersion value then it is present.
+            If DisplayVersion is less than MinVersion then it is Absent.
+            At least one of MinVersion or MaxVersion is required.
+        </xs:documentation>
+    </xs:annotation>
+</xs:attribute>
+<xs:attribute name="MaxVersion" type="xs:string">
+    <xs:annotation>
+        <xs:documentation>
+            When detecting the package, if the DisplayVersion value of the ARP entry is less than or equal to the MaxVersion value then it is present.
+            If DisplayVersion is greater than MaxVersion then it is Obsolete.
+            At least one of MinVersion or MaxVersion is required.
+        </xs:documentation>
+    </xs:annotation>
+</xs:attribute>
+```
 
 The above examples would now be:
 
-    <!-- Only uninstall this exact version -->
-    <ExePackage Id="MyExe" SourceFile="my.exe">
-        <ArpEntry Id="MyExeGuid" Win64="no" MinVersion="v1.2.3" MaxVersion="v1.2.3" />
-    </ExePackage>
+```xml
+<!-- Only uninstall this exact version -->
+<ExePackage Id="MyExe" SourceFile="my.exe">
+    <ArpEntry Id="MyExeGuid" Win64="no" MinVersion="v1.2.3" MaxVersion="v1.2.3" />
+</ExePackage>
 
-    <!-- Uninstall this version and any higher versions -->
-    <ExePackage Id="MyExe" SourceFile="my.exe">
-        <ArpEntry Id="MyExeGuid" Win64="no" MinVersion="v1.2.3" />
-    </ExePackage>
+<!-- Uninstall this version and any higher versions -->
+<ExePackage Id="MyExe" SourceFile="my.exe">
+    <ArpEntry Id="MyExeGuid" Win64="no" MinVersion="v1.2.3" />
+</ExePackage>
+```
 
 This would mean that `DetectCondition` must not be specified with `ArpEntry` since it is handling detection.
 
