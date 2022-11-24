@@ -10,33 +10,33 @@ In order to allow major upgrades, you must include the following information in 
 ### Add a unique ID to identify that the product can be upgraded
 To accomplish this, you must include an UpgradeCode attribute in your [Product](../../xsd/wix/product.md) element. This looks like the following:
 
-```
-&lt;<font color="#A31515">Product</font><font color="#0000FF"> </font><font color="#FF0000">Id</font><font color="#0000FF">=</font>"<font color="#0000FF">*</font>"
-         <font color="#FF0000">UpgradeCode</font><font color="#0000FF">=</font>"<a href="../../../howtos/general/generate_guids">PUT-GUID-HERE</a>"
-         <font color="#FF0000">Name</font><font color="#0000FF">=</font>"<font color="#0000FF">My Application Name</font>"
-         <font color="#FF0000">Language</font><font color="#0000FF">=</font>"<font color="#0000FF">1033</font>"
-         <font color="#FF0000">Version</font><font color="#0000FF">=</font>"<font color="#0000FF">1.0.1</font>"
-         <font color="#FF0000">Manufacturer</font><font color="#0000FF">=</font>"<font color="#0000FF">My Manufacturer Name</font>"/&gt;
+```xml
+<Product Id="*"
+         UpgradeCode="PUT-GUID-HERE"
+         Name="My Application Name"
+         Language="1033"
+         Version="1.0.1"
+         Manufacturer="My Manufacturer Name"/>
 ```
 
 ### Schedule the removal of old versions and handle out-of-order installations
 The [MajorUpgrade](../../xsd/wix/majorupgrade.md) element upgrades all older versions of the .msi. By default, it prevents out-of-order installations: installing an older version after installing a newer version.
 
-```
-&lt;<font color="#A31515">MajorUpgrade</font>
-  <font color="#FF0000">DowngradeErrorMessage</font><font color="#0000FF">=</font>"<font color="#0000FF">A later version of [ProductName] is already installed. Setup will now exit."</font>&gt;
+```xml
+<MajorUpgrade
+  DowngradeErrorMessage="A later version of [ProductName] is already installed. Setup will now exit.">
 ```
 
 There are several options for where you can schedule the [RemoveExistingProducts](../../xsd/wix/removeexistingproducts.md) action to remove old versions of the .msi. You need to review the options and choose the one that makes the most sense for your scenarios. You can find a summary of the options in the <a href="http://msdn.microsoft.com/library/aa371197.aspx" target="_blank">RemoveExistingProducts documentation</a>.
 
 By default, MajorUpgrade schedules RemoveExistingProducts after InstallValidate. You can change the scheduling using the Schedule attribute. For example, If you choose to schedule it after [InstallInitialize](../../xsd/wix/installinitialize.md), it will look like the following:
 
+```xml
+<MajorUpgrade
+  Schedule="afterInstallInitialize"
+  DowngradeErrorMessage="A later version of [ProductName] is already installed. Setup will now exit.">
 ```
-&lt;<font color="#A31515">MajorUpgrade</font>
-  <font color="#FF0000">Schedule</font><font color="#0000FF">=</font>"<font color="#0000FF">afterInstallInitialize"</font>
-  <font color="#FF0000">DowngradeErrorMessage</font><font color="#0000FF">=</font>"<font color="#0000FF">A later version of [ProductName] is already installed. Setup will now exit."</font>&gt;
-```
-  
+
 Windows Installer looks for other installed .msi files with the same UpgradeCode value during the [FindRelatedProducts](../../xsd/wix/findrelatedproducts.md) action. If you do not specifically schedule the [FindRelatedProducts](../../xsd/wix/findrelatedproducts.md) action in your setup authoring, WiX will automatically schedule it for you when it creates your .msi.
 
 ## Step 2: Build version 1 and version 2 of your .msi

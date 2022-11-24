@@ -6,15 +6,15 @@ layout: documentation
 
 The Light task wraps [light.exe](../../overview/light.md), the WiX linker. It supports a variety of settings that are described in more detail below. To control these settings in your .wixproj file, you can create a PropertyGroup and specify the settings that you want to use for your build process. The following is a sample PropertyGroup that contains settings that will be used by the Light task:
 
-```
-<font size="2" color="#0000FF">&lt;</font><font size="2" color="#A31515">PropertyGroup</font><font size="2" color="#0000FF">&gt;
-    &lt;</font><font size="2" color="#A31515">LinkerTreatWarningsAsErrors</font><font size="2" color="#0000FF">&gt;</font><font size="2">False</font><font size="2" color="#0000FF">&lt;/</font><font size="2" color="#A31515">LinkerTreatWarningsAsErrors</font><font size="2" color="#0000FF">&gt;
-    &lt;</font><font size="2" color="#A31515">LinkerVerboseOutput</font><font size="2" color="#0000FF">&gt;</font><font size="2">True</font><font size="2" color="#0000FF">&lt;/</font><font size="2" color="#A31515">LinkerVerboseOutput</font><font size="2" color="#0000FF">&gt;
-    &lt;</font><font size="2" color="#A31515">SuppressIces</font><font size="2" color="#0000FF">&gt;</font><font size="2">ICE18;ICE45;ICE82</font><font size="2" color="#0000FF">&lt;/</font><font size="2" color="#A31515">SuppressIces</font><font size="2" color="#0000FF">&gt;
-    &lt;</font><font size="2" color="#A31515">SuppressSpecificWarnings</font><font size="2" color="#0000FF">&gt;</font><font size="2">1111</font><font size="2" color="#0000FF">&lt;/</font><font size="2" color="#A31515">SuppressSpecificWarnings</font><font size="2" color="#0000FF">&gt;
-    &lt;</font><font size="2" color="#A31515">TreatSpecificWarningsAsErrors</font><font size="2" color="#0000FF">&gt;</font><font size="2">2222</font><font size="2" color="#0000FF">&lt;/</font><font size="2" color="#A31515">TreatSpecificWarningsAsErrors</font><font size="2" color="#0000FF">&gt;
-    &lt;</font><font size="2" color="#A31515">WixVariables</font><font size="2" color="#0000FF">&gt;</font><font size="2">Variable1=value1;Variable2=value2</font><font size="2" color="#0000FF">&lt;/</font><font size="2" color="#A31515">WixVariables</font><font size="2" color="#0000FF">&gt;
-&lt;/</font><font size="2" color="#A31515">PropertyGroup</font><font size="2" color="#0000FF">&gt;</font>
+```xml
+<PropertyGroup>
+  <LinkerTreatWarningsAsErrors>False</LinkerTreatWarningsAsErrors>
+  <LinkerVerboseOutput>True</LinkerVerboseOutput>
+  <SuppressIces>ICE18;ICE45;ICE82</SuppressIces>
+  <SuppressSpecificWarnings>1111</SuppressSpecificWarnings>
+  <TreatSpecificWarningsAsErrors>2222</TreatSpecificWarningsAsErrors>
+  <WixVariables>Variable1=value1;Variable2=value2</WixVariables>
+</PropertyGroup>
 ```
 
 The following table describes the common WiX MSBuild parameters that are applicable to the <b>Light</b> task.
@@ -357,6 +357,6 @@ The following table describes the parameters that are specific to the <b>Light</
     <td><b>WixVariables</b></td>
     <td>Optional <b>string</b> parameter.<br />
     <br />
-    Specifies a semicolon-delimited list of bind-time WiX variables. This is equivalent to the -d&lt;name&gt;[=&lt;value&gt;] switch in light.exe.</td>
+    Specifies a semicolon-delimited list of bind-time WiX variables. This is equivalent to the -d&lt;name&gt;[=&lt;value] switch in light.exe.</td>
   </tr>
 </table>

@@ -1845,4 +1845,6 @@ To use the WixNetfxExtension properties in an MSI, use the following steps:
 
 For example:
 
-    <PropertyRef Id="NETFRAMEWORK20" />
+```xml
+<PropertyRef Id="NETFRAMEWORK20" />
+```

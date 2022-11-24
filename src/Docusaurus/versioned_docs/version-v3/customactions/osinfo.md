@@ -7,7 +7,7 @@ after: using_standard_customactions
 
 The WixQueryOsInfo, WixQueryOsDirs, WixQueryOsDriverInfo, and WixQueryNativeMachine custom actions in wixca (part of WixUtilExtension) set properties over and above the MSI set for OS product/suite detection, architecture, and standard directories. The WixQueryOsWellKnownSID custom action sets properties for the localized names of some built in Windows users and groups.
 
-To use these custom actions you simply need to add a [&lt;PropertyRef&gt;](../xsd/wix/propertyref.md) to the property you want to use and then include WixUtilExtensions when linking. For example:
+To use these custom actions you simply need to add a [PropertyRef](../xsd/wix/propertyref.md) to the property you want to use and then include WixUtilExtensions when linking. For example:
 
     <PropertyRef Id="WIX_SUITE_SINGLEUSERTS" />
     <PropertyRef Id="WIX_DIR_COMMON_DOCUMENTS" />
