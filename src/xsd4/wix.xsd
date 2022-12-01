@@ -1227,9 +1227,9 @@
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="Cache" type="YesNoAlwaysTypeUnion">
+    <xs:attribute name="Cache" type="KeepRemoveAlwaysTypeUnion">
       <xs:annotation>
-        <xs:documentation>Whether to cache the package. The default is "yes".</xs:documentation>
+        <xs:documentation>Whether to cache the package. The default is "keep".</xs:documentation>
       </xs:annotation>
     </xs:attribute>
     <xs:attribute name="CacheId" type="xs:string">
@@ -13670,20 +13670,38 @@
       <xs:enumeration value="yes" />
     </xs:restriction>
   </xs:simpleType>
-  <xs:simpleType name="YesNoAlwaysTypeUnion">
+  <xs:simpleType name="KeepRemoveAlwaysTypeUnion">
     <xs:annotation>
-      <xs:documentation>Values of this type will either be "always", "yes", or "no".</xs:documentation>
+      <xs:documentation>Values of this type will either be "always", "keep", or "remove".</xs:documentation>
     </xs:annotation>
-    <xs:union memberTypes="YesNoAlwaysType PreprocessorVariables"/>
+    <xs:union memberTypes="KeepRemoveAlwaysType PreprocessorVariables"/>
   </xs:simpleType>
-  <xs:simpleType name="YesNoAlwaysType">
+  <xs:simpleType name="KeepRemoveAlwaysType">
     <xs:annotation>
-      <xs:documentation>Values of this type will either be "always", "yes", or "no".</xs:documentation>
+      <xs:documentation>Values of this type will either be "always", "keep", or "remove".</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:NMTOKEN">
-      <xs:enumeration value="always" />
-      <xs:enumeration value="no" />
-      <xs:enumeration value="yes" />
+      <xs:enumeration value="always">
+        <xs:annotation>
+          <xs:documentation>
+            Always cache the package during Cache, Install, Modify, Repair, and Layout.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="keep">
+        <xs:annotation>
+          <xs:documentation>
+            Keep the package cached when the package is requested to be present.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="remove">
+        <xs:annotation>
+          <xs:documentation>
+            Always uncache the package after Cache, Install, Modify, Repair, Uninstall, and Layout.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="RegistryRootType">
