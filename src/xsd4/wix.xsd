@@ -11375,14 +11375,13 @@
       </xs:choice>
     </xs:complexType>
   </xs:element>
-  <!-- - - - - - - - - - - Binary tables - - - - - - - - - - - - - -->
   <xs:element name="Binary">
     <xs:annotation>
       <xs:documentation>
-                Binary data used for CustomAction elements and UI controls.
-            </xs:documentation>
+        Binary data used for CustomAction elements and UI controls.
+      </xs:documentation>
       <xs:appinfo>
-        <xse:msiRef table="Binary" href="http://msdn.microsoft.com/library/aa367825.aspx" />
+        <xse:msiRef table="Binary" href="https://learn.microsoft.com/en-us/windows/win32/msi/binary-table" />
       </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
@@ -11390,15 +11389,15 @@
         <xs:any namespace="##other" processContents="lax">
           <xs:annotation>
             <xs:documentation>
-                        Extensibility point in the WiX XML Schema. Schema extensions can register additional
-                        elements at this point in the schema.
-                        </xs:documentation>
+              Extensibility point in the WiX XML Schema.  Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
           </xs:annotation>
         </xs:any>
       </xs:choice>
       <xs:attribute name="Id" type="xs:string" use="required">
         <xs:annotation>
-          <xs:documentation>The Id cannot be longer than 55 characters. In order to prevent errors in cases where the Id is modularized, it should not be longer than 18 characters.</xs:documentation>
+          <xs:documentation>The Id cannot be longer than 55 characters.  In order to prevent errors in cases where the Id is modularized, it should not be longer than 18 characters.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="SourceFile" type="xs:string">
@@ -11409,16 +11408,16 @@
       <xs:attribute name="SuppressModularization" type="YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
-                        Use to suppress modularization of this Binary identifier in merge modules.
-                    </xs:documentation>
+            Use to suppress modularization of this Binary identifier in merge modules.
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:anyAttribute namespace="##other" processContents="lax">
         <xs:annotation>
           <xs:documentation>
-                    Extensibility point in the WiX XML Schema. Schema extensions can register additional
-                    attributes at this point in the schema.
-                </xs:documentation>
+            Extensibility point in the WiX XML Schema.  Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
         </xs:annotation>
       </xs:anyAttribute>
     </xs:complexType>
@@ -11426,10 +11425,10 @@
   <xs:element name="Icon">
     <xs:annotation>
       <xs:documentation>
-                Icon used for Shortcut, ProgId, or Class elements (but not UI controls)
-            </xs:documentation>
+        Icon used for Shortcut, ProgId, or Class elements (but not UI controls).
+      </xs:documentation>
       <xs:appinfo>
-        <xse:msiRef table="Icon" href="http://msdn.microsoft.com/library/aa369210.aspx" />
+        <xse:msiRef table="Icon" href="https://learn.microsoft.com/en-us/windows/win32/msi/icon-table" />
         <xse:howtoRef href="ui_and_localization/configure_arp_appearance.html">How To: Set your installer's icon in Add/Remove Programs</xse:howtoRef>
         <xse:howtoRef href="files_and_registry/create_start_menu_shortcut.html">How To: Create a shortcut on the Start Menu</xse:howtoRef>
       </xs:appinfo>
@@ -12760,7 +12759,7 @@
       </xs:anyAttribute>
     </xs:complexType>
   </xs:element>
-  <!-- custom table elements -->
+
   <xs:element name="CustomTable">
     <xs:annotation>
       <xs:documentation>Defines a custom table for use from a custom action.</xs:documentation>
@@ -12777,17 +12776,33 @@
             <xs:documentation>Row definition for the custom table.</xs:documentation>
           </xs:annotation>
         </xs:element>
+        <xs:any namespace="##other" processContents="lax">
+          <xs:annotation>
+            <xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:any>
       </xs:sequence>
       <xs:attribute name="Id" type="xs:string" use="required">
         <xs:annotation>
-          <xs:documentation>Identifier for the custom table.</xs:documentation>
+          <xs:documentation>Identifier for the custom table. The id must be less than 31 characters.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Unreal" type="YesNoType">
-            <xs:annotation>
-                <xs:documentation>Indicates the table is not supposed to be included in the final output.</xs:documentation>
-            </xs:annotation>
-        </xs:attribute>
+        <xs:annotation>
+          <xs:documentation>Indicates the table is not supposed to be included in the final output.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute namespace="##other" processContents="lax">
+        <xs:annotation>
+          <xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:anyAttribute>
     </xs:complexType>
   </xs:element>
   <xs:element name="Column">
@@ -12795,6 +12810,16 @@
       <xs:documentation>Column definition for a Custom Table</xs:documentation>
     </xs:annotation>
     <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:any namespace="##other" processContents="lax">
+          <xs:annotation>
+            <xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:any>
+      </xs:choice>
       <xs:attribute name="Id" type="xs:string" use="required">
         <xs:annotation>
           <xs:documentation>Identifier for the column.</xs:documentation>
@@ -12814,23 +12839,23 @@
             <xs:enumeration value="binary">
               <xs:annotation>
                 <xs:documentation>
-                                    Column contains a path to a file that will be inserted into the column as a binary object.
-                                    If this value is set, the Category attribute must also be set with a value of 'Binary' to pass ICE validation.
-                                </xs:documentation>
+                  Column contains a path to a file that will be inserted into the column as a binary object.
+                  If this value is set, the Category attribute must also be set with a value of 'Binary' to pass ICE validation.
+                </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="int">
               <xs:annotation>
                 <xs:documentation>
-                                    Column contains an integer or datetime value (the MinValue and MaxValue attributes should also be set).
-                                </xs:documentation>
+                  Column contains an integer or datetime value (the MinValue and MaxValue attributes should also be set).
+                </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="string">
               <xs:annotation>
                 <xs:documentation>
-                                    Column contains a non-localizable string value.
-                                </xs:documentation>
+                  Column contains a non-localizable string value.
+                </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
           </xs:restriction>
@@ -12874,38 +12899,38 @@
       <xs:attribute name="Category">
         <xs:annotation>
           <xs:documentation>
-                        Category of this column.
-                        This attribute must be specified with a value of 'Binary' if the Type attribute's value is 'binary'.
-                    </xs:documentation>
+            Category of this column.
+            This attribute must be specified with a value of 'Binary' if the Type attribute's value is 'binary'.
+          </xs:documentation>
         </xs:annotation>
         <xs:simpleType>
           <xs:restriction base="xs:NMTOKEN">
-            <xs:enumeration value="Text" />
-            <xs:enumeration value="UpperCase" />
-            <xs:enumeration value="LowerCase" />
-            <xs:enumeration value="Integer" />
-            <xs:enumeration value="DoubleInteger" />
-            <xs:enumeration value="TimeDate" />
-            <xs:enumeration value="Identifier" />
-            <xs:enumeration value="Property" />
-            <xs:enumeration value="Filename" />
-            <xs:enumeration value="WildCardFilename" />
-            <xs:enumeration value="Path" />
-            <xs:enumeration value="Paths" />
-            <xs:enumeration value="AnyPath" />
-            <xs:enumeration value="DefaultDir" />
-            <xs:enumeration value="RegPath" />
-            <xs:enumeration value="Formatted" />
-            <xs:enumeration value="FormattedSddl" />
-            <xs:enumeration value="Template" />
-            <xs:enumeration value="Condition" />
-            <xs:enumeration value="Guid" />
-            <xs:enumeration value="Version" />
-            <xs:enumeration value="Language" />
-            <xs:enumeration value="Binary" />
-            <xs:enumeration value="CustomSource" />
-            <xs:enumeration value="Cabinet" />
-            <xs:enumeration value="Shortcut" />
+            <xs:enumeration value="text" />
+            <xs:enumeration value="upperCase" />
+            <xs:enumeration value="lowerCase" />
+            <xs:enumeration value="integer" />
+            <xs:enumeration value="doubleInteger" />
+            <xs:enumeration value="timeDate" />
+            <xs:enumeration value="identifier" />
+            <xs:enumeration value="property" />
+            <xs:enumeration value="filename" />
+            <xs:enumeration value="wildCardFilename" />
+            <xs:enumeration value="path" />
+            <xs:enumeration value="paths" />
+            <xs:enumeration value="anyPath" />
+            <xs:enumeration value="defaultDir" />
+            <xs:enumeration value="regPath" />
+            <xs:enumeration value="formatted" />
+            <xs:enumeration value="formattedSddl" />
+            <xs:enumeration value="template" />
+            <xs:enumeration value="condition" />
+            <xs:enumeration value="guid" />
+            <xs:enumeration value="version" />
+            <xs:enumeration value="language" />
+            <xs:enumeration value="binary" />
+            <xs:enumeration value="customSource" />
+            <xs:enumeration value="cabinet" />
+            <xs:enumeration value="shortcut" />
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
@@ -12925,46 +12950,46 @@
         </xs:annotation>
         <xs:simpleType>
           <xs:restriction base="xs:NMTOKEN">
-            <xs:enumeration value="None">
+            <xs:enumeration value="none">
               <xs:annotation>
                 <xs:documentation>
-                                    Column should not be modularized. This is the default value.
-                                </xs:documentation>
+                  Column should not be modularized. This is the default value.
+                </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
-            <xs:enumeration value="Column">
+            <xs:enumeration value="column">
               <xs:annotation>
                 <xs:documentation>
-                                    Column should be modularized.
-                                </xs:documentation>
+                  Column should be modularized.
+                </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
-            <xs:enumeration value="Condition">
+            <xs:enumeration value="condition">
               <xs:annotation>
                 <xs:documentation>
-                                    Column is a condition and should be modularized.
-                                </xs:documentation>
+                  Column is a condition and should be modularized.
+                </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
-            <xs:enumeration value="Icon">
+            <xs:enumeration value="icon">
               <xs:annotation>
                 <xs:documentation>
-                                    When the column is an primary or foreign key to the Icon table it should be modularized special.
-                                </xs:documentation>
+                  When the column is an primary or foreign key to the Icon table it should be modularized special.
+                </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
-            <xs:enumeration value="Property">
+            <xs:enumeration value="property">
               <xs:annotation>
                 <xs:documentation>
-                                    Any Properties in the column should be modularized.
-                                </xs:documentation>
+                  Any Properties in the column should be modularized.
+                </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
-            <xs:enumeration value="SemicolonDelimited">
+            <xs:enumeration value="semicolonDelimited">
               <xs:annotation>
                 <xs:documentation>
-                                    Semi-colon list of keys, all of which need to be modularized.
-                                </xs:documentation>
+                  Semi-colon list of keys, all of which need to be modularized.
+                </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
           </xs:restriction>
@@ -12980,6 +13005,14 @@
       <xs:sequence>
         <xs:element ref="Data" maxOccurs="unbounded" />
       </xs:sequence>
+      <xs:anyAttribute namespace="##other" processContents="lax">
+        <xs:annotation>
+          <xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:anyAttribute>
     </xs:complexType>
   </xs:element>
   <xs:element name="Data">
@@ -12987,18 +13020,24 @@
       <xs:documentation>Used for a Custom Table. Specifies the data for the parent Row and specified Column.</xs:documentation>
     </xs:annotation>
     <xs:complexType>
-      <xs:simpleContent>
-        <xs:extension base="xs:string">
-          <xs:annotation>
-            <xs:documentation>A data value</xs:documentation>
-          </xs:annotation>
-          <xs:attribute name="Column" use="required" type="xs:string">
-            <xs:annotation>
-              <xs:documentation>Specifies in which column to insert this data.</xs:documentation>
-            </xs:annotation>
-          </xs:attribute>
-        </xs:extension>
-      </xs:simpleContent>
+      <xs:attribute name="Column" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>Specifies in which column to insert this data.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Value" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Specifies the optional data for this column.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute namespace="##other" processContents="lax">
+        <xs:annotation>
+          <xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:anyAttribute>
     </xs:complexType>
   </xs:element>
   <xs:element name="CustomTableRef">
@@ -13020,7 +13059,7 @@
       </xs:attribute>
     </xs:complexType>
   </xs:element>
-  <!-- EnsureTable element, for preserving empty tables -->
+
   <xs:element name="EnsureTable">
     <xs:annotation>
       <xs:documentation>
