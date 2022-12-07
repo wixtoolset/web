@@ -1,0 +1,25 @@
+---
+wip: 6472
+type: Feature
+by: Nir Bar (nir.bar at panel-sw.co.il)
+title: Burn support in installing multi instance msi packages
+---
+
+## User stories
+
+* As a Setup developer I can install multiple instances of a MSI package, using different condition for each
+
+## Proposal
+
+Currently, WiX supports authoring MSI with instance tansforms, but it does not support installing them within bundles.
+The proposed change allows installing the base MSI and/or embedded instances transforms
+
+The chanllenges in implementing the feature are:
+- During build:
+  - Capture UpgradeCode and ProductCode for each instance
+  - Duplicate the MsiPackage for each instance, including nested elements (MsiProperty, Payloads)
+  - Compress the MSI package and payloads once
+- During runtime:
+  - Evaluate detect and install conditions per instance
+  - Cache the MSI package and payloads once
+  - The cache should be kept as long as any instance is installed, so cache reference count should be used
