@@ -5,7 +5,7 @@ sidebar_position: 15
 # Deployment Tools Foundation
 
 :::tip
-TODO: Links to reference manual
+[Deployment Tools Foundation reference documentation is available here.](../reference/api/)
 :::
 
 Deployment Tools Foundation is a rich set of .NET class libraries and related resources that together bring the Windows deployment platform technologies into the .NET world. It is designed to greatly simplify deployment-related development tasks while still exposing the complete functionality of the underlying technology.

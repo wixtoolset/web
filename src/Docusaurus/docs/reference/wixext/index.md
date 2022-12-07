@@ -1,5 +1,5 @@
 ---
-sidebar_position: 97
+sidebar_position: 70
 ---
 
 # WiX extensions and custom actions

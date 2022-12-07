@@ -35,6 +35,7 @@ const config = {
           versions: {
             current: {
               label: "v4.0",
+              badge: false,
               banner: 'none'
             },
             'v3': {
