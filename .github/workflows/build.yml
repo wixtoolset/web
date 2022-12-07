@@ -1,0 +1,44 @@
+name: Build WiX Web site
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+    inputs:
+      tags:
+        manual: true
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+jobs:
+  build:
+    name: Build
+    runs-on: windows-2022
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Npm restore
+        shell: cmd
+        run: ./src/restore.cmd
+
+      - name: Build wixweb
+        shell: cmd
+        run: ./src/build.cmd release
+
+      # Do NOT publish logs on `master` branch as they may contain secrets in them.
+      - name: Save logs
+        if: github.ref != 'refs/heads/master' && (success() || failure())
+        uses: actions/upload-artifact@v2
+        with:
+          name: logs_${{ github.run_id }}
+          path: build/logs/
