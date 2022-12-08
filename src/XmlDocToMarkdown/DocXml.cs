@@ -30,8 +30,6 @@ public class DocXml
     private Dictionary<string, FieldInfo> AssemblyFields { get; }
     private Dictionary<string, EventInfo> AssemblyEvents { get; }
 
-    //public string AssemblyName { get; }
-
     public string AssemblyFileName { get; }
 
     public string AssemblyVersion { get; }
@@ -44,7 +42,6 @@ public class DocXml
 
     private DocXml(XDocument document, Assembly assembly)
     {
-        //this.AssemblyName = assembly.FullName;
         this.AssemblyFileName = Path.GetFileName(assembly.Location);
         this.AssemblyVersion = FileVersionInfo.GetVersionInfo(assembly.Location).ProductVersion;
         this.Root = document.Root;

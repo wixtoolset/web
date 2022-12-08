@@ -37,6 +37,6 @@
     </ItemGroup>
 
     <Message Text="Generating API reference..." Importance="high" />
-    <Exec Command='$(OutDir)..\XmlDocToMarkdown.exe -title "WiX SDK reference" -out $(MSBuildProjectDir)..\Docusaurus\docs\reference\api @(XmlDocFile)' />
+    <Exec Command='$(OutDir)..\XmlDocToMarkdown.exe -title "WiX managed SDK" -out $(MSBuildProjectDir)..\Docusaurus\docs\reference\api @(XmlDocFile)' />
   </Target>
 </Project>

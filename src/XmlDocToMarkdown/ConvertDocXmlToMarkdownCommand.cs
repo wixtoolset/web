@@ -38,7 +38,7 @@ public class ConvertDocXmlToMarkdownCommand
         namespacesPageContent.AddRange(this.TypesByNamespace.Keys.OrderBy(n => n).Select(namespac => $"### [{namespac}]({PageId(namespac, "index.md")})"));
         pages.Add(new Page("index", namespacesPageContent));
 
-        // The rest: Pages for each namespace, types therein, and members thereof
+        // The rest: Pages for each namespace, types therein and members thereof
         foreach (var typesByNamespace in this.TypesByNamespace)
         {
             var namespaceName = typesByNamespace.Key;
@@ -53,41 +53,6 @@ public class ConvertDocXmlToMarkdownCommand
         }
 
         return pages;
-    }
-
-    private static string PageId(string id)
-    {
-        return id.Replace("()", "_nop").Replace(", ", "_").Replace('(', '_').Replace(")", "").ToLowerInvariant();
-    }
-
-    private static string PageId(params string[] parts)
-    {
-        return PageId(String.Join(PageIdSeparator, parts));
-    }
-
-    private static string PageId(Member member)
-    {
-        var id = member switch
-        {
-            Constructor ctor => String.Join(PageIdSeparator, ctor.Namespace, ctor.TypeName, ctor.Signature),
-            Method method => String.Join(PageIdSeparator, method.Namespace, method.TypeName, method.Signature),
-            // todo: encode params?
-            Property property => String.Join(PageIdSeparator, property.Namespace, property.TypeName, property.Name),
-            Event evnt => String.Join(PageIdSeparator, evnt.Namespace, evnt.TypeName, evnt.Name),
-            _ => throw new ArgumentOutOfRangeException(),
-        };
-
-        return PageId(id);
-    }
-
-    private static string PageLink(DocType type)
-    {
-        return PageId(type.Name);
-    }
-
-    private static string PageLink(string id)
-    {
-        return PageId(id);
     }
 
     private Page GenerateNamespacePage(string namespaceName, ICollection<DocType> types)
@@ -143,7 +108,8 @@ public class ConvertDocXmlToMarkdownCommand
         {
             "---",
             "custom_edit_url: null",
-            $"sidebar_position: 1",
+            //"sidebar_position: 1",
+            "toc_max_heading_level: 2",
             "---",
             $"# {type.Name} {type.TypeFlavor}",
             type.Summary,
@@ -163,7 +129,7 @@ public class ConvertDocXmlToMarkdownCommand
             var invoke = methods.Where(m => m.Name == "Invoke").SingleOrDefault();
             if (invoke is not null)
             {
-                content.AddRange(GenerateMethodDetails(invoke));
+                content.AddRange(GenerateMethodContent(invoke));
             }
         }
         else
@@ -187,30 +153,18 @@ public class ConvertDocXmlToMarkdownCommand
         content.AddRange(SeeAlsoContent(type.SeeAlsos));
         content.Add($"`{type.AssemblyFileName}` version `{type.AssemblyVersion}`");
 
-        yield return new Page(PageId(type.Namespace, type.Name, "index"), content);
-
-        foreach (var constructor in constructors)
-        {
-            yield return new Page(PageId(constructor), GenerateMethodPage(constructor));
-        }
+        content.AddRange(constructors.SelectMany(constructor => GenerateMethodContent(constructor)));
 
         if (type.TypeFlavor != TypeFlavor.Delegate)
         {
-            foreach (var method in methods)
-            {
-                yield return new Page(PageId(method), GenerateMethodPage(method));
-            }
+            content.AddRange(methods.SelectMany(method => GenerateMethodContent(method)));
         }
 
-        foreach (var property in properties)
-        {
-            yield return new Page(PageId(property), GeneratePropertyPage(property));
-        }
+        content.AddRange(properties.SelectMany(property => GeneratePropertyContent(property)));
 
-        foreach (var eventDoc in events)
-        {
-            yield return new Page(PageId(eventDoc), GenerateEventPage(eventDoc));
-        }
+        content.AddRange(events.SelectMany(evnt => GenerateEventContent(evnt)));
+
+        yield return new Page(PageId(type.Namespace, type.Name), content);
 
 
         static IEnumerable<string> ListMembers(IEnumerable<Member> members, string memberTypeSingular, string memberTypePlural, bool addLinks = false)
@@ -226,11 +180,7 @@ public class ConvertDocXmlToMarkdownCommand
 
                 foreach (var member in members)
                 {
-                    var name = member switch
-                    {
-                        Method method => method.Signature,
-                        _ => member.Name
-                    };
+                    var name = MemberSignature(member);
 
                     if (member is Field)
                     {
@@ -238,7 +188,7 @@ public class ConvertDocXmlToMarkdownCommand
                     }
                     else
                     {
-                        content.Add($"| [{name}]({PageLink(name)}) | {member.Summary} |");
+                        content.Add($"| [{name}]({MemberAnchor(name)}) | {member.Summary} |");
                     }
                 }
             }
@@ -247,30 +197,16 @@ public class ConvertDocXmlToMarkdownCommand
         }
     }
 
-    private static IEnumerable<string> GenerateMethodPage(Method method)
+    private static IEnumerable<string> GenerateMethodContent(Method method)
     {
         var methodType = method is Constructor ? "Constructor" : "Method";
 
         var content = new List<string>()
         {
-            "---",
-            "custom_edit_url: null",
-            $"sidebar_position: 1",
-            "---",
-            $"# {method.Name}({GetParameterNamesForDisplay(method)}) {methodType}",
+            $"## {method.Name}({GetParameterNamesForDisplay(method)}) {methodType} {{{MemberAnchor(method)}}}",
             method.Summary,
+            "### Declaration",
         };
-
-        content.AddRange(GenerateMethodDetails(method));
-
-        return content;
-    }
-
-    private static IEnumerable<string> GenerateMethodDetails(Method method)
-    {
-        var content = new List<string>();
-
-        content.Add("## Declaration");
 
         var returnType = String.IsNullOrEmpty(method.ReturnType) ? String.Empty : $"{method.ReturnType.SimplifyTypeName(method.Namespace)} ";
 
@@ -292,7 +228,7 @@ public class ConvertDocXmlToMarkdownCommand
 
         if (!String.IsNullOrWhiteSpace(method.Returns))
         {
-            content.Add("## Return value");
+            content.Add("### Return value");
             content.Add(method is Constructor ? $"{method.Returns}" : $"`{method.ReturnType.SimplifyTypeName(method.Namespace)}` {method.Returns}");
         }
 
@@ -301,7 +237,7 @@ public class ConvertDocXmlToMarkdownCommand
 
         if (!method.Exceptions.IsNullOrEmpty())
         {
-            content.Add("## Exceptions");
+            content.Add("### Exceptions");
             content.Add("| Exception | Description |");
             content.Add("| --------- | ----------- |");
 
@@ -314,17 +250,13 @@ public class ConvertDocXmlToMarkdownCommand
         return content;
     }
 
-    private static IEnumerable<string> GeneratePropertyPage(Property property)
+    private static IEnumerable<string> GeneratePropertyContent(Property property)
     {
         var content = new List<string>()
         {
-            "---",
-            "custom_edit_url: null",
-            $"sidebar_position: 1",
-            "---",
-            $"# {property.Name} Property",
+            $"## {property.Name} Property {{{MemberAnchor(property)}}}",
             property.Summary,
-            "## Declaration",
+            "### Declaration",
         };
 
         var getter = property.CanRead ? "get;" : String.Empty;
@@ -351,7 +283,7 @@ public class ConvertDocXmlToMarkdownCommand
 
         if (!property.Exceptions.IsNullOrEmpty())
         {
-            content.Add("## Exceptions");
+            content.Add("### Exceptions");
             content.Add("| Exception | Description |");
             content.Add("| --------- | ----------- |");
 
@@ -364,21 +296,17 @@ public class ConvertDocXmlToMarkdownCommand
         return content;
     }
 
-    private static IEnumerable<string> GenerateEventPage(Event evnt)
+    private static IEnumerable<string> GenerateEventContent(Event evnt)
     {
         var content = new List<string>()
         {
-            "---",
-            "custom_edit_url: null",
-            $"sidebar_position: 1",
-            "---",
-            $"# {evnt.Name} Event",
+            $"## {evnt.Name} Event {{{MemberAnchor(evnt)}}}",
             evnt.Summary,
-            "## Declaration",
+            "### Declaration",
             "```cs",
             $"{evnt.Keywords} {evnt.Type.SimplifyTypeName(evnt.Namespace)} {evnt.Name}",
             "```",
-            "## Value",
+            "### Value",
             $"`{evnt.Type.SimplifyTypeName(evnt.Namespace)}`",
         };
 
@@ -397,7 +325,7 @@ public class ConvertDocXmlToMarkdownCommand
     {
         var content = new List<string>()
         {
-            "## Parameters",
+            "### Parameters",
             "| Parameter | Type | Description |",
             "| --------- | ---- | ----------- |",
         };
@@ -416,7 +344,7 @@ public class ConvertDocXmlToMarkdownCommand
 
         if (!String.IsNullOrWhiteSpace(text))
         {
-            content.Add($"## {title}");
+            content.Add($"### {title}");
             content.Add(text);
         }
 
@@ -429,11 +357,45 @@ public class ConvertDocXmlToMarkdownCommand
 
         if (!seeAlsos.IsNullOrEmpty())
         {
-            content.Add($"## See also");
+            content.Add($"### See also");
             // TODO: Make each entry a link.
             content.AddRange(seeAlsos.Select(s => $"- {s}"));
         }
 
         return content;
+    }
+
+    private static string MemberSignature(Member member)
+    {
+        return member switch
+        {
+            Method method => method.Signature,
+            _ => member.Name
+        };
+    }
+
+    private static string MemberAnchor(Member member)
+    {
+        return MemberAnchor(MemberSignature(member));
+    }
+
+    private static string MemberAnchor(string id)
+    {
+        return $"#{SafeId(id)}";
+    }
+
+    private static string SafeId(string id)
+    {
+        return id.Replace("()", "_nop").Replace(", ", "_").Replace('(', '_').Replace(")", "").ToLowerInvariant();
+    }
+
+    private static string PageId(params string[] parts)
+    {
+        return SafeId(String.Join(PageIdSeparator, parts));
+    }
+
+    private static string PageLink(DocType type)
+    {
+        return SafeId(type.Name);
     }
 }
