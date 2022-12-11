@@ -3,6 +3,7 @@
 
 # Production
 /build
+/static/releases/feeds/wix-additional-tools*
 
 # Generated files
 .docusaurus
