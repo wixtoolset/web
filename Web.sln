@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31205.134
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "src\Web\Web.csproj", "{C728C975-EEE4-4A54-ACD2-95E8BCA2F5CE}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XsdToMarkdownTests", "src\test\XsdToMarkDownTests\XsdToMarkdownTests.csproj", "{84EA0F65-557A-48D3-B594-09191ECCE384}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{1D3076DE-5378-4273-AB3B-C14B6F4C46BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedGenerator", "src\FeedGenerator\FeedGenerator.csproj", "{07F578E6-AE83-4615-821D-59B4F8D92B25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{84EA0F65-557A-48D3-B594-09191ECCE384}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84EA0F65-557A-48D3-B594-09191ECCE384}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84EA0F65-557A-48D3-B594-09191ECCE384}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07F578E6-AE83-4615-821D-59B4F8D92B25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07F578E6-AE83-4615-821D-59B4F8D92B25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07F578E6-AE83-4615-821D-59B4F8D92B25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07F578E6-AE83-4615-821D-59B4F8D92B25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
