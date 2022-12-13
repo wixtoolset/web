@@ -42,3 +42,12 @@ jobs:
         with:
           name: logs_${{ github.run_id }}
           path: build/logs/
+
+      - name: Deploy
+        if: github.ref == 'refs/heads/master' && success()
+        uses: azure/webapps-deploy@v2
+        with:
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE  }}
+          slot-name:  wixtoolset-staging
+          app-name: wixtoolset/staging
+          package: build/deploy
