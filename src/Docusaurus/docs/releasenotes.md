@@ -4,7 +4,58 @@ sidebar_position: 2
 
 # WiX release notes
 
-## WiX v4 {#v4}
+## WiX v4 Release Candidate 1 {#v4}
+
+> Release Candidate 1 released Friday, 16-December-2022
+
+WiX v4 Release Candidate 1 contains fixes for bugs that were reported during Preview 1. There are no new features.
+
+
+### Update MSBuild projects
+
+To update your .wixproj MSBuild projects, update the `Project` element's `Sdk` attribute:
+
+```xml
+<Project Sdk="WixToolset.Sdk/4.0.0-rc.1">
+```
+
+For `PackageReference`s to WiX v4 extensions, update their `Version` attribute. For example:
+
+```xml
+<PackageReference Include="WixToolset.Util.wixext" Version="4.0.0-rc.1" />
+<PackageReference Include="WixToolset.Netfx.wixext" Version="4.0.0-rc.1" />
+```
+
+To clean up the NuGet artifacts from WiX v4 Preview 1, we recommend you delete the `bin` and `obj` directories in your projects. If you're using .NET Framework MSBuild, do an explicit `MSBuild -Restore` to get Release Candidate 1 restored. (Using `dotnet build` does that implicitly for you.)
+
+
+### Update the WiX .NET tool
+
+To update your [.NET tool](https://learn.microsoft.com/en-us/dotnet/core/tools/global-tools) installation of WiX v4 Preview 1:
+
+```sh
+dotnet tool update --global wix --version 4.0.0-rc.1
+```
+
+To install WiX for the first time as a .NET tool:
+
+```sh
+dotnet tool install --global wix --version 4.0.0-rc.1
+```
+
+To verify Wix.exe was successfully installed or updated:
+
+```sh
+wix --version
+```
+
+
+### Update HeatWave Community Edition
+
+To upgrade HeatWave Community Edition with support for WiX v4 Release Candidate 1, [see the FireGiant blog post with details](https://www.firegiant.com/blog/2022/12/16/wix-v4-rc1-and-next-heatwave-preview-available/).
+
+
+## WiX v4 Preview 1 {#v4p1}
 
 > Preview 1 released Friday, 11-November-2022
 
