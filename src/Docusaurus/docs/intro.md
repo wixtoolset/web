@@ -24,7 +24,7 @@ Wix.exe supports commands to perform particular operations. For example, the `bu
 To install the Wix.exe .NET tool:
 
 ```sh
-dotnet tool install --global wix --version 4.0.0-rc.1
+dotnet tool install --global wix --version 4.0.0-rc.1 --prerelease
 ```
 
 To verify Wix.exe was successfully installed:
