@@ -1677,10 +1677,8 @@
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Component" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="ServiceInstall" />
         <xse:remarks>
-          <html:dl>
-            <html:dd>Nesting a ServiceConfig element under a ServiceInstall element will result in the service being installed to be configured.</html:dd>
-            <html:dd>Nesting a ServiceConfig element under a component element will result in an already installed service to be configured. If the service does not exist prior to the install of the MSI package, the install will fail.</html:dd>
-          </html:dl>
+            Nesting a ServiceConfig element under a ServiceInstall element will result in the service being installed to be configured.
+            Nesting a ServiceConfig element under a component element will result in an already installed service to be configured. If the service does not exist prior to the install of the MSI package, the install will fail.
         </xse:remarks>
       </xs:appinfo>
     </xs:annotation>

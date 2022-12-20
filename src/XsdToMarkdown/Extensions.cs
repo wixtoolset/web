@@ -1,8 +1,9 @@
-namespace WixBuildTools.XmlDocToMarkdown;
+// Copyright (c) .NET Foundation and contributors. All rights reserved. Licensed under the Microsoft Reciprocal License. See LICENSE.TXT file in the project root for full license information.
+
+namespace WixBuildTools.XsdToMarkdown;
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
@@ -12,45 +13,6 @@ public static class Extensions
     public static bool IsNullOrEmpty<TSource>(this IEnumerable<TSource> enumerable)
     {
         return enumerable == null || !enumerable.Any();
-    }
-
-    public static string SimplifyTypeName(this string value, string namespac = null)
-    {
-        // Simplify types within the namespace (if specified).
-        if (namespac is not null && value.StartsWith(namespac))
-        {
-            value = value[(namespac.Length + 1)..];
-        }
-
-        // Prettify generics.
-        var backtick = value.IndexOf('`');
-
-        if (backtick >= 0)
-        {
-            value = value.Replace('[', '<').Replace(']', '>');
-            value = value[..backtick] + value[(backtick + 2)..];
-
-            // TODO: Recursively simplify the type types.
-        }
-
-        value = value.Replace("System.Collections.Generic.IEnumerable", "IEnumerable");
-        value = value.Replace("System.Collections.Generic.IEnumerator", "IEnumerator");
-        value = value.Replace("System.Collections.Generic.IList", "IList");
-
-        return value switch
-        {
-            "System.Boolean" => "bool",
-            "System.Int32" => "int",
-            "System.String" => "string",
-            "System.Void" => "void",
-
-            "System.ArgumentOutOfRangeException" => "ArgumentOutOfRangeException",
-            "System.Exception" => "Exception",
-            "System.EventHandler" => "EventHandler",
-            "System.EventArgs" => "EventArgs",
-
-            _ => value,
-        };
     }
 
     public static string GetRichText(this XElement xElement)
@@ -68,7 +30,7 @@ public static class Extensions
             switch (node)
             {
                 case XText xText:
-                    sb.Append(xText.Value.ReduceWhitespace(collapseLines: true));
+                    sb.Append(xText.Value.ReduceWhitespace(collapseLines: false));
                     break;
 
                 case XElement xChild:
@@ -83,6 +45,7 @@ public static class Extensions
                             break;
 
                         case "b":
+                        case "strong":
                             var bold = xChild.Value ?? throw new ArgumentException("Missing inner text on <b>.");
                             sb.Append($" **{bold}** ");
                             break;
@@ -103,6 +66,7 @@ public static class Extensions
                         case "para":
                             // Turn <p> into Markdown paragraphs.
                             sb.AppendLine(GetRichText(xChild));
+                            sb.AppendLine();
                             break;
 
                         case "paramref":
