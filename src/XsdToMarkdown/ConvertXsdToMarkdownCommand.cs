@@ -309,12 +309,4 @@ namespace WixBuildTools.XsdToMarkdown
             return $"{this.RelativeLinkForPage(sourcePageType, PageType.Type, targetNamespace: null, typeName.EndsWith("TypeUnion") ? typeName.Replace("TypeUnion", "Type") : typeName)}";
         }
     }
-
-    public static class Extensions
-    {
-        public static bool IsNullOrEmpty<TSource>(this IEnumerable<TSource> enumerable)
-        {
-            return enumerable == null || !enumerable.Any();
-        }
-    }
 }

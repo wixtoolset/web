@@ -213,7 +213,7 @@ public class ConvertDocXmlToMarkdownCommand
         if (method.Parameters.IsNullOrEmpty())
         {
             content.Add("```cs");
-            content.Add($"{method.Keywords} {returnType}{method.Name}");
+            content.Add($"{method.Keywords} {returnType}{method.Name}()");
             content.Add("```");
         }
         else

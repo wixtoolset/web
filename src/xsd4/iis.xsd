@@ -1175,19 +1175,15 @@
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Module" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
         <xse:remarks>
-          <html:dl>
-            <html:dd>Nesting WebSite under a Component element will result in a WebSite being installed to the machine as the package is installed.</html:dd>
-            <html:dd>
-              Nesting WebSite under Package, Fragment, or Module
-              results in a web site "locator" record being created in
-              the IIsWebSite table.  This means that the web site
-              itself is neither installed nor uninstalled by the MSI
-              package.  It does make the database available for referencing
-              from a WebApplication, WebVirtualDir or WebDir record.  This allows an MSI to install
-              WebApplications, WebVirtualDirs or WebDirs to already existing web sites on the machine.
-              The install will fail if the web site does not exist in these cases.
-            </html:dd>
-          </html:dl>
+          Nesting WebSite under a Component element will result in a WebSite being installed to the machine as the package is installed.
+          Nesting WebSite under Package, Fragment, or Module
+          results in a web site "locator" record being created in
+          the IIsWebSite table.  This means that the web site
+          itself is neither installed nor uninstalled by the MSI
+          package.  It does make the database available for referencing
+          from a WebApplication, WebVirtualDir or WebDir record.  This allows an MSI to install
+          WebApplications, WebVirtualDirs or WebDirs to already existing web sites on the machine.
+          The install will fail if the web site does not exist in these cases.
         </xse:remarks>
       </xs:appinfo>
       <xs:documentation>IIs Web Site</xs:documentation>
