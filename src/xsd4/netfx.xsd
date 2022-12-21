@@ -187,8 +187,9 @@
             <xs:enumeration value="0">
               <xs:annotation>
                 <xs:documentation>
-                  This is the highest priority, it means that image generation occurs syncronously
-                  during the setup process.  This option will slow down setup performance.
+                  This is the highest priority, it means that image generation occurs 
+                  and completes during setup. This option ensures images are generated
+                  by the time setup is complete.
                 </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
