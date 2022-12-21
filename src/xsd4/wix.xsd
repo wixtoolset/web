@@ -12639,6 +12639,14 @@
         <xs:element ref="Property" />
         <xs:element ref="PropertyRef" />
         <xs:element ref="UIRef" />
+        <xs:any namespace="##other" processContents="lax">
+          <xs:annotation>
+            <xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:any>
       </xs:choice>
       <xs:attribute name="Id" type="xs:string" />
       <xs:anyAttribute namespace="##other" processContents="lax">
