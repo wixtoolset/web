@@ -20,6 +20,7 @@ call src\build.cmd %_C%
 if NOT "%_RUN%"=="1" goto end
 
 pushd src\Docusaurus
+set DOCUSAURUS_SSR_CONCURRENCY=5
 npm run start
 popd
 
