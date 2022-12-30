@@ -307,7 +307,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="MajorVersion" type="xs:integer">
+      <xs:attribute name="MajorVersion" type="wxs:Integer">
         <xs:annotation>
           <xs:documentation>Major version of .NET. For example, "6".</xs:documentation>
         </xs:annotation>
