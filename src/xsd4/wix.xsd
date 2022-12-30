@@ -11588,22 +11588,38 @@
   <xs:element name="Error">
     <xs:annotation>
       <xs:appinfo>
-        <xse:msiRef table="Error" href="http://msdn.microsoft.com/library/aa368554.aspx" />
+        <xse:msiRef table="Error" href="https://learn.microsoft.com/en-us/windows/win32/msi/error-table" />
       </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
-      <xs:simpleContent>
-        <xs:extension base="xs:string">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:any namespace="##other" processContents="lax">
           <xs:annotation>
-            <xs:documentation>Element value is Message, use CDATA if message contains delimiter characters</xs:documentation>
+            <xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
           </xs:annotation>
+        </xs:any>
+      </xs:choice>
           <xs:attribute name="Id" type="Integer">
             <xs:annotation>
               <xs:documentation>Number of the error for which a message is being provided. See MSI SDK for error definitions.</xs:documentation>
             </xs:annotation>
           </xs:attribute>
-        </xs:extension>
-      </xs:simpleContent>
+      <xs:attribute name="Message" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Message to display for the specified error number.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute namespace="##other" processContents="lax">
+        <xs:annotation>
+          <xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:anyAttribute>
     </xs:complexType>
   </xs:element>
   <xs:element name="Publish">
