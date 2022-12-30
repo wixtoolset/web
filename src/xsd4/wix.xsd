@@ -1615,7 +1615,7 @@
       <xs:documentation>Describes map of exit code returned from executable package to a bootstrapper behavior.</xs:documentation>
     </xs:annotation>
     <xs:complexType>
-      <xs:attribute name="Value" type="xs:integer">
+      <xs:attribute name="Value" type="Integer">
         <xs:annotation>
           <xs:documentation>Exit code returned from executable package. If no value is provided it means all values not explicitly set default to this behavior.</xs:documentation>
         </xs:annotation>
@@ -2012,7 +2012,7 @@
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="Size" type="xs:integer">
+    <xs:attribute name="Size" type="Integer">
       <xs:annotation>
         <xs:documentation>
           Size of the remote file in bytes.
@@ -2312,7 +2312,7 @@
           <xs:documentation>Indicates whether the package files are compressed. Default is compressed packages.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="InstallerVersion" type="xs:integer">
+      <xs:attribute name="InstallerVersion" type="Integer">
         <xs:annotation>
           <xs:documentation>
             The minimum version of the Windows Installer required to install this package. Take the major version of the required Windows Installer
@@ -2469,7 +2469,7 @@
           <xs:documentation>The GUID of the Merge Module that will be appended to primary keys in the database.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="InstallerVersion" type="xs:integer">
+      <xs:attribute name="InstallerVersion" type="Integer">
         <xs:annotation>
           <xs:documentation>
             The minimum version of the Windows Installer required to install this package. Take the major version of the required Windows Installer
@@ -2501,7 +2501,7 @@
           <xs:documentation>Identifier of the merge module required by the merge module.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="RequiredLanguage" type="xs:integer" use="required">
+      <xs:attribute name="RequiredLanguage" type="Integer" use="required">
         <xs:annotation>
           <xs:documentation>Numeric language ID of the merge module in RequiredID.</xs:documentation>
         </xs:annotation>
@@ -2523,12 +2523,12 @@
           <xs:documentation>Identifier of the merge module that is incompatible.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="ExcludeExceptLanguage" type="xs:integer">
+      <xs:attribute name="ExcludeExceptLanguage" type="Integer">
         <xs:annotation>
           <xs:documentation>Numeric language ID of the merge module in ExcludedID. All except this language will be excluded. Only one of ExcludeExceptLanguage and ExcludeLanguage may be specified.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="ExcludeLanguage" type="xs:integer">
+      <xs:attribute name="ExcludeLanguage" type="Integer">
         <xs:annotation>
           <xs:documentation>Numeric language ID of the merge module in ExcludedID. The specified language will be excluded. Only one of ExcludeExceptLanguage and ExcludeLanguage may be specified.</xs:documentation>
         </xs:annotation>
@@ -4372,7 +4372,7 @@
           <xs:documentation>Path on the user's system. Either absolute, or relative to containing directories.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Depth" type="xs:integer">
+      <xs:attribute name="Depth" type="Integer">
         <xs:annotation>
           <xs:documentation>
                         Depth below the path that the installer searches for the file or directory specified by the search. See remarks for more information.
@@ -4493,7 +4493,7 @@
           <xs:documentation>External key into the Signature table.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Field" type="xs:integer">
+      <xs:attribute name="Field" type="Integer">
         <xs:annotation>
           <xs:documentation>The field in the .ini line. If field is Null or 0, the entire line is read.</xs:documentation>
         </xs:annotation>
@@ -4934,7 +4934,7 @@
             </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Hotkey" type="xs:integer">
+      <xs:attribute name="Hotkey" type="Integer">
         <xs:annotation>
           <xs:documentation>
             The hotkey for the shortcut. The low-order byte contains the virtual-key code for
@@ -4954,7 +4954,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="IconIndex" type="xs:integer">
+      <xs:attribute name="IconIndex" type="Integer">
         <xs:annotation>
           <xs:documentation>Identifier reference to Icon element.</xs:documentation>
         </xs:annotation>
@@ -5033,7 +5033,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="DisplayResourceId" type="xs:integer">
+      <xs:attribute name="DisplayResourceId" type="Integer">
         <xs:annotation>
           <xs:documentation>
             The display name index for the shortcut. This must be a non-negative number. When this attribute is specified, the
@@ -5058,7 +5058,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="DescriptionResourceId" type="xs:integer">
+      <xs:attribute name="DescriptionResourceId" type="Integer">
         <xs:annotation>
           <xs:documentation>
             The description name index for the shortcut. This must be a non-negative number. When this attribute is specified,
@@ -5462,7 +5462,7 @@
           <xs:documentation>A list of paths, separated by semicolons, that represent the paths to be searched to find the imported DLLs. The list is usually a list of properties, with each property enclosed inside square brackets. The value may be set to an empty string. Including this attribute will cause an entry to be generated for the file in the BindImage table.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="SelfRegCost" type="xs:integer">
+      <xs:attribute name="SelfRegCost" type="Integer">
         <xs:annotation>
           <xs:documentation>The cost of registering the file in bytes. This must be a non-negative number. Including this attribute will cause an entry to be generated for the file in the SelfReg table.</xs:documentation>
         </xs:annotation>
@@ -5482,7 +5482,7 @@
           <xs:documentation>This is the default language of this file. The linker will replace this value from the value in the file if the suppress files option is not used.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="DefaultSize" type="xs:integer">
+      <xs:attribute name="DefaultSize" type="Integer">
         <xs:annotation>
           <xs:documentation>This is the default size of this file. The linker will replace this value from the value in the file if the suppress files option is not used.</xs:documentation>
         </xs:annotation>
@@ -5601,7 +5601,7 @@
           <xs:documentation>Specifies the path to the File in the build process. Overrides default source path set by parent directories and Name attribute. This attribute must be set if no source information can be gathered from parent directories. For more information, see <html:a href="~/howtos/general/specifying_source_files.html">Specifying source files</html:a>.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="PatchGroup" type="xs:integer">
+      <xs:attribute name="PatchGroup" type="Integer">
         <xs:annotation>
           <xs:documentation>
                     This attribute must be set for patch-added files. Each patch should be assigned a different patch group number. Patch groups
@@ -6525,7 +6525,7 @@
                 component that owns the verb.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Sequence" type="xs:integer">
+      <xs:attribute name="Sequence" type="Integer">
         <xs:annotation>
           <xs:documentation>The sequence of the commands. Only verbs for which the Sequence is specified
                 are used to prepare an ordered list for the default value of the shell key. The Verb with the lowest value in this
@@ -6675,22 +6675,22 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Language" use="required" type="xs:integer">
+      <xs:attribute name="Language" use="required" type="Integer">
         <xs:annotation>
           <xs:documentation>The language of the type library. This must be a non-negative integer.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="MajorVersion" type="xs:integer">
+      <xs:attribute name="MajorVersion" type="Integer">
         <xs:annotation>
           <xs:documentation>The major version of the type library. The value should be an integer from 0 - 255.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="MinorVersion" type="xs:integer">
+      <xs:attribute name="MinorVersion" type="Integer">
         <xs:annotation>
           <xs:documentation>The minor version of the type library. The value should be an integer from 0 - 255.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="ResourceId" type="xs:integer">
+      <xs:attribute name="ResourceId" type="Integer">
         <xs:annotation>
           <xs:documentation>The resource id of a typelib. The value is appended to the end of the typelib path in the registry.</xs:documentation>
         </xs:annotation>
@@ -6736,7 +6736,7 @@
           <xs:documentation>For an advertised ProgId, the Id of an Icon element. For a non-advertised ProgId, this is the Id of a file containing an icon resource.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="IconIndex" type="xs:integer" />
+      <xs:attribute name="IconIndex" type="Integer" />
       <xs:attribute name="Advertise" type="YesNoTypeUnion" />
       <xs:attribute name="NoOpen" type="xs:string">
         <xs:annotation>
@@ -6965,7 +6965,7 @@
                 </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="IconIndex" type="xs:integer">
+      <xs:attribute name="IconIndex" type="Integer">
         <xs:annotation>
           <xs:documentation>Icon index into the icon file.</xs:documentation>
         </xs:annotation>
@@ -7133,7 +7133,7 @@
           <xs:documentation>GUID CLSID for 32-bit proxy stub to COM Interface.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="NumMethods" type="xs:integer">
+      <xs:attribute name="NumMethods" type="Integer">
         <xs:annotation>
           <xs:documentation>Number of methods implemented on COM Interface.</xs:documentation>
         </xs:annotation>
@@ -7150,7 +7150,7 @@
       <xs:documentation>FileType data for class Id registration.</xs:documentation>
     </xs:annotation>
     <xs:complexType>
-      <xs:attribute name="Offset" type="xs:integer" use="required">
+      <xs:attribute name="Offset" type="Integer" use="required">
         <xs:annotation>
           <xs:documentation>Offset into file. If positive, offset is from the beginning; if negative, offset is from the end.</xs:documentation>
         </xs:annotation>
@@ -7833,7 +7833,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Value" type="xs:integer" use="required">
+      <xs:attribute name="Value" type="Integer" use="required">
         <xs:annotation>
           <xs:documentation>
             Allows modifying the level of a Feature based on the result of the condition.
@@ -7890,12 +7890,12 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="RunFromSource" type="xs:integer" use="required">
+      <xs:attribute name="RunFromSource" type="Integer" use="required">
         <xs:annotation>
           <xs:documentation>The number of bytes of disk space to reserve if the component is installed to run from source.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="RunLocal" type="xs:integer" use="required">
+      <xs:attribute name="RunLocal" type="Integer" use="required">
         <xs:annotation>
           <xs:documentation>The number of bytes of disk space to reserve if the component is installed to run locally.</xs:documentation>
         </xs:annotation>
@@ -7965,7 +7965,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="ComPlusFlags" type="xs:integer">
+      <xs:attribute name="ComPlusFlags" type="Integer">
         <xs:annotation>
           <xs:documentation>
             Set this attribute to create a ComPlus entry. The value should be the export flags used
@@ -8964,7 +8964,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="Level" type="xs:integer">
+      <xs:attribute name="Level" type="Integer">
         <xs:annotation>
           <xs:documentation>
             Sets the install level of this feature. A value of 0 will disable the feature. Processing the
@@ -10522,7 +10522,7 @@
           <xs:documentation>If "yes", the sequencing of this action may be overridden by sequencing elsewhere.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Sequence" type="xs:integer">
+      <xs:attribute name="Sequence" type="Integer">
         <xs:annotation>
           <xs:documentation>The sequence number for this action. It is recommended to use one of the other mutually exclusive attributes: OnExit, After, and Before.</xs:documentation>
         </xs:annotation>
@@ -10563,7 +10563,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Sequence" type="xs:integer">
+      <xs:attribute name="Sequence" type="Integer">
         <xs:annotation>
           <xs:documentation>Show the dialog at the specified sequence. It is recommended to use one of the other mutually exclusive attributes: OnExit, After, and Before.</xs:documentation>
         </xs:annotation>
@@ -11597,7 +11597,7 @@
           <xs:annotation>
             <xs:documentation>Element value is Message, use CDATA if message contains delimiter characters</xs:documentation>
           </xs:annotation>
-          <xs:attribute name="Id" type="xs:integer">
+          <xs:attribute name="Id" type="Integer">
             <xs:annotation>
               <xs:documentation>Number of the error for which a message is being provided. See MSI SDK for error definitions.</xs:documentation>
             </xs:annotation>
@@ -12157,22 +12157,22 @@
           <xs:documentation>Unique identifier for the dialog.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="X" type="xs:integer">
+      <xs:attribute name="X" type="Integer">
         <xs:annotation>
           <xs:documentation>Horizontal placement of the dialog box as a percentage of screen width. The default value is 50.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Y" type="xs:integer">
+      <xs:attribute name="Y" type="Integer">
         <xs:annotation>
           <xs:documentation>Vertical placement of the dialog box as a percentage of screen height. The default value is 50.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Width" use="required" type="xs:integer">
+      <xs:attribute name="Width" use="required" type="Integer">
         <xs:annotation>
           <xs:documentation>The width of the dialog box in dialog units.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Height" use="required" type="xs:integer">
+      <xs:attribute name="Height" use="required" type="Integer">
         <xs:annotation>
           <xs:documentation>The height of the dialog box in dialog units.</xs:documentation>
         </xs:annotation>
@@ -12290,17 +12290,17 @@
       <xs:attribute name="Id" type="xs:string" use="required" />
       <xs:attribute name="FaceName" use="required" type="xs:string" />
       <xs:attribute name="Size" use="required" type="xs:string" />
-      <xs:attribute name="Red" type="xs:integer">
+      <xs:attribute name="Red" type="Integer">
         <xs:annotation>
           <xs:documentation>0 to 255</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Green" type="xs:integer">
+      <xs:attribute name="Green" type="Integer">
         <xs:annotation>
           <xs:documentation>0 to 255</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Blue" type="xs:integer">
+      <xs:attribute name="Blue" type="Integer">
         <xs:annotation>
           <xs:documentation>0 to 255</xs:documentation>
         </xs:annotation>
@@ -12761,7 +12761,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="Width" type="xs:integer">
+      <xs:attribute name="Width" type="Integer">
         <xs:annotation>
           <xs:documentation>Width of this column.</xs:documentation>
         </xs:annotation>
@@ -12791,7 +12791,7 @@
           <xs:documentation>Table in which this column is an external key. Can be semicolon delimited.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="KeyColumn" type="xs:integer">
+      <xs:attribute name="KeyColumn" type="Integer">
         <xs:annotation>
           <xs:documentation>Column in the table in KeyTable attribute.</xs:documentation>
         </xs:annotation>
@@ -13352,7 +13352,7 @@
                         </xs:documentation>
           </xs:annotation>
         </xs:attribute>
-        <xs:attribute name="Sequence" type="xs:integer">
+        <xs:attribute name="Sequence" type="Integer">
           <xs:annotation>
             <xs:documentation>A value used to indicate the position of this action in a sequence.</xs:documentation>
           </xs:annotation>
@@ -13368,7 +13368,7 @@
   <xs:complexType name="ActionSequenceType">
     <xs:simpleContent>
       <xs:extension base="xs:string">
-        <xs:attribute name="Sequence" type="xs:integer">
+        <xs:attribute name="Sequence" type="Integer">
           <xs:annotation>
             <xs:documentation>A value used to indicate the position of this action in a sequence.</xs:documentation>
           </xs:annotation>
@@ -13460,12 +13460,20 @@
       <xs:pattern value="[{(]?[0-9A-Fa-f]{8}\-?[0-9A-Fa-f]{4}\-?[0-9A-Fa-f]{4}\-?[0-9A-Fa-f]{4}\-?[0-9A-Fa-f]{12}[})]?|PUT\-GUID\-(\d+\-)?HERE|([!$])(\(var|\(loc|\(wix)\.[_A-Za-z][0-9A-Za-z_.]*\)|\*|^$" />
     </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="Integer">
+    <xs:annotation>
+      <xs:documentation>Values of this type must be an integer or a preprocessor variable with the format `$(Variable)` or `$(var.Variable).</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[\d]+|\$\((var\.)?[_A-Za-z][0-9A-Za-z_.]*\)" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="LocalizableInteger">
     <xs:annotation>
       <xs:documentation>Values of this type must be an integer or a localization variable with the format `!(loc.Variable)` where `Variable` is the name of the localization variable.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
-      <xs:pattern value="[0-9][0-9]*|([!$])\((loc|bind)\.[_A-Za-z][0-9A-Za-z_.]+\)" />
+      <xs:pattern value="[\d]+|\$\((var\.)?[_A-Za-z][_A-Za-z0-9.]*\)|!\((loc|bind)\.[_A-Za-z][_A-Za-z0-9.]*\)" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="ShortFileNameType">

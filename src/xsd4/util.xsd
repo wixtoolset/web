@@ -60,7 +60,7 @@
           <xs:documentation>Description to show if application is running and needs to be closed.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Sequence" type="xs:integer">
+      <xs:attribute name="Sequence" type="wxs:Integer">
         <xs:annotation>
           <xs:documentation>Optionally orders the applications to be closed.</xs:documentation>
         </xs:annotation>
@@ -109,7 +109,7 @@
           <xs:documentation>Property to be set if application is still running. Useful for launch conditions or to conditionalize custom UI to ask user to shut down apps.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="TerminateProcess" type="xs:integer">
+      <xs:attribute name="TerminateProcess" type="wxs:Integer">
         <xs:annotation>
           <xs:documentation>
             Attempts to terminates process and return the attribute value as the process's exit code if the application is still running after sending any requested close and/or end session messages.
@@ -117,7 +117,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Timeout" type="xs:integer">
+      <xs:attribute name="Timeout" type="wxs:Integer">
         <xs:annotation>
           <xs:documentation>
             Optional time in seconds to wait for the application to exit after the close and/or end session messages. If the application is still running after the timeout then
@@ -341,7 +341,7 @@
           </xs:annotation>
         </xs:any>
       </xs:choice>
-      <xs:attribute name="CategoryCount" type="xs:integer">
+      <xs:attribute name="CategoryCount" type="wxs:Integer">
         <xs:annotation>
           <xs:documentation>
             The number of categories in CategoryMessageFile. CategoryMessageFile
@@ -852,7 +852,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="IconIndex" type="xs:integer">
+      <xs:attribute name="IconIndex" type="wxs:Integer">
         <xs:annotation>
           <xs:documentation>
             Index of the icon being referenced.
@@ -1737,12 +1737,12 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="ResetPeriodInDays" type="xs:integer">
+      <xs:attribute name="ResetPeriodInDays" type="wxs:Integer">
         <xs:annotation>
           <xs:documentation>Number of days after which to reset the failure count to zero if there are no failures.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="RestartServiceDelayInSeconds" type="xs:integer">
+      <xs:attribute name="RestartServiceDelayInSeconds" type="wxs:Integer">
         <xs:annotation>
           <xs:documentation>If any of the three *ActionType attributes is "restart", this specifies the number of seconds to wait before doing so.</xs:documentation>
         </xs:annotation>
@@ -2095,7 +2095,7 @@
           <xs:documentation>Specifies wheter or not the modification should preserve the modified date.  Preserving the modified date will allow the file to be patched if no other modifications have been made.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Sequence" type="xs:integer">
+      <xs:attribute name="Sequence" type="wxs:Integer">
         <xs:annotation>
           <xs:documentation>Specifies the order in which the modification is to be attempted on the XML file.  It is important to ensure that new elements are created before you attempt to add an attribute to them.</xs:documentation>
         </xs:annotation>
@@ -2200,7 +2200,7 @@
           <xs:documentation>Specifies wheter or not the modification should preserve the modified date.  Preserving the modified date will allow the file to be patched if no other modifications have been made.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Sequence" type="xs:integer">
+      <xs:attribute name="Sequence" type="wxs:Integer">
         <xs:annotation>
           <xs:documentation>Specifies the order in which the modification is to be attempted on the XML file.  It is important to ensure that new elements are created before you attempt to add an attribute to them.</xs:documentation>
         </xs:annotation>
