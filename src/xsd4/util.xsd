@@ -1922,6 +1922,16 @@
           <xs:documentation>Indicates whether failure to create the user or add the user to a group fails the installation. The default value is "yes".</xs:documentation>
         </xs:annotation>
       </xs:attribute>
+      <xs:attribute name="Comment" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Optional comment to set on the user.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="RemoveComment" type="wxs:YesNoTypeUnion">
+        <xs:annotation>
+          <xs:documentation>Indicates whether remove the comment from the user. The default value is "no".</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
       <xs:anyAttribute namespace="##other" processContents="lax">
         <xs:annotation>
           <xs:documentation>
