@@ -24,25 +24,21 @@
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Module" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
         <xse:remarks>
-          <html:dl>
-            <html:dd>Nesting SqlDatabase under a Component element will result in a SqlDatabase being installed to the machine as the package is installed.</html:dd>
-            <html:dd>
-              Nesting SqlDatabase under Package, Fragment, or Module
-              results in a database "locator" record being created in
-              the SqlDatabase table.  This means that the database
-              itself is neither installed nor uninstalled by the MSI
-              package.  It does make the database available for referencing
-              from a SqlString or SqlScript record.  This allows MSI to install
-              SqlScripts or SqlStrings to already existing databases on the machine.
-              The install will fail if the database does not exist in these cases.
-            </html:dd>
-            <html:dd>
-              The User attribute references credentials specified in a User element.
-              If a user is not specified then Windows Authentication will be used by default
-              using the credentials of the user performing the install to execute sql
-              strings, etc.
-            </html:dd>
-          </html:dl>
+            Nesting SqlDatabase under a Component element will result in a SqlDatabase being installed to the machine as the package is installed.
+
+            Nesting SqlDatabase under Package, Fragment, or Module
+            results in a database "locator" record being created in
+            the SqlDatabase table.  This means that the database
+            itself is neither installed nor uninstalled by the MSI
+            package.  It does make the database available for referencing
+            from a SqlString or SqlScript record.  This allows MSI to install
+            SqlScripts or SqlStrings to already existing databases on the machine.
+            The install will fail if the database does not exist in these cases.
+
+            The User attribute references credentials specified in a User element.
+            If a user is not specified then Windows Authentication will be used by default
+            using the credentials of the user performing the install to execute sql
+            strings, etc.
         </xse:remarks>
         <xse:seeAlso namespace="http://wixtoolset.org/schemas/v4/wxs/util" ref="User"/>
       </xs:appinfo>

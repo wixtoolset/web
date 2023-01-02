@@ -187,8 +187,9 @@
             <xs:enumeration value="0">
               <xs:annotation>
                 <xs:documentation>
-                  This is the highest priority, it means that image generation occurs syncronously
-                  during the setup process.  This option will slow down setup performance.
+                  This is the highest priority, it means that image generation occurs 
+                  and completes during setup. This option ensures images are generated
+                  by the time setup is complete.
                 </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
@@ -383,15 +384,13 @@
         <xs:annotation>
           <xs:documentation>
             Name of the property in which to place the result of the compatibility check. The possible values are:
-            <html:dl>
-              <html:dd>0 - Successful compatibility check.</html:dd>
-              <html:dd>1 - No runtime is installed.</html:dd>
-              <html:dd>2 - Required runtime is not installed.</html:dd>
-              <html:dd>3 - Failed to get hostfxr exports.</html:dd>
-              <html:dd>4 - Invalid arguments.</html:dd>
-              <html:dd>5 - Failed to construct temp json file path.</html:dd>
-              <html:dd>6 - Failed to create temp json file.</html:dd>
-            </html:dl>
+              - 0 - Successful compatibility check.
+              - 1 - No runtime is installed.
+              - 2 - Required runtime is not installed.
+              - 3 - Failed to get hostfxr exports.
+              - 4 - Invalid arguments.
+              - 5 - Failed to construct temp json file path.
+              - 6 - Failed to create temp json file.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>

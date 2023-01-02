@@ -12,11 +12,17 @@
 
 :: Build and test tools
 
+dotnet build FeedGenerator -c %_C% -nologo
+dotnet build XmlDocToMarkdown\XmlDocToMarkdown.csproj -c %_C% -nologo -m -warnaserror -bl:%_L%\buildxmldoc.binlog || exit /b
 dotnet test test\XsdToMarkdownTests\XsdToMarkdownTests.csproj -c %_C% -nologo -m -warnaserror -bl:%_L%\build.binlog || exit /b
 
-:: Build reference markdown from xsds into site
+:: Build bundle update feed
 
-..\build\%_C%\net6.0\XsdToMarkdown.exe -out Docusaurus\docs\reference\schema xsd4\*.xsd || exit /b
+..\build\%_C%\FeedGenerator.exe WixAdditionalTools 4.0 feeds\wix-additional-tools-4-0.template Docusaurus\static\releases\feeds\ || exit /b
+
+:: Build schema and API reference markdown
+
+dotnet build mkdoc\mkdoc.proj -c %_C% -nologo -m -warnaserror -bl:%_L%\mkdoc.binlog || exit /b
 
 :: Publish dynamic web site
 

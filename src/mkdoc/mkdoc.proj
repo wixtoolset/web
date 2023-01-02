@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.Build.NoTargets/3.7.0">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WixToolset.Data" Version="*-*" GeneratePathProperty="true" />
+    <PackageReference Include="WixToolset.Extensibility" Version="*-*" GeneratePathProperty="true" />
+    <PackageReference Include="WixToolset.Mba.Core" Version="*-*" GeneratePathProperty="true" />
+    <PackageReference Include="WixToolset.Dtf.Compression" Version="*-*" GeneratePathProperty="true" />
+    <PackageReference Include="WixToolset.Dtf.Compression.Cab" Version="*-*" GeneratePathProperty="true" />
+    <PackageReference Include="WixToolset.Dtf.Compression.Zip" Version="*-*" GeneratePathProperty="true" />
+    <PackageReference Include="WixToolset.Dtf.CustomAction" Version="*-*" GeneratePathProperty="true" />
+    <PackageReference Include="WixToolset.Dtf.Resources" Version="*-*" GeneratePathProperty="true" />
+    <PackageReference Include="WixToolset.Dtf.WindowsInstaller" Version="*-*" GeneratePathProperty="true" />
+    <PackageReference Include="WixToolset.Dtf.WindowsInstaller.Linq" Version="*-*" GeneratePathProperty="true" />
+    <PackageReference Include="WixToolset.Dtf.WindowsInstaller.Package" Version="*-*" GeneratePathProperty="true" />
+  </ItemGroup>
+
+  <Target Name="GenerateDocumentation" BeforeTargets="AfterBuild">
+    <Message Text="Generating schema reference..." Importance="high" />
+    <Exec Command="$(OutDir)..\XsdToMarkdown.exe -out $(MSBuildProjectDir)..\Docusaurus\docs\reference\schema $(MSBuildProjectDir)..\xsd4\*.xsd" />
+  
+    <ItemGroup>
+      <XmlDocFile Include="$(PkgWixToolset_Data)\lib\netstandard2.0\*.xml" />
+      <XmlDocFile Include="$(PkgWixToolset_Extensibility)\lib\netstandard2.0\*.xml" />
+      <XmlDocFile Include="$(PkgWixToolset_Mba_Core)\lib\netstandard2.0\*.xml" />
+      <XmlDocFile Include="$(PkgWixToolset_Dtf_Compression)\lib\netstandard2.0\*.xml" />
+      <XmlDocFile Include="$(PkgWixToolset_Dtf_Compression_Cab)\lib\netstandard2.0\*.xml" />
+      <XmlDocFile Include="$(PkgWixToolset_Dtf_Compression_Zip)\lib\netstandard2.0\*.xml" />
+      <XmlDocFile Include="$(PkgWixToolset_Dtf_CustomAction)\lib\netstandard2.0\*.xml" />
+      <XmlDocFile Include="$(PkgWixToolset_Dtf_Resources)\lib\netstandard2.0\*.xml" />
+      <XmlDocFile Include="$(PkgWixToolset_Dtf_WindowsInstaller)\lib\netstandard2.0\*.xml" />
+      <XmlDocFile Include="$(PkgWixToolset_Dtf_WindowsInstaller_Linq)\lib\netstandard2.0\*.xml" />
+      <XmlDocFile Include="$(PkgWixToolset_Dtf_WindowsInstaller_Package)\lib\netstandard2.0\*.xml" />
+    </ItemGroup>
+
+    <Message Text="Generating API reference..." Importance="high" />
+    <Exec Command='$(OutDir)..\XmlDocToMarkdown.exe -title "WiX managed SDK" -out $(MSBuildProjectDir)..\Docusaurus\docs\reference\api @(XmlDocFile)' />
+  </Target>
+</Project>

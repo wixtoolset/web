@@ -61,20 +61,20 @@ namespace XsdToMarkDownTests
             Assert.True(xsd.IsMainSchema);
             Assert.Equal("Wxs", xsd.SchemaName);
             Assert.Equal("http://wixtoolset.org/schemas/v4/wxs", xsd.TargetNamespace);
-            Assert.Equal(28, xsd.SimpleTypes.Count());
+            Assert.Equal(33, xsd.SimpleTypes.Count);
             Assert.Empty(xsd.RootAttributes);
-            Assert.Single(xsd.AttributeGroups);
+            Assert.Equal(5, xsd.AttributeGroups.Count);
 
-            Assert.Equal(271, xsd.Elements.Count);
+            Assert.Equal(293, xsd.Elements.Count);
 
             var componentElement = xsd.Elements["Component"];
-            Assert.Equal(17, componentElement.Attributes.Count);
+            Assert.Equal(19, componentElement.Attributes.Count);
             Assert.Equal(31, componentElement.Children.Count);
             Assert.Equal(3, componentElement.MsiRefs.Count());
             Assert.Equal("Component", componentElement.Name);
             Assert.Equal("http://wixtoolset.org/schemas/v4/wxs", componentElement.Namespace);
             Assert.Empty(componentElement.Parents);
-            Assert.Equal(2, componentElement.SeeAlsos.Count());
+            Assert.Single(componentElement.SeeAlsos);
         }
 
         [Fact]
@@ -116,19 +116,19 @@ namespace XsdToMarkDownTests
             Assert.True(xsd.IsMainSchema);
             Assert.Equal("Wxs", xsd.SchemaName);
             Assert.Equal("http://wixtoolset.org/schemas/v4/wxs", xsd.TargetNamespace);
-            Assert.Equal(28, xsd.SimpleTypes.Count());
+            Assert.Equal(33, xsd.SimpleTypes.Count());
             Assert.Empty(xsd.RootAttributes);
-            Assert.Single(xsd.AttributeGroups);
+            Assert.Equal(5, xsd.AttributeGroups.Count);
 
-            Assert.Equal(271, xsd.Elements.Count);
+            Assert.Equal(293, xsd.Elements.Count);
 
             var componentElement = xsd.Elements["Component"];
-            Assert.Equal(17, componentElement.Attributes.Count);
+            Assert.Equal(19, componentElement.Attributes.Count);
             Assert.Equal(41, componentElement.Children.Count);
             Assert.Equal(3, componentElement.MsiRefs.Count());
             Assert.Equal("Component", componentElement.Name);
             Assert.Equal("http://wixtoolset.org/schemas/v4/wxs", componentElement.Namespace);
-            Assert.Equal(2, componentElement.SeeAlsos.Count());
+            Assert.Single(componentElement.SeeAlsos);
             Assert.Equal(new[]
             {
                 "ComponentGroup",
@@ -139,7 +139,8 @@ namespace XsdToMarkDownTests
                 "FeatureRef",
                 "Fragment",
                 "Module",
-                "Product",
+                "Package",
+                "StandardDirectory",
             }, componentElement.Parents.Values.Select(p => p.Name).OrderBy(p => p));
         }
 
