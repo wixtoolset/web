@@ -10,7 +10,7 @@ TODO: WiX v4 documentation is under development.
 
 In WiX v4, Heat is available in a WiX extension NuGet Package. To use Heat to harvest directories, files, or projects:
 
-1. Add a reference to the `Wixtoolset.Heat` NuGet package.
+1. Add a reference to the [WixToolset.Heat NuGet package](https://www.nuget.org/packages/WixToolset.Heat/).
 2. Add an item group based on the kind of harvesting you want to do in your project:
    - `HarvestDirectory` to harvest files from a directory
    - `HarvestFile` to harvest data from a file
@@ -65,12 +65,12 @@ Example:
       <DirectoryRefId>ApplicationFolder</DirectoryRefId>
       <SuppressRootDirectory>true</SuppressRootDirectory>
     </HarvestDirectory>
-    
+
     <BindPath Include="FilesDir" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Wixtoolset.Heat" />
+    <PackageReference Include="WixToolset.Heat" />
   </ItemGroup>
 </Project>
 ```
@@ -135,7 +135,7 @@ Example:
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Wixtoolset.Heat" />
+    <PackageReference Include="WixToolset.Heat" />
   </ItemGroup>
 </Project>
 ```
@@ -183,7 +183,7 @@ Example:
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Wixtoolset.Heat" />
+    <PackageReference Include="WixToolset.Heat" />
   </ItemGroup>
 </Project>
 ```
