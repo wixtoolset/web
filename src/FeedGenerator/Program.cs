@@ -40,12 +40,13 @@ namespace WixBuildTools.FeedGenerator
                 var versionPrefix = args[1];
                 var feedTemplate = args[2];
                 var outputFolder = Path.GetFullPath(args[3]);
+                var token = args.Length > 4 ? args[4] : String.Empty;
 
                 var feed = XDocument.Load(feedTemplate);
 
                 var updatedElement = feed.Root?.Element(AtomFeed + "updated") ?? throw new InvalidDataException("Failed to find 'updated' element.");
 
-                var entries = await GetFeedEntries("wix4", metadataAssetName, versionPrefix);
+                var entries = await GetFeedEntries("wix4", metadataAssetName, versionPrefix, token);
 
                 var firstEntry = entries.FirstOrDefault();
 
@@ -91,11 +92,16 @@ namespace WixBuildTools.FeedGenerator
             return 0;
         }
 
-        private static async Task<List<FeedEntry>> GetFeedEntries(string repo, string metadataNamePrefix, string versionPrefix)
+        private static async Task<List<FeedEntry>> GetFeedEntries(string repo, string metadataNamePrefix, string versionPrefix, string token)
         {
             var entries = new List<FeedEntry>();
 
             var client = new GitHubClient(new ProductHeaderValue("wix-feedgenerator"));
+            if (!String.IsNullOrEmpty(token))
+            {
+                client.Credentials = new Credentials(token);
+            };
+
             var releases = await client.Repository.Release.GetAll("wixtoolset", repo);
             var map = new Dictionary<string, ReleaseAssetMapping>();
 

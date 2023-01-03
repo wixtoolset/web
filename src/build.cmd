@@ -3,9 +3,11 @@
 
 @set _C=Debug
 @set _L=%~dp0..\build\logs
+@set _T=
 
 :parse_args
 @if /i "%1"=="release" set _C=Release
+@if not "%1"=="" set _T=%1
 @if not "%1"=="" shift & goto parse_args
 
 @echo Building web %_C%
@@ -18,7 +20,7 @@ dotnet test test\XsdToMarkdownTests\XsdToMarkdownTests.csproj -c %_C% -nologo -m
 
 :: Build bundle update feed
 
-..\build\%_C%\FeedGenerator.exe WixAdditionalTools 4.0 feeds\wix-additional-tools-4-0.template Docusaurus\static\releases\feeds\ || exit /b
+..\build\%_C%\FeedGenerator.exe WixAdditionalTools 4.0 feeds\wix-additional-tools-4-0.template Docusaurus\static\releases\feeds\ "%_T%" || exit /b
 
 :: Build schema and API reference markdown
 
