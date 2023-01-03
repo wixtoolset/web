@@ -34,7 +34,7 @@ jobs:
 
       - name: Build wixweb
         shell: cmd
-        run: ./src/build.cmd release
+        run: ./src/build.cmd release ${{ secrets.GITHUB_TOKEN }}
 
       # Do NOT publish logs on `master` branch as they may contain secrets in them.
       - name: Save logs
