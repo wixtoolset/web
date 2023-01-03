@@ -1115,7 +1115,6 @@
       <xs:appinfo>
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="CreateFolder" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="File" />
-        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Registry" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="RegistryKey" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="RegistryValue" />
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="ServiceInstall" />
