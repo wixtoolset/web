@@ -45,9 +45,81 @@ By default, `wix convert` converts the files in place, overwriting the original 
 
 ## Conversion FAQ {#faq}
 
-### Converting the `Win64` attribute
+### Converting the `Component/@Win64` attribute
+
+In WiX v3 authoring out in the wild, it's common to find code similar to the following:
+
+```xml
+<?if $(var.Platform) = "x64"?>
+  <?define IsWin64 = yes ?>
+  <?define ProgramFilesFolder = ProgramFiles64Folder ?>
+<?elseif $(var.Platform) = "x86" ?>
+  <?define IsWin64 = no ?>
+  <?define ProgramFilesFolder = ProgramFilesFolder ?>
+<?elseif $(var.Platform) ~= "Arm64" ?>
+  <?define IsWin64 = yes ?>
+  <?define ProgramFilesFolder = ProgramFiles64Folder ?>
+<?endif?>
+```
+
+and then repeated use of the `IsWin64` preprocessor variable:
+
+```xml
+<Component ... Win64="$(var.IsWin64)">
+```
+
+WiX v3 didn't require repeated use of the `Win64` attribute. First noted in [the historical record back in 2010](https://www.joyofsetup.com/2010/05/14/working-hard-or-hardly-working/#manually-marking-package-and-component-bitness), WiX automatically marks components according to the architecture specified when compiling them. WiX v4 continues that trend and replaces the `Win64` attribute with the clarifying `Bitness` attribute to make it possible to override the default.
+
+WiX v3 didn't have a solution for the root Program Files folder id. WiX v4 introduces the new "standard" directory `ProgramFiles6432Folder` to solve that problem. `ProgramFiles6432Folder` automatically resolves to `ProgramFilesFolder` for an x86 package and `ProgramFiles64Folder` for an x64 or Arm64 package.
+
+For example:
+
+```xml
+<Fragment>
+  <StandardDirectory Id="ProgramFiles6432Folder">
+    <Directory Id="CompanyFolder" Name="!(bind.Property.Manufacturer)">
+      <Directory Id="INSTALLFOLDER" Name="!(bind.Property.ProductName)" />
+    </Directory>
+  </StandardDirectory>
+</Fragment>
+```
+
+All this logic works off the platform you specify at build time, with with the `-arch` switch at the wix.exe command line or the equivalent MSBuild property `InstallerPlatform`.
+
 
 ### Converting custom action ids
+
+In WiX v4's extensions, custom action ids were renamed from their WiX v3 origins for two reasons:
+
+1. To support WiX v4's platform-specific custom actions for all three platforms that WiX v4 supports: x86, x64, and Arm64.
+2. To avoid conflicts when building a package with WiX v4 that merges a merge module that was built with WiX v3 and uses WiX v3 extension custom actions. (Yes, this is an annoying edge case.)
+
+WiX v4 meets these requirements by adding a prefix that lets us version custom actions when they make changes that are incompatible with prior versions. Today, the prefix is `Wix4` (because the WiX team is full of wildly imaginitive people). In WiX v5, if a particular extension made a change that was incompatible with the custom tables produced by WiX v4, that extension would adopt a new prefix, perhaps something like `Wix5`. But fixes and changes that are backward compatible would not require changing the prefix.
+
+The suffix distinguishes platforms:
+
+| Platform | Suffix |
+| -------- | ------ |
+| x86 | `_X86` |
+| x64 | `_X64` |
+| Arm64 | `_A64` |
+
+For example, the `QueryNativeMachine` custom action in WiX v3 is, in WiX v4, named:
+
+- `Wix4QueryNativeMachine_X86`
+- `Wix4QueryNativeMachine_X64`
+- `Wix4QueryNativeMachine_A64`
+
+Some custom actions already have a `Wix` prefix. For those, the new prefix replaces it. So, for example, the `WixFailWhenDeferred` custom action in WiX v3 is now named:
+
+- `Wix4FailWhenDeferred_X86`
+- `Wix4FailWhenDeferred_X64`
+- `Wix4FailWhenDeferred_A64`
+
+Generally, this change is invisible because the extension handles the prefix and suffix for you. That was also true in WiX v3, but several custom actions, like [WixFailWhenDeferred](../v3/customactions/wixfailwhendeferred/) did not have a custom element in the extension. Usually, this was because there was no additional information required. In WiX v4, there's always at least one bit of additional information required: the platform the package is being built for. So WiX v4 includes custom elements like [FailWhenDeferred](../reference/schema/util/failwhendeferred/) to include custom actions in your package so you don't have to worry about prefixes and suffixes.
+
+Other references to WiX custom actions must use the full id, including prefix and suffix.
+
 
 ### Converting custom WixUI dialog sets
 
