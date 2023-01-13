@@ -19,4 +19,4 @@ jobs:
           remote-repository-name: Home
           path-to-signatures: '.github/signatures/cla.json'
           path-to-document: 'https://github.com/wixtoolset/Home/blob/master/DNFCLA.md'
-          allowlist: wixbot
+          allowlist: wixbot,dependabot[bot]
