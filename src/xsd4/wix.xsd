@@ -2379,6 +2379,14 @@
                 </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
+            <xs:enumeration value="perUserOrMachine">
+              <xs:annotation>
+                <xs:documentation>
+                  Set this value to declare that the package is [dual-purpose that can install per-user or per-machine](https://learn.microsoft.com/en-us/windows/win32/msi/single-package-authoring).
+                  Sets the ALLUSERS property to 2 and MSIINSTALLPERUSER property to 1.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
