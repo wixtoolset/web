@@ -41,8 +41,8 @@ The [QueryWindowsDirectories](reference/schema/util/querywindowsdirectories.md),
 
 | Property | Description |
 | -------- | ----------- |
-| WIX_WDDM_DRIVER_PRESENT | Set to 1 if the video card driver on the target machine is a WDDM driver. This property is only set on machines running Windows Vista or higher. |
-| WIX_DWM_COMPOSITION_ENABLED | Set to 1 if the target machine has composition enabled. This property is only set on machines running Windows Vista or higher. |
+| WIX_WDDM_DRIVER_PRESENT | Set to 1 if the video card driver on the target machine is a WDDM driver. This property is set only on machines running Windows Vista or later. |
+| WIX_DWM_COMPOSITION_ENABLED | Set to 1 if the target machine has composition enabled. This property is set only on machines running Windows Vista or later. |
 
 
 ## QueryWindowsSuiteInfo properties {#querywindowssuiteinfo}
@@ -84,3 +84,10 @@ QueryWindowsSuiteInfo sets one or more of the following session properties for [
 | WIX_ACCOUNT_USERS | Localized qualified name of the Users group (WinBuiltinUsersSid). |
 | WIX_ACCOUNT_GUESTS | Localized qualified name of the Users group (WinBuiltinGuestsSid). |
 | WIX_ACCOUNT_PERFLOGUSERS, WIX_ACCOUNT_PERFLOGUSERS_NODOMAIN | Localized qualified name of the Performance Log Users group (WinBuiltinPerfLoggingUsersSid). |
+
+
+## QueryNativeMachine properties {#querynativemachine}
+
+| Property | Description |
+| -------- | ----------- |
+| WIX_NATIVE_MACHINE | Set to an [Image File Machine value](https://docs.microsoft.com/en-us/windows/win32/sysinfo/image-file-machine-constants) representing the native architecture of the machine. This property is set only on Windows 10 version 1511 (TH2) and later. |

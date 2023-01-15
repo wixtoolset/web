@@ -2321,6 +2321,20 @@
     </xs:annotation>
   </xs:element>
 
+  <xs:element name="QueryNativeMachine">
+    <xs:annotation>
+      <xs:documentation>
+        Schedules the QueryNativeMachine custom action for the current platform. For more information, see [QueryNativeMachine properties](../../../wixext/wininfo#querynativemachine).
+      </xs:documentation>
+      <xs:appinfo>
+        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
+        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Module" />
+        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Fragment" />
+        <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="UI" />
+      </xs:appinfo>
+    </xs:annotation>
+  </xs:element>
+
   <xs:element name="QueryWindowsDirectories">
     <xs:annotation>
       <xs:documentation>
