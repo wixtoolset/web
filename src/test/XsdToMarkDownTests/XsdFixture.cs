@@ -78,6 +78,38 @@ namespace XsdToMarkDownTests
         }
 
         [Fact]
+        public void ExtensionAttributesOnMainElementsWork()
+        {
+            var folder = TestData.Get(@"TestData");
+            var document = XDocument.Load(Path.Combine(folder, "bal.xsd"));
+            var xsd = new Xsd(document, "bal.xsd");
+
+            Assert.False(xsd.IsMainSchema);
+            Assert.Equal("Bal", xsd.SchemaName);
+            Assert.Equal("http://wixtoolset.org/schemas/v4/wxs/bal", xsd.TargetNamespace);
+            Assert.Equal(9, xsd.RootAttributes.Count);
+
+            Assert.Equal(new[] {
+                "BAFactoryAssembly",
+                "BAFunctions",
+                "CommandLineVariables",
+                "DisplayInternalUICondition",
+                "Overridable",
+                "PrereqLicenseFile",
+                "PrereqLicenseUrl",
+                "PrereqPackage",
+                "PrimaryPackageType",
+            }, xsd.RootAttributes.Values.Select(a => a.Name));
+
+            var xDisplayInternalUICondition = xsd.RootAttributes["DisplayInternalUICondition"];
+            Assert.Equal("http://wixtoolset.org/schemas/v4/wxs/bal", xDisplayInternalUICondition.Namespace);
+            Assert.Equal(new[] {
+                "MsiPackage",
+                "MspPackage",
+            }, xDisplayInternalUICondition.Parents.Select(p => p.Name));
+        }
+
+        [Fact]
         public void SimpleXsdConvertsToMarkdown()
         {
             using var fs = new DisposableFileSystem();
@@ -142,6 +174,19 @@ namespace XsdToMarkDownTests
                 "Package",
                 "StandardDirectory",
             }, componentElement.Parents.Values.Select(p => p.Name).OrderBy(p => p));
+
+            var msiPackageElement = xsd.Elements["MsiPackage"];
+            Assert.Equal(new[]
+            {
+                "DisplayInternalUICondition/http://wixtoolset.org/schemas/v4/wxs/bal",
+                "PrereqLicenseFile/http://wixtoolset.org/schemas/v4/wxs/bal",
+                "PrereqLicenseUrl/http://wixtoolset.org/schemas/v4/wxs/bal",
+                "PrereqPackage/http://wixtoolset.org/schemas/v4/wxs/bal",
+                "PrimaryPackageType/http://wixtoolset.org/schemas/v4/wxs/bal",
+            }, msiPackageElement.Attributes.Values
+                .Where(a => a.Namespace != "http://wixtoolset.org/schemas/v4/wxs")
+                .Select(a => $"{a.Name}/{a.Namespace}")
+                .OrderBy(a => a));
         }
 
         private static IEnumerable<Xsd> GetFinalizedXsds()

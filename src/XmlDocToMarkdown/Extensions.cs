@@ -41,6 +41,7 @@ public static class Extensions
         {
             "System.Boolean" => "bool",
             "System.Int32" => "int",
+            "System.IntPtr" => "IntPtr",
             "System.String" => "string",
             "System.Void" => "void",
 

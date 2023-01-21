@@ -144,13 +144,14 @@ namespace WixBuildTools.XsdToMarkdown
                 content.Add(String.Empty);
                 content.Add("## Attributes");
 
-                foreach (var attribute in element.Attributes.Values)
+                foreach (var attribute in element.Attributes.Values.OrderBy(a => a.Name))
                 {
                     var required = attribute.Required ? ", required" : String.Empty /*", optional" default*/;
+                    var otherNamespace = attribute.Namespace == element.Namespace ? String.Empty : $", from extension namespace {attribute.Namespace}";
 
                     if (attribute.EnumValues?.Any() == true)
                     {
-                        content.Add($"**{attribute.Name}** (enumeration{required})");
+                        content.Add($"**{attribute.Name}** (enumeration{required}{otherNamespace})");
                         content.Add($"  : {attribute.Description} This attribute's value must be one of the following:");
                         content.AddRange(EnumValuesDocumentation(attribute.EnumValues));
                     }
@@ -158,11 +159,11 @@ namespace WixBuildTools.XsdToMarkdown
                     {
                         if (String.IsNullOrEmpty(attribute.TypeDocumentation))
                         {
-                            content.Add($"**{attribute.Name}** ({attribute.Type}{required})");
+                            content.Add($"**{attribute.Name}** ({attribute.Type}{required}{otherNamespace})");
                         }
                         else
                         {
-                            content.Add($"**{attribute.Name}** ([{attribute.Type}]({this.LinkForType(PageType.Element, attribute.Type)} '{attribute.TypeDocumentation}'){required})");
+                            content.Add($"**{attribute.Name}** ([{attribute.Type}]({this.LinkForType(PageType.Element, attribute.Type)} '{attribute.TypeDocumentation}'){required}{otherNamespace})");
                         }
                         content.Add($"  : {attribute.Description}");
                     }
