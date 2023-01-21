@@ -24,7 +24,7 @@ namespace WixBuildTools.XsdToMarkdown
                         if (xsdByNamespace.TryGetValue(parent.Namespace, out var targetXsd)
                             && targetXsd.Elements.TryGetValue(parent.Name, out var targetElement))
                         {
-                            targetElement.Attributes[parent.Name] = attr;
+                            targetElement.Attributes[attr.Name] = attr;
                         }
                     }
                 }

@@ -142,7 +142,7 @@ namespace WixBuildTools.XsdToMarkdown
 
         private IEnumerable<Attribute> CreateAttributes(XElement xComplexType)
         {
-            if (xComplexType != null)
+            if (xComplexType is not null)
             {
                 var attributeGroupReferences = xComplexType.Elements(AttributeGroupElement).Select(x => x.Attribute("ref")?.Value);
                 var attributeGroupAttributes = attributeGroupReferences.SelectMany(a => this.AttributeGroups[a]);
@@ -245,7 +245,7 @@ namespace WixBuildTools.XsdToMarkdown
             var xParents = xAppInfo?.Elements(ParentElement);
             var parents = xParents?.Select(x => CreateParent(x));
 
-            return new Attribute(name, documentation, type, typeDocumentation, required, enumValues, parents);
+            return new Attribute(name, this.TargetNamespace, documentation, type, typeDocumentation, required, enumValues, parents);
         }
 
         private static string Capitalize(string value)
@@ -335,6 +335,7 @@ namespace WixBuildTools.XsdToMarkdown
     public class Attribute
     {
         public string Name { get; }
+        public string Namespace { get; }
         public string Description { get; }
         public string Type { get; }
         public string TypeDocumentation { get; }
@@ -342,9 +343,10 @@ namespace WixBuildTools.XsdToMarkdown
         public IEnumerable<EnumValue> EnumValues { get; set; }
         public IEnumerable<Parent> Parents { get; set; }
 
-        public Attribute(string name, string description, string type, string typeDocumentation, bool required, IEnumerable<EnumValue> enumValues, IEnumerable<Parent> parents)
+        public Attribute(string name, string namespac, string description, string type, string typeDocumentation, bool required, IEnumerable<EnumValue> enumValues, IEnumerable<Parent> parents)
         {
             this.Name = name;
+            this.Namespace = namespac;
             this.Description = description;
             this.Type = type;
             this.TypeDocumentation = typeDocumentation;
