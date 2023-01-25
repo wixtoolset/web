@@ -9,7 +9,7 @@ TODO: WiX v4 documentation is under development.
 :::
 
 :::tip
-See [Signing packages and bundles](../signing.md#msbuild) for information about signing packages and bundles when using MSBuild.
+See [Signing packages and bundles](../signing.md) for information about signing packages and bundles when using MSBuild.
 :::
 
 
