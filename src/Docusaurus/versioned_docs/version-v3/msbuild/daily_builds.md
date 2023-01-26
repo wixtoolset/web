@@ -22,9 +22,9 @@ After checking the WiX tools into source code control the .wixproj file must be 
 
 ```xml
 <PropertyGroup>
-  <WixToolPath>$(SourceCodeControlRoot)\wix311<WixToolPath>
-  <WixTargetsPath>$(WixToolPath)Wix.targets<WixTargetsPath>
-  <WixTasksPath>$(WixToolPath)wixtasks.dll<WixTasksPath>
+  <WixToolPath>$(SourceCodeControlRoot)\wix311\</WixToolPath>
+  <WixTargetsPath>$(WixToolPath)Wix.targets</WixTargetsPath>
+  <WixTasksPath>$(WixToolPath)wixtasks.dll</WixTasksPath>
 </PropertyGroup>
 ```
 
