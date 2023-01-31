@@ -4,9 +4,14 @@ sidebar_position: 30
 
 # MSBuild
 
-:::info
-TODO: WiX v4 documentation is under development.
-:::
+WiX v4 is available as an MSBuild SDK. SDK-style projects have smart defaults that make for simple .wixproj project authoring. For example, here's a minimal .wixproj that builds an MSI from the .wxs source files in the project directory:
+
+```xml
+<Project Sdk="WixToolset.Sdk/4.0.0">
+</Project>
+```
+
+You can also create and edit SDK-style MSBuild projects in Visual Studio using FireGiant's [HeatWave Community Edition](https://www.firegiant.com/wix/heatwave/).
 
 :::tip
 See [Signing packages and bundles](../signing.md) for information about signing packages and bundles when using MSBuild.
