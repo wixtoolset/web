@@ -4,10 +4,6 @@ sidebar_position: 80
 
 # Heat harvesting
 
-:::info
-TODO: WiX v4 documentation is under development.
-:::
-
 In WiX v4, Heat is available in a WiX extension NuGet Package. To use Heat to harvest directories, files, or projects:
 
 1. Add a reference to the [WixToolset.Heat NuGet package](https://www.nuget.org/packages/WixToolset.Heat/).
