@@ -4,6 +4,10 @@ sidebar_position: 70
 
 # WiX extensions and custom actions
 
+:::info
+TODO: WiX v4 documentation is under development.
+:::
+
 WiX extends the functionality of Windows Installer by providing _WiX Extensions_ that typically include compiler extensions to provide custom elements and attributes in your WiX authoring and custom actions to implement the extended functionality.
 
 The following WiX extensions are provided by the WiX team:
