@@ -4,6 +4,10 @@ sidebar_position: 5
 
 # Get help
 
+:::info
+TODO: Update for WiX v4 and later processes.
+:::
+
 ## Documentation {#doc}
 
 * [WiX toolset v4.x][v4]
