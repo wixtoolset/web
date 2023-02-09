@@ -8,6 +8,7 @@ The WixToolset.VisualStudio.wixext WiX extension includes detection of Visual St
 
 To use WixToolset.VisualStudio.wixext properties or custom actions, you need to add a reference to the WixToolset.VisualStudio.wixext NuGet package to your project.
 
+
 ## Using WixToolset.VisualStudio.wixext for Visual Studio 2003-2015
 
 To use WixToolset.VisualStudio.wixext properties or custom actions for Visual Studio versions on end-user machines prior to Visual Studio 2017, add [`PropertyRef`](../schema/wxs/propertyref.md) or [`CustomActionRef`](../schema/wxs/customactionref.md) elements for properties or custom actions listed in the following tables that you want to use in your MSI. For example:
@@ -16,6 +17,7 @@ To use WixToolset.VisualStudio.wixext properties or custom actions for Visual St
 <PropertyRef Id="VS2005_ROOT_FOLDER" />
 <CustomActionRef Id="VS2005Setup" />
 ```
+
 
 ## Using WixToolset.VisualStudio.wixext for Visual Studio 2017 and later
 
