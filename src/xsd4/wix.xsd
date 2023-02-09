@@ -7669,7 +7669,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="ResetPeriod" type="xs:string">
+      <xs:attribute name="ResetPeriod" type="Integer">
         <xs:annotation>
           <xs:documentation>
             Specifies the time in seconds to reset the failure count. If this attribute is not present the failure count will not be reset.
