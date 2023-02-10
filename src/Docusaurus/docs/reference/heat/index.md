@@ -178,7 +178,7 @@ Example:
     <HarvestProject Include="..\MyProgram\MyProgram.csproj" ProjectOutputGroups="Binaries;Content;" />
   </ItemGroup>
 
-  <!-- As soon as EnableProjectHarvesting set to true, Heat will try to Harvest all referenced projects. Notice the DoNotHarvest flag, this tells Heat not to do that. ->
+  <!-- As soon as EnableProjectHarvesting set to true, Heat will try to Harvest all referenced projects. Notice the DoNotHarvest flag, this tells Heat not to do that. -->
   <ItemGroup>
     <ProjectReference Include="..\MyProgram\MyProgram.csproj" DoNotHarvest="true" />
   </ItemGroup>
