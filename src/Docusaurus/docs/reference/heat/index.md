@@ -180,11 +180,19 @@ Example:
 
   <!-- As soon as EnableProjectHarvesting set to true, Heat will try to Harvest all referenced projects. Notice the DoNotHarvest flag, this tells Heat not to do that. ->
   <ItemGroup>
-    <ProjectReference Include="..\MyProgramMyProgram.csproj" DoNotHarvest="true" />
+    <ProjectReference Include="..\MyProgram\MyProgram.csproj" DoNotHarvest="true" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="WixToolset.Heat" />
   </ItemGroup>
 </Project>
+```
+
+Once harvested, you can use these ouput groups in your wxs file as with a ComponentGroupRef.
+
+Example:
+```xml
+<ComponentGroupRef Id="MyProgram.Binaries" />
+<ComponentGroupRef Id="MyProgram.Content" />
 ```
