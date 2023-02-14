@@ -4,14 +4,10 @@ sidebar_position: 5
 
 # Get help
 
-:::info
-TODO: Update for WiX v4 and later processes.
-:::
-
 ## Documentation {#doc}
 
 * [WiX toolset v4.x][v4]
-* [WiX toolset v3.x reference][v3]
+* [WiX toolset v3.x][v3]
 
 
 ## Discussions forum {#forum}
@@ -29,6 +25,10 @@ discuss the WiX toolset with other users and the WiX developers. To help prevent
 spam on the WiX mailing lists, you must now subscribe to the lists before you
 can send e-mail to them. To subscribe click one of the *Join* links below and
 send the email or go to *Preferences* web page.
+
+:::info
+The mailing lists are being deprioritized in favor of the discussions forum. They're still available but will be shut down and archived later in 2023.
+:::
 
 ### WiX-users list {#wixusers}
 
@@ -57,7 +57,7 @@ If nobody has, [open an issue on GitHub](https://github.com/wixtoolset/issues/is
 * A description of the facts of the problem. Be as specific as you can and err on the side of providing too much information, including code, error messages, command lines you used to invoke the build, and so forth.
 * A description of what you expected to happen.
 
-Issues are triaged at biweekly online meetings, generally held every other Thursday at 9:30 AM Pacific time (UTC-7/UTC-8). Meeting requests are sent to the [wix-devs mailing list]. Highlights and a video recording of the meeting are posted after the meeting on the [FireGiant blog](https://www.firegiant.com/blog/).
+Issues are triaged at biweekly online meetings, generally held every other Thursday at 9:30 AM Pacific time (UTC-7/UTC-8). Meeting requests are posted on the [Announcements category on the discussion forum on GitHub][announcements]. Highlights and a video recording of the meeting are posted after the meeting on the [FireGiant blog](https://www.firegiant.com/blog/).
 
 
 ## External resources
@@ -67,7 +67,7 @@ The following external resources are useful but not managed by the WiX community
 * [WiX v3.x Tutorial][tutorial]
 * [WiX 3.6: A Developer's Guide to Windows Installer XML by Nick Ramirez][book1]
 * [WiX Cookbook by Nick Ramirez][book2]
-* [Stackoverflow tagged 'wix'][so]
+* [Stack Overflow][so]
 * [FireGiant WiX Knowledge Base][fg]
 
 [v3]: wix3.md
@@ -78,4 +78,4 @@ The following external resources are useful but not managed by the WiX community
 [so]: https://stackoverflow.com/questions/tagged/wix?sort=newest
 [fg]: https://support.firegiant.com/forums
 [ghtalk]: https://github.com/wixtoolset/issues/discussions
-[wix-devs mailing list]: gethelp.md#wixdevs
+[announcements]: https://github.com/orgs/wixtoolset/discussions/categories/announcements
