@@ -155,7 +155,7 @@ The following properties control harvesting:
 | `HarvestProjectsAutogenerateGuids` | Optional boolean property. Whether to generate authoring that relies on auto-generation of component GUIDs. The default is `$(HarvestAutogenerateGuids)` if specified; otherwise, **true**. |
 | `HarvestProjectsGenerateGuidsNow` | Optional boolean property. Whether to generate authoring that generates durable GUIDs when harvesting. The default is `$(HarvestGenerateGuidsNow)` if specified; otherwise, **false**. |
 | `HarvestProjectsNoLogo` | Optional boolean property. Whether to show the logo for heat.exe. The default is `$(NoLogo)` if specified; otherwise, **false**. |
-| `HarvestProjectsProjectOutputGroups` | Optional string property. Semicolon-delimited list of project output groups to harvest. Examples include `Binaries` and `Source`. |
+| `HarvestProjectsProjectOutputGroups` | Optional string property. Semicolon-delimited list of project output groups to harvest. Possible Values: `Binaries`, `Symbols`, `Documents`, `Satellites`, `Sources` & `Content`. |
 | `HarvestProjectsSuppressAllWarnings` | Optional boolean parameter. Specifies that all warnings should be suppressed. The default is `$(HarvestSuppressAllWarnings)` if specified; otherwise, **false**. |
 | `HarvestProjectsSuppressFragments` | Optional boolean property. Whether to suppress generation of separate fragments when harvesting. The default is `$(HarvestSuppressFragments)` if specified; otherwise, **true**. |
 | `HarvestProjectsSuppressSpecificWarnings` | Optional string parameter. Specifies that certain warnings should be suppressed. The default is `$(HarvestSuppressSpecificWarnings)` if specified. |
@@ -175,11 +175,24 @@ Example:
   </PropertyGroup>
 
   <ItemGroup>
-    <HarvestProject Include="..\MyProgram\MyProgram.csproj" />
+    <HarvestProject Include="..\MyProgram\MyProgram.csproj" ProjectOutputGroups="Binaries;Content;" />
+  </ItemGroup>
+
+  <!-- As soon as EnableProjectHarvesting set to true, Heat will try to Harvest all referenced projects. Notice the DoNotHarvest flag, this tells Heat not to do that. -->
+  <ItemGroup>
+    <ProjectReference Include="..\MyProgram\MyProgram.csproj" DoNotHarvest="true" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="WixToolset.Heat" />
   </ItemGroup>
 </Project>
+```
+
+Once harvested, you can use these ouput groups in your wxs file as with a ComponentGroupRef.
+
+Example:
+```xml
+<ComponentGroupRef Id="MyProgram.Binaries" />
+<ComponentGroupRef Id="MyProgram.Content" />
 ```
