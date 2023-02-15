@@ -46,6 +46,7 @@ Wix.exe has the following switches common to all commands:
 | `-culture` | Adds a culture to filter localization files. |
 | `-define` or `-d` | Sets a preprocessor variable. |
 | `-defaultcompressionlevel` or `-dcl` | Specifies the compression level used when none is specified via `MediaTemplate` or `Media`. Valid values are: *none*, *low*, *medium*, *high*, *mszip*. Default: *medium*. Equivalent MSBuild property: `DefaultCompressionLevel` |
+| `-ext` | [Load a WiX extension for use during the build.](#extension) |
 | `-include` or `-i` | Folder to search for include files. |
 | `-intermediatefolder` | Optional working folder. If not specified a folder in %TMP% will be created. |
 | `-loc` | Localization file to use in the build. By default, .wxl files are recognized as localization. |
@@ -69,6 +70,17 @@ The `wix msi` command has the following subcommands:
 | `wix msi validate` | Validates MSI database using standard or custom ICEs. |
 
 
+### `wix msi decompile` subcommand {#msidecompile}
+
+### `wix msi inscribe` subcommand {#msiinscribe}
+
+### `wix msi transform` subcommand {#msitransform}
+
+### `wix msi validate` subcommand {#msivalidate}
+
+
+
+
 ## `wix burn` command {#burn}
 
 The `wix burn` command has the following subcommands:
@@ -81,6 +93,13 @@ The `wix burn` command has the following subcommands:
 | `wix burn remotepayload` | Generate source code for a remote payload. |
 
 
+### `wix burn detach` and `wix burn reattach` subcommands {#burnsigning}
+
+### `wix burn extract` subcommand {#burnextract}
+
+### `wix burn remotepayload` subcommand {#burnremotepayload}
+
+
 ## `wix extension` command {#extension}
 
 The `wix extension` command has the following subcommands:
@@ -90,6 +109,14 @@ The `wix extension` command has the following subcommands:
 | `wix extension add` | Add extension to the cache. |
 | `wix extension list` | List extensions in the cache. |
 | `wix extension remove` | Remove extension from the cache. |
+
+
+### `wix extension add` subcommand {#extensionadd}
+
+### `wix extension list` subcommand {#extensionlist}
+
+### `wix extension remove` subcommand {#extensionremove}
+
 
 
 ## `wix convert` command {#convert}
