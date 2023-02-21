@@ -4,10 +4,6 @@ sidebar_position: 60
 
 # Wix.exe command-line reference
 
-:::info
-TODO: WiX v4 documentation is under development.
-:::
-
 The [Wix.exe .NET tool](../intro.md#nettool) provides a reassuringly old-fashioned command-line interface to WiX. Like the `dotnet` command-line tool that inspired it, Wix.exe has a number of command, some with subcommands, and both required and optional switches.
 
 ## Wix.exe commands
