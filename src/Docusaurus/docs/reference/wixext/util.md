@@ -1,10 +1,10 @@
 ---
-sidebar_position: 1
+sidebar_position: 20
 ---
 
 # Utility custom actions
 
-WiX includes a number of utility custom actions in the WixToolset.Util.wixext WiX extension.
+WiX includes a number of utility custom actions in the WixToolset.Util.wixext WiX extension. To use them, add a package reference to WixToolset.Util.wixext in your .wixproj or use [`wix extension`](../wixexe.md#extension) and [`wix build -ext`](../wixexe.md#build) at the command line.
 
 
 ## WixShellExec custom actions
