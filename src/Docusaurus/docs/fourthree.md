@@ -87,7 +87,7 @@ For example:
 All this logic works off the platform you specify at build time, with with the `-arch` switch at the wix.exe command line or the equivalent MSBuild property `InstallerPlatform`.
 
 
-### Converting custom action ids
+### Converting custom action ids {#customactionids}
 
 In WiX v4's extensions, custom action ids were renamed from their WiX v3 origins for two reasons:
 
