@@ -4807,7 +4807,7 @@
       </xs:appinfo>
       <xs:documentation>Property value for a Package or Module.</xs:documentation>
     </xs:annotation>
-    <xs:complexType mixed="true">
+    <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element ref="ComplianceDrive" />
         <xs:element ref="ComponentSearch"/>
@@ -5157,7 +5157,7 @@
       </xs:appinfo>
       <xs:documentation>Property values for a shortcut. This element's functionality is available starting with MSI 5.0.</xs:documentation>
     </xs:annotation>
-    <xs:complexType mixed="true">
+    <xs:complexType>
       <xs:attribute name="Id" type="xs:string">
         <xs:annotation>
           <xs:documentation>Unique identifier for MsiShortcutProperty table. If omitted, a stable identifier will be generated from the parent shortcut identifier and Key value.</xs:documentation>
@@ -11341,8 +11341,7 @@
       <xs:attribute name="Condition" type="xs:string">
         <xs:annotation>
           <xs:documentation>
-            Element value is the condition. CDATA may be used to when a condition contains many XML characters
-            that must be escaped. It is important to note that each EmbeddedChainer element must have a mutually exclusive condition
+            Value is the condition. It is important to note that each EmbeddedChainer element must have a mutually exclusive condition
             to ensure that only one embedded chainer will execute at a time. If the conditions are not mutually exclusive the chainer
             that executes is undeterministic.
           </xs:documentation>
@@ -11410,9 +11409,8 @@
       <xs:appinfo>
         <xse:msiRef table="MsiEmbeddedUI" href="https://learn.microsoft.com/en-us/windows/win32/msi/msiembeddedui-table" />
       </xs:appinfo>
-      <xs:documentation>Element value is the condition. Use CDATA if message contains delimiter characters.</xs:documentation>
     </xs:annotation>
-    <xs:complexType mixed="true">
+    <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element ref="EmbeddedUIResource">
           <xs:annotation>
@@ -11819,7 +11817,7 @@
       <xs:sequence>
         <xs:element ref="Text" minOccurs="0">
           <xs:annotation>
-            <xs:documentation>alternative to Text attribute when CDATA is needed to escape XML delimiters</xs:documentation>
+            <xs:documentation>Alternative to Text attribute.</xs:documentation>
           </xs:annotation>
         </xs:element>
         <xs:element ref="ComboBox" minOccurs="0">
@@ -12730,9 +12728,6 @@
       </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
-      <xs:annotation>
-        <xs:documentation>Element value is text, may use CDATA if needed to escape XML delimiters</xs:documentation>
-      </xs:annotation>
       <xs:attribute name="Id" type="xs:string">
         <xs:annotation>
           <xs:documentation>
