@@ -13805,7 +13805,6 @@
       <xs:enumeration value="TempFolder" />
       <xs:enumeration value="TemplateFolder" />
       <xs:enumeration value="WindowsFolder" />
-      <xs:enumeration value="WindowsVolume" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="YesNoTypeUnion">
