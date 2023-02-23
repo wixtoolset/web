@@ -7,9 +7,9 @@ sidebar_position: 30
 WiX includes a number of MSI properties and bundle variables to detect .NET Framework, .NET Core, and .NET in the WixToolset.Netfx.wixext WiX extension. There is also a custom action to generate native images on .NET Framework. To use them, add a package reference to WixToolset.Netfx.wixext in your .wixproj or use [`wix extension`](../wixexe.md#extension) and [`wix build -ext`](../wixexe.md#build) at the command line.
 
 
-## .NET Framework 
+## .NET Framework
 
-WixToolset.Netfx.wixext includes support for "traditional" .NET Framework (as compared to .NET "Core" and just-call-me-.NET v5 and later).
+WixToolset.Netfx.wixext includes support for "traditional" .NET Framework (as compared to .NET Core and just-call-me-.NET v5 and later).
 
 :::info
 Documentation is provided here for WixToolset.Netfx.wixext functionality for currently-supported versions of .NET Framework. Functionality for older versions is available but not documented.
@@ -38,7 +38,7 @@ The [NativeImage element](../schema/netfx/nativeimage.md) marks a file to have t
 ```
 
 
-### .NET detection properties for MSI packages
+### .NET Framework detection properties for MSI packages
 
 WixToolset.Netfx.wixext also includes a set of properties that can be used to detect the presence of various versions of the .NET Framework. 
 
@@ -135,7 +135,7 @@ Because .NET Framework v4.5 and later are in-place updates, the following proper
 | `NETFRAMEWORK4X_TR_TR_LANGPACK` | Set to Release number of the .NET Framework 4.X Turkish language pack if installed (not set otherwise). |
 
 
-## .NET detection variables for bundles
+### .NET Framework detection variables for bundles
 
 | Variable | Description |
 | -------- | ----------- |
@@ -173,4 +173,63 @@ For example:
   <!-- Our BA needs .NET 4.8, so make sure to include that as a prereq! -->
   <PackageGroupRef Id="NetFx48RedistAsPrereq" />
 </Chain>
+```
+
+
+## .NET and .NET Core
+
+This section documents support in WixToolset.Netfx.wixext for non-Framework .NET -- .NET Core and .NET (v5 and later).
+
+
+### Detecting .NET in MSI packages
+
+WixToolset.Netfx.wixext supports these elements to detect .NET in packages:
+
+| Element | Description |
+| ------- | ----------- |
+| [`DotNetCompatibilityCheck`](../schema/netfx/dotnetcompatibilitycheck.md) | Sets a property to a value indicating whether an appropriate version of the .NET runtime is already installed on the machine. |
+| [`DotNetCompatibilityCheckRef`](../schema/netfx/dotnetcompatibilitycheckref.md) | References a `DotNetCompatibilityCheck` defined elsewhere. |
+
+For example:
+
+```xml
+<netfx:DotNetCompatibilityCheck
+  Property="DOTNETRUNTIMECHECK"
+  RollForward="major"
+  RuntimeType="desktop"
+  Version="6.0.0.0" 
+  />
+```
+
+
+### Detecting .NET in bundles
+
+WixToolset.Netfx.wixext supports these elements to detect .NET in bundles:
+
+| Element | Description |
+| ------- | ----------- |
+| [`DotNetCoreSdkFeatureBandSearch`](../schema/netfx/dotnetcoresdkfeaturebandsearch.md) | Sets a variable to the latest installed version of the specified .NET SDK by [feature band](https://learn.microsoft.com/en-us/dotnet/core/releases-and-support#feature-bands-sdk-only). |
+| [`DotNetCoreSdkFeatureBandSearchRef`](../schema/netfx/dotnetcoresdkfeaturebandsearchref.md) | References a `DotNetCoreSdkFeatureBandSearch` defined elsewhere. | 
+| [`DotNetCoreSdkSearch`](../schema/netfx/dotnetcoresdksearch.md) | Sets a variable to the latest installed version of the specified .NET SDK. |
+| [`DotNetCoreSdkSearchRef`](../schema/netfx/dotnetcoresdksearchref.md) | References a `DotNetCoreSdkSearch` defined elsewhere. |
+| [`DotNetCoreSearch`](../schema/netfx/dotnetcoresearch.md) | Sets a variable to the latest installed version of the specified .NET runtime type. |
+| [`DotNetCoreSearchRef`](../schema/netfx/dotnetcoresearchref.md) | References a `DotNetCoreSearch` defined elsewhere. |
+
+For example:
+
+```xml
+<netfx:DotNetCoreSearch
+  RuntimeType="aspnet"
+  Platform="x64"
+  MajorVersion="6"
+  Variable="AspNetCoreRuntimeVersion"
+  />
+<netfx:DotNetCoreSdkSearch
+  MajorVersion="6"
+  Variable="NetCoreSdkVersion"
+  />
+<netfx:DotNetCoreSdkFeatureBandSearch
+  Version="6.0.100"
+  Variable="NetCoreSdkSixOneHundredVersion"
+  />
 ```
