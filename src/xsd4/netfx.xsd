@@ -450,7 +450,7 @@
           <xs:documentation>The platform to search for.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Version" type="wxs:Integer">
+      <xs:attribute name="Version" type="wxs:WixVersionType">
         <xs:annotation>
           <xs:documentation>
             A specific .NET Core SDK feature band. For example, "6.0.400".
