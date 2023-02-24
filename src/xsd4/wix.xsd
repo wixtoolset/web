@@ -13836,7 +13836,9 @@
     </xs:annotation>
     <xs:restriction base="xs:NMTOKEN">
       <xs:enumeration value="no" />
+      <xs:enumeration value="false" />
       <xs:enumeration value="yes" />
+      <xs:enumeration value="true" />
       <xs:enumeration value="button" />
     </xs:restriction>
   </xs:simpleType>
@@ -13853,7 +13855,9 @@
     <xs:restriction base="xs:NMTOKEN">
       <xs:enumeration value="default" />
       <xs:enumeration value="no" />
+      <xs:enumeration value="false" />
       <xs:enumeration value="yes" />
+      <xs:enumeration value="true" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="KeepRemoveForceTypeUnion">
