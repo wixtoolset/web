@@ -9,6 +9,7 @@ There are three ways to use WiX v4:
 - [Command-line .NET tool](#nettool)
 - [MSBuild on the command line and CI/CD build systems](#msbuild)
 - [Visual Studio](#vs)
+- [Development builds](#devbuilds)
 
 
 ## Command-line .NET tool {#nettool}
@@ -62,3 +63,14 @@ WiX v4 is available as an MSBuild SDK for building from the command line using `
 
 
 [heatwave]: https://www.firegiant.com/wix/heatwave/
+
+
+## Development builds {#devbuilds}
+
+WiX v4 development builds with all the latest bugfixes are available in a Nuget source repository and can be added with the following command:
+
+```sh
+dotnet nuget add source https://nuget.pkg.github.com/wixtoolset/index.json -n wixtoolset -u <username> -p <access-token>
+```
+
+For more detailed instructions check out this [video](https://youtu.be/2iIjq6zt6z0).
