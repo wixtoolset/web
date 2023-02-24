@@ -13734,7 +13734,7 @@
   </xs:simpleType>
   <xs:simpleType name="WixVersionType">
     <xs:annotation>
-      <xs:documentation>Values of this type will look like: "x.x.x.x" where x is an integer from 0 to 65534.</xs:documentation>
+      <xs:documentation>Values of this type will be a 1-part, 2-part, 3-part or 4-part version number or a semantic version.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
       <xs:pattern value="v?(\d+\.){0,3}\d+(-[\w.\d]+)?||\$\((var\.)?[_A-Za-z][_A-Za-z0-9.]*\)|!\((loc|bind)\.[_A-Za-z][_A-Za-z0-9.]*\)" />
