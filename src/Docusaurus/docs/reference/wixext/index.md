@@ -63,8 +63,8 @@ You might need to specify a version for WiX extension packages (such as when the
 
 ```xml
 <ItemGroup>
-  <PackageReference Include="WixToolset.Bal.wixext" Version="4.0.0-rc.2" />
-  <PackageReference Include="WixToolset.Util.wixext" Version="4.0.0-rc.2" />
+  <PackageReference Include="WixToolset.Bal.wixext" Version="4.0.0-rc.3" />
+  <PackageReference Include="WixToolset.Util.wixext" Version="4.0.0-rc.3" />
 </ItemGroup>
 ```
 
