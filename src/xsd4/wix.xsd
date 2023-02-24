@@ -7491,8 +7491,10 @@
   <xs:element name="ServiceConfig">
     <xs:annotation>
       <xs:documentation>
-                Configures a service being installed or one that already exists. This element's functionality is available starting with MSI 5.0.
-            </xs:documentation>
+        Configures a service being installed or one that already exists. This element's functionality is available starting with MSI 5.0. Howerver, a 
+        [remark indicating the functionality does not work correctly](https://learn.microsoft.com/en-us/windows/win32/msi/msiconfigureservices-action) was added later.
+        Consider using the [util:ServiceConfig element](reference/schema/util/serviceconfig.md) instead.
+      </xs:documentation>
       <xs:appinfo>
         <xse:msiRef table="MsiServiceConfig" href="https://learn.microsoft.com/en-us/windows/win32/msi/msiserviceconfig-table" />
       </xs:appinfo>
