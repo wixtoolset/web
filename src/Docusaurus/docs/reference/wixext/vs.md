@@ -1,5 +1,5 @@
 ---
-sidebar_position: 70
+sidebar_position: 60
 ---
 
 # Visual Studio detection properties and custom actions

@@ -9,15 +9,11 @@ WiX includes a number of utility custom actions in the WixToolset.Util.wixext Wi
 
 ## WixShellExec custom actions
 
-:::warning
-TODO: Resolve custom action suffix variable.
-:::
-
 The WixShellExec family of custom actions lets you launch documents and URL targets using the Windows shell's registered file type associations. A common use is to launch ReadMe files in the user's preferred text editor or Internet URLs in the user's preferred browser. WixShellExec avoids the need to use, for example, `RegistrySearch` to locate the user's default applications. Note that WixShellExecute can only be used as an immediate custom action as it launches an application without waiting for it to close. WixShellExec reads its target from the WixShellExecTarget property, formats it, and then calls [ShellExecute](https://learn.microsoft.com/en-us/windows/win32/api/shellapi/nf-shellapi-shellexecutew) with the formatted value. For example:
 
 ```xml
 <SetProperty Id="WixShellExecTarget" Value="appwiz.cpl" Before="LaunchArpCustomAction" Sequence="execute" />
-<CustomAction Id="LaunchArpCustomAction" BinaryRef="Wix4UtilCA$(UTILCA_ARCH)" DllEntry="WixShellExec" Execute="immediate" Return="check" />
+<CustomAction Id="LaunchArpCustomAction" BinaryRef="Wix4UtilCA_$(sys.BUILDARCHSHORT)" DllEntry="WixShellExec" Execute="immediate" Return="check" />
 
 <InstallExecuteSequence>
   <Custom Action="LaunchArpCustomAction" Before="AppSearch" />
@@ -32,7 +28,7 @@ The WixShellExecBinary custom action is a variant of WixShellExec that extracts 
 ```xml
 <Binary Id="readme.rtf" SourceFile="readme.rtf" />
 <Property Id="WixShellExecBinaryId" Value="readme.rtf" />
-<CustomAction Id="LaunchReadmeCustomAction" BinaryRef="Wix4UtilCA$(UTILCA_ARCH)" DllEntry="WixShellExecBinary" Execute="immediate" Return="check" />
+<CustomAction Id="LaunchReadmeCustomAction" BinaryRef="Wix4UtilCA_$(sys.BUILDARCHSHORT)" DllEntry="WixShellExecBinary" Execute="immediate" Return="check" />
 
 <InstallExecuteSequence>
   <Custom Action="LaunchReadmeCustomAction" Before="AppSearch" />
@@ -46,7 +42,7 @@ The WixUnelevatedShellExec custom action lets you launch a process with "normal"
 
 ```xml
 <Property Id="WixUnelevatedShellExecTarget" Value="https://wixtoolset.org/" />
-<CustomAction Id="LaunchImportantSiteCustomAction" BinaryRef="Wix4UtilCA$(UTILCA_ARCH)" DllEntry="WixUnelevatedShellExec" Execute="immediate" Return="check" />
+<CustomAction Id="LaunchImportantSiteCustomAction" BinaryRef="Wix4UtilCA_$(sys.BUILDARCHSHORT)" DllEntry="WixUnelevatedShellExec" Execute="immediate" Return="check" />
 
 <InstallExecuteSequence>
   <Custom Action="LaunchImportantSiteCustomAction" Before="AppSearch" />
