@@ -27,8 +27,8 @@ The WixUI dialog library contains the following built-in dialog sets that provid
 
 To add a WixUI dialog set to your MSI package:
 
-1. Add a reference to the `WixToolset.UI.wixext` WiX extension.
-2. Add the `WixToolset.UI.wixext` WiX extension namespace to your WiX authoring.
+1. Add a reference to the WixToolset.UI.wixext WiX extension.
+2. Add the WixToolset.UI.wixext WiX extension namespace to your WiX authoring.
 3. Add the `WixUI` element to your WiX authoring.
 
 For example:
@@ -43,5 +43,77 @@ For example:
 ```
 
 ## Localization
+
+### Translated strings
+
+Translated strings are included in WixToolset.UI.wixext for the following cultures:
+
+- ar-SA
+- bg-BG
+- ca-ES
+- cs-CZ
+- da-DK
+- de-DE
+- el-GR
+- en-US
+- es-ES
+- et-EE
+- fi-FI
+- fr-FR
+- he-IL
+- hi-IN
+- hr-HR
+- hu-HU
+- it-IT
+- ja-JP
+- kk-KZ
+- ko-KR
+- lt-LT
+- lv-LV
+- nb-NO
+- nl-NL
+- pl-PL
+- pt-BR
+- pt-PT
+- ro-RO
+- ru-RU
+- sk-SK
+- sl-SI
+- sq-AL
+- sr-Latn-RS
+- sv-SE
+- th-TH
+- tr-TR
+- uk-UA
+- zh-CN
+- zh-HK
+- zh-TW
+
+
+### Using translated error and progress text
+
+By default, WixToolset.UI.wixext does not include any translated Error or ProgressText elements in your packages. To include them, reference the WixUI_ErrorProgressText UI element:
+
+```xml
+<UIRef Id="WixUI_ErrorProgressText" />
+```
+
+
+### Building localized packages that use WixUI
+
+To build a localized package using the Wix.exe command-line tool:
+
+- Add a `-culture` switch with an argument of the culture you want to build. The localized strings for that culture in WixToolset.UI.wixext (if available) will be used.
+
+To build a localized package using a .wixproj MSBuild project:
+
+- Set the `Cultures` property in the .wixproj to a semicolon-delimited list of cultures. For example:
+
+```xml
+<PropertyGroup>
+  <Cultures>en-US;ja-JP</Cultures>
+</PropertyGroup>
+```
+
 
 ## Customizing a dialog set
