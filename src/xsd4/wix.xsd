@@ -2352,7 +2352,7 @@
       <xs:attribute name="ProductCode" type="AutogenGuid">
         <xs:annotation>
           <xs:documentation>
-            Optional ProductCode GUID for the package. By default, a new ProductCode will be 
+            Optional ProductCode GUID for the package. By default, a new ProductCode will be
             generated with every build enabling major upgrades.
           </xs:documentation>
         </xs:annotation>
@@ -6851,7 +6851,7 @@
         <xse:msiRef table="Registry" href="https://learn.microsoft.com/en-us/windows/win32/msi/registry-table" />
         <xse:msiRef table="AppId" href="http://msdn.microsoft.com/library/aa367566.aspx" />
         <xse:remarks>
-          When being used in unadvertised mode, the attributes in the Class element correspond to registry 
+          When being used in unadvertised mode, the attributes in the Class element correspond to registry
           values under the `[HKCR\CLSID\{'{'}Id{'}'}]` and `[HKCR\CLSID\{'{'}Id{'}'}\Context]` keys as follows:
 
           - `Id, Context`: [HKCR\CLSID\{'{'}Id{'}'}\Context]
@@ -7698,7 +7698,7 @@
       </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
-      <xs:attribute name="Id" type="xs:string" use="required">
+      <xs:attribute name="Id" type="xs:string">
         <xs:annotation>
           <xs:documentation>Unique identifier for environment entry.</xs:documentation>
         </xs:annotation>
