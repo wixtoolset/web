@@ -64,6 +64,12 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      announcementBar: {
+        content: '<span style="font-size:16px">WiX v4 is almost here! <a style="text-decoration-line:none;border-bottom:1px solid" href="https://www.firegiant.com/services/conversion-offer/?utm_source=wixtoolset.org&utm_medium=Display&utm_campaign=conversion_offer&utm_term=let+firegiant+help&utm_content=announcement_bar">Let FireGiant help.</a></span>',
+        backgroundColor: '#ffcc00',
+        textColor: '#000',
+        isCloseable: false,
+      },
       navbar: {
         title: 'WiX Toolset',
         logo: {
@@ -75,7 +81,7 @@ const config = {
           { to: '/news', label: 'News', position: 'right' },
           { type: 'doc', docId: 'intro', label: 'Docs', position: 'right' },
           { href: 'https://github.com/wixtoolset/', label: 'GitHub', position: 'right' },
-          { href: 'https://www.firegiant.com/services/', label: 'Enterprise', position: 'right'},
+          { href: 'https://www.firegiant.com/services/?utm_source=wixtoolset.org&utm_medium=Display&utm_term=enterprise+support&utm_content=header', label: 'Enterprise Support', position: 'right'},
         ],
       },
       footer: {
@@ -86,7 +92,7 @@ const config = {
               {
                 html: `
                   <p class="footer_label">Support provided by</p>
-                  <a href="https://www.firegiant.com/">
+                  <a href="https://www.firegiant.com/?utm_source=wixtoolset.org&utm_medium=Display&utm_content=footer">
                     <img src="/img/firegiant.png" alt="FireGiant" />
                   </a>
 
