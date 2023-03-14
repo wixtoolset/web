@@ -7,7 +7,7 @@ sidebar_position: 3
 :::info
 TODO: WiX v4 documentation is under development.
 :::
- 
+
 A lot about WiX has changed between v3 and v4 but the nuts and bolts of authoring .wxs files will appear very similar. Here are some higher-level things that have changed:
 
 - WiX v4 doesn't have to be installed on every dev machine and build image like WiX v3. Instead, WiX v4 follows the modern .NET model of using NuGet to deliver tools.
@@ -122,6 +122,45 @@ Other references to WiX custom actions must use the full id, including prefix an
 
 
 ### Converting custom WixUI dialog sets
+
+Because of [WiX v4's support for platform-specific custom actions](#customactionids), customizing WixUI dialog sets, especially when adding and removing dialogs, requires some care. [The WixUI documentation describes what to do when creating a new custom dialog set.](./reference/wixext/wixui/#addingremovingdialogs) You'll want to make the same kind of change when converting a custom dialog set you created using WiX v3 to WiX v4. The key point is to isolate any `DoAction` control events that call custom actions to create platform-specific variants. WixUI itself does this using a preprocessor `?foreach?` processing instruction to create three fragments, one each for x86, x64, and Arm64 platforms. Each of those fragments references the platform-neutral `UI`. You can see the WixUI definitions [on GitHub](https://github.com/wixtoolset/wix4/tree/develop/src/ext/UI/wixlib). Here's what a customized dialog set based on WixUI_InstallDir looks like:
+
+```xml
+<?foreach WIXUIARCH in X86;X64;A64 ?>
+<Fragment>
+    <UI Id="InstallDir_SpecialDlg_$(WIXUIARCH)">
+        <Publish
+          Dialog="LicenseAgreementDlg"
+          Control="Print"
+          Event="DoAction"
+          Value="WixUIPrintEula_$(WIXUIARCH)"
+          />
+        <Publish
+          Dialog="BrowseDlg"
+          Control="OK"
+          Event="DoAction"
+          Value="WixUIValidatePath_$(WIXUIARCH)"
+          Order="3"
+          Condition="NOT WIXUI_DONTVALIDATEPATH"
+          />
+        <Publish
+          Dialog="InstallDirDlg"
+          Control="Next"
+          Event="DoAction"
+          Value="WixUIValidatePath_$(WIXUIARCH)"
+          Order="2"
+          Condition="NOT WIXUI_DONTVALIDATEPATH"
+          />
+    </UI>
+
+    <UIRef Id="InstallDir_SpecialDlg" />
+</Fragment>
+<?endforeach?>
+```
+
+You can see the authoring and test code for this customized dialog set [on GitHub](https://github.com/wixtoolset/wix4/tree/develop/src/ext/UI/test/WixToolsetTest.UI/TestData/InstallDir_SpecialDlg).
+
+When you use the [`WixUI` element](./reference/schema/ui/wixui.md) to reference a WixUI dialog set or a customized dialog set derived from WixUI, it adds a reference to the platform-specific `UI` for the platform of the package being built. The platform-specific `UI` then adds a reference to the platform-neutral `UI`.
 
 
 [heatwave]: https://www.firegiant.com/wix/heatwave/
