@@ -43,6 +43,7 @@ wix build [options] source_file.wxs [source_file.wxs ...]
 | `-bindpath` or `-b` _path_ | Bind path to search for content files. |
 | `-bindpath:target` or `-bt` _path_ | Bind path to search for target package's content files. Only used when building a patch. |
 | `-bindpath:update` or `-bu` _path_ | Bind path to search for update package's content files. Only used when building a patch. |
+| `-bindvariable` or `-bv` _name_=_value_ | Sets a bind-time variable. |
 | `-cabcache` or `-cc` _path_ | Set a folder to cache cabinets across builds. |
 | `-culture` _culture_ | Adds a culture to filter localization files. |
 | `-define` or `-d` _name_=_value_ | Sets a preprocessor variable. |
