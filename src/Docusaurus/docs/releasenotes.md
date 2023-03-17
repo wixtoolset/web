@@ -4,14 +4,13 @@ sidebar_position: 2
 
 # WiX release notes
 
-## WiX v4 Release Candidate 3 {#v4}
+## WiX v4 Release Candidate 4 {#v4}
 
-> Release Candidate 3 released Friday, 24-February-2023
+> Release Candidate 4 released Friday, 17-March-2023
 
-WiX v4 Release Candidate 3 contains [fixes for bugs that were reported during Release Candidate 2](https://github.com/wixtoolset/issues/issues?q=is%3Aissue+project%3Awixtoolset%2Fissues%2F5). There are two minor new features:
+WiX v4 Release Candidate 4 contains [fixes for the -- significantly smaller number of bugs compared to RC3 -- that were reported during Release Candidate 3](https://github.com/wixtoolset/issues/issues?q=is%3Aissue+project%3Awixtoolset%2Fissues%2F6). There is one minor new feature:
 
-- WiX MSBuild projects support multi-targeting other projects with a single `ProjectReference`. You can specify multiple platforms, configurations, .NET frameworks, and runtime identifiers. See [@robmen's WIP](https://github.com/wixtoolset/issues/issues/7241) and [pull request](https://github.com/wixtoolset/wix4/pull/356).
-- A new `sys.BUILDARCHSHORT` built-in preprocessor variable helps handle WiX v4's new architecture-specific custom actions. See [issue 7227](https://github.com/wixtoolset/issues/issues/7227) and [@barnson's PR](https://github.com/wixtoolset/wix4/pull/359).
+- In WixToolset.Netfx.wixext, package groups for .NET Framework v4.8.1 are now available. See [the issue](https://github.com/wixtoolset/issues/issues/7239) and [@barnson's pull request](https://github.com/wixtoolset/wix4/pull/368).
 
 
 ### Update MSBuild projects
@@ -19,14 +18,14 @@ WiX v4 Release Candidate 3 contains [fixes for bugs that were reported during Re
 To update your .wixproj MSBuild projects, update the `Project` element's `Sdk` attribute:
 
 ```xml
-<Project Sdk="WixToolset.Sdk/4.0.0-rc.3">
+<Project Sdk="WixToolset.Sdk/4.0.0-rc.4">
 ```
 
 For `PackageReference`s to WiX v4 extensions, update their `Version` attribute. For example:
 
 ```xml
-<PackageReference Include="WixToolset.Util.wixext" Version="4.0.0-rc.3" />
-<PackageReference Include="WixToolset.Netfx.wixext" Version="4.0.0-rc.3" />
+<PackageReference Include="WixToolset.Util.wixext" Version="4.0.0-rc.4" />
+<PackageReference Include="WixToolset.Netfx.wixext" Version="4.0.0-rc.4" />
 ```
 
 To clean up the NuGet artifacts from previous prereleases of WiX v4, we recommend you delete the `bin` and `obj` directories in your projects. If you're using .NET Framework MSBuild, do an explicit `MSBuild -Restore` to get Release Candidate 2 restored. (Using `dotnet build` does that implicitly for you.)
@@ -37,13 +36,13 @@ To clean up the NuGet artifacts from previous prereleases of WiX v4, we recommen
 To update your [.NET tool](https://learn.microsoft.com/en-us/dotnet/core/tools/global-tools) installation of WiX v4 Release Candidate 2:
 
 ```sh
-dotnet tool update --global wix --version 4.0.0-rc.3
+dotnet tool update --global wix --version 4.0.0-rc.4
 ```
 
 To install WiX for the first time as a .NET tool:
 
 ```sh
-dotnet tool install --global wix --version 4.0.0-rc.3
+dotnet tool install --global wix --version 4.0.0-rc.4
 ```
 
 To verify Wix.exe was successfully installed or updated:
@@ -56,6 +55,15 @@ wix --version
 ### Update HeatWave Community Edition
 
 To upgrade HeatWave Community Edition with support for WiX v4 Release Candidate 3, [see the FireGiant blog post with details](https://www.firegiant.com/blog/2023/2/24/wix-v4-rc3-and-next-heatwave-preview-available/).
+
+## WiX v4 Release Candidate 3 {#v4rc3}
+
+> Release Candidate 3 released Friday, 24-February-2023
+
+WiX v4 Release Candidate 3 contains [fixes for bugs that were reported during Release Candidate 2](https://github.com/wixtoolset/issues/issues?q=is%3Aissue+project%3Awixtoolset%2Fissues%2F5). There are two minor new features:
+
+- WiX MSBuild projects support multi-targeting other projects with a single `ProjectReference`. You can specify multiple platforms, configurations, .NET frameworks, and runtime identifiers. See [@robmen's WIP](https://github.com/wixtoolset/issues/issues/7241) and [pull request](https://github.com/wixtoolset/wix4/pull/356).
+- A new `sys.BUILDARCHSHORT` built-in preprocessor variable helps handle WiX v4's new architecture-specific custom actions. See [issue 7227](https://github.com/wixtoolset/issues/issues/7227) and [@barnson's PR](https://github.com/wixtoolset/wix4/pull/359).
 
 
 ## WiX v4 Release Candidate 2 {#v4rc2}
