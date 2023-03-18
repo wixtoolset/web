@@ -13665,7 +13665,7 @@
       <xs:enumeration value="burn">
         <xs:annotation>
           <xs:documentation>
-                The executable package is another Burn bundle and supports the Burn communication protocol.
+                The executable package implements the Burn communication protocol.
               </xs:documentation>
         </xs:annotation>
       </xs:enumeration>
