@@ -11,7 +11,7 @@ To use WixToolset.VisualStudio.wixext properties or custom actions, you need to 
 
 ## Using WixToolset.VisualStudio.wixext for Visual Studio 2003-2015
 
-To use WixToolset.VisualStudio.wixext properties or custom actions for Visual Studio versions on end-user machines prior to Visual Studio 2017, add [`PropertyRef`](../schema/wxs/propertyref.md) or [`CustomActionRef`](../schema/wxs/customactionref.md) elements for properties or custom actions listed in the following tables that you want to use in your MSI. For example:
+To use WixToolset.VisualStudio.wixext properties or custom actions for Visual Studio versions on end-user machines prior to Visual Studio 2017, add [`PropertyRef`](../../schema/wxs/propertyref.md) or [`CustomActionRef`](../../schema/wxs/customactionref.md) elements for properties or custom actions listed in the following tables that you want to use in your MSI. For example:
 
 ```xml
 <PropertyRef Id="VS2005_ROOT_FOLDER" />
@@ -24,8 +24,8 @@ To use WixToolset.VisualStudio.wixext properties or custom actions for Visual St
 To use WixToolset.VisualStudio.wixext properties or custom actions for Visual Studio 2017 and later on end-user machines:
 
 - Add the `http://wixtoolset.org/schemas/v4/wxs/vs` namespace to your WiX authoring.
-- Add a [`FindVisualStudio` element](../schema/vs/findvisualstudio.md) to your authoring.
-- Add [`PropertyRef`](../schema/wxs/propertyref.md) or [`CustomActionRef`](../schema/wxs/customactionref.md) elements for properties or custom actions listed in the following tables that you want to use in your MSI.
+- Add a [`FindVisualStudio` element](../../schema/vs/findvisualstudio.md) to your authoring.
+- Add [`PropertyRef`](../../schema/wxs/propertyref.md) or [`CustomActionRef`](../../schema/wxs/customactionref.md) elements for properties or custom actions listed in the following tables that you want to use in your MSI.
 
 For example:
 
@@ -104,8 +104,8 @@ For example:
 | VJSHARP2005InstallVSTemplates | Runs vjsexpress.exe /InstallVSTemplates if Visual J# 2005 Express Edition is found on the system. Including this custom action automatically adds the VJSHARP2005EXPRESS_IDE property. |
 | VWD2005Setup | Runs vwdexpress.exe /setup if Visual Web Developer 2005 Express Edition is found on the system. Including this custom action automatically adds the VWD2005EXPRESS_IDE property. |
 | VWD2005InstallVSTemplates | Runs vwdexpress.exe /InstallVSTemplates if Visual Web Developer 2005 Express Edition is found on the system. Including this custom action automatically adds the VWD2005EXPRESS_IDE property. |
- 
- 
+
+
 ## Visual Studio 2008 properties and custom actions
 
 | Property | Description |
@@ -131,7 +131,7 @@ For example:
 | VCSHARP90EXPRESS_SP1 | Indicates whether service pack 1 for Visual C# 2008 Express Edition is installed. |
 | VWD90EXPRESS_SP1 | Indicates whether service pack 1 for Visual Web Developer 2008 Express Edition is installed. |
 | DEXPLORE_2008_INSTALLED | Indicates whether the Document Explorer 2008 runtime components package is installed on the system. |
- 
+
 | Custom action | Description |
 | ------------- | ----------- |
 | VS90Setup | Runs devenv.exe /setup if Visual Studio 2008 Standard Edition or higher is found on the system. Including this custom action automatically adds the VS90DEVENV property. |
@@ -144,7 +144,7 @@ For example:
 | VCSHARP90InstallVSTemplates | Runs vcsexpress.exe /InstallVSTemplates if Visual C# 2008 Express Edition is found on the system. Including this custom action automatically adds the VCSHARP90EXPRESS_IDE property. |
 | VWD90Setup | Runs vwdexpress.exe /setup if Visual Web Developer 2008 Express Edition is found on the system. Including this custom action automatically adds the VWD90EXPRESS_IDE property. |
 | VWD90InstallVSTemplates | Runs vwdexpress.exe /InstallVSTemplates if Visual Web Developer 2008 Express Edition is found on the system. Including this custom action automatically adds the VWD90EXPRESS_IDE property. |
- 
+
 
 ## Visual Studio 2010 properties and custom actions
 
@@ -171,7 +171,7 @@ For example:
 | VS2010_IDE_MODELING_PROJECTSYSTEM_INSTALLED | Indicates whether the Visual Studio 2010 Modeling project system is installed on the system. |
 | VS2010_IDE_FSHARP_PROJECTSYSTEM_INSTALLED | Indicates whether the Visual Studio 2010 F# project system is installed on the system. |
 | VS2010_BOOTSTRAPPER_PACKAGE_FOLDER | The location of the Visual Studio 2010 bootstrapper package folder. |
- 
+
 | Custom action | Description |
 | ------------- | ----------- |
 | VS2010Setup | Runs devenv.exe /setup if Visual Studio 2010 Standard Edition or higher is found on the system. Including this custom action automatically adds the VS2010DEVENV property. |
@@ -186,7 +186,7 @@ For example:
 | VWD2010InstallVSTemplates | Runs vwdexpress.exe /InstallVSTemplates if Visual Web Developer 2010 Express Edition is found on the system. Including this custom action automatically adds the VWD2010EXPRESS_IDE property. |
 | VPD2010Setup | Runs vpdexpress.exe /setup if Visual Studio 2010 Express for Windows Phone is found on the system. Including this custom action automatically adds the VPD2010EXPRESS_IDE property. |
 | VPD2010InstallVSTemplates | Runs vpdexpress.exe /InstallVSTemplates if Visual Studio 2010 Express for Windows Phone is found on the system. Including this custom action automatically adds the VPD2010EXPRESS_IDE property. |
- 
+
 
 ## Visual Studio 2012 properties and custom actions
 
@@ -221,7 +221,7 @@ For example:
 | VS2012WinExpressInstallVSTemplates | Runs vswinexpress.exe /InstallVSTemplates if Visual Studio Express 2012 for Windows 8 is found on the system. Including this custom action automatically adds the VS2012WINEXPRESS_IDE property. |
 | VPD2012Setup | Runs vpdexpress.exe /setup if Visual Studio 2012 Express for Windows Phone is found on the system. Including this custom action automatically adds the VPD2012EXPRESS_IDE property. |
 | VPD2012InstallVSTemplates | Runs vpdexpress.exe /InstallVSTemplates if Visual Studio 2012 Express for Windows Phone is found on the system. Including this custom action automatically adds the VPD2012EXPRESS_IDE property. |
- 
+
 
 ## Visual Studio 2013 properties and custom actions
 
@@ -279,7 +279,7 @@ For example:
 | VS2015_IDE_MODELING_PROJECTSYSTEM_INSTALLED | Indicates whether the Visual Studio 2015 Modeling project system is installed on the system. |
 | VS2015_IDE_FSHARP_PROJECTSYSTEM_INSTALLED | Indicates whether the Visual Studio 2015 F# project system is installed on the system. |
 | VS2015_BOOTSTRAPPER_PACKAGE_FOLDER | The location of the Visual Studio 2015 bootstrapper package folder. |
- 
+
 | Custom action | Description |
 | ------------- | ----------- |
 | VS2015Setup | Runs devenv.exe /setup if Visual Studio 2015 Professional Edition or higher is found on the system. Including this custom action automatically adds the VS2013DEVENV property. |
@@ -305,7 +305,7 @@ For example:
 | VS2017_IDE_MODELING_PROJECTSYSTEM_INSTALLED | Indicates whether the Visual Studio 2017 Modeling project system is installed on the system. |
 | VS2017_IDE_FSHARP_PROJECTSYSTEM_INSTALLED | Indicates whether the Visual Studio 2017 F# project system is installed on the system. |
 | VS2017_BOOTSTRAPPER_PACKAGE_FOLDER | The location of the Visual Studio 2017 bootstrapper package folder. |
- 
+
 | Custom action | Description |
 | ------------- | ----------- |
 | VS2017Setup | Runs devenv.exe /setup if Visual Studio 2017 Community Edition or higher is found on the system. Including this custom action automatically adds the VS2017DEVENV property. |
@@ -357,7 +357,7 @@ For example:
 | VS2022_IDE_MODELING_PROJECTSYSTEM_INSTALLED | Indicates whether the Visual Studio 2022 Modeling project system is installed on the system. |
 | VS2022_IDE_FSHARP_PROJECTSYSTEM_INSTALLED | Indicates whether the Visual Studio 2022 F# project system is installed on the system. |
 | VS2022_BOOTSTRAPPER_PACKAGE_FOLDER | The location of the Visual Studio 2022 bootstrapper package folder. |
- 
+
 | Custom action | Description |
 | ------------- | ----------- |
 | VS2022Setup | Runs devenv.exe /setup if Visual Studio 2022 Community Edition or higher is found on the system. Including this custom action automatically adds the VS2022DEVENV property. |

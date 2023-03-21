@@ -4,7 +4,7 @@ sidebar_position: 40
 
 # Windows information custom actions
 
-The [QueryWindowsDirectories](reference/schema/util/querywindowsdirectories.md), [QueryWindowsDriverInfo](reference/schema/util/querywindowsdriverinfo.md), [QueryWindowsSuiteInfo](reference/schema/util/querywindowssuiteinfo.md), and [QueryWindowsWellKnownSIDs](reference/schema/util/querywindowswellknownsids.md) elements in the [Util schema](reference/schema/util/index.md) schedule custom actions that query the system and set properties based on those queries.
+The [QueryWindowsDirectories](../../schema/util/querywindowsdirectories.md), [QueryWindowsDriverInfo](../../schema/util/querywindowsdriverinfo.md), [QueryWindowsSuiteInfo](../../schema/util/querywindowssuiteinfo.md), and [QueryWindowsWellKnownSIDs](../../schema/util/querywindowswellknownsids.md) elements in the [Util schema](../../schema/util/index.md) schedule custom actions that query the system and set properties based on those queries.
 
 
 ## QueryWindowsDirectories properties {#querywindowsdirectories}

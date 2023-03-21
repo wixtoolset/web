@@ -1,5 +1,5 @@
 ---
-sidebar_position: 70
+sidebar_position: 40
 ---
 
 # WiX extensions and custom actions
@@ -10,21 +10,21 @@ The following WiX extensions are provided by the WiX team:
 
 | Extension | Documentation |
 | --------- | ------------- |
-| WixToolset.Bal.wixext | [Bal schema](reference/schema/bal/index.md) |
-| WixToolset.ComPlus.wixext | [Complus schema](reference/schema/complus/index.md) |
-| WixToolset.Dependency.wixext | [Dependency schema](reference/schema/dependency/index.md) |
-| WixToolset.DifxApp.wixext | [Difxapp schema](reference/schema/difxapp/index.md) |
-| WixToolset.DirectX.wixext | [Directx schema](reference/schema/directx/index.md) |
-| WixToolset.Firewall.wixext | [Firewall schema](reference/schema/firewall/index.md) |
-| WixToolset.Http.wixext | [Http schema](reference/schema/http/index.md) |
-| WixToolset.Iis.wixext | [Iis schema](reference/schema/iis/index.md) |
-| WixToolset.Msmq.wixext | [Msmq schema](reference/schema/msmq/index.md) |
-| WixToolset.Netfx.wixext | [Netfx schema](reference/schema/netfx/index.md) |
-| WixToolset.PowerShell.wixext | [Powershell schema](reference/schema/powershell/index.md) |
-| WixToolset.Sql.wixext | [Sql schema](reference/schema/sql/index.md) |
-| WixToolset.UI.wixext | [UI schema](reference/schema/ui/index.md) |
-| WixToolset.Util.wixext | [Util schema](reference/schema/util/index.md) |
-| WixToolset.VisualStudio.wixext | [Vs schema](reference/schema/vs/index.md) |
+| WixToolset.Bal.wixext | [Bal schema](../../schema/bal/index.md) |
+| WixToolset.ComPlus.wixext | [Complus schema](../../schema/complus/index.md) |
+| WixToolset.Dependency.wixext | [Dependency schema](../../schema/dependency/index.md) |
+| WixToolset.DifxApp.wixext | [Difxapp schema](../../schema/difxapp/index.md) |
+| WixToolset.DirectX.wixext | [Directx schema](../../schema/directx/index.md) |
+| WixToolset.Firewall.wixext | [Firewall schema](../../schema/firewall/index.md) |
+| WixToolset.Http.wixext | [Http schema](../../schema/http/index.md) |
+| WixToolset.Iis.wixext | [Iis schema](../../schema/iis/index.md) |
+| WixToolset.Msmq.wixext | [Msmq schema](../../schema/msmq/index.md) |
+| WixToolset.Netfx.wixext | [Netfx schema](../../schema/netfx/index.md) |
+| WixToolset.PowerShell.wixext | [Powershell schema](../../schema/powershell/index.md) |
+| WixToolset.Sql.wixext | [Sql schema](../../schema/sql/index.md) |
+| WixToolset.UI.wixext | [UI schema](../../schema/ui/index.md) |
+| WixToolset.Util.wixext | [Util schema](../../schema/util/index.md) |
+| WixToolset.VisualStudio.wixext | [Vs schema](../../schema/vs/index.md) |
 
 
 ## Using extensions

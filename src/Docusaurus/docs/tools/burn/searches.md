@@ -8,12 +8,12 @@ Searches are used to detect if the target machine meets certain conditions. The 
 
 The following searches are available:
 
-- [ComponentSearch](../schema/util/componentsearch.md)
-- [DirectorySearch](../schema/util/directorysearch.md)
-- [FileSearch](../schema/util/filesearch.md)
-- [ProductSearch](../schema/util/productsearch.md)
-- [RegistrySearch](../schema/util/registrysearch.md)
-- [WindowsFeatureSearch](../schema/util/windowsfeaturesearch.md)
+- [ComponentSearch](../../schema/util/componentsearch.md)
+- [DirectorySearch](../../schema/util/directorysearch.md)
+- [FileSearch](../../schema/util/filesearch.md)
+- [ProductSearch](../../schema/util/productsearch.md)
+- [RegistrySearch](../../schema/util/registrysearch.md)
+- [WindowsFeatureSearch](../../schema/util/windowsfeaturesearch.md)
 
 A search can be dependent on the result of another search. To order searches, use the `After` attribute to schedule a search to take place after another search, when the variable from the first search has a value with the results of that search.
 
@@ -29,7 +29,7 @@ Here are some examples:
     Result="value"
     Bitness="always64" />
 
-<util:ProductSearch 
+<util:ProductSearch
     Id="ProductSearchId"
     Variable="ProductSearchVariable"
     UpgradeCode="{8C74C610-AB2A-4BFB-9FC6-8683A9100424}"

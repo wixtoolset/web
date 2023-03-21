@@ -20,8 +20,8 @@
 
   <Target Name="GenerateDocumentation" BeforeTargets="AfterBuild">
     <Message Text="Generating schema reference..." Importance="high" />
-    <Exec Command="$(OutDir)..\XsdToMarkdown.exe -out $(MSBuildProjectDir)..\Docusaurus\docs\reference\schema $(MSBuildProjectDir)..\xsd4\*.xsd" />
-  
+    <Exec Command="$(OutDir)..\XsdToMarkdown.exe -out $(MSBuildProjectDir)..\Docusaurus\docs\schema $(MSBuildProjectDir)..\xsd4\*.xsd" />
+
     <ItemGroup>
       <XmlDocFile Include="$(PkgWixToolset_Data)\lib\netstandard2.0\*.xml" />
       <XmlDocFile Include="$(PkgWixToolset_Extensibility)\lib\netstandard2.0\*.xml" />
@@ -37,6 +37,6 @@
     </ItemGroup>
 
     <Message Text="Generating API reference..." Importance="high" />
-    <Exec Command='$(OutDir)..\XmlDocToMarkdown.exe -title "WiX managed SDK" -out $(MSBuildProjectDir)..\Docusaurus\docs\reference\api @(XmlDocFile)' />
+    <Exec Command='$(OutDir)..\XmlDocToMarkdown.exe -title "WiX managed SDK" -out $(MSBuildProjectDir)..\Docusaurus\docs\api @(XmlDocFile)' />
   </Target>
 </Project>

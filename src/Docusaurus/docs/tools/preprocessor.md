@@ -1,5 +1,5 @@
 ---
-sidebar_position: 10
+sidebar_position: 60
 ---
 
 # Preprocessor
@@ -15,7 +15,7 @@ The WiX preprocessor lets you use variables in your WiX authoring, share fragmen
 
 ## Include files
 
-The `<?include?>` processing instruction inserts the contents of the specified file into the XML that is then passed to the WiX compiler. 
+The `<?include?>` processing instruction inserts the contents of the specified file into the XML that is then passed to the WiX compiler.
 
 The root element of the include file must be `Include`. The content within the `Include` element are inserted into the XML, replacing the `<?include?>` processing instruction.
 
@@ -68,14 +68,14 @@ Variable names are case-sensitive.
 To define a variable but not give it a value:
 
 ```xml
-<?define MyVariable ?> 
+<?define MyVariable ?>
 ```
 
 To define a variable and give it a value:
 
 ```xml
 <?define MyVariable = "Hello World" ?>
-<?define MyVariable = "$(otherVariableContainingSpaces)" ?> 
+<?define MyVariable = "$(otherVariableContainingSpaces)" ?>
 <?define MyVariable = "$(BuildPath)\x86\bin\" ?>
 ```
 
@@ -88,7 +88,7 @@ We recommend quoting values, though the quotes can be omitted if the value is a 
 To undefine a variable:
 
 ```xml
-<?undef MyVariable ?> 
+<?undef MyVariable ?>
 ```
 
 To refer to a variable's value:
@@ -137,7 +137,7 @@ Conditional blocks always begin with `<?if?>`, `<?ifdef?>`, or `<?ifndef ?>`, fo
 
 The expressions used with `<?if?>` and `<?elseif?>` is a Boolean expression evaluated according to the following rules:
 
-- The expression is evaluated left to right 
+- The expression is evaluated left to right
 - Expressions are case-sensitive with the following exceptions:
   - Environment variable names
   - The keywords `and`, `or`, and `not`
@@ -145,17 +145,17 @@ The expressions used with `<?if?>` and `<?elseif?>` is a Boolean expression eval
 - All variables must use the `$()` syntax or they will be considered a literal value.
 - To use a literal `$(`, escape the `$` with a second one: `$$(`
 - Variables can be compared to a literal or another variable:
-  - Comparisons with `=`, `!=`, and `~=` are string comparisons. 
+  - Comparisons with `=`, `!=`, and `~=` are string comparisons.
   - Comparisons with relational operators (`<`, `<=`, `>`, `>=`) can only be performed on integer values.
-  - If the variable doesn't exist, evaluation will fail and an error will be raised. 
-- The operator precedence is as follows: 
+  - If the variable doesn't exist, evaluation will fail and an error will be raised.
+- The operator precedence is as follows:
   1. `""`
   2. `()`, `$()`
   3. `<`, `>`, `<=`, `>=`, `=`, `!=`, `~=`
   4. `Not`
-  5. `And`, `Or` 
+  5. `And`, `Or`
 - Parentheses can be nested.
-- Literals can be surrounded by quotes, although quotes are not required. 
+- Literals can be surrounded by quotes, although quotes are not required.
 - Quotes and leading and trailing whitespace are stripped off literal values.
 - Invalid expressions result in a preprocessor failure.
 
@@ -207,7 +207,7 @@ For example:
 There is a single iteration processing instruction:
 
 ```xml
-<?foreach variable-name in semi-colon-delimited-list ?> 
+<?foreach variable-name in semi-colon-delimited-list ?>
   ...
 <?endforeach?>
 ```
@@ -240,7 +240,7 @@ The preprocessor treats the `$` character in a special way if it is followed by 
 The preprocessor supports the following functions:
 
 ```xml
-$(fun.AutoVersion(x.y)) 
+$(fun.AutoVersion(x.y))
 ```
 
-Gets an auto generated version number using the same scheme as .NET AssemblyVersion attribute. The parameters x.y specify the major and minor verion number. The build number is set to the number of days since 1/1/2000 and revision to the number of seconds since midnight divided by 2. Both values are calculated using UTC. 
+Gets an auto generated version number using the same scheme as .NET AssemblyVersion attribute. The parameters x.y specify the major and minor verion number. The build number is set to the number of days since 1/1/2000 and revision to the number of seconds since midnight divided by 2. Both values are calculated using UTC.

@@ -8,6 +8,6 @@ build/
 launchSettings.json
 msbuild.binlog
 
-src/Docusaurus/docs/reference/schema
-src/Docusaurus/docs/reference/api
+src/Docusaurus/docs/schema
+src/Docusaurus/docs/api
 

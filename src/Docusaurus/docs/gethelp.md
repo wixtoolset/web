@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 40
 ---
 
 # Get help
@@ -12,9 +12,9 @@ sidebar_position: 5
 
 ## Discussions forum {#forum}
 
-There is also a [Discussion forum on GitHub][ghtalk] that is an experiment. If 
-we find that users prefer the forum over the mailing lists, we will remove the 
-experimental status. At the moment, the Discussions forum gets less traffic 
+There is also a [Discussion forum on GitHub][ghtalk] that is an experiment. If
+we find that users prefer the forum over the mailing lists, we will remove the
+experimental status. At the moment, the Discussions forum gets less traffic
 than the mailing list so the experiment continues.
 
 
