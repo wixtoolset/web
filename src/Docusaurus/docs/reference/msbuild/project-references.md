@@ -6,6 +6,10 @@ sidebar_position: 2
 
 `ProjectReference` items to other projects are an MSBuild mechanism to ensure that a dependency project is built before the project that depends on it. For example, a .wixproj project depends on a .csproj project to ensure that the application to be installed is built before the .wixproj that installs it.  The WiX MSBuild targets extend `ProjectReference`s to create bind paths and preprocessor variables that contain useful information about dependency projects.
 
+:::note
+Project names that are not identifiers will have invalid characters replaced with underscores. Identifiers begin with a letter or underscore and optionally followed by alphanumeric, underscores, and/or period characters. For example, `My Exe.csproj` contains a space that will be replaced and `My_Exe` will be used as the bindpath and preprocessor variable name.
+:::
+
 
 ## Bind paths
 
