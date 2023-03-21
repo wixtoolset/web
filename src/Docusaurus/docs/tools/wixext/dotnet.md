@@ -18,13 +18,13 @@ Documentation is provided here for WixToolset.Netfx.wixext functionality for cur
 
 ### Native-image generation
 
-The [NativeImage element](../schema/netfx/nativeimage.md) marks a file to have the WixToolset.Netfx.wixext custom actions invoke the [.NET Framework NGen tool](https://learn.microsoft.com/en-us/dotnet/framework/tools/ngen-exe-native-image-generator) during installation.
+The [NativeImage element](../../schema/netfx/nativeimage.md) marks a file to have the WixToolset.Netfx.wixext custom actions invoke the [.NET Framework NGen tool](https://learn.microsoft.com/en-us/dotnet/framework/tools/ngen-exe-native-image-generator) during installation.
 
 ```xml
 <Wix
-  xmlns="http://wixtoolset.org/schemas/v4/wxs" 
+  xmlns="http://wixtoolset.org/schemas/v4/wxs"
   xmlns:netfx="http://wixtoolset.org/schemas/v4/wxs/netfx">
-  
+
   <Fragment>
     <Component>
       <File Source="Important.exe">
@@ -40,7 +40,7 @@ The [NativeImage element](../schema/netfx/nativeimage.md) marks a file to have t
 
 ### .NET Framework detection properties for MSI packages
 
-WixToolset.Netfx.wixext also includes a set of properties that can be used to detect the presence of various versions of the .NET Framework. 
+WixToolset.Netfx.wixext also includes a set of properties that can be used to detect the presence of various versions of the .NET Framework.
 
 The following properties let you detect a particular minimum version of .NET Framework 4.x releases that are in-place updates (rather than installed side-by-side with older releases).
 
@@ -187,8 +187,8 @@ WixToolset.Netfx.wixext supports these elements to detect .NET in packages:
 
 | Element | Description |
 | ------- | ----------- |
-| [`DotNetCompatibilityCheck`](../schema/netfx/dotnetcompatibilitycheck.md) | Sets a property to a value indicating whether an appropriate version of the .NET runtime is already installed on the machine. |
-| [`DotNetCompatibilityCheckRef`](../schema/netfx/dotnetcompatibilitycheckref.md) | References a `DotNetCompatibilityCheck` defined elsewhere. |
+| [`DotNetCompatibilityCheck`](../../schema/netfx/dotnetcompatibilitycheck.md) | Sets a property to a value indicating whether an appropriate version of the .NET runtime is already installed on the machine. |
+| [`DotNetCompatibilityCheckRef`](../../schema/netfx/dotnetcompatibilitycheckref.md) | References a `DotNetCompatibilityCheck` defined elsewhere. |
 
 For example:
 
@@ -197,7 +197,7 @@ For example:
   Property="DOTNETRUNTIMECHECK"
   RollForward="major"
   RuntimeType="desktop"
-  Version="6.0.0.0" 
+  Version="6.0.0.0"
   />
 ```
 
@@ -208,12 +208,12 @@ WixToolset.Netfx.wixext supports these elements to detect .NET in bundles:
 
 | Element | Description |
 | ------- | ----------- |
-| [`DotNetCoreSdkFeatureBandSearch`](../schema/netfx/dotnetcoresdkfeaturebandsearch.md) | Sets a variable to the latest installed version of the specified .NET SDK by [feature band](https://learn.microsoft.com/en-us/dotnet/core/releases-and-support#feature-bands-sdk-only). |
-| [`DotNetCoreSdkFeatureBandSearchRef`](../schema/netfx/dotnetcoresdkfeaturebandsearchref.md) | References a `DotNetCoreSdkFeatureBandSearch` defined elsewhere. | 
-| [`DotNetCoreSdkSearch`](../schema/netfx/dotnetcoresdksearch.md) | Sets a variable to the latest installed version of the specified .NET SDK. |
-| [`DotNetCoreSdkSearchRef`](../schema/netfx/dotnetcoresdksearchref.md) | References a `DotNetCoreSdkSearch` defined elsewhere. |
-| [`DotNetCoreSearch`](../schema/netfx/dotnetcoresearch.md) | Sets a variable to the latest installed version of the specified .NET runtime type. |
-| [`DotNetCoreSearchRef`](../schema/netfx/dotnetcoresearchref.md) | References a `DotNetCoreSearch` defined elsewhere. |
+| [`DotNetCoreSdkFeatureBandSearch`](../../schema/netfx/dotnetcoresdkfeaturebandsearch.md) | Sets a variable to the latest installed version of the specified .NET SDK by [feature band](https://learn.microsoft.com/en-us/dotnet/core/releases-and-support#feature-bands-sdk-only). |
+| [`DotNetCoreSdkFeatureBandSearchRef`](../../schema/netfx/dotnetcoresdkfeaturebandsearchref.md) | References a `DotNetCoreSdkFeatureBandSearch` defined elsewhere. |
+| [`DotNetCoreSdkSearch`](../../schema/netfx/dotnetcoresdksearch.md) | Sets a variable to the latest installed version of the specified .NET SDK. |
+| [`DotNetCoreSdkSearchRef`](../../schema/netfx/dotnetcoresdksearchref.md) | References a `DotNetCoreSdkSearch` defined elsewhere. |
+| [`DotNetCoreSearch`](../../schema/netfx/dotnetcoresearch.md) | Sets a variable to the latest installed version of the specified .NET runtime type. |
+| [`DotNetCoreSearchRef`](../../schema/netfx/dotnetcoresearchref.md) | References a `DotNetCoreSearch` defined elsewhere. |
 
 For example:
 

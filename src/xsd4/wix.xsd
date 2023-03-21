@@ -2252,7 +2252,7 @@
       </xs:documentation>
       <xs:appinfo>
         <xse:remarks>
-          <html:p>You can specify any valid Windows code page by integer like 1252, or by web name like Windows-1252. See [Code Pages](reference/codepage.md) for more information.</html:p>
+          <html:p>You can specify any valid Windows code page by integer like 1252, or by web name like Windows-1252. See [Code pages](../../tools/codepage.md) for more information.</html:p>
         </xse:remarks>
       </xs:appinfo>
     </xs:annotation>
@@ -2479,7 +2479,7 @@
         <xs:annotation>
           <xs:documentation>
             The code page integer value or web name for the resulting MSM. You can specify any valid Windows
-            code by by integer like 1252, or by web name like Windows-1252. See [Code pages](reference/codepage.md)
+            code by by integer like 1252, or by web name like Windows-1252. See [Code pages](../../tools/codepage.md)
             for more information.
           </xs:documentation>
         </xs:annotation>
@@ -2778,7 +2778,7 @@
             </xs:documentation>
       <xs:appinfo>
         <xse:remarks>
-          <html:p>You can specify any valid Windows code by by integer like 1252, or by web name like Windows-1252. See [Code pages](reference/codepage.md) for more information.</html:p>
+          <html:p>You can specify any valid Windows code by by integer like 1252, or by web name like Windows-1252. See [Code pages](../../tools/codepage.md) for more information.</html:p>
           <html:p>The ClientPatchId attribute allows you to specify an easily referenced identity that you can use in product authoring. This identity prefixes properties added by WiX to a patch transform, such as <html:i>ClientPatchId</html:i>.PatchCode and <html:i>ClientPatchId</html:i>.AllowRemoval. If the patch code GUID is auto-generated you could not reference any properties using this auto-generated prefix.</html:p>
           <html:p>For example, if you were planning to ship a patch referred to as "QFE1" and needed to write your own registry values for Add/Remove Programs in product authoring such as the UninstallString for this patch, you could author a RegistryValue with the name UninstallString and the value <html:code>[SystemFolder]msiexec.exe /package [ProductCode] /uninstall [QFE1.PatchCode]</html:code>. In your patch authoring you would then set ClientPatchId to "QFE1" and WiX will add the QFE1.PatchCode property to the patch transform when the patch is created. If the Id attribute specified the patch code to be generated automatically, you could not reference the <html:i>prefix</html:i>.PatchCode property as shown above.</html:p>
           <html:p>The summary information is automatically populated from attribute values of the Patch element including the code page. If you want to override some of these summary information properties or use a different code page for the summary information itself, author the PatchInformation element.</html:p>
@@ -3222,7 +3222,7 @@
             </xs:documentation>
       <xs:appinfo>
         <xse:remarks>
-          <html:p>You can specify any valid Windows code by by integer like 1252, or by web name like Windows-1252. See [Code pages](reference/codepage.md) for more information.</html:p>
+          <html:p>You can specify any valid Windows code by by integer like 1252, or by web name like Windows-1252. See [Code pages](../../tools/codepage.md) for more information.</html:p>
         </xse:remarks>
       </xs:appinfo>
     </xs:annotation>
@@ -3290,7 +3290,7 @@
       <xs:documentation>Properties about the patch to be placed in the Summary Information Stream. These are visible from COM through the IStream interface, and these properties can be seen on the package in Explorer.</xs:documentation>
       <xs:appinfo>
         <xse:remarks>
-          <html:p>You can specify any valid Windows code by by integer like 1252, or by web name like Windows-1252. See [Code pages](reference/codepage.md) for more information.</html:p>
+          <html:p>You can specify any valid Windows code by by integer like 1252, or by web name like Windows-1252. See [Code pages](../../tools/codepage.md) for more information.</html:p>
         </xse:remarks>
       </xs:appinfo>
     </xs:annotation>
@@ -3857,7 +3857,7 @@
       </xs:documentation>
       <xs:appinfo>
         <xse:remarks>
-          <html:p>You can specify any valid Windows code by by integer like 1252, or by web name like Windows-1252. See [Code pages](reference/codepage.md) for more information.</html:p>
+          <html:p>You can specify any valid Windows code by by integer like 1252, or by web name like Windows-1252. See [Code pages](../../tools/codepage.md) for more information.</html:p>
         </xse:remarks>
       </xs:appinfo>
     </xs:annotation>
@@ -7493,7 +7493,7 @@
       <xs:documentation>
         Configures a service being installed or one that already exists. This element's functionality is available starting with MSI 5.0. However, a
         [remark indicating the functionality does not work correctly](https://learn.microsoft.com/en-us/windows/win32/msi/msiconfigureservices-action) was added later.
-        Consider using the [util:ServiceConfig element](reference/schema/util/serviceconfig.md) instead.
+        Consider using the [util:ServiceConfig element](../../schema/util/serviceconfig.md) instead.
       </xs:documentation>
       <xs:appinfo>
         <xse:msiRef table="MsiServiceConfig" href="https://learn.microsoft.com/en-us/windows/win32/msi/msiserviceconfig-table" />
@@ -13688,7 +13688,7 @@
   </xs:simpleType>
   <xs:simpleType name="Integer">
     <xs:annotation>
-      <xs:documentation>Values of this type must be a non-negative integer or a preprocessor variable with the format `$(Variable)` or `$(var.Variable).</xs:documentation>
+      <xs:documentation>Values of this type must be a non-negative integer or a preprocessor variable with the format `$(Variable)` or `$(var.Variable)`.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
       <xs:pattern value="[\d]+|\$\((var\.)?[_A-Za-z][0-9A-Za-z_.]*\)" />
@@ -14052,7 +14052,7 @@
   </xs:simpleType>
   <xs:simpleType name="DiskIdType">
     <xs:annotation>
-      <xs:documentation>Values of this type must be an integer or the value of one or more preprocessor variables with the format $(var.Variable) where "Variable" is the name of the preprocessor variable.</xs:documentation>
+      <xs:documentation>Values of this type must be an integer or the value of one or more preprocessor variables with the format `$(Variable)` or `$(var.Variable)`.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
       <xs:pattern value="((\d+)|(\$\(\w+\.(\w|[.])+\)))+" />

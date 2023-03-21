@@ -1,12 +1,12 @@
 ---
-sidebar_position: 83
+sidebar_position: 80
 ---
 
 # Windows Installer patches
 
 [Windows Installer patching](https://learn.microsoft.com/en-us/windows/win32/msi/patching) allows you to update an installed product without a full upgrade. Patches contain the differences between an older version of a package (called the target) and the newer version (the update). Because they contain only the differences, patches are typically smaller than the full update package and typically install more quickly.
 
-That said, patching is an advanced topic and requires strict adherence to all the rules that come with Windows Installer. Using [major upgrades with "early" scheduling, such as using the default `Schedule` attribute of the `MajorUpgrade` element](./schema/wxs/majorupgrade.md) is far simpler. [As Bob Arnson discussed way back in 2008:](https://www.joyofsetup.com/2008/12/30/paying-for-upgrades/)
+That said, patching is an advanced topic and requires strict adherence to all the rules that come with Windows Installer. Using [major upgrades with "early" scheduling, such as using the default `Schedule` attribute of the `MajorUpgrade` element](../schema/wxs/majorupgrade.md) is far simpler. [As Bob Arnson discussed way back in 2008:](https://www.joyofsetup.com/2008/12/30/paying-for-upgrades/)
 
 > If you don’t absolutely need to ship patches, you can avoid the costs of minor upgrades by simply using major upgrades. You can remove files without worrying about component-rule violations if you use an “early” scheduling of the RemoveExistingProducts standard action – before or immediately after the InstallInitialize action.
 
@@ -15,7 +15,7 @@ That said, patching is an advanced topic and requires strict adherence to all th
 
 ## Authoring patches
 
-Patch authoring starts with the [`Patch` element](./schema/wxs/patch.md). Attributes supply some metadata about the patch and child elements define the cabinet containing updated files and the target and update packages. The target and update packages can be specified as .wixpdb or as .msi files.
+Patch authoring starts with the [`Patch` element](../schema/wxs/patch.md). Attributes supply some metadata about the patch and child elements define the cabinet containing updated files and the target and update packages. The target and update packages can be specified as .wixpdb or as .msi files.
 
 
 ## Authoring patches using .wixpdb files

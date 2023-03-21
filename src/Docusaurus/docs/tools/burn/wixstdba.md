@@ -13,19 +13,19 @@ WixStdBA is included in the WixToolset.Bal.wixext WiX extension NuGet package. Y
 
 WixStdBA includes several themes to choose between RTF and hyperlinks for licenses and small or large dialogs:
 
-- WixStandardBootstrapperApplication.RtfLicense: A small dialog with the RTF license shown in the welcome dialog 
+- WixStandardBootstrapperApplication.RtfLicense: A small dialog with the RTF license shown in the welcome dialog
 - WixStandardBootstrapperApplication.HyperlinkLicense: A small dialog with an optional hyperlink to the license agreement on the welcome dialog
 - WixStandardBootstrapperApplication.HyperlinkSidebarLicense: A large dialog with an optional hyperlink to the license agreement and larger image on the welcome dialog
 - WixStandardBootstrapperApplication.RtfLargeLicense: A large dialog with the RTF license and optional version number shown in the welcome dialog
 - WixStandardBootstrapperApplication.HyperlinkLargeLicense: A small dialog with an optional hyperlink to the license agreement and optional version number on the welcome dialog
 
-You can specify WixStdBA and a WixStdBA theme using the [`WixStandardBootstrapperApplication` element](../schema/bal/wixstandardbootstrapperapplication.md) under your bundle's [`BootstrapperApplication` element](../schema/wxs/bootstrapperapplication.md):
+You can specify WixStdBA and a WixStdBA theme using the [`WixStandardBootstrapperApplication` element](../../schema/bal/wixstandardbootstrapperapplication.md) under your bundle's [`BootstrapperApplication` element](../../schema/wxs/bootstrapperapplication.md):
 
 ```xml
 <Wix
     xmlns="http://wixtoolset.org/schemas/v4/wxs"
     xmlns:bal="http://wixtoolset.org/schemas/v4/wxs/bal">
-    
+
     <Bundle>
 
         <BootstrapperApplication>
@@ -35,7 +35,7 @@ You can specify WixStdBA and a WixStdBA theme using the [`WixStandardBootstrappe
         </BootstrapperApplication>
 ```
 
-Here are a few of the more interesting attributes available on the [`WixStandardBootstrapperApplication` element](../schema/bal/wixstandardbootstrapperapplication.md):
+Here are a few of the more interesting attributes available on the [`WixStandardBootstrapperApplication` element](../../schema/bal/wixstandardbootstrapperapplication.md):
 
 | Attribute | Description |
 | --------- | ----------- |
@@ -71,7 +71,7 @@ WixStdBA sets the following bundle variables, which you can use in theme files (
 | WixBundleFileVersion | The file version of the bundle .exe |
 | WixStdBALanguageId | The language in effect for the user interface |
 | WixStdBARestartRequired | Set to `1` if a reboot is required (after the setup operation is complete). |
-| WixStdBAShowVersion | Set to `1` if [`WixStandardBootstrapperApplication/@ShowVersion`](../schema/bal/wixstandardbootstrapperapplication.md) was set to `yes`. |
-| WixStdBASuppressOptionsUI | Set to `1` if [`WixStandardBootstrapperApplication/@SuppressOptionsUI`](../schema/bal/wixstandardbootstrapperapplication.md) was set to `yes`. |
-| WixStdBAUpdateAvailable | Set to the highest version of an avalable update specified in the feed pointed to by [`Bundle/@UpdateURL`](../schema/wxs/bundle.md). |
+| WixStdBAShowVersion | Set to `1` if [`WixStandardBootstrapperApplication/@ShowVersion`](../../schema/bal/wixstandardbootstrapperapplication.md) was set to `yes`. |
+| WixStdBASuppressOptionsUI | Set to `1` if [`WixStandardBootstrapperApplication/@SuppressOptionsUI`](../../schema/bal/wixstandardbootstrapperapplication.md) was set to `yes`. |
+| WixStdBAUpdateAvailable | Set to the highest version of an avalable update specified in the feed pointed to by [`Bundle/@UpdateURL`](../../schema/wxs/bundle.md). |
 

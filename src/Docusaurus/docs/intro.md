@@ -34,7 +34,7 @@ wix --version
 ```
 
 ### See also
-- [Wix.exe command-line reference](reference/wixexe.md)
+- [Wix.exe command-line reference](./tools/wixexe.md)
 
 ## MSBuild on the command line and CI/CD build systems {#msbuild}
 
@@ -46,7 +46,7 @@ WiX v4 is available as an MSBuild SDK for building from the command line using `
 ```
 
 ### See also
-- [MSBuild reference](./reference/msbuild/index.md)
+- [MSBuild reference](./tools/msbuild.md)
 
 
 ## Visual Studio {#vs}

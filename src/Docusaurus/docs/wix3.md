@@ -1,5 +1,5 @@
 ---
-sidebar_position: 90
+sidebar_position: 1000
 ---
 
 # WiX v3

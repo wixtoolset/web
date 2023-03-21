@@ -2,7 +2,133 @@
 sidebar_position: 3
 ---
 
-# WiX v4 Bundles for WiX v3 users
+# Frequently-asked questions about upgrading from WiX v3 to WiX v4
+
+:::info
+TODO: WiX v4 documentation is under development.
+:::
+
+## Converting packages
+
+### Converting the `Component/@Win64` attribute
+
+In WiX v3 authoring out in the wild, it's common to find code similar to the following:
+
+```xml
+<?if $(var.Platform) = "x64"?>
+  <?define IsWin64 = yes ?>
+  <?define ProgramFilesFolder = ProgramFiles64Folder ?>
+<?elseif $(var.Platform) = "x86" ?>
+  <?define IsWin64 = no ?>
+  <?define ProgramFilesFolder = ProgramFilesFolder ?>
+<?elseif $(var.Platform) ~= "Arm64" ?>
+  <?define IsWin64 = yes ?>
+  <?define ProgramFilesFolder = ProgramFiles64Folder ?>
+<?endif?>
+```
+
+and then repeated use of the `IsWin64` preprocessor variable:
+
+```xml
+<Component ... Win64="$(var.IsWin64)">
+```
+
+WiX v3 didn't require repeated use of the `Win64` attribute. First noted in [the historical record back in 2010](https://www.joyofsetup.com/2010/05/14/working-hard-or-hardly-working/#manually-marking-package-and-component-bitness), WiX automatically marks components according to the architecture specified when compiling them. WiX v4 continues that trend and replaces the `Win64` attribute with the clarifying `Bitness` attribute to make it possible to override the default.
+
+WiX v3 didn't have a solution for the root Program Files folder id. WiX v4 introduces the new "standard" directory `ProgramFiles6432Folder` to solve that problem. `ProgramFiles6432Folder` automatically resolves to `ProgramFilesFolder` for an x86 package and `ProgramFiles64Folder` for an x64 or Arm64 package.
+
+For example:
+
+```xml
+<Fragment>
+  <StandardDirectory Id="ProgramFiles6432Folder">
+    <Directory Id="CompanyFolder" Name="!(bind.Property.Manufacturer)">
+      <Directory Id="INSTALLFOLDER" Name="!(bind.Property.ProductName)" />
+    </Directory>
+  </StandardDirectory>
+</Fragment>
+```
+
+All this logic works off the platform you specify at build time, with with the `-arch` switch at the wix.exe command line or the equivalent MSBuild property `InstallerPlatform`.
+
+
+### Converting custom action ids {#customactionids}
+
+In WiX v4's extensions, custom action ids were renamed from their WiX v3 origins for two reasons:
+
+1. To support WiX v4's platform-specific custom actions for all three platforms that WiX v4 supports: x86, x64, and Arm64.
+2. To avoid conflicts when building a package with WiX v4 that merges a merge module that was built with WiX v3 and uses WiX v3 extension custom actions. (Yes, this is an annoying edge case.)
+
+WiX v4 meets these requirements by adding a prefix that lets us version custom actions when they make changes that are incompatible with prior versions. Today, the prefix is `Wix4` (because the WiX team is full of wildly imaginitive people). In WiX v5, if a particular extension made a change that was incompatible with the custom tables produced by WiX v4, that extension would adopt a new prefix, perhaps something like `Wix5`. But fixes and changes that are backward compatible would not require changing the prefix.
+
+The suffix distinguishes platforms:
+
+| Platform | Suffix |
+| -------- | ------ |
+| x86 | `_X86` |
+| x64 | `_X64` |
+| Arm64 | `_A64` |
+
+For example, the `QueryNativeMachine` custom action in WiX v3 is, in WiX v4, named:
+
+- `Wix4QueryNativeMachine_X86`
+- `Wix4QueryNativeMachine_X64`
+- `Wix4QueryNativeMachine_A64`
+
+Some custom actions already have a `Wix` prefix. For those, the new prefix replaces it. So, for example, the `WixFailWhenDeferred` custom action in WiX v3 is now named:
+
+- `Wix4FailWhenDeferred_X86`
+- `Wix4FailWhenDeferred_X64`
+- `Wix4FailWhenDeferred_A64`
+
+Generally, this change is invisible because the extension handles the prefix and suffix for you. That was also true in WiX v3, but several custom actions, like `WixFailWhenDeferred` did not have a custom element in the extension. Usually, this was because there was no additional information required. In WiX v4, there's always at least one bit of additional information required: the platform the package is being built for. So WiX v4 includes custom elements like [FailWhenDeferred](../schema/util/failwhendeferred.md) to include custom actions in your package so you don't have to worry about prefixes and suffixes.
+
+Other references to WiX custom actions must use the full id, including prefix and suffix.
+
+
+### Converting custom WixUI dialog sets
+
+Because of [WiX v4's support for platform-specific custom actions](#customactionids), customizing WixUI dialog sets, especially when adding and removing dialogs, requires some care. [The WixUI documentation describes what to do when creating a new custom dialog set.](../tools/wixext/wixui.md#addingremovingdialogs) You'll want to make the same kind of change when converting a custom dialog set you created using WiX v3 to WiX v4. The key point is to isolate any `DoAction` control events that call custom actions to create platform-specific variants. WixUI itself does this using a preprocessor `?foreach?` processing instruction to create three fragments, one each for x86, x64, and Arm64 platforms. Each of those fragments references the platform-neutral `UI`. You can see the WixUI definitions [on GitHub](https://github.com/wixtoolset/wix4/tree/develop/src/ext/UI/wixlib). Here's what a customized dialog set based on WixUI_InstallDir looks like:
+
+```xml
+<?foreach WIXUIARCH in X86;X64;A64 ?>
+<Fragment>
+    <UI Id="InstallDir_SpecialDlg_$(WIXUIARCH)">
+        <Publish
+          Dialog="LicenseAgreementDlg"
+          Control="Print"
+          Event="DoAction"
+          Value="WixUIPrintEula_$(WIXUIARCH)"
+          />
+        <Publish
+          Dialog="BrowseDlg"
+          Control="OK"
+          Event="DoAction"
+          Value="WixUIValidatePath_$(WIXUIARCH)"
+          Order="3"
+          Condition="NOT WIXUI_DONTVALIDATEPATH"
+          />
+        <Publish
+          Dialog="InstallDirDlg"
+          Control="Next"
+          Event="DoAction"
+          Value="WixUIValidatePath_$(WIXUIARCH)"
+          Order="2"
+          Condition="NOT WIXUI_DONTVALIDATEPATH"
+          />
+    </UI>
+
+    <UIRef Id="InstallDir_SpecialDlg" />
+</Fragment>
+<?endforeach?>
+```
+
+You can see the authoring and test code for this customized dialog set [on GitHub](https://github.com/wixtoolset/wix4/tree/develop/src/ext/UI/test/WixToolsetTest.UI/TestData/InstallDir_SpecialDlg).
+
+When you use the [`WixUI` element](../schema/ui/wixui.md) to reference a WixUI dialog set or a customized dialog set derived from WixUI, it adds a reference to the platform-specific `UI` for the platform of the package being built. The platform-specific `UI` then adds a reference to the platform-neutral `UI`.
+
+
+## Converting bundles
 
 Bundles and the Burn engine were originally released in WiX v3.6.
 In general they worked reasonably well, especially for the use case that they were built for: the Visual Studio installer.
@@ -12,10 +138,9 @@ v4 Bundles include a lot of rather small behavioral changes, along some new feat
 In a real sense, v4 includes Burn v2.
 This page is intended to cover all behavioral changes in the Burn engine from v3 to v4.
 
-For more general information about moving from WiX v3 to v4, see [WiX v4 for WiX v3 users](./fourthree.md).
 
 
-## The v3 Variable's `string` type is now called `formatted`
+### The v3 Variable's `string` type is now called `formatted`
 
 In v3, the engine would almost always format a variable's value before using it.
 For example, if the variable had the string value `[WixBundleName] Installation` and the value of the `WixBundleName` was "My Bundle" then the formatted value was "My Bundle Installation".
@@ -40,12 +165,12 @@ Another place that the v3 engine didn't format the variable was in the `Log` ele
 v4 will format it, and if it is an absolute path then it will use that path ([3816](https://github.com/wixtoolset/issues/issues/3816)).
 
 
-## The condition operator `~<>` works differently with empty or null strings
+### The condition operator `~<>` works differently with empty or null strings
 
-See [5372](https://github.com/wixtoolset/issues/issues/5372).
+See [issue 5372](https://github.com/wixtoolset/issues/issues/5372).
 
 
-## Backwards compatibility guarantees for Bootstrapper Applications
+### Backwards compatibility guarantees for Bootstrapper Applications
 
 In v3, the BA must have been built against the same library (balutil for native BA's and BootstrapperCore.dll for managed BA's) that the bundle was built with.
 This was build-time backwards compatibility since v3.x was never allowed to make breaking changes to the interfaces.
@@ -58,7 +183,7 @@ As a part of these changes, all events now return an HRESULT at the lowest level
 If an event needs the BA to return something like a desired action, there is a separate parameter for that with its own enum.
 
 
-## Backwards compatibility guarantees for BAFunctions and specifying its dll at build time
+### Backwards compatibility guarantees for BAFunctions and specifying its dll at build time
 
 v3 wixstdba supported an extensibility mechanism called BAFunctions where the user provided a native dll that was called for a handful of events.
 This interface works the same as the BA interface so there is binary compatibility but not source compatibility.
@@ -67,14 +192,14 @@ In v3, the dll had to be named `BAFunctions.dll`.
 In v4, the BAFunctions dll must be specified at build time with the `bal:BAFunctions` attribute.
 
 
-## x64 and ARM64 bundles
+### x64 and ARM64 bundles
 
 In v3, only x86 bundles were available which meant all BA's had to be x86.
 In v4, the bundle can be x86, x64, or ARM64.
 All of the BA's dlls must be the same architecture as the bundle, or be a managed AnyCPU dll.
 
 
-## wixstdba behavior changes
+### wixstdba behavior changes
 
 * [5267](https://github.com/wixtoolset/issues/issues/5267) makes wixstdba skip checking `bal:Condition` during layout.
 
@@ -91,7 +216,7 @@ All of the BA's dlls must be the same architecture as the bundle, or be a manage
 * If not showing full UI, wixstdba will always use the action specified on the command line.
 
 
-## Upgrading v3 Managed Bootstrapper Applications
+### Upgrading v3 Managed Bootstrapper Applications
 
 v4 added the ability to use .NET Core managed BA's but that is not covered here since v3 only supported .NET Framework BA's.
 Note that Microsoft chose a confusing naming convention for newer versions of .NET Core.
@@ -118,7 +243,7 @@ In v3, the BootstrapperApplication was designated by the `BootstrapperApplicatio
 In v4, the BA assembly must have a `BootstrapperApplicationFactory` attribute that designates the `IBootstrapperApplicationFactory`.
 
 
-## Specifying the Managed BA prerequisite
+### Specifying the Managed BA prerequisite
 
 In v3, the prerequisite for the MBA was specified with the magic WixVariable `WixMbaPrereqPackageId`.
 Any further prerequisites could be specified with the `bal:PrereqSupportPackage` attribute.
@@ -128,14 +253,14 @@ Because this attribute can't be specified on a `PackageGroupRef`, each of the Ne
 For example, use `NetFx481WebAsPrereq` for an MBA instead of `NetFx481Web`.
 
 
-## Prereq BA changes
+### Prereq BA changes
 
 When running in full UI and the command line option to prohibit restarts was provided and a restart is required, show the Success screen ([3957](https://github.com/wixtoolset/issues/issues/3957)) instead of a message box.
 
 To implement [4718](https://github.com/wixtoolset/issues/issues/4718), the `bal:AlwaysInstallPrereqs` attribute was added to the MBA host elements. When "true", the host will always run the prereq BA before trying to start the .NET (Framework) runtime (the UI will not show if all prereqs are already installed). Otherwise, the host will only show the prereq BA if it couldn't load the MBA. Either way, the host will only attempt to run the prereq BA once. If the host can't load the MBA after letting the prereq BA install the prereqs, then it will show an error page with the prereq BA and then quit.
 
 
-## Removal of DisplayInternalUI
+### Removal of DisplayInternalUI
 
 In v3, a bundle could choose to let an `MsiPackage` show its internal UI during install with the `DisplayInternalUI` attribute.
 Many people requested the ability to show the internal UI during other operations as well as the ability to choose at runtime whether to show it.
@@ -148,7 +273,7 @@ Use the `bal:DisplayInternalUICondition` attribute to control when the MSI's UI 
 To get the same behavior as v3, use `bal:DisplayInternalUICondition="WixBundleExecutePackageAction = 2"`.
 
 
-## Upgrading custom wixstdba themes
+### Upgrading custom wixstdba themes
 
 There were so many breaking changes done to the UI library (thmutil), the XML schema, and the built-in themes that it wasn't worth time trying to build a tool to convert v3 themes into v4.
 Look at the built-in themes and rebuild your theme from one of them: https://github.com/wixtoolset/wix4/tree/develop/src/ext/Bal/wixstdba/Resources.
@@ -164,17 +289,17 @@ Here are some subtle changes:
 * [5250](https://github.com/wixtoolset/issues/issues/5250) fixed a bug in custom ProgressBars where the right side was drawn with the left side's pixel.
 
 
-## High DPI changes
+### High DPI changes
 
 v3 bundles are always DPI unaware.
 In v4, the default DPI awareness is Per-Monitor V2.
-See the [`BootstrapperApplicationDll`](https://wixtoolset.org/docs/reference/schema/wxs/bootstrapperapplicationdll/) element's `DpiAwareness` attribute for more information.
+See the [`BootstrapperApplicationDll`](../schema/wxs/bootstrapperapplicationdll.md) element's `DpiAwareness` attribute for more information.
 
 This may cause changes for how images are shown in a custom wixstdba theme, or the bundle's splash screen.
 This may also cause problems if a bundle claims it supports a level of DPI awareness that the BA's UI framework doesn't support.
 
 
-## balutil and WixToolset.Mba.Core breaking changes
+### balutil and WixToolset.Mba.Core breaking changes
 
 * There were several enums and events declared but never used by the engine so they were deleted.
 
@@ -195,14 +320,14 @@ The BA has to integrate with the OS if it wants to receive shutdown notification
 * The source is now provided in `OnExecuteFilesInUse` and the engine passes back the return value from the BA without modifying it.
 
 
-## Changes to MsiPackage detection
+### Changes to MsiPackage detection
 
 * [3643](https://github.com/wixtoolset/issues/issues/3643) changes the detection of an MSI package where it included a row in the Upgrade table for a different upgrade code than itself and the row was for detection only. In v3, this would be detected as a downgrade. In v4, it is treated as a related MSI package but will not be detected as a downgrade.
 
 * [6535](https://github.com/wixtoolset/issues/issues/6535) makes the engine not detect minor upgrades as present when only the base package is installed.
 
 
-## Changes to related bundle detection
+### Changes to related bundle detection
 
 * Related bundles that were registered but not cached were ignored by the engine.
 In v4, the BA is informed of all registered related bundles and whether they are cached during detect.
@@ -211,7 +336,7 @@ Uncached related bundles are still never planned.
 * The engine no longer provides the related operation during detect because it depended on the planned overall action which hasn't been decided yet.
 If the BootstrapperApplication wants to know whether the current bundle would downgrade a related bundle, it must compare the versions itself.
 
-## Changes to package caching
+### Changes to package caching
 
 In v3, if a bundle's package is already installed then the engine would never try to cache it.
 This led to issues when the bundle later wanted to repair the package since it wasn't available in the cache ([5125](https://github.com/wixtoolset/issues/issues/5125)).
@@ -224,7 +349,7 @@ However, the source would be required for rollback.
 The engine will now attempt to always cache packages for uninstall, but the cache action is considered "non-vital" for packages that can uninstall without source.
 
 
-## Timing changes for detection
+### Timing changes for detection
 
 In v3 (and v4), the typical execution of a bundle goes like this: load the BA, Detect, Plan, Apply, close.
 However, there are times where a BA will want to restart the cycle so it's important that all of the internal state in the engine gets reset appropriately.
@@ -240,7 +365,7 @@ There were multiple places where code needed to be moved to make this happen:
 
 * The built-in variable `RebootPending` is also reset everytime during Detect.
 
-## Plan changes
+### Plan changes
 
 * [4539](https://github.com/wixtoolset/issues/issues/4539) makes sure related bundles aren't touched during the overall action of Cache.
 
@@ -266,7 +391,7 @@ However, downgrade related bundles are ignored when the bundle was run from an u
 * [7147](https://github.com/wixtoolset/issues/issues/7147) makes the engine not uninstall superseded MSI packages.
 
 
-## Execute changes
+### Execute changes
 
 * [6195](https://github.com/wixtoolset/issues/issues/6195) sends the desired working directory to `::CreateProcess` instead of changing the current directory when executing ExePackages.
 
@@ -303,7 +428,7 @@ For example, in v3 if the layout path was specified on the command line as a rel
 * [3777](https://github.com/wixtoolset/issues/issues/3777) makes the engine compare variable names without case sensitivity when masking variable values from the command line.
 
 
-## Active engine changes
+### Active engine changes
 
 While the engine is running a phase like Apply, the engine is "active" and the BA is restricted from calling some functions like `IBootstrapperEngine::SetLocalSource`.
 The timing of when the engine starts being "active" and finishes being "active" has subtly changed but shouldn't be noticable.
@@ -315,7 +440,7 @@ The engine now gets activated during `Elevate` and `Quit`.
 All BA requests received after it starts to process the `Quit` are rejected.
 
 
-## Version handling
+### Version handling
 
 In v3, all versions in the engine were represented as Major.Minor.Patch.Revision in a 64-bit value, where the max of each component was 65535.
 In v4, all versions are represented as strings.
@@ -326,7 +451,7 @@ util:ProductSearch will no longer ignore products that have versions that can't 
 As requested in [4808](https://github.com/wixtoolset/issues/issues/4808), Burn will now upgrade a bundle if the existing version is the same as the installing bundle instead of installing them side by side.
 
 
-## Hidden Variables
+### Hidden Variables
 
 Hidden variables are only to keep the engine from logging its value.
 
@@ -337,12 +462,12 @@ A Variable can no longer be both Hidden and Persisted.
 Persisted variable values were always stored in cleartext in v3.
 
 
-## util:RegistrySearch changes
+### util:RegistrySearch changes
 
 [5355](https://github.com/wixtoolset/issues/issues/5355) changes the behavior to not clear the variable when the target key or value is missing.
 
 
-## Registration changes
+### Registration changes
 
 As reported in multiple issues like [4822](https://github.com/wixtoolset/issues/issues/4822), v3 bundles would stay registered in certain cases where everyone thinks it shouldn't.
 The registration state of the bundle should be more intuitive now, though the exact rules are too complex to document here.
@@ -358,7 +483,7 @@ To help users avoid using registry cleaners when a bundle's registration is "stu
 * /unsafeuninstall means that the engine will always unregister itself at end of Apply.
 
 
-## Cache changes
+### Cache changes
 
 In v3, the engine attempted to detect individual payloads so that it could plan them individually as well.
 This caused problems because it didn't perform full verification during Detect and didn't give enough progress to the BA during Apply.
@@ -396,25 +521,25 @@ During layout, all caching operations are performed in the user-level process an
 When `WixBundleOriginalSource` is set and the file at that location exists with the correct size, prefer that location for attached containers ([5586](https://github.com/wixtoolset/issues/issues/5586)).
 
 
-## Rollback changes
+### Rollback changes
 
-### Error in non-vital rollback boundary
+#### Error in non-vital rollback boundary
 
 [6309](https://github.com/wixtoolset/issues/issues/6309) makes it work as documented - if a package fails inside of a non-vital rollback boundary then the chain should continue successfully at the next rollback boundary. In v3, the rest of the packages in the rollback boundary were executed.
 
 
-### Block rollback of packages that have dependents
+#### Block rollback of packages that have dependents
 
 With custom provider keys, it's possible for a bundle's package to have dependents before it's installed.
 In v4, the bundle will not rollback the package in this case.
 
 
-### Reinstall upgrade related bundles
+#### Reinstall upgrade related bundles
 
 [3421](https://github.com/wixtoolset/issues/issues/3421) - when a bundle fails installing and it has upgrade related bundles, it will run those bundles with the install action during rollback.
 
 
-## Clean room path for elevated processes
+### Clean room path for elevated processes
 
 The clean room path for elevated processes now respects the system level `TMP`/`TEMP` environment variable instead of using the hardcoded Temp folder in the Windows directory.
 On newer versions of Windows, if running as SYSTEM it uses C:\Windows\SystemTemp.
@@ -422,7 +547,7 @@ On newer versions of Windows, if running as SYSTEM it uses C:\Windows\SystemTemp
 This can be overriden on the command line or through policy specified in the registry ([5856](https://github.com/wixtoolset/issues/issues/5856)).
 
 
-## Mixing bundle elements with non-bundle elements
+### Mixing bundle elements with non-bundle elements
 
 A common mistake in v3 was to try to use MSI elements like the NetFx detection properties in a bundle.
 In v4, this will generate warnings.
@@ -433,7 +558,7 @@ For example:
 Unfortunately the changes that were necessary to make these warnings less cryptic were declined so it might be difficult to figure out exactly what is causing this error in your code.
 
 
-## Recommending or Requiring DetectCondition
+### Recommending or Requiring DetectCondition
 
 The engine always knows how to install and uninstall Windows Installer packages, but needs help for uninstalling ExePackages.
 v3 had some edge cases where it would try to uninstall an ExePackage even though the user hadn't specified any uninstall arguments or how to detect that it was installed.
@@ -442,37 +567,37 @@ There are now checks at build time to make sure that an ExePackage contains a sa
 In v3, specifying an empty string for `UninstallCommand` was the same as not specifying it.
 In v4, if the uninstall command line is empty then `UninstallArguements` must be specified with an empty string.
 
-## MsuPackages are no longer uninstallable
+### MsuPackages are no longer uninstallable
 
 See [6749](https://github.com/wixtoolset/issues/issues/6749).
 
 
-## Dropped support for XP
+### Dropped support for XP
 
 Bundles are supported on Vista SP2, Server 2008 SP2, or newer.
 
 
-## Dropped support for SHA1
+### Dropped support for SHA1
 
 Bundles use the SHA512 hash algorithm instead of SHA1 when verifying file hashes.
 
 
-## Remove BITS support
+### Remove BITS support
 
 The BITS protocol is no longer supported in the engine.
 
 
-## Change to the default for the `Visible` attribute on `MsiPackage`
+### Change to the default for the `Visible` attribute on `MsiPackage`
 
 For an `MsiPackage` with `Permanent="yes"`, the default for `Visible` is now "yes" instead of "no".
 
 
-## More accurate parsing of Bundle elements that contained file information
+### More accurate parsing of Bundle elements that contained file information
 
 The v3 compiler code for parsing `Payload` elements was reused for other elements with file information, like `BootstrapperApplication`. This means that it sometimes parsed attributes that shouldn't have been allowed on those other elements.
 
 
-## Build time errors to prevent runtime errors
+### Build time errors to prevent runtime errors
 
 In v3, bundles could be built in such a way that the engine would work properly at runtime.
 There are some scenarios that are now build errors to prevent these runtime errors:
@@ -485,7 +610,7 @@ In v4, collisions are detected.
 * Payloads must either be for the BootstrapperApplication or for a package/external payload.
 
 
-## Build time errors to catch likely mistakes
+### Build time errors to catch likely mistakes
 
 * A package can't be assigned to multiple containers because the engine only supports one.
 
@@ -496,26 +621,26 @@ In v4, collisions are detected.
 * More stringent checks to prohibit reserved bundle ids.
 
 
-## Changes that should be handled by `wix convert`
+### Changes that should be handled by `wix convert`
 
-### BootstrapperApplicationDll
+#### BootstrapperApplicationDll
 
 In order for the Bal extension to include the correct architecture, the `BootstrapperApplication` element changed to be something that can be specified multiple times.
 The file information for that moved to the new `BoostrapperApplicationDll` element.
 The optional v3 elements `bal:WixStandardBootstrapperApplication` or `bal:WixManagedBootstrapperApplicationHost` are required in v4, and the theme is specified in the `Theme` attribute instead of using a `BootstrapperApplicationRef`.
 
 
-### Replace CustomTable with BundleCustomData
+#### Replace CustomTable with BundleCustomData
 
 Bundles include a file for the BA with data about the bundle in BootstrapperApplicationData.xml.
 In v3, arbitrary data could be added to that file with `CustomTable`.
 In v4, use `BundleCustomData` instead.
 
-### Rename ExePackage command line attributes
+#### Rename ExePackage command line attributes
 
 `InstallCommand`, `RepairCommand`, `UninstallCommand` renamed to `InstallArguments`, `RepairArguments`, `UninstallArguments`.
 
-### Redesign RemotePayload and each of the Package elements
+#### Redesign RemotePayload and each of the Package elements
 
 Elements like `MsiPackage` actually contained two different concepts - the package's main file (e.g. `SourceFile` and `DownloadUrl`) and information about how and when to (un)install the package (e.g. `InstallCondition` and `Permanent`).
 In v4, information about the package's main file should be specified in a new element, e.g. `MsiPackagePayload` for `MsiPackage`.

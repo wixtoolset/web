@@ -658,7 +658,7 @@
       </xs:anyAttribute>
     </xs:complexType>
   </xs:element>
-  
+
   <xs:element name="FormatFile">
     <xs:annotation>
       <xs:appinfo>
@@ -1529,7 +1529,7 @@
       </xs:anyAttribute>
     </xs:complexType>
   </xs:element>
-  
+
   <xs:element name="RegistrySearch">
     <xs:annotation>
       <xs:documentation>Describes a registry search.</xs:documentation>
@@ -2324,7 +2324,7 @@
   <xs:element name="QueryNativeMachine">
     <xs:annotation>
       <xs:documentation>
-        Schedules the QueryNativeMachine custom action for the current platform. For more information, see [QueryNativeMachine properties](../../../wixext/wininfo#querynativemachine).
+        Schedules the QueryNativeMachine custom action for the current platform. For more information, see [QueryNativeMachine properties](../../../tools/wixext/wininfo#querynativemachine).
       </xs:documentation>
       <xs:appinfo>
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
@@ -2338,7 +2338,7 @@
   <xs:element name="QueryWindowsDirectories">
     <xs:annotation>
       <xs:documentation>
-        Schedules the QueryOsDirs custom action for the current platform. For more information, see [QueryWindowsDirectories properties](../../../wixext/wininfo#querywindowsdirectories).
+        Schedules the QueryOsDirs custom action for the current platform. For more information, see [QueryWindowsDirectories properties](../../../tools/wixext/wininfo#querywindowsdirectories).
       </xs:documentation>
       <xs:appinfo>
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
@@ -2352,7 +2352,7 @@
   <xs:element name="QueryWindowsDriverInfo">
     <xs:annotation>
       <xs:documentation>
-        Schedules the QueryOsDriverInfo custom action for the current platform. For more information, see [QueryWindowsDriverInfo properties](../../../wixext/wininfo#querywindowsdriverinfo).
+        Schedules the QueryOsDriverInfo custom action for the current platform. For more information, see [QueryWindowsDriverInfo properties](../../../tools/wixext/wininfo#querywindowsdriverinfo).
       </xs:documentation>
       <xs:appinfo>
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
@@ -2366,7 +2366,7 @@
   <xs:element name="QueryWindowsSuiteInfo">
     <xs:annotation>
       <xs:documentation>
-        Schedules the QueryOsInfo custom action for the current platform. For more information, see [QueryWindowsSuiteInfo properties](../../../wixext/wininfo#querywindowssuiteinfo).
+        Schedules the QueryOsInfo custom action for the current platform. For more information, see [QueryWindowsSuiteInfo properties](../../../tools/wixext/wininfo#querywindowssuiteinfo).
       </xs:documentation>
       <xs:appinfo>
         <xse:parent namespace="http://wixtoolset.org/schemas/v4/wxs" ref="Package" />
@@ -2380,7 +2380,7 @@
   <xs:element name="QueryWindowsWellKnownSIDs">
     <xs:annotation>
       <xs:documentation>
-        Schedules the QueryOsWellKnownSID custom action for the current platform. For more information, see [QueryWindowsWellKnownSIDs properties](../../../wixext/wininfo#querywindowswellknownsids).
+        Schedules the QueryOsWellKnownSID custom action for the current platform. For more information, see [QueryWindowsWellKnownSIDs properties](../../../tools/wixext/wininfo#querywindowswellknownsids).
       </xs:documentation>
       <xs:documentation>Schedules the QueryOsWellKnownSID custom action for the current platform.</xs:documentation>
       <xs:appinfo>

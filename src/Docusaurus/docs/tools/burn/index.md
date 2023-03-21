@@ -1,29 +1,29 @@
 ---
-sidebar_position: 20
+sidebar_position: 10
 ---
 
 # Burn bundles
 
-The [`Bundle` element](../schema/wxs/bundle.md) is the top-level element for a Burn bundle. It contains child elements that let you specify the [chain of packages to be installed](#chain), the [bootstrapper application](#burnux) that provides the user experience, custom and [built-in variables](./builtin-variables.md), [system searches](./searches.md), and all the other goodies that let you define a bundle.
+The [`Bundle` element](../../schema/wxs/bundle.md) is the top-level element for a Burn bundle. It contains child elements that let you specify the [chain of packages to be installed](#chain), the [bootstrapper application](#burnux) that provides the user experience, custom and [built-in variables](./builtin-variables.md), [system searches](./searches.md), and all the other goodies that let you define a bundle.
 
 ```xml
-<Wix 
+<Wix
     xmlns="http://wixtoolset.org/schemas/v4/wxs"
     xmlns:bal="http://wixtoolset.org/schemas/v4/wxs/bal">
-    
-    <Bundle 
-        Name="$(var.BundleName)" 
-        Version="$(var.Version)"
-        UpgradeCode="$(var.UpgradeCode)"
+
+    <Bundle
+        Name="$(BundleName)"
+        Version="$(Version)"
+        UpgradeCode="$(UpgradeCode)"
         Compressed="no"
         SplashScreenSourceFile="splashscreen.bmp">
 
         <BootstrapperApplication>
             <bal:WixStandardBootstrapperApplication
-                LicenseUrl="" 
+                LicenseUrl=""
                 Theme="hyperlinkLicense" />
         </BootstrapperApplication>
-    
+
         <Chain>
             <PackageGroupRef Id="BundlePackages" />
         </Chain>
@@ -38,16 +38,16 @@ Burn supports the following kinds of packages:
 
 | Package | Description |
 | ------- | ----------- |
-| [BundlePackage](../schema/wxs/bundlepackage.md) | Another Burn bundle .exe |
-| [ExePackage](../schema/wxs/exepackage.md) | An executable .exe installer |
-| [MsiPackage](../schema/wxs/msipackage.md) | A Windows Installer .msi package |
-| [MspPackage](../schema/wxs/msppackage.md) | A Windows Installer .msp patch package |
-| [MsuPackage](../schema/wxs/msupackage.md) | A Windows update .msu package |
+| [BundlePackage](../../schema/wxs/bundlepackage.md) | Another Burn bundle .exe |
+| [ExePackage](../../schema/wxs/exepackage.md) | An executable .exe installer |
+| [MsiPackage](../../schema/wxs/msipackage.md) | A Windows Installer .msi package |
+| [MspPackage](../../schema/wxs/msppackage.md) | A Windows Installer .msp patch package |
+| [MsuPackage](../../schema/wxs/msupackage.md) | A Windows update .msu package |
 
 To include a package in a bundle's chain of packages:
 
-- Include the package element as a child of the [`Chain` element](../schema/wxs/chain.md).
-- Include the package element as a child of a [`PackageGroup` element](../schema/wxs/packagegroup.md) and include that package group in the chain with a [`PackageGroupRef` element](../schema/wxs/packagegroupref.md) as a child of the [`Chain` element](../schema/wxs/chain.md).
+- Include the package element as a child of the [`Chain` element](../../schema/wxs/chain.md).
+- Include the package element as a child of a [`PackageGroup` element](../../schema/wxs/packagegroup.md) and include that package group in the chain with a [`PackageGroupRef` element](../../schema/wxs/packagegroupref.md) as a child of the [`Chain` element](../../schema/wxs/chain.md).
 
 For example:
 
@@ -96,7 +96,7 @@ Here's how you might add a built-in BA to a bundle:
 <Wix
     xmlns="http://wixtoolset.org/schemas/v4/wxs"
     xmlns:bal="http://wixtoolset.org/schemas/v4/wxs/bal">
-    
+
     <Bundle>
 
         <BootstrapperApplication>
@@ -112,10 +112,10 @@ You can also create an entirely custom bootstrapper application, either in nativ
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
     <Bundle>
         <BootstrapperApplication>
-            <BootstrapperApplicationDll 
-                Id="MyStandardBootstrapperApplication" 
+            <BootstrapperApplicationDll
+                Id="MyStandardBootstrapperApplication"
                 SourceFile="bobstdba.dll" />
-            <PayloadGroupRef 
+            <PayloadGroupRef
                 Id="MyStandardBootstrapperApplicationPayloads" />
         </BootstrapperApplication>
 ```
@@ -126,7 +126,7 @@ Here's how you might reference a custom managed-code BA written in .NET 6:
 <Wix
     xmlns="http://wixtoolset.org/schemas/v4/wxs"
     xmlns:bal="http://wixtoolset.org/schemas/v4/wxs/bal">
-    
+
     <Bundle>
         <BootstrapperApplication>
             <Payload SourceFile="MyBA.EarliestCoreMBA.deps.json" />

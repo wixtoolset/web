@@ -7,9 +7,9 @@ sidebar_position: 30
 The WixQuietExec custom action family allows you to run an arbitrary command line without showing any UI -- like the console windows that would otherwise appear appear when invoking the executable via Windows Installer's built-in custom action types. WixQuietExec and friends are included in WixToolset.Util.wixext.
 
 
-## Architecture-specific custom action DLLs 
+## Architecture-specific custom action DLLs
 
-[As noted in the _WiX v4 for WiX v3 users_ documentation](../../fourthree.md#customactionids), some extra effort is sometimes required due to WiX v4's support for architecture-specific custom actions. That effort for WixQuietExec and friends is a little bit different:
+[As noted in _Frequently-asked questions about upgrading from WiX v3 to WiX v4_](../../fourthree/faqs.md#customactionids), some extra effort is sometimes required due to WiX v4's support for architecture-specific custom actions. That effort for WixQuietExec and friends is a little bit different:
 
 - The custom action ids are architecture-neutral (that is, they don't have architecture-specific suffixes).
 - The custom action DLLs have architecture-specific ids.
@@ -22,15 +22,15 @@ The preprocessor is your friend: The `$(sys.BUILDARCHSHORT)` preprocessor variab
 When WixQuietExec is run as an immediate custom action, it executes the command stored in the WixQuietExecCmdLine property. The following is an example of authoring an immediate WixQuietExec custom action:
 
 ```xml
-<SetProperty 
-  Id="WixQuietExecCmdLine" 
-  Value="&quot;[%ComSpec]&quot; /c ECHO %NUMBER_OF_PROCESSORS%" 
-  Before="ConvolutedCoreCountCustomAction" 
+<SetProperty
+  Id="WixQuietExecCmdLine"
+  Value="&quot;[%ComSpec]&quot; /c ECHO %NUMBER_OF_PROCESSORS%"
+  Before="ConvolutedCoreCountCustomAction"
   Sequence="execute"
   />
-<CustomAction 
-  Id="ConvolutedCoreCountCustomAction" 
-  BinaryRef="Wix4UtilCA_$(sys.BUILDARCHSHORT)" 
+<CustomAction
+  Id="ConvolutedCoreCountCustomAction"
+  BinaryRef="Wix4UtilCA_$(sys.BUILDARCHSHORT)"
   DllEntry="WixQuietExec"
   Execute="immediate"
   Return="check"
@@ -56,19 +56,19 @@ WixQuietExec:  16
 When WixQuietExec is run as a deferred custom action, it executes the command stored in the custom action data -- which is the value of the property with the same id as the custom action. For example:
 
 ```xml
-<SetProperty 
-  Id="ConvolutedWhoAmICustomAction" 
-  Value="&quot;[%ComSpec]&quot; /c WHOAMI" 
-  Before="ConvolutedWhoAmICustomAction" 
-  Sequence="execute" 
+<SetProperty
+  Id="ConvolutedWhoAmICustomAction"
+  Value="&quot;[%ComSpec]&quot; /c WHOAMI"
+  Before="ConvolutedWhoAmICustomAction"
+  Sequence="execute"
   />
-<CustomAction 
-  Id="ConvolutedWhoAmICustomAction" 
-  BinaryRef="Wix4UtilCA$(UTILCA_ARCH)" 
-  DllEntry="WixQuietExec" 
-  Execute="deferred" 
-  Impersonate="no" 
-  Return="check" 
+<CustomAction
+  Id="ConvolutedWhoAmICustomAction"
+  BinaryRef="Wix4UtilCA$(UTILCA_ARCH)"
+  DllEntry="WixQuietExec"
+  Execute="deferred"
+  Impersonate="no"
+  Return="check"
   />
 
 <InstallExecuteSequence>
@@ -91,18 +91,18 @@ WixQuietExec:  nt authority\system
 As noted earlier, WixQuietExec's primary purpose is to hide any UI from launched processes. Also as noted above, WixQuietExec logs the console output from those processes. If you want to hide the UI _and_ hide the console output from being added to the log, use WixSilentExec and WixSilentExecCmdLine instead of WixQuietExec and WixQuietExecCmdLine:
 
 ```xml
-<SetProperty 
-  Id="WixSilentExecCmdLine" 
-  Value="&quot;[%ComSpec]&quot; /c ECHO %NUMBER_OF_PROCESSORS%" 
-  Before="ConvolutedCoreCountCustomAction" 
-  Sequence="execute" 
+<SetProperty
+  Id="WixSilentExecCmdLine"
+  Value="&quot;[%ComSpec]&quot; /c ECHO %NUMBER_OF_PROCESSORS%"
+  Before="ConvolutedCoreCountCustomAction"
+  Sequence="execute"
   />
-<CustomAction 
-  Id="ConvolutedCoreCountCustomAction" 
-  BinaryRef="Wix4UtilCA_$(sys.BUILDARCHSHORT)" 
-  DllEntry="WixSilentExec" 
-  Execute="immediate" 
-  Return="check" 
+<CustomAction
+  Id="ConvolutedCoreCountCustomAction"
+  BinaryRef="Wix4UtilCA_$(sys.BUILDARCHSHORT)"
+  DllEntry="WixSilentExec"
+  Execute="immediate"
+  Return="check"
   />
 
 <InstallExecuteSequence>
@@ -118,13 +118,13 @@ WixSilentExec supports silent and deferred execution like WixQuietExec.
 WixQuietExec64 and WixSilentExec64 are variants of WixQuietExec and WixSilentExec that are 32-bit custom actions (regardless of name) that are 64-bit aware. Specifically, they know how to turn off file-system redirections (for example) to support running 64-bit processes. WiX v4 has native custom actions for all three supported platforms (x86, x64, and Arm64), so if you need to call a 64-bit process from a 32-bit package, use those by hard-coding the `BinaryRef`. For example:
 
 ```xml
-<CustomAction 
-  Id="MyDeferredCustomAction" 
-  BinaryRef="Wix4UtilCA_X64" 
-  DllEntry="WixQuietExec" 
-  Execute="deferred" 
-  Impersonate="no" 
-  Return="check" 
+<CustomAction
+  Id="MyDeferredCustomAction"
+  BinaryRef="Wix4UtilCA_X64"
+  DllEntry="WixQuietExec"
+  Execute="deferred"
+  Impersonate="no"
+  Return="check"
   />
 ```
 

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 60
+sidebar_position: 30
 ---
 
 # Wix.exe command-line reference
