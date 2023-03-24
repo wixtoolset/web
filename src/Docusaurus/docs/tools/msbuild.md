@@ -11,9 +11,13 @@ WiX v4 is available as an MSBuild SDK. SDK-style projects have smart defaults th
 </Project>
 ```
 
+:::tip
+SDK-style projects are easier to author but do work differently than "old" projects. For example, you might need to use explicit SDK imports to override the normal imports of SDK .props and .targets file. For more information, see the [MSBuild documentation](https://learn.microsoft.com/en-us/visualstudio/msbuild/how-to-use-project-sdk#use-the-import-element-anywhere-in-your-project).
+:::
+
 You can also create and edit SDK-style MSBuild projects in Visual Studio using FireGiant's [HeatWave Community Edition](https://www.firegiant.com/wix/heatwave/).
 
-:::tip
+:::info
 See [Signing packages and bundles](./signing.md) for information about signing packages and bundles when using MSBuild.
 :::
 
