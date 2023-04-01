@@ -61,15 +61,15 @@ namespace XsdToMarkDownTests
             Assert.True(xsd.IsMainSchema);
             Assert.Equal("Wxs", xsd.SchemaName);
             Assert.Equal("http://wixtoolset.org/schemas/v4/wxs", xsd.TargetNamespace);
-            Assert.Equal(33, xsd.SimpleTypes.Count);
-            Assert.Empty(xsd.RootAttributes);
+            Assert.Equal(36, xsd.SimpleTypes.Count);
+            Assert.Single(xsd.RootAttributes);
             Assert.Equal(5, xsd.AttributeGroups.Count);
 
             Assert.Equal(293, xsd.Elements.Count);
 
             var componentElement = xsd.Elements["Component"];
             Assert.Equal(19, componentElement.Attributes.Count);
-            Assert.Equal(31, componentElement.Children.Count);
+            Assert.Equal(30, componentElement.Children.Count);
             Assert.Equal(3, componentElement.MsiRefs.Count());
             Assert.Equal("Component", componentElement.Name);
             Assert.Equal("http://wixtoolset.org/schemas/v4/wxs", componentElement.Namespace);
@@ -148,15 +148,15 @@ namespace XsdToMarkDownTests
             Assert.True(xsd.IsMainSchema);
             Assert.Equal("Wxs", xsd.SchemaName);
             Assert.Equal("http://wixtoolset.org/schemas/v4/wxs", xsd.TargetNamespace);
-            Assert.Equal(33, xsd.SimpleTypes.Count());
-            Assert.Empty(xsd.RootAttributes);
+            Assert.Equal(36, xsd.SimpleTypes.Count);
+            Assert.Single(xsd.RootAttributes);
             Assert.Equal(5, xsd.AttributeGroups.Count);
 
             Assert.Equal(293, xsd.Elements.Count);
 
             var componentElement = xsd.Elements["Component"];
             Assert.Equal(19, componentElement.Attributes.Count);
-            Assert.Equal(41, componentElement.Children.Count);
+            Assert.Equal(40, componentElement.Children.Count);
             Assert.Equal(3, componentElement.MsiRefs.Count());
             Assert.Equal("Component", componentElement.Name);
             Assert.Equal("http://wixtoolset.org/schemas/v4/wxs", componentElement.Namespace);

@@ -127,12 +127,12 @@ namespace WixBuildTools.XsdToMarkdown
 
             var attributes = this.CreateAttributes(xComplexType);
 
-            var seeAlsos = xAppInfo?.Elements(SeeAlsoElement).SelectMany(x => this.CreateSeeAlsoElement(x));
+            var seeAlsos = xAppInfo?.Elements(SeeAlsoElement).SelectMany(x => CreateSeeAlsoElement(x));
 
             return new Element(name, this.TargetNamespace, documentation, remarks, attributes, parents, children, msiRefs, seeAlsos, xElement);
         }
 
-        private IEnumerable<Element> CreateSeeAlsoElement(XElement xSeeAlso)
+        private static IEnumerable<Element> CreateSeeAlsoElement(XElement xSeeAlso)
         {
             var element = xSeeAlso.Attribute("ref")?.Value;
             var @namespace = xSeeAlso.Attribute("namespace")?.Value;
@@ -146,9 +146,18 @@ namespace WixBuildTools.XsdToMarkdown
             {
                 var attributeGroupReferences = xComplexType.Elements(AttributeGroupElement).Select(x => x.Attribute("ref")?.Value);
                 var attributeGroupAttributes = attributeGroupReferences.SelectMany(a => this.AttributeGroups[a]);
-                var attributes = attributeGroupAttributes.Concat(this.ParseAttributes(xComplexType));
 
-                return attributes.OrderBy(attr => attr.Name);
+                var attributeReferences = xComplexType.Elements(AttributeElement).Select(x => x.Attribute("ref")?.Value);
+                var attributeReferenceAttributes = attributeReferences.Where(a => a is not null).Select(a => this.RootAttributes[a]);
+
+                var attributes =
+                    attributeGroupAttributes.Concat(
+                    attributeReferenceAttributes.Concat(
+                    this.ParseAttributes(xComplexType)));
+
+                return attributes
+                    //.Where(attr => attr.Name is not null)
+                    .OrderBy(attr => attr.Name);
             }
 
             return Enumerable.Empty<Attribute>();
@@ -214,7 +223,7 @@ namespace WixBuildTools.XsdToMarkdown
             // Use simple content if it exists.
             parent = parent.Element(SimpleContentElement)?.Element(ExtensionElement) ?? parent;
 
-            var xAttributes = parent.Elements(AttributeElement);
+            var xAttributes = parent.Elements(AttributeElement).Where(x => x.Attribute("name") is not null);
             return xAttributes.Select(x => this.ParseAttribute(x));
         }
 
