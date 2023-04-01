@@ -19,12 +19,15 @@ namespace WixBuildTools.XsdToMarkdown
             {
                 foreach (var attr in xsd.RootAttributes?.Values)
                 {
-                    foreach (var parent in attr.Parents)
+                    if (!attr.Parents.IsNullOrEmpty())
                     {
-                        if (xsdByNamespace.TryGetValue(parent.Namespace, out var targetXsd)
-                            && targetXsd.Elements.TryGetValue(parent.Name, out var targetElement))
+                        foreach (var parent in attr.Parents)
                         {
-                            targetElement.Attributes[attr.Name] = attr;
+                            if (xsdByNamespace.TryGetValue(parent.Namespace, out var targetXsd)
+                                && targetXsd.Elements.TryGetValue(parent.Name, out var targetElement))
+                            {
+                                targetElement.Attributes[attr.Name] = attr;
+                            }
                         }
                     }
                 }

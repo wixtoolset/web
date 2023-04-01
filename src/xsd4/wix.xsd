@@ -768,9 +768,9 @@
       <xs:attribute name="DisableRollback" type="YesNoTypeUnion">
         <xs:annotation>
           <xs:documentation>
-            Specifies whether the bundle will attempt to rollback packages
+            Specifies whether the bundle will attempt to roll back packages
             executed in the chain. If "yes" is specified then when a vital
-            package fails to install only that package will rollback and the
+            package fails to install only that package will roll back and the
             chain will stop with the error. The default is "no" which
             indicates all packages executed during the chain will be
             rolledback to their previous state when a vital package fails.
@@ -827,6 +827,7 @@
         </xs:any>
       </xs:choice>
       <xs:attributeGroup ref="ChainPackageCommonAttributes" />
+      <xs:attribute ref="Permanent" />
       <xs:attribute name="RepairCondition" type="xs:string">
         <xs:annotation>
           <xs:documentation>
@@ -890,6 +891,7 @@
         </xs:any>
       </xs:choice>
       <xs:attributeGroup ref="ChainPackageCommonAttributes" />
+      <xs:attribute ref="Permanent" />
       <xs:attribute name="RepairCondition" type="xs:string">
         <xs:annotation>
           <xs:documentation>
@@ -975,6 +977,7 @@
         </xs:any>
       </xs:choice>
       <xs:attributeGroup ref="ChainPackageCommonAttributes" />
+      <xs:attribute ref="Permanent" />
       <xs:attribute name="DetectCondition" type="xs:string">
         <xs:annotation>
           <xs:documentation>
@@ -1061,6 +1064,7 @@
         </xs:any>
       </xs:choice>
       <xs:attributeGroup ref="ChainPackageCommonAttributes" />
+      <xs:attribute ref="Permanent" />
       <xs:attribute name="RepairCondition" type="xs:string">
         <xs:annotation>
           <xs:documentation>
@@ -1134,7 +1138,7 @@
         <xs:annotation>
           <xs:documentation>
             Specifies whether the rollback boundary aborts the chain. The default "yes" indicates that if
-            the rollback boundary is encountered then the chain will fail and rollback or stop. If "no"
+            the rollback boundary is encountered then the chain will fail and roll back or stop. If "no"
             is specified then the chain should continue successfuly at the next rollback boundary.
           </xs:documentation>
         </xs:annotation>
@@ -1157,6 +1161,13 @@
       </xs:attribute>
     </xs:complexType>
   </xs:element>
+  <xs:attribute name="Permanent" type="YesNoTypeUnion">
+    <xs:annotation>
+      <xs:documentation>
+        Specifies whether the package can be uninstalled. The default is "no".
+      </xs:documentation>
+    </xs:annotation>
+  </xs:attribute>
   <xs:attributeGroup name="ChainPackageCommonAttributes">
     <xs:attribute name="SourceFile" type="xs:string">
       <xs:annotation>
@@ -1274,18 +1285,11 @@
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="Permanent" type="YesNoTypeUnion">
-      <xs:annotation>
-        <xs:documentation>
-          Specifies whether the package can be uninstalled. The default is "no".
-        </xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
     <xs:attribute name="Vital" type="YesNoTypeUnion">
       <xs:annotation>
         <xs:documentation>
           Specifies whether the package must succeed for the chain to continue. The default "yes"
-          indicates that if the package fails then the chain will fail and rollback or stop. If
+          indicates that if the package fails then the chain will fail and roll back or stop. If
           "no" is specified then the chain will continue even if the package reports failure.
         </xs:documentation>
       </xs:annotation>
