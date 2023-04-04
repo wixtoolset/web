@@ -450,7 +450,7 @@
           <xs:documentation>The platform to search for.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Version" type="wxs:WixVersionType">
+      <xs:attribute name="Version" type="wxs:StrictThreePartVersionType">
         <xs:annotation>
           <xs:documentation>
             A specific .NET Core SDK feature band. For example, "6.0.400".
@@ -557,7 +557,7 @@
           <xs:documentation>The platform to use to validate.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Version" type="wxs:VersionType">
+      <xs:attribute name="Version" type="wxs:StrictThreePartVersionType">
         <xs:annotation>
           <xs:documentation>Version of .NET to check against.</xs:documentation>
         </xs:annotation>
