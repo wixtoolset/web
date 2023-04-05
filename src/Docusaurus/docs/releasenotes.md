@@ -2,96 +2,14 @@
 sidebar_position: 30
 ---
 
-# WiX release notes
-
-## WiX v4 Release Candidate 4 {#v4}
-
-> Release Candidate 4 released Friday, 17-March-2023
-
-WiX v4 Release Candidate 4 contains [fixes for the -- significantly smaller number of bugs compared to RC3 -- that were reported during Release Candidate 3](https://github.com/wixtoolset/issues/issues?q=is%3Aissue+project%3Awixtoolset%2Fissues%2F6). There is one minor new feature:
-
-- In WixToolset.Netfx.wixext, package groups for .NET Framework v4.8.1 are now available. See [the issue](https://github.com/wixtoolset/issues/issues/7239) and [@barnson's pull request](https://github.com/wixtoolset/wix4/pull/368).
+# Release notes
 
 
-### Update MSBuild projects
+## WiX v4.0.0 {#v4}
 
-To update your .wixproj MSBuild projects, update the `Project` element's `Sdk` attribute:
+> WiX v4.0.0 was released Wednesday, 5-April-2023
 
-```xml
-<Project Sdk="WixToolset.Sdk/4.0.0-rc.4">
-```
-
-For `PackageReference`s to WiX v4 extensions, update their `Version` attribute. For example:
-
-```xml
-<PackageReference Include="WixToolset.Util.wixext" Version="4.0.0-rc.4" />
-<PackageReference Include="WixToolset.Netfx.wixext" Version="4.0.0-rc.4" />
-```
-
-To clean up the NuGet artifacts from previous prereleases of WiX v4, we recommend you delete the `bin` and `obj` directories in your projects. If you're using .NET Framework MSBuild, do an explicit `MSBuild -Restore` to get Release Candidate 2 restored. (Using `dotnet build` does that implicitly for you.)
-
-
-### Update the WiX .NET tool
-
-To update your [.NET tool](https://learn.microsoft.com/en-us/dotnet/core/tools/global-tools) installation of WiX v4 Release Candidate 2:
-
-```sh
-dotnet tool update --global wix --version 4.0.0-rc.4
-```
-
-To install WiX for the first time as a .NET tool:
-
-```sh
-dotnet tool install --global wix --version 4.0.0-rc.4
-```
-
-To verify Wix.exe was successfully installed or updated:
-
-```sh
-wix --version
-```
-
-
-### Update HeatWave Community Edition
-
-To upgrade HeatWave Community Edition with support for WiX v4 Release Candidate 3, [see the FireGiant blog post with details](https://www.firegiant.com/blog/2023/2/24/wix-v4-rc3-and-next-heatwave-preview-available/).
-
-## WiX v4 Release Candidate 3 {#v4rc3}
-
-> Release Candidate 3 released Friday, 24-February-2023
-
-WiX v4 Release Candidate 3 contains [fixes for bugs that were reported during Release Candidate 2](https://github.com/wixtoolset/issues/issues?q=is%3Aissue+project%3Awixtoolset%2Fissues%2F5). There are two minor new features:
-
-- WiX MSBuild projects support multi-targeting other projects with a single `ProjectReference`. You can specify multiple platforms, configurations, .NET frameworks, and runtime identifiers. See [@robmen's WIP](https://github.com/wixtoolset/issues/issues/7241) and [pull request](https://github.com/wixtoolset/wix4/pull/356).
-- A new `sys.BUILDARCHSHORT` built-in preprocessor variable helps handle WiX v4's new architecture-specific custom actions. See [issue 7227](https://github.com/wixtoolset/issues/issues/7227) and [@barnson's PR](https://github.com/wixtoolset/wix4/pull/359).
-
-
-## WiX v4 Release Candidate 2 {#v4rc2}
-
-> Release Candidate 2 released Friday, 20-January-2023
-
-WiX v4 Release Candidate 2 contains fixes for bugs that were reported during Release Candidate 1. There are two new features:
-
-- Add `perUserOrMachine` to the `Package/@Scope` options for dual-scope, single-package authoring. See [issue #7137](https://github.com/wixtoolset/issues/issues/7137), [@robmen's code PR](https://github.com/wixtoolset/wix4/pull/327), and [documentation PR](https://github.com/wixtoolset/web/pull/138).
-- Add `DotNetCoreSdkSearch` Burn search to locate .NET (Core) SDKs, like the `DotNetCoreSearch` search for .NET runtimes. See [issue #7058](https://github.com/wixtoolset/issues/issues/7058), [@powercode's code PR](https://github.com/wixtoolset/wix4/pull/294), and [@rseanhall's documentation PR](https://github.com/wixtoolset/web/pull/141).
-
-
-## WiX v4 Release Candidate 1 {#v4rc1}
-
-> Release Candidate 1 released Friday, 16-December-2022
-
-WiX v4 Release Candidate 1 contains fixes for bugs that were reported during Preview 1. There are no new features.
-
-
-## WiX v4 Preview 1 {#v4p1}
-
-> Preview 1 released Friday, 11-November-2022
-
-WiX v4 is a major release of the WiX Toolset, years in the making. [More than 500 issues were closed in WiX v4](https://github.com/wixtoolset/issues/issues?q=is%3Aissue+milestone%3Av4.0+is%3Aclosed)!
-
-If you're familiar with WiX v3, [WiX v4 for WiX v3 users](./fourthree/index.md) has details about how WiX v4 works.
-
-Here's a high-level look at the fixes and features in WiX v4:
+Here's a high-level look at the features and fixes in WiX v4:
 
 ### Platforms
 - Arm64 is supported in the core toolset, extensions, and Burn.
@@ -166,3 +84,84 @@ Here's a high-level look at the fixes and features in WiX v4:
 - [@chrpai](https://github.com/wixtoolset/wix4/commits?author=chrpai)
 - [@VolkerGa](https://github.com/wixtoolset/Dtf/commits?author=VolkerGa)
 - [@t-johnson](https://github.com/wixtoolset/Harvesters/commits?author=t-johnson)
+
+
+### Update v4 prerelease MSBuild projects
+
+To update your .wixproj MSBuild projects from previous WiX v4 prereleases, update the `Project` element's `Sdk` attribute:
+
+```xml
+<Project Sdk="WixToolset.Sdk/4.0.0">
+```
+
+For `PackageReference`s to WiX v4 extensions, update their `Version` attribute. For example:
+
+```xml
+<PackageReference Include="WixToolset.Util.wixext" Version="4.*" />
+<PackageReference Include="WixToolset.Netfx.wixext" Version="4.*" />
+```
+
+To clean up the NuGet artifacts from previous prereleases of WiX v4, we recommend you delete the `bin` and `obj` directories in your projects. If you're using .NET Framework MSBuild, do an explicit `MSBuild -Restore` to get the latest version restored. (Using `dotnet build` does that implicitly for you.)
+
+
+### Update the WiX .NET tool
+
+To update your [.NET tool](https://learn.microsoft.com/en-us/dotnet/core/tools/global-tools) prerelease installation of WiX v4:
+
+```sh
+dotnet tool update --global wix --version 4.0.0
+```
+
+To install WiX for the first time as a .NET tool:
+
+```sh
+dotnet tool install --global wix --version 4.0.0
+```
+
+To verify Wix.exe was successfully installed or updated:
+
+```sh
+wix --version
+```
+
+
+### Update HeatWave Community Edition
+
+To upgrade HeatWave Community Edition with support for WiX v4, [see the FireGiant blog post with details](todo://www.firegiant.com/blog/2023/2/24/wix-v4-rc3-and-next-heatwave-preview-available/).
+
+
+## Previous WiX v4 prereleases
+
+> Release Candidate 4 released Friday, 17-March-2023
+
+WiX v4 Release Candidate 4 contains [fixes for the -- significantly smaller number of bugs compared to RC3 -- that were reported during Release Candidate 3](https://github.com/wixtoolset/issues/issues?q=is%3Aissue+project%3Awixtoolset%2Fissues%2F6). There is one minor new feature:
+
+- In WixToolset.Netfx.wixext, package groups for .NET Framework v4.8.1 are now available. See [the issue](https://github.com/wixtoolset/issues/issues/7239) and [@barnson's pull request](https://github.com/wixtoolset/wix4/pull/368).
+
+
+> Release Candidate 3 released Friday, 24-February-2023
+
+WiX v4 Release Candidate 3 contains [fixes for bugs that were reported during Release Candidate 2](https://github.com/wixtoolset/issues/issues?q=is%3Aissue+project%3Awixtoolset%2Fissues%2F5). There are two minor new features:
+
+- WiX MSBuild projects support multi-targeting other projects with a single `ProjectReference`. You can specify multiple platforms, configurations, .NET frameworks, and runtime identifiers. See [@robmen's WIP](https://github.com/wixtoolset/issues/issues/7241) and [pull request](https://github.com/wixtoolset/wix4/pull/356).
+- A new `sys.BUILDARCHSHORT` built-in preprocessor variable helps handle WiX v4's new architecture-specific custom actions. See [issue 7227](https://github.com/wixtoolset/issues/issues/7227) and [@barnson's PR](https://github.com/wixtoolset/wix4/pull/359).
+
+
+> Release Candidate 2 released Friday, 20-January-2023
+
+WiX v4 Release Candidate 2 contains fixes for bugs that were reported during Release Candidate 1. There are two new features:
+
+- Add `perUserOrMachine` to the `Package/@Scope` options for dual-scope, single-package authoring. See [issue #7137](https://github.com/wixtoolset/issues/issues/7137), [@robmen's code PR](https://github.com/wixtoolset/wix4/pull/327), and [documentation PR](https://github.com/wixtoolset/web/pull/138).
+- Add `DotNetCoreSdkSearch` Burn search to locate .NET (Core) SDKs, like the `DotNetCoreSearch` search for .NET runtimes. See [issue #7058](https://github.com/wixtoolset/issues/issues/7058), [@powercode's code PR](https://github.com/wixtoolset/wix4/pull/294), and [@rseanhall's documentation PR](https://github.com/wixtoolset/web/pull/141).
+
+
+> Release Candidate 1 released Friday, 16-December-2022
+
+WiX v4 Release Candidate 1 contains fixes for bugs that were reported during Preview 1. There are no new features.
+
+
+> Preview 1 released Friday, 11-November-2022
+
+WiX v4 is a major release of the WiX Toolset, years in the making. [More than 500 issues were closed in WiX v4](https://github.com/wixtoolset/issues/issues?q=is%3Aissue+milestone%3Av4.0+is%3Aclosed)!
+
+If you're familiar with WiX v3, [WiX v4 for WiX v3 users](./fourthree/index.md) has details about how WiX v4 works.
