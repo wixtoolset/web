@@ -59,7 +59,7 @@ In WiX v4's extensions, custom action ids were renamed from their WiX v3 origins
 1. To support WiX v4's platform-specific custom actions for all three platforms that WiX v4 supports: x86, x64, and Arm64.
 2. To avoid conflicts when building a package with WiX v4 that merges a merge module that was built with WiX v3 and uses WiX v3 extension custom actions. (Yes, this is an annoying edge case.)
 
-WiX v4 meets these requirements by adding a prefix that lets us version custom actions when they make changes that are incompatible with prior versions. Today, the prefix is `Wix4` (because the WiX team is full of wildly imaginitive people). In WiX v5, if a particular extension made a change that was incompatible with the custom tables produced by WiX v4, that extension would adopt a new prefix, perhaps something like `Wix5`. But fixes and changes that are backward compatible would not require changing the prefix.
+WiX v4 meets these requirements by adding a prefix that lets us version custom actions when they make changes that are incompatible with prior versions. Today, the prefix is `Wix4` (because the WiX team is full of wildly imaginative people). In WiX v5, if a particular extension made a change that was incompatible with the custom tables produced by WiX v4, that extension would adopt a new prefix, perhaps something like `Wix5`. But fixes and changes that are backward compatible would not require changing the prefix.
 
 The suffix distinguishes platforms:
 
@@ -84,6 +84,37 @@ Some custom actions already have a `Wix` prefix. For those, the new prefix repla
 Generally, this change is invisible because the extension handles the prefix and suffix for you. That was also true in WiX v3, but several custom actions, like `WixFailWhenDeferred` did not have a custom element in the extension. Usually, this was because there was no additional information required. In WiX v4, there's always at least one bit of additional information required: the platform the package is being built for. So WiX v4 includes custom elements like [FailWhenDeferred](../schema/util/failwhendeferred.md) to include custom actions in your package so you don't have to worry about prefixes and suffixes.
 
 Other references to WiX custom actions must use the full id, including prefix and suffix.
+
+
+### Referencing the standard WixUI dialog sets
+
+In WiX v3, you referenced a standard WixUI dialog set using the `UIRef` element:
+
+```xml
+<UIRef Id="WixUI_Mondo" />
+```
+
+WiX v4's addition of platform-specific custom actions means a compiler extension is used:
+
+1. Add a reference to the WixToolset.UI.wixext WiX extension.
+2. Add the WixToolset.UI.wixext WiX extension namespace to your WiX authoring.
+3. Add the `WixUI` element to your WiX authoring.
+
+For example:
+
+```xml
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
+  xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+
+  <Package ...>
+      ...
+      <ui:WixUI
+        Id="WixUI_InstallDir"
+        InstallDirectory="INSTALLFOLDER"
+        />
+  </Package>
+</Wix>
+```
 
 
 ### Converting custom WixUI dialog sets
