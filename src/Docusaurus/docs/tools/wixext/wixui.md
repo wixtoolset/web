@@ -31,7 +31,9 @@ To add a WixUI dialog set to your MSI package:
 For example:
 
 ```xml
-<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
+  xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+
   <Package ...>
       ...
       <ui:WixUI
