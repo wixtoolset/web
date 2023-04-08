@@ -65,7 +65,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       announcementBar: {
-        content: '<span style="font-size:16px">WiX v4 is almost here! <a style="text-decoration-line:none;border-bottom:1px solid" href="https://www.firegiant.com/services/conversion-offer/?utm_source=wixtoolset.org&utm_medium=Display&utm_campaign=conversion_offer&utm_term=let+firegiant+help&utm_content=announcement_bar">Let FireGiant help.</a></span>',
+        content: '<span style="font-size:16px">WiX v4 is here! <a style="text-decoration-line:none;border-bottom:1px solid" href="https://www.firegiant.com/services/conversion-offer/?utm_source=wixtoolset.org&utm_medium=Display&utm_campaign=conversion_offer&utm_term=let+firegiant+help&utm_content=announcement_bar">Let FireGiant help.</a></span>',
         backgroundColor: '#ffcc00',
         textColor: '#000',
         isCloseable: true,
