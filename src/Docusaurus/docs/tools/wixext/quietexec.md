@@ -64,7 +64,7 @@ When WixQuietExec is run as a deferred custom action, it executes the command st
   />
 <CustomAction
   Id="ConvolutedWhoAmICustomAction"
-  BinaryRef="Wix4UtilCA$(UTILCA_ARCH)"
+  BinaryRef="Wix4UtilCA_$(sys.BUILDARCHSHORT)"
   DllEntry="WixQuietExec"
   Execute="deferred"
   Impersonate="no"
