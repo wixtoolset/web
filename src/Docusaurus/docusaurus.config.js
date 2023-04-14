@@ -141,6 +141,8 @@ const config = {
       'data-domain': "wixtoolset.org"
     }
   ],
+  
+  plugins: [require.resolve("@cmfcmf/docusaurus-search-local")],
 
   webpack: {
     jsLoader: (isServer) => ({
