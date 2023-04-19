@@ -55,6 +55,7 @@ The following properties let you detect a particular minimum version of .NET Fra
 | `WIX_IS_NETFRAMEWORK_462_OR_LATER_INSTALLED` | Set to 1 if .NET Framework 4.6.2 or later is installed. |
 | `WIX_IS_NETFRAMEWORK_472_OR_LATER_INSTALLED` | Set to 1 if .NET Framework 4.7.2 or later is installed. |
 | `WIX_IS_NETFRAMEWORK_48_OR_LATER_INSTALLED` | Set to 1 if .NET Framework 4.8 or later is installed. |
+| `WIX_IS_NETFRAMEWORK_481_OR_LATER_INSTALLED` | Set to 1 if .NET Framework 4.8.1 or later is installed. |
 
 For example:
 
@@ -165,6 +166,10 @@ For example:
 | `NetFx48WebAsPrereq` | .NET Framework v4.8 Web redistributable installer, as a managed-code bootstrapper application prerequisite |
 | `NetFx48Redist` | .NET Framework v4.8 standalone redistributable installer |
 | `NetFx48RedistAsPrereq` | .NET Framework v4.8 standalone redistributable installer, as a managed-code bootstrapper application prerequisite |
+| `NetFx481Web` | .NET Framework v4.8.1 Web redistributable installer |
+| `NetFx481WebAsPrereq` | .NET Framework v4.8.1 Web redistributable installer, as a managed-code bootstrapper application prerequisite |
+| `NetFx481Redist` | .NET Framework v4.8.1 standalone redistributable installer |
+| `NetFx481RedistAsPrereq` | .NET Framework v4.8.1 standalone redistributable installer, as a managed-code bootstrapper application prerequisite |
 
 For example:
 
