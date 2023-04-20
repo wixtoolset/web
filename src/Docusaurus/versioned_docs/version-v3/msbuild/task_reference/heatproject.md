@@ -12,23 +12,24 @@ you can create a PropertyGroup and specify the settings that you want to use for
 your build process. The following is a sample PropertyGroup that contains settings
 that will be used by the <b>HeatProject</b> task:
 
-```
-<span style="color: blue">&lt;</span><span style="color: #a31515">HeatProject
-  </span><span style="color: red">NoLogo</span><span style="color: blue">=</span>&quot;<span style="color: blue">$(HarvestProjectsNoLogo)</span>&quot;
-  <span style="color: red">SuppressAllWarnings</span><span style="color: blue">=</span>&quot;<span style="color: blue">$(HarvestProjectsSuppressAllWarnings)</span>&quot;
-  <span style="color: red">SuppressSpecificWarnings</span><span style="color: blue">=</span>&quot;<span style="color: blue">$(HarvestProjectsSuppressSpecificWarnings)</span>&quot;
-  <span style="color: red">ToolPath</span><span style="color: blue">=</span>&quot;<span style="color: blue">$(WixToolPath)</span>&quot;
-  <span style="color: red">TreatWarningsAsErrors</span><span style="color: blue">=</span>&quot;<span style="color: blue">$(HarvestProjectsTreatWarningsAsErrors)</span>&quot;
-  <span style="color: red">TreatSpecificWarningsAsErrors</span><span style="color: blue">=</span>&quot;<span style="color: blue">$(HarvestProjectsTreatSpecificWarningsAsErrors)</span>&quot;
-  <span style="color: red">VerboseOutput</span><span style="color: blue">=</span>&quot;<span style="color: blue">$(HarvestProjectsVerboseOutput)</span>&quot;
-  <span style="color: red">AutogenerateGuids</span><span style="color: blue">=</span>&quot;<span style="color: blue">$(HarvestProjectsAutogenerateGuids)</span>&quot;
-  <span style="color: red">GenerateGuidsNow</span><span style="color: blue">=</span>&quot;<span style="color: blue">$(HarvestProjectsGenerateGuidsNow)</span>&quot;
-  <span style="color: red">OutputFile</span><span style="color: blue">=</span>&quot;<span style="color: blue">$(IntermediateOutputPath)_%(_Project.Filename).wxs</span>&quot;
-  <span style="color: red">SuppressFragments</span><span style="color: blue">=</span>&quot;<span style="color: blue">$(HarvestProjectsSuppressFragments)</span>&quot;
-  <span style="color: red">SuppressUniqueIds</span><span style="color: blue">=</span>&quot;<span style="color: blue">$(HarvestProjectsSuppressUniqueIds)</span>&quot;
-  <span style="color: red">Transforms</span><span style="color: blue">=</span>&quot;<span style="color: blue">%(_Project.Transforms)</span>&quot;
-  <span style="color: red">Project</span><span style="color: blue">=</span>&quot;<span style="color: blue">@(_Project)</span>&quot;
-  <span style="color: red">ProjectOutputGroups</span><span style="color: blue">=</span>&quot;<span style="color: blue">%(_Project.ProjectOutputGroups)</span>&quot; <span style="color: blue">/&gt;</span>
+```xml
+<HeatProject
+    NoLogo="$(HarvestProjectsNoLogo)"
+    SuppressAllWarnings="$(HarvestProjectsSuppressAllWarnings)"
+    SuppressSpecificWarnings="$(HarvestProjectsSuppressSpecificWarnings)"
+    ToolPath="$(WixToolPath)"
+    TreatWarningsAsErrors="$(HarvestProjectsTreatWarningsAsErrors)"
+    TreatSpecificWarningsAsErrors="$(HarvestProjectsTreatSpecificWarningsAsErrors)"
+    VerboseOutput="$(HarvestProjectsVerboseOutput)"
+    AutogenerateGuids="$(HarvestProjectsAutogenerateGuids)"
+    GenerateGuidsNow="$(HarvestProjectsGenerateGuidsNow)"
+    OutputFile="$(IntermediateOutputPath)_%(_Project.Filename).wxs"
+    SuppressFragments="$(HarvestProjectsSuppressFragments)"
+    SuppressUniqueIds="$(HarvestProjectsSuppressUniqueIds)"
+    Transforms="%(_Project.Transforms)"
+    Project="@(_Project)"
+    ProjectOutputGroups="%(_Project.ProjectOutputGroups)"
+/>
 ```
 
 The following table describes the common WiX MSBuild parameters that are applicable
