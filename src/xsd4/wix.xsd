@@ -3873,6 +3873,11 @@
           <xs:documentation>The code page integer value or web name for summary info strings only. See remarks for more information.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
+      <xs:attribute name="Comments" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Optional comments for browsing.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
       <xs:attribute name="Description" type="xs:string">
         <xs:annotation>
           <xs:documentation>The product full name or description.</xs:documentation>
