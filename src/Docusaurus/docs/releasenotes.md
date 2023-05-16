@@ -127,7 +127,7 @@ wix --version
 
 ### Update HeatWave Community Edition
 
-To upgrade HeatWave Community Edition with support for WiX v4, [see the FireGiant blog post with details](todo://www.firegiant.com/blog/2023/2/24/wix-v4-rc3-and-next-heatwave-preview-available/).
+To upgrade HeatWave Community Edition with support for WiX v4, [see the FireGiant blog post with details](https://www.firegiant.com/blog/2023/2/24/wix-v4-rc3-and-next-heatwave-preview-available/).
 
 
 ## Previous WiX v4 prereleases
