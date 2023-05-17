@@ -9450,7 +9450,8 @@
       <xs:attribute name="Script">
         <xs:annotation>
           <xs:documentation>
-            Creates a type 37 or 38 custom action. The text of the element should contain the script to be embedded in the package.
+            Creates a type 37 or 38 custom action. Specify a path to the script to be embedded in the package in the 
+            `ScriptSourceFile` attribute.
           </xs:documentation>
         </xs:annotation>
         <xs:simpleType>
@@ -9459,6 +9460,13 @@
             <xs:enumeration value="vbscript" />
           </xs:restriction>
         </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="ScriptSourceFile" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            Path to the external file containing the script code. Can be used only with the Script attribute.
+          </xs:documentation>
+        </xs:annotation>
       </xs:attribute>
       <xs:attribute name="SuppressModularization" type="YesNoTypeUnion">
         <xs:annotation>
