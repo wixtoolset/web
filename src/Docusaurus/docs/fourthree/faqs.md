@@ -52,6 +52,32 @@ For example:
 All this logic works off the platform you specify at build time, with with the `-arch` switch at the wix.exe command line or the equivalent MSBuild property `InstallerPlatform`.
 
 
+### WiX v3 extensions in WiX v4 {#wixext34}
+
+This table maps WiX v3 extensions to their WiX v4 equivalents:
+
+| WiX v3 Extension | WiX v4 Extension | Documentation |
+| ---------------- | ---------------- | ------------- |
+| WixBalExtension | WixToolset.Bal.wixext | [Bal schema](../schema/bal/index.md) |
+| WixComPlusExtension | WixToolset.ComPlus.wixext | [Complus schema](../schema/complus/index.md) |
+| WixDependencyExtension | WixToolset.Dependency.wixext | [Dependency schema](../schema/dependency/index.md) |
+| WixDifxAppExtension | WixToolset.DifxApp.wixext | [Difxapp schema](../schema/difxapp/index.md) |
+| WixDirectXExtension | WixToolset.DirectX.wixext | [Directx schema](../schema/directx/index.md) |
+| WixFirewallExtension | WixToolset.Firewall.wixext | [Firewall schema](../schema/firewall/index.md) |
+| WixGamingExtension | n/a | Removed because the Windows feature is obsolete. |
+| WixHttpExtension | WixToolset.Http.wixext | [Http schema](../schema/http/index.md) |
+| WixIIsExtension | WixToolset.Iis.wixext | [Iis schema](../schema/iis/index.md) |
+| WixLuxExtension | n/a | Lux was not brought forward to WiX v4. |
+| WixMsmqExtension | WixToolset.Msmq.wixext | [Msmq schema](../schema/msmq/index.md) |
+| WixNetFxExtension | WixToolset.Netfx.wixext | [Netfx schema](../schema/netfx/index.md) |
+| WixPSExtension | WixToolset.PowerShell.wixext | [Powershell schema](../schema/powershell/index.md) |
+| WixSqlExtension | WixToolset.Sql.wixext | [Sql schema](../schema/sql/index.md) |
+| WixTagExtension | n/a | Software tag functionality now is built into the core toolset. |
+| WixUIExtension | WixToolset.UI.wixext | [UI schema](../schema/ui/index.md) |
+| WixUtilExtension | WixToolset.Util.wixext | [Util schema](../schema/util/index.md) |
+| WixVSExtension | WixToolset.VisualStudio.wixext | [Vs schema](../schema/vs/index.md) |
+
+
 ### Converting custom action ids {#customactionids}
 
 In WiX v4's extensions, custom action ids were renamed from their WiX v3 origins for two reasons:
