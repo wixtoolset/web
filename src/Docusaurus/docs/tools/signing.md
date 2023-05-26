@@ -113,7 +113,7 @@ To sign the whole bundle, create a `SignBundle` target in your .wixproj to call 
 To extract the Burn engine from the bundle:
 
 ```sh
-wix burn detach -engine path\to\extracted\burnengine.exe
+wix burn detach path\to\bundle.exe -engine path\to\extracted\burnengine.exe
 ```
 
 Then sign path\to\extracted\burnengine.exe.
