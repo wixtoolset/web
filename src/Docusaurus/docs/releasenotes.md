@@ -5,18 +5,21 @@ sidebar_position: 30
 # Release notes
 
 
-## WiX v4.0.0 {#v4}
+## WiX v4.0.1 {#v4}
 
-> WiX v4.0.0 was released Wednesday, 5-April-2023
+> WiX v4.0.1 was released Monday, 5-June-2023
 
-Here's a high-level look at the features and fixes in WiX v4:
+WiX v4.0.1 is a maintenance release of WiX v4 that [fixes a number of annoyances and more serious bugs that escaped detection in WiX v4.0.0](https://github.com/wixtoolset/issues/milestone/20?closed=1). All of the goodness in WiX v4.0.0 remains:
+
 
 ### Platforms
+
 - Arm64 is supported in the core toolset, extensions, and Burn.
 - WiX extensions include platform-specific custom actions for the platform of the package being built. For example, an Arm64 package contains only Arm64 custom actions and doesn't rely on x86 emulation.
 
 
 ### Build tools
+
 - WiX v4 doesn't have to be installed on every dev machine and build image like WiX v3. Instead, WiX v4 follows the modern .NET model of using NuGet to deliver tools.
   - WiX v4 MSBuild projects are SDK-style projects; MSBuild and NuGet work together to bring down the WiX v4 MSBuild SDK NuGet package.
   - Both .NET Framework MSBuild and `dotnet build` are supported.
@@ -32,7 +35,9 @@ Here's a high-level look at the features and fixes in WiX v4:
   - WiX supplies a default [`MediaTemplate` element](./schema/wxs/mediatemplate.md) if you don't specify one in your authoring.
 - WiX warns when mixing authoring meant for MSI packages in bundles and vice versa.
 
+
 ### Burn, bundles, and bootstrapper applications
+
 - The Burn engine is platform-specific, so you can build an x64 bundle that contains only x64 code and doesn't rely on WoW64.
 - .NET 6 and later are supported platforms for writing managed-code bootstrapper applications. .NET Framework is also supported.
 - ThmUtil, the native-code UI library used by the WixStdBA bootstrapper application, supports new controls and authored conditions and actions that let themes add functionality without having to write custom C++ code. For details, see [Thmutil schema](./schema/thmutil/index.md).
@@ -50,12 +55,58 @@ Here's a high-level look at the features and fixes in WiX v4:
 
 
 ### Deprecations and deletions
+
 - Features that were deprecated in WiX v3, including command-line switches deprecated in WiX v3.14, have been removed from WiX v4.
 - WixGamingExtension and WixLuxExtension have been removed in WiX v4.
 - WixDifxAppExtension is deprecated in Windows 10 and therefore has been deprecated in WiX v4 and will be removed in WiX v5.
 
 
+### Update MSBuild projects
+
+To update your .wixproj MSBuild projects from previous WiX v4 releases, update the `Project` element's `Sdk` attribute:
+
+```xml
+<Project Sdk="WixToolset.Sdk/4.0.1">
+```
+
+For `PackageReference`s to WiX v4 extensions, update their `Version` attribute. For example:
+
+```xml
+<PackageReference Include="WixToolset.Util.wixext" Version="4.*" />
+<PackageReference Include="WixToolset.Netfx.wixext" Version="4.*" />
+```
+
+To clean up the NuGet artifacts from previous releases of WiX v4, we recommend you delete the `bin` and `obj` directories in your projects. If you're using .NET Framework MSBuild, do an explicit `MSBuild -Restore` to get the latest version restored. (Using `dotnet build` does that implicitly for you.)
+
+
+### Update the WiX .NET tool
+
+To update your [.NET tool](https://learn.microsoft.com/en-us/dotnet/core/tools/global-tools) installation of WiX v4:
+
+```sh
+dotnet tool update --global wix
+```
+
+To install WiX for the first time as a .NET tool:
+
+```sh
+dotnet tool install --global wix
+```
+
+To verify Wix.exe was successfully installed or updated:
+
+```sh
+wix --version
+```
+
+
+## Previous WiX v4 releases
+
+> WiX v4.0.0 was released Wednesday, 5-April-2023
+
+
 ### Contributors
+
 [@robmen](https://github.com/wixtoolset/wix4/commits?author=robmen), [@rseanhall](https://github.com/wixtoolset/wix4/commits?author=rseanhall), and [@barnson](https://github.com/wixtoolset/wix4/commits?author=barnson) took their maintainer duties seriously during the development of WiX v4. They were joined by many others, who have our thanks!
 
 - [@cpuwzd](https://github.com/wixtoolset/wix4/commits?author=cpuwzd)
@@ -85,52 +136,6 @@ Here's a high-level look at the features and fixes in WiX v4:
 - [@VolkerGa](https://github.com/wixtoolset/Dtf/commits?author=VolkerGa)
 - [@t-johnson](https://github.com/wixtoolset/Harvesters/commits?author=t-johnson)
 
-
-### Update v4 prerelease MSBuild projects
-
-To update your .wixproj MSBuild projects from previous WiX v4 prereleases, update the `Project` element's `Sdk` attribute:
-
-```xml
-<Project Sdk="WixToolset.Sdk/4.0.0">
-```
-
-For `PackageReference`s to WiX v4 extensions, update their `Version` attribute. For example:
-
-```xml
-<PackageReference Include="WixToolset.Util.wixext" Version="4.*" />
-<PackageReference Include="WixToolset.Netfx.wixext" Version="4.*" />
-```
-
-To clean up the NuGet artifacts from previous prereleases of WiX v4, we recommend you delete the `bin` and `obj` directories in your projects. If you're using .NET Framework MSBuild, do an explicit `MSBuild -Restore` to get the latest version restored. (Using `dotnet build` does that implicitly for you.)
-
-
-### Update the WiX .NET tool
-
-To update your [.NET tool](https://learn.microsoft.com/en-us/dotnet/core/tools/global-tools) prerelease installation of WiX v4:
-
-```sh
-dotnet tool update --global wix --version 4.0.0
-```
-
-To install WiX for the first time as a .NET tool:
-
-```sh
-dotnet tool install --global wix --version 4.0.0
-```
-
-To verify Wix.exe was successfully installed or updated:
-
-```sh
-wix --version
-```
-
-
-### Update HeatWave Community Edition
-
-To upgrade HeatWave Community Edition with support for WiX v4, [see the FireGiant blog post with details](https://www.firegiant.com/blog/2023/2/24/wix-v4-rc3-and-next-heatwave-preview-available/).
-
-
-## Previous WiX v4 prereleases
 
 > Release Candidate 4 released Friday, 17-March-2023
 
