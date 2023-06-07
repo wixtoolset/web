@@ -327,7 +327,7 @@ There are two built-in BA's that support showing the MSI's internal UI. The firs
 
 The second one is wixstdba.
 Use the `bal:DisplayInternalUICondition` attribute to control when the MSI's UI should be shown.
-To get the same behavior as v3, use `bal:DisplayInternalUICondition="WixBundleExecutePackageAction = 2"`.
+To get the same behavior as v3, use `bal:DisplayInternalUICondition="WixBundleAction = 6"`.
 
 
 ### Upgrading custom wixstdba themes
