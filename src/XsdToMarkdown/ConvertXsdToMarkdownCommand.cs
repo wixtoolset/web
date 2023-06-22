@@ -69,7 +69,7 @@ namespace WixBuildTools.XsdToMarkdown
                 $"# {this.Xsd.SchemaName} schema",
                 this.Xsd.SchemaDocumentation,
                 "## Target namespace",
-                this.Xsd.TargetNamespace
+                this.Xsd.TargetNamespace.ToNonautohyperlinkingURI(),
             };
 
             if (this.Xsd.RootElements.Any())
@@ -78,8 +78,11 @@ namespace WixBuildTools.XsdToMarkdown
                 content.AddRange(this.Xsd.RootElements.OrderBy(el => el.Name).Select(el => $"- [{el.Name}]({this.LinkForElement(PageType.SchemaRoot, el.Namespace, el.Name)})"));
             }
 
-            content.Add("## Elements");
-            content.AddRange(this.Xsd.Elements.Values.OrderBy(el => el.Name).Select(el => $"- [{el.Name}]({this.LinkForElement(PageType.SchemaRoot, el.Namespace, el.Name)})"));
+            if (this.Xsd.Elements.Any())
+            {
+                content.Add("## Elements");
+                content.AddRange(this.Xsd.Elements.Values.OrderBy(el => el.Name).Select(el => $"- [{el.Name}]({this.LinkForElement(PageType.SchemaRoot, el.Namespace, el.Name)})"));
+            }
 
             if (this.Xsd.SimpleTypes.Any())
             {
