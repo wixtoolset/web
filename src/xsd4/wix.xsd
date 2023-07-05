@@ -8548,12 +8548,6 @@
             allow WiX to attempt to generate a unique short directory name.
             However, if this name collides with another directory or you wish to manually specify
             the short directory name, then the ShortName attribute may be specified.
-
-            This Name attribute may also define multiple directories using the inline directory syntax.
-            For example, "ProgramFilesFolder:\My Company\My Product\bin" would create a reference to a
-            Directory element with Id="ProgramFilesFolder" then create directories named "My Company" then
-            "My Product" then "bin" nested beneath each other. This syntax is a shortcut to defining
-            each directory in an individual Directory element.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -9450,7 +9444,7 @@
       <xs:attribute name="Script">
         <xs:annotation>
           <xs:documentation>
-            Creates a type 37 or 38 custom action. Specify a path to the script to be embedded in the package in the 
+            Creates a type 37 or 38 custom action. Specify a path to the script to be embedded in the package in the
             `ScriptSourceFile` attribute.
           </xs:documentation>
         </xs:annotation>
