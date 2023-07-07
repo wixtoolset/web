@@ -105,3 +105,68 @@ The WiX MSBuild targets create a number of preprocessor variables for each refer
 | SolutionFileName | $(SolutionFileName) | MySolution.sln |
 | SolutionName | $(SolutionName) | MySolution |
 | SolutionPath | $(SolutionPath) | C:\source\repos\MySolution\MySolution.sln |
+
+## Directory.Build.props / Directory.Build.target (Visual Studio)
+
+Sometimes you need to add or modify multiple same variables in a Visual Studio solution. Think about adding manufacturer name, copyright, product name, ... Updating these in all the projects can be a time consuming task.
+<br/>
+Instead of opening every single project in your solution and updating these variables you can manage this from a central location in a file called `Directory.Build.props`.
+<br/>
+At build time, `Microsoft.Common.props` is being called and looks for `Directory.Build.props` files. (You can add multiple `Directory.Build.props` files, but this is out of scope).
+<br/><br/>
+Wix v4 supports [Microsoft.Common.props](https://learn.microsoft.com/en-us/visualstudio/msbuild/customize-your-build?view=vs-2022).
+<br/><br/>
+Quick guide to get you started:
+
+1. Open your solution in Visual Studio 2022.
+2. Add a `Directory.Build.props` file in the root of your solution.
+3. Add this file content:
+```
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+    <PropertyGroup>
+        <MyProductNameVariable>My Fancy Productname</MyProductNameVariable>
+    </PropertyGroup>
+</Project>
+```
+4. Open a C# project (`.csproj`) from your solution.
+5. Change this code:
+```
+<PropertyGroup>
+  <!-- ... -->
+    <Product>My Fancy Productname</Product>
+  <!-- ... -->
+</PropertyGroup>
+```
+to
+```
+<PropertyGroup>
+  <!-- ... -->
+    <Product>$(MyProductNameVariable)</Product>
+  <!-- ... -->
+</PropertyGroup>
+```
+6. Open a Wix project (`.wixproj`) from your solution.
+7. Now you can use your variable as $(MyProductNameVariable) in the `.wixproj` project file.
+
+The variables from your `Directory.Build.props` file can only be used in the `.wixproj` file and cannot be used in `.wxi` or `.wxs` files.
+However with a small trick you can use the variables in `.wxi` and `.wxs` files.
+
+1. In the opened Wix project (`.wixproj`) add a `<DefineConstants>` element:
+```
+<Project Sdk="WixToolset.Sdk/4.0.1">
+  <PropertyGroup Label="Globals">
+     <DefineConstants>MyProductNameVariable=$(MyProductNameVariable);</DefineConstants>
+  </PropertyGroup>
+</Project>
+```
+2. We did a one-to-one mapping of our variable to a constant in Wix, by using the same name. Multiple constants can be added by separating them with a `;`
+3. Open a `.wxs` file, for example *Package.wxs*.
+4. You can now use your variable (aka 'constant'):
+```
+<Package Name="$(MyProductNameVariable)">
+   <!-- ... -->
+</Package>
+```
+
+You can now modify the values of your variables in the `Directory.Build.props` file and all the variables in your solutions projects, including Wix v4 projects will be updated.
