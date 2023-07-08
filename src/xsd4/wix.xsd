@@ -8973,9 +8973,9 @@
       <xs:attribute name="Level" type="Integer">
         <xs:annotation>
           <xs:documentation>
-            Sets the install level of this feature. A value of 0 will disable the feature. Processing the
-            Condition Table can modify the level value (this is set via the Condition child element). The
-            default value is "1".
+            Sets the install level of this feature. A value of 0 will disable the feature. This value
+            can be modified at install time using the Level element as a child of the Feature.
+            The default value is "1".
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -9194,7 +9194,7 @@
         <xs:annotation>
           <xs:documentation>
             Indicates the compression level for the Media's cabinet. This attribute can
-            only be used in conjunction with the Cabinet attribute. The default is 'mszip'.
+            only be used in conjunction with the Cabinet attribute. The default is 'medium'.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
