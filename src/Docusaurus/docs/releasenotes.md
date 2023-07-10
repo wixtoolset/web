@@ -29,7 +29,7 @@ WiX v4.0.1 is a maintenance release of WiX v4 that [fixes a number of annoyances
 - Building patches is much easier (one command!) and can use MSI packages as the source of target and updated files.
 - The WiX extensibility model and pipeline integration has been dramatically enhanced.
 - The WiX language has been further simplified. For example:
-  - [The `Package` element](./schema/wxs/package.md) combines what was two elements in WiX v3.
+  - [The `Package` element](./schema/wxs/package.md) combines what was two elements (`Product` and `Package`) in WiX v3 .
   - The [`StandardDirectory` element](./schema/wxs/standarddirectory.md) simplifies the use of standard Windows Installer directories.
   - The `Subdirectory` attribute on, for example, [the `Component` element](./schema/wxs/component.md), lets you create subdirectories without nested [`Directory` elements](./schema/wxs/directory.md).
   - WiX supplies a default [`MediaTemplate` element](./schema/wxs/mediatemplate.md) if you don't specify one in your authoring.
