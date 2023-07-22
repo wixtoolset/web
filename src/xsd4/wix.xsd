@@ -5423,7 +5423,7 @@
   <xs:element name="File">
     <xs:annotation>
       <xs:documentation>
-        File specification for File table, must be child node of Component.
+        Defines a file to be installed by the package.
       </xs:documentation>
       <xs:appinfo>
         <xse:msiRef table="File" href="https://learn.microsoft.com/en-us/windows/win32/msi/file-table" />
@@ -6064,7 +6064,7 @@
   <xs:element name="RemoveRegistryKey">
     <xs:annotation>
       <xs:documentation>
-        Used for removing registry keys and all child keys either during install or uninstall.
+        Used for removing registry keys and all child keys during install or uninstall.
       </xs:documentation>
       <xs:appinfo>
         <xse:msiRef table="Registry" href="https://learn.microsoft.com/en-us/windows/win32/msi/registry-table" />
@@ -7975,7 +7975,7 @@
             Component identifier; this is the primary key for identifying components. If omitted,
             the compiler defaults the identifier to the identifier of the resource that is the
             explicit keypath of the component (for example, a child File element with KeyPath
-            attribute with value 'yes'.
+            attribute with value 'yes').
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
