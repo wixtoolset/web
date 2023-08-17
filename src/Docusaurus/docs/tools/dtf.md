@@ -252,7 +252,7 @@ A sample CA project with two CAs is included in the Samples\ManagedCA directory.
 
 The build process for managed CA DLLs is a little complicated becuase of the proxy-wrapper and dll-export requirements. Here's an overview:
 
-1. Add a package reference to the `WixToolset.Dtf.CustomAction` nuget package to your msbuild project or otherwise make both the `WixToolset.Dtf.CustomAction` and `WixToolset.Dtf.WindowsInstaller` nuget packages
+1. Add a package reference to the `WixToolset.Dtf.CustomAction` nuget package to your msbuild project (easiest and most reliable) or otherwise download both the `WixToolset.Dtf.CustomAction` and `WixToolset.Dtf.WindowsInstaller` nuget packages and point `DTFbin` to the applicable `lib` directory of `WixToolset.Dtf.WindowsInstaller` and add the `tools` directory of `WixToolset.Dtf.CustomAction` to your `PATH`.
 2. Compile your CA assembly, which references WixToolset.Dtf.WindowsInstaller.dll and marks exported custom actions with a CustomActionAttribute.
 3. Package the CA assembly, CustomAction.config, WixToolset.Dtf.WindowsInstaller.dll, and any other dependencies using MakeSfxCA.exe. The filenames of CustomAction.config and WixToolset.Dtf.WindowsInstaller.dll must not be changed, since the custom action proxy specifically looks for those files.
 
