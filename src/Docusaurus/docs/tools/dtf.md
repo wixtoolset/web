@@ -159,8 +159,6 @@ Before choosing to write a custom action in managed code instead of traditional 
 - If the custom action runs at uninstall time, then even the uninstall of your product may fail if the .NET Framework is not present. This means a user could run into a problem if they uninstall the .NET Framework before your product.
 - A managed custom action should be configured to run against a specific version of the .NET Framework, and that version should match the version your actual product runs against. Allowing the version to "float" to the latest installed .NET Framework is likely to lead to compatibility problems with future versions. The .NET Framework provides side-by-side functionality for good reason -- use it.
 
-Note: Both `.NET Framework` versions and newer franeworks such as `.NET 6` can now be targeted.
-
 
 ### Proxy for Managed Custom Actions
 
