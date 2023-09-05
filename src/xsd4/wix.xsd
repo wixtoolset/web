@@ -2363,38 +2363,10 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Scope">
+      <xs:attribute name="Scope" type="PackageScopeTypeUnion">
         <xs:annotation>
-          <xs:documentation>Use this attribute to specify the installation scope of this package: per-machine or per-user.</xs:documentation>
+          <xs:documentation>Use this attribute to specify the installation scope of this package: per-machine, per-user, or a choice of either.</xs:documentation>
         </xs:annotation>
-        <xs:simpleType>
-          <xs:restriction base="xs:NMTOKEN">
-            <xs:enumeration value="perMachine">
-              <xs:annotation>
-                <xs:documentation>
-                  Set this value to declare that the package is a per-machine installation and requires elevated privileges to install.
-                  Sets the ALLUSERS property to 1.
-                </xs:documentation>
-              </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="perUser">
-              <xs:annotation>
-                <xs:documentation>
-                  Set this value to declare that the package is a per-user installation and does not require elevated privileges to install.
-                  Sets the package's InstallPrivileges attribute to "limited."
-                </xs:documentation>
-              </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="perUserOrMachine">
-              <xs:annotation>
-                <xs:documentation>
-                  Set this value to declare that the package is [dual-purpose that can install per-user or per-machine](https://learn.microsoft.com/en-us/windows/win32/msi/single-package-authoring).
-                  Sets the ALLUSERS property to 2 and MSIINSTALLPERUSER property to 1.
-                </xs:documentation>
-              </xs:annotation>
-            </xs:enumeration>
-          </xs:restriction>
-        </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="ShortNames" type="YesNoTypeUnion">
         <xs:annotation>
@@ -13822,6 +13794,43 @@
       <xs:enumeration value="TempFolder" />
       <xs:enumeration value="TemplateFolder" />
       <xs:enumeration value="WindowsFolder" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PackageScopeTypeUnion">
+    <xs:annotation>
+      <xs:documentation>Use this attribute to specify the installation scope of this package: per-machine, per-user, or a choice of either.</xs:documentation>
+    </xs:annotation>
+    <xs:union memberTypes="PackageScopeType PreprocessorVariables"/>
+  </xs:simpleType>
+  <xs:simpleType name="PackageScopeType">
+    <xs:annotation>
+      <xs:documentation>Use this attribute to specify the installation scope of this package: per-machine, per-user, or a choice of either.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:NMTOKEN">
+      <xs:enumeration value="perMachine">
+        <xs:annotation>
+          <xs:documentation>
+            Set this value to declare that the package is a per-machine installation and requires elevated privileges to install.
+            Sets the ALLUSERS property to 1.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="perUser">
+        <xs:annotation>
+          <xs:documentation>
+            Set this value to declare that the package is a per-user installation and does not require elevated privileges to install.
+            Sets the package's InstallPrivileges attribute to "limited."
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="perUserOrMachine">
+        <xs:annotation>
+          <xs:documentation>
+            Set this value to declare that the package is [dual-purpose that can install per-user or per-machine](https://learn.microsoft.com/en-us/windows/win32/msi/single-package-authoring).
+            Sets the ALLUSERS property to 2 and MSIINSTALLPERUSER property to 1.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="YesNoTypeUnion">
