@@ -5466,7 +5466,7 @@
       <xs:attribute name="Id" type="xs:string">
         <xs:annotation>
           <xs:documentation>
-            The unique identifier for this File element. If you omit Id, it defaults to the file name portion of the Source attribute, if specified. May be referenced as a Property by specifying [#value].
+            The unique identifier for this File element. If you omit Id, a stable identifier is generated for you.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -5483,16 +5483,10 @@
       <xs:attribute name="Name" type="LongFileNameType">
         <xs:annotation>
           <xs:documentation>
-            In prior versions of the WiX toolset, this attribute specified the short file name.
-            This attribute's value may now be either a short or long file name.
-            If a short file name is specified, the ShortName attribute may not be specified.
-            Also, if this value is a long file name, the ShortName attribute may be omitted to
-            allow WiX to attempt to generate a unique short file name.
-            However, if this name collides with another file or you wish to manually specify
-            the short file name, then the ShortName attribute may be specified.
-            Finally, if this attribute is omitted then its default value is the file name portion
-            of the Source attribute, if one is specified, or the value of the Id attribute, if
-            the Source attribute is omitted or doesn't contain a file name.
+            Specifies the name of the installed file. If this attribute is omitted, then
+            its default value is the file name portion of the Source attribute. If the
+            Source attribute is omitted, you must specify a Name attribute. For more
+            information, see <html:a href="~/howtos/general/specifying_source_files.html">Specifying source files</html:a>.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -5680,7 +5674,12 @@
       </xs:attribute>
       <xs:attribute name="Source" type="xs:string">
         <xs:annotation>
-          <xs:documentation>Specifies the path to the File in the build process. Overrides default source path set by parent directories and Name attribute. This attribute must be set if no source information can be gathered from parent directories. For more information, see <html:a href="~/howtos/general/specifying_source_files.html">Specifying source files</html:a>.</xs:documentation>
+          <xs:documentation>
+            Specifies the path to the file in the build process. Overrides default source
+            path set by parent directories and Name attribute. This attribute must be set
+            if no source information can be gathered from parent directories. For more
+            information, see <html:a href="~/howtos/general/specifying_source_files.html">Specifying source files</html:a>.
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="PatchGroup" type="Integer">
