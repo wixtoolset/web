@@ -9,29 +9,31 @@ Custom actions add the ability to install and configure many new types of resour
 
 ## Example
 
-First, let&apos;s try an example that creates a user account when the MSI is installed. This functionality is defined in WixUtilExtension.dll and exposed to the user as the &lt;User&gt; element.
+First, let's try an example that creates a user account when the MSI is installed. This functionality is defined in WixUtilExtension.dll and exposed to the user as the &lt;User&gt; element.
 
-    <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi' xmlns:util='http://schemas.microsoft.com/wix/UtilExtension' >
-        <Product Id='PutGuidHere' Name='TestUserProduct' Language='1033' Version='0.0.0.0'>
-            <Package Id='PUT-GUID-HERE' Description='Test User Package' InstallerVersion='200' Compressed='yes' />
-                <Directory Id='TARGETDIR' Name='SourceDir'>
-                    <Component Id='TestUserProductComponent' Guid='PutGuidHere'>
-                        <util:User Id='TEST_USER1' Name='testName1' Password='pa$$$$word'/>
-                    </Component>
-            </Directory>
-    
-            <Feature Id='TestUserProductFeature' Title='Test User Product Feature' Level='1'>
-                <ComponentRef Id='TestUserProductComponent' />
-            </Feature>
-        </Product>
-    </Wix>
+```xml
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi' xmlns:util='http://schemas.microsoft.com/wix/UtilExtension' >
+    <Product Id='PutGuidHere' Name='TestUserProduct' Language='1033' Version='0.0.0.0'>
+        <Package Id='PUT-GUID-HERE' Description='Test User Package' InstallerVersion='200' Compressed='yes' />
+            <Directory Id='TARGETDIR' Name='SourceDir'>
+                <Component Id='TestUserProductComponent' Guid='PutGuidHere'>
+                    <util:User Id='TEST_USER1' Name='testName1' Password='pa$$$$word'/>
+                </Component>
+        </Directory>
 
-This is a simple example that will create a new user on the machine named &quot;testName1&quot; with the password &quot;pa$$word&quot; (the preprocessor replaces $$$$ with $$).
+        <Feature Id='TestUserProductFeature' Title='Test User Product Feature' Level='1'>
+            <ComponentRef Id='TestUserProductComponent' />
+        </Feature>
+    </Product>
+</Wix>
+```
+
+This is a simple example that will create a new user on the machine named "testName1" with the password "pa$$word" (the preprocessor replaces $$$$ with $$).
 
 To build the MSI from this WiX authoring:
 
 1. Put the above code in a file named yourfile.wxs.
-1. Replace the &quot;PUT-GUID-HERE&quot; attributes with real GUIDs.
+1. Replace the "PUT-GUID-HERE" attributes with real GUIDs.
 1. Run `candle.exe yourfile.wxs -ext %full path to WixUtilExtension.dll%`
 1. Run `light.exe yourfile.wixobj -ext %full path to WixUtilExtension.dll% -out yourfile.msi yourfile.wixout`
 

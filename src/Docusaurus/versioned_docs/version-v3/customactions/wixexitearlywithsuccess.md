@@ -29,7 +29,9 @@ If you are using Votive you can add the extension using the Add Reference dialog
 
 To add a reference to the WixExitEarlyWithSuccess custom action, include the following in your WiX setup authoring:
 
+```xml
     <CustomActionRef Id="WixExitEarlyWithSuccess" />
+```
 
 This will cause WiX to add the WixExitEarlyWithSuccess custom action to your MSI, schedule it immediately after the <a href="http://msdn.microsoft.com/library/aa368600.aspx" target="_blank">FindRelatedProducts</a> action and condition it to only run if the property named NEWERVERSIONDETECTED is set.
 
@@ -37,6 +39,8 @@ This will cause WiX to add the WixExitEarlyWithSuccess custom action to your MSI
 
 In order to cause the WixExitEarlyWithSuccess to run at the desired times, you must add logic to your installer to create the NEWERVERSIONDETECTED property. To implement the major upgrade example described above, you can add an Upgrade element like the following:
 
+```xml
     <Upgrade Id="!(loc.Property_UpgradeCode)">
       <UpgradeVersion Minimum="$(var.ProductVersion)" OnlyDetect="yes" Property="NEWERVERSIONDETECTED" />
     </Upgrade>
+```
