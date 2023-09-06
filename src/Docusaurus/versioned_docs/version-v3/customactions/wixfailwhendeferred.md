@@ -24,20 +24,22 @@ There are 3 steps you need to take to use the WixFailWhenDeferred custom action 
 
 The WiX support for WixFailWhenDeferred is included in a WiX extension library that must be added to your project prior to use. If you are using WiX on the command line you need to add the following to your light command line:
 
-    light.exe myproject.wixobj -ext WixUtilExtension
+`light.exe myproject.wixobj -ext WixUtilExtension`
 
 If you are using Votive you can add the extension using the Add Reference dialog:
 
 1. Open your Votive project in Visual Studio
 1. Right click on your project in Solution Explorer and select Add Reference...
-1. Select the <strong>WixUtilExtension.dll</strong> assembly from the list and click Add
+1. Select the **WixUtilExtension.dll** assembly from the list and click Add
 1. Close the Add Reference dialog
 
 ## Step 2: Add a reference to the WixFailWhenDeferred custom action
 
 To add a reference to the WixFailWhenDeferred custom action, include the following in your WiX setup authoring:
 
+```xml
     <CustomActionRef Id="WixFailWhenDeferred" />
+```
 
 This will cause WiX to add the WixFailWhenDeferred custom action to your MSI, schedule it immediately before the <a href="http://msdn.microsoft.com/library/aa369505.aspx" target="_blank">InstallFinalize</a> action and condition it to only run if the property WIXFAILWHENDEFERRED=1.
 

@@ -21,17 +21,15 @@ Assuming you have an existing installer that is functional but is just lacking a
 
 1. Add a UIRef element to your setup authoring that has an Id that matches the name of one of the dialog sets described above. For example:
 
-```
+```xml
 <Product ...>
-<UIRef Id="WixUI_InstallDir" />
+    <UIRef Id="WixUI_InstallDir" />
 </Product>
 ```
 
 2. Pass the -ext and -cultures switches to [light.exe](../overview/light.md) to reference the WixUIExtension. For example:
 
-```
-light -ext WixUIExtension -cultures:en-us Product.wixobj -out Product.msi
-```
+`light -ext WixUIExtension -cultures:en-us Product.wixobj -out Product.msi`
 
 Note - If you are using WiX in Visual Studio you can add the WixUIExtension using the Add Reference dialog and the necessary command lines will automatically be added when linking your .msi. To do this, use the following steps:
 
