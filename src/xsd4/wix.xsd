@@ -8145,7 +8145,7 @@
       <xs:attribute name="Bitness" type="BitnessTypeUnion">
         <xs:annotation>
           <xs:documentation>
-            Overrides the default Component bitness. Only 64-bit Components an install to 64-bit locations such
+            Overrides the default Component bitness. Only 64-bit Components can install to 64-bit locations such
             as `ProgramFiles64Folder` and the 64-bit registry. The value `always64` will force the Component
             bitness to be 64-bit and cannot be included in 32-bit packages.
             Simliarly, the value `always32` will force the Component bitness to 32-bit and can be included in
