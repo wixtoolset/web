@@ -18,7 +18,7 @@ There are two steps you need to take to use the WixBroadcastSettingChange or Wix
 
 WixBroadcastSettingChange and WixBroadcastEnvironmentChange are included in a WiX extension library that must be added to your project prior to use. If you are using WiX on the command line you need to add the following to your light command line:
 
-    light.exe myproject.wixobj -ext WixUtilExtension
+`light.exe myproject.wixobj -ext WixUtilExtension`
 
 If you are using Votive you can add the extension using the Add Reference dialog:
 
@@ -31,7 +31,9 @@ If you are using Votive you can add the extension using the Add Reference dialog
 
 To add a reference to the WixBroadcastSettingChange or WixBroadcastEnvironmentChange custom actions, include one of the following elements in your WiX setup authoring:
 
+```xml
     <CustomActionRef Id="WixBroadcastSettingChange" />
     <CustomActionRef Id="WixBroadcastEnvironmentChange" />
+```
 
 This will cause WiX to add the custom action to your MSI and schedule it immediately after the <a href="http://msdn.microsoft.com/library/aa369505.aspx" target="_blank">InstallFinalize</a> standard action.

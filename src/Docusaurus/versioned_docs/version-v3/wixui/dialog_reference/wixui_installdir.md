@@ -7,23 +7,23 @@ layout: documentation
 
 WixUI_InstallDir does not allow the user to choose what features to install, but it adds a dialog to let the user choose a directory where the product will be installed.
 
-This dialog set is defined in the file <b>WixUI_InstallDir.wxs</b> in the WixUIExtension in the WiX source code.
+This dialog set is defined in the file **WixUI_InstallDir.wxs** in the WixUIExtension in the WiX source code.
 
 ## Using WixUI_InstallDir
 
 To use WixUI\_InstallDir, you must set a property named WIXUI\_INSTALLDIR with a value of the ID of the directory you want the user to be able to specify the location of. The directory ID must be all uppercase characters because it must be passed from the UI to the execute sequence to take effect. For example:
 
-```
-&lt;Directory Id="TARGETDIR" Name="SourceDir"&gt;
-  &lt;Directory Id="ProgramFilesFolder" Name="PFiles"&gt;
-    &lt;Directory Id="<b>TESTFILEPRODUCTDIR</b>" Name="Test File"&gt;
+```xml
+<Directory Id="TARGETDIR" Name="SourceDir">
+  <Directory Id="ProgramFilesFolder" Name="PFiles">
+    <Directory Id="<b>TESTFILEPRODUCTDIR</b>" Name="Test File">
       ...
-    &lt;/Directory&gt;
-   &lt;/Directory&gt;
-&lt;/Directory&gt;
+    </Directory>
+   </Directory>
+</Directory>
 ...
-&lt;Property Id="WIXUI_INSTALLDIR" Value="<b>TESTFILEPRODUCTDIR</b>" /&gt;
-&lt;UIRef Id="WixUI_InstallDir" /&gt;
+<Property Id="WIXUI_INSTALLDIR" Value="<b>TESTFILEPRODUCTDIR</b>" />
+<UIRef Id="WixUI_InstallDir" />
 ```
 
 ## WixUI_InstallDir Dialogs

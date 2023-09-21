@@ -41,6 +41,7 @@ To use the WixDirectXExtension properties in an MSI, use the following steps:
 
 For example:
 
+```xml
     <PropertyRef Id="WIX_DIRECTX_PIXELSHADERVERSION" />
     
     <CustomAction Id="CA_CheckPixelShaderVersion" Error="[ProductName] requires pixel shader version 3.0 or greater." />
@@ -56,5 +57,6 @@ For example:
       <![CDATA[WIX_DIRECTX_PIXELSHADERVERSION < 300]]>
     </Custom>
     </InstallUISequence>
+```
 
 Note that the WixDirectXExtension properties are set to the value <b>NotSet</b> by default. The WixDirectXExtension custom action is configured to not fail if it encounters any errors when trying to determine DirectX capabilities. In this type of scenario, the properties will be set to their <b>NotSet</b> default values. In your setup authoring, you can compare the property values to the <b>NotSet</b> value or to a specific value to determine whether WixDirectXExtension was able to query DirectX capabilities and if so, what they are.
