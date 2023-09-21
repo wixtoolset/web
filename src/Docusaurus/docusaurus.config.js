@@ -65,9 +65,10 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       announcementBar: {
-        content: '<span style="font-size:16px">WiX v4 is here! <a style="text-decoration-line:none;border-bottom:1px solid" href="https://www.firegiant.com/services/conversion-offer/?utm_source=wixtoolset.org&utm_medium=Display&utm_campaign=conversion_offer&utm_term=let+firegiant+help&utm_content=announcement_bar">Let FireGiant help.</a></span>',
-        backgroundColor: '#ffcc00',
-        textColor: '#000',
+        id: 'subscribe',
+        content: '<span style="font-size:16px">Get the latest WiX news sent to you. <a style="text-decoration-line:none;border-bottom:1px solid" href="https://www.firegiant.com/subscribe/?utm_source=wixtoolset.org&utm_medium=Display&utm_campaign=subscribe&utm_term=subscribe&utm_content=announcement_bar">Subscribe to the FireGiant newsletter.</a></span>',
+        backgroundColor: '#C70039',
+        textColor: '#fff',
         isCloseable: true,
       },
       navbar: {
