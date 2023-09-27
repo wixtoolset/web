@@ -151,3 +151,20 @@ And then in your WiX authoring, you can use `$()` preprocessor syntax to refer t
 ```
 
 You can now modify the values of your properties in the `Directory.Build.props` file and all the properties in your solution's projects, including WiX projects will be updated.
+
+## Defending your Supply Chain
+
+The Windows TrustedInstaller usually runs with a higher-than-admin level of privilege which makes msi files an obvious target for supply chain attacks.  You protect your customers by [signing](./signing.md) the msi files you create, but you also need to be sure that the wix tools and packages you use in your build are authentic.  A non-authentic package is well placed to create an msi which additionally installs a malware packet on to your users' sites.
+
+All Wix tools and extensions are available as signed nuget packages and you can easily ensure that only those packages authored by the Wix Project are being used by adding the following snippet to your [`nuget.config`](https://learn.microsoft.com/en-us/nuget/reference/nuget-config-file) file.
+```
+    <config>
+	<add key="signatureValidationMode" value="require" />
+    </config>
+    <trustedSigners>
+	<author name="wixtoolset">
+	    <certificate fingerprint="0DB368BC1A5A9E19CC9E036B490B7C4A4D3DFB941C0781B4F22F218BE0B54986" hashAlgorithm="SHA256" allowUntrustedRoot="false" />
+	</author>
+    </trustedSigners>
+```
+See the documentation for [installing-signed-packages ](https://learn.microsoft.com/en-us/nuget/consume-packages/installing-signed-packages) for more details.
