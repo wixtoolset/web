@@ -1,6 +1,6 @@
 # How To: Implement a Major Upgrade In Your Installer
 
-When creating an .msi-based installer, you are strongly encouraged to include logic that supports <a href="http://msdn.microsoft.com/library/aa369786.aspx" target="_blank">Windows Installer major upgrades</a>. Major upgrades are the most common form of updates for .msi&apos;s, and including support in your initial .msi release gives you flexibility in the future. Without including support for major upgrades you risk greatly complicating your distribution story if you ever need to release updates later on.
+When creating an .msi-based installer, you are strongly encouraged to include logic that supports <a href="http://msdn.microsoft.com/library/aa369786.aspx" target="_blank">Windows Installer major upgrades</a>. Major upgrades are the most common form of updates for .msi's, and including support in your initial .msi release gives you flexibility in the future. Without including support for major upgrades you risk greatly complicating your distribution story if you ever need to release updates later on.
 
 You can use the following steps to enable major upgrades in your .msi, build multiple versions of your .msi and test major upgrade scenarios.
 
