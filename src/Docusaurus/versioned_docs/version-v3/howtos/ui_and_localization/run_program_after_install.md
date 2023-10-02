@@ -49,7 +49,7 @@ The CustomAction element includes the action in the installer. It is given a uni
 
 ## Step 4: Trigger the custom action
 
-Simply including the custom action, as in Step 3, isn&apos;t sufficient to cause it to run. Windows Installer must also be told when the custom action should be triggered. This is done by using the [Publish](../../xsd/wix/publish.md) element to add it to the actions run when the user clicks the Finished button on the final page of the UI dialogs. The Publish element should be included inside the `UI` element from Step 2, and looks like this:
+Simply including the custom action, as in Step 3, isn't sufficient to cause it to run. Windows Installer must also be told when the custom action should be triggered. This is done by using the [Publish](../../xsd/wix/publish.md) element to add it to the actions run when the user clicks the Finished button on the final page of the UI dialogs. The Publish element should be included inside the `UI` element from Step 2, and looks like this:
 
 ```xml
 <Publish Dialog="ExitDialog"

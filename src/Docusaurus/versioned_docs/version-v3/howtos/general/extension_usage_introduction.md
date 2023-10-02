@@ -27,7 +27,9 @@ To use a WiX extension when building in Visual Studio with the WiX Visual Studio
 
 To enable IntelliSense for a WiX extension in the Visual Studio IDE, you need to add an XMLNS declaration to the &lt;Wix&gt; element in your .wxs file. For example, if you want to use the NativeImage functionality in the WixNetFxExtension, the &lt;Wix&gt; element would look like the following:
 
+```xml
     <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
          xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+```
 
 After adding this, you can add an element named &lt;netfx:NativeImage/&gt; and view IntelliSense for the attributes supported by the NativeImage element.

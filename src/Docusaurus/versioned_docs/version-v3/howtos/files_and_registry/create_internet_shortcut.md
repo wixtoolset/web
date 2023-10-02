@@ -17,7 +17,7 @@ If you are using WiX in Visual Studio you can add the extensions using the Add R
 ## Step 2: Add the WiX Utility extensions namespace to your project
 Once the library is added to your project, you need to add the Utility extensions namespace to your project so you can access the appropriate WiX elements. To do this modify the top-level [Wix](../../xsd/wix/wix/wix.md) element in your project by adding the following attribute:
 
-```
+```xml
 xmlns:util="http://schemas.microsoft.com/wix/UtilExtension"
 ```
 
