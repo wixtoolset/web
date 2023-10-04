@@ -8,10 +8,10 @@ In the following example, the path to \[WindowsFolder\]Microsoft.NET is defined 
 
 ```xml
 <Property Id="NGEN2DIR">
-  <DirectorySearch Id="Windows" Path="[WindowsFolder]">
-  <DirectorySearch Id="MS.NET" Path="Microsoft.NET">
-  </DirectorySearch>
-  </DirectorySearch>
+    <DirectorySearch Id="Windows" Path="[WindowsFolder]">
+        <DirectorySearch Id="MS.NET" Path="Microsoft.NET">
+        </DirectorySearch>
+    </DirectorySearch>
 </Property>
 ```
 
@@ -21,13 +21,13 @@ Under the search root, define the directory you want returned and set the Direct
 
 ```xml
 <Property Id="NGEN2DIR">
-  <DirectorySearch Id="Windows" Path="[WindowsFolder]">
-  <DirectorySearch Id="MS.NET" Path="Microsoft.NET"> 
-  <DirectorySearch Id="Ngen2Dir" Depth="2" AssignToProperty="yes"> 
-    <FileSearch Id="Ngen_exe" Name="ngen.exe" MinVersion="2.0.0.0" /> 
-  </DirectorySearch>
-  </DirectorySearch>
-  </DirectorySearch>
+    <DirectorySearch Id="Windows" Path="[WindowsFolder]">
+        <DirectorySearch Id="MS.NET" Path="Microsoft.NET"> 
+            <DirectorySearch Id="Ngen2Dir" Depth="2" AssignToProperty="yes"> 
+                <FileSearch Id="Ngen_exe" Name="ngen.exe" MinVersion="2.0.0.0" /> 
+            </DirectorySearch>
+        </DirectorySearch>
+    </DirectorySearch>
 </Property>
 ```
 

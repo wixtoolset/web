@@ -7,9 +7,9 @@ File versions are determined using the [Property](../../xsd/wix/property.md), [D
 
 ```xml
 <Property Id="USER32VERSION">
-  <DirectorySearch Id="SystemFolderDriverVersion" Path="[SystemFolder]">
-    <FileSearch Name="user32.dll" MinVersion="6.0.6001.1750"/>
-  </DirectorySearch>
+    <DirectorySearch Id="SystemFolderDriverVersion" Path="[SystemFolder]">
+        <FileSearch Name="user32.dll" MinVersion="6.0.6001.1750"/>
+    </DirectorySearch>
 </Property>
 ```
 
@@ -26,7 +26,7 @@ Once you have determined whether the file exists with the requested version you 
 
 ```xml
 <Condition Message="The installed version of user32.dll is not high enough to support this installer.">
-  <![CDATA[Installed OR USER32VERSION]]>
+    <![CDATA[Installed OR USER32VERSION]]>
 </Condition>
 ```
 

@@ -8,11 +8,11 @@ You first need to define the parent DirectorySearch element. This is expected to
 
 ```xml
 <Property Id="SHDOCVW">
-  <DirectorySearch Id="WinDir" Path="[WindowsFolder]">
-  <DirectorySearch Id="Media" Path="Media">
-    <FileSearch Id="Chimes" Name="chimes.wav" />
-  </DirectorySearch>
-  </DirectorySearch>
+    <DirectorySearch Id="WinDir" Path="[WindowsFolder]">
+        <DirectorySearch Id="Media" Path="Media">
+            <FileSearch Id="Chimes" Name="chimes.wav" />
+        </DirectorySearch>
+    </DirectorySearch>
 </Property>
 ```
 
@@ -24,9 +24,9 @@ To search for another file in the Media directory, you need to reference all the
 
 ```xml
 <Property Id="USER32">
-  <DirectorySearchRef Id="Media" Parent="WinDir" Path="Media">
-    <FileSearch Id="Chord" Name="chord.wav" />
-  </DirectorySearchRef>
+    <DirectorySearchRef Id="Media" Parent="WinDir" Path="Media">
+        <FileSearch Id="Chord" Name="chord.wav" />
+    </DirectorySearchRef>
 </Property>
 ```
 
