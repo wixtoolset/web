@@ -4821,7 +4821,10 @@
       </xs:attribute>
       <xs:attribute name="Admin" type="YesNoTypeUnion">
         <xs:annotation>
-          <xs:documentation>Denotes that the Property is saved during <html:a href="https://learn.microsoft.com/en-us/windows/win32/msi/administrative-installation">AdminProperties Property</html:a> for more information.</xs:documentation>
+          <xs:documentation>
+            Denotes that the property is saved during [administrative installations](https://learn.microsoft.com/en-us/windows/win32/msi/administrative-installation).
+            Adds the property name to the [AdminProperties property](https://learn.microsoft.com/en-us/windows/win32/msi/adminproperties).
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Secure" type="YesNoTypeUnion">
