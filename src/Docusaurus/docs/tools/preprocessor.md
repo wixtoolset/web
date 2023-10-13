@@ -45,6 +45,7 @@ WiX has some built-in variables. They are referenced with the syntax `$(sys.VARI
 | Name | Value |
 | ---- | ----- |
 | BUILDARCH | The platform (x86, x64, arm64) this package is compiled for |
+| BUILDARCHSHORT | The platform (X86, X64, A64) this package is compiled for. This variable is especially useful to match the ids of WiX's architecture-specific custom actions and DLLs. |
 | CURRENTDIR | The current directory where the build process is running |
 | SOURCEFILEDIR | The directory containing the file being processed |
 | SOURCEFILEPATH | The full path to the file being processed |
