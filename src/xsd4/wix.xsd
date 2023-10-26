@@ -5461,7 +5461,7 @@
             Specifies the name of the installed file. If this attribute is omitted, then
             its default value is the file name portion of the Source attribute. If the
             Source attribute is omitted, you must specify a Name attribute. For more
-            information, see <html:a href="~/howtos/general/specifying_source_files.html">Specifying source files</html:a>.
+            information, see [Specifying source files](../../tools/payloads.md).
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -5653,7 +5653,7 @@
             Specifies the path to the file in the build process. Overrides default source
             path set by parent directories and Name attribute. This attribute must be set
             if no source information can be gathered from parent directories. For more
-            information, see <html:a href="~/howtos/general/specifying_source_files.html">Specifying source files</html:a>.
+            information, see [Specifying source files](../../tools/payloads.md).
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -8215,7 +8215,7 @@
         <xs:annotation>
           <xs:documentation>
             Used to set the default file system source for child Component elements. For more information, see
-            <html:a href="~/howtos/general/specifying_source_files.html">Specifying source files</html:a>.
+            [Specifying source files](../../tools/payloads.md).
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -8503,7 +8503,8 @@
       </xs:attribute>
       <xs:attribute name="FileSource" type="xs:string">
         <xs:annotation>
-          <xs:documentation>Used to set the file system source for this directory's child elements. For more information, see <html:a href="~/howtos/general/specifying_source_files.html">Specifying source files</html:a>.</xs:documentation>
+          <xs:documentation>Used to set the file system source for this directory's child elements.
+          For more information, see [Specifying source files](../../tools/payloads.md).</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Name" type="xs:string">
@@ -8609,7 +8610,8 @@
       </xs:attribute>
       <xs:attribute name="FileSource" type="xs:string">
         <xs:annotation>
-          <xs:documentation>Used to set the file system source for this DirectoryRef's child elements. For more information, see <html:a href="~/howtos/general/specifying_source_files.html">Specifying source files</html:a>.</xs:documentation>
+          <xs:documentation>Used to set the file system source for this DirectoryRef's child elements.
+          For more information, see [Specifying source files](../../tools/payloads.md).</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:anyAttribute namespace="##other" processContents="lax">
