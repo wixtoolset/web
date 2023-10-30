@@ -30,6 +30,8 @@ In WiX v4, Heat is available in a WiX extension NuGet Package. To use Heat to ha
 
 The following properties control harvesting:
 
+**TODO: Explain where to put these properties and how they interact with the ones listed above. e.g DirectoryRefId and HarvestDirectoryDirectoryRefId - which one overrides the other? Or is one a template? **
+
 | Property | Description |
 | -------- | ----------- |
 | `HarvestDirectoryAutogenerateGuids` | Optional boolean property. Whether to generate authoring that relies on auto-generation of component GUIDs. The default is `$(HarvestAutogenerateGuids)` if specified; otherwise, **true**. |
