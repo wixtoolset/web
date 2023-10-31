@@ -101,7 +101,7 @@ The WiX MSBuild targets create a number of preprocessor variables for each refer
 | _ProjectName_.TargetPath | $(MyProject.TargetPath) | C:\source\repos\ConsoleApp42\bin\Release\MyProject.exe |
 | _ProjectName_.Culture.TargetPath | $(MyProject.en-US.TargetPath) | C:\source\repos\ConsoleApp42\bin\Release\en-US\MyProject.msi |
 
-The above variables are always available. The below variables are only available if you pass a `.sln` file to msbuild.
+The above variables are always available. The below variables are only available if you pass a `.sln` file to msbuild, but not if you build an individual project in the solution.
 
 | Variable | Example | Example value |
 | -------- | ------- | ------------- |
