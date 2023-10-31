@@ -26,7 +26,7 @@
         is an atomic unit which ultimately links into either a Package, Module, or PatchCreation. The
         Fragment can either be completely included or excluded during linking.
 
-        Product is another name for Package and the two are used interchangeably. Hence ProductName can be changed by creating a property on the Package element.
+        Product is another name for Package and the two are used interchangeably. Hence the ProductName variable can be changed by setting the *name* attribute on the Package element.
       </xs:documentation>
     </xs:annotation>
     <xs:complexType>
