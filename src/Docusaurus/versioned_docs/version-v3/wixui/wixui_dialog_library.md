@@ -19,30 +19,21 @@ The built-in WixUI dialog sets are also customizable, from the bitmaps shown in 
 
 Assuming you have an existing installer that is functional but is just lacking a user interface, here are the steps you need to follow to include a built-in WixUI dialog set:
 
-<ol>
-  <li>Add a UIRef element to your setup authoring that has an Id that matches the name of one of the dialog sets described above. For example:
-    ```
-&lt;Product ...&gt;
-&lt;UIRef Id="WixUI_InstallDir" /&gt;
-&lt;/Product&gt;
-```
-  </li>
+1. Add a UIRef element to your setup authoring that has an Id that matches the name of one of the dialog sets described above. For example:
 
-  <li>Pass the -ext and -cultures switches to [light.exe](../overview/light.md) to reference the WixUIExtension. For example:
-    ```
-light -ext WixUIExtension -cultures:en-us Product.wixobj -out Product.msi
+```xml
+<Product ...>
+    <UIRef Id="WixUI_InstallDir" />
+</Product>
 ```
 
-    <p>Note - If you are using WiX in Visual Studio you can add the WixUIExtension using the Add Reference dialog and the necessary command lines will automatically be added when linking your .msi. To do this, use the following steps:</p>
+2. Pass the -ext and -cultures switches to [light.exe](../overview/light.md) to reference the WixUIExtension. For example:
 
-    <ol>
-      <li>Open your WiX project in Visual Studio</li>
+`light -ext WixUIExtension -cultures:en-us Product.wixobj -out Product.msi`
 
-      <li>Right click on your project in Solution Explorer and select Add Reference...</li>
+Note - If you are using WiX in Visual Studio you can add the WixUIExtension using the Add Reference dialog and the necessary command lines will automatically be added when linking your .msi. To do this, use the following steps:
 
-      <li>Select the <strong>WixUIExtension.dll</strong> assembly from the list and click Add</li>
-
-      <li>Close the Add Reference dialog</li>
-    </ol>
-  </li>
-</ol>
+1. Open your WiX project in Visual Studio
+2. Right click on your project in Solution Explorer and select Add Reference...
+3. Select the **WixUIExtension.dll** assembly from the list and click Add
+4. Close the Add Reference dialog

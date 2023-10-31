@@ -2015,7 +2015,9 @@ To use the WixVSExtension properties or custom actions in an MSI, use the follow
 
 For example:
 
+```xml
     <PropertyRef Id="VS2005_ROOT_FOLDER" />
     <CustomActionRef Id="VS2005Setup" />
+```
 
 When you reference any of the above properties or custom actions, the WixVSExtension automatically schedules the custom actions and pulls in properties used in the custom action conditions and execution logic.

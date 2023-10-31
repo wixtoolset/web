@@ -19,11 +19,13 @@ The built-in WixUI dialog sets can be customized in the following ways:
 
 WixUIExtension.dll includes a default, placeholder license agreement. To specify your product&apos;s license, override the default by specifying a WiX variable named WixUILicenseRtf with the value of an RTF file that contains your license text. You can define the variable in your WiX authoring:
 
-    <WixVariable Id="WixUILicenseRtf" Value="bobpl.rtf" />
+```xml
+<WixVariable Id="WixUILicenseRtf" Value="bobpl.rtf" />
+```
 
 Alternatively, you can define the variable using the -d switch when running <b>light</b>:
 
-    light -ext WixUIExtension -cultures:en-us -dWixUILicenseRtf=bobpl.rtf Product.wixobj -out Product.msi
+`light -ext WixUIExtension -cultures:en-us -dWixUILicenseRtf=bobpl.rtf Product.wixobj -out Product.msi`
 
 The file you specify must be in a directory <b>light</b> is looking in for files. Use the <b>-b</b> switch to add directories.
 
@@ -82,16 +84,20 @@ See [How To: Run the Installed Application After Setup](../howtos/ui_and_localiz
 
 To show optional text on the ExitDlg, set the WIXUI_EXITDIALOGOPTIONALTEXT property to the string you want to show. For example:
 
-    <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="Thank you for installing this product." />
+```xml
+<Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="Thank you for installing this product." />
+```
 
 The optional text has the following behavior:
 
 * The optional text is displayed as literal text, so properties surrounded by square brackets such as [ProductName] will not be resolved. If you need to include property values in the optional text, you must schedule a custom action to set the property. For example:
 
-        <CustomAction Id="CA_Set_WIXUI_EXITDIALOGOPTIONALTEXT" Property="WIXUI_EXITDIALOGOPTIONALTEXT" Value="Thank you for installing [ProductName]."/>
-        <InstallUISequence>
-          <Custom Action="CA_Set_WIXUI_EXITDIALOGOPTIONALTEXT" After="FindRelatedProducts">NOT Installed</Custom>
-        </InstallUISequence>
+```xml
+<CustomAction Id="CA_Set_WIXUI_EXITDIALOGOPTIONALTEXT" Property="WIXUI_EXITDIALOGOPTIONALTEXT" Value="Thank you for installing [ProductName]."/>
+<InstallUISequence>
+    <Custom Action="CA_Set_WIXUI_EXITDIALOGOPTIONALTEXT" After="FindRelatedProducts">NOT Installed</Custom>
+</InstallUISequence>
+```
 
 * Long strings will wrap across multiple lines.
 * The optional text is only shown during initial installation, not during maintenance mode or uninstall.
@@ -102,7 +108,9 @@ All text displayed in built-in WixUI dialog sets can be overridden with custom s
 
 For example, to override the descriptive text on the WelcomeDlg, you would add the following to a .wxl file in your project:
 
-    <String Id="WelcomeDlgDescription">This is a custom welcome message. Click Next to continue or Cancel to exit.</String>
+```xml
+<String Id="WelcomeDlgDescription">This is a custom welcome message. Click Next to continue or Cancel to exit.</String>
+```
 
 ## Changing the UI sequence of a built-in dialog set
 
