@@ -1,13 +1,11 @@
 # How To: Check for .NET Framework Versions
 
-When installing applications written using managed code, it is often useful to verify that the user&apos;s machine has the necessary version of the .NET Framework prior to installation. The WiX support for detecting .NET Framework versions is included in a WiX extension, WixNetFxExtension. This how to describes using the WixNetFxExtension to verify .NET Framework versions at install time. For information on how to install the .NET Framework during your installation see [How To: Install the .NET Framework Using Burn](install_dotnet.md).
+When installing applications written using managed code, it is often useful to verify that the user's machine has the necessary version of the .NET Framework prior to installation. The WiX support for detecting .NET Framework versions is included in a WiX extension, WixNetFxExtension. This how to describes using the WixNetFxExtension to verify .NET Framework versions at install time. For information on how to install the .NET Framework during your installation see [How To: Install the .NET Framework Using Burn](install_dotnet.md).
 
 ## Step 1: Add WixNetFxExtension to your project
 You must add the WixNetFxExtension to your project prior to use. If you are using WiX on the command line, you need to add the following to your candle and light command lines:
 
-```
 -ext WixNetFxExtension
-```
 
 If you are using WiX in Visual Studio, you can add the extension using the Add Reference dialog:
 
@@ -16,14 +14,14 @@ If you are using WiX in Visual Studio, you can add the extension using the Add R
 1. Select the <strong>WixNetFxExtension.dll</strong> assembly from the list and click Add.
 1. Close the Add Reference dialog.
 
-## Step 2: Add WixNetFxExtension&apos;s namespace to your project
+## Step 2: Add WixNetFxExtension's namespace to your project
 Once the extension is added to your project, you need to add its namespace to your project so you can access the appropriate WiX elements. To do this, modify the top-level [Wix](../../xsd/wix/wix/wix.md) element in your project by adding the following attribute:
 
-```
+```xml
 xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension"
 ```
 
-A complete Wix element with the standard namespace and WixNetFxExtension&apos;s namespace added looks like this:
+A complete Wix element with the standard namespace and WixNetFxExtension's namespace added looks like this:
 
 ```xml
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"

@@ -33,7 +33,7 @@ This section includes How To documentation for performing common WiX tasks.
 * [Build a localized version of your installer](ui_and_localization/build_a_localized_version.md)
 * [Make your installer localizable](ui_and_localization/make_installer_localizable.md)
 * [Run the installed application after setup](ui_and_localization/run_program_after_install.md)
-* [Set your installer&apos;s icon in Add/Remove Programs](ui_and_localization/configure_arp_appearance.md)
+* [Set your installer's icon in Add/Remove Programs](ui_and_localization/configure_arp_appearance.md)
 
 ## Product Updates
 

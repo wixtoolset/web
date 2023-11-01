@@ -1,7 +1,7 @@
 # How To: Specify source files
 
-WiX provides three ways of identifying a setup package&apos;s payload - the files
-that are included in the setup and installed on the user&apos;s machine.
+WiX provides three ways of identifying a setup package's payload - the files
+that are included in the setup and installed on the user's machine.
 
 * By file name and directory tree.
 * By explicit source file.
@@ -21,7 +21,7 @@ containing them or copies them to an uncompressed layout.
 
 You can provide the binder with one or more *binder input paths*
 it uses to look for files. It also looks for files relative to the current
-working directory. Light.exe&apos;s -b switch and the BindInputPaths .wixproj
+working directory. Light.exe's -b switch and the BindInputPaths .wixproj
 property let you specify one or more binder input paths.
 
 Binder input paths can also be prefixed with a *name* which will
@@ -32,15 +32,17 @@ an example in the *Identifying payload via named binder paths* section
 
 ## Identifying files by name and directory tree
 When you use the [File](../../xsd/wix/file.md)/@Name
-attribute and don&apos;t use the File/@Source attribute, the compiler constructs an
-implicit path to the file based on the file&apos;s parent component directory plus
+attribute and don't use the File/@Source attribute, the compiler constructs an
+implicit path to the file based on the file's parent component directory plus
 the name you supply. So, for example, given the partial authoring
 
+```xml
     <Directory Id="TARGETDIR">
       <Directory Name="foo">
         <Directory Name="bar">
           <Component>
             <File Name="baz.txt" />
+```
 
 the binder looks for a file *foo\bar\baz.txt* in the unnamed binder
 input paths.
@@ -52,19 +54,20 @@ and [DirectoryRef](../../xsd/wix/directoryref.md)
 elements sets a new directory for files in that directory or any child
 directories. For example, given the partial authoring
 
-
+```xml
     <Directory Id="TARGETDIR">
       <Directory Name="foo" FileSource="build\retail\x86">
         <Directory Name="bar">
           <Component>
             <File Name="baz.txt" />
+```
 
 the binder looks for a file *build\retail\x86\bar\baz.txt* in the
 unnamed binder input paths.
 
 The [FileSource](../../xsd/wix/directoryref.md)
 attribute can use preprocessor variables or environment variables. If the value
-is an absolute path, the binder&apos;s unnamed input paths aren&apos;t used.
+is an absolute path, the binder's unnamed input paths aren't used.
 
 #### Preferred use
 If the build tree serving as your payload source is almost identical to the
@@ -88,7 +91,7 @@ automatically sets it to the filename portion of the source path.
 #### Preferred use
 If the build tree serving as your payload source is different from the tree
 of your installed image, using File/@Source makes it easy to pick explicit
-paths than are different than the .msi package&apos;s directory tree. You can use
+paths than are different than the .msi package's directory tree. You can use
 multiple unnamed binder input paths to shorten the File/@Source paths.
 
 For example, the WiX setup .wixproj project points to the output tree for

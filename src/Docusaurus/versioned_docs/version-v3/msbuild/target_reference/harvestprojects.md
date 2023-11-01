@@ -4,21 +4,21 @@ layout: documentation
 ---
 # HarvestProjects Target
 
-The <b>HarvestProjects</b> target passes <b>HarvestProject</b> items to the
+The **HarvestProjects** target passes **HarvestProject** items to the
 [HeatProject task](../../msbuild/task_reference/heatproject.md) to generate authoring from a project file.
 
 Harvesting projects is disabled by default because it may not always work correctly, but you can enable it by adding the following to the top of your [WiX project file](../../msbuild/authoring_first_msbuild_project.md):
 
-```
+```xml
 <PropertyGroup>
   <EnableProjectHarvesting>True</EnableProjectHarvesting>
 </PropertyGroup>
 ```
 
 If enabled, this target is processed before compilation. Generated authoring is automatically added to the
-<b>Compile</b> item group to be compiled by the [Candle task](../../msbuild/task_reference/candle.md).
+**Compile** item group to be compiled by the [Candle task](../../msbuild/task_reference/candle.md).
 
-```
+```xml
 <ItemGroup>
   <HeatProject Include="..\TestProject\TestProject.csproj">
     <ProjectOutputGroups>Binaries;Sources</ProjectOutputGroups>
@@ -27,10 +27,11 @@ If enabled, this target is processed before compilation. Generated authoring is 
 ```
 
 The following tables describe the common WiX MSBuild properties and items that are
-applicable to the <b>HarvestProjects</b> target.
+applicable to the **HarvestProjects** target.
 
 ## Items
-The following items and item metadata are used by the <b>HarvestProjects</b> target.
+
+The following items and item metadata are used by the **HarvestProjects** target.
 
 <table border="1" cellspacing="0" cellpadding="4">
     <tr>
@@ -77,6 +78,7 @@ The following items and item metadata are used by the <b>HarvestProjects</b> tar
 </table>
 
 ## Properties
+
 The following properties are used by the <b>HarvestProjects</b> target.
 
 <table border="1" cellspacing="0" cellpadding="4">
