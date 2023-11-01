@@ -9,7 +9,7 @@
            xmlns="http://wixtoolset.org/schemas/v4/wxs">
   <xs:annotation>
     <xs:documentation>
-      Schema for describing Windows Installer database files (.msi/.msm/.pcp).
+      Schema for describing Windows Installer database files (.msi/.msm/.msp).
     </xs:documentation>
     <xs:appinfo>
       <xse:main />
@@ -20,11 +20,10 @@
     <xs:annotation>
       <xs:documentation>
         This is the top-level container element for every wxs file. Among the possible children,
-        the Bundle, Package, Module, Patch, and PatchCreation elements are analogous to the main function in a C program.
-        There can only be one of these present when linking occurs. Package compiles into an msi file,
-        Module compiles into an msm file, PatchCreation compiles into a pcp file. The Fragment element
-        is an atomic unit which ultimately links into either a Package, Module, or PatchCreation. The
-        Fragment can either be completely included or excluded during linking.
+        the Bundle, Package, Module, Patch elements are analogous to the main function in a C program.
+        There can only be one of these present when linking occurs. Package compiles into an MSI file,
+        Module compiles into an MSM file, Patch compiles into an MSP file. The Fragment element is an atomic
+        unit which ultimately links into either a Package, Module. The Fragment can either be completely included or excluded during linking.
       </xs:documentation>
     </xs:annotation>
     <xs:complexType>
@@ -2254,7 +2253,8 @@
     <xs:annotation>
       <xs:documentation>
         The Package element is analogous to the main function in a C program. When linking, only one Package section
-        can be given to the linker to produce a successful result. Using this element creates an MSI file.
+        can be given to the build to produce a successful result. Using this element creates an MSI file which often
+        referred to as a Product.
       </xs:documentation>
       <xs:appinfo>
         <xse:remarks>
@@ -2342,23 +2342,23 @@
       </xs:attribute>
       <xs:attribute name="Language" type="LocalizableInteger">
         <xs:annotation>
-          <xs:documentation>The decimal language ID (LCID) for the product.</xs:documentation>
+          <xs:documentation>The decimal language ID (LCID) for the product. Sets the ProductLanguage property.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Manufacturer" type="xs:string" use="required">
         <xs:annotation>
-          <xs:documentation>The manufacturer of the package.</xs:documentation>
+          <xs:documentation>The manufacturer of the package. Sets the Manufacturer property.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Name" type="xs:string" use="required">
         <xs:annotation>
-          <xs:documentation>The descriptive name of the product.</xs:documentation>
+          <xs:documentation>The descriptive name of the product. Sets the ProductName property.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="ProductCode" type="AutogenGuid">
         <xs:annotation>
           <xs:documentation>
-            Optional ProductCode GUID for the package. By default, a new ProductCode will be
+            Optional ProductCode GUID for the package. By default, a new ProductCode property will be
             generated with every build enabling major upgrades.
           </xs:documentation>
         </xs:annotation>
@@ -2375,12 +2375,12 @@
       </xs:attribute>
       <xs:attribute name="UpgradeCode" type="Guid">
         <xs:annotation>
-          <xs:documentation>The upgrade code GUID for the product.</xs:documentation>
+          <xs:documentation>The upgrade code GUID for the product. Sets the UpgradeCode property.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Version" type="xs:string" use="required">
         <xs:annotation>
-          <xs:documentation>The product's version string.</xs:documentation>
+          <xs:documentation>The product's version string. Sets the ProductVersion property.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:anyAttribute namespace="##other" processContents="lax">
@@ -5461,7 +5461,7 @@
             Specifies the name of the installed file. If this attribute is omitted, then
             its default value is the file name portion of the Source attribute. If the
             Source attribute is omitted, you must specify a Name attribute. For more
-            information, see <html:a href="~/howtos/general/specifying_source_files.html">Specifying source files</html:a>.
+            information, see [Specifying source files](../../tools/payloads.md).
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -5653,7 +5653,7 @@
             Specifies the path to the file in the build process. Overrides default source
             path set by parent directories and Name attribute. This attribute must be set
             if no source information can be gathered from parent directories. For more
-            information, see <html:a href="~/howtos/general/specifying_source_files.html">Specifying source files</html:a>.
+            information, see [Specifying source files](../../tools/payloads.md).
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -8215,7 +8215,7 @@
         <xs:annotation>
           <xs:documentation>
             Used to set the default file system source for child Component elements. For more information, see
-            <html:a href="~/howtos/general/specifying_source_files.html">Specifying source files</html:a>.
+            [Specifying source files](../../tools/payloads.md).
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -8503,7 +8503,8 @@
       </xs:attribute>
       <xs:attribute name="FileSource" type="xs:string">
         <xs:annotation>
-          <xs:documentation>Used to set the file system source for this directory's child elements. For more information, see <html:a href="~/howtos/general/specifying_source_files.html">Specifying source files</html:a>.</xs:documentation>
+          <xs:documentation>Used to set the file system source for this directory's child elements.
+          For more information, see [Specifying source files](../../tools/payloads.md).</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Name" type="xs:string">
@@ -8609,7 +8610,8 @@
       </xs:attribute>
       <xs:attribute name="FileSource" type="xs:string">
         <xs:annotation>
-          <xs:documentation>Used to set the file system source for this DirectoryRef's child elements. For more information, see <html:a href="~/howtos/general/specifying_source_files.html">Specifying source files</html:a>.</xs:documentation>
+          <xs:documentation>Used to set the file system source for this DirectoryRef's child elements.
+          For more information, see [Specifying source files](../../tools/payloads.md).</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:anyAttribute namespace="##other" processContents="lax">
