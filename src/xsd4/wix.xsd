@@ -4605,9 +4605,9 @@
         <xs:element ref="FileSearch" />
         <xs:element ref="FileSearchRef" />
       </xs:choice>
-      <xs:attribute name="Id" use="required" type="xs:string">
+      <xs:attribute name="Id" type="xs:string">
         <xs:annotation>
-          <xs:documentation>Signature to be used for the file, directory or registry key being searched for.</xs:documentation>
+          <xs:documentation>Signature to be used for the file, directory or registry key being searched for. If omitted, WiX generates a suitable id.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Bitness" type="BitnessTypeUnion">
