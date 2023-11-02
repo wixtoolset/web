@@ -21,7 +21,6 @@ You can also create and edit SDK-style MSBuild projects in Visual Studio using F
 See [Signing packages and bundles](./signing.md) for information about signing packages and bundles when using MSBuild.
 :::
 
-
 ## Properties
 
 You can set the following properties in your .wixproj to control the build:
@@ -101,7 +100,9 @@ The WiX MSBuild targets create a number of preprocessor variables for each refer
 | _ProjectName_.TargetPath | $(MyProject.TargetPath) | C:\source\repos\ConsoleApp42\bin\Release\MyProject.exe |
 | _ProjectName_.Culture.TargetPath | $(MyProject.en-US.TargetPath) | C:\source\repos\ConsoleApp42\bin\Release\en-US\MyProject.msi |
 
-The above variables are always available. The below variables are only available if you pass a `.sln` file to msbuild, but not if you build an individual project in the solution.
+As their name suggests, the following preprocessor variables are only available when building a `.sln` file.
+Building inside Visual Studio always uses the `.sln` file, so it can be a surprise that these preprocessor
+variables will not be available when using the command-line to build a project file.
 
 | Variable | Example | Example value |
 | -------- | ------- | ------------- |
