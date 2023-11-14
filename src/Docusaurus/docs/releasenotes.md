@@ -5,29 +5,11 @@ sidebar_position: 30
 # Release notes
 
 
-## WiX v4.0.2 {#v4}
+## WiX v4.0.3 {#v4}
 
-> WiX v4.0.2 was released Wednesday, 13-Sep-2023
+> WiX v4.0.3 was released Monday, 13-Nov-2023
 
-WiX v4.0.2 is a maintenance release of WiX v4 that fixes a number of bugs that escaped detection in WiX v4.0.0 and v4.0.1:
-
-- **[build -outputType is ignored](https://github.com/wixtoolset/issues/issues/7708)**, from [@robmen](https://github.com/robmen)
-
-- **[`NetFxDotNetCompatibilityCheck` custom action badly fragmented](https://github.com/wixtoolset/issues/issues/7677)**, from [@barnson](https://github.com/barnson)
-
-- **[Substitution does not create ModuleSubstitution table when building Merge Module](https://github.com/wixtoolset/issues/issues/7559)**, from [@rsdk-vag](https://github.com/rsdk-vag)
-
-- **[RegisterFonts action is not added to the InstallExecuteSequence when fonts are being installed to the FontsFolder.](https://github.com/wixtoolset/issues/issues/7593)**, from [@kerrywicks](https://github.com/kerrywicks)
-
-- **[Migrated WiX v3 to v4, now getting error doing action Wix4ConfigureSmbUninstall_X64 when installing](https://github.com/wixtoolset/issues/issues/7632)**, from [@barnson](https://github.com/barnson)
-
-- **[IWindowsInstallerDecompileContext.TreatProductAsModule is borked](https://github.com/wixtoolset/issues/issues/7607)**, from [@barnson](https://github.com/barnson)
-
-- **[`wix msi decompile -x` removes modularization GUIDs from object fields](https://github.com/wixtoolset/issues/issues/7574)**, from [@barnson](https://github.com/barnson)
-
-- **[Merge modules don't extract during decompilation](https://github.com/wixtoolset/issues/issues/7568)**, from [@barnson](https://github.com/barnson)
-
-All of the goodness in WiX v4.0.0 and v4.0.1 remains.
+WiX v4.0.3 is a maintenance release of WiX v4 that [fixes a small number of even smaller bugs](https://github.com/wixtoolset/issues/milestone/23?closed=1).
 
 
 ### Platforms
@@ -84,7 +66,7 @@ All of the goodness in WiX v4.0.0 and v4.0.1 remains.
 To update your .wixproj MSBuild projects from previous WiX v4 releases, update the `Project` element's `Sdk` attribute:
 
 ```xml
-<Project Sdk="WixToolset.Sdk/4.0.2">
+<Project Sdk="WixToolset.Sdk/4.0.3">
 ```
 
 For `PackageReference`s to WiX v4 extensions, update their `Version` attribute. For example:
@@ -119,6 +101,29 @@ wix --version
 
 
 ## Previous WiX v4 releases
+
+> WiX v4.0.2 was released Wednesday, 13-Sep-2023
+
+WiX v4.0.2 is a maintenance release of WiX v4 that fixes a number of bugs that escaped detection in WiX v4.0.0 and v4.0.1:
+
+- **[build -outputType is ignored](https://github.com/wixtoolset/issues/issues/7708)**, from [@robmen](https://github.com/robmen)
+
+- **[`NetFxDotNetCompatibilityCheck` custom action badly fragmented](https://github.com/wixtoolset/issues/issues/7677)**, from [@barnson](https://github.com/barnson)
+
+- **[Substitution does not create ModuleSubstitution table when building Merge Module](https://github.com/wixtoolset/issues/issues/7559)**, from [@rsdk-vag](https://github.com/rsdk-vag)
+
+- **[RegisterFonts action is not added to the InstallExecuteSequence when fonts are being installed to the FontsFolder.](https://github.com/wixtoolset/issues/issues/7593)**, from [@kerrywicks](https://github.com/kerrywicks)
+
+- **[Migrated WiX v3 to v4, now getting error doing action Wix4ConfigureSmbUninstall_X64 when installing](https://github.com/wixtoolset/issues/issues/7632)**, from [@barnson](https://github.com/barnson)
+
+- **[IWindowsInstallerDecompileContext.TreatProductAsModule is borked](https://github.com/wixtoolset/issues/issues/7607)**, from [@barnson](https://github.com/barnson)
+
+- **[`wix msi decompile -x` removes modularization GUIDs from object fields](https://github.com/wixtoolset/issues/issues/7574)**, from [@barnson](https://github.com/barnson)
+
+- **[Merge modules don't extract during decompilation](https://github.com/wixtoolset/issues/issues/7568)**, from [@barnson](https://github.com/barnson)
+
+All of the goodness in WiX v4.0.0 and v4.0.1 remains.
+
 
 > WiX v4.0.1 was released Monday, 5-June-2023
 
