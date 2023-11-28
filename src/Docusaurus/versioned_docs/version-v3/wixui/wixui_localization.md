@@ -274,4 +274,6 @@ You can create a series of .msi files that each use different setup UI languages
 
 By default, WixUI will not include any translated Error or ProgressText elements. You can include them by referencing the WixUI_ErrorProgressText UI element:
 
+```xml
     <UIRef Id="WixUI_ErrorProgressText" />
+```

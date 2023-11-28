@@ -37,16 +37,13 @@ The WiX support for WixWaitForEvent is included in a WiX extension library that
 must be added to your project prior to use. If you are using WiX on the command
 line you need to add the following to your light command line:
 
-```
-light.exe myproject.wixobj -ext <span>WixUtilExtension</span>
-```
+`light.exe myproject.wixobj -ext WixUtilExtension`
 
 If you are using Votive you can add the extension using the Add Reference dialog:
 
 1. Open your Votive project in Visual Studio
 1. Right click on your project in Solution Explorer and select Add Reference...
-1. Select the <strong>WixUtilExtension.dll</strong> assembly from the list and click
-Add
+1. Select the **WixUtilExtension.dll** assembly from the list and click Add
 1. Close the Add Reference dialog
 
 ## Step 2: Add a reference to the WixWaitForEvent custom action
@@ -55,7 +52,9 @@ To add a reference to the WixWaitForEvent
 immediate custom action, include the following in
 your WiX setup authoring:
 
+```xml
     <CustomActionRef Id="WixWaitForEvent" />
+```
 
 This will cause WiX to add the WaitWaitForEvent custom action to your MSI 
 as an immediate custom action scheduled immediately before InstallFinalize. This 
@@ -65,7 +64,9 @@ schedule it anywhere else in your sequence.
 To add a reference to the WixWaitForEventDeferred deferred custom action, 
 include the following in your WiX setup authoring:
 
+```xml
     <CustomActionRef Id="WixWaitForEventDeferred" />
+```
 
 This deferred custom action is scheduled immediately after InstallInitialize so 
 it will block after starting script execution. You can schedule this custom 
@@ -76,7 +77,7 @@ signal either of the named automatic reset events documented above both times.
 
 ## Step 3: Build your MSI and test various scenarios
 
-Once you&apos;ve built your MSI package you can install it using msiexec.exe, Burn,
+Once you've built your MSI package you can install it using msiexec.exe, Burn,
 or by any other means you wish. When Windows Installer executes your custom action,
 Windows Installer will wait for you to signal either the event documented above.
 Depending on the named event you signal, the custom action will fail or succeed 

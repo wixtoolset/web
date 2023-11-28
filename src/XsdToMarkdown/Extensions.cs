@@ -158,4 +158,12 @@ public static class Extensions
 
         return value;
     }
+
+    public static string ToNonautohyperlinkingURI(this string uri)
+    {
+        // Namespace URIs just _look_ like URLs but they really aren't.
+        // This prevents MDX autohyperlinking.
+
+        return uri.Replace("://", "&#58;//");
+    }
 }

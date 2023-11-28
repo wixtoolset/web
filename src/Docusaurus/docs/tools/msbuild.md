@@ -7,7 +7,7 @@ sidebar_position: 20
 WiX v4 is available as an MSBuild SDK. SDK-style projects have smart defaults that make for simple .wixproj project authoring. For example, here's a minimal .wixproj that builds an MSI from the .wxs source files in the project directory:
 
 ```xml
-<Project Sdk="WixToolset.Sdk/4.0.1">
+<Project Sdk="WixToolset.Sdk/4.0.3">
 </Project>
 ```
 
@@ -20,7 +20,6 @@ You can also create and edit SDK-style MSBuild projects in Visual Studio using F
 :::info
 See [Signing packages and bundles](./signing.md) for information about signing packages and bundles when using MSBuild.
 :::
-
 
 ## Properties
 
@@ -100,8 +99,61 @@ The WiX MSBuild targets create a number of preprocessor variables for each refer
 | _ProjectName_.TargetName | $(MyProject.TargetName) | MyProject |
 | _ProjectName_.TargetPath | $(MyProject.TargetPath) | C:\source\repos\ConsoleApp42\bin\Release\MyProject.exe |
 | _ProjectName_.Culture.TargetPath | $(MyProject.en-US.TargetPath) | C:\source\repos\ConsoleApp42\bin\Release\en-US\MyProject.msi |
+
+As their name suggests, the following preprocessor variables are only available when building a `.sln` file.
+Building inside Visual Studio always uses the `.sln` file, so it can be a surprise that these preprocessor
+variables will not be available when using the command-line to build a project file.
+
+| Variable | Example | Example value |
+| -------- | ------- | ------------- |
 | SolutionDir | $(SolutionDir) | C:\source\repos\MySolution\ |
 | SolutionExt | $(SolutionExt) | .sln |
 | SolutionFileName | $(SolutionFileName) | MySolution.sln |
 | SolutionName | $(SolutionName) | MySolution |
 | SolutionPath | $(SolutionPath) | C:\source\repos\MySolution\MySolution.sln |
+
+
+## Centralizing MSBuild properties and targets
+
+Sometimes you need to add or modify several of the same properties in multiple MSBuild projects, like manufacturer name, copyright, product name, and so forth. Instead of editing every single project, you can manage properties from a central location in a file named Directory.Build.props.
+
+:::info
+Directory.Build.props is a feature of Microsoft.Common.props, which the WiX v4 MSBuild targets consume. The same is also true of Directory.Build.targets and Microsoft.Common.targets. [You can read more about this support here.](https://learn.microsoft.com/en-us/visualstudio/msbuild/customize-by-directory)
+:::
+
+To use Directory.Build.props, add it to the root of your project -- MSBuild will find the file in parent directories -- and give it a property group. For example:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <PropertyGroup>
+    <MyProductNameProperty>My Fancy Productname</MyProductNameProperty>
+  </PropertyGroup>
+</Project>
+```
+
+You can then reference `MyProductNameProperty`, for example, in other properties:
+
+```xml
+<PropertyGroup>
+  <Product>$(MyProductNameProperty)</Product>
+</PropertyGroup>
+```
+
+To make property values available as preprocessor variables in your WiX authoring, add them to the `DefineConstants` property. For example:
+
+```xml
+<Project Sdk="WixToolset.Sdk/4.0.3">
+  <PropertyGroup Label="Globals">
+     <DefineConstants>MyProductNameProperty=$(MyProductNameProperty);</DefineConstants>
+  </PropertyGroup>
+</Project>
+```
+
+And then in your WiX authoring, you can use `$()` preprocessor syntax to refer to the MSBuild-property-turned-WiX-preprocessor-variable:
+
+```xml
+<Package Name="$(MyProductNameProperty)" ...
+```
+
+You can now modify the values of your properties in the `Directory.Build.props` file and all the properties in your solution's projects, including WiX projects will be updated.

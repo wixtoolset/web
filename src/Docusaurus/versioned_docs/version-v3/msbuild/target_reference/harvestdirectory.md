@@ -1,13 +1,13 @@
 # HarvestDirectory Target
 
-The <b>HarvestDirectory</b> target passes <b>HarvestDirectory</b> items to the
+The **HarvestDirectory** target passes **HarvestDirectory** items to the
 [HeatDirectory task](../../msbuild/task_reference/heatdirectory.md) to generate
 authoring from a file. Authoring is generated for type libraries and self-registration
 from `DllRegisterServer` for any files found in directories. This target
 is processed before compilation. Generated authoring is automatically added to the
-<b>Compile</b> item group to be compiled by the [Candle task](../../msbuild/task_reference/candle.md).
+**Compile** item group to be compiled by the [Candle task](../../msbuild/task_reference/candle.md).
 
-```
+```xml
 <ItemGroup>
   <HarvestDirectory Include="..\TestProject\Data">
     <DirectoryRefId>DataDir</DirectoryRefId>
@@ -16,11 +16,11 @@ is processed before compilation. Generated authoring is automatically added to t
 ```
 
 The following tables describe the common WiX MSBuild properties and items that are
-applicable to the <b>HarvestDirectory</b> target.
+applicable to the **HarvestDirectory** target.
 
 ## Items
 
-The following items and item metadata are used by the <b>HarvestDirectory</b> target.
+The following items and item metadata are used by the **HarvestDirectory** target.
 <table border="1" cellspacing="0" cellpadding="4">
   <tr>
     <td>

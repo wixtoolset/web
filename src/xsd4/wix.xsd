@@ -9,7 +9,7 @@
            xmlns="http://wixtoolset.org/schemas/v4/wxs">
   <xs:annotation>
     <xs:documentation>
-      Schema for describing Windows Installer database files (.msi/.msm/.pcp).
+      Schema for describing Windows Installer database files (.msi/.msm/.msp).
     </xs:documentation>
     <xs:appinfo>
       <xse:main />
@@ -20,11 +20,10 @@
     <xs:annotation>
       <xs:documentation>
         This is the top-level container element for every wxs file. Among the possible children,
-        the Bundle, Package, Module, Patch, and PatchCreation elements are analogous to the main function in a C program.
-        There can only be one of these present when linking occurs. Package compiles into an msi file,
-        Module compiles into an msm file, PatchCreation compiles into a pcp file. The Fragment element
-        is an atomic unit which ultimately links into either a Package, Module, or PatchCreation. The
-        Fragment can either be completely included or excluded during linking.
+        the Bundle, Package, Module, Patch elements are analogous to the main function in a C program.
+        There can only be one of these present when linking occurs. Package compiles into an MSI file,
+        Module compiles into an MSM file, Patch compiles into an MSP file. The Fragment element is an atomic
+        unit which ultimately links into either a Package, Module. The Fragment can either be completely included or excluded during linking.
       </xs:documentation>
     </xs:annotation>
     <xs:complexType>
@@ -2254,7 +2253,8 @@
     <xs:annotation>
       <xs:documentation>
         The Package element is analogous to the main function in a C program. When linking, only one Package section
-        can be given to the linker to produce a successful result. Using this element creates an MSI file.
+        can be given to the build to produce a successful result. Using this element creates an MSI file which often
+        referred to as a Product.
       </xs:documentation>
       <xs:appinfo>
         <xse:remarks>
@@ -2342,59 +2342,31 @@
       </xs:attribute>
       <xs:attribute name="Language" type="LocalizableInteger">
         <xs:annotation>
-          <xs:documentation>The decimal language ID (LCID) for the product.</xs:documentation>
+          <xs:documentation>The decimal language ID (LCID) for the product. Sets the ProductLanguage property.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Manufacturer" type="xs:string" use="required">
         <xs:annotation>
-          <xs:documentation>The manufacturer of the package.</xs:documentation>
+          <xs:documentation>The manufacturer of the package. Sets the Manufacturer property.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Name" type="xs:string" use="required">
         <xs:annotation>
-          <xs:documentation>The descriptive name of the product.</xs:documentation>
+          <xs:documentation>The descriptive name of the product. Sets the ProductName property.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="ProductCode" type="AutogenGuid">
         <xs:annotation>
           <xs:documentation>
-            Optional ProductCode GUID for the package. By default, a new ProductCode will be
+            Optional ProductCode GUID for the package. By default, a new ProductCode property will be
             generated with every build enabling major upgrades.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Scope">
+      <xs:attribute name="Scope" type="PackageScopeTypeUnion">
         <xs:annotation>
-          <xs:documentation>Use this attribute to specify the installation scope of this package: per-machine or per-user.</xs:documentation>
+          <xs:documentation>Use this attribute to specify the installation scope of this package: per-machine, per-user, or a choice of either.</xs:documentation>
         </xs:annotation>
-        <xs:simpleType>
-          <xs:restriction base="xs:NMTOKEN">
-            <xs:enumeration value="perMachine">
-              <xs:annotation>
-                <xs:documentation>
-                  Set this value to declare that the package is a per-machine installation and requires elevated privileges to install.
-                  Sets the ALLUSERS property to 1.
-                </xs:documentation>
-              </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="perUser">
-              <xs:annotation>
-                <xs:documentation>
-                  Set this value to declare that the package is a per-user installation and does not require elevated privileges to install.
-                  Sets the package's InstallPrivileges attribute to "limited."
-                </xs:documentation>
-              </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="perUserOrMachine">
-              <xs:annotation>
-                <xs:documentation>
-                  Set this value to declare that the package is [dual-purpose that can install per-user or per-machine](https://learn.microsoft.com/en-us/windows/win32/msi/single-package-authoring).
-                  Sets the ALLUSERS property to 2 and MSIINSTALLPERUSER property to 1.
-                </xs:documentation>
-              </xs:annotation>
-            </xs:enumeration>
-          </xs:restriction>
-        </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="ShortNames" type="YesNoTypeUnion">
         <xs:annotation>
@@ -2403,12 +2375,12 @@
       </xs:attribute>
       <xs:attribute name="UpgradeCode" type="Guid">
         <xs:annotation>
-          <xs:documentation>The upgrade code GUID for the product.</xs:documentation>
+          <xs:documentation>The upgrade code GUID for the product. Sets the UpgradeCode property.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Version" type="xs:string" use="required">
         <xs:annotation>
-          <xs:documentation>The product's version string.</xs:documentation>
+          <xs:documentation>The product's version string. Sets the ProductVersion property.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:anyAttribute namespace="##other" processContents="lax">
@@ -4638,9 +4610,9 @@
         <xs:element ref="FileSearch" />
         <xs:element ref="FileSearchRef" />
       </xs:choice>
-      <xs:attribute name="Id" use="required" type="xs:string">
+      <xs:attribute name="Id" type="xs:string">
         <xs:annotation>
-          <xs:documentation>Signature to be used for the file, directory or registry key being searched for.</xs:documentation>
+          <xs:documentation>Signature to be used for the file, directory or registry key being searched for. If omitted, WiX generates a suitable id.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Bitness" type="BitnessTypeUnion">
@@ -4854,7 +4826,10 @@
       </xs:attribute>
       <xs:attribute name="Admin" type="YesNoTypeUnion">
         <xs:annotation>
-          <xs:documentation>Denotes that the Property is saved during <html:a href="https://learn.microsoft.com/en-us/windows/win32/msi/administrative-installation">AdminProperties Property</html:a> for more information.</xs:documentation>
+          <xs:documentation>
+            Denotes that the property is saved during [administrative installations](https://learn.microsoft.com/en-us/windows/win32/msi/administrative-installation).
+            Adds the property name to the [AdminProperties property](https://learn.microsoft.com/en-us/windows/win32/msi/adminproperties).
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Secure" type="YesNoTypeUnion">
@@ -5423,7 +5398,7 @@
   <xs:element name="File">
     <xs:annotation>
       <xs:documentation>
-        File specification for File table, must be child node of Component.
+        Defines a file to be installed by the package.
       </xs:documentation>
       <xs:appinfo>
         <xse:msiRef table="File" href="https://learn.microsoft.com/en-us/windows/win32/msi/file-table" />
@@ -5471,7 +5446,7 @@
       <xs:attribute name="Id" type="xs:string">
         <xs:annotation>
           <xs:documentation>
-            The unique identifier for this File element. If you omit Id, it defaults to the file name portion of the Source attribute, if specified. May be referenced as a Property by specifying [#value].
+            The unique identifier for this File element. If you omit Id, a stable identifier is generated for you.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -5488,16 +5463,10 @@
       <xs:attribute name="Name" type="LongFileNameType">
         <xs:annotation>
           <xs:documentation>
-            In prior versions of the WiX toolset, this attribute specified the short file name.
-            This attribute's value may now be either a short or long file name.
-            If a short file name is specified, the ShortName attribute may not be specified.
-            Also, if this value is a long file name, the ShortName attribute may be omitted to
-            allow WiX to attempt to generate a unique short file name.
-            However, if this name collides with another file or you wish to manually specify
-            the short file name, then the ShortName attribute may be specified.
-            Finally, if this attribute is omitted then its default value is the file name portion
-            of the Source attribute, if one is specified, or the value of the Id attribute, if
-            the Source attribute is omitted or doesn't contain a file name.
+            Specifies the name of the installed file. If this attribute is omitted, then
+            its default value is the file name portion of the Source attribute. If the
+            Source attribute is omitted, you must specify a Name attribute. For more
+            information, see [Specifying source files](../../tools/payloads.md).
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -5685,7 +5654,12 @@
       </xs:attribute>
       <xs:attribute name="Source" type="xs:string">
         <xs:annotation>
-          <xs:documentation>Specifies the path to the File in the build process. Overrides default source path set by parent directories and Name attribute. This attribute must be set if no source information can be gathered from parent directories. For more information, see <html:a href="~/howtos/general/specifying_source_files.html">Specifying source files</html:a>.</xs:documentation>
+          <xs:documentation>
+            Specifies the path to the file in the build process. Overrides default source
+            path set by parent directories and Name attribute. This attribute must be set
+            if no source information can be gathered from parent directories. For more
+            information, see [Specifying source files](../../tools/payloads.md).
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="PatchGroup" type="Integer">
@@ -6064,7 +6038,7 @@
   <xs:element name="RemoveRegistryKey">
     <xs:annotation>
       <xs:documentation>
-        Used for removing registry keys and all child keys either during install or uninstall.
+        Used for removing registry keys and all child keys during install or uninstall.
       </xs:documentation>
       <xs:appinfo>
         <xse:msiRef table="Registry" href="https://learn.microsoft.com/en-us/windows/win32/msi/registry-table" />
@@ -7975,7 +7949,7 @@
             Component identifier; this is the primary key for identifying components. If omitted,
             the compiler defaults the identifier to the identifier of the resource that is the
             explicit keypath of the component (for example, a child File element with KeyPath
-            attribute with value 'yes'.
+            attribute with value 'yes').
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -8179,7 +8153,7 @@
       <xs:attribute name="Bitness" type="BitnessTypeUnion">
         <xs:annotation>
           <xs:documentation>
-            Overrides the default Component bitness. Only 64-bit Components an install to 64-bit locations such
+            Overrides the default Component bitness. Only 64-bit Components can install to 64-bit locations such
             as `ProgramFiles64Folder` and the 64-bit registry. The value `always64` will force the Component
             bitness to be 64-bit and cannot be included in 32-bit packages.
             Simliarly, the value `always32` will force the Component bitness to 32-bit and can be included in
@@ -8246,7 +8220,7 @@
         <xs:annotation>
           <xs:documentation>
             Used to set the default file system source for child Component elements. For more information, see
-            <html:a href="~/howtos/general/specifying_source_files.html">Specifying source files</html:a>.
+            [Specifying source files](../../tools/payloads.md).
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -8534,7 +8508,8 @@
       </xs:attribute>
       <xs:attribute name="FileSource" type="xs:string">
         <xs:annotation>
-          <xs:documentation>Used to set the file system source for this directory's child elements. For more information, see <html:a href="~/howtos/general/specifying_source_files.html">Specifying source files</html:a>.</xs:documentation>
+          <xs:documentation>Used to set the file system source for this directory's child elements.
+          For more information, see [Specifying source files](../../tools/payloads.md).</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Name" type="xs:string">
@@ -8553,12 +8528,6 @@
             allow WiX to attempt to generate a unique short directory name.
             However, if this name collides with another directory or you wish to manually specify
             the short directory name, then the ShortName attribute may be specified.
-
-            This Name attribute may also define multiple directories using the inline directory syntax.
-            For example, "ProgramFilesFolder:\My Company\My Product\bin" would create a reference to a
-            Directory element with Id="ProgramFilesFolder" then create directories named "My Company" then
-            "My Product" then "bin" nested beneath each other. This syntax is a shortcut to defining
-            each directory in an individual Directory element.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -8646,7 +8615,8 @@
       </xs:attribute>
       <xs:attribute name="FileSource" type="xs:string">
         <xs:annotation>
-          <xs:documentation>Used to set the file system source for this DirectoryRef's child elements. For more information, see <html:a href="~/howtos/general/specifying_source_files.html">Specifying source files</html:a>.</xs:documentation>
+          <xs:documentation>Used to set the file system source for this DirectoryRef's child elements.
+          For more information, see [Specifying source files](../../tools/payloads.md).</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:anyAttribute namespace="##other" processContents="lax">
@@ -8984,9 +8954,9 @@
       <xs:attribute name="Level" type="Integer">
         <xs:annotation>
           <xs:documentation>
-            Sets the install level of this feature. A value of 0 will disable the feature. Processing the
-            Condition Table can modify the level value (this is set via the Condition child element). The
-            default value is "1".
+            Sets the install level of this feature. A value of 0 will disable the feature. This value
+            can be modified at install time using the Level element as a child of the Feature.
+            The default value is "1".
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -9205,7 +9175,7 @@
         <xs:annotation>
           <xs:documentation>
             Indicates the compression level for the Media's cabinet. This attribute can
-            only be used in conjunction with the Cabinet attribute. The default is 'mszip'.
+            only be used in conjunction with the Cabinet attribute. The default is 'medium'.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -9455,7 +9425,7 @@
       <xs:attribute name="Script">
         <xs:annotation>
           <xs:documentation>
-            Creates a type 37 or 38 custom action. Specify a path to the script to be embedded in the package in the 
+            Creates a type 37 or 38 custom action. Specify a path to the script to be embedded in the package in the
             `ScriptSourceFile` attribute.
           </xs:documentation>
         </xs:annotation>
@@ -13834,6 +13804,43 @@
       <xs:enumeration value="TempFolder" />
       <xs:enumeration value="TemplateFolder" />
       <xs:enumeration value="WindowsFolder" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PackageScopeTypeUnion">
+    <xs:annotation>
+      <xs:documentation>Use this attribute to specify the installation scope of this package: per-machine, per-user, or a choice of either.</xs:documentation>
+    </xs:annotation>
+    <xs:union memberTypes="PackageScopeType PreprocessorVariables"/>
+  </xs:simpleType>
+  <xs:simpleType name="PackageScopeType">
+    <xs:annotation>
+      <xs:documentation>Use this attribute to specify the installation scope of this package: per-machine, per-user, or a choice of either.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:NMTOKEN">
+      <xs:enumeration value="perMachine">
+        <xs:annotation>
+          <xs:documentation>
+            Set this value to declare that the package is a per-machine installation and requires elevated privileges to install.
+            Sets the ALLUSERS property to 1.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="perUser">
+        <xs:annotation>
+          <xs:documentation>
+            Set this value to declare that the package is a per-user installation and does not require elevated privileges to install.
+            Sets the package's InstallPrivileges attribute to "limited."
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="perUserOrMachine">
+        <xs:annotation>
+          <xs:documentation>
+            Set this value to declare that the package is [dual-purpose that can install per-user or per-machine](https://learn.microsoft.com/en-us/windows/win32/msi/single-package-authoring).
+            Sets the ALLUSERS property to 2 and MSIINSTALLPERUSER property to 1.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="YesNoTypeUnion">

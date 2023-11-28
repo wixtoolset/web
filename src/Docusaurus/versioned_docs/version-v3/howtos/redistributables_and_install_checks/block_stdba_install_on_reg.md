@@ -9,35 +9,44 @@ The process requires both the WiX Util and the WiX Bal extensions.  Reference th
 project, and add the schema to the Wix element. (The .NET Framework extension is included merely as part of the example.)
 The Wix element should look like this:
 
+```xml
     <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" 
          xmlns:util="http://schemas.microsoft.com/wix/UtilExtension" 
          xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension" 
          xmlns:bal="http://schemas.microsoft.com/wix/BalExtension">
+```
 
 The util:RegistrySearch element defines a WiX variable, ThirdPartyCOMLibraryInstalled, that will be True when 
 the key exists.
 
+```xml
     <util:RegistrySearch
           Id='SearchForThirdParty' 
           Variable="ThirdPartyCOMLibraryInstalled" 
           Result="exists"
           Root="HKLM"
           Key="SOFTWARE\Classes\ThirdPartyId.Server\CLSID" />
+```
 
 The WiX variable, ThirdPartyCOMLibraryInstalled, is used as the bal:Condition check expression.  If False, 
 the value of the 'Message' attribute is displayed, and the installation is aborted.
 
+```xml
     <bal:Condition Message="ThirdParty Application COM Library Required.">
         ThirdPartyCOMLibraryInstalled
     </bal:Condition>
+```
 
 If the code is organized in a Fragment, as in this example, an element must be referenced from the 
 Bundle to include it. The util:RegistrySearch element is referenced:
 
+```xml
     <util:RegistrySearchRef Id='SearchForThirdParty' />
+```
 
 The complete Bundle illustrates the required elements in context.
 
+```xml
     <?xml version="1.0" encoding="UTF-8"?>
     <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" 
          xmlns:util="http://schemas.microsoft.com/wix/UtilExtension" 
@@ -87,3 +96,4 @@ The complete Bundle illustrates the required elements in context.
         </bal:Condition>
       </Fragment>
     </Wix>
+```

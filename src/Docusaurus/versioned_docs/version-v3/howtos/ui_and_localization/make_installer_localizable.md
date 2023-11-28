@@ -31,7 +31,7 @@ Localized strings are defined using the [String](../../xsd/wixloc/string.md) ele
 The String element goes inside the WixLocalization element, and you should add one String element for each piece of text you need to localize.
 
 ## Step 3: Use the localized strings in your project
-Once you have defined the strings you can use them in your project wherever you would normally use text. For example, to set your product&apos;s Name and Manufacturer to the localized strings do the following:
+Once you have defined the strings you can use them in your project wherever you would normally use text. For example, to set your product's Name and Manufacturer to the localized strings do the following:
 
 ```xml
 <Product Id="*"

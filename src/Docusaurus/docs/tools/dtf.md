@@ -209,12 +209,11 @@ The configuration file follows [the standard schema for .NET Framework configura
 
 #### Supported Runtime Version
 
-In the startup section, use [supportedRuntime](https://learn.microsoft.com/en-us/dotnet/framework/configure-apps/file-schema/startup/supportedruntime-element) tags to explicitly specify the version(s) of the .NET Framework that the custom action should run on. If no versions are specified, the chosen version of the .NET Framework will be the "best" match to what Microsoft.Deployment.WindowsInstaller.dll was built against.
+In the startup section, use [supportedRuntime](https://learn.microsoft.com/en-us/dotnet/framework/configure-apps/file-schema/startup/supportedruntime-element) tags to explicitly specify the version(s) of the .NET Framework that the custom action should run on. If no versions are specified, the chosen version of the .NET Framework will be the "best" match to what WixToolset.Dtf.WindowsInstaller.dll was built against.
 
 :::caution
 Warning: Leaving the version unspecified is dangerous as it introduces a risk of compatibility problems with future versions of the .NET Framework. It is highly recommended that you specify only the version(s) of the .NET Framework that you have tested against.
 :::
-
 
 #### Other Configuration
 
@@ -251,17 +250,20 @@ A sample CA project with two CAs is included in the Samples\ManagedCA directory.
 
 ### Building Managed Custom Actions
 
-The build process for managed CA DLLs is a little complicated becuase of the proxy-wrapper and dll-export requirements. Here's an overview:
+The preferred way to build managed CA DLLs is to use an msbuild project (aka visual studio project). In that project, make sure that the `WixToolset.Dtf.CustomAction` nuget package has been included as a package reference. The resulting package (`SampleCAs.CA.dll` if your project/assemblyname was `SampleCAs`) is ready to be inserted into the Binary table of the MSI.
 
-1. Compile your CA assembly, which references Microsoft.Deployment.WindowsInstaller.dll and marks exported custom actions with a CustomActionAttribute.
-2. Package the CA assembly, CustomAction.config, Microsoft.Deployment.WindowsInstaller.dll, and any other dependencies using MakeSfxCA.exe. The filenames of CustomAction.config and Microsoft.Deployment.WindowsInstaller.dll must not be changed, since the custom action proxy specifically looks for those files.
+Otherwise, the build process for managed CA DLLs is a little complicated becuase of the proxy-wrapper and dll-export requirements. Here's an overview:
+
+1. Download both the `WixToolset.Dtf.CustomAction` and `WixToolset.Dtf.WindowsInstaller` nuget packages and point `DTFbin` to the applicable `lib` directory of `WixToolset.Dtf.WindowsInstaller` and add the `tools` directory of `WixToolset.Dtf.CustomAction` to your `PATH`.
+2. Compile your CA assembly, which references WixToolset.Dtf.WindowsInstaller.dll and marks exported custom actions with a CustomActionAttribute.
+3. Package the CA assembly, CustomAction.config, WixToolset.Dtf.WindowsInstaller.dll, and any other dependencies using MakeSfxCA.exe. The filenames of CustomAction.config and WixToolset.Dtf.WindowsInstaller.dll must not be changed, since the custom action proxy specifically looks for those files.
 
 #### Compiling
 
 ```
 csc.exe
     /target:library
-    /r:$(DTFbin)\Microsoft.Deployment.WindowsInstaller.dll
+    /r:$(DTFbin)\WixToolset.Dtf.WindowsInstaller.dll
     /out:SampleCAs.dll
     *.cs
 ```
@@ -274,7 +276,7 @@ MakeSfxCA.exe
     $(DTFbin)\SfxCA.dll
     SampleCAs.dll
     CustomAction.config
-    $(DTFbin)\Microsoft.Deployment.WindowsInstaller.dll
+    $(DTFbin)\WixToolset.Dtf.WindowsInstaller.dll
 ```
 
 Now the resulting package, SampleCAsPackage.dll, is ready to be inserted into the Binary table of the MSI.
