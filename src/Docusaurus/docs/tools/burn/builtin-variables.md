@@ -22,9 +22,11 @@ The Burn engine offers a set of commonly-used variables so you can use them with
 | FontsFolder | The well-known folder for CSIDL_FONTS. |
 | InstallerName | The name of the installer engine ("WiX Burn"). |
 | InstallerVersion | The version of the installer engine. |
+| InstallerInformationalVersion | The informational version (with hash) of the installer engine. |
 | LocalAppDataFolder | The well-known folder for CSIDL_LOCAL_APPDATA. |
 | LogonUser | The current user name. |
 | MyPicturesFolder | The well-known folder for CSIDL_MYPICTURES. |
+| NativeMachine | Set to an [Image File Machine value](https://docs.microsoft.com/en-us/windows/win32/sysinfo/image-file-machine-constants) representing the native architecture of the machine. Set only on Windows 10 version 1511 (TH2) and later. |
 | NTProductType | Numeric product type from OS version information. |
 | NTSuiteBackOffice | Non-zero if OS version suite is Back Office. |
 | NTSuiteDataCenter | Non-zero if OS version suite is Datacenter. |
@@ -56,6 +58,7 @@ The Burn engine offers a set of commonly-used variables so you can use them with
 | VersionMsi | Version value representing the Windows Installer engine version. |
 | VersionNT | Version value representing the OS version. The result is a version variable (v#.#.#.#) which differs from the Windows Installer property `VersionNT` which is an integer. For example, to use this variable in a Bundle condition, use: `VersionNT > v6.1`.
 | VersionNT64 | Version value representing the OS version if 64-bit. Undefined if running a 32-bit operating system. The result is a version variable (v#.#.#.#) which differs from the Windows Installer property `VersionNT64` which is an integer. For example, to use this variable in a Bundle condition try: `VersionNT64 > v6.1`.
+| WindowsBuildNumber | The build number of the operating system. |
 | WindowsFolder | The well-known folder for CSIDL_WINDOWS. |
 | WindowsVolume | The well-known folder for the windows volume. |
 | WixBundleAction | Numeric value of BOOTSTRAPPER_ACTION from the command-line and updated during the call to IBootstrapperEngine::Plan. |
@@ -75,3 +78,4 @@ The Burn engine offers a set of commonly-used variables so you can use them with
 | WixBundleTag | The developer-defined tag string for this bundle (from `Bundle/@Tag`). |
 | WixBundleUILevel | The level of the user interface (the BOOTSTRAPPER_DISPLAY enum). |
 | WixBundleVersion | The version for this bundle (from `Bundle/@Version`). |
+| WixCanRestart | Non-zero if the user running the bundle has the privileges required to restart the machine if the bundle prompts for restart. |
