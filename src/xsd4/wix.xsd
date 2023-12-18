@@ -2271,7 +2271,9 @@
         <xs:element ref="Binary" />
         <xs:element ref="ComplianceCheck" />
         <xs:element ref="Component" />
+        <xs:element ref="ComponentRef" />
         <xs:element ref="ComponentGroup" />
+        <xs:element ref="ComponentGroupRef" />
         <xs:element ref="CustomAction" />
         <xs:element ref="CustomActionRef" />
         <xs:element ref="CustomTable" />
@@ -8231,7 +8233,10 @@
   </xs:element>
   <xs:element name="ComponentGroupRef">
     <xs:annotation>
-      <xs:documentation>Create a reference to a ComponentGroup in another Fragment.</xs:documentation>
+      <xs:documentation>
+        Create a reference to a ComponentGroup in another Fragment.
+        _New in WiX v5: Can be a child of the `Package` element._
+      </xs:documentation>
       <xs:appinfo>
         <xse:seeAlso ref="ComponentGroup" />
       </xs:appinfo>
@@ -8319,7 +8324,10 @@
   </xs:element>
   <xs:element name="ComponentRef">
     <xs:annotation>
-      <xs:documentation>Create a reference to a Feature element in another Fragment.</xs:documentation>
+      <xs:documentation>
+        Create a reference to a Feature element in another Fragment.
+        _New in WiX v5: Can be a child of the `Package` element._
+      </xs:documentation>
       <xs:appinfo>
         <xse:seeAlso ref="Component" />
         <xse:howtoRef href="files_and_registry/add_a_file.html">How To: Add a file to your installer</xse:howtoRef>
