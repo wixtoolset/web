@@ -2383,7 +2383,7 @@
       <xs:attribute name="UpgradeStrategy" type="UpgradeStrategyTypeUnion">
         <xs:annotation>
           <xs:documentation>
-          The upgrade strategy for the package. If "none," no major upgrade is expected. 
+          The upgrade strategy for the package. If "none," no major upgrade is expected.
           If "majorUpgrade," the UpgradeCode attribute is required and a major upgrade is expected.
           A default major upgrade is automatically provided if none is authored.
           _New in WiX v5: WiX v5 adds this attribute to the `Package` element._
@@ -7955,8 +7955,10 @@
           <xs:documentation>
             Component identifier; this is the primary key for identifying components. If omitted,
             the compiler defaults the identifier to the identifier of the resource that is the
-            explicit keypath of the component (for example, a child File element with KeyPath
-            attribute with value 'yes').
+            explicit or default keypath of the component (for example, a child File element).
+            In WiX v4 and WiX v5, such a default identifier is private to the section where it is
+            defined. To make it public (and therefore accessible from other sections and usable
+            in references like ComponentRef), give the component an explicit value for Id.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
