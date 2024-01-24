@@ -202,6 +202,7 @@ For example:
   Property="DOTNETRUNTIMECHECK"
   RollForward="major"
   RuntimeType="desktop"
+  Platform="x64"
   Version="6.0.0"
   />
 ```
