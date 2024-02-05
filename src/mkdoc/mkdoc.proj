@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <Target Name="GenerateDocumentation" BeforeTargets="AfterBuild">
-    <Message Text="Generating schema reference..." Importance="high" />
+    <Message Text="Generating schema reference to $(MSBuildProjectDir)..\Docusaurus\docs\schema" Importance="high" />
     <Exec Command="$(OutDir)..\XsdToMarkdown.exe -out $(MSBuildProjectDir)..\Docusaurus\docs\schema $(MSBuildProjectDir)..\xsd4\*.xsd" />
 
     <ItemGroup>

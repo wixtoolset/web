@@ -6,8 +6,8 @@ sidebar_position: 40
 
 ## Documentation {#doc}
 
-* [WiX toolset v4.x][v4]
-* [WiX toolset v3.x][v3]
+* [WiX Toolset v4 and v5][v4]
+* [WiX Toolset v3.x][v3]
 
 
 ## Discussions forum {#forum}

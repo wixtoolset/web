@@ -2,11 +2,7 @@
 sidebar_position: 3
 ---
 
-# Frequently-asked questions about upgrading from WiX v3 to WiX v4
-
-:::info
-TODO: WiX v4 documentation is under development.
-:::
+# Frequently-asked questions
 
 ## Converting packages
 

@@ -1374,7 +1374,7 @@
       </xs:attribute>
       <xs:attribute name="Value" type="xs:string" use="required">
         <xs:annotation>
-          <xs:documentation>The value to set the property to. This string is evaluated by the burn engine and can be as simple as a burn engine variable reference or as complex as a full expression.</xs:documentation>
+          <xs:documentation>The value to set the property to. This string is evaluated by the Burn engine and can be as simple as a Burn engine variable reference or as complex as a full expression.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Condition" type="xs:string">
@@ -1610,6 +1610,20 @@
             The DisplayVersion value of the ARP entry that is installed by this package.
             Older or missing versions cause this package to be detected as absent.
             Newer versions cause this package to be detected as obsolete.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="AdditionalUninstallArguments" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            Additional arguments for the uninstall command line.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="UseUninstallString" type="YesNoTypeUnion">
+        <xs:annotation>
+          <xs:documentation>
+            If yes, use the `UninstallString` value instead of the default `QuietUninstallString`.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -2286,6 +2300,8 @@
         <xs:element ref="Feature" />
         <xs:element ref="FeatureRef" />
         <xs:element ref="FeatureGroupRef" />
+        <xs:element ref="File" />
+        <xs:element ref="Files" />
         <xs:element ref="Icon" />
         <xs:element ref="InstallExecuteSequence" />
         <xs:element ref="InstallUISequence" />
@@ -2432,6 +2448,8 @@
         <xs:element ref="EmbeddedChainerRef" />
         <xs:element ref="EnsureTable" />
         <xs:element ref="Exclusion" />
+        <xs:element ref="File" />
+        <xs:element ref="Files" />
         <xs:element ref="Icon" />
         <xs:element ref="IgnoreTable" />
         <xs:element ref="Property" />
@@ -2714,6 +2732,8 @@
         <xs:element ref="Feature" />
         <xs:element ref="FeatureGroup" />
         <xs:element ref="FeatureRef" />
+        <xs:element ref="File" />
+        <xs:element ref="Files" />
         <xs:element ref="Icon" />
         <xs:element ref="InstallExecuteSequence" />
         <xs:element ref="InstallUISequence" />
@@ -3859,7 +3879,7 @@
       </xs:attribute>
       <xs:attribute name="Comments" type="xs:string">
         <xs:annotation>
-          <xs:documentation>Optional comments for browsing.</xs:documentation>
+          <xs:documentation>Optional comments for browsing. _New in WiX v5: WiX v5 adds this attribute to the `SummaryInformation` element._</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Description" type="xs:string">
@@ -8201,6 +8221,8 @@
         <xs:element ref="Component" />
         <xs:element ref="ComponentGroupRef" />
         <xs:element ref="ComponentRef" />
+        <xs:element ref="File" />
+        <xs:element ref="Files" />
         <xs:any namespace="##other" processContents="lax">
           <xs:annotation>
             <xs:documentation>
@@ -8485,6 +8507,8 @@
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element ref="Component" />
         <xs:element ref="Directory" />
+        <xs:element ref="File" />
+        <xs:element ref="Files" />
         <xs:element ref="Merge" />
         <xs:element ref="SymbolPath" />
         <xs:any namespace="##other" processContents="lax">
@@ -8608,6 +8632,8 @@
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element ref="Component" />
         <xs:element ref="Directory" />
+        <xs:element ref="File" />
+        <xs:element ref="Files" />
         <xs:element ref="Merge" />
         <xs:any namespace="##other" processContents="lax">
           <xs:annotation>
@@ -8733,6 +8759,8 @@
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element ref="Component" />
         <xs:element ref="Directory" />
+        <xs:element ref="File" />
+        <xs:element ref="Files" />
         <xs:element ref="Merge" />
         <xs:any namespace="##other" processContents="lax">
           <xs:annotation>
@@ -8746,6 +8774,127 @@
       <xs:attribute name="Id" type="StandardDirectoryTypeUnion" use="required">
         <xs:annotation>
           <xs:documentation>The identifier of the standard directory to include in the package.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute namespace="##other" processContents="lax">
+        <xs:annotation>
+          <xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:anyAttribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Files">
+    <xs:annotation>
+      <xs:documentation>
+        Authoring to define the set of files to be harvested for inclusion in a package.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="Exclude" />
+        <xs:any namespace="##other" processContents="lax">
+          <xs:annotation>
+            <xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:any>
+      </xs:choice>
+      <xs:attribute name="Include" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>
+            A file-selection pattern that can include directory names, file names, and wildcards.
+            If a pattern is not an absolute path (via a preprocessor variable, unnamed bind path,
+            or named bind path), it is interpreted as relative to the directory containing the
+            source file. Absolute paths via a named bind path are recommended.
+
+            Wildcards include typical `*.ext` globs and MSBuild-style `**` globs to indicate
+            that directories should be recursed. Examples include:
+
+            | Pattern | Description |
+            | ------- | ----------- |
+            | `!(bindpath.ToBeHarvested)\**` | All files in the parent directory identified by the `ToBeHarvested` bind path and its subdirectories. |
+            | `$(PayloadFiles)\bin\Release\**` | All files in the `bin\Release` subdirectory in the directory named by the `PayloadFiles` preprocessor variable and its subdirectories. |
+            | `!(bindpath.arm64)\**.pdb` | All files with `.pdb` extension in the parent directory identified by the `arm64` bind path and its subdirectories. |
+            | `**` | If an unnamed bind path was specified, all files in that directory and its subdirectories. If an unnamed bind path was _not_ specified, all files in directory of the source .wxs file and its subdirectories. |
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Directory" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            This attribute specifies a reference to a Directory element with matching Id attribute containing a directory path.
+            This attribute is typically used with the ExeCommand attribute to specify the source executable for a type 34
+            custom action, or with the Value attribute to specify a formatted string to place in the specified Directory
+            table entry in a type 35 custom action.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Subdirectory" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            This attribute defines one or more directories below the directory referenced by the Directory attribute.
+            This attribute is optional but can only be specified when the Directory attribute is also specified.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute namespace="##other" processContents="lax">
+        <xs:annotation>
+          <xs:documentation>
+            Extensibility point in the WiX XML Schema. Schema extensions can register additional
+            attributes at this point in the schema.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:anyAttribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Exclude">
+    <xs:annotation>
+      <xs:documentation>
+        Using wildcards, defines the files from a parent `Files` element that should be excluded from harvesting.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:any namespace="##other" processContents="lax">
+          <xs:annotation>
+            <xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:any>
+      </xs:choice>
+      <xs:attribute name="Files" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>
+            Excludes files from the set of files harvested via the parent `Files` element.
+            Inclusion and exclusion wildcards must match paths. For example, if you have a
+            `Files` element with `Include="!(bindpath.ToBeHarvested)\**"` and want to
+            exclude one of the files, use an `Exclude` element with a `Files` attribute
+            like `!(bindpath.ToBeHarvested)\notatest.txt` to match the inclusion path.
+            You can also use the `**` wildcard to match directories, such as
+            `Files="**\pleasedontincludeme.dat"`.
+
+            The file-selection pattern can include directory names, file names, and wildcards.
+            If a pattern is not an absolute path (via a preprocessor variable, unnamed bind path,
+            or named bind path), it is interpreted as relative to the directory containing the
+            source file. Absolute paths via a named bind path are recommended.
+
+            Wildcards include typical `*.ext` globs and MSBuild-style `**` globs to indicate
+            that directories should be recursed. Examples include:
+
+            | Pattern | Description |
+            | ------- | ----------- |
+            | `!(bindpath.ToBeHarvested)\**` | All files in the parent directory identified by the `ToBeHarvested` bind path and its subdirectories. |
+            | `$(PayloadFiles)\bin\Release\**` | All files in the `bin\Release` subdirectory in the directory named by the `PayloadFiles` preprocessor variable and its subdirectories. |
+            | `!(bindpath.arm64)\**.pdb` | All files with `.pdb` extension in the parent directory identified by the `arm64` bind path and its subdirectories. |
+            | `**` | If an unnamed bind path was specified, all files in that directory and its subdirectories. If an unnamed bind path was _not_ specified, all files in directory of the source .wxs file and its subdirectories. |
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:anyAttribute namespace="##other" processContents="lax">
@@ -8875,6 +9024,8 @@
         <xs:element ref="Component" />
         <xs:element ref="ComponentGroupRef" />
         <xs:element ref="ComponentRef" />
+        <xs:element ref="File" />
+        <xs:element ref="Files" />
         <xs:element ref="Level" />
         <xs:element ref="Feature" />
         <xs:element ref="FeatureGroupRef" />
@@ -9042,6 +9193,8 @@
         <xs:element ref="Feature" />
         <xs:element ref="FeatureGroupRef" />
         <xs:element ref="FeatureRef" />
+        <xs:element ref="File" />
+        <xs:element ref="Files" />
         <xs:element ref="MergeRef" />
         <xs:any namespace="##other" processContents="lax">
           <xs:annotation>
@@ -9131,6 +9284,8 @@
         <xs:element ref="FeatureRef" />
         <xs:element ref="FeatureGroup" />
         <xs:element ref="FeatureGroupRef" />
+        <xs:element ref="File" />
+        <xs:element ref="Files" />
         <xs:element ref="MergeRef" />
         <xs:any namespace="##other" processContents="lax">
           <xs:annotation>

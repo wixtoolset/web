@@ -4,7 +4,7 @@ sidebar_position: 0
 
 # Get started with WiX
 
-There are three ways to use WiX v4:
+There are three ways to use WiX:
 
 - [Command-line .NET tool](#nettool)
 - [MSBuild on the command line and CI/CD build systems](#msbuild)
@@ -13,7 +13,7 @@ There are three ways to use WiX v4:
 
 ## Command-line .NET tool {#nettool}
 
-WiX v4 is available as a [.NET tool](https://learn.microsoft.com/en-us/dotnet/core/tools/global-tools) for your command-line pleasure.
+WiX is available as a [.NET tool](https://learn.microsoft.com/en-us/dotnet/core/tools/global-tools) for your command-line pleasure.
 
 :::note
 The `wix.exe` tool requires the .NET SDK, version 6 or later.
@@ -39,7 +39,7 @@ wix --version
 
 ## MSBuild on the command line and CI/CD build systems {#msbuild}
 
-WiX v4 is available as an MSBuild SDK for building from the command line using `dotnet build` from the .NET SDK or the .NET Framework-based `MSBuild` from Visual Studio. SDK-style projects have smart defaults that make for simple .wixproj project authoring. For example, here's a minimal .wixproj that builds an MSI from the .wxs source files in the project directory:
+WiX is available as an MSBuild SDK for building from the command line using `dotnet build` from the .NET SDK or the .NET Framework-based `MSBuild` from Visual Studio. SDK-style projects have smart defaults that make for simple .wixproj project authoring. For example, here's a minimal .wixproj that builds an MSI from the .wxs source files in the project directory:
 
 ```xml
 <Project Sdk="WixToolset.Sdk/4.0.4">
@@ -52,10 +52,10 @@ WiX v4 is available as an MSBuild SDK for building from the command line using `
 
 ## Visual Studio {#vs}
 
-[FireGiant](https://www.firegiant.com/) has released [HeatWave Community Edition][heatwave] to support WiX v4 SDK-style MSBuild projects in Visual Studio. HeatWave supports:
+[FireGiant](https://www.firegiant.com/) has released [HeatWave Community Edition][heatwave] to support WiX SDK-style MSBuild projects in Visual Studio. HeatWave supports:
 
 - Conversion of WiX v3 projects and authoring
-- Building of WiX v4 SDK-style projects
+- Building of WiX SDK-style projects
 - Project and item templates
 - Property pages to control how the project builds
 
@@ -76,7 +76,7 @@ dotnet nuget add source https://nuget.pkg.github.com/wixtoolset/index.json -n wi
 You need to use exact versions for those packages. For example:
 
 ```xml
-<Project Sdk="WixToolset.Sdk/4.0.0-rc.3-build.39">
+<Project Sdk="WixToolset.Sdk/5.0.0-preview.1-build.106">
 </Project>
 ```
 

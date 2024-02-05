@@ -77,12 +77,12 @@ QueryWindowsSuiteInfo sets one or more of the following session properties for [
 
 | Property | Description |
 | -------- | ----------- |
-| WIX_ACCOUNT_LOCALSYSTEM | Localized qualified name of the Local System account (WinLocalSystemSid). |
-| WIX_ACCOUNT_LOCALSERVICE | Localized qualified name of the Local Service account (WinLocalServiceSid). |
-| WIX_ACCOUNT_NETWORKSERVICE | Localized qualified name of the Network Service account (WinNetworkServiceSid). |
-| WIX_ACCOUNT_ADMINISTRATORS | Localized qualified name of the Administrators group (WinBuiltinAdministratorsSid). |
-| WIX_ACCOUNT_USERS | Localized qualified name of the Users group (WinBuiltinUsersSid). |
-| WIX_ACCOUNT_GUESTS | Localized qualified name of the Users group (WinBuiltinGuestsSid). |
+| WIX_ACCOUNT_LOCALSYSTEM, WIX_ACCOUNT_LOCALSYSTEM_NODOMAIN | Localized qualified name of the Local System account (WinLocalSystemSid). |
+| WIX_ACCOUNT_LOCALSERVICE, WIX_ACCOUNT_LOCALSERVICE_NODOMAIN | Localized qualified name of the Local Service account (WinLocalServiceSid). |
+| WIX_ACCOUNT_NETWORKSERVICE, WIX_ACCOUNT_NETWORKSERVICE_NODOMAIN | Localized qualified name of the Network Service account (WinNetworkServiceSid). |
+| WIX_ACCOUNT_ADMINISTRATORS, WIX_ACCOUNT_ADMINISTRATORS_NODOMAIN | Localized qualified name of the Administrators group (WinBuiltinAdministratorsSid). |
+| WIX_ACCOUNT_USERS, WIX_ACCOUNT_USERS_NODOMAIN | Localized qualified name of the Users group (WinBuiltinUsersSid). |
+| WIX_ACCOUNT_GUESTS, WIX_ACCOUNT_GUESTS_NODOMAIN | Localized qualified name of the Users group (WinBuiltinGuestsSid). |
 | WIX_ACCOUNT_PERFLOGUSERS, WIX_ACCOUNT_PERFLOGUSERS_NODOMAIN | Localized qualified name of the Performance Log Users group (WinBuiltinPerfLoggingUsersSid). |
 
 
