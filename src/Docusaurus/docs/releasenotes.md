@@ -5,11 +5,9 @@ sidebar_position: 30
 # Release notes
 
 
-## WiX v4.0.3 {#v4}
+## WiX v4.0.4 {#v4}
 
-> WiX v4.0.3 was released Monday, 13-Nov-2023
-
-WiX v4.0.3 is a maintenance release of WiX v4 that [fixes a small number of even smaller bugs](https://github.com/wixtoolset/issues/milestone/23?closed=1).
+WiX v4.0.4 mitigates a Windows DLL redirection vulnerability in Burn. All versions of WiX are affected by this vulnerability. We recommending upgrading to this version as soon as possible.
 
 
 ### Platforms
@@ -66,7 +64,7 @@ WiX v4.0.3 is a maintenance release of WiX v4 that [fixes a small number of even
 To update your .wixproj MSBuild projects from previous WiX v4 releases, update the `Project` element's `Sdk` attribute:
 
 ```xml
-<Project Sdk="WixToolset.Sdk/4.0.3">
+<Project Sdk="WixToolset.Sdk/4.0.4">
 ```
 
 For `PackageReference`s to WiX v4 extensions, update their `Version` attribute. For example:
@@ -101,6 +99,10 @@ wix --version
 
 
 ## Previous WiX v4 releases
+
+> WiX v4.0.3 was released Monday, 13-Nov-2023
+
+WiX v4.0.3 is a maintenance release of WiX v4 that [fixes a small number of even smaller bugs](https://github.com/wixtoolset/issues/milestone/23?closed=1).
 
 > WiX v4.0.2 was released Wednesday, 13-Sep-2023
 
