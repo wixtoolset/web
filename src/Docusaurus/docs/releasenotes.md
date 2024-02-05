@@ -4,6 +4,45 @@ sidebar_position: 30
 
 # Release notes
 
+## WiX v5 {#v5}
+
+WiX v5 marks the first of our annual releases. We intentionally made WiX v5 highly compatible with WiX v4. Most users can simply switch to WiX v5 with no code changes. (There are some exceptions, naturally.) Here's a list of some notable changes, mostly new features to make your package experience with WiX more pleasant:
+
+| Feature | Description |
+| ------- | ----------- |
+| Built-in file harvesting | Include files in your projects using wildcards. No Heat required. |
+| Naked files | Simplify component authoring that contains only files. |
+| Default major upgrades | Get a typical major upgrade with no XML. |
+| Default installation folder | Get a typical installation directory with no XML. |
+| Default feature | Get a typical feature with no XML. |
+| Modern Windows Firewall support | WixToolset.Firewall.wixext supports more Firewall features. Might require minor authoring changes. |
+| Virtual and overridable symbols | Overridability can be applied to many things now. Might require minor authoring changes. |
+| Out-of-process bootstrapper applications | BAs are no longer hosted in the Burn process, for better reliability, security, and compatibility. Custom BAs will require source-code changes. |
+
+[Read more about them in `WiX v5 for WiX v4 users`.](fivefour/index.md)
+
+WiX v5.0.0-rc.1 was released on 8-March-2024. WiX v5.0.0 is scheduled for release on 5-April-2024, the 20th anniversary of the first open-source release of WiX.
+
+
+### Contributors
+
+Here are the people who contributed to WiX v5:
+
+- [@barnson](https://github.com/wixtoolset/Harvesters/commits?author=barnson)
+- [@robmen](https://github.com/wixtoolset/Harvesters/commits?author=robmen)
+- [@chrisbednarski](https://github.com/wixtoolset/Harvesters/commits?author=chrisbednarski)
+- [@nirbar](https://github.com/wixtoolset/Harvesters/commits?author=nirbar)
+- [@avjts](https://github.com/wixtoolset/Harvesters/commits?author=avjts)
+- [@chrpai](https://github.com/wixtoolset/Harvesters/commits?author=chrpai)
+- [@cpuwzd](https://github.com/wixtoolset/Harvesters/commits?author=cpuwzd)
+- [@apacker1](https://github.com/wixtoolset/Harvesters/commits?author=apacker1)
+- [@mosBrkr](https://github.com/wixtoolset/Harvesters/commits?author=mosBrkr)
+- [@mistoll](https://github.com/wixtoolset/Harvesters/commits?author=mistoll)
+- [@jespersh](https://github.com/wixtoolset/Harvesters/commits?author=jespersh)
+- [@timberto](https://github.com/wixtoolset/Harvesters/commits?author=timberto)
+- [@fyodorkor](https://github.com/wixtoolset/Harvesters/commits?author=fyodorkor)
+- [@mwileczka](https://github.com/wixtoolset/Harvesters/commits?author=mwileczka)
+
 
 ## WiX v4.0.4 {#v4}
 

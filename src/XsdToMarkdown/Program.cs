@@ -88,7 +88,9 @@ namespace WixBuildTools.XsdToMarkdown
                 return 1;
             }
 
-            return x.TargetNamespace.CompareTo(y.TargetNamespace);
+            var xSchemaName = Xsd.GetSchemaNameFromNamespace(x.TargetNamespace);
+            var ySchemaName = Xsd.GetSchemaNameFromNamespace(y.TargetNamespace);
+            return xSchemaName.CompareTo(ySchemaName);
         }
     }
 }

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 50
+sidebar_position: 55
 ---
 
 # WiX v4 for WiX v3 users

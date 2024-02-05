@@ -120,6 +120,9 @@ public static class Extensions
                     break;
                 }
 
+                case XComment:
+                    break;
+
                 default:
                     throw new ArgumentException($"Unsupported XML node type '{node.NodeType}'");
             }
