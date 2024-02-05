@@ -42,7 +42,7 @@ wix --version
 WiX v4 is available as an MSBuild SDK for building from the command line using `dotnet build` from the .NET SDK or the .NET Framework-based `MSBuild` from Visual Studio. SDK-style projects have smart defaults that make for simple .wixproj project authoring. For example, here's a minimal .wixproj that builds an MSI from the .wxs source files in the project directory:
 
 ```xml
-<Project Sdk="WixToolset.Sdk/4.0.3">
+<Project Sdk="WixToolset.Sdk/4.0.4">
 </Project>
 ```
 
