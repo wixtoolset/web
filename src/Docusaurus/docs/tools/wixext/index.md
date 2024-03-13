@@ -47,6 +47,14 @@ wix extension add -g WixToolset.Bal.wixext
 wix build Bundle.wxs Bundle.en-us.wxl -ext WixToolset.Util.wixext -ext WixToolset.Bal.wixext
 ```
 
+:::tip
+If using an earlier Wix version (e.g. Wix 4.0.4), you have to specify it when installing the extension like so:
+
+   ```
+   wix extension add -g WixToolset.Util.wixext/4.0.4
+   ```
+:::
+
 
 ### Loading extensions in a .wixproj MSBuild project
 
