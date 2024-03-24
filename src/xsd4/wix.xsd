@@ -74,6 +74,8 @@
         <xs:element ref="ApprovedExeForElevation" />
         <xs:element ref="BootstrapperApplication" />
         <xs:element ref="BootstrapperApplicationRef" />
+        <xs:element ref="BootstrapperExtension" />
+        <xs:element ref="BootstrapperExtensionRef" />
         <xs:element ref="BundleCustomData" />
         <xs:element ref="BundleCustomDataRef" />
         <xs:element ref="BundleExtension" />
@@ -462,6 +464,36 @@
           <xs:documentation>The identifier of the BootstrapperApplication element. Only required if you want to reference this element using a BootstrapperApplicationRef element.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
+      <xs:attribute name="Name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            [WIX v5 and later]
+            The relative destination path and file name for the bootstrapper application executable.
+            The default is the source file name. Use this attribute to rename the bootstrapper application executable or extract it into a subfolder.
+            At a minimum, the Name or SourceFile attribute must be specified.
+            This must be a relative path ('\foo' or 'C:\foo' is not allowed).
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="SourceFile" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            [WIX v5 and later]
+            The path to the bootstrapper application executable.
+            If not provided, will use the Name attribute value.
+            At a minimum, the SourceFile or Name attribute must be specified.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Secondary" type="YesNoTypeUnion">
+        <xs:annotation>
+          <xs:documentation>
+            [WIX v5 and later]
+            Indicates whether the bootstrapper application is the secondary or fallback.
+            This bootstrapper application will only run if the primary bootstrapper application returns a non-zero exit code.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
       <xs:anyAttribute namespace="##other" processContents="lax">
         <xs:annotation>
           <xs:documentation>
@@ -533,12 +565,13 @@
         <xs:annotation>
           <xs:documentation>
             Indicates the custom data is transformed into the bootstrapper application data manifest or the bundle extension data manifest.
-            Defaults to BundleExtension if ExtensionId is specified, otherwise BootstrapperApplication.
+            Defaults to BootstrapperExtension if ExtensionId is specified, otherwise BootstrapperApplication.
           </xs:documentation>
         </xs:annotation>
         <xs:simpleType>
           <xs:restriction base="xs:NMTOKEN">
             <xs:enumeration value="BootstrapperApplication" />
+            <xs:enumeration value="BootstrapperExtension" />
             <xs:enumeration value="BundleExtension" />
           </xs:restriction>
         </xs:simpleType>
@@ -546,8 +579,8 @@
       <xs:attribute name="ExtensionId" type="xs:string">
         <xs:annotation>
           <xs:documentation>
-            Identifier for the bundle extension.
-            Required when Type is BundleExtension, must not be specified otherwise.
+            Identifier for the bootstrapper extension.
+            Required when Type is BootstrapperExtension, must not be specified otherwise.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
@@ -613,9 +646,85 @@
       </xs:attribute>
     </xs:complexType>
   </xs:element>
+  <xs:element name="BootstrapperExtension">
+    <xs:annotation>
+      <xs:documentation>[WIX v5] An extension to the Burn engine. Currently requires a WiX compiler extension to do anything useful.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="Payload" />
+        <xs:element ref="PayloadGroupRef" />
+        <xs:any namespace="##other" processContents="lax">
+          <xs:annotation>
+            <xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              elements at this point in the schema.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:any>
+      </xs:choice>
+      <xs:attribute name="Id" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The identifier of the BootstrapperExtension element. Only required if you want to reference this element using a BootstrapperExtensionRef element.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            The relative destination path and file name for the bundle extension DLL.
+            The default is the source file name. Use this attribute to rename the bundle extension DLL or extract it into a subfolder.
+            At a minimum, the Name or SourceFile attribute must be specified.
+            This must be a relative path ('\foo' or 'C:\foo' is not allowed).
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="SourceFile" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            The DLL with the bundle extension entry function.
+            The default value is the Name attribute, if provided.
+            At a minimum, the SourceFile or Name attribute must be specified.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BootstrapperExtensionRef">
+    <xs:annotation>
+      <xs:appinfo>
+        <xse:seeAlso ref="BootstrapperExtension" />
+      </xs:appinfo>
+      <xs:documentation>[WiX v5] Used to reference a BootstrapperExtension element.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:any namespace="##other" processContents="lax">
+          <xs:annotation>
+            <xs:documentation>
+                Extensibility point in the WiX XML Schema. Schema extensions can register additional
+                elements at this point in the schema.
+              </xs:documentation>
+          </xs:annotation>
+        </xs:any>
+      </xs:choice>
+      <xs:attribute name="Id" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>The identifier of the BootstrapperExtension element to reference.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute namespace="##other" processContents="lax">
+        <xs:annotation>
+          <xs:documentation>
+              Extensibility point in the WiX XML Schema. Schema extensions can register additional
+              attributes at this point in the schema.
+            </xs:documentation>
+        </xs:annotation>
+      </xs:anyAttribute>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="BundleExtension">
     <xs:annotation>
-      <xs:documentation>An extension to the Burn engine. Currently requires a WiX compiler extension to do anything useful.</xs:documentation>
+      <xs:documentation>[WIX v4 only]An extension to the Burn engine. Currently requires a WiX compiler extension to do anything useful.</xs:documentation>
     </xs:annotation>
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -661,7 +770,7 @@
       <xs:appinfo>
         <xse:seeAlso ref="BundleExtension" />
       </xs:appinfo>
-      <xs:documentation>Used to reference a BundleExtension element.</xs:documentation>
+      <xs:documentation>[WiX v4 only] Used to reference a BundleExtension element.</xs:documentation>
     </xs:annotation>
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -2712,6 +2821,8 @@
         <xs:element ref="Binary" />
         <xs:element ref="BootstrapperApplication" />
         <xs:element ref="BootstrapperApplicationRef" />
+        <xs:element ref="BootstrapperExtension" />
+        <xs:element ref="BootstrapperExtensionRef" />
         <xs:element ref="BundleCustomData" />
         <xs:element ref="BundleCustomDataRef" />
         <xs:element ref="BundleExtension" />
@@ -5482,6 +5593,20 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
+      <xs:attribute name="Bitness" type="BitnessTypeUnion">
+        <xs:annotation>
+          <xs:documentation>
+            [WiX v5] Only valid when the File element is not a child of the Component element.
+            Overrides the default File bitness. Only a 64-bit File can install to 64-bit locations such
+            as `ProgramFiles64Folder` and the 64-bit registry. The value `always64` will force the File
+            bitness to be 64-bit and cannot be included in 32-bit packages.
+            Simliarly, the value `always32` will force the File bitness to 32-bit and can be included in
+            32-bit or 64-bit packages.
+            The default value is `default` where the File will be installed using the
+            same bitness as the package.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
       <xs:attribute name="CompanionFile" type="xs:string">
         <xs:annotation>
           <xs:documentation>
@@ -5490,6 +5615,31 @@
             companion parent. A file that is the key path for its component can not be a companion file (that means
             this attribute cannot be set if KeyPath="yes" for this file). The Version attribute cannot be set along
             with this attribute since companion files are not installed based on their own version.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Condition" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            [WiX v5] Only valid when the File element is not a child of the Component element.
+            The condition expression to be evaluated at install time. When false the File will not be installed.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Directory" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            [WiX v5] Only valid when the File element is not a child of the Component element.
+            This attribute specifies a reference to a Directory element with matching Id attribute containing a directory path.
+            If not provided, the value will default to "INSTALLFOLDER".
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Subdirectory" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            [WiX v5] Only valid when the File element is not a child of the Component element.
+            This attribute defines one or more directories below the directory referenced by the Directory attribute.
+          </xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Name" type="LongFileNameType">
@@ -14284,7 +14434,7 @@
   </xs:simpleType>
   <xs:simpleType name="PreprocessorVariables">
     <xs:annotation>
-      <xs:documentation>A type that represents that 1 or more preprocessor variables (as they appear in sources on disk, before preprocessor has run).</xs:documentation>
+      <xs:documentation>A type that represents 1 or more preprocessor variables.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
       <xs:pattern value="(\$\((\w+\.)?(\w[\w()]*)\))+" />
