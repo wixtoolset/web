@@ -30,7 +30,6 @@ WiX v5.0.0 is scheduled for release on 5-April-2024, the 20th anniversary of the
 - WiX v5.0.0-rc.1 was released on 8-March-2024.
 
 
-
 ### Contributors
 
 Here are the people who contributed to WiX v5:
@@ -110,7 +109,7 @@ WiX v4.0.5, released on Friday, 22-Mar-2024, contains fixes for two security vul
 To update your .wixproj MSBuild projects from previous WiX v4 releases, update the `Project` element's `Sdk` attribute:
 
 ```xml
-<Project Sdk="WixToolset.Sdk/4.0.4">
+<Project Sdk="WixToolset.Sdk/4.0.5">
 ```
 
 For `PackageReference`s to WiX v4 extensions, update their `Version` attribute. For example:
