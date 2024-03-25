@@ -7,11 +7,33 @@ sidebar_position: 100
 In WiX v4, Heat is available in a WiX extension NuGet Package. To use Heat to harvest directories, files, or projects:
 
 1. Add a reference to the [WixToolset.Heat NuGet package](https://www.nuget.org/packages/WixToolset.Heat/).
-2. Add an item group based on the kind of harvesting you want to do in your project:
+2. Add an item group in the project file (Right click on the wix project and select `Edit Project File`) based on the kind of harvesting you want to do in your project:
    - `HarvestDirectory` to harvest files from a directory
    - `HarvestFile` to harvest data from a file
    - `HarvestProject` to harvest output from a project
 
+```xml
+<Project Sdk="WixToolset.Sdk/4.0.2" TreatWarningsAsErrors="true">
+	<ItemGroup>
+		<HarvestDirectory Include="$(SolutionDir)MyProject\bin\Release\net7.0">
+			<ComponentGroupName>MyHarvestedFiles</ComponentGroupName>
+			<DirectoryRefId>INSTALLFOLDER</DirectoryRefId>
+			<SuppressRootDirectory>true</SuppressRootDirectory>
+			<!-- disabling harvesting registry keys makes HEAT5151 error go away during build -->
+			<SuppressRegistry>true</SuppressRegistry>
+			<SuppressFragments>true</SuppressFragments>
+			<SuppressCom>true</SuppressCom>
+		</HarvestDirectory>
+		<BindPath Include="$(SolutionDir)MyProject\bin\Release\net7.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="WixToolset.Heat" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="$(SolutionDir)MyProject\MyProject.csproj" />
+	</ItemGroup>
+</Project>
+```
 
 ## Using `HarvestDirectory` to harvest files from a directory
 
@@ -34,7 +56,7 @@ The following properties control harvesting:
 | -------- | ----------- |
 | `HarvestDirectoryAutogenerateGuids` | Optional boolean property. Whether to generate authoring that relies on auto-generation of component GUIDs. The default is `$(HarvestAutogenerateGuids)` if specified; otherwise, **true**. |
 | `HarvestDirectoryComponentGroupName` | Optional string property. When harvesting multiple directories in a project, specify this metadata to create unique file names for the generated authoring. The component group name that will contain all generated authoring. |
-| `HarvestDirectoryDirectoryRefId` | Optional string property. The identifier of the Directory element that will contain all generated authoring. |
+| `HarvestDirectoryDirectoryRefId` | Optional string property. The identifier of the Directory into which the harvested files will be copied when you run the installer. |
 | `HarvestDirectoryGenerateGuidsNow` | Optional boolean property. Whether to generate authoring that generates durable GUIDs when harvesting. The default is `$(HarvestGenerateGuidsNow)` if specified; otherwise, **false**. |
 | `HarvestDirectoryKeepEmptyDirectories` | Optional boolean property. Whether to create Directory entries for empty directories when harvesting. The default is **false**. |
 | `HarvestDirectoryNoLogo` | Optional boolean property. Whether to show the logo for heat.exe. The default is `$(NoLogo)` if specified; otherwise, **false**. |
@@ -42,7 +64,7 @@ The following properties control harvesting:
 | `HarvestDirectorySuppressAllWarnings` | Optional boolean parameter. Specifies that all warnings should be suppressed. The default is `$(HarvestSuppressAllWarnings)` if specified; otherwise, **false**. |
 | `HarvestDirectorySuppressCom` | Optional boolean property. Whether to suppress generation of COM registry elements when harvesting files in directories. The default is **false**. |
 | `HarvestDirectorySuppressFragments` | Optional boolean property. Whether to suppress generation of separate fragments when harvesting. The default is `$(HarvestSuppressFragments)` if specified; otherwise, **true**. |
-| `HarvestDirectorySuppressRegistry` | Optional boolean property. Whether to suppress generation of all registry elements when harvesting files in directories. The default is **false**. |
+| `HarvestDirectorySuppressRegistry` | Optional boolean property. Whether to suppress generation of all registry elements when harvesting files in directories. The default is **false**. If you get error *HEAT5151* when building, this feature needs to be turned off.|
 | `HarvestDirectorySuppressRootDirectory` | Optional boolean property. Whether to suppress generation of a Directory element for all authoring when harvesting. The default is **false**. |
 | `HarvestDirectorySuppressSpecificWarnings` | Optional string parameter. Specifies that certain warnings should be suppressed. The default is `$(HarvestSuppressSpecificWarnings)` if specified. |
 | `HarvestDirectorySuppressUniqueIds` | Optional boolean property. Whether to suppress generation of unique component IDs. The default is `$(HarvestSuppressUniqueIds)` if specified; otherwise, **false**. |
