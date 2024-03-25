@@ -96,15 +96,6 @@ const config = {
                   <a href="https://www.firegiant.com/?utm_source=wixtoolset.org&utm_medium=Display&utm_content=footer">
                     <img src="/img/firegiant.png" alt="FireGiant" />
                   </a>
-
-                `
-              },
-              {
-                html: `
-                  <p class="footer_label">Member of the</p>
-                  <a href="https://dotnetfoundation.org/">
-                    <img src="/img/dotnetfoundation.png" alt=".NET Foundation" />
-                  </a>
                 `
               }
             ]
@@ -142,7 +133,7 @@ const config = {
       'data-domain': "wixtoolset.org"
     }
   ],
-  
+
   plugins: [require.resolve("@cmfcmf/docusaurus-search-local")],
 
   webpack: {
