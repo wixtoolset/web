@@ -21,7 +21,14 @@ WiX v5 marks the first of our annual releases. We intentionally made WiX v5 high
 
 [Read more about them in `WiX v5 for WiX v4 users`.](fivefour/index.md)
 
-WiX v5.0.0-rc.1 was released on 8-March-2024. WiX v5.0.0 is scheduled for release on 5-April-2024, the 20th anniversary of the first open-source release of WiX.
+
+### WiX v5 releases
+
+WiX v5.0.0 is scheduled for release on 5-April-2024, the 20th anniversary of the first open-source release of WiX.
+
+- WiX v5.0.0-rc.2 was released on 22-March-2024. It contains [fixes for a small number of bugs](https://github.com/wixtoolset/issues/milestone/24?closed=1) and for security vulnerabilities that FireGiant also fixed in WiX v3.14.1 and WiX v4.0.5. For details, see [the FireGiant blog post](https://www.firegiant.com/blog/2024/3/22/wix-security-releases-available-redux/), [the first security advisory](https://github.com/wixtoolset/issues/security/advisories/GHSA-jx4p-m4wm-vvjg), and [the second security advisory](https://github.com/wixtoolset/issues/security/advisories/GHSA-rf39-3f98-xr7r).
+- WiX v5.0.0-rc.1 was released on 8-March-2024.
+
 
 
 ### Contributors
@@ -44,9 +51,9 @@ Here are the people who contributed to WiX v5:
 - [@mwileczka](https://github.com/wixtoolset/Harvesters/commits?author=mwileczka)
 
 
-## WiX v4.0.4 {#v4}
+## WiX v4.0.5 {#v4}
 
-WiX v4.0.4 mitigates a Windows DLL redirection vulnerability in Burn. All versions of WiX are affected by this vulnerability. We recommending upgrading to this version as soon as possible.
+WiX v4.0.5, released on Friday, 22-Mar-2024, contains fixes for two security vulnerabilities. All versions of WiX are affected by this vulnerability. We recommending upgrading to this version as soon as possible. For details, see [the FireGiant blog post](https://www.firegiant.com/blog/2024/3/22/wix-security-releases-available-redux/), [the first security advisory](https://github.com/wixtoolset/issues/security/advisories/GHSA-jx4p-m4wm-vvjg), and [the second security advisory](https://github.com/wixtoolset/issues/security/advisories/GHSA-rf39-3f98-xr7r).
 
 
 ### Platforms
@@ -138,6 +145,10 @@ wix --version
 
 
 ## Previous WiX v4 releases
+
+> WiX v4.0.4 was released Tuesday, 6-Feb-2024
+
+WiX v4.0.4 mitigates a Windows DLL redirection vulnerability in Burn. All versions of WiX are affected by this vulnerability. We recommending upgrading to this (or a later) version as soon as possible.
 
 > WiX v4.0.3 was released Monday, 13-Nov-2023
 
