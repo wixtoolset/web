@@ -13505,9 +13505,9 @@
     <xs:annotation>
       <xs:documentation>
         This element exposes advanced WiX functionality. Use this element to declare WiX variables
-        from directly within your authoring. WiX variables are not resolved until the final msi/msm/pcp
-        file is actually generated. WiX variables do not persist into the msi/msm/pcp file, so they cannot
-        be used when an MSI file is being installed; it's a WiX-only concept.
+        from directly within your authoring. WiX variables are not resolved until the final package
+        file is actually generated (bind time). WiX variables do not persist into the package file,
+        so they cannot be used when an MSI file is being installed; it's a WiX-only concept.
       </xs:documentation>
     </xs:annotation>
     <xs:complexType>
@@ -13530,8 +13530,9 @@
       <xs:attribute name="Value" type="xs:string" use="required">
         <xs:annotation>
           <xs:documentation>
-            The value of the variable. The value cannot be an empty string because that would
-            make it possible to accidentally set a column to null.
+            The value of the variable. Note that because values are substituted at bind time,
+            they skip all the validation done at compile time, which can be more thorough than
+            validation done at bind time.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
