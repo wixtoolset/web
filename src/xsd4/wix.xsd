@@ -8977,10 +8977,8 @@
       <xs:attribute name="Directory" type="xs:string">
         <xs:annotation>
           <xs:documentation>
-            This attribute specifies a reference to a Directory element with matching Id attribute containing a directory path.
-            This attribute is typically used with the ExeCommand attribute to specify the source executable for a type 34
-            custom action, or with the Value attribute to specify a formatted string to place in the specified Directory
-            table entry in a type 35 custom action.
+            This attribute specifies a reference to a Directory element with matching Id attribute containing a directory path
+            for the root of the harvested files.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
