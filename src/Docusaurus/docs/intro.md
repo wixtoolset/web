@@ -33,6 +33,26 @@ To verify Wix.exe was successfully installed:
 wix --version
 ```
 
+### Update the WiX .NET tool
+
+To update your [.NET tool](https://learn.microsoft.com/en-us/dotnet/core/tools/global-tools) installation of WiX:
+
+```sh
+dotnet tool update --global wix
+```
+
+To install WiX for the first time as a .NET tool:
+
+```sh
+dotnet tool install --global wix
+```
+
+To verify Wix.exe was successfully installed or updated:
+
+```sh
+wix --version
+```
+
 ### See also
 - [Wix.exe command-line reference](./tools/wixexe.md)
 
@@ -45,6 +65,23 @@ WiX is available as an MSBuild SDK for building from the command line using `dot
 <Project Sdk="WixToolset.Sdk/4.0.5">
 </Project>
 ```
+
+### Update MSBuild projects
+
+To update your .wixproj MSBuild projects from previous WiX releases, update the `Project` element's `Sdk` attribute:
+
+```xml
+<Project Sdk="WixToolset.Sdk/4.0.5">
+```
+
+For `PackageReference`s to WiX v4 extensions, update their `Version` attribute. For example:
+
+```xml
+<PackageReference Include="WixToolset.Util.wixext" Version="4.*" />
+<PackageReference Include="WixToolset.Netfx.wixext" Version="4.*" />
+```
+
+To clean up NuGet artifacts from previous releases of WiX, we recommend you delete the `bin` and `obj` directories in your projects. If you're using .NET Framework MSBuild, do an explicit `MSBuild -Restore` to get the latest version restored. (Using `dotnet build` does that implicitly for you.)
 
 ### See also
 - [MSBuild reference](./tools/msbuild.md)

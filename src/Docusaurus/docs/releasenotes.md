@@ -104,45 +104,6 @@ WiX v4.0.5, released on Friday, 22-Mar-2024, contains fixes for two security vul
 - WixDifxAppExtension is deprecated in Windows 10 and therefore has been deprecated in WiX v4 and will be removed in WiX v5.
 
 
-### Update MSBuild projects
-
-To update your .wixproj MSBuild projects from previous WiX v4 releases, update the `Project` element's `Sdk` attribute:
-
-```xml
-<Project Sdk="WixToolset.Sdk/4.0.5">
-```
-
-For `PackageReference`s to WiX v4 extensions, update their `Version` attribute. For example:
-
-```xml
-<PackageReference Include="WixToolset.Util.wixext" Version="4.*" />
-<PackageReference Include="WixToolset.Netfx.wixext" Version="4.*" />
-```
-
-To clean up the NuGet artifacts from previous releases of WiX v4, we recommend you delete the `bin` and `obj` directories in your projects. If you're using .NET Framework MSBuild, do an explicit `MSBuild -Restore` to get the latest version restored. (Using `dotnet build` does that implicitly for you.)
-
-
-### Update the WiX .NET tool
-
-To update your [.NET tool](https://learn.microsoft.com/en-us/dotnet/core/tools/global-tools) installation of WiX v4:
-
-```sh
-dotnet tool update --global wix
-```
-
-To install WiX for the first time as a .NET tool:
-
-```sh
-dotnet tool install --global wix
-```
-
-To verify Wix.exe was successfully installed or updated:
-
-```sh
-wix --version
-```
-
-
 ## Previous WiX v4 releases
 
 > WiX v4.0.4 was released Tuesday, 6-Feb-2024
