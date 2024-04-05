@@ -254,7 +254,7 @@ Manage the extension cache. Extensions are referenced by:
 - `id` (uses the latest available version)
 
 :::note
-When omitting `version`, `wix extension` commands could choose a version of an extension that is incompatible with the version of WiX you're running. Use a specific version to avoid that scenario. For example: `wix extension add WixToolset.Util.wixext/4.0.5`
+When omitting `version`, `wix extension` commands could choose a version of an extension that is incompatible with the version of WiX you're running. Use a specific version to avoid that scenario. For example: `wix extension add WixToolset.Util.wixext/5.0.0`
 :::
 
 | Subcommand | Description |
