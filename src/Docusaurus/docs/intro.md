@@ -62,7 +62,7 @@ wix --version
 WiX is available as an MSBuild SDK for building from the command line using `dotnet build` from the .NET SDK or the .NET Framework-based `MSBuild` from Visual Studio. SDK-style projects have smart defaults that make for simple .wixproj project authoring. For example, here's a minimal .wixproj that builds an MSI from the .wxs source files in the project directory:
 
 ```xml
-<Project Sdk="WixToolset.Sdk/4.0.5">
+<Project Sdk="WixToolset.Sdk/5.0.0">
 </Project>
 ```
 
@@ -71,14 +71,14 @@ WiX is available as an MSBuild SDK for building from the command line using `dot
 To update your .wixproj MSBuild projects from previous WiX releases, update the `Project` element's `Sdk` attribute:
 
 ```xml
-<Project Sdk="WixToolset.Sdk/4.0.5">
+<Project Sdk="WixToolset.Sdk/5.0.0">
 ```
 
-For `PackageReference`s to WiX v4 extensions, update their `Version` attribute. For example:
+For `PackageReference`s to WiX extensions, update their `Version` attribute. For example:
 
 ```xml
-<PackageReference Include="WixToolset.Util.wixext" Version="4.*" />
-<PackageReference Include="WixToolset.Netfx.wixext" Version="4.*" />
+<PackageReference Include="WixToolset.Util.wixext" Version="5.*" />
+<PackageReference Include="WixToolset.Netfx.wixext" Version="5.*" />
 ```
 
 To clean up NuGet artifacts from previous releases of WiX, we recommend you delete the `bin` and `obj` directories in your projects. If you're using .NET Framework MSBuild, do an explicit `MSBuild -Restore` to get the latest version restored. (Using `dotnet build` does that implicitly for you.)
@@ -113,7 +113,7 @@ dotnet nuget add source https://nuget.pkg.github.com/wixtoolset/index.json -n wi
 You need to use exact versions for those packages. For example:
 
 ```xml
-<Project Sdk="WixToolset.Sdk/5.0.0-preview.1-build.106">
+<Project Sdk="WixToolset.Sdk/6.0.0-rc.1-build.42">
 </Project>
 ```
 
