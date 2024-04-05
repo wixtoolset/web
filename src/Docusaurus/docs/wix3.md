@@ -12,7 +12,7 @@ sidebar_position: 1000
 
 **WiX Toolset build tools** include everything you need to create installations on your development and build machines.
 
-[Download WiX v3.14](https://github.com/wixtoolset/wix3/releases/tag/wix314rtm)
+[Download WiX v3.14.1](https://github.com/wixtoolset/wix3/releases/tag/wix3141rtm)
 
 **WiX v3 Visual Studio Extension** provides integration for WiX v3 into Visual Studio. You will still need to install the WiX Toolset v3.14 build tools.
 
