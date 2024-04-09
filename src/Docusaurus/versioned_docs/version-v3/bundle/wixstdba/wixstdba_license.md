@@ -15,7 +15,7 @@ When using a WixStdBA theme that displays the RTF license, it is highly recommen
   <Bundle>
     <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense">
       <bal:WixStandardBootstrapperApplication
-        <strong class="highlight">LicenseFile="path\to\license.rtf"</strong>
+        LicenseFile="path\to\license.rtf"
         LogoFile="path\to\customlogo.png"
         />
     </BootstrapperApplicationRef>
@@ -35,7 +35,7 @@ The following example links to a license page on the internet.
   <Bundle>
     <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.HyperlinkLicense">
       <bal:WixStandardBootstrapperApplication
-        <strong class="highlight">LicenseUrl="http://example.com/license.html"</strong>
+        LicenseUrl="http://example.com/license.html"
         LogoFile="path\to\customlogo.png"
         />
     </BootstrapperApplicationRef>
