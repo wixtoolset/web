@@ -15,7 +15,7 @@ The WiX Standard Bootstrapper Application displays a generic logo in the bottom 
     <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense">
       <bal:WixStandardBootstrapperApplication
         LicenseFile="path\to\license.rtf"
-        <strong class="highlight">LogoFile="path\to\customlogo.png"</strong>
+        LogoFile="path\to\customlogo.png"
         />
     </BootstrapperApplicationRef>
 
@@ -36,8 +36,9 @@ For the HyperlinkSidebarLicense UI, there are two logos and they can be configur
     <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.HyperlinkSidebarLicense">
       <bal:WixStandardBootstrapperApplication
         LicenseUrl="License.htm"
-        <strong class="highlight">LogoFile="path\to\customlogo.png" LogoSideFile="path\to\customsidelogo.png"</strong>
-        />
+        LogoFile="path\to\customlogo.png"
+        LogoSideFile="path\to\customsidelogo.png"
+    />
     </BootstrapperApplicationRef>
 
     <Chain>
