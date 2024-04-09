@@ -47,7 +47,7 @@ Now you can add an install condition to the package so that it only installs on 
           InstallCommand="/q /ACTION=Install"
           RepairCommand="/q ACTION=Repair /hideconsole"
           UninstallCommand="/q ACTION=Uninstall /hideconsole" 
-          <strong class="highlight">InstallCondition="NOT VersionNT64 AND VersionNT >= v5.1"</strong> />
+          InstallCondition="NOT VersionNT64 AND VersionNT >= v5.1" />
     </PackageGroup>
   </Fragment>
 </Wix>
