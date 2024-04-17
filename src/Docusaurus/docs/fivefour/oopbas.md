@@ -1,8 +1,10 @@
 # Out-of-process bootstrapper applications in WiX v5
 
-In WiX v5, bootstrapper applications are separate processes and no longer hosted by the Burn process. The motivation for this change can be found in [#7916](https://github.com/wixtoolset/issues/issues/7916). This is obviously a significant breaking change so it was also taken as an opportunity to improve several .nupkg package names as described in [#8020](https://github.com/wixtoolset/issues/issues/8020).
+In WiX v5, Burn launches bootstrapper applications as separate processes rather than loading them as DLLs inside the Burn process. If using the WiX Standard Bootstrapper Application or WiX Internal UI Bootstrapper Application, the move to out-of-process bootstrapper applications is abstracted away and should not introduce any breaking changes or required authoring changes.
 
-If using the WiX Standard Bootstrapper Application or WiX Internal UI Bootstrapper Application, the move to out-of-process bootstrapper applications is abstracted away and should not introduce any breaking changes. The rest of this document details changes required to custom bootstrapper applications.
+The rest of this document details changes required to update custom bootstrapper applications to WiX v5.
+
+The motivation for this change can be found in [#7916](https://github.com/wixtoolset/issues/issues/7916). This is obviously a significant breaking change so it was also taken as an opportunity to improve several .nupkg package names as described in [#8020](https://github.com/wixtoolset/issues/issues/8020).
 
 First, the custom bootstrapper application project needs to change from DLL to EXE.
 
@@ -21,7 +23,7 @@ exampleba.csproj
 
 and reference the `WixToolset.BootstrapperApplicationApi` NuGet package (this one package replaces both the `WixToolset.BalUtil` and `WixToolset.Mba.Core` packages).
 
-As an executable, the boostrapper application needs a `main` function. Bootstrapper application main functions should be minimal to connect to the parent burn process as quickly as possible. For example,
+As an executable, the bootstrapper application needs a `main` function. Bootstrapper application main functions should be minimal to connect to the parent Burn process as quickly as possible. For example,
 
 ```cpp
 // exampleba.cpp
@@ -49,41 +51,41 @@ or
 
 ```cs
 // example.cs
-    using WixToolset.BootstrapperApplicationApi;
+using WixToolset.BootstrapperApplicationApi;
 
-    internal class Program
+internal class Program
+{
+    private static int Main()
     {
-        private static int Main()
-        {
-            var application = new ExampleBoostrapperApplication();
+        var application = new ExampleBootstrapperApplication();
 
-            ManagedBootstrapperApplication.Run(application);
+        ManagedBootstrapperApplication.Run(application);
 
-            return 0;
-        }
+        return 0;
     }
+}
 ```
 
-Notice that the bootstrapper engine and command objects are no longer passed to the creation of the bootstrapper application. Those values are not available until the application has been connected to the parent burn process in `Run()`. Therefore, there is a new `OnCreate()` bootstrapper application callback that provides both the bootstrapper engine and command objects. To keep the API balanced an `OnDestroy()` callback was also added.
+Notice that the bootstrapper engine and command objects are no longer passed to the creation of the bootstrapper application. Those values are not available until the application has been connected to the parent Burn process in `BootstrapperApplicationRun` or `ManagedBootstrapperApplication.Run`. Therefore, there is a new `OnCreate` bootstrapper application callback that provides both the bootstrapper engine and command objects. To keep the API balanced, an `OnDestroy` callback was also added.
 
 At this point, the bootstrapper application API is fairly compatible with only a few additional details to keep in mind.
 
 * Managed BootstrapperApplications no longer support changing "run async". BA's now always run their UI in a separate thread.
-* `BootstrapperApplicationFactory` concept no longer used. Remove all classes related to it. Create the BootstrapperApplication in the `main` function as shown above.
-* `BalBaseBootstrapperApplication.h` renamed `BootstrapperApplicationBase.h`.
-* `CBalBaseBootstrapperApplication` deprecated, use `CBootstrapperApplicationBase` instead.
+* The `BootstrapperApplicationFactory` concept no longer used. Remove all classes related to it. Create the BootstrapperApplication in the `main` function as shown above.
+* `BalBaseBootstrapperApplication.h` was renamed to `BootstrapperApplicationBase.h`.
+* `CBalBaseBootstrapperApplication` was deprecated, use `CBootstrapperApplicationBase` instead.
 
 To take advantage of the breaking change, we took the opportunity to improve the names of many NuGet packages related to custom bootstrapper applications:
 
-* `WixToolset.BalUtil` - renamed to `WixToolset.BootstrapperApplicationApi` to provide the native headers and libraries to communicate Burn. Also, split out the `WixToolset.WixStandardBootstrapperApplicationFunctionApi` for WiX Standard Bootstrapper Application functions API.
-* `WixToolset.Mba.Core` - merged the managed headers into the `WixToolset.BootstrapperApplicationApi` so there is a single package for custom bootstrapper applications.
+* `WixToolset.BalUtil` - renamed to `WixToolset.BootstrapperApplicationApi` to provide the native headers and libraries to communicate with Burn. Also, split out the `WixToolset.WixStandardBootstrapperApplicationFunctionApi` for WixStdBA BAFunctions API.
+* `WixToolset.Mba.Core` - merged the managed libraries into the `WixToolset.BootstrapperApplicationApi` so there is a single package for custom bootstrapper applications.
 * `WixToolset.BextUtil` - renamed to `WixToolset.BootstrapperExtensionApi`.
-* `WixToolset.Bal.wixext` - renamed to `WixToolset.BootstrapperApplications.wixext` but also kept` WixToolset.Bal.wixext` for backwards compatibility.
-* `WixToolset.Dnc.HostGenerator` - no longer relevant in WiX v5 and not available.
+* `WixToolset.Bal.wixext` - renamed to `WixToolset.BootstrapperApplications.wixext` but also kept `WixToolset.Bal.wixext` for backwards compatibility.
+* `WixToolset.Dnc.HostGenerator` - no longer needed in WiX v5.
 
 
 :::tip
-Set a **SYSTEM** environment variable named `WixDebugBootstrapperApplications` to `true` to get a prompt to debug all boostrapper applications. Set a **SYSTEM** environment variable named `WixDebugBootstrapperApplication` to the file name of the bootstrapper application executable to get a prompt to debug that bootstrapper application.
+Set a **system** environment variable named `WixDebugBootstrapperApplications` to `true` to get a prompt to debug _all_ bootstrapper applications. Set a **system** environment variable named `WixDebugBootstrapperApplication` to the file name of the bootstrapper application executable to get a prompt to debug that bootstrapper application.
 :::
 
 
