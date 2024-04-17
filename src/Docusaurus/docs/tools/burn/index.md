@@ -106,7 +106,7 @@ Here's how you might add a built-in BA to a bundle:
         </BootstrapperApplication>
 ```
 
-You can also create an entirely custom bootstrapper application, either in native code or managed code. Here's how you might reference a custom native-code BA:
+You can also create an entirely custom bootstrapper application, either in native code or managed code. Here's how you might reference a custom native-code BA in WiX v4:
 
 ```xml
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
@@ -115,6 +115,17 @@ You can also create an entirely custom bootstrapper application, either in nativ
             <BootstrapperApplicationDll
                 Id="MyStandardBootstrapperApplication"
                 SourceFile="bobstdba.dll" />
+            <PayloadGroupRef
+                Id="MyStandardBootstrapperApplicationPayloads" />
+        </BootstrapperApplication>
+```
+
+...or in WiX v5:
+
+```xml
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+    <Bundle>
+        <BootstrapperApplication SourceFile="bobstdba.exe">
             <PayloadGroupRef
                 Id="MyStandardBootstrapperApplicationPayloads" />
         </BootstrapperApplication>
@@ -136,5 +147,22 @@ Here's how you might reference a custom managed-code BA written in .NET 6:
             <Payload SourceFile="mbanative.dll" />
             <Payload SourceFile="WixToolset.Mba.Core.dll" />
             <bal:WixDotNetCoreBootstrapperApplicationHost />
+        </BootstrapperApplication>
+```
+
+...or in WiX v5:
+
+```xml
+<Wix
+    xmlns="http://wixtoolset.org/schemas/v4/wxs"
+    xmlns:bal="http://wixtoolset.org/schemas/v4/wxs/bal">
+
+    <Bundle>
+        <BootstrapperApplication SourceFile="MyBA.EarliestCoreMBA.exe">
+            <Payload SourceFile="MyBA.EarliestCoreMBA.deps.json" />
+            <Payload SourceFile="MyBA.EarliestCoreMBA.dll" />
+            <Payload SourceFile="MyBA.EarliestCoreMBA.runtimeconfig.json" />
+            <Payload SourceFile="mbanative.dll" />
+            <Payload SourceFile="WixToolset.Mba.Core.dll" />
         </BootstrapperApplication>
 ```

@@ -72,8 +72,8 @@ The Burn engine offers a set of commonly-used variables so you can use them with
 | WixBundleManufacturer | The manufacturer of the bundle (from `Bundle/@Manufacturer`). |
 | WixBundleOriginalSource | The source path where the bundle originally ran. |
 | WixBundleOriginalSourceFolder | The folder where the bundle originally ran. |
-| WixBundleSourceProcessPath | The source path of the bundle where originally executed. Will only be set when bundle is executing in the clean room. |
-| WixBundleSourceProcessFolder | The source folder of the bundle where originally executed. Will only be set when bundle is executing in the clean room. |
+| WixBundleSourceProcessPath | The source path of the bundle where originally executed. Will only be set when bundle is executing in the clean room. (Removed in WiX v5) |
+| WixBundleSourceProcessFolder | The source folder of the bundle where originally executed. Will only be set when bundle is executing in the clean room. (Removed in WiX v5) |
 | WixBundleProviderKey | The bundle dependency provider key. |
 | WixBundleTag | The developer-defined tag string for this bundle (from `Bundle/@Tag`). |
 | WixBundleUILevel | The level of the user interface (the BOOTSTRAPPER_DISPLAY enum). |
