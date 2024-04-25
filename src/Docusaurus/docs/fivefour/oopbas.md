@@ -80,8 +80,7 @@ To take advantage of the breaking change, we took the opportunity to improve the
 * `WixToolset.BalUtil` - renamed to `WixToolset.BootstrapperApplicationApi` to provide the native headers and libraries to communicate with Burn. Also, split out the `WixToolset.WixStandardBootstrapperApplicationFunctionApi` for WixStdBA BAFunctions API.
 * `WixToolset.Mba.Core` - merged the managed libraries into the `WixToolset.BootstrapperApplicationApi` so there is a single package for custom bootstrapper applications.
 * `WixToolset.BextUtil` - renamed to `WixToolset.BootstrapperExtensionApi`.
-* `WixToolset.Bal.wixext` - renamed to `WixToolset.BootstrapperApplications.wixext` but also kept `WixToolset.Bal.wixext` for backwards compatibility with `PackageReferences` in MSBuild. Note: this means that if using `wix.exe` to add extensions you will need to use the new name `WixToolset.BootstrapperApplications.wixext`.
-* `WixToolset.Dnc.HostGenerator` - no longer needed in WiX v5.
+* `WixToolset.Bal.wixext` - renamed to `WixToolset.BootstrapperApplications.wixext` but also kept `WixToolset.Bal.wixext` for backwards compatibility with `PackageReference` in MSBuild projects. Note: When using `wix.exe`, you need to use the new name `WixToolset.BootstrapperApplications.wixext`.
 
 
 :::tip
