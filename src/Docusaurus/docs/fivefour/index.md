@@ -200,4 +200,4 @@ For more information, see the [_Default feature_ WIP](https://github.com/wixtool
 - WixToolset.Netfx.wixext's [DotNetCompatibilityCheck](../schema/netfx/dotnetcompatibilitycheck.md) now sets the specified property to 13 when the requested platform is not compatible with the platform the installer is running on. Thanks to [@apacker1](https://github.com/apacker1) for the [pull request](https://github.com/wixtoolset/wix/pull/459).
 - WixToolset.Util.wixext now has the following `_NODOMAIN` properties from [WixQueryOsWellKnownSID](../tools/wixext/wininfo.md#querywindowswellknownsids): `WIX_ACCOUNT_ADMINISTRATORS_NODOMAIN`, `WIX_ACCOUNT_GUESTS_NODOMAIN`, `WIX_ACCOUNT_LOCALSERVICE_NODOMAIN`, `WIX_ACCOUNT_LOCALSYSTEM_NODOMAIN`, `WIX_ACCOUNT_NETWORKSERVICE_NODOMAIN`, and `WIX_ACCOUNT_USERS_NODOMAIN`. Thanks to [@mistoll](https://github.com/mistoll) for the [pull request](https://github.com/wixtoolset/wix/pull/407).
 
-See [Out-of-process bootstrapper applications](/docs/fivefour/oopbas/) for additional extension changes related to building bundles.
+See [Out-of-process bootstrapper applications](oopbas.md) for additional extension changes related to building bundles.
