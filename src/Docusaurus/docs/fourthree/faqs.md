@@ -277,9 +277,9 @@ Note that Microsoft chose a confusing naming convention for newer versions of .N
 To use a BA written in .NET 6+, use `bal:WixDotNetCoreBootstrapperApplicationHost` instead of `bal:WixManagedBootstrapperApplicationHost`.
 .NET 5 and earlier versions are not supported because they were already at end of life when v4 shipped.
 
-Even though the WixBA is not currently shipping, it is still available at https://github.com/wixtoolset/wix4/tree/develop/src/test/burn/WixToolset.WixBA.
+Even though the WixBA is not currently shipping, it is still available at https://github.com/wixtoolset/wix4/tree/HEAD/src/test/burn/WixToolset.WixBA.
 You can basically see a step-by-step example of upgrading a v3 MBA by looking at the history of that folder and `WixToolset.WixBA.csproj`.
-Another folder that might be useful is https://github.com/wixtoolset/wix4/tree/develop/src/test/burn/TestData/TestBA.
+Another folder that might be useful is https://github.com/wixtoolset/wix4/tree/HEAD/src/test/burn/TestData/TestBA.
 
 In v3, MBAs needed to be built against the same version of `BootstrapperCore.dll` as the bundle.
 They didn't need to include it as a payload because the Bal WiX extension automatically added it.

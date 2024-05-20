@@ -6,6 +6,10 @@ The rest of this document details changes required to update custom bootstrapper
 
 The motivation for this change can be found in [#7916](https://github.com/wixtoolset/issues/issues/7916). This is obviously a significant breaking change so it was also taken as an opportunity to improve several .nupkg package names as described in [#8020](https://github.com/wixtoolset/issues/issues/8020).
 
+:::tip
+The [WiX repo on GitHub](https://github.com/wixtoolset/wix) contains the code to bootstrapper applications using the new model, like [WixStandardBootstrapperApplication](https://github.com/wixtoolset/wix/blob/HEAD/src/ext/Bal/stdbas/WixStandardBootstrapperApplication.cpp) (C++) and [WixBA](https://github.com/wixtoolset/wix/tree/HEAD/src/test/burn/WixToolset.WixBA) (C#).
+:::
+
 First, the custom bootstrapper application project needs to change from DLL to EXE.
 
 ```diff
