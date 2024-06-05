@@ -141,7 +141,7 @@ For example:
 
 ### Converting custom WixUI dialog sets
 
-Because of [WiX v4's support for platform-specific custom actions](#customactionids), customizing WixUI dialog sets, especially when adding and removing dialogs, requires some care. [The WixUI documentation describes what to do when creating a new custom dialog set.](../tools/wixext/wixui.md#addingremovingdialogs) You'll want to make the same kind of change when converting a custom dialog set you created using WiX v3 to WiX v4. The key point is to isolate any `DoAction` control events that call custom actions to create platform-specific variants. WixUI itself does this using a preprocessor `?foreach?` processing instruction to create three fragments, one each for x86, x64, and Arm64 platforms. Each of those fragments references the platform-neutral `UI`. You can see the WixUI definitions [on GitHub](https://github.com/wixtoolset/wix4/tree/develop/src/ext/UI/wixlib). Here's what a customized dialog set based on WixUI_InstallDir looks like:
+Because of [WiX v4's support for platform-specific custom actions](#customactionids), customizing WixUI dialog sets, especially when adding and removing dialogs, requires some care. [The WixUI documentation describes what to do when creating a new custom dialog set.](../tools/wixext/wixui.md#addingremovingdialogs) You'll want to make the same kind of change when converting a custom dialog set you created using WiX v3 to WiX v4. The key point is to isolate any `DoAction` control events that call custom actions to create platform-specific variants. WixUI itself does this using a preprocessor `?foreach?` processing instruction to create three fragments, one each for x86, x64, and Arm64 platforms. Each of those fragments references the platform-neutral `UI`. You can see the WixUI definitions [on GitHub](https://github.com/wixtoolset/wix4/tree/HEAD/src/ext/UI/wixlib). Here's what a customized dialog set based on WixUI_InstallDir looks like:
 
 ```xml
 <?foreach WIXUIARCH in X86;X64;A64 ?>
@@ -176,7 +176,7 @@ Because of [WiX v4's support for platform-specific custom actions](#customaction
 <?endforeach?>
 ```
 
-You can see the authoring and test code for this customized dialog set [on GitHub](https://github.com/wixtoolset/wix4/tree/develop/src/ext/UI/test/WixToolsetTest.UI/TestData/InstallDir_SpecialDlg).
+You can see the authoring and test code for this customized dialog set [on GitHub](https://github.com/wixtoolset/wix4/tree/HEAD/src/ext/UI/test/WixToolsetTest.UI/TestData/InstallDir_SpecialDlg).
 
 When you use the [`WixUI` element](../schema/ui/wixui.md) to reference a WixUI dialog set or a customized dialog set derived from WixUI, it adds a reference to the platform-specific `UI` for the platform of the package being built. The platform-specific `UI` then adds a reference to the platform-neutral `UI`.
 
@@ -329,7 +329,7 @@ To get the same behavior as v3, use `bal:DisplayInternalUICondition="WixBundleAc
 ### Upgrading custom wixstdba themes
 
 There were so many breaking changes done to the UI library (thmutil), the XML schema, and the built-in themes that it wasn't worth time trying to build a tool to convert v3 themes into v4.
-Look at the built-in themes and rebuild your theme from one of them: https://github.com/wixtoolset/wix4/tree/develop/src/ext/Bal/wixstdba/Resources.
+Look at the built-in themes and rebuild your theme from one of them: https://github.com/wixtoolset/wix4/tree/HEAD/src/ext/Bal/wixstdba/Resources.
 
 (TODO: link to documentation about all the cool new features)
 
