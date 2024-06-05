@@ -235,7 +235,7 @@ All the text in WixUI dialogs is supplied by localization strings embedded in Wi
 
 Each WixUI dialog set is a wizard-style sequence of dialogs wired up to Next and Back buttons. To remove a dialog from the wizard sequence, you have to adjust the control events on the Next and Back buttons to point "beyond" the dialog you want to skip. To add a new dialog, you have to modify existing control events and add new ones on the Next and Back buttons to point to the new dialog you want to add.
 
-In general, you'll need to duplicate the original WiX authoring for the dialog set you want to modify. You can see the WiX authoring [in the `wix4` repo on GitHub](https://github.com/wixtoolset/wix4/tree/develop/src/ext/UI/wixlib).
+In general, you'll need to duplicate the original WiX authoring for the dialog set you want to modify. You can see the WiX authoring [in the `wix4` repo on GitHub](https://github.com/wixtoolset/wix4/tree/HEAD/src/ext/UI/wixlib).
 
 For example, to remove LicenseAgreementDlg from the WixUI_InstallDir dialog set:
 

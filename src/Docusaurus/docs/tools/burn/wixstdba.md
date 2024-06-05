@@ -48,7 +48,7 @@ Here are a few of the more interesting attributes available on the [`WixStandard
 
 ## WixStdBA custom themes
 
-You can completely replace any of the WixStdBA "standard" themes with a theme of your own. Take a look at the [standard theme source files](https://github.com/wixtoolset/wix/tree/main/src/ext/Bal/stdbas/Resources) so you can see examples of theme XML authoring and the pages that WixStdBA expects:
+You can completely replace any of the WixStdBA "standard" themes with a theme of your own. Take a look at the [standard theme source files](https://github.com/wixtoolset/wix/tree/HEAD/src/ext/Bal/stdbas/Resources) so you can see examples of theme XML authoring and the pages that WixStdBA expects:
 
 | Page name | Description |
 | --------- | ----------- |
