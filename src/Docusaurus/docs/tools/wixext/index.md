@@ -10,7 +10,7 @@ The following WiX extensions are provided by the WiX team:
 
 | Extension | Documentation |
 | --------- | ------------- |
-| WixToolset.Bal.wixext | [Bal schema](../../schema/bal/index.md) |
+| WixToolset.BootstrapperApplications.wixext | [Bal schema](../../schema/bal/index.md) |
 | WixToolset.ComPlus.wixext | [Complus schema](../../schema/complus/index.md) |
 | WixToolset.Dependency.wixext | [Dependency schema](../../schema/dependency/index.md) |
 | WixToolset.DifxApp.wixext | [Difxapp schema](../../schema/difxapp/index.md) |
@@ -43,8 +43,8 @@ For example:
 
 ```xml
 wix extension add -g WixToolset.Util.wixext
-wix extension add -g WixToolset.Bal.wixext
-wix build Bundle.wxs Bundle.en-us.wxl -ext WixToolset.Util.wixext -ext WixToolset.Bal.wixext
+wix extension add -g WixToolset.BootstrapperApplications.wixext
+wix build Bundle.wxs Bundle.en-us.wxl -ext WixToolset.Util.wixext -ext WixToolset.BootstrapperApplications.wixext
 ```
 
 
@@ -54,7 +54,7 @@ WiX extensions are available as NuGet packages on NuGet.org. You can reference t
 
 ```xml
 <ItemGroup>
-  <PackageReference Include="WixToolset.Bal.wixext" />
+  <PackageReference Include="WixToolset.BootstrapperApplications.wixext" />
   <PackageReference Include="WixToolset.Util.wixext" />
 </ItemGroup>
 ```
@@ -63,7 +63,7 @@ You might need to specify a version for WiX extension packages (such as when the
 
 ```xml
 <ItemGroup>
-  <PackageReference Include="WixToolset.Bal.wixext" Version="5.0.0-rc.2" />
+  <PackageReference Include="WixToolset.BootstrapperApplications.wixext" Version="5.0.0-rc.2" />
   <PackageReference Include="WixToolset.Util.wixext" Version="5.0.0-rc.2" />
 </ItemGroup>
 ```
