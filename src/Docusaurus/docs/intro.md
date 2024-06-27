@@ -118,3 +118,48 @@ You need to use exact versions for those packages. For example:
 ```
 
 For more detailed instructions, check out [this video](https://youtu.be/2iIjq6zt6z0).
+
+
+## Hello World from CLI
+
+After having Wix now installed, let's make a very tiny example.
+The goal is to have a MSI file which installs a "Hello World" program into `C:\Program Files (x86)`.
+
+Let's get started:
+
+1. Create a new working folder. Create all following files there.
+1. Create a new file `HelloWorld.txt`
+1. Create a new text file `package.wxs` with the following content:
+   ```xml
+   <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+        <Package Name="Hello World" Manufacturer="Myself" UpgradeCode="554c904d-fef1-42d8-98f6-3930fdec7534" Version="0.1">
+            <MediaTemplate EmbedCab="yes" />
+
+            <StandardDirectory Id="ProgramFilesFolder">
+                <Directory Id="HelloWorldFolder" Name="Hello World" />
+            </StandardDirectory>
+
+            <Feature Id="Main">
+                <Component Directory="HelloWorldFolder">
+                    <File Source="HelloWorld.txt" />
+                </Component>
+            </Feature>
+        </Package>
+    </Wix>
+   ```
+1. Run this command
+    ```batch
+    wix build .\package.wxs -o my.msi
+    ```
+    This command creates a new installer file `my.msi`
+1. To install the installer, double click it or run
+   ```batch
+   msiexec /i my.msi /l*v install.log
+   ```
+   After successful installation, the program appears in the `C:\Program Files (x86)` folder.
+1. To uninstall `Hello World`, use the Windows tool `Add/Remove Programs` or run this command:
+   ```batch
+   msiexec /x my.msi /l*v uninstall.log
+   ```
+
+Congratas, you just created your first simple installer.
