@@ -90,7 +90,7 @@ wix msi decompile [options] {inputfile.msi|inputfile.msm}
 | `-type` _type_ | Optionally specify the input file type: _msi_ or _msm_. If not specified, type is inferred by file extension. |
 | `-intermediateFolder` _path_ | Optional working folder. If not specified, a folder in %TMP% is created. |
 | `-out` or `-o` _path_ | Optional path for the decompiled output file. If not specified, output path will have the same base name as the input file in the same directory. |
-| `x` _path_ | If specified, export embedded binaries and icons to specified folder. |
+| `-x` _path_ | If specified, export embedded binaries and icons to specified folder. |
 
 
 ### `wix msi inscribe` subcommand {#msiinscribe}
