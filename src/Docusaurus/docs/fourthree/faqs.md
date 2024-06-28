@@ -329,7 +329,7 @@ To get the same behavior as v3, use `bal:DisplayInternalUICondition="WixBundleAc
 ### Upgrading custom wixstdba themes
 
 There were so many breaking changes done to the UI library (thmutil), the XML schema, and the built-in themes that it wasn't worth time trying to build a tool to convert v3 themes into v4.
-Look at the built-in themes and rebuild your theme from one of them: https://github.com/wixtoolset/wix4/tree/HEAD/src/ext/Bal/wixstdba/Resources.
+Look at the built-in themes and rebuild your theme from one of them: https://github.com/wixtoolset/wix/tree/v4.0.5/src/ext/Bal/wixstdba/Resources.
 
 (TODO: link to documentation about all the cool new features)
 
