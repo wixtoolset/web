@@ -49,7 +49,7 @@ wix build [options] source_file.wxs [source_file.wxs ...]
 | `-define` or `-d` _name_=_value_ | Sets a preprocessor variable. |
 | `-defaultcompressionlevel` or `-dcl` _level_ | Specifies the compression level used when none is specified via `MediaTemplate` or `Media`. Valid values are: *none*, *low*, *medium*, *high*, *mszip*. Default: *medium*. Equivalent MSBuild property: `DefaultCompressionLevel` |
 | `-ext` _id_ | [Load a WiX extension for use during the build.](#extension) |
-| `-include` or `-i` _path_ | Folder to search for include files. |
+| `-includepath` or `-i` _path_ | Folder to search for include files. |
 | `-intermediateFolder` _path_ | Optional working folder. If not specified, a folder in %TMP% is created. |
 | `-loc` _path_ | Localization file to use in the build. By default, .wxl files are recognized as localization. |
 | `-lib` _path_ | Library file to use in the build. By default, .wixlib files are recognized as libraries. |
