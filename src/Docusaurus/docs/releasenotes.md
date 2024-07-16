@@ -4,7 +4,12 @@ sidebar_position: 30
 
 # Release notes
 
-## WiX v5 {#v5}
+## WiX v5.0.1 {#v5}
+
+WiX v5.0.1 was released on 16-July-2024 and is the first bug-fix release for WiX v5. We fixed bugs for FireGiant customers and published the release for the whole WiX community to enjoy. [Check out the full list of bugs fixed in WiX v5.0.1.](https://github.com/wixtoolset/issues/milestone/28?closed=1)
+
+
+### New in WiX v5
 
 WiX v5 marks the first of our annual releases. We intentionally made WiX v5 highly compatible with WiX v4. Most users can simply switch to WiX v5 with no code changes. (There are some exceptions, naturally.) Here's a list of some notable changes, mostly new features to make your package experience with WiX more pleasant:
 
@@ -22,7 +27,7 @@ WiX v5 marks the first of our annual releases. We intentionally made WiX v5 high
 [Read more about them in `WiX v5 for WiX v4 users`.](fivefour/index.md)
 
 
-### WiX v5 releases
+### Previous WiX v5 releases
 
 - WiX v5.0.0 was released on 5-April-2024, the 20th anniversary of the first open-source release of WiX. It contains [fixes for a small number of bugs](https://github.com/wixtoolset/issues/milestone/26?closed=1).
 - WiX v5.0.0-rc.2 was released on 22-March-2024. It contains [fixes for a small number of bugs](https://github.com/wixtoolset/issues/milestone/24?closed=1) and for security vulnerabilities that FireGiant also fixed in WiX v3.14.1 and WiX v4.0.5. For details, see [the FireGiant blog post](https://www.firegiant.com/blog/2024/3/22/wix-security-releases-available-redux/), [the first security advisory](https://github.com/wixtoolset/issues/security/advisories/GHSA-jx4p-m4wm-vvjg), and [the second security advisory](https://github.com/wixtoolset/issues/security/advisories/GHSA-rf39-3f98-xr7r).
