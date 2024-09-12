@@ -155,6 +155,10 @@ namespace WixBuildTools.XsdToMarkdown
                     if (attribute.EnumValues?.Any() == true)
                     {
                         content.Add($"**{attribute.Name}** (enumeration{required}{otherNamespace})");
+                        if (!String.IsNullOrEmpty(attribute.Default))
+                        {
+                            content.Add($" \\[default={attribute.Default}\\]");
+                        }
                         content.Add($"  : {attribute.Description} This attribute's value must be one of the following:");
                         content.AddRange(EnumValuesDocumentation(attribute.EnumValues));
                     }
@@ -167,6 +171,10 @@ namespace WixBuildTools.XsdToMarkdown
                         else
                         {
                             content.Add($"**{attribute.Name}** ([{attribute.Type}]({this.LinkForType(PageType.Element, attribute.Type)} '{attribute.TypeDocumentation}'){required}{otherNamespace})");
+                        }
+                        if (!String.IsNullOrEmpty(attribute.Default))
+                        {
+                            content.Add($" \\[default={attribute.Default}\\]");
                         }
                         content.Add($"  : {attribute.Description}");
                     }

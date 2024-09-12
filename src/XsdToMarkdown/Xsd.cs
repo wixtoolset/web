@@ -231,6 +231,7 @@ namespace WixBuildTools.XsdToMarkdown
         {
             var name = xAttribute.Attribute("name")?.Value;
             var required = String.Equals(xAttribute.Attribute("use")?.Value, "required", StringComparison.OrdinalIgnoreCase);
+            var defaultVal = xAttribute.Attribute("default")?.Value;
             var type = GetAttributeType(xAttribute);
             var typeDocumentation = String.Empty;
 
@@ -254,7 +255,7 @@ namespace WixBuildTools.XsdToMarkdown
             var xParents = xAppInfo?.Elements(ParentElement);
             var parents = xParents?.Select(x => CreateParent(x));
 
-            return new Attribute(name, this.TargetNamespace, documentation, type, typeDocumentation, required, enumValues, parents);
+            return new Attribute(name, this.TargetNamespace, documentation, type, typeDocumentation, required, enumValues, parents, defaultVal);
         }
 
         private static string Capitalize(string value)
@@ -347,12 +348,13 @@ namespace WixBuildTools.XsdToMarkdown
         public string Namespace { get; }
         public string Description { get; }
         public string Type { get; }
+        public string Default { get;  }
         public string TypeDocumentation { get; }
         public bool Required { get; }
         public IEnumerable<EnumValue> EnumValues { get; set; }
         public IEnumerable<Parent> Parents { get; set; }
 
-        public Attribute(string name, string namespac, string description, string type, string typeDocumentation, bool required, IEnumerable<EnumValue> enumValues, IEnumerable<Parent> parents)
+        public Attribute(string name, string namespac, string description, string type, string typeDocumentation, bool required, IEnumerable<EnumValue> enumValues, IEnumerable<Parent> parents, string defaultValue)
         {
             this.Name = name;
             this.Namespace = namespac;
@@ -362,6 +364,7 @@ namespace WixBuildTools.XsdToMarkdown
             this.Required = required;
             this.EnumValues = enumValues;
             this.Parents = parents;
+            this.Default = defaultValue;
         }
     }
 
