@@ -2492,12 +2492,12 @@
       </xs:attribute>
       <xs:attribute name="Scope" type="PackageScopeTypeUnion">
         <xs:annotation>
-          <xs:documentation>Use this attribute to specify the installation scope of this package: per-machine, per-user, or a choice of either.</xs:documentation>
+          <xs:documentation>Use this attribute to specify the installation scope of this package: per-machine, per-user, or a choice of either. The default is per-machine.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="ShortNames" type="YesNoTypeUnion">
         <xs:annotation>
-          <xs:documentation>Indicates whether the package files are installed using 8.3 filenames.</xs:documentation>
+          <xs:documentation>Indicates whether the package files are installed using 8.3 filenames. The default is no.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="UpgradeCode" type="Guid">
@@ -2508,10 +2508,11 @@
       <xs:attribute name="UpgradeStrategy" type="UpgradeStrategyTypeUnion">
         <xs:annotation>
           <xs:documentation>
+          _New in WiX v5: WiX v5 adds this attribute to the `Package` element._
           The upgrade strategy for the package. If "none," no major upgrade is expected.
           If "majorUpgrade," the UpgradeCode attribute is required and a major upgrade is expected.
+          The default is "majorUpgrade."
           A default major upgrade is automatically provided if none is authored.
-          _New in WiX v5: WiX v5 adds this attribute to the `Package` element._
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
