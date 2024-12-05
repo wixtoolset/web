@@ -1,12 +1,11 @@
-﻿// Copyright (c) .NET Foundation and contributors. All rights reserved. Licensed under the Microsoft Reciprocal License. See LICENSE.TXT file in the project root for full license information.
+// Copyright (c) .NET Foundation and contributors. All rights reserved. Licensed under the Microsoft Reciprocal License. See LICENSE.TXT file in the project root for full license information.
 
 namespace WixToolset.Web.Services
 {
     using System;
     using System.Diagnostics;
     using System.Threading.Tasks;
-    using Microsoft.WindowsAzure.Storage;
-    using Microsoft.WindowsAzure.Storage.Table;
+    using Azure.Data.Tables;
     using WixToolset.Web.Models;
 
     public class StorageService : IStorageService
@@ -18,10 +17,10 @@ namespace WixToolset.Web.Services
                 throw new ArgumentNullException(nameof(connectionString));
             }
 
-            this.Storage = CloudStorageAccount.Parse(connectionString);
+            this.Storage = new TableServiceClient(connectionString);
         }
 
-        private CloudStorageAccount Storage { get; }
+        private TableServiceClient Storage { get; }
 
         public async Task LogErrorAsync(int code, string ip, string page, string referrer, Exception exception)
         {
@@ -47,15 +46,11 @@ namespace WixToolset.Web.Services
         {
             try
             {
-                var op = TableOperation.Insert(entity);
-
-                var client = this.Storage.CreateCloudTableClient();
-
-                var table = client.GetTableReference(tableName);
+                var table = this.Storage.GetTableClient(tableName);
 
                 await table.CreateIfNotExistsAsync();
 
-                await table.ExecuteAsync(op);
+                await table.AddEntityAsync(entity);
             }
             catch (Exception e)
             {

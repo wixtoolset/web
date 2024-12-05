@@ -1,14 +1,15 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="WindowsAzure.Storage" Version="8.1.4" />
+    <PackageReference Include="Azure.Data.Tables" Version="12.9.1" />
+    <PackageReference Include="System.Text.Json" Version="6.0.11" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Nerdbank.GitVersioning" Version="3.4.194" PrivateAssets="all" />
+    <PackageReference Include="Nerdbank.GitVersioning" Version="3.6.146" PrivateAssets="all" />
   </ItemGroup>
 </Project>
