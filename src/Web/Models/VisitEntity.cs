@@ -1,11 +1,12 @@
-﻿// Copyright (c) .NET Foundation and contributors. All rights reserved. Licensed under the Microsoft Reciprocal License. See LICENSE.TXT file in the project root for full license information.
+// Copyright (c) .NET Foundation and contributors. All rights reserved. Licensed under the Microsoft Reciprocal License. See LICENSE.TXT file in the project root for full license information.
 
 namespace WixToolset.Web.Models
 {
     using System;
-    using Microsoft.WindowsAzure.Storage.Table;
+    using Azure;
+    using Azure.Data.Tables;
 
-    public class VisitEntity : TableEntity
+    public class VisitEntity : ITableEntity
     {
         public VisitEntity()
         {
@@ -18,6 +19,14 @@ namespace WixToolset.Web.Models
 
             this.Purpose = purpose;
         }
+
+        public string PartitionKey { get; set; }
+
+        public string RowKey { get; set; }
+
+        public ETag ETag { get; set; } = ETag.All;
+
+        public DateTimeOffset? Timestamp { get; set; }
 
         public string Method { get; set; }
 
