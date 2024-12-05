@@ -65,11 +65,11 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       announcementBar: {
-        id: 'subscribe',
-        content: '<span style="font-size:16px">Get the latest WiX news sent to you. <a style="text-decoration-line:none;border-bottom:1px solid" href="https://www.firegiant.com/subscribe/?utm_source=wixtoolset.org&utm_medium=Display&utm_campaign=subscribe&utm_term=subscribe&utm_content=announcement_bar">Subscribe to the FireGiant newsletter.</a></span>',
-        backgroundColor: '#C70039',
+        id: 'lifecycle',
+        content: '<span style="font-size:16px">Did you know the WiX Lifecycle was changing soon? <a style="text-decoration-line:none;border-bottom:1px solid" href="https://github.com/orgs/wixtoolset/discussions/8864?utm_source=wixtoolset.org&utm_medium=Display&utm_campaign=lifecycle&utm_term=read_about_it&utm_content=announcement_bar">Read about it here.</a></span>',
+        backgroundColor: '#FF5500',
         textColor: '#fff',
-        isCloseable: true,
+        isCloseable: false,
       },
       navbar: {
         title: 'WiX Toolset',
