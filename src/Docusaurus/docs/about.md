@@ -44,6 +44,45 @@ To use WiX as a .NET tool or as an MSBuild SDK via `dotnet build`, you must have
 To use WiX as an MSBuild SDK via `msbuild`, you must have [.NET Framework 4.7.2 or later installed](https://learn.microsoft.com/en-us/dotnet/framework/get-started/system-requirements). WiX runs on ARM64 systems as ARM64
 
 
+## Lifecycle
+
+The WiX Toolset lifecycle is composed of two release processes: major versions and servicing updates. (Given the velocity of major version releases, the WiX Toolset eschews the use of minor versions.)
+
+Note that [FireGiant customers have major version and servicing update lifecycles determined by their support contract](https://www.firegiant.com/services/wix-extended-support/?utm_source=wixtoolset.org&utm_medium=Display&utm_campaign=lifecycle&utm_term=note&utm_content=about_page). Consumers of the open source WiX Toolset project have lifecycles with dates and durations detailed below.
+
+### Major versions
+
+The WiX Toolset follows an annual release cadence for new major versions. The targeted release date is every April 5th, the anniversary of WiX's release as Open Source.
+In each of the two months before a new major version, a release candidate build is produced. That means WiX users should circle the following dates on their calendars:
+
+| Date | Release |
+| ---- | --- |
+| February 5th | v#.0-rc.1 |
+| March 5th | v#.0-rc.2 |
+| April 5th | v#.0 |
+
+### Servicing updates
+
+There are two categories of servicing updates: bug fixes and security updates.
+
+Bugs we fix for FireGiant customers can be released as bug fix updates. Other fixes and features ship in the next major version release.
+
+We strongly encourage consumers of the open source project to adopt release candidates quickly, testing them with their existing projects to help catch regressions in time to fix them before the major version release. Otherwise, it could take up to a year to get the fix.
+
+To keep both customers and consumers safe, security updates are released more widely. Specifically, security updates are provided for the current major version *and* the previous major version up to 10 months after the current version's release. The following table should make it clear.
+
+| WiX Version | Release Date | Consumer Security Fixes End Date |
+| ----------- | ------------ | ----------------------- |
+| WiX v3 | 2009/07/04 | 2025/02/06 |
+| WiX v4 | 2023/04/05 | 2025/02/05 |
+| WiX v5 | 2024/04/05 | 2026/02/05 |
+| WiX v6 | 2025/04/05 | 2027/02/05 |
+
+This provides consumers with security updates for 22 months and ensures they are protected while updating to the latest major version.
+
+Of course, FireGiant customers get [security fixes just like bug fixes as per their support contract](https://www.firegiant.com/services/wix-extended-support/?utm_source=wixtoolset.org&utm_medium=Display&utm_campaign=lifecycle&utm_term=of_course&utm_content=about_page).
+
+
 ## License
 
 The WiX toolset is released under the [Microsoft Reciprocal License (MS-RL)](http://opensource.org/licenses/ms-rl). A reciprocal license is used to ensure that others who build on the effort of the WiX community give back to the WiX community. Specifically the license requires that fixes and improvements to the WiX toolset must be published using the same license.
