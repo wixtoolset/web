@@ -66,7 +66,7 @@ const config = {
     ({
       announcementBar: {
         id: 'lifecycle',
-        content: '<span style="font-size:16px">Did you know the WiX Lifecycle was changing soon? <a style="text-decoration-line:none;border-bottom:1px solid" href="https://github.com/orgs/wixtoolset/discussions/8864?utm_source=wixtoolset.org&utm_medium=Display&utm_campaign=lifecycle&utm_term=read_about_it&utm_content=announcement_bar">Read about it here.</a></span>',
+        content: '<span style="font-size:16px">Did you know the WiX Lifecycle is changing soon? <a style="text-decoration-line:none;border-bottom:1px solid" href="https://github.com/orgs/wixtoolset/discussions/8864?utm_source=wixtoolset.org&utm_medium=Display&utm_campaign=lifecycle&utm_term=read_about_it&utm_content=announcement_bar">Read about it here.</a></span>',
         backgroundColor: '#FF5500',
         textColor: '#fff',
         isCloseable: false,
