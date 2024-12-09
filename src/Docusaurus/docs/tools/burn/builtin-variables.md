@@ -26,7 +26,7 @@ The Burn engine offers a set of commonly-used variables so you can use them with
 | LocalAppDataFolder | The well-known folder for CSIDL_LOCAL_APPDATA. |
 | LogonUser | The current user name. |
 | MyPicturesFolder | The well-known folder for CSIDL_MYPICTURES. |
-| NativeMachine | Set to an [Image File Machine value](https://docs.microsoft.com/en-us/windows/win32/sysinfo/image-file-machine-constants) representing the native architecture of the machine. Set only on Windows 10 version 1511 (TH2) and later. |
+| NativeMachine | Set to an [Image File Machine value](https://docs.microsoft.com/en-us/windows/win32/sysinfo/image-file-machine-constants) representing the native architecture of the machine. Set only on Windows 10, version 1709 and later. |
 | NTProductType | Numeric product type from OS version information. |
 | NTSuiteBackOffice | Non-zero if OS version suite is Back Office. |
 | NTSuiteDataCenter | Non-zero if OS version suite is Datacenter. |

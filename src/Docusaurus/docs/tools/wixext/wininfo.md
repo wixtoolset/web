@@ -90,4 +90,4 @@ QueryWindowsSuiteInfo sets one or more of the following session properties for [
 
 | Property | Description |
 | -------- | ----------- |
-| WIX_NATIVE_MACHINE | Set to an [Image File Machine value](https://docs.microsoft.com/en-us/windows/win32/sysinfo/image-file-machine-constants) representing the native architecture of the machine. This property is set only on Windows 10 version 1511 (TH2) and later. |
+| WIX_NATIVE_MACHINE | Set to an [Image File Machine value](https://docs.microsoft.com/en-us/windows/win32/sysinfo/image-file-machine-constants) representing the native architecture of the machine. This property is set only on Windows 10, version 1709 and later. |
